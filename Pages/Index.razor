@@ -1,7 +1,45 @@
 ﻿@page "/"
+@inject IJSRuntime JSRuntime;
 
-<JqxBargauge values="values"></JqxBargauge>
+<div style='font-family: Verdana Arial; font-size: 12px; width: 400px;'>
+    <div style='float: left; width: 400px;'>
+        <h3 style='margin-left: 15px;'>Categories</h3>
+        <JqxCheckbox width="width" height="height" enableContainerClick="false">Entertainment</JqxCheckbox>
+        <JqxCheckbox width="width" height="height" isChecked="true">Computers</JqxCheckbox>
+        <JqxCheckbox width="width" height="height">Sports</JqxCheckbox>
+    </div>
+    <div style='float: left; width: 400px; margin-top: 10px;'>
+        <JqxCheckbox width="width" height="height">Health</JqxCheckbox>
+        <JqxCheckbox width="width" height="height">Finance</JqxCheckbox>
+        <JqxCheckbox width="width" height="height">Travel</JqxCheckbox> 
+    </div>
+    <div style='float: left; width: 400px; margin-top: 10px;'>
+        <JqxCheckbox width="width" height="height">Music</JqxCheckbox>
+        <JqxCheckbox width="width" height="height">Technology</JqxCheckbox> 
+        <JqxCheckbox width="width" height="height">Publishing</JqxCheckbox>
+    </div>
+    <br /> 
+    <div style='float: left; width: 400px; margin-top: 10px;'>
+        <h3 style='margin-left: 15px;'>States</h3>
+        <JqxCheckbox width="width" height="height" isChecked="true"><span @ref="checkBox10Span">Checked</span></JqxCheckbox>
+        <JqxCheckbox width="width" height="height">Unchecked</JqxCheckbox>
+    </div>
+    <div style='float: left; width: 400px; margin-top: 10px;'>
+        <JqxCheckbox width="width" height="height" hasThreeStates="true" isChecked="null" >Indeterminate</JqxCheckbox>
+        <JqxCheckbox width="width" height="height" isChecked="true" disabled="true">Disabled</JqxCheckbox>
+    </div>
+</div>
 
-@code {
-    double[] values = new double[]{30, 60, 80, 100};
-}
+@code { 
+    ElementReference checkBox10Span;
+    int width = 120;
+    int height = 25;
+
+    private void checkbox10Handler(Dictionary<string, object> e) {
+        var isChecked = true; 
+        Console.WriteLine(isChecked);
+
+        JSRuntime.InvokeAsync<object>("Example.updateInnerHtml", new object[2]{ checkBox10Span, isChecked });
+    } 
+ 
+}  
