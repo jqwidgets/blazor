@@ -1,0 +1,236 @@
+{
+    "widget": {
+        "name": "jqxScrollView",
+        "description": "Can be used for viewing content which is wider than the visible area outlined by the device's screen. Specific item can be chosen using drag movements or clicking/tapping on the buttons at the bottom of the jqxScrollView.",
+        "angular2": {
+            "name": "jqxScrollViewComponent",
+            "selector": "jqxScrollView"
+        }
+    },
+    "exampleInit": {
+        "width": "600",
+        "height": "450"
+    },
+    "exampleExtraTemplate": "<div class=\"photo\" style=\"background-image: url(https://www.jqwidgets.com/jquery-widgets-demo/images/imageNature1.jpg)\"></div>\n    <div class=\"photo\" style=\"background-image: url(https://www.jqwidgets.com/jquery-widgets-demo/images/imageNature2.jpg)\"></div>\n    <div class=\"photo\" style=\"background-image: url(https://www.jqwidgets.com/jquery-widgets-demo/images/imageNature3.jpg)\"></div>",
+    "properties": [
+        {
+            "name": "animationDuration",
+            "defaultValue": "30",
+            "description": "<P>Sets or gets the animationDuration property. Specifies the duration of the animation which starts when the current page is changed. </P>",
+            "example": "<pre><CODE>$(\"#jqxScrollView\").jqxScrollView({ animationDuration: 500}); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/Fen5S/",
+            "exampleDescription": "animationDuration is set to 3000",
+            "dataType": "number",
+            "exampleInit": {
+                "animationDuration": "3000"
+            }
+        },
+        {
+            "name": "bounceEnabled",
+            "defaultValue": "true",
+            "description": "<P>Sets or gets whether the bounce effect is enabled when pages are changed. </P>",
+            "example": "<pre><CODE>$(\"#jqxScrollView\").jqxScrollView({bounceEnabled: false});</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/pXeyu/",
+            "exampleDescription": "bounceEnabled is set to false",
+            "dataType": "boolean",
+            "exampleInit": {
+                "bounceEnabled": "false"
+            }
+        },
+        {
+            "name": "buttonsOffset",
+            "defaultValue": "[0, 0]",
+            "description": "<P>Sets or gets the jqxScrollView's buttonsOffset property. This property sets the offset from the default location of the navigation buttons. </P>",
+            "example": "<pre><CODE>$(\"#jqxScrollView\").jqxScrollView({ buttonsOffset: [30, 30] }); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/EPfqW/",
+            "exampleDescription": "buttonsOffset is set to [0,0]",
+            "dataType": "Array",
+            "ts_dataType": "Array<number>",
+            "exampleInit": {
+                "buttonsOffset": "[100, 0]"
+            }
+        },
+        {
+            "name": "currentPage",
+            "defaultValue": "0",
+            "description": "<P>Sets or gets the jqxScrollView's currentPage property. The currentPage specifies the displayed element. </P>",
+            "example": "<pre><CODE>$(\"#jqxScrollView\").jqxScrollView({ currentPage: 1 }); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/Q8tT4/",
+            "exampleDescription": "currentPage is set to 1",
+            "dataType": "number",
+            "exampleInit": {
+                "currentPage": "1"
+            }
+        },
+        {
+            "name": "disabled",
+            "defaultValue": "false",
+            "description": "<P>Sets or gets the jqxScrollView's disabled property. </P>",
+            "example": "<pre><CODE>$(\"#jqxScrollView\").jqxScrollView({ disabled: true }); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/yj3Hv/",
+            "exampleDescription": "disabled is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "disabled": "true"
+            }
+        },
+        {
+            "name": "height",
+            "defaultValue": "320",
+            "description": "<P>Sets or gets the jqxScrollView's height. </P>",
+            "example": "<pre><CODE>$(\"#jqxScrollView\").jqxScrollView({ height: '250px' }); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/rMXEH/",
+            "exampleDescription": "height is set to 250",
+            "dataType": "string",
+            "ts_dataType": "string | number"
+        },
+        {
+            "name": "moveThreshold",
+            "defaultValue": "0.5",
+            "description": "<P>Sets or gets the jqxScrollView's moveThreshold property. The moveThreshold property specifies how much the user should drag the current element to navigate to next/previous element. Values should be set from 0.1 to 1. 0.5 means 50% of the element's width. </P>",
+            "example": "<pre><CODE>$(\"#jqxScrollView\").jqxScrollView({ moveThreshold: 0.6 }); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/XETVB/",
+            "exampleDescription": "moveThreshold is set to 1",
+            "dataType": "number",
+            "exampleInit": {
+                "moveThreshold": "1"
+            }
+        },
+        {
+            "name": "showButtons",
+            "defaultValue": "true",
+            "description": "<P>Sets or gets whether the navigation buttons are visible. </P>",
+            "example": "<pre><CODE>$(\"#jqxScrollView\").jqxScrollView({ showButtons: false }); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/3ZmFE/",
+            "exampleDescription": "showButtons is set to false",
+            "dataType": "boolean",
+            "exampleInit": {
+                "showButtons": "false"
+            }
+        },
+        {
+            "name": "slideShow",
+            "defaultValue": "false",
+            "description": "<P>Indicates whether the slideShow mode is enabled. In this mode, pages are changed automatically in a time interval. </P>",
+            "example": "<pre><CODE>$(\"#jqxScrollView\").jqxScrollView({slideShow: true});</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/Ga4nK/",
+            "exampleDescription": "slideShow is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "slideShow": "true"
+            }
+        },
+        {
+            "name": "slideDuration",
+            "defaultValue": "3000",
+            "description": "<P>Sets or gets the duration in milliseconds of a time interval. The current page is changed when the time interval is elapsed. </P>",
+            "example": "<pre><CODE>$(\"#jqxScrollView\").jqxScrollView({slideDuration: 4000});</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/tCedC/",
+            "exampleDescription": "slideDuration is set to 300",
+            "dataType": "number",
+            "exampleInit": {
+                "slideShow": "true",
+                "slideDuration": "1000"
+            }
+        },
+        {
+            "name": "theme",
+            "defaultValue": "''",
+            "description": "<P>Sets the widget's theme. </P>\n\r\n<UL><LI>Include the theme's CSS file after jqx.base.css.<BR>The following code example adds the 'material' theme. <PRE><CODE>\r\n<PRE><CODE>&lt;link rel=\"stylesheet\" href=\"../../jqwidgets/styles/jqx.base.css\" type=\"text/css\" /&gt;\r\n&lt;link rel=\"stylesheet\" href=\"../../jqwidgets/styles/jqx.material.css\" type=\"text/css\" /&gt;\r\n</CODE></PRE>\r\n</CODE></PRE>\r\n<LI>Set the widget's theme property to 'material' when you initialize it. </LI></UL>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/HPKTB/",
+            "exampleDescription": "theme is set to 'material'",
+            "dataType": "string",
+            "exampleInit": {
+                "theme": "material"
+            }
+        },
+        {
+            "name": "width",
+            "defaultValue": "320",
+            "description": "<P>Sets or gets the jqxScrollView's width. </P>",
+            "example": "<pre><CODE>$(\"#jqxScrollView\").jqxScrollView({ width: '250px' }); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/LjgXD/",
+            "exampleDescription": "width is set to 300",
+            "dataType": "string",
+            "ts_dataType": "string | number"
+        }
+    ],
+    "events": [
+        {
+            "name": "pageChanged",
+            "description": "<P>This event is triggered when the current page is changed. </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>pageChanged</CODE> event by type: jqxScrollView. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/eY8Qc/",
+            "exampleDescription": "Bind to the pageChanged event by type: jqxScrollView.",
+            "example": "<PRE><CODE>$('#jqxScrollView').bind('pageChanged', function (event) \r\n{\r\n    var page = event.args.currentPage;\r\n});\r\n                        </CODE></PRE>"
+        }
+    ],
+    "methods": [
+        {
+            "name": "back",
+            "description": "<P>Navigates to the previous page. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/z6ZFQ/",
+            "exampleDescription": "invoke the back method of the jqxScrollView.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "extraData": {
+                "currentPage": "1"
+            }
+        },
+        {
+            "name": "changePage",
+            "description": "<P>Navigates to a page. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/EFGrv/",
+            "exampleDescription": "change the page in the jqxScrollView.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "index",
+                    "dataType": "number",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "1" ]
+            }
+        },
+        {
+            "name": "forward",
+            "description": "<P>Navigates to the next page. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/5B8za/",
+            "exampleDescription": "invoke the forward method of the jqxScrollView.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "refresh",
+            "description": "<P>Refreshes the widget. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/cbkSn/",
+            "exampleDescription": "refresh the jqxScrollView.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+}

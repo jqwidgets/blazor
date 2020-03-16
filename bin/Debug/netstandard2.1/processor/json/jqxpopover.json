@@ -1,0 +1,314 @@
+{
+    "widget": {
+        "name": "jqxPopover",
+        "description": "Displays a Small overlay of content that is used to display secondary information of any element when it is clicked by a user. ",
+        "angular2": {
+            "name": "jqxPopoverComponent",
+            "selector": "jqxPopover"
+        }
+    },
+    "dataTypes": [
+        {
+            "name": "PopoverAnimationType",
+            "ts_dataType": "enum",
+            "enumOptions": [ "none", "fade" ]
+        },
+        {
+            "name": "PopoverPosition",
+            "ts_dataType": "enum",
+            "enumOptions": [ "top", "bottom", "left", "right" ]
+        }
+    ],
+    "exampleNewTemplate": "  <div>\n    <button style=\"margin-left: 50px\" id=\"button\">Click me</button>\n    <JqxPopover ref=\"myPopover\"{{configuration}}>\n      <div>Popover content</div>\n    </JqxPopover>\n  </div>\n",
+    "exampleElementsInit": {
+        "title": "Employees",
+        "selector": "#button",
+        "arrowOffsetValue": -80,
+        "showCloseButton": true,
+        "offset": {
+            "left": 80,
+            "top": 0
+        }
+    },
+    "exampleInit": {
+        "title": "Title",
+        "selector": "#button",
+        "showCloseButton": true
+    },
+    "properties": [
+        {
+            "name": "arrowOffsetValue",
+            "defaultValue": "0",
+            "description": "<P>Sets or gets the arrow's offset from its default position. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>arrowOffsetValue</CODE> property. </P>\n<PRE><CODE>$('#jqxPopover').jqxPopover({arrowOffsetValue: 10});</CODE></PRE>\n\r\n<P>Get the <CODE>arrowOffsetValue</CODE> property. </P>\n<PRE><CODE>var arrowOffsetValue = $('#jqxPopover').jqxPopover('arrowOffsetValue'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqwidgets-popover-arrowoffsetvalue",
+            "exampleDescription": "arrowOffsetValue is set to 10",
+            "dataType": "number",
+            "exampleInit": {
+                "arrowOffsetValue": "50"
+            }
+        },
+        {
+            "name": "animationOpenDelay",
+            "defaultValue": "'fast'",
+            "description": "<P>The time for showing of the widget. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'fast'</CODE></PRE>\n<PRE><CODE>'slow'</CODE></PRE>\n<PRE><CODE>time in milliseconds e.g. 1000</CODE></PRE>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>animationOpenDelay</CODE> property. </P>\n<PRE><CODE>$('#jqxPopover').jqxPopover({animationOpenDelay: 'slow'});</CODE></PRE>\n\r\n<P>Get the <CODE>animationOpenDelay</CODE> property. </P>\n<PRE><CODE>var animationOpenDelay = $('#jqxPopover').jqxPopover('animationOpenDelay'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqwidgets-popover-animation-settings",
+            "exampleDescription": "animationOpenDelay is set to 1000",
+            "dataType": "string | number",
+            "ts_dataType": "number | string",
+            "exampleInit": {
+                "animationOpenDelay": "1000"
+            }
+        },
+        {
+            "name": "animationCloseDelay",
+            "defaultValue": "'fast'",
+            "description": "<P>The time for showing of the widget. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'fast'</CODE></PRE>\n<PRE><CODE>'slow'</CODE></PRE>\n<PRE><CODE>time in milliseconds e.g. 1000</CODE></PRE>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>animationCloseDelay</CODE> property. </P>\n<PRE><CODE>$('#jqxPopover').jqxPopover({ animationCloseDelay:'fast'}); </CODE></PRE>\n\r\n<P>Get the <CODE>animationCloseDelay</CODE> property. </P>\n<PRE><CODE>var animationCloseDelay = $('#jqxPopover').jqxPopover('animationCloseDelay'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqwidgets-popover-animation-settings",
+            "exampleDescription": "animationCloseDelay is set to 1000",
+            "dataType": "string | number",
+            "ts_dataType": "number | string",
+            "exampleInit": {
+                "animationCloseDelay": "1000"
+            }
+        },
+        {
+            "name": "autoClose",
+            "defaultValue": "true",
+            "description": "<P>Sets or gets the closing of the widget after click outside of the popover. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>autoClose</CODE> property. </P>\n<PRE><CODE>$('#jqxPopover').jqxPopover({ autoClose: true }); </CODE></PRE>\n\r\n<P>Get the <CODE>autoClose</CODE> property. </P>\n<PRE><CODE>var autoClose = $('#jqxPopover').jqxPopover('autoClose'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqwidgets-popover-autoclose-1",
+            "exampleDescription": "autoClose is set to false",
+            "dataType": "boolean",
+            "exampleInit": {
+                "autoClose": "false"
+            }
+        },
+        {
+            "name": "animationType",
+            "defaultValue": "'fade'",
+            "description": "<P>Sets the type of animation. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'none'</CODE></PRE>\n<PRE><CODE>'fade'</CODE></PRE>\n\r\n<H4>Code example </H4>\n\r\n<P>Set the <CODE>animationType</CODE> property. </P>\n<PRE><CODE>$('#jqxPopover').jqxPopover({animationType : 'fade'}); </CODE></PRE>\n\r\n<P>Get the <CODE>animationType</CODE> property. </P>\n<PRE><CODE>var animationType = $('#jqxPopover').jqxPopover('animationType'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqwidgets-popover-animation-settings",
+            "exampleDescription": "animationType is set to 'none'",
+            "dataType": "string",
+            "ts_dataType": "enum:PopoverAnimationType",
+            "exampleInit": {
+                "animationType": "none"
+            }
+        },
+        {
+            "name": "height",
+            "defaultValue": "null",
+            "description": "<P>Sets or gets the popover's height. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>height</CODE> property. </P>\n<PRE><CODE>$('#jqxPopover').jqxPopover({height:50});</CODE></PRE>\n\r\n<P>Get the <CODE>height</CODE> property. </P>\n<PRE><CODE>var height = $('#jqxPopover').jqxPopover('height');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqwidgets-popover-initcontent-1",
+            "exampleDescription": "height is set to 60",
+            "dataType": "number",
+            "ts_dataType": "number | string",
+            "exampleInit": {
+                "height": "60"
+            }
+        },
+        {
+            "name": "initContent",
+            "defaultValue": "null",
+            "description": "<P>Initializes the popover's content. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>initContent</CODE> property. </P>\n<PRE><CODE>$('#jqxPopover').jqxPopover({ initContent: function(){ // Some code here. } }); </CODE></PRE>\n\r\n<P>Get the <CODE>initContent</CODE> property. </P>\n<PRE><CODE>var initContent = $('#jqxPopover').jqxPopover('initContent'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqwidgets-popover-initcontent-1",
+            "exampleDescription": "initContent is set to 'function(){...}'",
+            "dataType": "Function",
+            "ts_dataType": "() => void",
+            "exampleInit": {
+                "initContent": "initContent",
+                "exampleData": "alert('Init content is called!');"
+            }
+        },
+        {
+            "name": "isModal",
+            "defaultValue": "false",
+            "description": "<P>Sets or gets whether the popover is displayed as a modal dialog. If the jqxPopover's mode is set to modal, the popover blocks user interaction with the underlying user interface. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>isModal</CODE> property. </P>\n<PRE><CODE>$('#jqxPopover').jqxPopover({ isModal: true }); </CODE></PRE>\n\r\n<P>Get the <CODE>isModal</CODE> property. </P>\n<PRE><CODE>var isModal = $('#jqxPopover').jqxPopover('isModal'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqwidgets-popover-ismodal-1",
+            "exampleDescription": "isModal is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "isModal": "true"
+            }
+        },
+        {
+            "name": "offset",
+            "defaultValue": "null",
+            "description": "<P>Sets or gets the Popover's offset from its position.</P>\n\r\n<H4>Code example </H4>\n\r\n<P>Set the <CODE>offset</CODE> property. </P>\n<PRE><CODE>$('#jqxPopover').jqxPopover({offset : {left: 10, top: 10}}); </CODE></PRE>\n\r\n<P>Get the <CODE>offset</CODE> property. </P>\n<PRE><CODE>var offset = $('#jqxPopover').jqxPopover('offset'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqwidgets-popover-offset",
+            "exampleDescription": "offset is set to {left: 10, top: 10}",
+            "dataType": "object",
+            "ts_dataType": "any",
+            "exampleInit": {
+                "offset": "{left: 10, top: 10}"
+            }
+        },
+        {
+            "name": "position",
+            "defaultValue": "'left'",
+            "description": "<P>Sets or gets the position of the popover. The position presents the orientation of the popover compared to the selector element </P>\n<B>Possible Values:</B>\n<PRE><CODE>'top'</CODE></PRE>\n<PRE><CODE>'right'</CODE></PRE>\n<PRE><CODE>'bottom'</CODE></PRE>\n<PRE><CODE>'left'</CODE></PRE>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>position</CODE> property. </P>\n<PRE><CODE>$('#jqxPopover').jqxPopover({position: \"left\"});</CODE></PRE>\n\r\n<P>Get the <CODE>position</CODE> property. </P>\n<PRE><CODE>var position = $('#jqxPopover').jqxPopover('position'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqwidgets-popover-position-1",
+            "exampleDescription": "position is set to 'left'",
+            "dataType": "string",
+            "ts_dataType": "enum:PopoverPosition",
+            "exampleInit": {
+                "position": "right"
+            }
+        },
+        {
+            "name": "rtl",
+            "defaultValue": "false",
+            "description": "<P>Sets or gets a value indicating whether widget's elements are aligned to support locales using right-to-left fonts.</P>\n\r\n<H4>Code example </H4>\n\r\n<P>Set the <CODE>rtl</CODE> property. </P>\n<PRE><CODE>$('#jqxPopover').jqxPopover({rtl : true}); </CODE></PRE>\n\r\n<P>Get the <CODE>rtl</CODE> property. </P>\n<PRE><CODE>var rtl = $('#jqxPopover').jqxPopover('rtl'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqwidgets-popover-rtl-1",
+            "exampleDescription": "rtl is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "rtl": "true"
+            }
+        },
+        {
+            "name": "selector",
+            "defaultValue": "null",
+            "description": "<P>Sets or gets the Popover's selector. The selector is the element where the Popover is displayed. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>selector</CODE> property. </P>\n<PRE><CODE>$('#jqxPopover').jqxPopover({ selector: \"id1\" }); </CODE></PRE>\n\r\n<P>Get the <CODE>showArrow</CODE> property. </P>\n<PRE><CODE>var selector = $('#jqxPopover').jqxPopover('selector'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqwidgets-popover-selector",
+            "exampleDescription": "selector is set to $(\"#button\")",
+            "dataType": "string"
+        },
+        {
+            "name": "showArrow",
+            "defaultValue": "true",
+            "description": "<P>Sets or gets the displaying of the popover's arrow. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>showArrow</CODE> property. </P>\n<PRE><CODE>$('#jqxPopover').jqxPopover({ showArrow: true }); </CODE></PRE>\n\r\n<P>Get the <CODE>showArrow</CODE> property. </P>\n<PRE><CODE>var showArrow = $('#jqxPopover').jqxPopover('showArrow'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqwidgets-popover-showarrow-1",
+            "exampleDescription": "showArrow is set to false",
+            "dataType": "boolean",
+            "exampleInit": {
+                "showArrow": "false"
+            }
+        },
+        {
+            "name": "showCloseButton",
+            "defaultValue": "false",
+            "description": "<P>Sets or gets whether the close button is displayed. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>showCloseButton</CODE> property. </P>\n<PRE><CODE>$('#jqxPopover').jqxPopover({ showCloseButton: true }); </CODE></PRE>\n\r\n<P>Get the <CODE>showCloseButton</CODE> property. </P>\n<PRE><CODE>var showCloseButton = $('#jqxPopover').jqxPopover('showCloseButton'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqwidgets-popover-showclosebutton",
+            "exampleDescription": "showCloseButton is set to true",
+            "dataType": "boolean"
+        },
+        {
+            "name": "width",
+            "defaultValue": "null",
+            "description": "<P>Sets or gets the popover's width. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>width</CODE> property. </P>\n<PRE><CODE>$('#jqxPopover').jqxPopover({width:50});</CODE></PRE>\n\r\n<P>Get the <CODE>width</CODE> property. </P>\n<PRE><CODE>var width = $('#jqxPopover').jqxPopover('width');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqwidgets-popover-showclosebutton",
+            "exampleDescription": "width is set to 200",
+            "dataType": "number",
+            "ts_dataType": "number | string",
+            "exampleInit": {
+                "width": "200"
+            }
+        },
+        {
+            "name": "title",
+            "defaultValue": "\"\"",
+            "description": "<P>Sets or gets the popover's title. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>title</CODE> property. </P>\n<PRE><CODE>$('#jqxPopover').jqxPopover({title: \"Title\"});</CODE></PRE>\n\r\n<P>Get the <CODE>title</CODE> property. </P>\n<PRE><CODE>var title = $('#jqxPopover').jqxPopover('title');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqwidgets-popover-title",
+            "exampleDescription": "title is set to \"Title\"",
+            "dataType": "string",
+            "ts_dataType": "string | number"
+        },
+        {
+            "name": "theme",
+            "defaultValue": "''",
+            "description": "<P>Sets the widget's theme. </P>\n\r\n<UL><LI>Include the theme's CSS file after jqx.base.css.<BR>The following code example adds the 'material' theme. <PRE><CODE>&lt;link rel=\"stylesheet\" href=\"../../jqwidgets/styles/jqx.base.css\" type=\"text/css\" /&gt; \r\n&lt;link rel=\"stylesheet\" href=\"../../jqwidgets/styles/jqx.material.css\" type=\"text/css\" /&gt; </CODE></PRE>\r\n<LI>Set the widget's theme property to 'material' when you initialize it.",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqwidgets-popover-theme",
+            "exampleDescription": "theme is set to 'material'",
+            "dataType": "string",
+            "exampleInit": {
+                "theme": "material"
+            }
+        }
+    ],
+    "events": [
+        {
+            "name": "close",
+            "description": "<P>This event is triggered when the popover is closed. </P>\n<H4>Code examples </H4>\n<P>Bind to the <CODE>close</CODE> event by type: jqxPopover. </P>",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqwidgets-popover-events",
+            "exampleDescription": "Bind to the close event by type: jqxPopover.",
+            "example": "<PRE><CODE>$('#jqxPopover').on('close', function () { // Some code here. }); </CODE></PRE>"
+        },
+        {
+            "name": "open",
+            "description": "<P>This event is triggered when the popover is opened. </P>\n<H4>Code examples </H4>\n<P>Bind to the <CODE>open</CODE> event by type: jqxPopover. </P>",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqwidgets-popover-events",
+            "exampleDescription": "Bind to the open event by type: jqxPopover.",
+            "example": "<PRE><CODE>$('#jqxPopover').on('open', function () { // Some code here. }); </CODE></PRE>"
+        }
+    ],
+    "methods": [
+        {
+            "name": "close",
+            "description": "<P>Closes the popover. </P>\n<H4>Code examples </H4>\n<P>Invoke the <CODE>close</CODE> method. </P>\n<PRE><CODE>$('#jqxPopover').jqxPopover('close'); </CODE></PRE>",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqwidgets-popover-methods",
+            "exampleDescription": "closes the popover",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;button style=\"margin-left: 50px\" id=\"button\">Click me&lt;/button>\n    &lt;JqxPopover ref=\"myPopover\" :title=\"'Title'\" :selector=\"'#button'\" :showCloseButton=\"true\">\n      &lt;div>Popover content&lt;/div>\n    &lt;/JqxPopover>\n    &lt;div>\n      &lt;JqxButton @click=\"open\">Open&lt;/JqxButton>\n      &lt;JqxButton @click=\"close\">Close&lt;/JqxButton>\n    &lt;/div>\n  &lt;/div>\n&lt;/template>\n\n&lt;script>\n  import JqxPopover from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxpopover.vue';\n  import JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\n\n  export default {\n    components: {\n      JqxPopover,\n      JqxButton\n    },\n    methods: {\n      open: function () {\n        this.$refs.myPopover.open();\n      },\n      close: function () {\n        this.$refs.myPopover.close();\n      }\n    }\n  }\n&lt;/script>\n&lt;style>\n  .jqx-button {\n    display: inline-block;\n    margin-top: 100px;\n    margin-right: 20px;\n  }\n&lt;/style>"
+            }
+        },
+        {
+            "name": "destroy",
+            "description": "<P>Destroy the widget. </P>\n<H4>Code examples </H4>\n<P>Invoke the <CODE>destroy</CODE> method. </P>\n<PRE><CODE>$('#jqxPopover').jqxPopover('destroy'); </CODE></PRE>",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqwidgets-popover-methods",
+            "exampleDescription": "destroy the widget",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "open",
+            "description": "<P>Open the popover. </P>\n<H4>Code examples </H4>\n<P>Invoke the <CODE>open</CODE> method. </P>\n<PRE><CODE>$('#jqxPopover').jqxPopover('open'); </CODE></PRE>",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqwidgets-popover-methods",
+            "exampleDescription": "opens the widget",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;button style=\"margin-left: 50px\" id=\"button\">Click me&lt;/button>\n    &lt;JqxPopover ref=\"myPopover\" :title=\"'Title'\" :selector=\"'#button'\" :showCloseButton=\"true\">\n      &lt;div>Popover content&lt;/div>\n    &lt;/JqxPopover>\n    &lt;div>\n      &lt;JqxButton @click=\"open\">Open&lt;/JqxButton>\n      &lt;JqxButton @click=\"close\">Close&lt;/JqxButton>\n    &lt;/div>\n  &lt;/div>\n&lt;/template>\n\n&lt;script>\n  import JqxPopover from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxpopover.vue';\n  import JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\n\n  export default {\n    components: {\n      JqxPopover,\n      JqxButton\n    },\n    methods: {\n      open: function () {\n        this.$refs.myPopover.open();\n      },\n      close: function () {\n        this.$refs.myPopover.close();\n      }\n    }\n  }\n&lt;/script>\n&lt;style>\n  .jqx-button {\n    display: inline-block;\n    margin-top: 100px;\n    margin-right: 20px;\n  }\n&lt;/style>"
+            }
+        }
+    ]
+}

@@ -1,0 +1,546 @@
+{
+    "widget": {
+        "name": "jqxMenu",
+        "description": "Enables you to add menus to your website or web application. With the jqxMenu you can create website menus, customized context menus, or application-style menu bars with just a small amount of scripting.",
+        "angular2": {
+            "name": "jqxMenuComponent",
+            "selector": "jqxMenu"
+        }
+    },
+    "dataTypes": [
+        {
+            "name": "MenuMode",
+            "ts_dataType": "enum",
+            "enumOptions": [ "horizontal", "vertical", "popup" ]
+        }
+    ],
+    "exampleExtraTemplate": "<ul>\n      <li>Home</li>\n      <li>About Us</li>\n      <li>Products\n        <ul>\n          <li>New\n            <ul>\n              <li>Corporate Use</li>\n              <li>Private Use</li>\n            </ul>\n          </li>\n          <li>Featured</li>\n        </ul>\n      </li>\n      <li>Events</li>\n   </ul>",
+    "exampleInit": {
+        "width": "400"
+    },
+    "properties": [
+        {
+            "name": "animationShowDuration",
+            "defaultValue": "350",
+            "description": "<P>Sets or gets the duration of the show animation. </P>",
+            "example": "<pre><CODE>$('#jqxMenu').jqxMenu({ animationShowDuration: 200 });</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/Ejddy/",
+            "exampleDescription": "animationShowDuration is set to 3000",
+            "dataType": "number",
+            "exampleInit": {
+                "animationShowDuration": "3000"
+            }
+        },
+        {
+            "name": "animationHideDuration",
+            "defaultValue": "250",
+            "description": "<P>Sets or gets the duration of the hide animation. </P>",
+            "example": "<pre><CODE>$('#jqxMenu').jqxMenu({ animationHideDuration: \"fast\" });</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/gHTaF/",
+            "exampleDescription": "animationHideDuration is set to 3000",
+            "dataType": "number",
+            "exampleInit": {
+                "animationHideDuration": "3000"
+            }
+        },
+        {
+            "name": "animationHideDelay",
+            "defaultValue": "500",
+            "description": "<P>Sets or gets the delay before the start of the hide animation. </P>",
+            "example": "<pre><CODE>$('#jqxMenu').jqxMenu({ animationHideDelay: 500 });</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/geMg9/",
+            "exampleDescription": "animationHideDelay is set to 3000",
+            "dataType": "number",
+            "exampleInit": {
+                "animationHideDelay": "3000"
+            }
+        },
+        {
+            "name": "animationShowDelay",
+            "defaultValue": "200",
+            "description": "<P>Sets or gets the delay before the start of the show animation. </P>",
+            "example": "<pre><CODE>$('#jqxMenu').jqxMenu({ animationShowDelay: 500 });</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/HB7M8/",
+            "exampleDescription": "animationShowDelay is set to 300",
+            "dataType": "number",
+            "exampleInit": {
+                "animationShowDelay": "300"
+            }
+        },
+        {
+            "name": "autoCloseInterval",
+            "defaultValue": "10000",
+            "description": "<P>Sets or gets the time interval after which all opened items will be closed. When you open a new sub menu, the interval is cleared. If you want to disable this automatic closing behavior of the jqxMenu, you need to set the autoCloseInterval property to 0. </P>",
+            "example": "<pre><CODE>$('#jqxMenu').jqxMenu({ autoCloseInterval: 0 });</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/wMLJs/",
+            "exampleDescription": "autoCloseInterval is set to 300",
+            "dataType": "number",
+            "exampleInit": {
+                "autoCloseInterval": "300"
+            }
+        },
+        {
+            "name": "autoSizeMainItems",
+            "defaultValue": "true",
+            "description": "<P>Auto-Sizes the jqxMenu's main items when the menu's mode is 'horizontal'. </P>",
+            "example": "<pre><CODE>$('#jqxMenu').jqxMenu({autoSizeMainItems: false}); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/C6efq/",
+            "exampleDescription": "autoSizeMainItems is set to false",
+            "dataType": "boolean",
+            "exampleInit": {
+                "autoSizeMainItems": "false"
+            }
+        },
+        {
+            "name": "autoCloseOnClick",
+            "defaultValue": "true",
+            "description": "<P>Automatically closes the opened popups after a click. </P>",
+            "example": "<pre><CODE>$('#jqxMenu').jqxMenu({autoCloseOnClick: false}); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/dhSsb/",
+            "exampleDescription": "autoCloseOnClick is set to false",
+            "dataType": "boolean",
+            "exampleInit": {
+                "autoCloseOnClick": "false"
+            }
+        },
+        {
+            "name": "autoOpenPopup",
+            "defaultValue": "true",
+            "description": "<P>Opens the Context Menu when the right-mouse button is pressed. When this property is set to false, the <CODE>Open</CODE> and <CODE>Close</CODE> functions can be used to open and close the Context Menu. </P>",
+            "example": "<pre><CODE>$('#jqxMenu').jqxMenu({autoOpenPopup: false}); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/A7K6Z/",
+            "exampleDescription": "autoOpenPopup is set to false",
+            "dataType": "boolean",
+            "exampleInit": {
+                "autoOpenPopup": "false"
+            }
+        },
+        {
+            "name": "autoOpen",
+            "defaultValue": "true",
+            "description": "<P>Opens the top level menu items when the user hovers them. </P>",
+            "example": "<pre><CODE>$('#jqxMenu').jqxMenu({autoOpen: false}); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/UK2Ud/",
+            "exampleDescription": "autoOpen is set to false",
+            "dataType": "boolean",
+            "exampleInit": {
+                "autoOpen": "false"
+            }
+        },
+        {
+            "name": "autoCloseOnMouseLeave",
+            "defaultValue": "true",
+            "description": "",
+            "example": "",
+            "exampleURL": "",
+            "exampleDescription": "",
+            "dataType": "boolean",
+            "exampleInit": {
+                "autoCloseOnMouseLeave": "false"
+            }
+        },
+        {
+            "name": "clickToOpen",
+            "defaultValue": "false",
+            "description": "<P>Opens an item after a click by the user. </P>",
+            "example": "<pre><CODE>$('#jqxMenu').jqxMenu({clickToOpen: true}); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/56NZQ/",
+            "exampleDescription": "clickToOpen is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "clickToOpen": "true"
+            }
+        },
+        {
+            "name": "disabled",
+            "defaultValue": "false",
+            "description": "<P>Enables or disables the jqxMenu. </P>",
+            "example": "<pre><CODE>$('#jqxMenu').jqxMenu({disabled: false}); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/4fYGP/",
+            "exampleDescription": "disabled is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "disabled": "true"
+            }
+        },
+        {
+            "name": "enableHover",
+            "defaultValue": "true",
+            "description": "<P>Enables or disables the hover state. </P>",
+            "example": "<pre><CODE>$('#jqxMenu').jqxMenu({enableHover:false}); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/Dxjue/",
+            "exampleDescription": "enableHover is set to false",
+            "dataType": "boolean",
+            "exampleInit": {
+                "enableHover": "false"
+            }
+        },
+        {
+            "name": "easing",
+            "defaultValue": "easeInOutSine",
+            "description": "<P>Sets or gets the animation's easing to one of the JQuery's supported easings. </P>",
+            "example": "<pre><CODE>$('#jqxMenu').jqxMenu({ easing: 'easeInOutSine' });</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/BV8uM/",
+            "exampleDescription": "easing is set to 'linear'",
+            "dataType": "string",
+            "exampleInit": {
+                "easing": "linear"
+            }
+        },
+        {
+            "name": "height",
+            "defaultValue": "null",
+            "description": "<P>Sets or gets the jqxMenu's height. </P>",
+            "example": "<pre><CODE>$('#jqxMenu').jqxMenu({ height: '100px' });</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/q6Ux3/",
+            "exampleDescription": "height is set to 30",
+            "dataType": "number",
+            "ts_dataType": "string | number",
+            "exampleInit": {
+                "height": "30"
+            }
+        },
+        {
+            "name": "keyboardNavigation",
+            "defaultValue": "false",
+            "description": "<P>Enables or disables the jqxMenu's keyboard navigation. </P>",
+            "example": "<pre><CODE>$('#jqxMenu').jqxMenu({keyboardNavigation: true}); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/fwxfuwd1/",
+            "exampleDescription": "keyboardNavigation is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "keyboardNavigation": "true"
+            }
+        },
+        {
+            "name": "minimizeWidth",
+            "defaultValue": "'auto'",
+            "description": "<P>Sets or gets the jqxMenu's minimizeWidth. That width determines the minimum browser window's width when the Menu will switch from normal to minimized mode and the Menu's width is in percentages. Set it to null, if you want to disable that behavior. Note: jqxMenu automatically switches to minimized mode, when it is displayed on a touch device. By setting the property to null, you will disable that behavior, too. </P>",
+            "example": "<pre><CODE>$('#jqxMenu').jqxMenu({ minimizeWidth: 250 });</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/w68qW/",
+            "exampleDescription": "minimizeWidth is set to 450",
+            "dataType": "string | number",
+            "ts_dataType": "number | string",
+            "exampleInit": {
+                "minimizeWidth": "450"
+            }
+        },
+        {
+            "name": "mode",
+            "defaultValue": "horizontal",
+            "description": "<P>Sets or gets the menu's display mode. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'horizontal'</CODE></PRE>\n<PRE><CODE>'vertical'</CODE></PRE>\n<PRE><CODE>'popup'</CODE></PRE>",
+            "example": "<pre><CODE>$('#jqxMenu').jqxMenu({  mode: \"vertical\" });</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/jmAuH/",
+            "exampleDescription": "mode is set to 'vertical'",
+            "dataType": "string",
+            "ts_dataType": "enum:MenuMode",
+            "exampleInit": {
+                "mode": "vertical"
+            }
+        },
+        {
+            "name": "popupZIndex",
+            "defaultValue": "20000",
+            "description": "<P>Sets or gets the popup's z-index. </P>",
+            "example": "<pre><CODE>$(\"#jqxMenu\").jqxMenu({popupZIndex: 999999});</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/BBpZC/",
+            "exampleDescription": "popupZIndex is set to 99999",
+            "dataType": "number",
+            "ts_dataType": "number | string",
+            "exampleInit": {
+                "popupZIndex": "99999"
+            }
+        },
+        {
+            "name": "rtl",
+            "defaultValue": "false",
+            "description": "<P>Sets or getsa value indicating whether widget's elements are aligned to support locales using right-to-left fonts.</P>",
+            "example": "<pre><CODE>$('#jqxMenu').jqxMenu({rtl : true}); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/rdp2J/",
+            "exampleDescription": "rtl is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "rtl": "true"
+            }
+        },
+        {
+            "name": "showTopLevelArrows",
+            "defaultValue": "false",
+            "description": "",
+            "example": "",
+            "exampleURL": "",
+            "exampleDescription": "",
+            "dataType": "boolean",
+            "exampleInit": {
+                "showTopLevelArrows": "true"
+            }
+        },
+        {
+            "name": "source",
+            "defaultValue": "null",
+            "description": "<P>Specifies the jqxMenu's data source. Use this property to populate the jqxMenu. </P>\n\r\n<UL><LI>label - item's label. \r\n<LI>value - item's value. \r\n<LI>html - item's html. The html to be displayed in the item. \r\n<LI>id - item's id. \r\n<LI>items - array of sub items. \r\n<LI>subMenuWidth - sets the sub menu's width. \r\n<LI>disabled - determines whether the item is enabled/disabled. </LI></UL>\n\r\n<H4>Code examples</H4>\n\r\n<P>Initialize a jqxMenu with the <CODE>source</CODE> property specified. </P>\n<PRE><CODE>\r\nvar source = [\r\n    { label: \"Item 1\", expanded: true, items: [\r\n        { label: \"Item 1.1\" },\r\n        { label: \"Item 1.2\", selected: true }\r\n    ]\r\n    },\r\n    { label: \"Item 2\" },\r\n    { label: \"Item 3\" },\r\n    { label: \"Item 4\", items: [\r\n        { label: \"Item 4.1\" },\r\n        { label: \"Item 4.2\" }\r\n    ]\r\n    },\r\n    { label: \"Item 5\" },\r\n    { label: \"Item 6\" },\r\n    { label: \"Item 7\" }\r\n];\r\n    // create jqxMenu\r\n$('#jqxMenu').jqxMenu({ source: source, height: '30px', width: '330px'});\r\n                        </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/LyXGC/",
+            "exampleDescription": "source is set to source",
+            "dataType": "array | object",
+            "ts_dataType": "any",
+            "exampleName": "jqxmenu_source",
+            "exampleInit": {
+                "source": "source"
+            },
+            "customExample": {
+                "codeType": "custom",
+                "code": "&lt;template>\n  &lt;JqxMenu ref=\"myMenu\" :width=\"200\" :source=\"source\" :mode=\"'vertical'\"/> \n&lt;/template>\n \n&lt;script>\n  import JqxMenu from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxmenu.vue';\n \n  export default {\n    components: {\n      JqxMenu\n    },\n    data: function () {\n      return {\n        source: [\n          { \n            label: \"Mail\",\n            items: [\n               { label: \"Calendar\" },\n               { label: \"Contacts\" }\n             ]\n           },\n           {\n             label: \"Inbox\",\n             items: [\n               { label: \"Admin\" },\n               { label: \"Corporate\" },\n               { label: \"Finance\" },\n               { label: \"Other\" }             \n             ]\n           },\n           { label: \"Deleted Items\" }\n         ]\n       }\n     }\n   } \n&lt;/script>"
+            }
+        },
+        {
+            "name": "theme",
+            "defaultValue": "''",
+            "description": "<P>Sets the widget's theme. </P>\n\r\n<UL><LI>Include the theme's CSS file after jqx.base.css.<BR>The following code example adds the 'material' theme. <PRE><CODE>\r\n<PRE><CODE>&lt;link rel=\"stylesheet\" href=\"../../jqwidgets/styles/jqx.base.css\" type=\"text/css\" /&gt;\r\n&lt;link rel=\"stylesheet\" href=\"../../jqwidgets/styles/jqx.material.css\" type=\"text/css\" /&gt;\r\n</CODE></PRE>\r\n</CODE></PRE>\r\n<LI>Set the widget's theme property to 'material' when you initialize it. </LI></UL>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/XZu9n/",
+            "exampleDescription": "theme is set to 'material'",
+            "dataType": "string",
+            "exampleInit": {
+                "theme": "material"
+            }
+        },
+        {
+            "name": "width",
+            "defaultValue": "null",
+            "description": "<P>Sets or gets the jqxMenu's width. </P>",
+            "example": "<pre><CODE>$('#jqxMenu').jqxMenu({ width: '250px' });</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/95qpW/",
+            "exampleDescription": "width is set to 450",
+            "dataType": "number",
+            "ts_dataType": "string | number"
+        }
+    ],
+    "events": [
+        {
+            "name": "closed",
+            "description": "<P>This event is triggered when any of the jqxMenu Sub Menus is closed. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/M7Unp/",
+            "exampleDescription": "Bind to the closed event by type:jqxMenu",
+            "example": "<PRE><CODE>$('#jqxMenu').on('closed', function () { // Some code here. }); </CODE></PRE>"
+        },
+        {
+            "name": "itemclick",
+            "description": "<P>This event is triggered when a menu item is clicked. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/x9dbx/",
+            "exampleDescription": "Bind to the itemclick event by type:jqxMenu",
+            "example": "<PRE><CODE>$('#jqxMenu').on('itemclick', function (event)\r\n{\r\n    // get the clicked LI element.\r\n    var element = event.args;\r\n});\r\n                         </CODE></PRE>"
+        },
+        {
+            "name": "shown",
+            "description": "<P>This event is triggered when any of the jqxMenu Sub Menus is displayed. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/9bewK/",
+            "exampleDescription": "Bind to the shown event by type:jqxMenu",
+            "example": "<PRE><CODE>$('#jqxMenu').on('shown', function () { // Some code here. }); </CODE></PRE>"
+        }
+    ],
+    "methods": [
+        {
+            "name": "closeItem",
+            "description": "<P>Closes a menu item. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/vRjng/",
+            "exampleDescription": "closes an item in the jqxMenu",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "itemID",
+                    "dataType": "string",
+                    "ts_dataType": "number | string",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;JqxMenu ref=\"myMenu\"\n         :width=\"400\" :autoCloseOnMouseLeave=\"false\">\n      &lt;ul>\n        &lt;li>Home&lt;/li>\n        &lt;li>About Us&lt;/li>\n        &lt;li id=\"products\">\n          Products\n          &lt;ul>\n            &lt;li>\n              New\n              &lt;ul>\n                &lt;li>Corporate Use&lt;/li>\n                &lt;li>Private Use&lt;/li>\n              &lt;/ul>\n            &lt;/li>\n            &lt;li>Featured&lt;/li>\n          &lt;/ul>\n        &lt;/li>\n        &lt;li>Events&lt;/li>\n      &lt;/ul>\n    &lt;/JqxMenu>\n    &lt;JqxButton :width=\"100\" @click=\"open()\">Open Products&lt;/JqxButton>\n    &lt;JqxButton :width=\"100\" @click=\"close()\">Close Products&lt;/JqxButton>\n  &lt;/div>\n&lt;/template>\n&lt;script>\n  import JqxMenu from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxmenu.vue';\n  import JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\n  export default {\n    components: {\n      JqxMenu,\n      JqxButton\n    },\n    methods: {\n      open: function () {\n        this.$refs.myMenu.openItem(\"products\");\n      },\n      close: function () {\n        this.$refs.myMenu.closeItem(\"products\");\n      }\n    }\n  }\n&lt;/script>\n&lt;style>\n  .jqx-button {\n    display: inline-block;\n    margin-top: 50px;\n    margin-right: 20px;\n  }\n&lt;/style>"
+            }
+        },
+        {
+            "name": "close",
+            "description": "<P>Closes the menu (only in context menu mode). </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/yMUr8/",
+            "exampleDescription": "closes a sub menu in the jqxMenu",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;div @contextmenu=\"contextmenuMenu($event)\"\n       style=\"vertical-align: middle; text-align: center; background: #eee; height: 400px; width: 400px;\">\n      &lt;JqxMenu ref=\"jqxMenu\"\n           :mode=\"'popup'\"\n           :autoOpenPopup=\"false\"\n           :width=\"120\"\n           :height=\"140\">\n        &lt;ul>\n          &lt;li>Home&lt;/li>\n          &lt;li>About Us&lt;/li>\n          &lt;li>\n            Products\n            &lt;ul>\n              &lt;li>\n                New\n                &lt;ul>\n                  &lt;li>Corporate Use&lt;/li>\n                  &lt;li>Private Use&lt;/li>\n                &lt;/ul>\n              &lt;/li>\n              &lt;li>Featured&lt;/li>\n            &lt;/ul>\n          &lt;/li>\n          &lt;li>Events&lt;/li>\n        &lt;/ul>\n      &lt;/JqxMenu>\n      &lt;span style=\"font-size: 14px; position: relative; top: 180px; font-family: Verdana Arial;\">\n        Context Menu will open here\n      &lt;/span>\n    &lt;/div>\n    &lt;JqxButton @click=\"open()\">Open Menu&lt;/JqxButton>\n    &lt;JqxButton @click=\"close()\">Close Menu&lt;/JqxButton>\n  &lt;/div>\n&lt;/template>\n&lt;script>\n  import JqxMenu from \"jqwidgets-scripts/jqwidgets-vue/vue_jqxmenu.vue\";\n  import JqxButton from \"jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue\";\n  export default {\n    components: {\n      JqxMenu,\n      JqxButton\n    },\n    methods: {\n      contextmenuMenu: function (e) {\n        e.preventDefault();\n      },\n      open: function (event) {\n        this.$refs.jqxMenu.open(100, 100);\n      },\n      close: function (event) {\n        this.$refs.jqxMenu.close();\n      }\n    }\n  }\n&lt;/script>\n&lt;style>\n  .jqx-button {\n    display: inline-block;\n    margin-top: 15px;\n    margin-right: 20px;\n  }\n&lt;/style>"
+            }
+        },
+        {
+            "name": "disable",
+            "description": "<P>Disables or enables a menu item. The method has two parameters - HTML Element ID and a boolean value which determines whether to disable or enable the element. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>disable</CODE> method. </P>\n<PRE><CODE>$('#jqxMenu').jqxMenu('disable', 'productLITagID', true); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/fy2Ca/",
+            "exampleDescription": "disables a jqxMenu item.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "itemID",
+                    "dataType": "string",
+                    "ts_dataType": "number | string",
+                    "description": "",
+                    "optional": false
+                },
+                {
+                    "name": "value",
+                    "dataType": "boolean",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;JqxMenu ref=\"myMenu\"\n         :width=\"400\" :autoCloseOnMouseLeave=\"false\">\n      &lt;ul>\n        &lt;li>Home&lt;/li>\n        &lt;li>About Us&lt;/li>\n        &lt;li id=\"products\">\n          Products\n          &lt;ul>\n            &lt;li>\n              New\n              &lt;ul>\n                &lt;li>Corporate Use&lt;/li>\n                &lt;li>Private Use&lt;/li>\n              &lt;/ul>\n            &lt;/li>\n            &lt;li>Featured&lt;/li>\n          &lt;/ul>\n        &lt;/li>\n        &lt;li>Events&lt;/li>\n      &lt;/ul>\n    &lt;/JqxMenu>\n    &lt;JqxButton :width=\"100\" @click=\"open()\">Disable Products&lt;/JqxButton>\n    &lt;JqxButton :width=\"100\" @click=\"close()\">Enable Products&lt;/JqxButton>\n  &lt;/div>\n&lt;/template>\n&lt;script>\n  import JqxMenu from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxmenu.vue';\n  import JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\n  export default {\n    components: {\n      JqxMenu,\n      JqxButton\n    },\n    methods: {\n      open: function () {\n        this.$refs.myMenu.disable(\"products\", true);\n      },\n      close: function () {\n        this.$refs.myMenu.disable(\"products\", false);\n      }\n    }\n  }\n&lt;/script>\n&lt;style>\n  .jqx-button {\n    display: inline-block;\n    margin-top: 50px;\n    margin-right: 20px;\n  }\n&lt;/style>"
+            }
+        },
+        {
+            "name": "destroy",
+            "description": "<P>Destroys the widget. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>destroy</CODE> method. </P>\n<PRE><CODE>$('#jqxMenu').jqxMenu('destroy'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/9n8SD/",
+            "exampleDescription": "destroys the jqxMenu",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "focus",
+            "description": "<P>Focuses the widget. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>focus</CODE> method. </P>\n<PRE><CODE>$('#jqxMenu').jqxMenu('focus'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/FDQV6/",
+            "exampleDescription": "focuses the jqxMenu",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "minimize",
+            "description": "<P>Minimizes the widget. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>minimize</CODE> method. </P>\n<PRE><CODE>$('#jqxMenu').jqxMenu('minimize'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/ypNUV/",
+            "exampleDescription": "minimizes the jqxMenu",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;JqxMenu ref=\"myMenu\"\n         :width=\"400\">\n      &lt;ul>\n        &lt;li>Home&lt;/li>\n        &lt;li>About Us&lt;/li>\n        &lt;li id=\"products\">\n          Products\n          &lt;ul>\n            &lt;li>\n              New\n              &lt;ul>\n                &lt;li>Corporate Use&lt;/li>\n                &lt;li>Private Use&lt;/li>\n              &lt;/ul>\n            &lt;/li>\n            &lt;li>Featured&lt;/li>\n          &lt;/ul>\n        &lt;/li>\n        &lt;li>Events&lt;/li>\n      &lt;/ul>\n    &lt;/JqxMenu>\n    &lt;JqxButton :width=\"100\" @click=\"minimize()\">Minimize&lt;/JqxButton>\n    &lt;JqxButton :width=\"100\" @click=\"restore()\">Restore&lt;/JqxButton>\n  &lt;/div>\n&lt;/template>\n&lt;script>\n  import JqxMenu from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxmenu.vue';\n  import JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\n  export default {\n    components: {\n      JqxMenu,\n      JqxButton\n    },\n    methods: {\n      minimize: function () {\n        this.$refs.myMenu.minimize();\n      },\n      restore: function () {\n        this.$refs.myMenu.restore();\n      }\n    }\n  }\n&lt;/script>\n&lt;style>\n  .jqx-button {\n    display: inline-block;\n    margin-top: 50px;\n    margin-right: 20px;\n  }\n&lt;/style>"
+            }
+        },
+        {
+            "name": "open",
+            "description": "<P>Opens the menu(only in context menu mode). </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/fj6We/",
+            "exampleDescription": "opens a sub menu in the jqxMenu",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "left",
+                    "dataType": "number",
+                    "description": "",
+                    "optional": false
+                },
+                {
+                    "name": "top",
+                    "dataType": "number",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;div @contextmenu=\"contextmenuMenu($event)\"\n       style=\"vertical-align: middle; text-align: center; background: #eee; height: 400px; width: 400px;\">\n      &lt;JqxMenu ref=\"jqxMenu\"\n           :mode=\"'popup'\"\n           :autoOpenPopup=\"false\"\n           :width=\"120\"\n           :height=\"140\">\n        &lt;ul>\n          &lt;li>Home&lt;/li>\n          &lt;li>About Us&lt;/li>\n          &lt;li>\n            Products\n            &lt;ul>\n              &lt;li>\n                New\n                &lt;ul>\n                  &lt;li>Corporate Use&lt;/li>\n                  &lt;li>Private Use&lt;/li>\n                &lt;/ul>\n              &lt;/li>\n              &lt;li>Featured&lt;/li>\n            &lt;/ul>\n          &lt;/li>\n          &lt;li>Events&lt;/li>\n        &lt;/ul>\n      &lt;/JqxMenu>\n      &lt;span style=\"font-size: 14px; position: relative; top: 180px; font-family: Verdana Arial;\">\n        Context Menu will open here\n      &lt;/span>\n    &lt;/div>\n    &lt;JqxButton @click=\"open()\">Open Menu&lt;/JqxButton>\n    &lt;JqxButton @click=\"close()\">Close Menu&lt;/JqxButton>\n  &lt;/div>\n&lt;/template>\n&lt;script>\n  import JqxMenu from \"jqwidgets-scripts/jqwidgets-vue/vue_jqxmenu.vue\";\n  import JqxButton from \"jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue\";\n  export default {\n    components: {\n      JqxMenu,\n      JqxButton\n    },\n    methods: {\n      contextmenuMenu: function (e) {\n        e.preventDefault();\n      },\n      open: function (event) {\n        this.$refs.jqxMenu.open(100, 100);\n      },\n      close: function (event) {\n        this.$refs.jqxMenu.close();\n      }\n    }\n  }\n&lt;/script>\n&lt;style>\n  .jqx-button {\n    display: inline-block;\n    margin-top: 15px;\n    margin-right: 20px;\n  }\n&lt;/style>"
+            }
+        },
+        {
+            "name": "openItem",
+            "description": "<P>Opens a menu item </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/CJSwp/",
+            "exampleDescription": "opens an item in the jqxMenu",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "itemID",
+                    "dataType": "string",
+                    "ts_dataType": "number | string",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;JqxMenu ref=\"myMenu\"\n         :width=\"400\" :autoCloseOnMouseLeave=\"false\">\n      &lt;ul>\n        &lt;li>Home&lt;/li>\n        &lt;li>About Us&lt;/li>\n        &lt;li id=\"products\">\n          Products\n          &lt;ul>\n            &lt;li>\n              New\n              &lt;ul>\n                &lt;li>Corporate Use&lt;/li>\n                &lt;li>Private Use&lt;/li>\n              &lt;/ul>\n            &lt;/li>\n            &lt;li>Featured&lt;/li>\n          &lt;/ul>\n        &lt;/li>\n        &lt;li>Events&lt;/li>\n      &lt;/ul>\n    &lt;/JqxMenu>\n    &lt;JqxButton :width=\"100\" @click=\"open()\">Open Products&lt;/JqxButton>\n    &lt;JqxButton :width=\"100\" @click=\"close()\">Close Products&lt;/JqxButton>\n  &lt;/div>\n&lt;/template>\n&lt;script>\n  import JqxMenu from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxmenu.vue';\n  import JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\n  export default {\n    components: {\n      JqxMenu,\n      JqxButton\n    },\n    methods: {\n      open: function () {\n        this.$refs.myMenu.openItem(\"products\");\n      },\n      close: function () {\n        this.$refs.myMenu.closeItem(\"products\");\n      }\n    }\n  }\n&lt;/script>\n&lt;style>\n  .jqx-button {\n    display: inline-block;\n    margin-top: 50px;\n    margin-right: 20px;\n  }\n&lt;/style>"
+            }
+        },
+        {
+            "name": "restore",
+            "description": "<P>Restores the widget from the \"minimized\" state. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>restore</CODE> method. </P>\n<PRE><CODE>$('#jqxMenu').jqxMenu('restore'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/ypNUV/",
+            "exampleDescription": "restores the jqxMenu",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;JqxMenu ref=\"myMenu\"\n         :width=\"400\">\n      &lt;ul>\n        &lt;li>Home&lt;/li>\n        &lt;li>About Us&lt;/li>\n        &lt;li id=\"products\">\n          Products\n          &lt;ul>\n            &lt;li>\n              New\n              &lt;ul>\n                &lt;li>Corporate Use&lt;/li>\n                &lt;li>Private Use&lt;/li>\n              &lt;/ul>\n            &lt;/li>\n            &lt;li>Featured&lt;/li>\n          &lt;/ul>\n        &lt;/li>\n        &lt;li>Events&lt;/li>\n      &lt;/ul>\n    &lt;/JqxMenu>\n    &lt;JqxButton :width=\"100\" @click=\"minimize()\">Minimize&lt;/JqxButton>\n    &lt;JqxButton :width=\"100\" @click=\"restore()\">Restore&lt;/JqxButton>\n  &lt;/div>\n&lt;/template>\n&lt;script>\n  import JqxMenu from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxmenu.vue';\n  import JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\n  export default {\n    components: {\n      JqxMenu,\n      JqxButton\n    },\n    methods: {\n      minimize: function () {\n        this.$refs.myMenu.minimize();\n      },\n      restore: function () {\n        this.$refs.myMenu.restore();\n      }\n    }\n  }\n&lt;/script>\n&lt;style>\n  .jqx-button {\n    display: inline-block;\n    margin-top: 50px;\n    margin-right: 20px;\n  }\n&lt;/style>"
+            }
+        },
+        {
+            "name": "setItemOpenDirection",
+            "description": "<P>Sets the item's popup open direction </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/Bvj95/",
+            "exampleDescription": "sets the direction of opening of the item in the jqxMenu",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "item",
+                    "dataType": "string",
+                    "ts_dataType": "number | string",
+                    "description": "",
+                    "optional": false
+                },
+                {
+                    "name": "horizontaldirection",
+                    "dataType": "string",
+                    "description": "",
+                    "optional": false
+                },
+                {
+                    "name": "verticaldirection",
+                    "dataType": "string",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;JqxMenu style=\"margin-top: 80px;\" ref=\"myMenu\"\n       :width=\"400\">\n    &lt;ul>\n      &lt;li>Home&lt;/li>\n      &lt;li>About Us&lt;/li>\n      &lt;li id=\"products\">\n        Products\n        &lt;ul>\n          &lt;li>\n            New\n            &lt;ul>\n              &lt;li>Corporate Use&lt;/li>\n              &lt;li>Private Use&lt;/li>\n            &lt;/ul>\n          &lt;/li>\n          &lt;li>Featured&lt;/li>\n        &lt;/ul>\n      &lt;/li>\n      &lt;li>Events&lt;/li>\n    &lt;/ul>\n  &lt;/JqxMenu>\n&lt;/template>\n\n&lt;script>\n  import JqxMenu from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxmenu.vue';\n\n  export default {\n    components: {\n      JqxMenu\n    },\n    mounted: function () {\n      this.$refs.myMenu.setItemOpenDirection('products', 'left', 'up');\n    }\n  }\n&lt;/script>"
+            }
+        }
+    ]
+}

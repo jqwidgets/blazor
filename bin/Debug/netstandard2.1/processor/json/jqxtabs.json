@@ -1,0 +1,1009 @@
+{
+    "widget": {
+        "name": "jqxTabs",
+        "description": "Displays Tabs that break the content into multiple sections.",
+        "angular2": {
+            "name": "jqxTabsComponent",
+            "selector": "jqxTabs"
+        }
+    },
+    "dataTypes": [
+        {
+            "name": "TabsAnimationType",
+            "ts_dataType": "enum",
+            "enumOptions": [ "none", "fade" ]
+        },
+        {
+            "name": "TabsPosition",
+            "ts_dataType": "enum",
+            "enumOptions": [ "top", "bottom" ]
+        },
+        {
+            "name": "TabsScrollPosition",
+            "ts_dataType": "enum",
+            "enumOptions": [ "left", "right", "both" ]
+        },
+        {
+            "name": "TabsToggleMode",
+            "ts_dataType": "enum",
+            "enumOptions": [ "click", "dblclick", "mouseenter", "none" ]
+        }
+    ],
+    "exampleInit": {
+        "width": "300"
+    },
+    "exampleExtraTemplate": "<ul>\n      <li>Tab1</li>\n      <li>Tab2</li>\n    </ul>\n    <div>Content 1<input type='button' id='button' value='Button' /></div>\n    <div>Content 2</div>",
+    "properties": [
+        {
+            "name": "animationType",
+            "defaultValue": "none",
+            "description": "<P>Sets or gets the animation type of switching tabs. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'none'</CODE></PRE>\n<PRE><CODE>'fade'</CODE></PRE>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>animationType</CODE> property. </P>\n<PRE><CODE>$('#jqxTabs').jqxTabs({ animationType: 'fade' }); </CODE></PRE>\n\r\n<P>Get the <CODE>animationType</CODE> property. </P>\n<PRE><CODE>var animationType = $('#jqxTabs').jqxTabs('animationType'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/TDhDX/",
+            "exampleDescription": "animationType is set to 'fade'",
+            "dataType": "string",
+            "ts_dataType": "enum:TabsAnimationType",
+            "exampleInit": {
+                "height": "150",
+                "animationType": "fade"
+            }
+        },
+        {
+            "name": "autoHeight",
+            "defaultValue": "true",
+            "description": "<P>Sets or gets whether the jqxTabs header's height will be equal to the item with max height. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>autoHeight</CODE> property. </P>\n<PRE><CODE>$('#jqxTabs').jqxTabs({ autoHeight: false}); </CODE></PRE>\n\r\n<P>Get the <CODE>autoHeight</CODE> property. </P>\n<PRE><CODE>var autoHeight = $('#jqxTabs').jqxTabs('autoHeight'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/HpGSK/",
+            "exampleDescription": "autoHeight is set to false",
+            "dataType": "boolean",
+            "exampleInit": {
+                "autoHeight": "true"
+            }
+        },
+        {
+            "name": "closeButtonSize",
+            "defaultValue": "16",
+            "description": "<P>Sets or gets the close button size. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>closeButtonSize</CODE> property. </P>\n<PRE><CODE>$('#jqxTabs').jqxTabs({ closeButtonSize:20}); </CODE></PRE>\n\r\n<P>Get the <CODE>closeButtonSize</CODE> property. </P>\n<PRE><CODE>var closeButtonSize = $('#jqxTabs').jqxTabs('closeButtonSize'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/GXFRC/",
+            "exampleDescription": "closeButtonSize is set to 20",
+            "dataType": "number",
+            "exampleInit": {
+                "height": "150",
+                "showCloseButtons": "true",
+                "closeButtonSize": "20"
+            }
+        },
+        {
+            "name": "collapsible",
+            "defaultValue": "false",
+            "description": "<P>Enables or disables the collapsible feature. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>collapsible</CODE> property. </P>\n<PRE><CODE>$('#jqxTabs').jqxTabs({ collapsible: false }); </CODE></PRE>\n\r\n<P>Get the <CODE>collapsible</CODE> property. </P>\n<PRE><CODE>var collapsible = $('#jqxTabs').jqxTabs('collapsible'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/ghzBF/",
+            "exampleDescription": "collapsible is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "height": "150",
+                "collapsible": "true"
+            }
+        },
+        {
+            "name": "contentTransitionDuration",
+            "defaultValue": "450",
+            "description": "<P>Sets or gets the duration of the content's fade animation which occurs when the user selects a tab. This setting has effect when the 'animationType' is set to 'fade'. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>contentTransitionDuration</CODE> property. </P>\n<PRE><CODE>$('#jqxTabs').jqxTabs({ contentTransitionDuration:500 }); </CODE></PRE>\n\r\n<P>Get the <CODE>contentTransitionDuration</CODE> property. </P>\n<PRE><CODE>var contentTransitionDuration = $('#jqxTabs').jqxTabs('contentTransitionDuration'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/SDjGG/",
+            "exampleDescription": "contentTransitionDuration is set to 3000",
+            "dataType": "number",
+            "exampleInit": {
+                "height": "150",
+                "animationType": "fade",
+                "contentTransitionDuration": "300"
+            }
+        },
+        {
+            "name": "disabled",
+            "defaultValue": "false",
+            "description": "<P>Enables or disables the jqxTabs widget. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>disabled</CODE> property . </P>\n<PRE><CODE>$('#jqxTabs').jqxTabs({ disabled:true }); </CODE></PRE>\n\r\n<P>Get the <CODE>disabled</CODE> property. </P>\n<PRE><CODE>var disabled = $('#jqxTabs').jqxTabs('disabled');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/sE8QA/",
+            "exampleDescription": "disabled is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "height": "150",
+                "disabled": "true"
+            }
+        },
+        {
+            "name": "enabledHover",
+            "defaultValue": "true",
+            "description": "<P>Enables or disables the tabs hover effect. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>enabledHover</CODE> property. </P>\n<PRE><CODE>$('#jqxTabs').jqxTabs({ enabledHover: false }); </CODE></PRE>\n\r\n<P>Get the <CODE>enabledHover</CODE> property. </P>\n<PRE><CODE>var enabledHover = $('#jqxTabs').jqxTabs('enabledHover'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/4yh9h/",
+            "exampleDescription": "enabledHover is set to false",
+            "dataType": "boolean",
+            "exampleInit": {
+                "height": "150",
+                "enabledHover": "true"
+            }
+        },
+        {
+            "name": "enableScrollAnimation",
+            "defaultValue": "true",
+            "description": "<P>Sets or gets whether the scroll animation is enabled. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>enableScrollAnimation</CODE> property. </P>\n<PRE><CODE>$('#jqxTabs').jqxTabs({ enableScrollAnimation:false }); </CODE></PRE>\n\r\n<P>Get the <CODE>enableScrollAnimation</CODE> property. </P>\n<PRE><CODE>var enableScrollAnimation = $('#jqxTabs').jqxTabs('enableScrollAnimation'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/GKekC/",
+            "exampleDescription": "enableScrollAnimation is set to false",
+            "dataType": "boolean",
+            "exampleInit": {
+                "height": "150",
+                "width": "100",
+                "enableScrollAnimation": "true"
+            }
+        },
+        {
+            "name": "enableDropAnimation",
+            "defaultValue": "false",
+            "description": "<P>Sets or gets whether the drop animation is enabled. </P>",
+            "example": "",
+            "exampleURL": "",
+            "exampleDescription": "",
+            "dataType": "boolean",
+            "exampleInit": {
+                "height": "150",
+                "reorder": "true",
+                "enableDropAnimation": "true"
+            }
+        },
+        {
+            "name": "height",
+            "defaultValue": "auto",
+            "description": "<P>Sets or gets widget's height. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>height</CODE> property. </P>\n<PRE><CODE>$('#jqxTabs').jqxTabs({height:\"400px\"});</CODE></PRE>\n\r\n<P>Get the <CODE>height</CODE> property. </P>\n<PRE><CODE>var height = $('#jqxTabs').jqxTabs('height');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/w6UT3/",
+            "exampleDescription": "height is set to 150",
+            "dataType": "number | string",
+            "ts_dataType": "string | number",
+            "exampleInit": {
+                "height": "150"
+            }
+        },
+        {
+            "name": "initTabContent",
+            "defaultValue": "null",
+            "description": "<P>Callback function that the tab calls when a content panel needs to be initialized. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>initTabContent</CODE> property. </P>\n<PRE><CODE>\r\n        $(document).ready(function () {\r\n            var loadPage = function (url, tabIndex) {\r\n                $.get(url, function (data) {\r\n                    // dynamically appends data returned from a server to a content element with ID equal to \"content1\" \r\n                    // for the first tab, \"content2\" for the second tab or \"content3\" for the third tab. \r\n                    $('#content' + tabIndex).html(data);\r\n                });\r\n            }\r\n            // Create jqxTabs.\r\n            $('#jqxTabs').jqxTabs({\r\n                width: 580, height: 200,\r\n                initTabContent:\r\n                   function (tab) {\r\n                       // The 'tab' parameter represents the selected tab's index.\r\n                       var pageIndex = tab + 1;\r\n                       loadPage('pages/ajax' + pageIndex + '.htm', pageIndex);\r\n                   }\r\n            });\r\n        });\r\n                        </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/2nbr7/",
+            "exampleDescription": "initTabContent is set to a custom function",
+            "dataType": "function",
+            "ts_dataType": "(tab?: number) => void",
+            "exampleInit": {
+                "height": "150",
+                "initTabContent": "initTabContent",
+                "exampleData": "jqwidgets.createInstance('#button', 'jqxButton', { width: 80, height: 50 });"
+            }
+        },
+        {
+            "name": "keyboardNavigation",
+            "defaultValue": "true",
+            "description": "<P>Enables or disables the keyboard navigation. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>keyboardNavigation</CODE> property. </P>\n<PRE><CODE>$('#jqxTabs').jqxTabs({ keyboardNavigation: false}); </CODE></PRE>\n\r\n<P>Get the <CODE>keyboardNavigation</CODE> property. </P>\n<PRE><CODE>var keyboardNavigation = $('#jqxTabs').jqxTabs('keyboardNavigation'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/A9zAC/",
+            "exampleDescription": "keyboardNavigation is set to a false",
+            "dataType": "boolean",
+            "exampleInit": {
+                "height": "150",
+                "keyboardNavigation": "false"
+            }
+        },
+        {
+            "name": "next",
+            "defaultValue": "null",
+            "description": "",
+            "example": "",
+            "exampleURL": "",
+            "exampleDescription": "k",
+            "dataType": "object",
+            "ts_dataType": "any",
+            "exampleInit": {
+                "height": "150",
+                "next": "next"
+            },
+            "customExample": {
+                "codeType": "custom",
+                "code": "&lt;template>\n  &lt;JqxTabs ref=\"myTabs\"\n    :width=\"300\" :height=\"150\">\n    &lt;ul>\n      &lt;li>Tab1&lt;/li>\n      &lt;li>Tab2&lt;/li> \n    &lt;/ul>\n    &lt;div>Content 1&lt;input type='button' id='button' value='Button' />&lt;/div>\n    &lt;div>Content 2&lt;/div>\n  &lt;/JqxTabs>\n&lt;/template> \n \n&lt;script> \n  import JqxTabs from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxtabs.vue'; \n \n  export default { \n    components: { \n      JqxTabs\n    },\n    mounted : function () {\n      let next = this.$refs.myTabs.next;\n      alert(next);\n    }\n  }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "previous",
+            "defaultValue": "null",
+            "description": "",
+            "example": "",
+            "exampleURL": "",
+            "exampleDescription": "k",
+            "dataType": "object",
+            "ts_dataType": "any",
+            "exampleInit": {
+                "height": "150",
+                "previous": "previous"
+            },
+            "customExample": {
+                "codeType": "custom",
+                "code": "&lt;template>\n  &lt;JqxTabs ref=\"myTabs\"\n    :width=\"300\" :height=\"150\">\n    &lt;ul>\n      &lt;li>Tab1&lt;/li>\n      &lt;li>Tab2&lt;/li> \n    &lt;/ul>\n    &lt;div>Content 1&lt;input type='button' id='button' value='Button' />&lt;/div>\n    &lt;div>Content 2&lt;/div>\n  &lt;/JqxTabs>\n&lt;/template> \n \n&lt;script> \n  import JqxTabs from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxtabs.vue'; \n \n  export default { \n    components: { \n      JqxTabs\n    },\n    mounted : function () {\n      let previous = this.$refs.myTabs.previous;\n      alert(previous);\n    }\n  }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "position",
+            "defaultValue": "top",
+            "description": "<P>Sets or gets whether the tabs are positioned at 'top' or 'bottom. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'top'</CODE></PRE>\n<PRE><CODE>'bottom'</CODE></PRE>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>position</CODE> property. </P>\n<PRE><CODE>$('#jqxTabs').jqxTabs({ position:\"bottom\" }); </CODE></PRE>\n\r\n<P>Get the <CODE>position</CODE> property. </P>\n<PRE><CODE>var position = $('#jqxTabs').jqxTabs('position'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/MyUwQ/",
+            "exampleDescription": "position is set to 'bottom'",
+            "dataType": "string",
+            "ts_dataType": "enum:TabsPosition",
+            "exampleInit": {
+                "height": "150",
+                "position": "'bottom'"
+            }
+        },
+        {
+            "name": "reorder",
+            "defaultValue": "false",
+            "description": "<P>Enables or disables the reorder feature. When this feature is enabled, the end-user can drag a tab and drop it over another tab. As a result the tabs will be reordered. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>reorder</CODE> property. </P>\n<PRE><CODE>$('#jqxTabs').jqxTabs({reorder:true}); </CODE></PRE>\n\r\n<P>Get the <CODE>reorder</CODE> property. </P>\n<PRE><CODE>var reorder = $('#jqxTabs').jqxTabs('reorder'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/5fSCq/",
+            "exampleDescription": "reorder is set to a true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "height": "150",
+                "reorder": "true"
+            }
+        },
+        {
+            "name": "rtl",
+            "defaultValue": "false",
+            "description": "<P>Sets or gets a value indicating whether widget's elements are aligned to support locales using right-to-left fonts.</P>",
+            "example": "<pre><CODE>$('#jqxTabs').jqxTabs({rtl : true}); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/6e2rM/",
+            "exampleDescription": "rtl is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "height": "150",
+                "rtl": "true"
+            }
+        },
+        {
+            "name": "scrollAnimationDuration",
+            "defaultValue": "250",
+            "description": "<P>Sets or gets the duration of the scroll animation. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>scrollAnimationDuration</CODE> property. </P>\n<PRE><CODE>$('#jqxTabs').jqxTabs({ scrollAnimationDuration: 200 }); </CODE></PRE>\n\r\n<P>Get the <CODE>scrollAnimationDuration</CODE> property. </P>\n<PRE><CODE>var scrollAnimationDuration = $('#jqxTabs').jqxTabs('scrollAnimationDuration'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/3wM8U/",
+            "exampleDescription": "scrollAnimationDuration is set to 3000",
+            "dataType": "number",
+            "exampleInit": {
+                "height": "150",
+                "width": "100",
+                "scrollAnimationDuration": "3000"
+            }
+        },
+        {
+            "name": "selectedItem",
+            "defaultValue": "0",
+            "description": "<P>Sets or gets selected tab. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>selectedItem</CODE> property. </P>\n<PRE><CODE>$('#jqxTabs').jqxTabs({ selectedItem: 2 }); </CODE></PRE>\n\r\n<P>Get the <CODE>selectedItem</CODE> property. </P>\n<PRE><CODE>var selectedItem = $('#jqxTabs').jqxTabs('selectedItem'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/MGvwb/",
+            "exampleDescription": "selectedItem is set to 1",
+            "dataType": "number",
+            "exampleInit": {
+                "height": "150",
+                "selectedItem": "1"
+            }
+        },
+        {
+            "name": "selectionTracker",
+            "defaultValue": "false",
+            "description": "<P>Sets or gets whether the selection tracker is enabled. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>selectionTracker</CODE> property. </P>\n<PRE><CODE>$('#jqxTabs').jqxTabs({ selectionTracker:false}); </CODE></PRE>\n\r\n<P>Get the <CODE>selectionTracker</CODE> property. </P>\n<PRE><CODE>var selectionTracker = $('#jqxTabs').jqxTabs('selectionTracker'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/sNEqt/",
+            "exampleDescription": "selectionTracker is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "height": "150",
+                "selectionTracker": "true"
+            }
+        },
+        {
+            "name": "scrollable",
+            "defaultValue": "true",
+            "description": "<P>Sets or gets whether the scrolling is enabled. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>scrollable</CODE> property. </P>\n<PRE><CODE>$('#jqxTabs').jqxTabs({ scrollable:false}); </CODE></PRE>\n\r\n<P>Get the <CODE>scrollable</CODE> property. </P>\n<PRE><CODE>var scrollable = $('#jqxTabs').jqxTabs('scrollable'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/xpeQu/",
+            "exampleDescription": "scrollable is set to false",
+            "dataType": "boolean",
+            "exampleInit": {
+                "height": "150",
+                "width": "100",
+                "scrollable": "false"
+            }
+        },
+        {
+            "name": "scrollPosition",
+            "defaultValue": "'right'",
+            "description": "<P>Sets or gets the position of the scroll arrows. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'left'</CODE></PRE>\n<PRE><CODE>'right'</CODE></PRE>\n<PRE><CODE>'both'</CODE></PRE>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>scrollPosition</CODE> property. </P>\n<PRE><CODE>$('#jqxTabs').jqxTabs({ scrollPosition:'right'}); </CODE></PRE>\n\r\n<P>Get the <CODE>scrollPosition</CODE> property. </P>\n<PRE><CODE>var scrollPosition = $('#jqxTabs').jqxTabs('scrollPosition'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/t9qbm/",
+            "exampleDescription": "scrollPosition is set to 'both'",
+            "dataType": "string",
+            "ts_dataType": "enum:TabsScrollPosition",
+            "exampleInit": {
+                "height": "150",
+                "width": "100",
+                "scrollPosition": "both"
+            }
+        },
+        {
+            "name": "scrollStep",
+            "defaultValue": "70",
+            "description": "<P>Sets or gets the scrolling step. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>scrollStep</CODE> property. </P>\n<PRE><CODE>$('#jqxTabs').jqxTabs({ scrollStep:80}); </CODE></PRE>\n\r\n<P>Get the <CODE>scrollStep</CODE> property. </P>\n<PRE><CODE>var scrollStep = $('#jqxTabs').jqxTabs('scrollStep'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/53w7S/",
+            "exampleDescription": "scrollStep is set to 100",
+            "dataType": "number",
+            "exampleInit": {
+                "height": "150",
+                "width": "100",
+                "scrollStep": "10"
+            }
+        },
+        {
+            "name": "showCloseButtons",
+            "defaultValue": "false",
+            "description": "<P>Sets or gets whether a close button is displayed in each tab. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>showCloseButtons</CODE> property. </P>\n<PRE><CODE>$('#jqxTabs').jqxTabs({ showCloseButtons:false}); </CODE></PRE>\n\r\n<P>Get the <CODE>showCloseButtons</CODE> property. </P>\n<PRE><CODE>var showCloseButtons = $('#jqxTabs').jqxTabs('showCloseButtons'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/K37dF/",
+            "exampleDescription": "showCloseButtons is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "height": "150",
+                "showCloseButtons": "true"
+            }
+        },
+        {
+            "name": "toggleMode",
+            "defaultValue": "click",
+            "description": "<P>Sets or gets user interaction used for switching the different tabs. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'click'</CODE></PRE>\n<PRE><CODE>'dblclick'</CODE></PRE>\n<PRE><CODE>'mouseenter'</CODE></PRE>\n<PRE><CODE>'none'</CODE></PRE>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>toggleMode</CODE> property. </P>\n<PRE><CODE>$('#jqxTabs').jqxTabs({ toggleMode:'mouseenter' }); </CODE></PRE>\n\r\n<P>Get the <CODE>toggleMode</CODE> property. </P>\n<PRE><CODE>var toggleMode = $('#jqxTabs').jqxTabs('toggleMode'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/UySsx/",
+            "exampleDescription": "toggleMode is set to 'dlclick'",
+            "dataType": "string",
+            "ts_dataType": "enum:TabsToggleMode",
+            "exampleInit": {
+                "height": "150",
+                "toggleMode": "dblclick"
+            }
+        },
+        {
+            "name": "theme",
+            "defaultValue": "''",
+            "description": "<P>Sets the widget's theme. </P>\n\r\n<UL><LI>Include the theme's CSS file after jqx.base.css.<BR>The following code example adds the 'material' theme. <PRE><CODE>\r\n<PRE><CODE>&lt;link rel=\"stylesheet\" href=\"../../jqwidgets/styles/jqx.base.css\" type=\"text/css\" /&gt;\r\n&lt;link rel=\"stylesheet\" href=\"../../jqwidgets/styles/jqx.material.css\" type=\"text/css\" /&gt;\r\n</CODE></PRE>\r\n</CODE></PRE>\r\n<LI>Set the widget's theme property to 'material' when you initialize it. </LI></UL>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/f4GFH/",
+            "exampleDescription": "theme is set to 'material'",
+            "dataType": "string",
+            "exampleInit": {
+                "height": "150",
+                "theme": "material"
+            }
+        },
+        {
+            "name": "width",
+            "defaultValue": "auto",
+            "description": "<P>Sets or gets widget's width. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>width</CODE> property. </P>\n<PRE><CODE>$('#jqxTabs').jqxTabs({width:\"200px\"});</CODE></PRE>\n\r\n<P>Get the <CODE>width</CODE> property. </P>\n<PRE><CODE>var width = $('#jqxTabs').jqxTabs('width');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/kYyW5/",
+            "exampleDescription": "width is set to 300",
+            "dataType": "number | string",
+            "ts_dataType": "string | number",
+            "exampleInit": {
+                "height": "150"
+            }
+        }
+    ],
+    "events": [
+        {
+            "name": "add",
+            "description": "<P>This event is triggered when a new tab is added to the jqxTabs. </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>add</CODE> event by type: jqxTabs. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/73h7n/",
+            "exampleDescription": "Bind to the add event by type: jqxTabs.",
+            "example": "<PRE><CODE>$('#jqxTabs').on('add', function (event) { // Some code here. }); </CODE></PRE>",
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;JqxTabs ref=\"myTabs\" @add=\"onAdd($event)\"\n         :width=\"300\">\n      &lt;ul>\n        &lt;li>Tab1&lt;/li>\n        &lt;li>Tab2&lt;/li>\n      &lt;/ul>\n      &lt;div>Content 1&lt;input type='button' id='button' value='Button' />&lt;/div>\n      &lt;div>Content 2&lt;/div>\n    &lt;/JqxTabs>\n    &lt;JqxButton style=\"margin-top: 10px\" :width=\"60\" @click=\"add()\">Add Tab&lt;/JqxButton>\n  &lt;/div>\n&lt;/template>\n\n&lt;script>\n  import JqxTabs from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxtabs.vue';\n  import JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\n  \n  export default {\n    components: {\n      JqxTabs,\n      JqxButton\n    },\n    methods: {\n      add: function () {\n        this.$refs.myTabs.addLast('Title', 'Content');\n      },\n      onAdd: function (event) {\n        alert('Tab added');\n      }\n    }\n  }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "collapsed",
+            "description": "<P>Theis event is triggered when any tab is collapsed. </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>collapsed</CODE> event by type: jqxTabs </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/NNQnb/",
+            "exampleDescription": "Bind to the collapsed event by type: jqxTabs.",
+            "example": "<PRE><CODE>$('#jqxTabs').on('collapsed', function (event) { // Some code here. }); </CODE></PRE>",
+            "exampleInit": {
+                "collapsible": "true"
+            }
+        },
+        {
+            "name": "dragStart",
+            "description": "<P>This event is triggered when the drag operation started. </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>dragStart</CODE> event by type: jqxTabs </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/RsYLR/",
+            "exampleDescription": "Bind to the dragStart event by type: jqxTabs.",
+            "example": "<PRE><CODE>$('#jqxTabs').on('dragStart', function () { // Some code here. }); </CODE></PRE>",
+            "exampleInit": {
+                "reorder": "true"
+            }
+        },
+        {
+            "name": "dragEnd",
+            "description": "<P>This event is triggered when the drag operation ended. </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>dragEnd</CODE> event by type: jqxTabs </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/JaueQ/",
+            "exampleDescription": "Bind to the dragEnd event by type: jqxTabs.",
+            "example": "<PRE><CODE>$('#jqxTabs').on('dragEnd', function (event) { // Some code here. }); </CODE></PRE>",
+            "exampleInit": {
+                "reorder": "true"
+            }
+        },
+        {
+            "name": "expanded",
+            "description": "<P>This event is triggered when any tab is expanded. </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>expanded</CODE> event by type: jqxTabs </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/ckFwU/",
+            "exampleDescription": "Bind to the expanded event by type: jqxTabs.",
+            "example": "<PRE><CODE>$('#jqxTabs').on('expanded', function (event) { // Some code here. }); </CODE></PRE>",
+            "exampleInit": {
+                "collapsible": "true"
+            }
+        },
+        {
+            "name": "removed",
+            "description": "<P>This event is triggered when a tab is removed. </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>removed</CODE> event by type: jqxTabs. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/gRaUz/",
+            "exampleDescription": "Bind to the removed event by type: jqxTabs.",
+            "example": "<PRE><CODE>$('#jqxTabs').on('removed', function (event) { // Some code here. }); </CODE></PRE>",
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;JqxTabs ref=\"myTabs\" @removed=\"onRemoved($event)\"\n         :width=\"300\">\n      &lt;ul>\n        &lt;li>Tab1&lt;/li>\n        &lt;li>Tab2&lt;/li>\n      &lt;/ul>\n      &lt;div>Content 1&lt;input type='button' id='button' value='Button' />&lt;/div>\n      &lt;div>Content 2&lt;/div>\n    &lt;/JqxTabs>\n    &lt;JqxButton style=\"margin-top: 10px\" :width=\"80\" @click=\"remove()\">Remove Tab&lt;/JqxButton>\n  &lt;/div>\n&lt;/template>\n&lt;script>\n  import JqxTabs from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxtabs.vue';\n  import JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\n\n  export default {\n    components: {\n      JqxTabs,\n      JqxButton\n    },\n    methods: {\n      remove: function () {\n        this.$refs.myTabs.removeFirst();\n      },\n      onRemoved: function (event) {\n        alert('Tab removed');\n      }\n    }\n  }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "selecting",
+            "description": "<P>This event is triggered when the user selects a tab. This event is cancelable. You can cancel the selection by setting the 'event.cancel = true' in the event callback. </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>selecting</CODE> event by type: jqxTabs </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/9aE5Y/",
+            "exampleDescription": "Bind to the selecting event by type: jqxTabs.",
+            "example": "<PRE><CODE>$('#jqxTabs').on('selecting', function (event) { // Some code here. }); </CODE></PRE>"
+        },
+        {
+            "name": "selected",
+            "description": "<P>This event is triggered when the user selects a new tab. </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>selected</CODE> event by type: jqxTabs. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/RaXVR/",
+            "exampleDescription": "Bind to the selected event by type: jqxTabs.",
+            "example": "<PRE><CODE>$('#jqxTabs').on('selected', function (event) \r\n{ \r\n    var selectedTab = event.args.item;\r\n}); </CODE></PRE>"
+        },
+        {
+            "name": "tabclick",
+            "description": "<P>This event is triggered when the user click a tab. You can retrieve the clicked tab's index. </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>tabclick</CODE> event by type: jqxTabs. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/g3KsF/",
+            "exampleDescription": "Bind to the tabclick event by type: jqxTabs.",
+            "example": "<PRE><CODE>  $('#jqxTabs').on('tabclick', function (event) \r\n{ \r\n    var clickedItem = event.args.item; \r\n}); </CODE></PRE>"
+        },
+        {
+            "name": "unselecting",
+            "description": "<P>This event is triggered when the user selects a tab. The last selected tab is going to become unselected. This event is cancelable. You can cancel the selection by setting the 'event.cancel = true' in the event callback. </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>unselecting</CODE> event by type: jqxTabs </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/PcMKU/",
+            "exampleDescription": "Bind to the unselecting event by type: jqxTabs.",
+            "example": "<PRE><CODE>$('#jqxTabs').on('unselecting', function (event) { // Some code here. }); </CODE></PRE>"
+        },
+        {
+            "name": "unselected",
+            "description": "<P>This event is triggered when the user selects a tab. The last selected tab becomes unselected. </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>unselected</CODE> event by type: jqxTabs </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/5c4Q2/",
+            "exampleDescription": "Bind to the unselected event by type: jqxTabs.",
+            "example": "<PRE><CODE>$('#jqxTabs').on('unselected', function (event) { // Some code here. }); </CODE></PRE>"
+        }
+    ],
+    "methods": [
+        {
+            "name": "addAt",
+            "description": "<P>Adding tab at indicated position. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>addAt</CODE> method. </P>\n<PRE><CODE>$('#jqxTabs').jqxTabs('addAt', 3, tabTitle, tabContent); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/pLRuy/",
+            "exampleDescription": "adds a new tab in the jqxTabs.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "index",
+                    "dataType": "number",
+                    "description": "",
+                    "optional": false
+                },
+                {
+                    "name": "title",
+                    "dataType": "string",
+                    "description": "",
+                    "optional": false
+                },
+                {
+                    "name": "content",
+                    "dataType": "string",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "1", "'Title'", "'Content'" ]
+            }
+        },
+        {
+            "name": "addFirst",
+            "description": "<P>Adding tab at the beginning. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>addFirst</CODE> method. </P>\n<PRE><CODE>$('#jqxTabs').jqxTabs('addFirst', element); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/d8vD5/",
+            "exampleDescription": "adds a new fisrt tab in the jqxTabs.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "htmlElement1",
+                    "dataType": "object",
+                    "ts_dataType": "any",
+                    "description": "",
+                    "optional": false
+                },
+                {
+                    "name": "htmlElement2",
+                    "dataType": "object",
+                    "ts_dataType": "any",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "'Title'", "'Content'" ]
+            }
+        },
+        {
+            "name": "addLast",
+            "description": "<P>Adding tab at the end. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>addLast</CODE> method. </P>\n<PRE><CODE>$('#jqxTabs').jqxTabs('addLast', element); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/eLt97/",
+            "exampleDescription": "adds a new last tab in the jqxTabs.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "htmlElement1",
+                    "dataType": "object",
+                    "ts_dataType": "any",
+                    "description": "",
+                    "optional": false
+                },
+                {
+                    "name": "htmlElement2",
+                    "dataType": "object",
+                    "ts_dataType": "any",
+                    "description": "",
+                    "optional": true
+                }
+            ],
+            "exampleInit": {
+                "args": [ "'Title'", "'Content'" ]
+            }
+        },
+        {
+            "name": "collapse",
+            "description": "<P>Collapsing the current selected tab. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>collapse</CODE> method. </P>\n<PRE><CODE>$('#jqxTabs').jqxTabs('collapse'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/yQx6v/",
+            "exampleDescription": "collapses the jqxTabs.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "extraData": {
+                "collapsible": "true"
+            }
+        },
+        {
+            "name": "disable",
+            "description": "<P>Disabling the widget. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>disable</CODE> method. </P>\n<PRE><CODE>$('#jqxTabs').jqxTabs('disable'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/D6J4f/",
+            "exampleDescription": "disables the jqxTabs.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "disableAt",
+            "description": "<P>Disabling tab with indicated index. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>disableAt</CODE> method. </P>\n<PRE><CODE>$('#jqxTabs').jqxTabs('disableAt', 3); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/u9YSr/",
+            "exampleDescription": "disables a tab in the jqxTabs.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "index",
+                    "dataType": "number",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "1" ]
+            }
+        },
+        {
+            "name": "destroy",
+            "description": "<P>Destroys the widget. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>destroy</CODE> method. </P>\n<PRE><CODE>$('#jqxTabs').jqxTabs('destroy'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/jrFH8/",
+            "exampleDescription": "destroy the jqxTabs.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "ensureVisible",
+            "description": "<P>This method is ensuring the visibility of item with indicated index. If the item is currently not visible the method is scrolling to it. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>ensureVisible</CODE> method. </P>\n<PRE><CODE>$('#jqxTabs').jqxTabs('ensureVisible', 3); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/8mhfx/",
+            "exampleDescription": "Bring a tab into the view.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "index",
+                    "dataType": "number",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;JqxTabs ref=\"myTabs\"\n       :width=\"300\">\n    &lt;ul>\n      &lt;li>Tab1&lt;/li>\n      &lt;li>Tab2&lt;/li>\n      &lt;li>Tab3&lt;/li>\n      &lt;li>Tab4&lt;/li>\n      &lt;li>Tab5&lt;/li>\n      &lt;li>Tab6&lt;/li>\n    &lt;/ul>\n    &lt;div>Content 1&lt;input type='button' id='button' value='Button' />&lt;/div>\n    &lt;div>Content 2&lt;/div>\n    &lt;div>Content 3&lt;/div>\n    &lt;div>Content 4&lt;/div>\n    &lt;div>Content 5&lt;/div>\n    &lt;div>Content 6&lt;/div>\n  &lt;/JqxTabs>\n&lt;/template>\n\n&lt;script>\n  import JqxTabs from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxtabs.vue';\n\n  export default {\n    components: {\n      JqxTabs\n    },\n    mounted: function () {\n      this.$refs.myTabs.ensureVisible(5);\n    }\n  }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "enableAt",
+            "description": "<P>Enabling tab with indicated index. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>enableAt</CODE> method. </P>\n<PRE><CODE>$('#jqxTabs').jqxTabs('enableAt', 3); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/VLYkW/",
+            "exampleDescription": "enables a tab in the jqxTabs.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "index",
+                    "dataType": "number",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "1" ]
+            }
+        },
+        {
+            "name": "expand",
+            "description": "<P>Expanding the current selected tab. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>expand</CODE> method. </P>\n<PRE><CODE>$('#jqxTabs').jqxTabs('expand'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/UycFM/",
+            "exampleDescription": "expands the jqxTabs.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "enable",
+            "description": "<P>Enabling the widget. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>enable</CODE> method. </P>\n<PRE><CODE>$('#jqxTabs').jqxTabs('enable'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/f4n4J/",
+            "exampleDescription": "enables the jqxTabs.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "focus",
+            "description": "<P>Focuses the widget. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>focus</CODE> method. </P>\n<PRE><CODE>$('#jqxTabs').jqxTabs('focus'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/8PDcy/",
+            "exampleDescription": "focuses the jqxTabs.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "getTitleAt",
+            "description": "<P>Gets the title of a Tab. The returned value is a \"string\". </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>getTitleAt</CODE> method. </P>\n<PRE><CODE>var text = $('#jqxTabs').jqxTabs('getTitleAt', i); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/mCWLG/",
+            "exampleDescription": "gets the title of a tab in the jqxTabs.",
+            "returnDataType": "string",
+            "arguments": [
+                {
+                    "name": "index",
+                    "dataType": "number",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "1" ]
+            }
+        },
+        {
+            "name": "getContentAt",
+            "description": "<P>Gets the content of a Tab. The returned value is a HTML Element. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>getContentAt</CODE> method. </P>\n<PRE><CODE>$('#jqxTabs').jqxTabs('getContentAt', i); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/qZxY4/",
+            "exampleDescription": "gets the content of a tab in the jqxTabs.",
+            "returnDataType": "object",
+            "ts_returnDataType": "any",
+            "arguments": [
+                {
+                    "name": "index",
+                    "dataType": "number",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "1" ]
+            }
+        },
+        {
+            "name": "getDisabledTabsCount",
+            "description": "",
+            "exampleURL": "",
+            "exampleDescription": "",
+            "returnDataType": "object",
+            "ts_returnDataType": "any",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "hideCloseButtonAt",
+            "description": "<P>Hiding a close button at a specific position. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>hideCloseButtonAt</CODE> method. </P>\n<PRE><CODE>$('#jqxTabs').jqxTabs('hideCloseButtonAt', 3); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/9yd8X/",
+            "exampleDescription": "hides the close button of a tab in the jqxTabs.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "index",
+                    "dataType": "number",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "1" ]
+            },
+            "extraData": {
+                "showCloseButtons": "true"
+            }
+        },
+        {
+            "name": "hideAllCloseButtons",
+            "description": "<P>Hiding all close buttons. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>hideAllCloseButtons</CODE> method. </P>\n<PRE><CODE>$('#jqxTabs').jqxTabs('hideAllCloseButtons'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/8vEGq/",
+            "exampleDescription": "hides the close buttons in the jqxTabs.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "extraData": {
+                "showCloseButtons": "true"
+            }
+        },
+        {
+            "name": "length",
+            "description": "<P>Returning the tabs count. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>length</CODE> method. </P>\n<PRE><CODE>var length = $('#jqxTabs').jqxTabs('length'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/Pb3sB/",
+            "exampleDescription": "gets the length of the jqxTabs.",
+            "returnDataType": "number",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "removeAt",
+            "description": "<P>Removing tab with indicated index. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>removeAt</CODE> method. </P>\n<PRE><CODE>$('#jqxTabs').jqxTabs('removeAt', 3); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/3xErb/",
+            "exampleDescription": "removes a tab in the jqxTabs.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "index",
+                    "dataType": "number",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "1" ]
+            }
+        },
+        {
+            "name": "removeFirst",
+            "description": "<P>Removing the first tab. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>removeFirst</CODE> method. </P>\n<PRE><CODE>$('#jqxTabs').jqxTabs('removeFirst'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/yFeTd/",
+            "exampleDescription": "removes the firts tab in the jqxTabs.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "removeLast",
+            "description": "<P>Removing the last tab. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>removeLast</CODE> method. </P>\n<PRE><CODE>$('#jqxTabs').jqxTabs('removeLast'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/B9etM/",
+            "exampleDescription": "removes the last tab in the jqxTabs.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "select",
+            "description": "<P>Selecting tab with indicated index. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>select</CODE> method. </P>\n<PRE><CODE>$('#jqxTabs').jqxTabs('select', 3); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/VWPKL/",
+            "exampleDescription": "selects a tab in the jqxTabs.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "index",
+                    "dataType": "number",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "1" ]
+            }
+        },
+        {
+            "name": "setContentAt",
+            "description": "<P>Sets the content of a Tab. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>setContentAt</CODE> method. </P>\n<PRE><CODE>$('#jqxTabs').jqxTabs('setContentAt', i, html); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/D67hd/",
+            "exampleDescription": "sets new content of a tab in the jqxTabs.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "index",
+                    "dataType": "number",
+                    "description": "",
+                    "optional": false
+                },
+                {
+                    "name": "htmlElement",
+                    "dataType": "string",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "1", "'New Content'" ]
+            }
+        },
+        {
+            "name": "setTitleAt",
+            "description": "<P>Sets the title of a Tab. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>setTitleAt</CODE> method. </P>\n<PRE><CODE>$('#jqxTabs').jqxTabs('setTitleAt', i, text); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/E5UM6/",
+            "exampleDescription": "sets new title of a tab in the jqxTabs.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "index",
+                    "dataType": "number",
+                    "description": "",
+                    "optional": false
+                },
+                {
+                    "name": "htmlElement",
+                    "dataType": "string",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "1", "'Title 1'" ]
+            }
+        },
+        {
+            "name": "showCloseButtonAt",
+            "description": "<P>Showing close button at a specific position. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>showCloseButtonAt</CODE> method. </P>\n<PRE><CODE>$('#jqxTabs').jqxTabs('showCloseButtonAt', 1); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/mCWLG/",
+            "exampleDescription": "shows the close button of a tab in the jqxTabs.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "index",
+                    "dataType": "number",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "1" ]
+            }
+        },
+        {
+            "name": "showAllCloseButtons",
+            "description": "<P>Showing all close buttons. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>showAllCloseButtons</CODE> method. </P>\n<PRE><CODE>$('#jqxTabs').jqxTabs('showAllCloseButtons'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/pR37p/",
+            "exampleDescription": "shows the close buttons in the jqxTabs.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "val",
+            "description": "<P>Sets or gets the selected tab. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/NGRSy/",
+            "exampleDescription": "sets the selected tab in the jqxTabs.",
+            "returnDataType": "string",
+            "arguments": [
+                {
+                    "name": "value",
+                    "dataType": "string",
+                    "description": "",
+                    "optional": true
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,227 @@
+@using System.Text.Json;
+@inject IJSRuntime JSRuntime;
+
+<div id="@componentID">@ChildContent</div>
+
+@code {
+    [Parameter]
+    public bool autoUpdate {
+        get { return getterProp<bool>("autoUpdate"); }
+        set { setterProp("autoUpdate", value); }
+    }
+
+    [Parameter]
+    public bool disabled {
+        get { return getterProp<bool>("disabled"); }
+        set { setterProp("disabled", value); }
+    }
+
+    [Parameter]
+    public object height {
+        get { return getterProp<object>("height"); }
+        set { setterProp("height", value); }
+    }
+
+    [Parameter]
+    public bool rtl {
+        get { return getterProp<bool>("rtl"); }
+        set { setterProp("rtl", value); }
+    }
+
+    [Parameter]
+    public object sizeMode {
+        get { return getterProp<object>("sizeMode"); }
+        set { setterProp("sizeMode", value); }
+    }
+
+    [Parameter]
+    public object scrollBarSize {
+        get { return getterProp<object>("scrollBarSize"); }
+        set { setterProp("scrollBarSize", value); }
+    }
+
+    [Parameter]
+    public string theme {
+        get { return getterProp<string>("theme"); }
+        set { setterProp("theme", value); }
+    }
+
+    [Parameter]
+    public object width {
+        get { return getterProp<object>("width"); }
+        set { setterProp("width", value); }
+    }
+
+    [Parameter]
+    public object options {
+        set { setOptions(value); }
+    }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    private string[] paramsToBlock = { "ChildContent" };
+
+    private IDictionary<string, string> paramsToChange = new Dictionary<string, string>
+    {
+        { "isChecked", "checked" },
+        { "isReadonly", "readonly" },
+        { "isDecimal", "decimal" }
+    };
+
+    private bool shouldSetters;
+
+    private string componentID;
+
+    private IDictionary<string, object> initialOptions = new Dictionary<string, object>();
+
+    public void append(object HTMLElement)
+    {
+        setterMethod("append", HTMLElement);
+    }
+
+    public void clearcontent()
+    {
+        setterMethod("clearcontent");
+    }
+
+    public void destroy()
+    {
+        setterMethod("destroy");
+    }
+
+    public void focus()
+    {
+        setterMethod("focus");
+    }
+
+    public double getScrollHeight()
+    {
+        return getterMethod<double>("getScrollHeight");
+    }
+
+    public double getVScrollPosition()
+    {
+        return getterMethod<double>("getVScrollPosition");
+    }
+
+    public double getScrollWidth()
+    {
+        return getterMethod<double>("getScrollWidth");
+    }
+
+    public double getHScrollPosition()
+    {
+        return getterMethod<double>("getHScrollPosition");
+    }
+
+    public void prepend(object HTMLElement)
+    {
+        setterMethod("prepend", HTMLElement);
+    }
+
+    public void remove(object HTMLElement)
+    {
+        setterMethod("remove", HTMLElement);
+    }
+
+    public void scrollTo(object left, object top)
+    {
+        setterMethod("scrollTo", left, top);
+    }
+
+    public override async Task SetParametersAsync(ParameterView parameters)
+    {
+        await base.SetParametersAsync(parameters);
+
+        foreach(var parameter in parameters.ToDictionary())
+        {
+            var key = parameter.Key;
+            var value = parameter.Value;
+
+            if (!paramsToBlock.Contains(key))
+            {
+                if (paramsToChange.ContainsKey(key))
+                {
+                    key = paramsToChange[key];
+                }
+
+                initialOptions[key] = value;
+            }
+        }
+
+        shouldSetters = true;
+    }
+
+    protected override void OnInitialized()
+    {
+        componentID = ((IJSInProcessRuntime)JSRuntime).Invoke<string>("jqxBlazor.generateID");
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxPanel", initialOptions);
+            attachEvents();
+        }
+    }
+
+    private void attachEvents()
+    {
+    }
+
+    private T getterProp<T>(string name)
+    {
+        shouldSetters = false;
+        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageProps", componentID, name);
+    }
+
+    private void setterProp(string name, object value)
+    {
+        if (shouldSetters)
+        {
+            ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.manageProps", componentID, name, value);
+        }
+    }
+
+    private T getterMethod<T>(string name)
+    {
+        shouldSetters = false;
+        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", componentID, name);
+    }
+
+    private void setterMethod(string name, params object[] args)
+    {
+        shouldSetters = false;
+        ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.manageMethods", componentID, name, args);
+    }
+
+    private void setOptions(object options)
+    {
+        shouldSetters = false;
+        ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.setOptions", componentID, options);
+    }
+
+    public class EventsHandler
+    {
+        private Action<IDictionary<string, object>> componentEvent;
+
+        public EventsHandler(Action<IDictionary<string, object>> e)
+        {
+            componentEvent = e;
+        }
+
+        [JSInvokable]
+        public void emitPanelEvent(object e)
+        {
+            if (componentEvent != null)
+            {
+                var eventAsJson = JsonSerializer.Serialize(e);
+                var eventAsDictionary = JsonSerializer.Deserialize<IDictionary<string, object>>(eventAsJson);
+
+                componentEvent.Invoke(eventAsDictionary);
+            }
+        }
+    }
+}

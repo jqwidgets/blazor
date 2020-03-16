@@ -1,0 +1,300 @@
+{
+    "widget": {
+        "name": "jqxNavBar",
+        "description": "Is Built from UL and LI tags and can be used for creating responsive horizontal/vertical layouts or simple navigation menus.",
+        "angular2": {
+            "name": "jqxNavBarComponent",
+            "selector": "jqxNavBar"
+        }
+    },
+    "dataTypes": [
+        {
+            "name": "NavBarMinimizeButtonPosition",
+            "ts_dataType": "enum",
+            "enumOptions": [ "left", "right" ]
+        },
+        {
+            "name": "NavBarOrientation",
+            "ts_dataType": "enum",
+            "enumOptions": [ "vertical", "horizontal" ]
+        }
+    ],
+    "exampleExtraTemplate": "<ul>\n      <li>1</li>\n      <li>2</li>\n      <li>3</li>\n    </ul>",
+    "exampleInit": {
+        "width": "'90%'",
+        "height": "50"
+    },
+    "properties": [
+        {
+            "name": "columns",
+            "defaultValue": "[]",
+            "description": "<P>Defines the layout of the widget's elements. Each Array item should be a Percentage Value and the total should be \"100%\". </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>columns</CODE> property. </P>\n<PRE><CODE>$(\"#jqxNavBar\").jqxNavBar({ columns: ['30%', '70%'});</CODE></PRE>\n\r\n<P>Get the <CODE>columns</CODE> property. </P>\n<PRE><CODE>var columns = $('#jqxNavBar').jqxNavBar('columns');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/fh7wpo7a/",
+            "exampleDescription": "columns is set to ['30%', '40%', '30%']",
+            "dataType": "Array",
+            "ts_dataType": "Array<string>",
+            "exampleInit": {
+                "columns": "columns",
+                "exampleData": "['30%', '40%', '30%']"
+            }
+        },
+        {
+            "name": "disabled",
+            "defaultValue": "false",
+            "description": "<P>Enables/disables the navbar. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>disabled</CODE> property. </P>\n<PRE><CODE>$(\"#jqxNavBar\").jqxNavBar({ disabled: false });</CODE></PRE>\n\r\n<P>Get the <CODE>disabled</CODE> property. </P>\n<PRE><CODE>var disabled = $('#jqxNavBar').jqxNavBar('disabled');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/ymvnb1uk/",
+            "exampleDescription": "disabled is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "disabled": "true"
+            }
+        },
+        {
+            "name": "height",
+            "defaultValue": "null",
+            "description": "<P>Sets or gets the NavBar's height. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>height</CODE> property. </P>\n<PRE><CODE>$(\"#jqxNavBar\").jqxNavBar({ height: 30 });</CODE></PRE>\n\r\n<P>Get the <CODE>height</CODE> property. </P>\n<PRE><CODE>var height = $('#jqxNavBar').jqxNavBar('height');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/3hr03zcm/",
+            "exampleDescription": "height is set to 40",
+            "dataType": "number",
+            "ts_dataType": "string | number"
+        },
+        {
+            "name": "minimized",
+            "defaultValue": "false",
+            "description": "<P>Defines whether the NavBar is minimized. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>minimized</CODE> property. </P>\n<PRE><CODE>$(\"#jqxNavBar\").jqxNavBar({ minimized: true);</CODE></PRE>\n\r\n<P>Get the <CODE>minimized</CODE> property. </P>\n<PRE><CODE>var minimized = $('#jqxNavBar').jqxNavBar('minimized');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/gt3cp95w/",
+            "exampleDescription": "minimized is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "minimized": "true"
+            }
+        },
+        {
+            "name": "minimizeButtonPosition",
+            "defaultValue": "'left'",
+            "description": "<P>Defines the position of the Toggle Button in the minimized state. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>minimizeButtonPosition</CODE> property. </P>\n<PRE><CODE>$(\"#jqxNavBar\").jqxNavBar({ minimizeButtonPosition: \"right\");</CODE></PRE>\n\r\n<P>Get the <CODE>minimizeButtonPosition</CODE> property. </P>\n<PRE><CODE>var minimizeButtonPosition = $('#jqxNavBar').jqxNavBar('minimizeButtonPosition');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/f4wv2hsj/",
+            "exampleDescription": "minimizeButtonPosition is set to \"right\"",
+            "dataType": "string",
+            "ts_dataType": "enum:NavBarMinimizeButtonPosition",
+            "exampleInit": {
+                "minimized": "true",
+                "minimizeButtonPosition": "right"
+            }
+        },
+        {
+            "name": "minimizedHeight",
+            "defaultValue": "30",
+            "description": "<P>Defines the NavBar's height in minimized state. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>minimizedHeight</CODE> property. </P>\n<PRE><CODE>$(\"#jqxNavBar\").jqxNavBar({ minimizedHeight: 40);</CODE></PRE>\n\r\n<P>Get the <CODE>minimizedHeight</CODE> property. </P>\n<PRE><CODE>var minimizedHeight = $('#jqxNavBar').jqxNavBar('minimizedHeight');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/toev1mh9/",
+            "exampleDescription": "minimizedHeight is set to 40",
+            "dataType": "number",
+            "ts_dataType": "number | string",
+            "exampleInit": {
+                "minimized": "true",
+                "minimizedHeight": "40"
+            }
+        },
+        {
+            "name": "minimizedTitle",
+            "defaultValue": "\"\"",
+            "description": "<P>Defines the NavBar's Title in minimized state. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>minimizedTitle</CODE> property. </P>\n<PRE><CODE>$(\"#jqxNavBar\").jqxNavBar({ minimizedTitle: 'Title');</CODE></PRE>\n\r\n<P>Get the <CODE>minimizedTitle</CODE> property. </P>\n<PRE><CODE>var minimizedTitle = $('#jqxNavBar').jqxNavBar('minimizedTitle');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/wm40g9bj/",
+            "exampleDescription": "minimizedTitle is set to custom element.",
+            "dataType": "string",
+            "ts_dataType": "number | string",
+            "exampleInit": {
+                "minimized": "true",
+                "minimizedTitle": "custom element"
+            }
+        },
+        {
+            "name": "orientation",
+            "defaultValue": "\"horizontal\"",
+            "description": "<P>Defines the NavBar's orientation. Possible values: \"horizontal\", \"vertical\". </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>orientation</CODE> property. </P>\n<PRE><CODE>$(\"#jqxNavBar\").jqxNavBar({ orientation: 'vertical');</CODE></PRE>\n\r\n<P>Get the <CODE>orientation</CODE> property. </P>\n<PRE><CODE>var orientation = $('#jqxNavBar').jqxNavBar('orientation');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/kx87dw55/",
+            "exampleDescription": "orientation is set to \"vertical\".",
+            "dataType": "string",
+            "ts_dataType": "enum:NavBarOrientation",
+            "exampleInit": {
+                "orientation": "vertical"
+            }
+        },
+        {
+            "name": "popupAnimationDelay",
+            "defaultValue": "250",
+            "description": "<P>Defines the animation speed of the NavBar's Popup in minimized state. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>popupAnimationDelay</CODE> property. </P>\n<PRE><CODE>$(\"#jqxNavBar\").jqxNavBar({ popupAnimationDelay: 400);</CODE></PRE>\n\r\n<P>Get the <CODE>minimized</CODE> property. </P>\n<PRE><CODE>var popupAnimationDelay = $('#jqxNavBar').jqxNavBar('popupAnimationDelay');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/se8fowet/",
+            "exampleDescription": "popupAnimationDelay is set to 400",
+            "dataType": "number",
+            "exampleInit": {
+                "minimized": "true",
+                "popupAnimationDelay": "400"
+            }
+        },
+        {
+            "name": "rtl",
+            "defaultValue": "false",
+            "description": "<P>Sets or gets a value indicating whether widget's elements are aligned to support locales using right-to-left fonts. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>rtl</CODE> property. </P>\n<PRE><CODE>$(\"#jqxNavBar\").jqxNavBar({ rtl: false});</CODE></PRE>\n\r\n<P>Get the <CODE>rtl</CODE> property. </P>\n<PRE><CODE>var rtl = $('#jqxNavBar').jqxNavBar('rtl');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/jb6tfjnm/",
+            "exampleDescription": "rtl is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "rtl": "true"
+            }
+        },
+        {
+            "name": "selection",
+            "defaultValue": "true",
+            "description": "<P>Sets or gets whether the items can be selected. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>selection</CODE> property. </P>\n<PRE><CODE>$(\"#jqxNavBar\").jqxNavBar({ selection: false });</CODE></PRE>\n\r\n<P>Get the <CODE>selection</CODE> property. </P>\n<PRE><CODE>var selection = $('#jqxNavBar').jqxNavBar('selection');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/04ezy8p5/",
+            "exampleDescription": "selection is set to false",
+            "dataType": "boolean",
+            "exampleInit": {
+                "selection": "false"
+            }
+        },
+        {
+            "name": "selectedItem",
+            "defaultValue": "0",
+            "description": "<P>Sets or gets the selected item. The property is taken into account when <CODE>selection</CODE> is true. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>selectedItem</CODE> property. </P>\n<PRE><CODE>$(\"#jqxNavBar\").jqxNavBar({ selectedItem: 0 });</CODE></PRE>\n\r\n<P>Get the <CODE>selectedItem</CODE> property. </P>\n<PRE><CODE>var selectedItem = $('#jqxNavBar').jqxNavBar('selectedItem');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/pbrh1m6y/",
+            "exampleDescription": "selectedItem is set to 1",
+            "dataType": "number",
+            "ts_dataType": "number | string",
+            "exampleInit": {
+                "selectedItem": "1"
+            }
+        },
+        {
+            "name": "theme",
+            "defaultValue": "''",
+            "description": "<P>Sets the widget's theme. </P>\n\r\n<UL><LI>Include the theme's CSS file after jqx.base.css.<BR>The following code example adds the 'material' theme. <PRE><CODE>&lt;link rel=\"stylesheet\" href=\"../../jqwidgets/styles/jqx.base.css\"type=\"text/css\"/&gt;\r\n&lt;link rel=\"stylesheet\" href=\"../../jqwidgets/styles/jqx.material.css\" type=\"text/css\" /&gt;</CODE></PRE>\r\n<LI>Set the widget's theme property to 'material' when you initialize it.</UL>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/768archp/",
+            "exampleDescription": "theme is set to 'material'",
+            "dataType": "string",
+            "exampleInit": {
+                "theme": "material"
+            }
+        },
+        {
+            "name": "width",
+            "defaultValue": "'100%'",
+            "description": "<P>Sets or gets the NavBar's width. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>width</CODE> property. </P>\n<PRE><CODE>$(\"#jqxNavBar\").jqxNavBar({ width: '90%' });</CODE></PRE>\n\r\n<P>Get the <CODE>width</CODE> property. </P>\n<PRE><CODE>var width = $('#jqxNavBar').jqxNavBar('width');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/2pq9rvk0/",
+            "exampleDescription": "width is set to '90%'",
+            "dataType": "number",
+            "ts_dataType": "string | number"
+        }
+    ],
+    "events": [
+        {
+            "name": "change",
+            "description": "<P>This event is triggered when the user selects an item. </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>change</CODE> event by type: jqxNavBar. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/4j8cvhso/",
+            "exampleDescription": "Bind to the change event by type: jqxNavBar.",
+            "example": "<PRE><CODE>$('#jqxNavBar').on('change', function () { // Some code here. }); </CODE></PRE>"
+        }
+    ],
+    "methods": [
+        {
+            "name": "close",
+            "description": "<P>When NavBar is minimized, closes the popup. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>close</CODE> method. </P>\n<PRE><CODE>$(\"#jqxNavBar\").jqxNavBar('close'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/eyxc62h5/",
+            "exampleDescription": "closes the popup of minimized NavBar.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;JqxNavBar ref=\"myNavBar\"\n          :width=\"'90%'\" :height=\"50\" :minimized=\"true\">\n      &lt;ul>\n        &lt;li>1&lt;/li>\n        &lt;li>2&lt;/li>\n        &lt;li>3&lt;/li>\n      &lt;/ul>\n    &lt;/JqxNavBar>\n    &lt;JqxButton class=\"button\" @click=\"open\">Open&lt;/JqxButton>\n    &lt;JqxButton class=\"button\" @click=\"close\">Close&lt;/JqxButton>\n  &lt;/div>\n&lt;/template>\n\n&lt;script>\n  import JqxNavBar from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxnavbar.vue';\n  import JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\n\n  export default {\n    components: {\n      JqxNavBar,\n      JqxButton\n    },\n    methods: {\n      open: function () {\n        this.$refs.myNavBar.open();\n      },\n      close: function () {\n        this.$refs.myNavBar.close();\n      }\n    }\n  }\n&lt;/script>\n&lt;style>\n  .button {\n    display: inline-block;\n    margin-top: 80px;\n    margin-right: 20px;\n  }\n&lt;/style>"
+            }
+        },
+        {
+            "name": "destroy",
+            "description": "<P>Destroys the jqxNavBar widget. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>destroy</CODE> method. </P>\n<PRE><CODE>$('#jqxNavBar').jqxNavBar('destroy'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/g0h9x1tL/",
+            "exampleDescription": "destroys the jqxNavBar.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "getSelectedIndex",
+            "description": "<P>Gets the index of the selected item. The returned value is the index of the selected item. If there's no selected item, -1 is returned. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>getSelectedIndex</CODE> method. </P>\n<P>// @param number </P>\n<PRE><CODE>var index = $(\"#jqxNavBar\").jqxNavBar('getSelectedIndex'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/3t2t04y8/",
+            "exampleDescription": "returns the selected item's index and displays it",
+            "returnDataType": "number",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "open",
+            "description": "<P>When NavBar is minimized, opens the popup. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>open</CODE> method. </P>\n<PRE><CODE>$(\"#jqxNavBar\").jqxNavBar('open'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/egaqu8p0/",
+            "exampleDescription": "opens the popup of minimized NavBar.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;JqxNavBar ref=\"myNavBar\"\n          :width=\"'90%'\" :height=\"50\" :minimized=\"true\">\n      &lt;ul>\n        &lt;li>1&lt;/li>\n        &lt;li>2&lt;/li>\n        &lt;li>3&lt;/li>\n      &lt;/ul>\n    &lt;/JqxNavBar>\n    &lt;JqxButton class=\"button\" @click=\"open\">Open&lt;/JqxButton>\n    &lt;JqxButton class=\"button\" @click=\"close\">Close&lt;/JqxButton>\n  &lt;/div>\n&lt;/template>\n\n&lt;script>\n  import JqxNavBar from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxnavbar.vue';\n  import JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\n\n  export default {\n    components: {\n      JqxNavBar,\n      JqxButton\n    },\n    methods: {\n      open: function () {\n        this.$refs.myNavBar.open();\n      },\n      close: function () {\n        this.$refs.myNavBar.close();\n      }\n    }\n  }\n&lt;/script>\n&lt;style>\n  .button {\n    display: inline-block;\n    margin-top: 80px;\n    margin-right: 20px;\n  }\n&lt;/style>"
+            }
+        },
+        {
+            "name": "selectAt",
+            "description": "<P>Selects the item with indicated index. Index is a number. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>selectAt</CODE> method. </P>\n<P>// @param index - number </P>\n<PRE><CODE>$('#jqxNavBar').jqxNavBar('selectAt', 1); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/chw01tqh/",
+            "exampleDescription": "selects item in the jqxNavBar",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "index",
+                    "dataType": "number",
+                    "ts_dataType": "number | string",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "1" ]
+            }
+        }
+    ]
+}

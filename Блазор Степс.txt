@@ -1,0 +1,7 @@
+#Install .NET Core SDK https://dotnet.microsoft.com/download/dotnet-core/3.1
+
+2. Install Blazor Default Templates ->dotnet new --install Microsoft.AspNetCore.Blazor.Templates::3.2.0-preview1.20073.1
+
+dotnet new blazorwasm -o blazor-web
+
+dotnet watch run

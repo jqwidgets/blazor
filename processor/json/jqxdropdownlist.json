@@ -1,0 +1,1395 @@
+{
+    "widget": {
+        "name": "jqxDropDownList",
+        "description": "Contains a list of selectable items displayed in a drop-down.",
+        "angular2": {
+            "name": "jqxDropDownListComponent",
+            "selector": "jqxDropDownList"
+        }
+    },
+    "dataTypes": [
+        {
+            "name": "DropDownListHorizontalAlignment",
+            "ts_dataType": "enum",
+            "enumOptions": [ "left", "right" ]
+        },
+        {
+            "name": "DropDownListVerticalAlignment",
+            "ts_dataType": "enum",
+            "enumOptions": [ "bottom", "top" ]
+        },
+        {
+            "name": "DropDownListAnimationType",
+            "ts_dataType": "enum",
+            "enumOptions": [ "none", "slide", "fade" ]
+        },
+        {
+            "name": "DropDownListSearchMode",
+            "ts_dataType": "enum",
+            "enumOptions": [ "none", "contains", "containsignorecase", "equals", "equalsignorecase", "startswithignorecase", "startswith", "endswithignorecase", "endswith" ]
+        },
+        {
+            "name": "DropDownListItem",
+            "ts_dataType": "interface",
+            "properties": [
+                {
+                    "name": "label",
+                    "dataType": "string",
+                    "optional": "true",
+                    "displayName": "Label",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "value",
+                    "ts_dataType": "any",
+                    "optional": "true",
+                    "displayName": "Value",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "disabled",
+                    "dataType": "boolean",
+                    "optional": "true",
+                    "displayName": "Disabled",
+                    "defaultValue": "false"
+                },
+                {
+                    "name": "checked",
+                    "ts_dataType": "any",
+                    "optional": "true",
+                    "displayName": "Checked",
+                    "defaultValue": "false"
+                },
+                {
+                    "name": "hasThreeStates",
+                    "dataType": "boolean",
+                    "optional": "true",
+                    "displayName": "Has three state checkboxes",
+                    "defaultValue": "false"
+                },
+                {
+                    "name": "html",
+                    "dataType": "string",
+                    "optional": "true",
+                    "displayName": "HTML content",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "group",
+                    "dataType": "string",
+                    "optional": "true",
+                    "displayName": "List group",
+                    "defaultValue": ""
+                }
+            ]
+        },
+        {
+            "name": "DropDownListRenderer",
+            "ts_dataType": "interface",
+            "properties": [
+                {
+                    "name": "index",
+                    "dataType": "number",
+                    "optional": "true",
+                    "displayName": "Index",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "label",
+                    "dataType": "string",
+                    "optional": "true",
+                    "displayName": "Label",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "value",
+                    "dataType": "string",
+                    "optional": "true",
+                    "displayName": "Value",
+                    "defaultValue": "false"
+                }
+            ]
+        },
+        {
+            "name": "DropDownListSelectionRenderer",
+            "ts_dataType": "interface",
+            "properties": [
+                {
+                    "name": "element",
+                    "dataType": "object",
+                    "optional": "true",
+                    "displayName": "element",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "index",
+                    "dataType": "number",
+                    "optional": "true",
+                    "displayName": "index",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "label",
+                    "dataType": "string",
+                    "optional": "true",
+                    "displayName": "label",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "value",
+                    "dataType": "any",
+                    "optional": "true",
+                    "displayName": "value",
+                    "defaultValue": ""
+                }
+            ]
+        }
+    ],
+    "exampleInit": {
+        "width": "200",
+        "height": "25",
+        "source": "source",
+        "selectedIndex": "4"
+    },
+    "exampledInitExtraData": {
+        "properties": "source: [\n          'Affogato',\n          'Americano',\n          'Bicerin',\n          'Breve',\n          'Cappuccino',\n          'Espresso',\n          'Frappuccino',\n          'Iced Coffee?',\n          'Irish coffee',\n          'Liqueur coffee'\n        ]",
+        "beforeCreate": "",
+        "mounted": "",
+        "methods": ""
+    },
+    "properties": [
+        {
+            "name": "autoOpen",
+            "defaultValue": "false",
+            "description": "<P>Sets or gets whether the DropDown is automatically opened when the mouse cursor is moved over the widget. </P>",
+            "example": "<pre><CODE>$(\"#jqxDropDownList\").jqxDropDownList({ autoOpen: true });\r\n                        </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/S5RcC/",
+            "exampleDescription": "autoOpen is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "autoOpen": "true"
+            }
+        },
+        {
+            "name": "autoDropDownHeight",
+            "defaultValue": "false",
+            "description": "<P>Sets or gets whether the height of the jqxDropDownList's ListBox displayed in the widget's DropDown is calculated as a sum of the items heights. </P>",
+            "example": "<pre><CODE>$(\"#jqxDropDownList\").jqxDropDownList({autoDropDownHeight: true}); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/GH4cN/",
+            "exampleDescription": "autoDropDownHeight is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "autoDropDownHeight": "true"
+            }
+        },
+        {
+            "name": "animationType",
+            "defaultValue": "'slide'",
+            "description": "<P>Sets or gets the type of the animation. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'fade'</CODE></PRE>\n<PRE><CODE>'slide'</CODE></PRE>\n<PRE><CODE>'none'</CODE></PRE>",
+            "example": "<pre><CODE>$('#jqxDropDownList').jqxDropDownList({animationType: 'none'});\r\n                        </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/snQLr/",
+            "exampleDescription": "animationType is set to 'fade'",
+            "dataType": "string",
+            "ts_dataType": "enum:DropDownListAnimationType",
+            "exampleInit": {
+                "animationType": "fade"
+            }
+        },
+        {
+            "name": "checkboxes",
+            "defaultValue": "false",
+            "description": "<P>Determines whether checkboxes will be displayed next to the list items.</P>",
+            "example": "<pre><CODE>$(\"#jqxDropDownList\").jqxDropDownList({checkboxes:true}); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/CLB86/",
+            "exampleDescription": "checkboxes is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "checkboxes": "true"
+            }
+        },
+        {
+            "name": "closeDelay",
+            "defaultValue": "400",
+            "description": "<P>Sets or gets the delay of the 'close' animation. </P>",
+            "example": "<pre><CODE>$('#jqxDropDownList').jqxDropDownList({closeDelay: 200});\r\n                        </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/JEfw2/",
+            "exampleDescription": "closeDelay is set to 800",
+            "dataType": "number",
+            "exampleInit": {
+                "closeDelay": "800"
+            }
+        },
+        {
+            "name": "disabled",
+            "defaultValue": "false",
+            "description": "<P>Enables/disables the jqxDropDownList. </P>",
+            "example": "<pre><CODE>$(\"#jqxDropDownList\").jqxDropDownList({ disabled: true }); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/GLjm8/",
+            "exampleDescription": "disabled is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "disabled": "true"
+            }
+        },
+        {
+            "name": "displayMember",
+            "defaultValue": "\"\"",
+            "description": "<P>Sets or gets the displayMember of the Items. The displayMember specifies the name of an object property to display. The name is contained in the collection specified by the 'source' property. </P>",
+            "example": "<pre><CODE>$(\"#jqxDropDownList\").jqxDropDownList({displayMember: 'firstName'});</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/CHPax/",
+            "exampleDescription": "displayMember is set to 'text'",
+            "dataType": "string",
+            "customExample": {
+                "codeType": "custom",
+                "code": "&lt;template>\n    &lt;JqxDropDownList ref=\"myDropDownList\"\n        :width=\"200\" :height=\"25\" :source=\"source\" :selectedIndex=\"4\" \n        :valueMember=\"'value'\" :displayMember=\"'label'\" \n    />\n&lt;/template>\n\n&lt;script>\n    import JqxDropDownList from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxdropdownlist.vue';\n\n    export default {\n        components: {\n            JqxDropDownList\n        },\n        data: function () {\n            return {\n                source: [\n                    { label: 'Affogato', value: 0 },\n                    { label: 'Americano', value: 1 },\n                    { label: 'Bicerin', value: 2 },\n                    { label: 'Breve', value: 3 },\n                    { label: 'Cafe Bombon', value: 4 },\n                    { label: 'Cafe mocha', value: 5 },\n                    { label: 'Caffe Latte', value: 6 }\n                ]\n            }\n        }\n    }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "dropDownHorizontalAlignment",
+            "defaultValue": "'left'",
+            "description": "<P>Sets or gets the DropDown's alignment. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'left'</CODE></PRE>\n<PRE><CODE>'right'</CODE></PRE>",
+            "example": "<pre><CODE>$('#jqxDropDownList').jqxDropDownList({ dropDownHorizontalAlignment: 'right'}); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/8GGjT/",
+            "exampleDescription": "dropDownHorizontalAlignment is set to 'right'",
+            "dataType": "string",
+            "ts_dataType": "enum:DropDownListHorizontalAlignment",
+            "exampleInit": {
+                "dropDownHorizontalAlignment": "right"
+            }
+        },
+        {
+            "name": "dropDownVerticalAlignment",
+            "defaultValue": "'bottom'",
+            "description": "<P>Sets or gets the DropDown's alignment. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'top'</CODE></PRE>\n<PRE><CODE>'bottom'</CODE></PRE>",
+            "example": "<pre><CODE>$('#jqxDropDownList').jqxDropDownList({ dropDownVerticalAlignment: 'top'}); </CODE></pre>",
+            "exampleURL": "http://http://jsfiddle.net/jqwidgets/z6ex9buv/",
+            "exampleDescription": "dropDownHorizontalAlignment is set to 'top'",
+            "dataType": "string",
+            "ts_dataType": "enum:DropDownListVerticalAlignment",
+            "exampleInit": {
+                "dropDownVerticalAlignment": "bottom"
+            }
+        },
+        {
+            "name": "dropDownHeight",
+            "defaultValue": "200",
+            "description": "<P>Sets or gets the height of the jqxDropDownList's ListBox displayed in the widget's DropDown. </P>",
+            "example": "<pre><CODE>$(\"#jqxDropDownList\").jqxDropDownList({dropDownHeight: 250}); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/yfMAJ/",
+            "exampleDescription": "dropDownHeight is set to 200",
+            "dataType": "number",
+            "ts_dataType": "number | string",
+            "exampleInit": {
+                "dropDownHeight": "50"
+            }
+        },
+        {
+            "name": "dropDownWidth",
+            "defaultValue": "200",
+            "description": "<P>Sets or gets the width of the jqxDropDownList's ListBox displayed in the widget's DropDown. </P>",
+            "example": "<pre><CODE>$(\"#jqxDropDownList\").jqxDropDownList({dropDownWidth: 250}); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/aL9be/",
+            "exampleDescription": "dropDownWidth is set to 210",
+            "dataType": "number",
+            "ts_dataType": "number | string",
+            "exampleInit": {
+                "dropDownWidth": "300"
+            }
+        },
+        {
+            "name": "enableSelection",
+            "defaultValue": "true",
+            "description": "<P>Enables/disables the selection. </P>",
+            "example": "<pre><CODE>$(\"#jqxDropDownList\").jqxDropDownList({enableSelection:false}); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/SaBGE/",
+            "exampleDescription": "enableSelection is set to false",
+            "dataType": "boolean",
+            "exampleInit": {
+                "enableSelection": "false"
+            }
+        },
+        {
+            "name": "enableBrowserBoundsDetection",
+            "defaultValue": "false",
+            "description": "<P>Sets or gets whether the dropdown detects the browser window's bounds and automatically adjusts the dropdown's position. </P>",
+            "example": "<pre><CODE>$(\"#jqxDropDownList\").jqxDropDownList({enableBrowserBoundsDetection:false}); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/pjEYJ/",
+            "exampleDescription": "enableBrowserBoundsDetection is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "enableBrowserBoundsDetection": "true"
+            }
+        },
+        {
+            "name": "enableHover",
+            "defaultValue": "true",
+            "description": "<P>Enables/disables the hover state. </P>",
+            "example": "<pre><CODE>$(\"#jqxDropDownList\").jqxDropDownList({enableHover: false}); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/mReYg/",
+            "exampleDescription": "enableHover is set to false",
+            "dataType": "boolean",
+            "exampleInit": {
+                "enableHover": "false"
+            }
+        },
+        {
+            "name": "filterable",
+            "defaultValue": "false",
+            "description": "<P>Determines whether the Filtering is enabled. </P>",
+            "example": "<pre><CODE>$(\"#jqxDropDownList\").jqxDropDownList({filterable:true}); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/ph5S6/",
+            "exampleDescription": "filterable is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "filterable": "true"
+            }
+        },
+        {
+            "name": "filterHeight",
+            "defaultValue": "27",
+            "description": "<P>Determines the Filter's height. </P>",
+            "example": "<pre><CODE>$(\"#jqxDropDownList\").jqxDropDownList({filterHeight:30}); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/RnpYb/",
+            "exampleDescription": "filterHeight is set to 30",
+            "dataType": "number",
+            "exampleInit": {
+                "filterHeight": "40",
+                "filterable": "true"
+            }
+        },
+        {
+            "name": "filterDelay",
+            "defaultValue": "100",
+            "description": "<P>Determines the Filter's delay. After 100 milliseconds, the widget automatically filters its data based on the filter input's value. To perform filter only on \"Enter\" key press, set this property to 0. </P>",
+            "example": "<pre><CODE>$(\"#jqxDropDownList\").jqxDropDownList({filterDelay:300}); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/PT988/",
+            "exampleDescription": "filterDelay is set to 300",
+            "dataType": "number",
+            "exampleInit": {
+                "filterDelay": "200",
+                "filterable": "true"
+            }
+        },
+        {
+            "name": "filterPlaceHolder",
+            "defaultValue": "\"Looking for\"",
+            "description": "<P>Determines the Filter input's place holder. </P>",
+            "example": "<pre><CODE>$(\"#jqxDropDownList\").jqxDropDownList({filterPlaceHolder:300}); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/GY7LM/",
+            "exampleDescription": "filterPlaceHolder is set to \"Filtering...\"",
+            "dataType": "string",
+            "exampleInit": {
+                "filterable": "true",
+                "filterPlaceHolder": "Filtering..."
+            }
+        },
+        {
+            "name": "height",
+            "defaultValue": "null",
+            "description": "<P>Sets or gets the jqxDropDownList's height. </P>",
+            "example": "<pre><CODE>$(\"#jqxDropDownList\").jqxDropDownList({  height: '250px' });\r\n                        </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/hYM69/",
+            "exampleDescription": "height is set to 20",
+            "dataType": "number",
+            "ts_dataType": "number | string"
+        },
+        {
+            "name": "incrementalSearch",
+            "defaultValue": "true",
+            "description": "<P>Sets or gets the incrementalSearch property. An incremental search begins searching as soon as you type the first character of the search string. As you type in the search string, jqxDropDownList automatically selects the found item. Focus the widget and start typing. </P>",
+            "example": "<pre><CODE>$(\"#jqxDropDownList\").jqxDropDownList({incrementalSearch: false});</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/LQEmK/",
+            "exampleDescription": "incrementalSearch is set to false",
+            "dataType": "boolean",
+            "exampleInit": {
+                "incrementalSearch": "true"
+            }
+        },
+        {
+            "name": "incrementalSearchDelay",
+            "defaultValue": "700",
+            "description": "<P>Sets or gets the incrementalSearchDelay property. The incrementalSearchDelay specifies the time-interval in milliseconds after which the previous search string is deleted. The timer starts when you stop typing. Focus the widget and start typing.</P>",
+            "example": "<pre><CODE>$(\"#jqxDropDownList\").jqxDropDownList({incrementalSearchDelay: 400});</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/k9Mxj/",
+            "exampleDescription": "incrementalSearchDelay is set to 100",
+            "dataType": "number",
+            "exampleInit": {
+                "incrementalSearchDelay": "200",
+                "incrementalSearch": "true"
+            }
+        },
+        {
+            "name": "itemHeight",
+            "defaultValue": "-1",
+            "description": "<P>Sets or gets the height of the jqxDropDownList Items. When the itemHeight == - 1, each item's height is equal to its desired height. </P>",
+            "example": "<pre><CODE>$(\"#jqxDropDownList\").jqxDropDownList({itemHeight: 25}); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/uY2fK/",
+            "exampleDescription": "itemHeight is set to 30",
+            "dataType": "number",
+            "ts_dataType": "number",
+            "exampleInit": {
+                "itemHeight": "30"
+            }
+        },
+        {
+            "name": "openDelay",
+            "defaultValue": "350",
+            "description": "<P>Sets or gets the delay of the 'open' animation. </P>",
+            "example": "<pre><CODE>$('#jqxDropDownList').jqxDropDownList({openDelay: 200});\r\n                        </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/Y6EPt/",
+            "exampleDescription": "openDelay is set to 2000",
+            "dataType": "number",
+            "exampleInit": {
+                "openDelay": "2000"
+            }
+        },
+        {
+            "name": "placeHolder",
+            "defaultValue": "\"Please Choose:\"",
+            "description": "<P>Text displayed when the selection is empty. </P>",
+            "example": "<pre><CODE>$(\"#jqxDropDownList\").jqxDropDownList({placeHolder: \"Select:\"}); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/7UBGc/",
+            "exampleDescription": "promptText is set to 'Select'",
+            "dataType": "string",
+            "exampleInit": {
+                "placeHolder": "I am a placeholder !",
+                "selectedIndex": "null"
+            }
+        },
+        {
+            "name": "popupZIndex",
+            "defaultValue": "20000",
+            "description": "<P>Sets or gets the popup's z-index. </P>",
+            "example": "<pre><CODE>$(\"#jqxDropDownList\").jqxDropDownList({popupZIndex: 999999});</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/mrb6Y/",
+            "exampleDescription": "popupZIndex is set to 9999",
+            "dataType": "number",
+            "exampleInit": {
+                "popupZIndex": "20000"
+            }
+        },
+        {
+            "name": "rtl",
+            "defaultValue": "false",
+            "description": "<P>Sets or gets a value indicating whether widget's elements are aligned to support locales using right-to-left fonts.</P>",
+            "example": "<pre><CODE>$('#jqxDropDownList').jqxDropDownList({rtl : true}); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/FCTMQ/",
+            "exampleDescription": "rtl is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "rtl": "true"
+            }
+        },
+        {
+            "name": "renderer",
+            "defaultValue": "null",
+            "description": "<P>Callback function which is called when an item is rendered. By using the renderer function, you can customize the look of the list items. </P>",
+            "example": "<pre><CODE>$('#jqxDropDownList').jqxDropDownList({renderer: function (index, label, value) \r\n{\r\n    var datarecord = data[index];\r\n    return datarecord.firstname + \" \" + datarecord.lastname;\r\n}\r\n});\r\n                        </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/GGPFp/",
+            "exampleDescription": "renderer is set to a custom rendering function",
+            "dataType": "Function",
+            "ts_dataType": "(index?: DropDownListRenderer['index'], label?: DropDownListRenderer['label'], value?: DropDownListRenderer['value']) => string",
+            "exampleInit": {
+                "renderer": "renderer",
+                "exampleData": "return index + ' ' + label;"
+            }
+        },
+        {
+            "name": "selectionRenderer",
+            "defaultValue": "null",
+            "description": "<P>Callback function which is called when the selected item is rendered in the jqxDropDownList's content area. By using the selectionRenderer function, you can customize the look of the selected item. </P>",
+            "example": "<pre><CODE>$('#jqxDropDownList').jqxDropDownList({selectionRenderer: function (htmlString) \r\n{\r\n    return \"My string\";\r\n}\r\n});\r\n                        </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/9Kt5r/",
+            "exampleDescription": "selectionRenderer is set to a custom rendering function",
+            "dataType": "Function",
+            "ts_dataType": "(element?: DropDownListSelectionRenderer['element'], index?: DropDownListSelectionRenderer['index'], label?: DropDownListSelectionRenderer['label'], value?: DropDownListSelectionRenderer['value']) => string",
+            "exampleInit": {
+                "selectionRenderer": "selectionRenderer",
+                "exampleData": "return 'My String';"
+            }
+        },
+        {
+            "name": "searchMode",
+            "defaultValue": "startswith",
+            "description": "<P>Sets or gets the item incremental search mode. When the user types some text in a focused DropDownList, the jqxListBox widget tries to find the searched item using the entered text and the selected search mode. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'none'</CODE></PRE>\n<PRE><CODE>'contains'</CODE></PRE>\n<PRE><CODE>'containsignorecase'</CODE></PRE>\n<PRE><CODE>'equals'</CODE></PRE>\n<PRE><CODE>'equalsignorecase'</CODE></PRE>\n<PRE><CODE>'startswithignorecase'</CODE></PRE>\n<PRE><CODE>'startswith'</CODE></PRE>\n<PRE><CODE>'endswithignorecase'</CODE></PRE>\n<PRE><CODE>'endswith'</CODE></PRE>",
+            "example": "<pre><CODE>$(\"#jqxDropDownList\").jqxDropDownList({searchMode: 'contains' }); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/75QYe/",
+            "exampleDescription": "searchMode is set to 'startswith'",
+            "dataType": "string",
+            "ts_dataType": "enum:DropDownListSearchMode",
+            "exampleInit": {
+                "searchMode": "startswith"
+            }
+        },
+        {
+            "name": "source",
+            "defaultValue": "null",
+            "description": "<P>Sets or gets the items source. </P>",
+            "example": "<pre><CODE>var data = [</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/hwJAs/",
+            "exampleDescription": "source is set to source",
+            "dataType": "array | object",
+            "ts_dataType": "Array<any>"
+        },
+        {
+            "name": "selectedIndex",
+            "defaultValue": "-1",
+            "description": "<P>Sets or gets the selected index. </P>",
+            "example": "<pre><CODE>$(\"#jqxDropDownList\").jqxDropDownList({selectedIndex: 2 }); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/7BbLk/",
+            "exampleDescription": "selectedIndex is set to 3",
+            "dataType": "number",
+            "exampleInit": {
+                "selectedIndex": "1"
+            }
+        },
+        {
+            "name": "theme",
+            "defaultValue": "''",
+            "description": "<P>Sets the widget's theme. Include the desired theme CSS file after 'jqx.base.css' file.</P>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/4KVKf/",
+            "exampleDescription": "theme is set to 'material'",
+            "dataType": "string",
+            "exampleInit": {
+                "theme": "material"
+            }
+        },
+        {
+            "name": "template",
+            "defaultValue": "''",
+            "description": "",
+            "example": "",
+            "exampleURL": "",
+            "exampleDescription": "",
+            "dataType": "string",
+            "exampleInit": {
+                "template": "success"
+            }
+        },
+        {
+            "name": "valueMember",
+            "defaultValue": "\"\"",
+            "description": "<P>Sets or gets the valueMember of the Items. The valueMember specifies the name of an object property to set as a 'value' of the list items. The name is contained in the collection specified by the 'source' property. </P>",
+            "example": "<pre><CODE>$(\"#jqxDropDownList\").jqxDropDownList({valueMember: 'lastName'});</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/tbgGe/",
+            "exampleDescription": "valueMember is set to 'value'",
+            "dataType": "string",
+            "customExample": {
+                "codeType": "custom",
+                "code": "&lt;template>\n    &lt;JqxDropDownList ref=\"myDropDownList\"\n        :width=\"200\" :height=\"25\" :source=\"source\" :selectedIndex=\"4\" \n        :valueMember=\"'value'\" :displayMember=\"'label'\" \n    />\n&lt;/template>\n\n&lt;script>\n    import JqxDropDownList from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxdropdownlist.vue';\n\n    export default {\n        components: {\n            JqxDropDownList\n        },\n        data: function () {\n            return {\n                source: [\n                    { label: 'Affogato', value: 0 },\n                    { label: 'Americano', value: 1 },\n                    { label: 'Bicerin', value: 2 },\n                    { label: 'Breve', value: 3 },\n                    { label: 'Cafe Bombon', value: 4 },\n                    { label: 'Cafe mocha', value: 5 },\n                    { label: 'Caffe Latte', value: 6 }\n                ]\n            }\n        }\n    }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "width",
+            "defaultValue": "null",
+            "description": "<P>Sets or gets the jqxDropDownList's width. </P>",
+            "example": "<pre><CODE>$(\"#jqxDropDownList\").jqxDropDownList({ width: '250px' });\r\n                        </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/9bc3f/",
+            "exampleDescription": "width is set to 200",
+            "dataType": "number",
+            "ts_dataType": "number | string"
+        }
+    ],
+    "events": [
+        {
+            "name": "bindingComplete",
+            "description": "<P>This event is triggered when the data binding operation is completed. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/FGGMU/",
+            "exampleDescription": "Bind to the bindingComplete event by type:jqxDropDownList",
+            "example": "<PRE><CODE>$(\"#jqxDropDownList\").on('bindingComplete', function (event) { });</CODE></PRE>",
+            "customExample": {
+                "customCode": "&lt;template>\n    &lt;JqxDropDownList ref=\"myDropDownList\" @bindingComplete=\"onBindingComplete($event)\"\n          :width=\"200\" :height=\"25\" :selectedIndex=\"4\" \n    />\n&lt;/template>\n\n&lt;script>\n    import JqxDropDownList from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxdropdownlist.vue';\n\n    export default {\n        components: {\n            JqxDropDownList\n        },\n        data: function () {\n            return {\n                source: [\n                    'Affogato',\n                    'Americano',\n                    'Bicerin',\n                    'Breve',\n                    'Cappuccino',\n                    'Espresso',\n                    'Frappuccino',\n                    'Iced Coffee?',\n                    'Irish coffee',\n                    'Liqueur coffee'\n                ]\n            }\n        },\n        mounted: function () {\n            this.$refs.myDropDownList.source = this.source;\n        },\n        methods: {\n            onBindingComplete: function (event) {\n                alert('do something...');\n            }\n        }\n    }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "close",
+            "description": "<P>This event is triggered when the popup ListBox is closed. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/WBmD9/",
+            "exampleDescription": "Bind to the close event by type:jqxDropDownList",
+            "example": "<PRE><CODE>$('#jqxDropDownList').on('close', function (event) { // Some code here. });\r\n                        </CODE></PRE>"
+        },
+        {
+            "name": "checkChange",
+            "description": "<P>This event is triggered when an item is checked/unchecked. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/hxXtt/",
+            "exampleDescription": "Bind to the checkChange event by type:jqxDropDownList",
+            "example": "<PRE><CODE>$(\"#jqxDropDownList\").on('checkChange', function (event)\r\n{\r\n    if (event.args) {\r\n    var item = event.args.item;\r\n    var value = item.value;\r\n    var label = item.label;\r\n    var checked = item.checked;\r\n    var checkedItems = $(\"#jqxDropDownList\").jqxDropDownList('getCheckedItems');\r\n}\r\n});\r\n</CODE></PRE>",
+            "exampleInit": {
+                "checkboxes": "true"
+            }
+        },
+        {
+            "name": "change",
+            "description": "<P>This event is triggered when the user selects an item. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/wBpPY/",
+            "exampleDescription": "Bind to the change event by type:jqxDropDownList",
+            "example": "<PRE><CODE>$('#jqxDropDownList').on('change', function (event)\r\n{     \r\n    var args = event.args;\r\n    if (args) {\r\n    // index represents the item's index.                      \r\n    var index = args.index;\r\n    var item = args.item;\r\n    // get item's label and value.\r\n    var label = item.label;\r\n    var value = item.value;\r\n} \r\n});\r\n                        </CODE></PRE>"
+        },
+        {
+            "name": "open",
+            "description": "<P>This event is triggered when the popup ListBox is opened. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/aXQwh/",
+            "exampleDescription": "Bind to the open event by type:jqxDropDownList",
+            "example": "<PRE><CODE>$('#jqxDropDownList').on('open', function (event) { // Some code here. }); </CODE></PRE>"
+        },
+        {
+            "name": "select",
+            "description": "<P>This event is triggered when the user selects an item. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/3UJBg/",
+            "exampleDescription": "Bind to the select event by type:jqxDropDownList",
+            "example": "<PRE><CODE>$('#jqxDropDownList').on('select', function (event)\r\n{\r\n    var args = event.args;\r\n    if (args) {\r\n    // index represents the item's index.                \r\n    var index = args.index;\r\n    var item = args.item;\r\n    // get item's label and value.\r\n    var label = item.label;\r\n    var value = item.value;\r\n}                        \r\n});\r\n                        </CODE></PRE>"
+        },
+        {
+            "name": "unselect",
+            "description": "<P>This event is triggered when the user unselects an item. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/6Qyyk/",
+            "exampleDescription": "Bind to the unselect event by type:jqxDropDownList",
+            "example": "<PRE><CODE>$('#jqxDropDownList').on('unselect', function (event)\r\n{\r\n    var args = event.args;\r\n    if (args) {\r\n    // index represents the item's index.                     \r\n    var index = args.index;\r\n    var item = args.item;\r\n    // get item's label and value.\r\n    var label = item.label;\r\n    var value = item.value;\r\n}        \r\n});\r\n                        </CODE></PRE>"
+        }
+    ],
+    "methods": [
+        {
+            "name": "addItem",
+            "description": "<P>Adds a new item to the jqxDropDownList. Returns 'true', if the new item is added or 'false' if the item is not added. </P>\n<UL><LI>label - determines the item's label. \r\n<LI>value - determines the item's value. \r\n<LI>disabled - determines whether the item is enabled/disabled. \r\n<LI>checked - determines whether item is checked/unchecked. \r\n<LI>hasThreeStates - determines whether the item's checkbox supports three states. \r\n<LI>html - determines the item's display html. This can be used instead of label. \r\n<LI>group - determines the item's group. </LI></UL>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/UxPdt/",
+            "exampleDescription": "adds an item in the jqxDropDownList",
+            "returnDataType": "None",
+            "ts_returnDataType": "boolean",
+            "arguments": [
+                {
+                    "name": "item",
+                    "dataType": "object | string",
+                    "ts_dataType": "DropDownListItem",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "'Item1'" ]
+            }
+        },
+        {
+            "name": "clearSelection",
+            "description": "<P>Clears all selected items. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/5FRxK/",
+            "exampleDescription": "clears the selection in the jqxDropDownList",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "clear",
+            "description": "<P>Clears all items. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/VFx8p/",
+            "exampleDescription": "clears all items in the jqxDropDownList",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "close",
+            "description": "<P>Hides the popup listbox. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/yuRKh/",
+            "exampleDescription": "closes the jqxDropDownList",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n    &lt;JqxDropDownList ref=\"myDropDownList\"\n                     :width=\"200\" :height=\"25\" :source=\"source\" :selectedIndex=\"4\" />\n&lt;/template>\n\n&lt;script>\n    import JqxDropDownList from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxdropdownlist.vue';\n\n    export default {\n        components: {\n            JqxDropDownList\n        },\n        data: function () {\n            return {\n                source: [\n                    'Affogato',\n                    'Americano',\n                    'Bicerin',\n                    'Breve',\n                    'Cappuccino',\n                    'Espresso',\n                    'Frappuccino',\n                    'Iced Coffee?',\n                    'Irish coffee',\n                    'Liqueur coffee'\n                ]\n            }\n        },\n        mounted: function () {\n            this.$refs.myDropDownList.open();\n\n            setTimeout(_ => this.$refs.myDropDownList.close(), 1000);            \n        }\n    }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "checkIndex",
+            "description": "<P>Checks a list item when the 'checkboxes' property value is true. The index is zero-based, i.e to check the first item, the 'checkIndex' method should be called with parameter 0. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/FGCfq/",
+            "exampleDescription": "checks a box in the jqxDropDownList",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "index",
+                    "dataType": "number",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "2" ]
+            },
+            "extraData": {
+                "checkboxes": "true"
+            }
+        },
+        {
+            "name": "checkItem",
+            "description": "<P>Checks an item. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/HgHaN/",
+            "exampleDescription": "checks an item in the jqxDropDownList",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "item",
+                    "dataType": "object | string",
+                    "ts_dataType": "any",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "'Item1'" ]
+            },
+            "extraData": {
+                "checkboxes": "true"
+            }
+        },
+        {
+            "name": "checkAll",
+            "description": "<P>Checks all list items when the 'checkboxes' property value is true. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/fw2g2/",
+            "exampleDescription": "checks all of the items in the jqxDropDownList",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "extraData": {
+                "checkboxes": "true"
+            }
+        },
+        {
+            "name": "clearFilter",
+            "description": "<P>Clears the widget's filter when filtering is applied. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>clearFilter</CODE> method. </P>\n<PRE><CODE>$('#jqxDropDownList').jqxDropDownList('clearFilter'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/7gryLwv0/",
+            "exampleDescription": "clears the jqxDropDownList's Filter.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n    &lt;div>\n        &lt;JqxDropDownList ref=\"myDropDownList\"\n            :width=\"200\" :height=\"25\" :source=\"source\" \n            :filterable=\"true\" :selectedIndex=\"4\"\n        />\n        &lt;p>Please apply a filter and then clear it with the button:&lt;/p>\n        &lt;JqxButton @click=\"onClick()\" :width=\"120\">Clear Filter&lt;/JqxButton>\n    &lt;/div>\n&lt;/template>\n\n&lt;script>\n    import JqxDropDownList from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxdropdownlist.vue';\n    import JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\n\n    export default {\n        components: {\n            JqxDropDownList,\n            JqxButton\n        },\n        data: function () {\n            return {\n                source: [\n                    'Affogato',\n                    'Americano',\n                    'Bicerin',\n                    'Breve',\n                    'Cappuccino',\n                    'Espresso',\n                    'Frappuccino',\n                    'Iced Coffee?',\n                    'Irish coffee',\n                    'Liqueur coffee'\n                ]\n            }\n        },\n        methods: {\n            onClick: function () {\n                this.$refs.myDropDownList.clearFilter();\n            }\n        }\n    }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "destroy",
+            "description": "<P>Destroys the widget. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>destroy</CODE> method. </P>\n<PRE><CODE>$('#jqxDropDownList').jqxDropDownList('destroy'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/6nNAE/",
+            "exampleDescription": "destroys the jqxDropDownList",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "disableItem",
+            "description": "<P>Disables an item. Item is an object. </P>\n<UL><LI>label - determines the item's label. \r\n<LI>value - determines the item's value. \r\n<LI>disabled - determines whether the item is enabled/disabled. \r\n<LI>checked - determines whether item is checked/unchecked. \r\n<LI>hasThreeStates - determines whether the item's checkbox supports three states. \r\n<LI>html - determines the item's display html. This can be used instead of label. \r\n<LI>group - determines the item's group. </LI></UL>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/VGUq5/",
+            "exampleDescription": "disables an item in the jqxDropDownList",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "item",
+                    "dataType": "object | string",
+                    "ts_dataType": "any",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "'Bicerin'" ]
+            }
+        },
+        {
+            "name": "disableAt",
+            "description": "<P>Disables an item by index. Index is a number. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/WZNnr/",
+            "exampleDescription": "disables an item in the jqxDropDownList",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "index",
+                    "dataType": "number",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "2" ]
+            }
+        },
+        {
+            "name": "enableItem",
+            "description": "<P>Enables an item. Item is an object. </P>\n<UL><LI>label - determines the item's label. \r\n<LI>value - determines the item's value. \r\n<LI>disabled - determines whether the item is enabled/disabled. \r\n<LI>checked - determines whether item is checked/unchecked. \r\n<LI>hasThreeStates - determines whether the item's checkbox supports three states. \r\n<LI>html - determines the item's display html. This can be used instead of label. \r\n<LI>group - determines the item's group. </LI></UL>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/7Yna9/",
+            "exampleDescription": "enables an item in the jqxDropDownList",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "item",
+                    "dataType": "object | string",
+                    "ts_dataType": "any",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n    &lt;div>\n        &lt;JqxDropDownList ref=\"myDropDownList\"           \n            :width=\"200\" :height=\"25\" :source=\"source\" :selectedIndex=\"4\" \n        />\n        &lt;p>Please click the button to enable the item \"Breve\":&lt;/p>\n        &lt;JqxButton @click=\"onClick()\" :width=\"120\">Enable&lt;/JqxButton>\n    &lt;/div>\n&lt;/template>\n&lt;script>\n    import JqxDropDownList from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxdropdownlist.vue';\n    import JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\n    export default {\n        components: {\n            JqxDropDownList,\n            JqxButton\n        },\n        data: function () {\n            return {\n                source: [\n                    'Affogato',\n                    'Americano',\n                    'Bicerin',\n                    'Breve',\n                    'Cappuccino',\n                    'Espresso',\n                    'Frappuccino',\n                    'Iced Coffee?',\n                    'Irish coffee',\n                    'Liqueur coffee'\n                ]\n            }\n        },\n        mounted: function () {\n            this.$refs.myDropDownList.disableItem('Breve');\n        },\n        methods: {\n            onClick: function () {\n                this.$refs.myDropDownList.enableItem('Breve');\n            }\n        }\n    }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "enableAt",
+            "description": "<P>Enables a disabled item by index. Index is a number. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/8BgGn/",
+            "exampleDescription": "enables an item in the jqxDropDownList",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "index",
+                    "dataType": "number",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n    &lt;div>\n        &lt;JqxDropDownList ref=\"myDropDownList\"           \n            :width=\"200\" :height=\"25\" :source=\"source\" :selectedIndex=\"4\" \n        />\n        &lt;p>Please click the button to enable the item at \"2\" position:&lt;/p>\n        &lt;JqxButton @click=\"onClick()\" :width=\"120\">Enable&lt;/JqxButton>\n    &lt;/div>\n&lt;/template>\n&lt;script>\n    import JqxDropDownList from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxdropdownlist.vue';\n    import JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\n    export default {\n        components: {\n            JqxDropDownList,\n            JqxButton\n        },\n        data: function () {\n            return {\n                source: [\n                    'Affogato',\n                    'Americano',\n                    'Bicerin',\n                    'Breve',\n                    'Cappuccino',\n                    'Espresso',\n                    'Frappuccino',\n                    'Iced Coffee?',\n                    'Irish coffee',\n                    'Liqueur coffee'\n                ]\n            }\n        },\n        mounted: function () {\n            this.$refs.myDropDownList.disableAt('2');\n        },\n        methods: {\n            onClick: function () {\n                this.$refs.myDropDownList.enableAt('2');\n            }\n        }\n    }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "ensureVisible",
+            "description": "<P>Ensures that an item is visible. index is number. When necessary, the jqxDropDownList scrolls to the item to make it visible. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/d3FgU/",
+            "exampleDescription": "ensures the visibility of an items in the jqxDropDownList",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "index",
+                    "dataType": "number",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n    &lt;JqxDropDownList ref=\"myDropDownList\" @open=\"onOpen()\"\n                     :width=\"200\" :height=\"25\" :source=\"source\" />\n&lt;/template>\n\n&lt;script>\n    import JqxDropDownList from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxdropdownlist.vue';\n\n    export default {\n        components: {\n            JqxDropDownList\n        },\n        data: function () {\n            return {\n                source: [\n                    'Affogato',\n                    'Americano',\n                    'Bicerin',\n                    'Breve',\n                    'Cappuccino',\n                    'Espresso',\n                    'Frappuccino',\n                    'Iced Coffee?',\n                    'Irish coffee',\n                    'Liqueur coffee'\n                ]\n            }\n        },\n        methods: {\n            onOpen: function () {\n                this.$refs.myDropDownList.selectIndex(9);\n                this.$refs.myDropDownList.ensureVisible(9);\n            }\n        }\n    }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "focus",
+            "description": "<P>Sets the focus to the widget. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/FndA6/",
+            "exampleDescription": "focuses the jqxDropDownList",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "getItem",
+            "description": "<P>Gets item by index. The returned value is an object with the following fields: </P>\n<UL><LI>label - gets item's label. \r\n<LI>value - gets the item's value. \r\n<LI>disabled - gets whether the item is enabled/disabled. \r\n<LI>checked - gets whether the item is checked/unchecked. \r\n<LI>hasThreeStates - determines whether the item's checkbox supports three states. \r\n<LI>html - gets the item's display html. This can be used instead of label. \r\n<LI>index - gets the item's index. \r\n<LI>group - gets the item's group. </LI></UL>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/Gp7N8/",
+            "exampleDescription": "gets the an items by its index in the jqxDropDownList",
+            "returnDataType": "object",
+            "ts_returnDataType": "DropDownListItem",
+            "arguments": [
+                {
+                    "name": "index",
+                    "dataType": "number",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "2" ]
+            }
+        },
+        {
+            "name": "getItemByValue",
+            "description": "<P>Gets an item by its value. The returned value is an object with the following fields: </P>\n<UL><LI>label - gets item's label. \r\n<LI>value - gets the item's value. \r\n<LI>disabled - gets whether the item is enabled/disabled. \r\n<LI>checked - gets whether the item is checked/unchecked. \r\n<LI>hasThreeStates - determines whether the item's checkbox supports three states. \r\n<LI>html - gets the item's display html. This can be used instead of label. \r\n<LI>index - gets the item's index. \r\n<LI>group - gets the item's group. </LI></UL>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/6VsWb/",
+            "exampleDescription": "gets the an items by its value in the jqxDropDownList",
+            "returnDataType": "object",
+            "ts_returnDataType": "DropDownListItem",
+            "arguments": [
+                {
+                    "name": "itemValue",
+                    "dataType": "string",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "'Breve'" ]
+            }
+        },
+        {
+            "name": "getItems",
+            "description": "<P>Gets all items. The returned value is an array of Items. </P>\n<UL><LI>label - gets item's label. \r\n<LI>value - gets the item's value. \r\n<LI>disabled - gets whether the item is enabled/disabled. \r\n<LI>checked - gets whether the item is checked/unchecked. \r\n<LI>hasThreeStates - determines whether the item's checkbox supports three states. \r\n<LI>html - gets the item's display html. This can be used instead of label. \r\n<LI>index - gets the item's index. \r\n<LI>group - gets the item's group. </LI></UL>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/gZW9b/",
+            "exampleDescription": "returns an Array of all items and displays the first 2 of them",
+            "returnDataType": "Array",
+            "ts_returnDataType": "Array<DropDownListItem>",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "getCheckedItems",
+            "description": "<P>Gets the checked items. The returned value is an array of Items. </P>\n<UL><LI>label - gets item's label. \r\n<LI>value - gets the item's value. \r\n<LI>disabled - gets whether the item is enabled/disabled. \r\n<LI>checked - gets whether the item is checked/unchecked. \r\n<LI>hasThreeStates - determines whether the item's checkbox supports three states. \r\n<LI>html - gets the item's display html. This can be used instead of label. \r\n<LI>index - gets the item's index. \r\n<LI>group - gets the item's group. </LI></UL>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/AgNYz/",
+            "exampleDescription": "returns an Array of all checked items and displays first 2 of them",
+            "returnDataType": "Array",
+            "ts_returnDataType": "Array<DropDownListItem>",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n    &lt;JqxDropDownList ref=\"myDropDownList\" :checkboxes=\"true\"\n        :width=\"200\" :height=\"25\" :source=\"source\" :selectedIndex=\"4\" \n    />\n&lt;/template>\n\n&lt;script>\n    import JqxDropDownList from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxdropdownlist.vue';\n\n    export default {\n        components: {\n            JqxDropDownList\n        },\n        data: function () {\n            return {\n                source: [\n                    'Affogato',\n                    'Americano',\n                    'Bicerin',\n                    'Breve',\n                    'Cappuccino',\n                    'Espresso',\n                    'Frappuccino',\n                    'Iced Coffee?',\n                    'Irish coffee',\n                    'Liqueur coffee'\n                ]\n            }\n        },\n        mounted: function () {\n            this.$refs.myDropDownList.checkIndex(1);\n            this.$refs.myDropDownList.checkIndex(3);\n            this.$refs.myDropDownList.checkIndex(5);\n            const value = this.$refs.myDropDownList.getCheckedItems();\n        }\n    }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "getSelectedItem",
+            "description": "<P>Gets the selected item. The returned value is an object or null(if there is no selected item). </P>\n<UL><LI>label - gets item's label. \r\n<LI>value - gets the item's value. \r\n<LI>disabled - gets whether the item is enabled/disabled. \r\n<LI>checked - gets whether the item is checked/unchecked. \r\n<LI>hasThreeStates - determines whether the item's checkbox supports three states. \r\n<LI>html - gets the item's display html. This can be used instead of label. \r\n<LI>index - gets the item's index. \r\n<LI>group - gets the item's group. </LI></UL>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/4DhJf/",
+            "exampleDescription": "returns the selected item and displays it",
+            "returnDataType": "object",
+            "ts_returnDataType": "DropDownListItem",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "getSelectedIndex",
+            "description": "<P>Gets the index of the selected item. The returned value is the index of the selected item. If there's no selected item, -1 is returned. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/ESFzB/",
+            "exampleDescription": "returns the selected item's index and displays it",
+            "returnDataType": "number",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "insertAt",
+            "description": "<P>Inserts a new item to the jqxDropDownList. Returns 'true', if the new item is inserted or false if the insertaion fails. The first parameter is object or string - the new item. The second parameter is number - the item's index. </P>\n<UL><LI>label - determines the item's label. \r\n<LI>value - determines the item's value. \r\n<LI>disabled - determines whether the item is enabled/disabled. \r\n<LI>checked - determines whether item is checked/unchecked. \r\n<LI>hasThreeStates - determines whether the item's checkbox supports three states. \r\n<LI>html - determines the item's display html. This can be used instead of label. \r\n<LI>group - determines the item's group. </LI></UL>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/sJDh6/",
+            "exampleDescription": "inserts an item in the jqxDropDownList",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "item",
+                    "dataType": "object | string",
+                    "ts_dataType": "DropDownListItem",
+                    "description": "",
+                    "optional": false
+                },
+                {
+                    "name": "index",
+                    "dataType": "number",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "'Item1'", "0" ]
+            }
+        },
+        {
+            "name": "isOpened",
+            "description": "<P>Returns true, if the popup is opened. Otherwise returns false. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/jXTmv/",
+            "exampleDescription": "check whether the jqxDropDownList is opened",
+            "returnDataType": "boolean",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "indeterminateIndex",
+            "description": "<P>indeterminates a list item when the 'checkboxes' property value is true. The index is zero-based, i.e to indeterminate the first item, the 'indeterminateIndex' method should be called with parameter 0. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/UpWf8/",
+            "exampleDescription": "indeterminate a box in the jqxDropDownList",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "index",
+                    "dataType": "number",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "2" ]
+            },
+            "extraData": {
+                "checkboxes": "true"
+            }
+        },
+        {
+            "name": "indeterminateItem",
+            "description": "<P>Indeterminates an item. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/pqMYX/",
+            "exampleDescription": "indeterminate an item in the jqxDropDownList",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "item",
+                    "dataType": "object | string",
+                    "ts_dataType": "any",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "'Breve'" ]
+            },
+            "extraData": {
+                "checkboxes": "true"
+            }
+        },
+        {
+            "name": "loadFromSelect",
+            "description": "<P>Loads list items from a 'select' tag. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/Syj3g/",
+            "exampleDescription": "loads list items from a 'select' tag.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "arg",
+                    "dataType": "string",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n    &lt;div>\n        &lt;JqxDropDownList ref=\"myDropDownList\" style=\"float: left\"\n                         @select=\"listOnSelect($event)\"\n                         :width=\"200\" :height=\"25\" :selectedIndex=\"0\">\n        &lt;/JqxDropDownList>\n        &lt;div style=\"float: left\">\n            &lt;select ref=\"select\" id=\"select\" style=\"height: 25px; width: 200px; margin-left: 30px\">\n                &lt;option>Affogato&lt;/option>\n                &lt;option>Americano&lt;/option>\n                &lt;option>Bicerin&lt;/option>\n                &lt;option>Breve&lt;/option>\n            &lt;/select>\n        &lt;/div>\n    &lt;/div>\n&lt;/template>\n&lt;script>\n    import JqxDropDownList from \"jqwidgets-scripts/jqwidgets-vue/vue_jqxdropdownlist.vue\";\n    export default {\n        components: {\n            JqxDropDownList\n        },\n        mounted: function () {\n            this.$refs.myDropDownList.loadFromSelect('select');\n            this.selectElement = this.$refs.select;\n            this.selectElement.addEventListener('change', (event) => {\n                this.updating = true;\n                const index = this.selectElement.selectedIndex;\n                this.$refs.myDropDownList.selectIndex(index);\n                this.$refs.myDropDownList.ensureVisible(index);\n                this.updating = false;\n            });\n        },\n        methods: {\n            listOnSelect: function (event) {\n                if (event.args && !this.updating) {\n                    const index = event.args.item.index;\n                    this.selectElement.selectedIndex = index;\n                }\n            }\n        }\n    }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "open",
+            "description": "<P>Shows the popup listbox. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/w5Syg/",
+            "exampleDescription": "opens the jqxDropDownList",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n    &lt;JqxDropDownList ref=\"myDropDownList\"\n                     :width=\"200\" :height=\"25\" :source=\"source\" :selectedIndex=\"4\" />\n&lt;/template>\n\n&lt;script>\n    import JqxDropDownList from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxdropdownlist.vue';\n\n    export default {\n        components: {\n            JqxDropDownList\n        },\n        data: function () {\n            return {\n                source: [\n                    'Affogato',\n                    'Americano',\n                    'Bicerin',\n                    'Breve',\n                    'Cappuccino',\n                    'Espresso',\n                    'Frappuccino',\n                    'Iced Coffee?',\n                    'Irish coffee',\n                    'Liqueur coffee'\n                ]\n            }\n        },\n        mounted: function () {\n            this.$refs.myDropDownList.open();\n\n            setTimeout(_ => this.$refs.myDropDownList.close(), 1000);            \n        }\n    }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "removeItem",
+            "description": "<P>Removes an item from the listbox. Parameter type: object returned by the \"getItem\" method or string - the value of an item. Returns 'true', if the item is removed or 'false', if the item is not removed. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/FGs2y/",
+            "exampleDescription": "removes an item in the jqxDropDownList",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "item",
+                    "dataType": "object | string",
+                    "ts_dataType": "any",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "'Breve'" ]
+            }
+        },
+        {
+            "name": "removeAt",
+            "description": "<P>Removes an item from the listbox. Parameter type: number - the index of the item. The method returns 'true', if the item is removed or 'false', if the item is not removed. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/yaErM/",
+            "exampleDescription": "removes an item in the jqxDropDownList",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "index",
+                    "dataType": "number",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "1" ]
+            }
+        },
+        {
+            "name": "selectIndex",
+            "description": "<P>Selects an item by index. The index is zero-based, i.e to select the first item, the 'selectIndex' method should be called with parameter 0. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/RemY9/",
+            "exampleDescription": "select an item by its index in the jqxDropDownList",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "index",
+                    "dataType": "number",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "1" ]
+            }
+        },
+        {
+            "name": "selectItem",
+            "description": "<P>Selects an item. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/MysU4/",
+            "exampleDescription": "select an item in the jqxDropDownList",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "item",
+                    "dataType": "object",
+                    "ts_dataType": "DropDownListItem",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "'Breve'" ]
+            }
+        },
+        {
+            "name": "setContent",
+            "description": "<P>Sets the content of the DropDownList. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/RWh8c/",
+            "exampleDescription": "sets the content in the jqxDropDownList",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "content",
+                    "dataType": "string",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "'Some Content'" ]
+            }
+        },
+        {
+            "name": "updateItem",
+            "description": "<P>Updates an item. The first parameter is the new item. The second parameter could be an existing item or the value of an existing item. </P>\n<UL><LI>label - determines the item's label. \r\n<LI>value - determines the item's value. \r\n<LI>disabled - determines whether the item is enabled/disabled. \r\n<LI>checked - determines whether item is checked/unchecked. \r\n<LI>hasThreeStates - determines whether the item's checkbox supports three states. \r\n<LI>html - determines the item's display html. This can be used instead of label. \r\n<LI>group - determines the item's group. </LI></UL>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/VwxqY/",
+            "exampleDescription": "updates an item in the jqxDropDownList",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "newItem",
+                    "dataType": "object",
+                    "ts_dataType": "DropDownListItem",
+                    "description": "",
+                    "optional": false
+                },
+                {
+                    "name": "item",
+                    "dataType": "any",
+                    "ts_dataType": "any",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "'New Breve'", "'Breve'" ]
+            }
+        },
+        {
+            "name": "updateAt",
+            "description": "<P>Updates an item. The first parameter is the new item. The second parameter is the index of the item to be updated. </P>\n<UL><LI>label - determines the item's label. \r\n<LI>value - determines the item's value. \r\n<LI>disabled - determines whether the item is enabled/disabled. \r\n<LI>checked - determines whether item is checked/unchecked. \r\n<LI>hasThreeStates - determines whether the item's checkbox supports three states. \r\n<LI>html - determines the item's display html. This can be used instead of label. \r\n<LI>group - determines the item's group. </LI></UL>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/b4bYe/",
+            "exampleDescription": "updates an item in the jqxDropDownList",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "item",
+                    "dataType": "object",
+                    "ts_dataType": "DropDownListItem",
+                    "description": "",
+                    "optional": false
+                },
+                {
+                    "name": "index",
+                    "dataType": "number",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "'New Americano'", "1" ]
+            }
+        },
+        {
+            "name": "unselectIndex",
+            "description": "<P>Unselects item by index. The index is zero-based, i.e to unselect the first item, the 'unselectIndex' method should be called with parameter 0. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/AwAhC/",
+            "exampleDescription": "unselect an item by its index in the jqxDropDownList",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "index",
+                    "dataType": "number",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "4" ]
+            }
+        },
+        {
+            "name": "unselectItem",
+            "description": "<P>Unselects an item. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/Z9yHu/",
+            "exampleDescription": "unselect an item in the jqxDropDownList",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "item",
+                    "dataType": "object | string",
+                    "ts_dataType": "any",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "'Cappuccino'" ]
+            }
+        },
+        {
+            "name": "uncheckIndex",
+            "description": "<P>Unchecks a list item when the 'checkboxes' property value is true. The index is zero-based, i.e to uncheck the first item, the 'uncheckIndex' method should be called with parameter 0. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/UV4dc/",
+            "exampleDescription": "unchecks a box in the jqxDropDownList",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "index",
+                    "dataType": "number",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n    &lt;JqxDropDownList ref=\"myDropDownList\" :checkboxes=\"true\"\n                     :width=\"200\" :height=\"25\" :source=\"source\" :selectedIndex=\"4\" />\n&lt;/template>\n&lt;script>\n    import JqxDropDownList from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxdropdownlist.vue';\n    export default {\n        components: {\n            JqxDropDownList\n        },\n        data: function () {\n            return {\n                source: [\n                    'Affogato',\n                    'Americano',\n                    'Bicerin',\n                    'Breve',\n                    'Cappuccino',\n                    'Espresso',\n                    'Frappuccino',\n                    'Iced Coffee?',\n                    'Irish coffee',\n                    'Liqueur coffee'\n                ]\n            }\n        },\n        mounted: function () {\n            this.$refs.myDropDownList.checkAll();\n\n            this.$refs.myDropDownList.uncheckIndex(2);\n            this.$refs.myDropDownList.uncheckIndex(3);\n        }\n    }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "uncheckItem",
+            "description": "<P>Unchecks an item. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/Jnapz/",
+            "exampleDescription": "unchecks an item in the jqxDropDownList",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "item",
+                    "dataType": "object | string",
+                    "ts_dataType": "any",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n    &lt;JqxDropDownList ref=\"myDropDownList\" :checkboxes=\"true\"\n                     :width=\"200\" :height=\"25\" :source=\"source\" :selectedIndex=\"4\" />\n&lt;/template>\n&lt;script>\n    import JqxDropDownList from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxdropdownlist.vue';\n    export default {\n        components: {\n            JqxDropDownList\n        },\n        data: function () {\n            return {\n                source: [\n                    'Affogato',\n                    'Americano',\n                    'Bicerin',\n                    'Breve',\n                    'Cappuccino',\n                    'Espresso',\n                    'Frappuccino',\n                    'Iced Coffee?',\n                    'Irish coffee',\n                    'Liqueur coffee'\n                ]\n            }\n        },\n        mounted: function () {\n            this.$refs.myDropDownList.checkAll();\n\n            this.$refs.myDropDownList.uncheckItem('Bicerin');\n            this.$refs.myDropDownList.uncheckItem('Breve');\n        }\n    }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "uncheckAll",
+            "description": "<P>Unchecks all list items when the 'checkboxes' property value is true. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/BV2Zy/",
+            "exampleDescription": "unchecks all of the items in the jqxDropDownList",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n    &lt;JqxDropDownList ref=\"myDropDownList\" :checkboxes=\"true\"\n                     :width=\"200\" :height=\"25\" :source=\"source\" :selectedIndex=\"4\" />\n&lt;/template>\n&lt;script>\n    import JqxDropDownList from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxdropdownlist.vue';\n    export default {\n        components: {\n            JqxDropDownList\n        },\n        data: function () {\n            return {\n                source: [\n                    'Affogato',\n                    'Americano',\n                    'Bicerin',\n                    'Breve',\n                    'Cappuccino',\n                    'Espresso',\n                    'Frappuccino',\n                    'Iced Coffee?',\n                    'Irish coffee',\n                    'Liqueur coffee'\n                ]\n            }\n        },\n        mounted: function () {\n            this.$refs.myDropDownList.checkAll();\n            this.$refs.myDropDownList.open();\n\n            setTimeout(_ => this.$refs.myDropDownList.uncheckAll(), 1000);\n        }\n    }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "val",
+            "description": "<P>Gets the selected value. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/w4Wqk/",
+            "exampleDescription": "Gets the selected value in the jqxDropDownList",
+            "returnDataType": "string",
+            "arguments": [
+                {
+                    "name": "value",
+                    "dataType": "string",
+                    "description": "",
+                    "optional": true
+                }
+            ]
+        }
+    ]
+}

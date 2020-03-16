@@ -1,0 +1,521 @@
+{
+    "widget": {
+        "name": "jqxDockingLayout",
+        "description": "Enables the creation of complex layouts with panels that can be floated, docked, nested, resized, pinned, unpinned and closed.",
+        "angular2": {
+            "name": "jqxDockingLayoutComponent",
+            "selector": "jqxDockingLayout"
+        }
+    },
+    "dataTypes": [
+        {
+            "name": "DockingLayoutLayoutType",
+            "ts_dataType": "enum",
+            "enumOptions": [ "layoutGroup", "tabbedGroup", "documentGroup", "autoHideGroup", "layoutPanel", "documentPanel", "floatGroup" ]
+        },
+        {
+            "name": "DockingLayoutLayoutAlignment",
+            "ts_dataType": "enum",
+            "enumOptions": [ "left", "right", "top", "bottom" ]
+        },
+        {
+            "name": "DockingLayoutLayoutOrientation",
+            "ts_dataType": "enum",
+            "enumOptions": [ "horizontal", "vertical" ]
+        },
+        {
+            "name": "DockingLayoutLayout",
+            "ts_dataType": "interface",
+            "properties": [
+                {
+                    "name": "type",
+                    "dataType": "string",
+                    "ts_dataType": "enum:DockingLayoutLayoutType",
+                    "optional": "false",
+                    "displayName": "Type",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "alignment",
+                    "dataType": "string",
+                    "ts_dataType": "enum:DockingLayoutLayoutAlignment",
+                    "optional": "true",
+                    "displayName": "Alignment",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "allowClose",
+                    "dataType": "boolean",
+                    "optional": "true",
+                    "displayName": "AllowClose",
+                    "defaultValue": "center"
+                },
+                {
+                    "name": "allowPin",
+                    "dataType": "boolean",
+                    "optional": "true",
+                    "displayName": "AllowPin",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "allowUnpin",
+                    "dataType": "boolean",
+                    "optional": "true",
+                    "displayName": "AllowUnpin",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "contentContainer",
+                    "dataType": "string",
+                    "optional": "true",
+                    "displayName": "ContentContainer",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "height",
+                    "dataType": "number",
+                    "ts_dataType": "number | string",
+                    "optional": "true",
+                    "displayName": "Height",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "initContent",
+                    "dataType": "Function",
+                    "ts_dataType": "() => void",
+                    "optional": "true",
+                    "displayName": "InitContent",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "minHeight",
+                    "dataType": "number",
+                    "ts_dataType": "number | string",
+                    "optional": "true",
+                    "displayName": "MinHeight",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "minWidth",
+                    "dataType": "number",
+                    "ts_dataType": "number | string",
+                    "optional": "true",
+                    "displayName": "MinWidth",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "orientation",
+                    "dataType": "string",
+                    "ts_dataType": "enum:DockingLayoutLayoutOrientation",
+                    "optional": "true",
+                    "displayName": "Orientation",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "pinnedHeight",
+                    "dataType": "number",
+                    "ts_dataType": "number | string",
+                    "optional": "true",
+                    "displayName": "PinnedHeight",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "pinnedWidth",
+                    "dataType": "number",
+                    "ts_dataType": "number | string",
+                    "optional": "true",
+                    "displayName": "PinnedWidth",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "position",
+                    "dataType": "object",
+                    "ts_dataType": "DockingLayoutLayoutPosition",
+                    "optional": "true",
+                    "displayName": "Position",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "selected",
+                    "dataType": "boolean",
+                    "optional": "true",
+                    "displayName": "Selected",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "title",
+                    "dataType": "string",
+                    "optional": "true",
+                    "displayName": "Title",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "unpinnedHeight",
+                    "dataType": "number",
+                    "ts_dataType": "number | string",
+                    "optional": "true",
+                    "displayName": "UnpinnedHeight",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "unpinnedWidth",
+                    "dataType": "number",
+                    "ts_dataType": "number | string",
+                    "optional": "true",
+                    "displayName": "UnpinnedWidth",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "width",
+                    "dataType": "number",
+                    "ts_dataType": "number | string",
+                    "optional": "true",
+                    "displayName": "Width",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "items",
+                    "dataType": "Array",
+                    "ts_dataType": "Array<DockingLayoutLayout>",
+                    "optional": "true",
+                    "displayName": "Items",
+                    "defaultValue": ""
+                }
+            ]
+        },
+        {
+            "name": "DockingLayoutLayoutPosition",
+            "ts_dataType": "interface",
+            "properties": [
+                {
+                    "name": "x",
+                    "dataType": "number",
+                    "optional": "false",
+                    "displayName": "X",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "y",
+                    "dataType": "number",
+                    "optional": "false",
+                    "displayName": "Y",
+                    "defaultValue": ""
+                }
+            ]
+        }
+    ],
+    "exampleInit": {
+        "width": "850",
+        "height": "600",
+        "layout": "layout"
+    },
+    "exampleElementsInit": {
+        "layout": "layout"
+    },
+    "exampleExtraTemplate": "<div data-container='Document1Panel'> Document 1 Content </div>\n    <div data-container='Document2Panel'> Document 2 Content </div>\n    <div data-container='ErrorListPanel'> List of Errors </div>\n    <div data-container='OutputPanel'> Output </div>\n    <div data-container='SolutionExplorerPanel'> Solution Structure </div>\n    <div data-container='PropertiesPanel'> List of properties </div>",
+    "exampledInitExtraData": {
+        "properties": "layout: [\n            {\n              type: 'layoutGroup', \n              orientation: 'horizontal',\n              items: [{\n                type: 'layoutGroup',\n                orientation: 'vertical',\n                width: '60%',\n                items: [{\n                  type: 'documentGroup',\n                  height: '50%',\n                  minHeight: '25%',\n                  items: [{\n                    type: 'documentPanel',\n                    title: 'Document 1',\n                    contentContainer: 'Document1Panel'\n                  }, {\n                    type: 'documentPanel',\n                    title: 'Document 2',\n                    contentContainer: 'Document2Panel'\n                  }]\n                }, {\n                  type: 'tabbedGroup',\n                  height: '50%',\n                  pinnedHeight: '10%',\n                  items: [{\n                    type: 'layoutPanel',\n                    title: 'Error List',\n                    contentContainer: 'ErrorListPanel'\n                  }, {\n                    type: 'layoutPanel',\n                    title: 'Output',\n                    contentContainer: 'OutputPanel',\n                    selected: true\n                  }]\n                }]\n              }, {\n                type: 'tabbedGroup',\n                width: '40%',\n                items: [{\n                  type: 'layoutPanel',\n                  title: 'Solution Explorer',\n                  contentContainer: 'SolutionExplorerPanel'\n                }, {\n                   type: 'layoutPanel',\n                  title: 'Properties',\n                  contentContainer: 'PropertiesPanel'\n                }]\n              }]\n            }\n          ]",
+        "beforeCreate": "",
+        "mounted": "",
+        "methods": ""
+    },
+    "properties": [
+        {
+            "name": "contextMenu",
+            "defaultValue": "false",
+            "description": "<P>Sets or gets wheter a custom context menu will appear when certain elements of the widget are right-clicked. </P>\n\r\n<H4>Code example </H4>\n\r\n<P>Set the <CODE>contextMenu</CODE> property. </P>\n<PRE><CODE>$('#jqxDockingLayout').jqxDockingLayout({ contextMenu : true }); </CODE></PRE>\n\r\n<P>Get the <CODE>contextMenu</CODE> property. </P>\n<PRE><CODE>var contextMenu = $('#jqxDockingLayout').jqxDockingLayout('contextMenu');\r\n                        </CODE></PRE>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxdockinglayout-contextmenu-property",
+            "exampleDescription": "contextMenu is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "contextMenu": "true"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "height",
+            "defaultValue": "null",
+            "description": "<P>Sets or gets the docking layout's height. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>height</CODE> property. </P>\n<PRE><CODE>$(\"#jqxDockingLayout\").jqxDockingLayout({ height: 800 });</CODE></PRE>\n\r\n<P>Get the <CODE>height</CODE> property. </P>\n<PRE><CODE>var height = $('#jqxDockingLayout').jqxDockingLayout('height');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxdockinglayout-height-property",
+            "exampleDescription": "height is set to 800",
+            "dataType": "number",
+            "ts_dataType": "string | number",
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "layout",
+            "defaultValue": "[]",
+            "description": "<P>Sets or gets the layout. This property determines the position of the docking layout elements and their characteristics. The first member of the layout array should always be an item of type 'layoutGroup'. </P>\n\r\n<P>Each object in the layout array can have the following properties, with <SPAN style=\"TEXT-DECORATION: underline\">some restrictions based on the type </SPAN>: </P>\n\r\n<UL><LI><STRONG>type</STRONG>. Possible values: \r\n<UL>\r\n<LI>'layoutGroup' - container for other groups. It has no visual features. <SPAN style=\"TEXT-DECORATION: underline\">The root item is always of this type.</SPAN> \r\n<LI>'tabbedGroup' - a group that contains layoutPanels. It is represented by a jqxWindow-like panel with a bottom-aligned jqxRibbon inside. \r\n<LI>'documentGroup' - a group that contains documentPanels. It is represented by a top-aligned jqxRibbon. \r\n<LI>'autoHideGroup' - a group that contains layoutPanels. It is represented by a jqxRibbon with <CODE>mode: 'popup'</CODE>. Each ribbon item has a jqxWindow-like panel in its content. This group has to be either the first or the last child item of its parent layoutGroup. \r\n<LI>'layoutPanel' - a panel that can be inserted in a tabbedGroup or autoHideGroup. When it is in a tabbedGroup it is represented by a ribbon item and in an autoHideGroup - by a jqxWindow-like panel inside a ribbon item. \r\n<LI>'documentPanel' - a panel that can be inserted in a documentGroup. It is represented by a ribbon item. \r\n<LI>'floatGroup' - a floating group that can contain a tabbedGroup or a layoutPanel. It is represented by a jqxWindow. <SPAN style=\"TEXT-DECORATION: underline\">Initial floatGroups have to be defined after the root layoutGroup in the layout array. </SPAN></LI></UL>\r\n<LI><STRONG>alignment</STRONG> - sets the alignment of an autoHideGroup. Possible values: \r\n<UL>\r\n<LI>'left' \r\n<LI>'right' \r\n<LI>'top' \r\n<LI>'bottom' </LI></UL>\r\n<LI><STRONG>allowClose</STRONG> - applicable to tabbedGroups, floatGroups, layoutPanels and documentPanels. If set to <EM style=\"DISPLAY: none\" jQuery111106299495152644018=\"4\">false</EM>, the group/panel cannot be closed. \r\n<LI><STRONG>allowPin</STRONG> - applicable only to tabbedGroups. If set to <EM style=\"DISPLAY: none\" jQuery111106299495152644018=\"5\">false</EM>, the group cannot be pinned. \r\n<LI><STRONG>allowUnpin</STRONG> - applicable only to autoHideGroups. If set to <EM style=\"DISPLAY: none\" jQuery111106299495152644018=\"6\">false</EM>, the group cannot be unpinned. \r\n<LI><STRONG>contentContainer</STRONG> - indicates which HTML element has the content of the panel. The required value is the value of an existing HTML element's data-container attribute. N/A to groups. \r\n<LI><STRONG>height</STRONG> - sets the height of a group (N/A to panels). Used only if the parent group's orientation is 'vertical' or for floatGroups. The heights of all such groups have to be set either in pixels or percents (not a mix of both). \r\n<LI><STRONG>initContent</STRONG> - a callback function to be called when a panel is opened for the first time. Useful for initializing widgets in panels. N/A to groups. \r\n<LI><STRONG>minHeight</STRONG> - sets the minimumn height (in pixels) of a group which is vertically aligned within its parent group. Disregards the value of the <STRONG>minGroupHeight</STRONG> property. \r\n<LI><STRONG>minWidth</STRONG> - sets the minimumn width (in pixels) of a group which is horizontally aligned within its parent group. Disregards the value of the <STRONG>minGroupWidth </STRONG>property. \r\n<LI><STRONG>orientation</STRONG> - orients child items either horizontally or vertically. Applicable only to layoutGroups. Possible values: \r\n<UL>\r\n<LI>'horizontal' \r\n<LI>'vertical' </LI></UL>\r\n<LI><STRONG>pinnedHeight</STRONG> - sets what the height of a tabbedGroup will be after it is pinned. \r\n<LI><STRONG>pinnedWidth</STRONG> - sets what the width of a tabbedGroup will be after it is pinned. \r\n<LI><STRONG>position</STRONG> - sets the initial position of a floatGroup. The position property is an object with the following properties:\r\n<UL>\r\n<LI>x \r\n<LI>y </LI></UL>\r\n<LI><STRONG>selected</STRONG> - sets whether a panel is initially selected. N/A to groups. \r\n<LI><STRONG>title</STRONG> - sets the title of a panel. Represented by the corresponding ribbon item's title. N/A to groups. \r\n<LI><STRONG>unpinnedHeight</STRONG> - sets what the height of an autoHideGroup will be after it is unpinned. \r\n<LI><STRONG>unpinnedWidth</STRONG> - sets what the width of an autoHideGroup will be after it is unpinned. \r\n<LI><STRONG>width</STRONG> - sets the width of a group (N/A to panels). Used only if the parent group's orientation is 'horizontal' or for floatGroups. The widths of all such groups have to be set either in pixels or percents (not a mix of both). \r\n<LI><STRONG>items</STRONG> - an array of item objects with the fields described above. N/A to panels. </LI></UL>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>layout</CODE> property. </P>\n<PRE><CODE>var layout = [{\r\n    type: 'layoutGroup',\r\n    orientation: 'horizontal',\r\n    items: [{\r\n        type: 'autoHideGroup',\r\n        alignment: 'left',\r\n        width: 80,\r\n        unpinnedWidth: 200,\r\n        items: [{\r\n            type: 'layoutPanel',\r\n            title: 'Toolbox',\r\n            contentContainer: 'ToolboxPanel'\r\n        }, {\r\n            type: 'layoutPanel',\r\n            title: 'Help',\r\n            contentContainer: 'HelpPanel'\r\n        }]\r\n    }, {\r\n        type: 'layoutGroup',\r\n        orientation: 'vertical',\r\n        width: 500,\r\n        items: [{\r\n            type: 'documentGroup',\r\n            height: 400,\r\n            minHeight: 200,\r\n            items: [{\r\n                type: 'documentPanel',\r\n                title: 'Document 1',\r\n                contentContainer: 'Document1Panel'\r\n            }, {\r\n                type: 'documentPanel',\r\n                title: 'Document 2',\r\n                contentContainer: 'Document2Panel'\r\n            }]\r\n        }, {\r\n            type: 'tabbedGroup',\r\n            height: 200,\r\n            pinnedHeight: 30,\r\n            items: [{\r\n                type: 'layoutPanel',\r\n                title: 'Error List',\r\n                contentContainer: 'ErrorListPanel'\r\n            }]\r\n        }]\r\n    }, {\r\n        type: 'tabbedGroup',\r\n        width: 220,\r\n        minWidth: 200,\r\n        items: [{\r\n            type: 'layoutPanel',\r\n            title: 'Solution Explorer',\r\n            contentContainer: 'SolutionExplorerPanel'\r\n        }, {\r\n            type: 'layoutPanel',\r\n            title: 'Properties',\r\n            contentContainer: 'PropertiesPanel'\r\n        }]\r\n    }]\r\n}, {\r\n    type: 'floatGroup',\r\n    width: 500,\r\n    height: 200,\r\n    position: {\r\n        x: 350,\r\n        y: 250\r\n    },\r\n    items: [{\r\n        type: 'layoutPanel',\r\n        title: 'Output',\r\n        contentContainer: 'OutputPanel'\r\n    }]\r\n}];\r\n$('#jqxDockingLayout').jqxDockingLayout({ width: 800, height: 600, layout: layout });</CODE></PRE>\n\r\n<P>Get the <CODE>layout</CODE> property. </P>\n<PRE><CODE>var layout = $('#jqxDockingLayout').jqxDockingLayout('layout');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxdockinglayout-layout-property",
+            "exampleDescription": "layout is set to a custom array",
+            "dataType": "Array",
+            "ts_dataType": "Array<DockingLayoutLayout>",
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "minGroupHeight",
+            "defaultValue": "100",
+            "description": "<P>Sets the default minimumn height for groups which are vertically aligned within their parent group. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>minGroupHeight</CODE> property. </P>\n<PRE><CODE>$('#jqxDockingLayout').jqxDockingLayout({ minGroupHeight: 200 }); </CODE></PRE>\n\r\n<P>Get the <CODE>minGroupHeight</CODE> property. </P>\n<PRE><CODE>var minGroupHeight = $('#jqxDockingLayout').jqxDockingLayout('minGroupHeight');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxdockinglayout-mingroupheight-property",
+            "exampleDescription": "minGroupHeight is set to 200",
+            "dataType": "number",
+            "ts_dataType": "number | string",
+            "exampleInit": {
+                "minGroupHeight": "200"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "minGroupWidth",
+            "defaultValue": "100",
+            "description": "<P>Sets the default minimumn width for groups which are horizontally aligned within their parent group. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>minGroupWidth</CODE> property. </P>\n<PRE><CODE>$('#jqxDockingLayout').jqxDockingLayout({ minGroupWidth: 150 });</CODE></PRE>\n\r\n<P>Get the <CODE>minGroupWidth</CODE> property. </P>\n<PRE><CODE>var minGroupWidth = $('#jqxDockingLayout').jqxDockingLayout('minGroupWidth');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxdockinglayout-mingroupwidth-property",
+            "exampleDescription": "minGroupWidth is set to 150",
+            "dataType": "number",
+            "ts_dataType": "number | string",
+            "exampleInit": {
+                "minGroupWidth": "150"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "resizable",
+            "defaultValue": "true",
+            "description": "<P>Sets or gets wheter panels can be dynamically resized. </P>\n\r\n<H4>Code example </H4>\n\r\n<P>Set the <CODE>resizable</CODE> property. </P>\n<PRE><CODE>$('#jqxDockingLayout').jqxDockingLayout({ resizable : false }); </CODE></PRE>\n\r\n<P>Get the <CODE>resizable</CODE> property. </P>\n<PRE><CODE>var resizable = $('#jqxDockingLayout').jqxDockingLayout('resizable'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxdockinglayout-resizable-property",
+            "exampleDescription": "resizable is set to false",
+            "dataType": "boolean",
+            "exampleInit": {
+                "resizable": "false"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "rtl",
+            "defaultValue": "false",
+            "description": "<P>Sets or gets a value indicating whether widget's elements are aligned to support locales using right-to-left fonts. </P>\n\r\n<H4>Code example </H4>\n\r\n<P>Set the <CODE>rtl</CODE> property. </P>\n<PRE><CODE>$('#jqxDockingLayout').jqxDockingLayout({ rtl : true }); </CODE></PRE>\n\r\n<P>Get the <CODE>rtl</CODE> property. </P>\n<PRE><CODE>var rtl = $('#jqxDockingLayout').jqxDockingLayout('rtl'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxdockinglayout-rtl-property",
+            "exampleDescription": "rtl is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "rtl": "true"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "theme",
+            "defaultValue": "''",
+            "description": "<P>Sets the widget's theme. </P>\n\r\n<UL><LI>Include the theme's CSS file after jqx.base.css.<BR>The following code example adds the 'material' theme. <PRE><CODE>\r\n                                                                                        <PRE><CODE>&lt;link rel=\"stylesheet\" href=\"../../jqwidgets/styles/jqx.base.css\" type=\"text/css\" /&gt;\r\n&lt;link rel=\"stylesheet\" href=\"../../jqwidgets/styles/jqx.material.css\" type=\"text/css\" /&gt;</CODE></PRE>\r\n                                </CODE></PRE>\r\n<LI>Set the widget's theme property to 'material' when you initialize it. </LI></UL>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxdockinglayout-theme-property",
+            "exampleDescription": "theme is set to 'material'",
+            "dataType": "string",
+            "exampleInit": {
+                "theme": "material"
+            }
+        },
+        {
+            "name": "width",
+            "defaultValue": "null",
+            "description": "<P>Sets or gets the docking layout's width. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>width</CODE> property. </P>\n<PRE><CODE>$(\"#jqxDockingLayout\").jqxDockingLayout({ width: 800 });</CODE></PRE>\n\r\n<P>Get the <CODE>width</CODE> property. </P>\n<PRE><CODE>var width = $('#jqxDockingLayout').jqxDockingLayout('width');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxdockinglayout-width-property",
+            "exampleDescription": "width is set to 800",
+            "dataType": "number",
+            "ts_dataType": "string | number",
+            "customExample": {
+                "codeType": "get"
+            }
+        }
+    ],
+    "events": [
+        {
+            "name": "dock",
+            "description": "<P>This event is triggered when a floatGroup has been docked. </P>"
+        },
+        {
+            "name": "floatGroupClosed",
+            "description": "<P>This event is triggered when a floatGroup has been closed. </P>"
+        },
+        {
+            "name": "float",
+            "description": "<P>This event is triggered when a group or panel has been floated. </P>"
+        },
+        {
+            "name": "pin",
+            "description": "<P>This event is triggered when a group has been pinned. </P>"
+        },
+        {
+            "name": "resize",
+            "description": "<P>This event is triggered when a group has been resized (when the group has been resized with the mouse or when an adjacent group has been pinned, unpinned or closed). </P>"
+        },
+        {
+            "name": "unpin",
+            "description": "<P>This event is triggered when a group has been unpinned. </P>"
+        }
+    ],
+    "methods": [
+        {
+            "name": "addFloatGroup",
+            "description": "<P>Adds a new floatGroup. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>addFloatGroup</CODE> method. </P>\n<PRE><CODE>$('#jqxDockingLayout').jqxDockingLayout('addFloatGroup', 300, 200, { x: 500, y: 200 }, 'layoutPanel', 'Title', '&lt;button id=\"myButton\"&gt;My button&lt;/button&gt;', function () {\r\n                                                            $('#myButton').jqxButton();\r\n                                                        });</CODE></PRE>",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxdockinglayout-addfloatgroup-method",
+            "exampleDescription": "add a new floatGroup",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "width",
+                    "dataType": "number",
+                    "ts_dataType": "number | string",
+                    "description": "",
+                    "optional": false
+                },
+                {
+                    "name": "height",
+                    "dataType": "number",
+                    "ts_dataType": "number | string",
+                    "description": "",
+                    "optional": false
+                },
+                {
+                    "name": "position",
+                    "dataType": "object",
+                    "ts_dataType": "DockingLayoutLayoutPosition",
+                    "description": "position.x and position.y",
+                    "optional": false
+                },
+                {
+                    "name": "panelType",
+                    "dataType": "string",
+                    "description": "'layoutPanel' or 'documentPanel'",
+                    "optional": false
+                },
+                {
+                    "name": "title",
+                    "dataType": "string",
+                    "description": "",
+                    "optional": false
+                },
+                {
+                    "name": "content",
+                    "dataType": "string",
+                    "description": "",
+                    "optional": false
+                },
+                {
+                    "name": "initContent",
+                    "dataType": "object",
+                    "ts_dataType": "any",
+                    "description": "Function which initializes the content",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "200", "200", "{x:10, y:10}", "'layoutPanel'", "'Title'", "'Content'" ]
+            }
+        },
+        {
+            "name": "destroy",
+            "description": "<P>Destroys the widget. </P>\n<H4>Code examples </H4>\n<P>Invoke the <CODE>destroy</CODE> method. </P>\n<PRE><CODE>$('#jqxDockingLayout').jqxDockingLayout('destroy'); </CODE></PRE>",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxdockinglayout-destroy-method",
+            "exampleDescription": "destroy the widget",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "loadLayout",
+            "description": "<P>Loads a previously saved layout. </P>\n<H4>Code examples </H4>\n<P>Invoke the <CODE>loadLayout</CODE> method. </P>\n<PRE><CODE>// @param layout - an object returned by the method saveLayout\r\n$('#jqxDockingLayout').jqxDockingLayout('loadLayout', layout);</CODE></PRE>",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxdockinglayout-loadlayout-method",
+            "exampleDescription": "load a previously saved layout",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "layout",
+                    "dataType": "object",
+                    "ts_dataType": "any",
+                    "description": "the object returned from saveLayout",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "layout" ]
+            },
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;JqxButton @click=\"onSave($event)\" :width=\"110\" :height=\"18\">Save layout&lt;/JqxButton>\n    &lt;JqxButton @click=\"onLoad($event)\" :width=\"110\" :height=\"18\">Load layout&lt;/JqxButton>\n      &lt;br/>\n    &lt;JqxDockingLayout ref=\"myDockingLayout\"\n      :width=\"850\" :height=\"600\" :layout=\"layout\">\n      &lt;div data-container='Document1Panel'> Document 1 Content &lt;/div>\n      &lt;div data-container='Document2Panel'> Document 2 Content &lt;/div>\n      &lt;div data-container='ErrorListPanel'> List of Errors &lt;/div>\n      &lt;div data-container='OutputPanel'> Output &lt;/div>\n      &lt;div data-container='SolutionExplorerPanel'> Solution Structure &lt;/div>\n      &lt;div data-container='PropertiesPanel'> List of properties &lt;/div>\n    &lt;/JqxDockingLayout>\n   &lt;/div>\n&lt;/template>\n \n&lt;script>\n  import JqxDockingLayout from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxdockinglayout.vue';\n  import JqxButton from \"jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue\";\n \n  export default {\n    components: {\n      JqxDockingLayout,\n      JqxButton\n    },\n    data: function () {\n      return  {\n        savedLayout: null,\n        layout: [\n            {\n              type: 'layoutGroup', \n              orientation: 'horizontal',\n              items: [{\n                type: 'layoutGroup',\n                orientation: 'vertical',\n                width: '60%',\n                items: [{\n                  type: 'documentGroup',\n                  height: '50%',\n                  minHeight: '25%',\n                  items: [{\n                    type: 'documentPanel',\n                    title: 'Document 1',\n                    contentContainer: 'Document1Panel'\n                  }, {\n                    type: 'documentPanel',\n                    title: 'Document 2',\n                    contentContainer: 'Document2Panel'\n                  }]\n                }, {\n                  type: 'tabbedGroup',\n                  height: '50%',\n                  pinnedHeight: '10%',\n                  items: [{\n                    type: 'layoutPanel',\n                    title: 'Error List',\n                    contentContainer: 'ErrorListPanel'\n                  }, {\n                    type: 'layoutPanel',\n                    title: 'Output',\n                    contentContainer: 'OutputPanel',\n                    selected: true\n                  }]\n                }]\n              }, {\n                type: 'tabbedGroup',\n                width: '40%',\n                items: [{\n                  type: 'layoutPanel',\n                  title: 'Solution Explorer',\n                  contentContainer: 'SolutionExplorerPanel'\n                }, {\n                   type: 'layoutPanel',\n                  title: 'Properties',\n                  contentContainer: 'PropertiesPanel'\n                }]\n              }]\n            }\n          ]\n      }\n    },\n    methods: {\n      onSave() {\n        this.savedLayout = this.$refs.myDockingLayout.saveLayout();\n      },\n      onLoad() {\n        this.$refs.myDockingLayout.loadLayout(this.savedLayout);\n      }\n    }\n  }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "refresh",
+            "description": "<P>Refreshes the widget. </P>\n<H4>Code examples </H4>\n<P>Invoke the <CODE>refresh</CODE> method. </P>\n<PRE><CODE>$('#jqxDockingLayout').jqxDockingLayout('refresh');</CODE></PRE>",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxdockinglayout-refresh-method",
+            "exampleDescription": "refresh the widget",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "render",
+            "description": "<P>Renders the widget. </P>\n<H4>Code examples </H4>\n<P>Invoke the <CODE>render</CODE> method. </P>\n<PRE><CODE>$('#jqxDockingLayout').jqxDockingLayout('render');</CODE></PRE>",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxdockinglayout-render-method",
+            "exampleDescription": "render the widget",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "saveLayout",
+            "description": "<P>Saves the current layout of the widget. The object returned by this method can be passed to the method <STRONG>loadLayout</STRONG>. </P>\n<H4>Code examples </H4>\n<P>Invoke the <CODE>saveLayout</CODE> method. </P>\n<PRE><CODE>var layout = $('#jqxDockingLayout').jqxDockingLayout('saveLayout');</CODE></PRE>",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxdockinglayout-savelayout-method",
+            "exampleDescription": "saves the widget's layout",
+            "returnDataType": "object",
+            "ts_returnDataType": "any",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+}

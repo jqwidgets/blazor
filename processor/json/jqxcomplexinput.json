@@ -1,0 +1,328 @@
+{
+    "widget": {
+        "name": "jqxComplexInput",
+        "description": "Enables the user to edit complex and scientific numbers.",
+        "angular2": {
+            "name": "jqxComplexInputComponent",
+            "selector": "jqxComplexInput"
+        }
+    },
+    "dataTypes": [
+        {
+            "name": "ComplexInputDecimalNotation",
+            "ts_dataType": "enum",
+            "enumOptions": [ "default", "exponential", "scientific", "engineering" ]
+        },
+        {
+            "name": "ComplexInputTemplate",
+            "ts_dataType": "enum",
+            "enumOptions": [ "default", "primary", "success", "warning", "danger", "info" ]
+        }
+    ],
+    "exampleInit": {
+        "width": "250",
+        "height": "25",
+        "value": "'15 + 7.2i'"
+    },
+    "properties": [
+        {
+            "name": "decimalNotation",
+            "defaultValue": "'default'",
+            "description": "<P>Sets or gets the notation in which to display the real and imaginary parts of the complex number. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'default'</CODE> - decimal notation, e.g. '330000 - 200i'</PRE>\n<PRE><CODE>'exponential'</CODE>, e.g. '3.3e+5 - 2e+2i'</PRE>\n<PRE><CODE>'scientific'</CODE>, e.g. '3.3x10<sup>3</sup> - 2x10<sup>2</sup>i'</PRE>\n<PRE><CODE>'engineering'</CODE>, e.g. '330x10<sup>3</sup> - 200x10<sup>o</sup>i'</PRE>",
+            "example": "<pre><CODE>$(\"#jqxComplexInput\").jqxComplexInput({ decimalNotation: \"exponential\" });</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/e3z30bom/",
+            "exampleDescription": "decimalNotation is set to \"exponential\"",
+            "dataType": "string",
+            "ts_dataType": "enum:ComplexInputDecimalNotation",
+            "exampleInit": {
+                "decimalNotation": "exponential"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "disabled",
+            "defaultValue": "false",
+            "description": "<P>Enables or disables the jqxComplexInput. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>disabled</CODE> property. </P>\n<PRE><CODE>$('#jqxComplexInput').jqxComplexInput({ disabled: false });</CODE></PRE>\n\r\n<P>Get the <CODE>disabled</CODE> property. </P>\n<PRE><CODE>var disabled = $('#jqxComplexInput').jqxComplexInput('disabled');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/f1LLhjcq/",
+            "exampleDescription": "disabled is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "disabled": "true"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "height",
+            "defaultValue": "null",
+            "description": "<P>Sets or gets the jqxComplexInput's height. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>height</CODE> property. </P>\n<PRE><CODE>$('#jqxComplexInput').jqxComplexInput({ height: \"35px\" });</CODE></PRE>\n\r\n<P>Get the <CODE>height</CODE> property. </P>\n<PRE><CODE>var height = $('#jqxComplexInput').jqxComplexInput('height');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/fqc8fqgy/",
+            "exampleDescription": "height is set to 35",
+            "dataType": "number",
+            "ts_dataType": "string | number",
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "placeHolder",
+            "defaultValue": "''",
+            "description": "<P>Sets or gets the jqxComplexInput's placeholder. </P>",
+            "example": "<pre><CODE>$(\"#jqxComplexInput\").jqxComplexInput({ placeHolder: \"Enter a complex number\" });</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/kb4auhye/",
+            "exampleDescription": "placeHolder is set to \"Enter a complex number\"",
+            "dataType": "string",
+            "exampleInit": {
+                "placeHolder": "Enter a complex number"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "roundedCorners",
+            "defaultValue": "true",
+            "description": "<P>Enables or disables the rounded corners functionality. This property setting has effect in browsers which support CSS border-radius. </P>",
+            "example": "<pre><CODE>$(\"#jqxComplexInput\").jqxComplexInput({ roundedCorners: false });</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/hv0ym9ta/",
+            "exampleDescription": "roundedCorners is set to false",
+            "dataType": "boolean",
+            "exampleInit": {
+                "roundedCorners": "false"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "rtl",
+            "defaultValue": "false",
+            "description": "<P>Sets or gets a value indicating whether widget's elements are aligned to support locales using right-to-left fonts. </P>",
+            "example": "<pre><CODE>$('#jqxComplexInput').jqxComplexInput({ rtl : true });</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/9gvhsdd4/",
+            "exampleDescription": "rtl is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "rtl": "true"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "spinButtons",
+            "defaultValue": "false",
+            "description": "<P>Shows or hides the spin buttons. </P>\n\r\n<P><EM style=\"DISPLAY: none\" jQuery111108444175346967991=\"8\">Note:</EM> the spin buttons require an additional empty div element in the initialization div of jqxComplexInput. </P>",
+            "example": "<pre><CODE>$(\"#jqxComplexInput\").jqxComplexInput({ spinButtons: true });</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/nw4s6ztb/",
+            "exampleDescription": "spinButtons is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "spinButtons": "true"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "spinButtonsStep",
+            "defaultValue": "1",
+            "description": "<P>Sets or gets the increase/decrease step. </P>",
+            "example": "<pre><CODE>$(\"#jqxComplexInput\").jqxComplexInput({ spinButtonsStep: 10 });</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/527yg9mL/",
+            "exampleDescription": "spinButtonsStep is set to 10",
+            "dataType": "number",
+            "exampleInit": {
+                "spinButtons": "true",
+                "spinButtonsStep": "10"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "template",
+            "defaultValue": "'default'",
+            "description": "<P>Determines the template as an alternative of the default styles. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'default' - the default template. The style depends only on the \"theme\" property value.</CODE></PRE>\n<PRE><CODE>'primary' - dark blue style for extra visual weight.</CODE></PRE>\n<PRE><CODE>'success' - green style for successful or positive action.</CODE></PRE>\n<PRE><CODE>'warning' - orange style which indicates caution.</CODE></PRE>\n<PRE><CODE>'danger' - red style which indicates a dangerous or negative action.</CODE></PRE>\n<PRE><CODE>'info' - blue button, not tied to a semantic action or use.</CODE></PRE>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>template</CODE> property. </P>\n<PRE><CODE>$(\"#jqxComplexInput\").jqxComplexInput({ template: 'primary'});</CODE></PRE>\n\r\n<P>Get the <CODE>template</CODE> property. </P>\n<PRE><CODE>var template = $('#jqxComplexInput').jqxComplexInput('template');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/4c2L8ejd/",
+            "exampleDescription": "template is set to 'primary'",
+            "dataType": "string",
+            "ts_dataType": "enum:ComplexInputTemplate",
+            "exampleInit": {
+                "template": "primary"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "theme",
+            "defaultValue": "''",
+            "description": "<P>Sets the widget's theme. </P>\n\r\n<UL><LI>Include the theme's CSS file after jqx.base.css.<BR>The following code example adds the 'material' theme. <PRE><CODE>\r\n                                <PRE><CODE>&lt;link rel=\"stylesheet\" href=\"../../jqwidgets/styles/jqx.base.css\" type=\"text/css\" /&gt;\r\n&lt;link rel=\"stylesheet\" href=\"../../jqwidgets/styles/jqx.material.css\" type=\"text/css\" /&gt; </CODE></PRE>\r\n                                </CODE></PRE>\r\n<LI>Set the widget's theme property to 'material' when you initialize it. </LI></UL>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/p7oL6eqv/",
+            "exampleDescription": "theme is set to 'material'",
+            "dataType": "string",
+            "exampleInit": {
+                "theme": "material"
+            }
+        },
+        {
+            "name": "value",
+            "defaultValue": "''",
+            "description": "<P>Sets or gets the value of the jqxComplexInput widget. </P>",
+            "example": "<pre><CODE>$(\"#jqxComplexInput\").jqxComplexInput({ value: \"190 - 17i\" });</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/pqtd913s/",
+            "exampleDescription": "value is set to \"190 - 17i\"",
+            "dataType": "string",
+            "exampleInit": {
+                "value": "'190 - 17i'"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "width",
+            "defaultValue": "null",
+            "description": "<P>Sets or gets the jqxComplexInput's width. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>width</CODE> property. </P>\n<PRE><CODE>$('#jqxComplexInput').jqxComplexInput({ width: 200 });</CODE></PRE>\n\r\n<P>Get the <CODE>width</CODE> property. </P>\n<PRE><CODE>var width = $('#jqxComplexInput').jqxComplexInput('width');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/p7oL6eqv/",
+            "exampleDescription": "width is set to 200",
+            "dataType": "number",
+            "ts_dataType": "string | number",
+            "customExample": {
+                "codeType": "get"
+            }
+        }
+    ],
+    "events": [
+        {
+            "name": "change",
+            "description": "<P>This event is triggered when the value is changed. </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>change</CODE> event by type: jqxComplexInput. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/apwvwgj8/",
+            "exampleDescription": "Bind to the change event by type: jqxComplexInput.",
+            "example": "<PRE><CODE>$(\"#jqxComplexInput\").on(\"change\", function (event) {\r\n    // event arguments\r\n    var args = event.args;\r\n    if (args) {\r\n        // new value\r\n        var value = args.value;\r\n        // old value\r\n        var oldValue = args.oldValue;\r\n        // real part\r\n        var realPart = args.realPart;\r\n        // imaginary part\r\n        var imaginaryPart = args.imaginaryPart;\r\n        // type\r\n        var type = args.type; // keyboard, mouse or null depending on how the value was changed.                      \r\n    }\r\n});</CODE></PRE>"
+        }
+    ],
+    "methods": [
+        {
+            "name": "destroy",
+            "description": "<P>Destroys the widget. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>destroy</CODE> method. </P>\n<PRE><CODE>$('#jqxComplexInput').jqxComplexInput('destroy'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/w1d1zo8n/",
+            "exampleDescription": "destroys the complex input",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "getDecimalNotation",
+            "description": "",
+            "exampleURL": "",
+            "exampleDescription": "",
+            "returnDataType": "string",
+            "arguments": [
+                {
+                    "name": "part",
+                    "dataType": "string",
+                    "description": "",
+                    "optional": false
+                },
+                {
+                    "name": "decimalNotation",
+                    "dataType": "string",
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "getReal",
+            "description": "<P>Gets the real part of the entered number. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>getReal</CODE> method. </P>\n<PRE><CODE>// @param complexnumber (optional) - if passed, gets the real part of the passed complex number\r\nvar realPart = $('#jqxComplexInput').jqxComplexInput('getReal');</CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/ywo2w443/",
+            "exampleDescription": "gets the real part",
+            "returnDataType": "number",
+            "arguments": [
+                {
+                    "name": "complexnumber",
+                    "dataType": "number",
+                    "description": "if passed, gets the real part of the passed complex number",
+                    "optional": true
+                }
+            ]
+        },
+        {
+            "name": "getImaginary",
+            "description": "<P>Gets the imaginary part of the entered number. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>getImaginary</CODE> method. </P>\n<PRE><CODE>// @param complexnumber (optional) - if passed, gets the imaginary part of the passed complex number\r\nvar imaginaryPart = $('#jqxComplexInput').jqxComplexInput('getImaginary');</CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/btqdrjpn/",
+            "exampleDescription": "gets the imaginary part",
+            "returnDataType": "number",
+            "arguments": [
+                {
+                    "name": "complexnumber",
+                    "dataType": "number",
+                    "description": "if passed, gets the imaginary part of the passed complex number",
+                    "optional": true
+                }
+            ]
+        },
+        {
+            "name": "render",
+            "description": "<P>Renders the widget. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>render</CODE> method. </P>\n<PRE><CODE>$('#jqxComplexInput').jqxComplexInput('render');</CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/d3mmcndo/",
+            "exampleDescription": "renders the complex input",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "refresh",
+            "description": "<P>Refreshes the widget. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>refresh</CODE> method. </P>\n<PRE><CODE>$('#jqxComplexInput').jqxComplexInput('refresh'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/fsnodhL7/",
+            "exampleDescription": "refreshes the complex input",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "val",
+            "description": "<P>Sets or gets the value. </P>\n<H4>Code examples</H4>\n<P>Get the <CODE>value</CODE>: </P>\n<PRE><CODE>var value = $('#jqxComplexInput').jqxComplexInput('val');\r\nor\r\nvar value = $('#jqxComplexInput').val();</CODE></PRE>\n<P>Set the <CODE>value</CODE>: </P>\n<PRE><CODE>// @param complexnumber - a string with the value of the complex number to set or an object with the fields \"real\" and \"imaginary\", representing the real and imaginary parts of the number to set\r\n$('#jqxComplexInput').jqxComplexInput('val', '1 - 99i');\r\nor\r\n$('#jqxComplexInput').val('1 - 99i');\r\nor\r\n$('#jqxComplexInput').jqxComplexInput('val', { real: 1, imaginary: -99 });\r\nor\r\n$('#jqxComplexInput').val({ real: 1, imaginary: -99 });</CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/aqsr0bc2/",
+            "exampleDescription": "sets the jqxComplexInput value",
+            "returnDataType": "string",
+            "arguments": [
+                {
+                    "name": "value",
+                    "dataType": "string/object",
+                    "ts_dataType": "any",
+                    "description": "If object is passed, it should be with object.real and object.imaginary properties.",
+                    "optional": true
+                }
+            ]
+        }
+    ]
+}

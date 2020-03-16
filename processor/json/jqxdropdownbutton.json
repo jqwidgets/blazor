@@ -1,0 +1,389 @@
+{
+    "widget": {
+        "name": "jqxDropDownButton",
+        "description": "Contains a custom content displayed in a drop-down.",
+        "angular2": {
+            "name": "jqxDropDownButtonComponent",
+            "selector": "jqxDropDownButton"
+        }
+    },
+    "dataTypes": [
+        {
+            "name": "DropDownButtonAnimationType",
+            "ts_dataType": "enum",
+            "enumOptions": [ "none", "slide", "fade" ]
+        },
+        {
+            "name": "DropDownButtonHorizontalAlignment",
+            "ts_dataType": "enum",
+            "enumOptions": [ "left", "right" ]
+        },
+        {
+            "name": "DropDownButtonVerticalAlignment",
+            "ts_dataType": "enum",
+            "enumOptions": [ "top", "bottom" ]
+        },
+        {
+            "name": "DropDownButtonTemplate",
+            "ts_dataType": "enum",
+            "enumOptions": [ "default", "primary", "success", "warning", "danger", "info" ]
+        }
+    ],
+    "exampledInitExtraData": {
+        "properties": "",
+        "beforeCreate": "",
+        "mounted": "this.$refs.myDropDownButton.setContent(`<div style='position: relative; margin-left: 3px; margin-top: 4px;'>Home</div>`);",
+        "methods": "myTreeOnSelect: function (event) {\n        const item = this.$refs.myTree.getItem(event.args.element);\n        const dropDownContent = `<div style='position: relative; margin-left: 3px; margin-top: 4px;'>` + item.label + `</div>`;\n        this.$refs.myDropDownButton.setContent(dropDownContent);\n      }"
+    },
+    "exampleExtraTemplate": "<jqxTree ref='myTree' @select='myTreeOnSelect($event)' :width='200'> \n      <ul> \n        <li item-selected='true'>Home</li>\n        <li item-expanded='true'> \n          Solutions\n            <ul> \n              <li>Education</li>\n              <li>Financial services</li>\n              <li>Government</li>\n              <li>Manufacturing</li>\n            </ul>\n        </li>\n        <li> \n          Products\n            <ul> \n              <li>PC products</li>\n              <li>Mobile products</li>\n              <li>All products</li>\n            </ul>\n        </li>\n      </ul>\n    </jqxTree>",
+    "exampleExtraImport": "jqxTree",
+    "exampleCSS": ".jqx-tree {\n    border: none;\n  }\n",
+    "properties": [
+        {
+            "name": "animationType",
+            "defaultValue": "'slide'",
+            "description": "<P>Sets or gets the type of the animation. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'fade'</CODE></PRE>\n<PRE><CODE>'slide'</CODE></PRE>\n<PRE><CODE>'none'</CODE></PRE>",
+            "example": "<pre><CODE>$('#jqxDropDownButton').jqxDropDownButton({animationType: 'none'});</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/dwHWw/",
+            "exampleDescription": "animationType is set to 'fade'",
+            "dataType": "string",
+            "ts_dataType": "enum:DropDownButtonAnimationType",
+            "exampleInit": {
+                "animationType": "fade"
+            }
+        },
+        {
+            "name": "arrowSize",
+            "defaultValue": "16",
+            "description": "Sets or gets the width of the arrow element.",
+            "example": "",
+            "exampleURL": "",
+            "exampleDescription": "",
+            "dataType": "number",
+            "exampleInit": {
+                "arrowSize": "20"
+            }
+        },
+        {
+            "name": "autoOpen",
+            "defaultValue": "false",
+            "description": "<P>Sets or gets whether the DropDown is automatically opened when the mouse cursor is moved over the widget. </P>",
+            "example": "<pre><CODE>$(\"#jqxDropDownButton\").jqxDropDownButton({ autoOpen: true });\r\n\t\t\t\t</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/GRgQ6/",
+            "exampleDescription": "autoOpen is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "autoOpen": "true"
+            }
+        },
+        {
+            "name": "closeDelay",
+            "defaultValue": "400",
+            "description": "<P>Sets or gets the delay of the 'close' animation. </P>",
+            "example": "<pre><CODE>$('#jqxDropDownButton').jqxDropDownButton({closeDelay: 200});</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/KS2fL/",
+            "exampleDescription": "closeDelay is set to 2000",
+            "dataType": "number",
+            "exampleInit": {
+                "closeDelay": "800"
+            }
+        },
+        {
+            "name": "disabled",
+            "defaultValue": "false",
+            "description": "<P>Enables or disables the dropDownButton. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>disabled</CODE> property. </P>\n<PRE><CODE>$('#jqxDropDownButton').jqxDropDownButton({disabled: false });</CODE></PRE>\n\r\n<P>Get the <CODE>disabled</CODE> property. </P>\n<PRE><CODE>var disabled = $('#jqxDropDownButton').jqxDropDownButton('disabled');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/8rqtD/",
+            "exampleDescription": "disabled is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "disabled": "true"
+            }
+        },
+        {
+            "name": "dropDownHorizontalAlignment",
+            "defaultValue": "'left'",
+            "description": "<P>Sets or gets the DropDown's alignment. </P>\n<B>Possible values: </B>\n<PRE><CODE>'left' </CODE></PRE>\n<PRE><CODE>'right'</CODE></PRE>",
+            "example": "<pre><CODE>$('#jqxDropDownButton').jqxDropDownButton({ dropDownHorizontalAlignment: 'right'}); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/LShym/",
+            "exampleDescription": "dropDownHorizontalAlignment is set to 'right'",
+            "dataType": "string",
+            "ts_dataType": "enum:DropDownButtonHorizontalAlignment",
+            "exampleInit": {
+                "dropDownHorizontalAlignment": "right"
+            }
+        },
+        {
+            "name": "dropDownVerticalAlignment",
+            "defaultValue": "'bottom'",
+            "description": "<P>Sets or gets the DropDown's alignment. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'top'</CODE></PRE>\n<PRE><CODE>'bottom'</CODE></PRE>",
+            "example": "<pre><CODE>$('#jqxDropDownButton').jqxDropDownButton({ dropDownVerticalAlignment: 'top'}); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/yg1dp2fb/",
+            "exampleDescription": "dropDownVerticalAlignment is set to \"top\"",
+            "dataType": "string",
+            "ts_dataType": "enum:DropDownButtonVerticalAlignment",
+            "exampleInit": {
+                "dropDownVerticalAlignment": "bottom"
+            }
+        },
+        {
+            "name": "dropDownWidth",
+            "defaultValue": "null",
+            "description": "Sets or gets the dropdownbutton popup width.",
+            "example": "",
+            "exampleURL": "",
+            "exampleDescription": "",
+            "dataType": "string | number",
+            "ts_dataType": "number | string",
+            "exampleInit": {
+                "dropDownWidth": "500"
+            }
+        },
+        {
+            "name": "enableBrowserBoundsDetection",
+            "defaultValue": "false",
+            "description": "<P>When this property is set to true, the popup may open above the button, if there's not enough available space below the button. </P>",
+            "example": "<pre><CODE>$('#jqxDropDownButton').jqxDropDownButton({ enableBrowserBoundsDetection: false}); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/4eTCk/",
+            "exampleDescription": "enableBrowserBoundsDetection is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "enableBrowserBoundsDetection": "true"
+            }
+        },
+        {
+            "name": "height",
+            "defaultValue": "null",
+            "description": "<P>Sets or gets the button's height. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>height</CODE> property. </P>\n<PRE><CODE>$('#jqxDropDownButton').jqxDropDownButton({ height: '25px' }); </CODE></PRE>\n\r\n<P>Get the <CODE>height</CODE> property. </P>\n<PRE><CODE>var height = $('#jqxDropDownButton').jqxDropDownButton('height');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/LLJEV/",
+            "exampleDescription": "height is set to 19",
+            "dataType": "number",
+            "ts_dataType": "string | number",
+            "exampleInit": {
+                "height": "40"
+            }
+        },
+        {
+            "name": "initContent",
+            "defaultValue": "null",
+            "description": "<P>Function, called after the first open of the dropdown button popup.</P>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/o10v3wr3/",
+            "exampleDescription": "initContent is set",
+            "dataType": "Function",
+            "ts_dataType": "() => void",
+            "exampleInit": {
+                "initContent": "initContent",
+                "exampleData": "this.$refs.myDropDownButton.setContent('Dynamicly Added!');"
+            }
+        },
+        {
+            "name": "openDelay",
+            "defaultValue": "350",
+            "description": "<P>Sets or gets the delay of the 'open' animation. </P>",
+            "example": "<pre><CODE>$('#jqxDropDownButton').jqxDropDownButton({openDelay: 200});</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/Psfj5/",
+            "exampleDescription": "openDelay is set to 2000",
+            "dataType": "number",
+            "exampleInit": {
+                "openDelay": "1000"
+            }
+        },
+        {
+            "name": "popupZIndex",
+            "defaultValue": "20000",
+            "description": "<P>Sets or gets the popup's z-index. </P>",
+            "example": "<pre><CODE>$(\"#jqxDropDownButton\").jqxDropDownButton({popupZIndex: 999999});</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/GZk2h/",
+            "exampleDescription": "popupZIndex is set to 999999",
+            "dataType": "number",
+            "exampleInit": {
+                "popupZIndex": "9999"
+            }
+        },
+        {
+            "name": "rtl",
+            "defaultValue": "false",
+            "description": "<P>Sets or gets a value indicating whether widget's elements are aligned to support locales using right-to-left fonts.</P>",
+            "example": "<pre><CODE>$('#jqxDropDownButton').jqxDropDownButton({rtl : true}); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/jmTwk/",
+            "exampleDescription": "rtl is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "rtl": "true"
+            }
+        },
+        {
+            "name": "template",
+            "defaultValue": "'default'",
+            "description": "<P>Determines the template as an alternative of the default styles. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'default' - the default template. The style depends only on the \"theme\" property value.</CODE></PRE>\n<PRE><CODE>'primary' - dark blue style for extra visual weight.</CODE></PRE>\n<PRE><CODE>'success' - green style for successful or positive action.</CODE></PRE>\n<PRE><CODE>'warning' - orange style which indicates caution.</CODE></PRE>\n<PRE><CODE>'danger' - red style which indicates a dangerous or negative action.</CODE></PRE>\n<PRE><CODE>'info' - blue button, not tied to a semantic action or use.</CODE></PRE>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>template</CODE> property. </P>\n<PRE><CODE>$(\"#jqxDropDownButton\").jqxDropDownButton({ template: 'primary'});</CODE></PRE>\n\r\n<P>Get the <CODE>template</CODE> property. </P>\n<PRE><CODE>var template = $('#jqxDropDownButton').jqxDropDownButton('template');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/c675Lngu/",
+            "exampleDescription": "template is set to 'success'",
+            "dataType": "string",
+            "ts_dataType": "enum:DropDownButtonTemplate",
+            "exampleInit": {
+                "template": "success"
+            }
+        },
+        {
+            "name": "theme",
+            "defaultValue": "''",
+            "description": "<P>Sets the widget's theme. Include the desired theme's CSS file after the 'jqx.base.css' file.</P>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/rpvcC/",
+            "exampleDescription": "theme is set to 'material'",
+            "dataType": "string",
+            "exampleInit": {
+                "theme": "material"
+            }
+        },
+        {
+            "name": "width",
+            "defaultValue": "null",
+            "description": "<P>Sets or gets the button's width. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>width</CODE> property. </P>\n<PRE><CODE>$('#jqxDropDownButton').jqxDropDownButton({ width: '250px'}); </CODE></PRE>\n\r\n<P>Get the <CODE>width</CODE> property. </P>\n<PRE><CODE>var width = $('#jqxDropDownButton').jqxDropDownButton('width');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/RhBkq/",
+            "exampleDescription": "width is set to 150",
+            "dataType": "number",
+            "ts_dataType": "string | number",
+            "exampleInit": {
+                "width": "400"
+            }
+        }
+    ],
+    "events": [
+        {
+            "name": "close",
+            "description": "<P>This event is triggered when the button's popup is closed. </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>close</CODE> event by type: jqxDropDownButton. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/Busec/",
+            "exampleDescription": "Bind to the close event by type: jqxDropDownButton.",
+            "example": "<PRE><CODE>$('#jqxDropDownButton').on('close', function () { // Some code here. }); </CODE></PRE>"
+        },
+        {
+            "name": "open",
+            "description": "<P>This event is triggered when the button's popup is opened. </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>open</CODE> event by type: jqxDropDownButton. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/jvbwx/",
+            "exampleDescription": "Bind to the open event by type: jqxDropDownButton.",
+            "example": "<PRE><CODE>$('#jqxDropDownButton').on('open', function () { // Some code here. }); </CODE></PRE>"
+        }
+    ],
+    "methods": [
+        {
+            "name": "close",
+            "description": "<P>Hides the button's content. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>close</CODE> method. </P>\n<PRE><CODE>$('#jqxDropDownButton').jqxDropDownButton('close'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/U3kAq/",
+            "exampleDescription": "closes the jqxDropDownButton",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n    &lt;JqxDropDownButton ref=\"myDropDownButton\" :autoOpen=\"false\">\n        &lt;jqxTree ref='myTree' @select='myTreeOnSelect($event)' :width='200'>\n            &lt;ul>\n                &lt;li item-selected='true'>Home&lt;/li>\n                &lt;li item-expanded='true'>\n                    Solutions\n                    &lt;ul>\n                        &lt;li>Education&lt;/li>\n                        &lt;li>Financial services&lt;/li>\n                        &lt;li>Government&lt;/li>\n                        &lt;li>Manufacturing&lt;/li>\n                    &lt;/ul>\n                &lt;/li>\n                &lt;li>\n                    Products\n                    &lt;ul>\n                        &lt;li>PC products&lt;/li>\n                        &lt;li>Mobile products&lt;/li>\n                        &lt;li>All products&lt;/li>\n                    &lt;/ul>\n                &lt;/li>\n            &lt;/ul>\n        &lt;/jqxTree>\n    &lt;/JqxDropDownButton>\n&lt;/template>\n\n&lt;script>\n    import JqxDropDownButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxdropdownbutton.vue';\n    import JqxTree from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxtree.vue';\n\n    export default {\n        components: {\n            JqxDropDownButton,\n            JqxTree\n        },\n        mounted: function () {\n            this.$refs.myDropDownButton.setContent(`&lt;div style='position: relative; margin-left: 3px; margin-top: 4px;'>Home&lt;/div>`);\n            this.$refs.myDropDownButton.open();\n            setTimeout(_ => this.$refs.myDropDownButton.close(), 1000);\n        },\n        methods: {\n            myTreeOnSelect: function (event) {\n                const item = this.$refs.myTree.getItem(event.args.element);\n                const dropDownContent = `&lt;div style='position: relative; margin-left: 3px; margin-top: 4px;'>` + item.label + `&lt;/div>`;\n                this.$refs.myDropDownButton.setContent(dropDownContent);\n            }\n        }\n    }\n&lt;/script>\n&lt;style>\n    .jqx-tree {\n        border: none;\n    }\n&lt;/style>"
+            }
+        },
+        {
+            "name": "destroy",
+            "description": "<P>Destroys the widget. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>destroy</CODE> method. </P>\n<PRE><CODE>$('#jqxDropDownButton').jqxDropDownButton('destroy'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/XpFYG/",
+            "exampleDescription": "destroys the jqxDropDownButton",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "focus",
+            "description": "<P>Focuses the widget. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>focus</CODE> method. </P>\n<PRE><CODE>$('#jqxDropDownButton').jqxDropDownButton('focus'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/XpFYG/",
+            "exampleDescription": "focuses the jqxDropDownButton",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "getContent",
+            "description": "<P>Gets the button's content. The returned value is the button's content set through the \"setContent\" method. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>getContent</CODE> method. </P>\n<PRE><CODE>var content = $('#jqxDropDownButton').jqxDropDownButton('getContent'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/5G8nf/",
+            "exampleDescription": "gets the content of the jqxDropDownButton",
+            "returnDataType": "object",
+            "ts_returnDataType": "any",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "isOpened",
+            "description": "<P>Returns true, if the drop down is opened. Otherwise returns false. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/wn2ef/",
+            "exampleDescription": "determins whether the popup is opened",
+            "returnDataType": "boolean",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "open",
+            "description": "<P>Shows the button's content. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>open</CODE> method. </P>\n<PRE><CODE>$('#jqxDropDownButton').jqxDropDownButton('open'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/r7xqe/",
+            "exampleDescription": "opens the jqxDropDownButton",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n    &lt;JqxDropDownButton ref=\"myDropDownButton\" :autoOpen=\"false\">\n        &lt;jqxTree ref='myTree' @select='myTreeOnSelect($event)' :width='200'>\n            &lt;ul>\n                &lt;li item-selected='true'>Home&lt;/li>\n                &lt;li item-expanded='true'>\n                    Solutions\n                    &lt;ul>\n                        &lt;li>Education&lt;/li>\n                        &lt;li>Financial services&lt;/li>\n                        &lt;li>Government&lt;/li>\n                        &lt;li>Manufacturing&lt;/li>\n                    &lt;/ul>\n                &lt;/li>\n                &lt;li>\n                    Products\n                    &lt;ul>\n                        &lt;li>PC products&lt;/li>\n                        &lt;li>Mobile products&lt;/li>\n                        &lt;li>All products&lt;/li>\n                    &lt;/ul>\n                &lt;/li>\n            &lt;/ul>\n        &lt;/jqxTree>\n    &lt;/JqxDropDownButton>\n&lt;/template>\n\n&lt;script>\n    import JqxDropDownButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxdropdownbutton.vue';\n    import JqxTree from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxtree.vue';\n\n    export default {\n        components: {\n            JqxDropDownButton,\n            JqxTree\n        },\n        mounted: function () {\n            this.$refs.myDropDownButton.setContent(`&lt;div style='position: relative; margin-left: 3px; margin-top: 4px;'>Home&lt;/div>`);\n            this.$refs.myDropDownButton.open();\n            setTimeout(_ => this.$refs.myDropDownButton.close(), 1000);\n        },\n        methods: {\n            myTreeOnSelect: function (event) {\n                const item = this.$refs.myTree.getItem(event.args.element);\n                const dropDownContent = `&lt;div style='position: relative; margin-left: 3px; margin-top: 4px;'>` + item.label + `&lt;/div>`;\n                this.$refs.myDropDownButton.setContent(dropDownContent);\n            }\n        }\n    }\n&lt;/script>\n&lt;style>\n    .jqx-tree {\n        border: none;\n    }\n&lt;/style>"
+            }
+        },
+        {
+            "name": "setContent",
+            "description": "<P>Sets the button's content. The parameter could be a \"string\" or \"html\". </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>setContent</CODE> method. </P>\n<PRE><CODE>$('#jqxDropDownButton').jqxDropDownButton('setContent', 'my content'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/LW22H/",
+            "exampleDescription": "sets the content of the jqxDropDownButton",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "content",
+                    "dataType": "string",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "'New Content!'" ]
+            }
+        }
+    ]
+}

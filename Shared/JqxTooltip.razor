@@ -1,0 +1,292 @@
+@using System.Text.Json;
+@inject IJSRuntime JSRuntime;
+
+<div id="@componentID">@ChildContent</div>
+
+@code {
+    [Parameter]
+    public double absolutePositionX {
+        get { return getterProp<double>("absolutePositionX"); }
+        set { setterProp("absolutePositionX", value); }
+    }
+
+    [Parameter]
+    public double absolutePositionY {
+        get { return getterProp<double>("absolutePositionY"); }
+        set { setterProp("absolutePositionY", value); }
+    }
+
+    [Parameter]
+    public bool autoHide {
+        get { return getterProp<bool>("autoHide"); }
+        set { setterProp("autoHide", value); }
+    }
+
+    [Parameter]
+    public double autoHideDelay {
+        get { return getterProp<double>("autoHideDelay"); }
+        set { setterProp("autoHideDelay", value); }
+    }
+
+    [Parameter]
+    public object animationShowDelay {
+        get { return getterProp<object>("animationShowDelay"); }
+        set { setterProp("animationShowDelay", value); }
+    }
+
+    [Parameter]
+    public object animationHideDelay {
+        get { return getterProp<object>("animationHideDelay"); }
+        set { setterProp("animationHideDelay", value); }
+    }
+
+    [Parameter]
+    public string content {
+        get { return getterProp<string>("content"); }
+        set { setterProp("content", value); }
+    }
+
+    [Parameter]
+    public bool closeOnClick {
+        get { return getterProp<bool>("closeOnClick"); }
+        set { setterProp("closeOnClick", value); }
+    }
+
+    [Parameter]
+    public bool disabled {
+        get { return getterProp<bool>("disabled"); }
+        set { setterProp("disabled", value); }
+    }
+
+    [Parameter]
+    public bool enableBrowserBoundsDetection {
+        get { return getterProp<bool>("enableBrowserBoundsDetection"); }
+        set { setterProp("enableBrowserBoundsDetection", value); }
+    }
+
+    [Parameter]
+    public object height {
+        get { return getterProp<object>("height"); }
+        set { setterProp("height", value); }
+    }
+
+    [Parameter]
+    public double left {
+        get { return getterProp<double>("left"); }
+        set { setterProp("left", value); }
+    }
+
+    [Parameter]
+    public string name {
+        get { return getterProp<string>("name"); }
+        set { setterProp("name", value); }
+    }
+
+    [Parameter]
+    public double opacity {
+        get { return getterProp<double>("opacity"); }
+        set { setterProp("opacity", value); }
+    }
+
+    [Parameter]
+    public object position {
+        get { return getterProp<object>("position"); }
+        set { setterProp("position", value); }
+    }
+
+    [Parameter]
+    public bool rtl {
+        get { return getterProp<bool>("rtl"); }
+        set { setterProp("rtl", value); }
+    }
+
+    [Parameter]
+    public double showDelay {
+        get { return getterProp<double>("showDelay"); }
+        set { setterProp("showDelay", value); }
+    }
+
+    [Parameter]
+    public bool showArrow {
+        get { return getterProp<bool>("showArrow"); }
+        set { setterProp("showArrow", value); }
+    }
+
+    [Parameter]
+    public object top {
+        get { return getterProp<object>("top"); }
+        set { setterProp("top", value); }
+    }
+
+    [Parameter]
+    public object trigger {
+        get { return getterProp<object>("trigger"); }
+        set { setterProp("trigger", value); }
+    }
+
+    [Parameter]
+    public string theme {
+        get { return getterProp<string>("theme"); }
+        set { setterProp("theme", value); }
+    }
+
+    [Parameter]
+    public object width {
+        get { return getterProp<object>("width"); }
+        set { setterProp("width", value); }
+    }
+
+    [Parameter]
+    public object options {
+        set { setOptions(value); }
+    }
+
+    [Parameter]
+    public Action<IDictionary<string, object>> onClose { get; set; }
+
+    [Parameter]
+    public Action<IDictionary<string, object>> onClosing { get; set; }
+
+    [Parameter]
+    public Action<IDictionary<string, object>> onOpen { get; set; }
+
+    [Parameter]
+    public Action<IDictionary<string, object>> onOpening { get; set; }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    private string[] paramsToBlock = { "ChildContent", "onClose", "onClosing", "onOpen", "onOpening" };
+
+    private IDictionary<string, string> paramsToChange = new Dictionary<string, string>
+    {
+        { "isChecked", "checked" },
+        { "isReadonly", "readonly" },
+        { "isDecimal", "decimal" }
+    };
+
+    private bool shouldSetters;
+
+    private string componentID;
+
+    private IDictionary<string, object> initialOptions = new Dictionary<string, object>();
+
+    public void close(double index)
+    {
+        setterMethod("close", index);
+    }
+
+    public void destroy()
+    {
+        setterMethod("destroy");
+    }
+
+    public void open(double left, double top)
+    {
+        setterMethod("open", left, top);
+    }
+
+    public void refresh()
+    {
+        setterMethod("refresh");
+    }
+
+    public override async Task SetParametersAsync(ParameterView parameters)
+    {
+        await base.SetParametersAsync(parameters);
+
+        foreach(var parameter in parameters.ToDictionary())
+        {
+            var key = parameter.Key;
+            var value = parameter.Value;
+
+            if (!paramsToBlock.Contains(key))
+            {
+                if (paramsToChange.ContainsKey(key))
+                {
+                    key = paramsToChange[key];
+                }
+
+                initialOptions[key] = value;
+            }
+        }
+
+        shouldSetters = true;
+    }
+
+    protected override void OnInitialized()
+    {
+        componentID = ((IJSInProcessRuntime)JSRuntime).Invoke<string>("jqxBlazor.generateID");
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxTooltip", initialOptions);
+            attachEvents();
+        }
+    }
+
+    private void attachEvents()
+    {
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "close", "emitTooltipEvent", DotNetObjectReference.Create(new EventsHandler(onClose)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "closing", "emitTooltipEvent", DotNetObjectReference.Create(new EventsHandler(onClosing)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "open", "emitTooltipEvent", DotNetObjectReference.Create(new EventsHandler(onOpen)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "opening", "emitTooltipEvent", DotNetObjectReference.Create(new EventsHandler(onOpening)));
+    }
+
+    private T getterProp<T>(string name)
+    {
+        shouldSetters = false;
+        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageProps", componentID, name);
+    }
+
+    private void setterProp(string name, object value)
+    {
+        if (shouldSetters)
+        {
+            ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.manageProps", componentID, name, value);
+        }
+    }
+
+    private T getterMethod<T>(string name)
+    {
+        shouldSetters = false;
+        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", componentID, name);
+    }
+
+    private void setterMethod(string name, params object[] args)
+    {
+        shouldSetters = false;
+        ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.manageMethods", componentID, name, args);
+    }
+
+    private void setOptions(object options)
+    {
+        shouldSetters = false;
+        ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.setOptions", componentID, options);
+    }
+
+    public class EventsHandler
+    {
+        private Action<IDictionary<string, object>> componentEvent;
+
+        public EventsHandler(Action<IDictionary<string, object>> e)
+        {
+            componentEvent = e;
+        }
+
+        [JSInvokable]
+        public void emitTooltipEvent(object e)
+        {
+            if (componentEvent != null)
+            {
+                var eventAsJson = JsonSerializer.Serialize(e);
+                var eventAsDictionary = JsonSerializer.Deserialize<IDictionary<string, object>>(eventAsJson);
+
+                componentEvent.Invoke(eventAsDictionary);
+            }
+        }
+    }
+}

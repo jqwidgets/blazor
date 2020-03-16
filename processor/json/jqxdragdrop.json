@@ -1,0 +1,468 @@
+{
+    "widget": {
+        "name": "jqxDragDrop",
+        "description": "Enables the user to easily drag and drop items.",
+        "angular2": {
+            "name": "jqxDragDropComponent",
+            "selector": "jqxDragDrop"
+        }
+    },
+    "dataTypes": [
+        {
+            "name": "DragDropDropAction",
+            "ts_dataType": "enum",
+            "enumOptions": [ "default", "none" ]
+        },
+        {
+            "name": "DragDropFeedBack",
+            "ts_dataType": "enum",
+            "enumOptions": [ "clone", "original" ]
+        },
+        {
+            "name": "DragDropTolerance",
+            "ts_dataType": "enum",
+            "enumOptions": [ "fit", "intersect" ]
+        },
+        {
+            "name": "DragDropRestricter",
+            "ts_dataType": "enum",
+            "enumOptions": [ "body", "document", "parent", "{ left, top, width, height }" ]
+        },
+        {
+            "name": "DragDropOnDrag",
+            "ts_dataType": "interface",
+            "properties": [
+                {
+                    "name": "data",
+                    "dataType": "object",
+                    "optional": "true",
+                    "displayName": "Data",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "position",
+                    "dataType": "number",
+                    "ts_dataType": "object",
+                    "optional": "true",
+                    "displayName": "Position",
+                    "defaultValue": ""
+                }
+            ]
+        },
+        {
+            "name": "DragDropOnDragStart",
+            "ts_dataType": "interface",
+            "properties": [
+                {
+                    "name": "position",
+                    "dataType": "number",
+                    "ts_dataType": "object",
+                    "optional": "true",
+                    "displayName": "Position",
+                    "defaultValue": ""
+                }
+            ]
+        },
+        {
+            "name": "DragDropOnTargetDrop",
+            "ts_dataType": "interface",
+            "properties": [
+                {
+                    "name": "data",
+                    "dataType": "object",
+                    "optional": "true",
+                    "displayName": "Data",
+                    "defaultValue": ""
+                }
+            ]
+        },
+        {
+            "name": "DragDropOnDropTargetLeave",
+            "ts_dataType": "interface",
+            "properties": [
+                {
+                    "name": "data",
+                    "dataType": "object",
+                    "optional": "true",
+                    "displayName": "Data",
+                    "defaultValue": ""
+                }
+            ]
+        }
+    ],
+    "exampleInit": {
+        "restricter": "restricter",
+        "dropTarget": "'.drop-target'"
+    },
+    "exampleElementsInit": {
+        "dropTarget": ".drop-target",
+        "restricter": "parent"
+    },
+    "exampledInitExtraData": {
+        "properties": "restricter: { left: -92, top: -92, width: 118, height: 118 }",
+        "beforeCreate": "",
+        "mounted": "",
+        "methods": ""
+    },
+    "exampleNewTemplate": "  <div id='draggable-parent'>\n    <jqxDragDrop ref='myDragDrop'\n     {{configuration}}>  \n      <div>I can be dragged only inside my parent</div>\n    </jqxDragDrop>\n    <div class='drop-target'>\n      <div class='label'>I am a drop target</div>\n    </div>\n  </div>\n",
+    "exampleCSS": "#draggable-parent {\n    background-color: lightskyblue;\n    width: 300px;\n    height: 300px;\n    color: dimgray;\n  }\n  .jqx-draggable > div {\n    background-color: lightgreen;\n    position: relative;\n    width: 80px;\n    height: 80px;\n    left: 100px;\n    top: 100px;\n    padding: 5px;\n    z-index: 2;\n    font-family: Verdana;\n    font-size: 11px;\n  }\n  .drop-target {\n    background-color: #FBFFB5;\n    width: 120px;\n    height: 120px;\n    position: relative;\n    left: 160px;\n    top: 60px;\n  }\n  .label {\n    padding: 33px;\n  }\n",
+    "properties": [
+        {
+            "name": "appendTo",
+            "defaultValue": "'parent'",
+            "description": "<P>Sets or gets where will be appended the draggable's feedback. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>appendTo</CODE> property. </P>\n<PRE><CODE>$('#jqxDragDrop').jqxDragDrop({ appendTo: 'body' });</CODE></PRE>\n\r\n<P>Get the <CODE>appendTo</CODE> property. </P>\n<PRE><CODE>var appendTo = $('#jqxDragDrop').jqxDragDrop('appendTo');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/tVEVA/",
+            "exampleDescription": "appendTo is set to 'body'",
+            "dataType": "string",
+            "exampleInit": {
+                "appendTo": "body"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "disabled",
+            "defaultValue": "false",
+            "description": "<P>Sets or gets whether the dragging is disabled. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>disabled</CODE> property. </P>\n<PRE><CODE>$('#jqxDragDrop').jqxDragDrop({disabled:true});</CODE></PRE>\n\r\n<P>Get the <CODE>disabled</CODE> property. </P>\n<PRE><CODE>var disabled = $('#jqxDragDrop').jqxDragDrop('disabled');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/pS2S2/",
+            "exampleDescription": "disabled is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "disabled": "true"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "distance",
+            "defaultValue": "5",
+            "description": "<P>Sets or gets the distance required for the cursor to pass befor the drag begins. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>distance</CODE> property. </P>\n<PRE><CODE>$('#jqxDragDrop').jqxDragDrop({distance:10});</CODE></PRE>\n\r\n<P>Get the <CODE>distance</CODE> property. </P>\n<PRE><CODE>var distance = $('#jqxDragDrop').jqxDragDrop('distance');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/MRne3/",
+            "exampleDescription": "distance is set to 10",
+            "dataType": "number",
+            "exampleInit": {
+                "distance": "12"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "data",
+            "defaultValue": "null",
+            "description": "<P>This property can be used for setting some kind of information transferred with the draggable. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>data</CODE> property. </P>\n<PRE><CODE>$('#jqxDragDrop').jqxDragDrop({data: {foo: 'foo', bar: 'bar'}});</CODE></PRE>\n\r\n<P>Get the <CODE>data</CODE> property. </P>\n<PRE><CODE>var data = $('#jqxDragDrop').jqxDragDrop('data');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/snXa5/",
+            "exampleDescription": "data is set to {foo: 'foo', bar: 'bar'}",
+            "dataType": "object",
+            "ts_dataType": "any",
+            "exampleInit": {
+                "data": "{foo: 'foo', bar: 'bar'}"
+            },
+            "customExample": {
+                "codeType": "get",
+                "code": "&lt;template>\n    &lt;jqxDragDrop ref='myDragDrop'\n      :data=\"data\">  \n      &lt;div>Drag me&lt;/div>\n    &lt;/jqxDragDrop>\n&lt;/template>\n \n&lt;script>\n  import JqxDragDrop from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxdragdrop.vue';\n \n  export default {\n    components: {\n      JqxDragDrop\n    },\n    data: function () {\n      return  {\n        data: {foo: 'foo', bar: 'bar'}\n      }\n    }\n  }\n&lt;/script>\n&lt;style>\n  .jqx-draggable > div {\n    width: 50px; \n    height: 50px; \n    border: 1px solid #A67E3A; \n    background-color: #FFC663;\n    padding: 10px;\n  }\n&lt;/style>"
+            }
+        },
+        {
+            "name": "dropAction",
+            "defaultValue": "'default'",
+            "description": "<P>Sets or gets whether the draggable element will change its position ('default') or not ('none') when the element is dropped. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>dropAction</CODE> property. </P>\n<PRE><CODE>$('#jqxDragDrop').jqxDragDrop({ dropAction: 'none' });</CODE></PRE>\n\r\n<P>Get the <CODE>dropAction</CODE> property. </P>\n<PRE><CODE>var dropAction = $('#jqxDragDrop').jqxDragDrop('dropAction');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/jjTeE/",
+            "exampleDescription": "dropAction is set to 'none'",
+            "dataType": "string",
+            "ts_dataType": "enum:DragDropDropAction",
+            "exampleInit": {
+                "dropAction": "none"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "dropTarget",
+            "defaultValue": "null",
+            "description": "<P>Sets or gets the drop target. The drop target is a DOM element(s) for which jqxDragDrop triggers events when the user drags or drops the draggable element over that element(s). The drop target can be specified by using a selector or an object. If the user drags the draggable element over the drop target, the onDropTargetEnter event will be raised. If the draggable element is inside the drop target and the user drags the element outside the drop target, the onDropTargetLeave event is raised. When the user drops the draggable element over a drop target, the onTargetDrop event is raised. </P>\n<H4>Code examples</H4>\n<P>Set the <CODE>dropTarget</CODE> property. </P>\n<P>Specifying the drop target with CSS selector: </P>\n<P>The above code will make all elements which use the \"dropTarget\" CSS class to be drop targets for the draggable element. </P>\n<P>Get the <CODE>dropTarget</CODE> property. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/GJLVt/",
+            "exampleDescription": "dropTarget is set to \".dropTarget\"",
+            "example": "<PRE><CODE>var dropTarget = $('#jqxDragDrop').jqxDragDrop('dropTarget');</CODE></PRE>",
+            "dataType": "String | Object",
+            "ts_dataType": "any",
+            "exampleInit": {
+                "dropTarget": "'.dropTarget'"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "dragZIndex",
+            "defaultValue": "99999",
+            "description": "<P>Sets or gets element's z-index when it's dragging. </P>\n<H4>Code examples</H4>\n<P>Set the <CODE>dragZIndex</CODE> property. </P>\n<P>Get the <CODE>dragZIndex</CODE> property. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/zsULg/",
+            "exampleDescription": "dragZIndex is set to 6",
+            "example": "<PRE><CODE>var dragZIndex = $('#jqxDragDrop').jqxDragDrop('dragZIndex');</CODE></PRE>",
+            "dataType": "number",
+            "exampleInit": {
+                "dragZIndex": "6"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "feedback",
+            "defaultValue": "'clone'",
+            "description": "<P>Sets or gets the feedback. The feedback is the object which is actually dragged by the user. </P>\n<B>Possible Values:</B>\n<H4>Code examples</H4>\n<P>Set the <CODE>feedback</CODE> property. </P>\n<P>Get the <CODE>feedback</CODE> property. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/L3xk6/",
+            "exampleDescription": "feedback is set to 'original'",
+            "example": "<PRE><CODE>var feedback = $('#jqxDragDrop').jqxDragDrop('feedback');</CODE></PRE>",
+            "dataType": "string",
+            "ts_dataType": "enum:DragDropFeedBack",
+            "exampleInit": {
+                "feedback": "original"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "initFeedback",
+            "defaultValue": "null",
+            "description": "<P>Callback which is executing when the feedback is created. </P>\n<H4>Code examples</H4>\n<P>Set the <CODE>initFeedback</CODE> property. </P>\n<P>Get the <CODE>initFeedback</CODE> property. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/FS4m2/",
+            "exampleDescription": "initFeedback is set to custom function",
+            "example": "<PRE><CODE>var onDropTargetLeave = $('#jqxDragDrop').jqxDragDrop('initFeedback');</CODE></PRE>",
+            "dataType": "Function",
+            "ts_dataType": "(feedback?:any) => void",
+            "exampleInit": {
+                "initFeedback": "initFeedback"
+            },
+            "customExample": {
+                "codeType": "get",
+                "code": "&lt;template>\n  &lt;div id='draggable-parent'>\n    &lt;jqxDragDrop ref='myDragDrop'\n      :dropTarget=\"'.drop-target'\" :initFeedback=\"initFeedback\">  \n      &lt;div>I can be dragged only inside my parent&lt;/div>\n    &lt;/jqxDragDrop>\n    &lt;div class='drop-target'>\n      &lt;div class='label'>I am a drop target&lt;/div>\n    &lt;/div>\n  &lt;/div>\n&lt;/template>\n \n&lt;script>\n  import JqxDragDrop from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxdragdrop.vue';\n \n  export default {\n    components: {\n      JqxDragDrop\n    },\n    methods: {\n      initFeedback: function (feedback) {\n        feedback.css('background', 'blue');\n        feedback.css('color', 'white');\n        feedback.css('padding', '15px');\n        feedback.text('I am feedback')\n      }\n    }\n  }\n&lt;/script>\n&lt;style>\n  .jqx-draggable > div {\n    background-color: lightgreen;\n    position: relative;\n    width: 80px;\n    height: 80px;\n    padding: 5px;\n    z-index: 2;\n    font-family: Verdana;\n    font-size: 11px;\n  }\n  .drop-target {\n    background-color: #FBFFB5;\n    width: 120px;\n    height: 120px;\n    position: relative;\n    left: 160px;\n    top: 60px;\n  }\n&lt;/style>"
+            }
+        },
+        {
+            "name": "opacity",
+            "defaultValue": "0.6",
+            "description": "<P>Sets or gets draggable object's opacity when it's dragging. </P>\n<H4>Code examples</H4>\n<P>Set the <CODE>opacity</CODE> property. </P>\n<P>Get the <CODE>opacity</CODE> property. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/Z3jH7/",
+            "exampleDescription": "opacity is set to 0.3",
+            "example": "<PRE><CODE>var opacity = $('#jqxDragDrop').jqxDragDrop('opacity');</CODE></PRE>",
+            "dataType": "number",
+            "exampleInit": {
+                "opacity": "0.3"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "onDragEnd",
+            "defaultValue": "null",
+            "description": "<P>Callback which is executing when the drag ends. </P>\n<H4>Code examples</H4>\n<P>Set the <CODE>onDragEnd</CODE> property. </P>\n<P>Get the <CODE>onDragEnd</CODE> property. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/edebR/",
+            "exampleDescription": "onDragEnd is set to custom function",
+            "example": "<PRE><CODE>var appendTo = $('#jqxDragDrop').jqxDragDrop('onDragEnd');</CODE></PRE>",
+            "dataType": "Function",
+            "ts_dataType": "() => void",
+            "exampleInit": {
+                "onDragEnd": "onDragEnd",
+                "exampleData": "alert('onDragEnd');"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "onDrag",
+            "defaultValue": "null",
+            "description": "<P>Callback which is executing while dragging. </P>\n<H4>Code examples</H4>\n<P>Set the <CODE>onDrag</CODE> property. </P>\n<P>Get the <CODE>onDrag</CODE> property. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/Qfadc/",
+            "exampleDescription": "onDrag is set to custom function",
+            "example": "<PRE><CODE>var onDrag = $('#jqxDragDrop').jqxDragDrop('onDrag');</CODE></PRE>",
+            "dataType": "Function",
+            "ts_dataType": "(data?: DragDropOnDrag['data'], position?: DragDropOnDrag['position']) => void",
+            "exampleInit": {
+                "onDrag": "onDrag",
+                "exampleData": "console.log('Position Top: ' + position.top);"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "onDragStart",
+            "defaultValue": "null",
+            "description": "<P>Callback which is executing when drag start. </P>\n<H4>Code examples</H4>\n<P>Set the <CODE>onDragStart</CODE> property. </P>\n<P>Get the <CODE>onDragStart</CODE> property. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/Qfadc/",
+            "exampleDescription": "onDragStart is set to custom function",
+            "example": "<PRE><CODE>var onDragStart = $('#jqxDragDrop').jqxDragDrop('onDragStart');</CODE></PRE>",
+            "dataType": "Function",
+            "ts_dataType": "(position?: DragDropOnDragStart['position']) => void",
+            "exampleInit": {
+                "onDragStart": "onDragStart",
+                "exampleData": "alert('Position Top: ' + position.top);"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "onTargetDrop",
+            "defaultValue": "null",
+            "description": "<P>Callback which is executing when drag ends over the drop target. </P>\n<H4>Code examples</H4>\n<P>Set the <CODE>onTargetDrop</CODE> property. </P>\n<P>Get the <CODE>onTargetDrop</CODE> property. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/k9yCa/",
+            "exampleDescription": "onTargetDrop is set to custom function",
+            "example": "<PRE><CODE>var onTargetDrop = $('#jqxDragDrop').jqxDragDrop('onTargetDrop');</CODE></PRE>",
+            "dataType": "Function",
+            "ts_dataType": "(data?: DragDropOnTargetDrop['data']) => void",
+            "exampleInit": {
+                "onTargetDrop": "onTargetDrop",
+                "exampleData": "alert('OnTargetDrop');"
+            }
+        },
+        {
+            "name": "onDropTargetEnter",
+            "defaultValue": "null",
+            "description": "<P>Callback which is executing when the draggable enter any of it's drop targets. </P>\n<H4>Code examples</H4>\n<P>Set the <CODE>onDropTargetEnter</CODE> property. </P>\n<P>Get the <CODE>onDropTargetEnter</CODE> property. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/pVNRu/",
+            "exampleDescription": "onDropTargetEnter is set to custom function",
+            "example": "<PRE><CODE>var onDropTargetEnter = $('#jqxDragDrop').jqxDragDrop('onDropTargetEnter');</CODE></PRE>",
+            "dataType": "Function",
+            "ts_dataType": "() => void",
+            "exampleInit": {
+                "onDropTargetEnter": "onDropTargetEnter",
+                "exampleData": "alert('onDropTargetEnter');"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "onDropTargetLeave",
+            "defaultValue": "null",
+            "description": "<P>Callback which is executing when the draggable leave any of it's drop targets. </P>\n<H4>Code examples</H4>\n<P>Set the <CODE>onDropTargetLeave</CODE> property. </P>\n<P>Get the <CODE>onDropTargetLeave</CODE> property. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/u2bXb/",
+            "exampleDescription": "onDropTargetLeave is set to custom function",
+            "example": "<PRE><CODE>var onDropTargetLeave = $('#jqxDragDrop').jqxDragDrop('onDropTargetLeave');</CODE></PRE>",
+            "dataType": "Function",
+            "ts_dataType": "(data?: DragDropOnDropTargetLeave['data']) => void",
+            "exampleInit": {
+                "onDropTargetLeave": "onDropTargetLeave",
+                "exampleData": "alert('onDropTargetLeave');"
+            },
+            "customExample": {
+                "codeType": "get",
+                "code": "&lt;template>\n  &lt;div class=\"main-container\">\n    &lt;div id=\"draggable-parent\">\n      &lt;JqxDragDrop class=\"draggable\"            \n             :onDropTargetLeave=\"onDropTargetLeave\"\n             :restricter=\"restricter\" :dropTarget=\"'.drop-target'\">\n        &lt;div class=\"label\">I can be dragged only inside my parent&lt;/div>\n      &lt;/JqxDragDrop>\n      &lt;div class=\"drop-target\">\n        &lt;div class=\"label\">I am a drop target&lt;/div>\n      &lt;/div>\n    &lt;/div>\n  &lt;/div>\n&lt;/template>\n&lt;script>\n  import JqxDragDrop from \"jqwidgets-scripts/jqwidgets-vue/vue_jqxdragdrop.vue\";\n\n  export default {\n    components: {\n      JqxDragDrop\n    },\n    data: function () {\n      return {\n        restricter: { left: 8, top: 8, width: 247, height: 247 }\n      }\n    },\n    methods: {\n      onDropTargetLeave: function (data) {\n        alert('onDropTargetLeave');\n      }\n    }\n  };\n&lt;/script>\n&lt;style>\n  .row {\n    padding: 1px;\n  }\n\n  .draggable > div {\n    border: 1px solid #bbb;\n    background-color: #C9ECFF;\n    width: 100px;\n    height: 100px;\n    left: 30px;\n    top: 50px;\n    padding: 5px;\n    z-index: 2;\n  }\n\n  #draggable-parent {\n    background-color: #eeffee;\n    width: 350px;\n    height: 350px;\n    text-align: center;\n    border: 1px solid #eee;\n    float: left;\n  }\n\n  .main-container {\n    width: 650px;\n    z-index: 0;\n  }\n\n  .events > div {\n    float: right;\n    padding: 10px;\n    font-family: Tahoma;\n    font-size: 13px;\n  }\n\n  .label {\n    position: relative;\n    font-family: Verdana;\n    font-size: 11px;\n    color: #000;\n  }\n\n  .drop-target {\n    background-color: #FBFFB5;\n    width: 150px;\n    height: 150px;\n    border: 1px solid #ddd;\n    margin-left: 190px;\n    margin-top: 70px;\n    z-index: 1;\n  }\n&lt;/style>"
+            }
+        },
+        {
+            "name": "restricter",
+            "defaultValue": "'document'",
+            "description": "<P>Sets or gets dragdrop's restrict area. </P>\n<B>Possible Values:</B>\n<H4>Code examples</H4>\n<P>Set the <CODE>restricter</CODE> property. </P>\n<P>Get the <CODE>restricter</CODE> property. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/9BwjH/",
+            "exampleDescription": "restricter is set to 'parent'",
+            "example": "<PRE><CODE>var restricter = $('#jqxDragDrop').jqxDragDrop('restricter');</CODE></PRE>",
+            "dataType": "String | Object",
+            "ts_dataType": "string | object",
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "revert",
+            "defaultValue": "false",
+            "description": "<P>Sets or gets whether the draggable element will be reverted to it's original position after drop. </P>\n<H4>Code examples</H4>\n<P>Set the <CODE>revert</CODE> property. </P>\n<P>Get the <CODE>revert</CODE> property. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/Hpc9q/",
+            "exampleDescription": "revert is set to true",
+            "example": "<PRE><CODE>var revert = $('#jqxDragDrop').jqxDragDrop('revert');</CODE></PRE>",
+            "dataType": "boolean",
+            "exampleInit": {
+                "revert": "true"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "revertDuration",
+            "defaultValue": "400",
+            "description": "<P>Sets or gets the duration for which the draggable object will be reverted. </P>\n<H4>Code examples</H4>\n<P>Set the <CODE>revertDuration</CODE> property. </P>\n<P>Get the <CODE>revertDuration</CODE> property. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/bk4tP/",
+            "exampleDescription": "revertDuration is set to 300",
+            "example": "<PRE><CODE>var revertDuration = $('#jqxDragDrop').jqxDragDrop('revertDuration');</CODE></PRE>",
+            "dataType": "number",
+            "exampleInit": {
+                "revertDuration": "300",
+                "revert": "true"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "tolerance",
+            "defaultValue": "'intersect'",
+            "\",": null,
+            "description": "<P>Sets or gets whether the draggable item is over it's drop target when it's intersecting it or when it's fully inside it's target. </P>\n<H4>Code examples</H4>\n<P>Set the <CODE>tolerance</CODE> property. </P>\n<P>Get the <CODE>tolerance</CODE> property. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/j9a4e/",
+            "exampleDescription": "tolerance is set to 'fit'",
+            "example": "<PRE><CODE>var tolerance = $('#jqxDragDrop').jqxDragDrop('tolerance');</CODE></PRE>",
+            "dataType": "string",
+            "ts_dataType": "enum:DragDropTolerance",
+            "exampleInit": {
+                "tolerance": "fit"
+            },
+            "customExample": {
+                "codeType": "get",
+                "code": "&lt;template>\n  &lt;div id='draggable-parent'>\n    &lt;jqxDragDrop ref='myDragDrop' @dropTargetEnter=\"onDropTargetEnter($event)\"\n           :dropTarget=\"'.drop-target'\" :tolerance=\"'fit'\">\n      &lt;div>I can be dragged only inside my parent&lt;/div>\n    &lt;/jqxDragDrop>\n    &lt;div class='drop-target'>\n      &lt;div class='label'>I am a drop target&lt;/div>\n    &lt;/div>\n  &lt;/div>\n&lt;/template>\n\n&lt;script>\n  import JqxDragDrop from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxdragdrop.vue';\n\n  export default {\n    components: {\n      JqxDragDrop\n    },\n    methods: {\n      onDropTargetEnter: function (event) {\n        alert('DropTargetEntered!')\n      }\n    }\n  }\n&lt;/script>\n&lt;style>\n  #draggable-parent {\n    background-color: lightskyblue;\n    width: 300px;\n    height: 300px;\n    color: dimgray;\n  }\n\n  .jqx-draggable > div {\n    background-color: lightgreen;\n    position: relative;\n    width: 80px;\n    height: 80px;\n    left: 10px;\n    top: 10px;\n    padding: 5px;\n    z-index: 2;\n    font-family: Verdana;\n    font-size: 11px;\n  }\n\n  .drop-target {\n    background-color: #FBFFB5;\n    width: 120px;\n    height: 120px;\n    position: relative;\n    left: 160px;\n    top: 60px;\n  }\n\n  .label {\n    padding: 33px;\n  }\n&lt;/style>"
+            }
+        }
+    ],
+    "events": [
+        {
+            "name": "dragStart",
+            "description": "<P>This event is triggered when the item is dragged for first time. </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>dragStart</CODE> event by type: jqxDragDrop. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/wayX2/",
+            "exampleDescription": "Bind to the dragStart event by type: jqxDragDrop.",
+            "example": "<PRE><CODE>$('#jqxDragDrop').bind('dragStart', function () { // Some code here. }); </CODE></PRE>"
+        },
+        {
+            "name": "dragEnd",
+            "description": "<P>This event is triggered when the item is dropped. </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>dragEnd</CODE> event by type: jqxDragDrop. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/2e9Jd/",
+            "exampleDescription": "Bind to the dragEnd event by type: jqxDragDrop.",
+            "example": "<PRE><CODE>$('#jqxDragDrop').bind('dragEnd', function () { // Some code here. }); </CODE></PRE>"
+        },
+        {
+            "name": "dragging",
+            "description": "<P>This event is triggered while the item is dragging. </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>dragging</CODE> event by type: jqxDragDrop. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/7VuJp/", 
+            "exampleDescription": "Bind to the dragging event by type: jqxDragDrop.",
+            "example": "<PRE><CODE>$('#jqxDragDrop').bind('dragging', function () { // Some code here. }); </CODE></PRE>"
+        },
+        {
+            "name": "dropTargetEnter",
+            "description": "<P>This event is triggered when the draggable item is over it's drop target for first time. </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>dropTargetEnter</CODE> event by type: jqxDragDrop. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/qBQRj/",
+            "exampleDescription": "Bind to the dropTargetEnter event by type: jqxDragDrop.",
+            "example": "<PRE><CODE>$('#jqxDragDrop').bind('dropTargetEnter', function () { // Some code here. }); </CODE></PRE>"
+        },
+        {
+            "name": "dropTargetLeave",
+            "description": "<P>This event is triggered when the draggable item leave it's drop target. </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>dropTargetLeave</CODE> event by type: jqxDragDrop. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/AXKqx/",
+            "exampleDescription": "Bind to the dropTargetLeave event by type: jqxDragDrop.",
+            "example": "<PRE><CODE>$('#jqxDragDrop').bind('dropTargetLeave', function () { // Some code here. }); </CODE></PRE>"
+        }
+    ],
+    "methods": []
+}

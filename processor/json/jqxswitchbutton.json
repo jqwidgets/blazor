@@ -1,0 +1,245 @@
+{
+    "widget": {
+        "name": "jqxSwitchButton",
+        "description": "Displays a switch button. The button has two states - checked and unchecked.",
+        "angular2": {
+            "name": "jqxSwitchButtonComponent",
+            "selector": "jqxSwitchButton"
+        }
+    },
+    "dataTypes": [
+        {
+            "name": "SwitchButtonOrientation",
+            "ts_dataType": "enum",
+            "enumOptions": [ "horizontal", "vertical" ]
+        }
+    ],
+    "properties": [
+        {
+            "name": "checked",
+            "defaultValue": "false",
+            "description": "<P>Sets or gets the check state. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>checked</CODE> property. </P>\n<PRE><CODE>$('#jqxSwitchButton').jqxSwitchButton({ checked:true }); </CODE></PRE>\n\r\n<P>Get the <CODE>checked</CODE> property. </P>\n<PRE><CODE>var checked = $('#jqxSwitchButton').jqxSwitchButton('checked');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/ecrvd/",
+            "exampleDescription": "checked is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "checked": "true"
+            }
+        },
+        {
+            "name": "disabled",
+            "defaultValue": "false",
+            "description": "<P>Sets or gets whether the switch button is disabled. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>disabled</CODE> property. </P>\n<PRE><CODE>$('#jqxSwitchButton').jqxSwitchButton({ disabled:true }); </CODE></PRE>\n\r\n<P>Get the <CODE>disabled</CODE> property. </P>\n<PRE><CODE>var disabled = $('#jqxSwitchButton').jqxSwitchButton('disabled');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/E5pw9/",
+            "exampleDescription": "disabled is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "disabled": "true"
+            }
+        },
+        {
+            "name": "height",
+            "defaultValue": "null",
+            "description": "<P>Sets or gets the height. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>height</CODE> property . </P>\n<PRE><CODE>$('#jqxSwitchButton').jqxSwitchButton({height:\"400px\"});</CODE></PRE>\n\r\n<P>Get the <CODE>height</CODE> property. </P>\n<PRE><CODE>var height = $('#jqxSwitchButton').jqxSwitchButton('height');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/Zg4cX/",
+            "exampleDescription": "height is set to 30",
+            "dataType": "number",
+            "ts_dataType": "string | number",
+            "exampleInit": {
+                "height": "50"
+            }
+        },
+        {
+            "name": "orientation",
+            "defaultValue": "'horizontal'",
+            "description": "<P>Determines the jqxSwitchButton's orientation. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'horizontal' </CODE></PRE>\n<PRE><CODE>'vertical'</CODE></PRE>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>orientation</CODE> property. </P>\n<PRE><CODE>$('#jqxSwitchButton').jqxSwitchButton({ orientation:vertical }); </CODE></PRE>\n\r\n<P>Get the <CODE>orientation</CODE> property. </P>\n<PRE><CODE>var orientation = $('#jqxSwitchButton').jqxSwitchButton('orientation');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/bj3YP/",
+            "exampleDescription": "orientation is set to 'vertical'",
+            "dataType": "string",
+            "ts_dataType": "enum:SwitchButtonOrientation",
+            "exampleInit": {
+                "orientation": "vertical"
+            }
+        },
+        {
+            "name": "onLabel",
+            "defaultValue": "'On'",
+            "description": "<P>Sets or gets the string displayed when the button is checked. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>onLabel</CODE> property. </P>\n<PRE><CODE>$('#jqxSwitchButton').jqxSwitchButton({ onLabel:'ON' }); </CODE></PRE>\n\r\n<P>Get the <CODE>onLabel</CODE> property. </P>\n<PRE><CODE>var onLabel = $('#jqxSwitchButton').jqxSwitchButton('onLabel');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/5ge3D/",
+            "exampleDescription": "onLabel is set to 'On'",
+            "dataType": "string",
+            "exampleInit": {
+                "onLabel": "On Label"
+            }
+        },
+        {
+            "name": "offLabel",
+            "defaultValue": "'Off'",
+            "description": "<P>Sets or gets the string displayed when the button is unchecked. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>offLabel</CODE> property. </P>\n<PRE><CODE>$('#jqxSwitchButton').jqxSwitchButton({ offLabel:'OFF' }); </CODE></PRE>\n\r\n<P>Get the <CODE>offLabel</CODE> property. </P>\n<PRE><CODE>var offLabel = $('#jqxSwitchButton').jqxSwitchButton('offLabel');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/R3D5t/",
+            "exampleDescription": "offLabel is set to 'Off'",
+            "dataType": "string",
+            "exampleInit": {
+                "offLabel": "Off Label"
+            }
+        },
+        {
+            "name": "thumbSize",
+            "defaultValue": "'40%'",
+            "description": "<P>Sets or gets the size of the thumb in percentages. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>thumbSize</CODE> property. </P>\n<PRE><CODE>$('#jqxSwitchButton').jqxSwitchButton({ thumbSize:'50%' }); </CODE></PRE>\n\r\n<P>Get the <CODE>thumbSize</CODE> property. </P>\n<PRE><CODE>var thumbSize = $('#jqxSwitchButton').jqxSwitchButton('thumbSize');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/2rFLw/",
+            "exampleDescription": "thumbSize is set to '30%'",
+            "dataType": "string",
+            "exampleInit": {
+                "thumbSize": "'30%'"
+            }
+        },
+        {
+            "name": "rtl",
+            "defaultValue": "false",
+            "description": "",
+            "example": "",
+            "exampleURL": "",
+            "exampleDescription": "",
+            "dataType": "boolean",
+            "exampleInit": {
+                "rtl": "true"
+            }
+        },
+        {
+            "name": "width",
+            "defaultValue": "null",
+            "description": "<P>Sets or gets the width. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>width</CODE> property. </P>\n<PRE><CODE>$('#jqxSwitchButton').jqxSwitchButton({width:\"200px\"});</CODE></PRE>\n\r\n<P>Get the <CODE>width</CODE> property. </P>\n<PRE><CODE>var width = $('#jqxSwitchButton').jqxSwitchButton('width');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/jfJwq/",
+            "exampleDescription": "width is set to 80",
+            "dataType": "number",
+            "ts_dataType": "string | number",
+            "exampleInit": {
+                "width": "50"
+            }
+        }
+    ],
+    "events": [
+        {
+            "name": "checked",
+            "description": "<P>This event is triggered when the switch button is checked. </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>checked</CODE> event by type: jqxSwitchButton. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/2bU8L/",
+            "exampleDescription": "Bind to the checked event by type: jqxSwitchButton",
+            "example": "<PRE><CODE>$('#jqxSwitchButton').on('checked', function (event) { // Some code here.}); </CODE></PRE>"
+        },
+        {
+            "name": "change",
+            "description": "<P>This event is triggered when the switch button's state changes from one state to another. </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>change</CODE> event by type: jqxSwitchButton. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/6VbfW/",
+            "exampleDescription": "Bind to the change event by type: jqxSwitchButton",
+            "example": "<PRE><CODE>$('#jqxSwitchButton').on('change', function (event) { // Some code here.}); </CODE></PRE>"
+        },
+        {
+            "name": "unchecked",
+            "description": "<P>This event is triggered when the switch button is unchecked. </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>unchecked</CODE> event by type: jqxSwitchButton. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/Pv4Kf/",
+            "exampleDescription": "Bind to the unchecked event by type: jqxSwitchButton",
+            "example": "<PRE><CODE>$('#jqxSwitchButton').on('unchecked', function (event) { // Some code here.}); </CODE></PRE>"
+        }
+    ],
+    "methods": [
+        {
+            "name": "check",
+            "description": "<P>Checks the button. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/k9d5B/",
+            "exampleDescription": "checks the jqxSwitchButton",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "disable",
+            "description": "<P>Disables the switch button. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/fRKg8/",
+            "exampleDescription": "disable the jqxSwitchButton",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "enable",
+            "description": "<P>Enables the switch button. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/DnYEn/",
+            "exampleDescription": "enables the jqxSwitchButton",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "toggle",
+            "description": "<P>Toggles the check state. This method is automatically called when the user clicks the switch button. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/Cnp9K/",
+            "exampleDescription": "toggles the jqxSwitchButton",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "uncheck",
+            "description": "<P>Unchecks the button. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/guWgQ/",
+            "exampleDescription": "unchecks the jqxSwitchButton",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "val",
+            "description": "<P>Sets or gets the value. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/LM3aX/",
+            "exampleDescription": "sets the value of the jqxSwitchButton",
+            "returnDataType": "boolean",
+            "arguments": [
+                {
+                    "name": "value",
+                    "dataType": "boolean",
+                    "description": "",
+                    "optional": true
+                }
+            ]
+        }
+    ]
+}

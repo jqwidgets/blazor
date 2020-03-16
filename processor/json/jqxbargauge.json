@@ -1,0 +1,757 @@
+{
+  "widget": {
+    "name": "jqxBarGauge",
+    "description": "Displays multiple values in a circular graph.",
+    "angular2": {
+      "name": "jqxBarGaugeComponent",
+      "selector": "jqxBarGauge"
+    }
+  },
+  "dataTypes": [
+    {
+      "name": "BarGaugeHorizontalTitleAlignment",
+      "ts_dataType": "enum",
+      "enumOptions": [ "left", "center", "right" ]
+    },
+    {
+      "name": "BarGaugeVerticalTitleAlignment",
+      "ts_dataType": "enum",
+      "enumOptions": [ "top", "bottom" ]
+    },
+    {
+      "name": "BarGaugeLabelsFont",
+      "ts_dataType": "interface",
+      "properties": [
+        {
+          "name": "color",
+          "dataType": "string",
+          "optional": "true",
+          "displayName": "Color",
+          "defaultValue": ""
+        },
+        {
+          "name": "size",
+          "dataType": "number",
+          "ts_dataType": "number | string",
+          "optional": "true",
+          "displayName": "Size",
+          "defaultValue": ""
+        },
+        {
+          "name": "family",
+          "dataType": "string",
+          "optional": "true",
+          "displayName": "Family",
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "name": "BarGaugeLabels",
+      "ts_dataType": "interface",
+      "properties": [
+        {
+          "name": "connectorColor",
+          "dataType": "string",
+          "optional": "true",
+          "displayName": "connectorColor",
+          "defaultValue": "null"
+        },
+        {
+          "name": "connectorWidth",
+          "dataType": "number",
+          "optional": "true",
+          "displayName": "connectorWidth",
+          "defaultValue": "1"
+        },
+        {
+          "name": "font",
+          "dataType": "object",
+          "ts_dataType": "BarGaugeLabelsFont",
+          "optional": "true",
+          "displayName": "Font",
+          "defaultValue": ""
+        },
+        {
+          "name": "formatFunction",
+          "dataType": "Function",
+          "ts_dataType": "(value: number, index?: number) => string",
+          "optional": "true",
+          "displayName": "FormatFunction",
+          "defaultValue": ""
+        },
+        {
+          "name": "indent",
+          "dataType": "number",
+          "optional": "true",
+          "displayName": "Indent",
+          "defaultValue": "20"
+        },
+        {
+          "name": "precision",
+          "dataType": "number",
+          "optional": "true",
+          "displayName": "Precision",
+          "defaultValue": "2"
+        },
+        {
+          "name": "visible",
+          "dataType": "boolean",
+          "optional": "true",
+          "displayName": "Visible",
+          "defaultValue": "true"
+        }
+      ]
+    },
+    {
+      "name": "BarGaugeTextFont",
+      "ts_dataType": "interface",
+      "properties": [
+        {
+          "name": "color",
+          "dataType": "string",
+          "optional": "true",
+          "displayName": "Color",
+          "defaultValue": ""
+        },
+        {
+          "name": "family",
+          "dataType": "string",
+          "optional": "true",
+          "displayName": "Family",
+          "defaultValue": ""
+        },
+        {
+          "name": "opacity",
+          "dataType": "number",
+          "optional": "true",
+          "displayName": "Opacity",
+          "defaultValue": ""
+        },
+        {
+          "name": "size",
+          "dataType": "number",
+          "ts_dataType": "number | string",
+          "optional": "true",
+          "displayName": "Size",
+          "defaultValue": ""
+        },
+        {
+          "name": "weight",
+          "dataType": "number",
+          "optional": "true",
+          "displayName": "Weight",
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "name": "BarGaugeTitleMargin",
+      "ts_dataType": "interface",
+      "properties": [
+        {
+          "name": "bottom",
+          "dataType": "number",
+          "optional": "true",
+          "displayName": "Bottom",
+          "defaultValue": ""
+        },
+        {
+          "name": "left",
+          "dataType": "number",
+          "optional": "true",
+          "displayName": "Left",
+          "defaultValue": ""
+        },
+        {
+          "name": "right",
+          "dataType": "number",
+          "optional": "true",
+          "displayName": "Right",
+          "defaultValue": ""
+        },
+        {
+          "name": "top",
+          "dataType": "number",
+          "optional": "true",
+          "displayName": "Top",
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "name": "BarGaugeTitleSubtitle",
+      "ts_dataType": "interface",
+      "properties": [
+        {
+          "name": "text",
+          "dataType": "string",
+          "optional": "true",
+          "displayName": "text",
+          "defaultValue": ""
+        },
+        {
+          "name": "font",
+          "dataType": "object",
+          "ts_dataType": "BarGaugeTextFont",
+          "optional": "true",
+          "displayName": "font",
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "name": "BarGaugeTitle",
+      "ts_dataType": "interface",
+      "properties": [
+        {
+          "name": "text",
+          "dataType": "string",
+          "optional": "true",
+          "displayName": "Text",
+          "defaultValue": ""
+        },
+        {
+          "name": "font",
+          "dataType": "object",
+          "ts_dataType": "BarGaugeTextFont",
+          "optional": "true",
+          "displayName": "Font",
+          "defaultValue": ""
+        },
+        {
+          "name": "horizontalAlignment",
+          "dataType": "string",
+          "ts_dataType": "enum:BarGaugeHorizontalTitleAlignment",
+          "optional": "true",
+          "displayName": "HorizontalAlignment",
+          "defaultValue": "center"
+        },
+        {
+          "name": "margin",
+          "dataType": "object",
+          "ts_dataType": "BarGaugeTitleMargin",
+          "optional": "true",
+          "displayName": "Margin",
+          "defaultValue": ""
+        },
+        {
+          "name": "subtitle",
+          "dataType": "object",
+          "ts_dataType": "BarGaugeTitleSubtitle",
+          "optional": "true",
+          "displayName": "Indent",
+          "defaultValue": ""
+        },
+        {
+          "name": "verticalAlignment",
+          "dataType": "string",
+          "ts_dataType": "enum:BarGaugeVerticalTitleAlignment",
+          "optional": "true",
+          "displayName": "VerticalAlignment",
+          "defaultValue": "top"
+        }
+      ]
+    },
+    {
+      "name": "BarGaugeTooltip",
+      "ts_dataType": "interface",
+      "properties": [
+        {
+          "name": "classname",
+          "dataType": "string",
+          "optional": "true",
+          "displayName": "ClassName",
+          "defaultValue": ""
+        },
+        {
+          "name": "formatFunction",
+          "dataType": "Function",
+          "ts_dataType": "(value: string, index?: number, color?: string) => string",
+          "optional": "true",
+          "displayName": "FormatFunction",
+          "defaultValue": ""
+        },
+        {
+          "name": "visible",
+          "dataType": "boolean",
+          "optional": "true",
+          "displayName": "Visible",
+          "defaultValue": "false"
+        },
+        {
+          "name": "precision",
+          "dataType": "number",
+          "optional": "true",
+          "displayName": "Precision",
+          "defaultValue": "0"
+        }
+      ]
+    },
+    {
+      "name": "BarGaugeCustomColorScheme",
+      "ts_dataType": "interface",
+      "properties": [
+        {
+          "name": "name",
+          "dataType": "string",
+          "optional": "false",
+          "displayName": "Name",
+          "defaultValue": ""
+        },
+        {
+          "name": "colors",
+          "dataType": "Array",
+          "ts_dataType": "Array<string>",
+          "optional": "false",
+          "displayName": "Colors",
+          "defaultValue": ""
+        }
+      ]
+    }
+  ],
+  "exampleInit": {
+    "width": "600",
+    "height": "600",
+    "max": "150",
+    "values": "[102, 115, 130, 137]"
+  },
+  "exampleElementsInit": {
+    "values": "barGaugeValues",
+    "width": "600",
+    "height": "600",
+    "max": "150"
+  },
+  "properties": [
+    {
+      "name": "animationDuration",
+      "defaultValue": "1000",
+      "description": "<P>Determines the animation in milliseconds. To disable this property - set it to <STRONG>0</STRONG> (zero). </P>\n\r\n<H4>Code examples </H4>\n<PRE><CODE>\r\n// select the BarGauge element and set the animation settings.\r\n$('#jqxBarGauge').jqxBarGauge({\r\n    values: values,\r\n    animationDuration: 500\r\n});\r\n</CODE></PRE>\n\r\n<P>Get the <CODE>animation</CODE> property. </P>\n<PRE><CODE>var animationDuration = $('#jqxBarGauge').jqxBarGauge('animationDuration');</CODE></PRE>",
+      "example": "",
+      "exampleDescription": "animation is set to 0.5 seconds duration",
+      "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxbargauge-animation-property",
+      "dataType": "number",
+      "exampleInit": {
+        "animationDuration": "500"
+      },
+      "customExample": {
+        "codeDescription": "Get the <CODE>animation</CODE> property.",
+        "codeType": "get",
+        "code": ""
+      }
+    },
+    {
+      "name": "backgroundColor",
+      "defaultValue": "#e0e0e0",
+      "description": "<P>Sets or gets the jqxBarGauge background color. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>backgroundColor</CODE> property. </P>\n<PRE><CODE>$('#jqxBarGauge').jqxBarGauge({ backgroundColor: 'rosybrown' });</CODE></PRE>\n\r\n<P>Get the <CODE>backgroundColor</CODE> property. </P>\n<PRE><CODE>var backgroundColor = $('#jqxBarGauge').jqxBarGauge('backgroundColor');</CODE></PRE>",
+      "example": "",
+      "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxbargauge-backgroundcolor-property",
+      "exampleDescription": "backgroundColor is set to 'mistyrose",
+      "dataType": "string",
+      "exampleInit": {
+        "backgroundColor": "red"
+      },
+      "customExample": {
+        "codeType": "get"
+      }
+    },
+    {
+      "name": "barSpacing",
+      "defaultValue": "4",
+      "description": "<P>Sets or gets the space between the segments of the jqxBarGauge. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>barSpacing</CODE> property. </P>\n<PRE><CODE>$('#jqxBarGauge').jqxBarGauge({ barSpacing: 2 });</CODE></PRE>\n\r\n<P>Get the <CODE>barSpacing</CODE> property. </P>\n<PRE><CODE>var barSpacing = $('#jqxBarGauge').jqxBarGauge('barSpacing');</CODE></PRE>",
+      "example": "",
+      "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxbargauge-barspacing-property",
+      "exampleDescription": "barSpacing is set to '12",
+      "dataType": "number",
+      "exampleInit": {
+        "barSpacing": "12"
+      },
+      "customExample": {
+        "codeType": "get"
+      }
+    },
+    {
+      "name": "baseValue",
+      "defaultValue": "null",
+      "description": "<P>Sets the base value of jqxBarGauge. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>baseValue</CODE> property. </P>\n<PRE><CODE>$('#jqxBarGauge').jqxBarGauge({ baseValue: 10 });</CODE></PRE>\n\r\n<P>Get the <CODE>baseValue</CODE> property. </P>\n<PRE><CODE>var baseValue = $('#jqxBarGauge').jqxBarGauge('baseValue');</CODE></PRE>",
+      "example": "",
+      "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxbargauge-basevalue-property",
+      "exampleDescription": "baseValue is set to '30'",
+      "dataType": "number",
+      "exampleInit": {
+        "baseValue": "30"
+      },
+      "customExample": {
+        "codeType": "get"
+      }
+    },
+    {
+      "name": "colorScheme",
+      "defaultValue": "scheme01",
+      "description": "<P>Sets the jqxBarGauge's color palette. jqxBarGauge suppports 27 color schemes from 'scheme01' to 'scheme27'. I's possible to set custom scheme in combination with \"customColorScheme\" property. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>colorScheme</CODE> property. </P>\n<PRE><CODE>$('#jqxBarGauge').jqxBarGauge({ colorScheme: 'scheme06' });</CODE></PRE>\n\r\n<P>Get the <CODE>colorScheme</CODE> property. </P>\n<PRE><CODE>var colorScheme = $('#jqxBarGauge').jqxBarGauge('colorScheme');</CODE></PRE>",
+      "example": "",
+      "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxbargauge-colorscheme-property",
+      "exampleDescription": "colorScheme is set to 'scheme02'",
+      "dataType": "string",
+      "exampleInit": {
+        "colorScheme": "scheme02"
+      },
+      "customExample": {
+        "codeType": "get"
+      }
+    },
+    {
+      "name": "customColorScheme",
+      "defaultValue": "scheme01",
+      "description": "<P>Sets custom color palette in the BarGauge. This is used in combination with \"colorScheme\" property. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>customColorScheme</CODE> property. </P>\n<PRE><CODE>\r\n$('#jqxBarGauge').jqxBarGauge({ \r\n    colorScheme: 'customColors',\r\n    customColorScheme: {\r\n        name: 'customColors',\r\n        colors: [\"blue\", \"green\", \"red\"]\r\n    }\r\n});</CODE></PRE>\n\r\n<UL><LI>name - sets the name of color scheme, corresponding with the value of \"colorScheme\" property. \r\n<LI>colors - sets the array of colors. </LI></UL>\n\r\n<P>Get the <CODE>customColorScheme</CODE> property. </P>\n<PRE><CODE>var customColorScheme = $('#jqxBarGauge').jqxBarGauge('customColorScheme');</CODE></PRE>",
+      "example": "",
+      "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxbargauge-customcolorscheme-property",
+      "exampleDescription": "customColorScheme is set to custom colors",
+      "dataType": "string | object",
+      "ts_dataType": "BarGaugeCustomColorScheme",
+      "exampleInit": {
+        "colorScheme": "scheme",
+        "customColorScheme": {
+          "name": "scheme",
+          "colors": [ "#FFCF5E", "#E83C64", "#FF60B9", "#52BDE8" ]
+        }
+      },
+      "customExample": {
+        "codeType": "get"
+      }
+    },
+    {
+      "name": "disabled",
+      "defaultValue": "false",
+      "description": "<P>Sets or gets the values of the disabled property of jqxBarGauge. By default is false. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>disabled</CODE> property. </P>\n<PRE><CODE>$('#jqxBarGauge').jqxBarGauge({ disabled: true });</CODE></PRE>\n\r\n<P>Get the <CODE>disabled</CODE> property. </P>\n<PRE><CODE>var disabled = $('#jqxBarGauge').jqxBarGauge('disabled');</CODE></PRE>",
+      "example": "",
+      "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxbargauge-disabled-property",
+      "exampleDescription": "disabled is set to false",
+      "dataType": "boolean",
+      "exampleInit": {
+        "disabled": "true"
+      },
+      "customExample": {
+        "codeType": "get"
+      }
+    },
+    {
+      "name": "endAngle",
+      "defaultValue": "0",
+      "description": "",
+      "example": "",
+      "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxbargauge-endangle-property",
+      "exampleDescription": "endAngle is set to custom degrees",
+      "dataType": "number",
+      "exampleInit": {
+        "endAngle": "180"
+      },
+      "customExample": {
+        "codeType": "get"
+      }
+    },
+    {
+      "name": "formatFunction",
+      "defaultValue": "null",
+      "description": "<P>Sets or gets the formatFunction of the BarGauge. Used to make changes on the particular segment. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>formatFunction</CODE> property. </P>\n<PRE><CODE>\r\n$('#jqxBarGauge').jqxBarGauge({\r\n    formatFunction: {\r\n        value: 45,\r\n        index: 0,\r\n        color: '#CA71AF'\r\n    }\r\n});\r\n</CODE></PRE>\n\r\n<P>The formatFunction is a string or object with properties. </P>\n\r\n<UL><LI>value - set value of the segment with expected index. \r\n<LI>index - set index of the BarGauge that will be changed. \r\n<LI>color - set color. </LI></UL>\n\r\n<P>Get the <CODE>formatFunction</CODE> property. </P>\n<PRE><CODE>var formatFunction = $('#jqxBarGauge').jqxBarGauge('formatFunction');</CODE></PRE>",
+      "example": "",
+      "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxbargauge-formatfunction-property",
+      "exampleDescription": "formatFunction is set with custom settings",
+      "dataType": "Object | Function",
+      "ts_dataType": "(value: number, index?: number, color?: string) => string",
+      "exampleInit": {
+        "formatFunction": "formatFunction",
+        "exampleData": "return 'red';"
+      }
+    },
+    {
+      "name": "height",
+      "defaultValue": "400",
+      "description": "<P>Sets or gets the BarGauge's height. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>height</CODE> property. </P>\n<PRE><CODE>$('#jqxBarGauge').jqxBarGauge({ height: 450 });</CODE></PRE>\n\r\n<P>Get the <CODE>height</CODE> property. </P>\n<PRE><CODE>var height = $('#jqxBarGauge').jqxBarGauge('height');</CODE></PRE>",
+      "example": "",
+      "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxbargauge-height-property",
+      "exampleDescription": "height is set to 900",
+      "dataType": "number",
+      "ts_dataType": "string | number",
+      "customExample": {
+        "codeType": "get"
+      }
+    },
+    {
+      "name": "labels",
+      "defaultValue": "null",
+      "description": "<P>This property is used to make fine settings on BarGauge labels at each segment. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>labels</CODE> property. </P>\n<PRE><CODE>\r\n$('#jqxBarGauge').jqxBarGauge({\r\n    values: values,\r\n    labels: {\r\n        connectorColor: 'red',\r\n        connectorWidth: 1,\r\n        font: {\r\n            color: 'darkseagreen',\r\n            size: 12,\r\n        },\r\n        formatFunction: function (value, index) {\r\n            return value + ' €';\r\n        }\r\n        indent: 15,\r\n        precision: 1,\r\n        visible: true\r\n    }\r\n});\r\n</CODE></PRE>\n\r\n<UL><LI>connectorColor - sets the connector's color of the BarGauge can set this color as a string. \r\n<LI>connectorWidth - sets the connector's width of the BarGauge. \r\n<LI>font - sets the font of the labels in jqxBarGauge. This is an object with following members: \r\n<UL>\r\n<LI>color - sets the color of the labels. \r\n<LI>family - sets the font family of the labels. \r\n<LI>size - sets the size of the labels. </LI></UL>\r\n<LI>formatFunction - sets a custom rendering function. The formatFunction function is called when a labels is appearing in the jqxBarGauge. You can use it to override the built-in labels rendering. The formatFunction function has 1 parameter passed by jqxBarGauge - value that is rendered by the BarGauge.<BR>With following members: \r\n<UL>\r\n<LI>index - set index \r\n<LI>value - set value </LI></UL>\r\n<LI>indent - sets the indent of the BarGauge. The distance of the last segment to the labels. \r\n<LI>precision - sets the precision of the displayed values in the BarGauge. \r\n<LI>visible - sets the visible of the BarGauge. Acceptable values: true or false. </LI></UL>\n\r\n<P>Get the <CODE>labels</CODE> property. </P>\n<PRE><CODE>var labels = $('#jqxBarGauge').jqxBarGauge('labels');</CODE></PRE>",
+      "example": "",
+      "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxbargauge-label-property",
+      "exampleDescription": "labels is set to { connectorColor: 'cornflowerblue', connectorWidth: 4, formatFunction: function (value) { return '(' + value + ')'; }, indent: 35, ... }",
+      "dataType": "object",
+      "ts_dataType": "BarGaugeLabels",
+      "exampleInit": {
+        "labels": "labels",
+        "exampleData": "{\n          connectorColor: 'red',\n          connectorWidth: 1,\n          font: { color: 'darkseagreen', size: 12 },\n          formatFunction: function (value, index) {\n            return value + ' USD';\n          },\n          indent: 15,\n          precision: 1,\n          visible: true\n        }"
+      },
+      "customExample": {
+        "codeType": "get"
+      }
+    },
+    {
+      "name": "max",
+      "defaultValue": "100",
+      "description": "<P>Sets or gets the end value of BarGauge. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>max</CODE> property. </P>\n<PRE><CODE>$('#jqxBarGauge').jqxBarGauge({ max: 50 });</CODE></PRE>\n\r\n<P>Get the <CODE>max</CODE> property. </P>\n<PRE><CODE>var max = $('#jqxBarGauge').jqxBarGauge('max');</CODE></PRE>",
+      "example": "",
+      "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxbargauge-endvalue-property",
+      "exampleDescription": "max is set to '60'",
+      "dataType": "number",
+      "ts_dataType": "number | string",
+      "exampleInit": {
+        "max": "60"
+      },
+      "customExample": {
+        "codeType": "get"
+      }
+    },
+    {
+      "name": "min",
+      "defaultValue": "0",
+      "description": "<P>Sets or gets BarGauge's min. This property specifies the beggining of the BarGauge's scale. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>min</CODE> property. </P>\n<PRE><CODE>$('#jqxBarGauge').jqxBarGauge({ min: 0 });</CODE></PRE>\n\r\n<P>Get the <CODE>min</CODE> property. </P>\n<PRE><CODE>var min = $('#jqxBarGauge').jqxBarGauge('min');</CODE></PRE>",
+      "example": "",
+      "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxbargauge-startvalue-property",
+      "exampleDescription": "min is set to -25",
+      "dataType": "number",
+      "exampleInit": {
+        "min": "-25"
+      },
+      "customExample": {
+        "codeType": "get"
+      }
+    },
+    {
+      "name": "relativeInnerRadius",
+      "defaultValue": "0.3",
+      "description": "<P>Sets or gets the relativeInnerRadius of jqxBarGauge. It's value represents the proportion between inner and outer radius. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>relativeInnerRadius</CODE> property. </P>\n<PRE><CODE>$('#jqxBarGauge').jqxBarGauge({ relativeInnerRadius: 0.5 });</CODE></PRE>\n\r\n<P>Get the <CODE>pathModified</CODE> property. </P>\n<PRE><CODE>var relativeInnerRadius = $('#jqxBarGauge').jqxBarGauge('relativeInnerRadius');</CODE></PRE>",
+      "example": "",
+      "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxbargauge-relativeinnerradius-property",
+      "exampleDescription": "relativeInnerRadius is set to 0",
+      "dataType": "number",
+      "ts_dataType": "number | string",
+      "exampleInit": {
+        "relativeInnerRadius": "0"
+      },
+      "customExample": {
+        "codeType": "get"
+      }
+    },
+    {
+      "name": "rendered",
+      "defaultValue": "null",
+      "description": "<P>This function is called when the BarGauge is initialized and the binding is complete. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>rendered</CODE> property. </P>\n<PRE><CODE>\r\n$('#jqxBarGauge').jqxBarGauge({\r\n    rendered: function () {\r\n        // Create some functionality\r\n    }\r\n});\r\n                        </CODE></PRE>\n<PRE><CODE>var rendered = $('#jqxBarGauge').jqxBarGauge('rendered');</CODE></PRE>",
+      "example": "",
+      "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxbargauge-rendered-property",
+      "exampleDescription": "rendered is set to a custom function",
+      "dataType": "Function",
+      "ts_dataType": "() => void",
+      "exampleInit": {
+        "rendered": "rendered",
+        "exampleData": "alert('rendered!')"
+      }
+    },
+    {
+      "name": "startAngle",
+      "defaultValue": "225",
+      "description": "<P>Sets or gets the startAngle of the BarGauge. Used to create geometry of the arc in the space. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>startAngle</CODE> property. </P>\n<PRE><CODE>\r\n$('#jqxBarGauge').jqxBarGauge({    \r\n    startAngle: 320,\r\n    endAngle: 0\r\n});\r\n</CODE></PRE>\n\r\n<P>Get the <CODE>startAngle</CODE> property. </P>\n<PRE><CODE>var startAngle = $('#jqxBarGauge').jqxBarGauge('startAngle');</CODE></PRE>",
+      "example": "",
+      "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxbargauge-geometry-property",
+      "exampleDescription": "startAngle is set to custom degrees",
+      "dataType": "number",
+      "exampleInit": {
+        "startAngle": "200"
+      },
+      "customExample": {
+        "codeType": "get"
+      }
+    },
+    {
+      "name": "title",
+      "defaultValue": "null",
+      "description": "<P>Sets or gets the BarGauge's title. This property can be string or object with custom title settings. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>title</CODE> property. </P>\n<PRE><CODE>\r\n$('#jqxBarGauge').jqxBarGauge({\r\n    values: [11, 22, 33, 55, 88, 143],\r\n    title: {\r\n        text: 'Ranking',\r\n        font: {\r\n            color: 'rosybrown',\r\n            size: 25,\r\n            opacity: 0.5,\r\n            family: \"'Helvetica Neue', 'Arial'\",\r\n            weight: 200\r\n        },\r\n        horizontalAlignment: 'center',\r\n        margin: {\r\n            bottom: 0,\r\n            left: 0,\r\n            right: 0,\r\n            top: 0\r\n        },\r\n        subtitle: {\r\n            text: '(top 100)',\r\n            font: {\r\n                color: 'mistyrose ',\r\n                family: 'MS Georgia',\r\n                opacity: 1,\r\n                size: 16,\r\n                weight: 200\r\n            }\r\n        },\r\n        verticalAlignment: 'top'\r\n    }\r\n});\r\n</CODE></PRE>\n\r\n<UL><LI>font - sets the font of the title in BarGauge. This is an object with following members: \r\n<UL>\r\n<LI>color - sets color for the text. \r\n<LI>family - sets family for the text. For example: <CODE>family: 'MS Georgia'</CODE> 'Segoe UI', 'Helvetica Neue', 'Trebuchet MS', 'Verdana'. \r\n<LI>opacity - sets opacity for the text. From 0 to 1 (ex. 0.45). \r\n<LI>size - sets size for the text. \r\n<LI>weight - sets weight for the text. </LI></UL>\r\n<LI>horizontalAlignment - horizontal position of the title. Possible values: 'center', 'left', 'right' \r\n<LI>margin - one value for space around the title. It is possible to set different space to each side: \r\n<UL>\r\n<LI>bottom - default value (<CODE>bottom: 0</CODE>) \r\n<LI>left - default value (<CODE>left: 0</CODE>) \r\n<LI>right - default value (<CODE>right: 0</CODE>) \r\n<LI>top - default value (<CODE>top: 0</CODE>) </LI></UL>\r\n<LI>subtitle - sets subtitle of the BarGauge. Second way to set subtitle is with object.<BR>Possible settings: \r\n<UL>\r\n<LI>text - content of the subtitle \r\n<LI>font - sets fine settings with object This is an object with following members: \r\n<UL>\r\n<LI>color - set the color of the subtitle. \r\n<LI>family - set the font family of the subtitle. \r\n<LI>opacity - set the font opacity of the subtitle. \r\n<LI>size - set the size of the subtitle. \r\n<LI>weight - set the font weight of the subtitle. </LI></UL></LI></UL>\r\n<LI>text - content of the title \r\n<LI>verticalAlignment - vertical position of the title. Possible values: 'top', 'bottom' </LI></UL>\n\r\n<P>Get the <CODE>title</CODE> property. </P>\n<PRE><CODE>var title = $('#jqxBarGauge').jqxBarGauge('title');</CODE></PRE>",
+      "example": "",
+      "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxbargauge-title-property",
+      "exampleDescription": "title is set custom settings",
+      "dataType": "object|string",
+      "ts_dataType": "BarGaugeTitle",
+      "exampleInit": {
+        "title": "title",
+        "exampleData": "{\n          text: 'Ranking',\n          font: { color: 'rosybrown', size: 25 }\n        }"
+      },
+      "customExample": {
+        "codeType": "get"
+      }
+    },
+    {
+      "name": "tooltip",
+      "defaultValue": "null",
+      "description": "<P>Sets or gets the BarGauge's tooltip. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>tooltip</CODE> properties. </P>\n<PRE><CODE>\r\n$('#jqxBarGauge').jqxBarGauge({\r\n    values: [11, 22, 33, 55, 88, 143],\r\n    tooltip: {\r\n       classname: \"myTooltip\",\r\n       formatFunction: function (value, index) {\r\n           return value + ' €';\r\n       },\r\n       visible: true,\r\n       precision: 0\r\n    }\r\n});\r\n</CODE></PRE>\n\r\n<UL><LI>classname - set a class for each one tooltip. \r\n<LI>formatFunction - This function is called when the user hover a segment of BarGauge and show details in desirable view.<BR>With following members: \r\n<UL>\r\n<LI>index - set index \r\n<LI>value - set value </LI></UL>\r\n<LI>precision - set a precision of the formatted value displayed in a tooltip. \r\n<LI>visible - set whether or not tooltips are visible in the BarGauge. </LI></UL>\n\r\n<P>Get the <CODE>tooltip</CODE> property. </P>\n<PRE><CODE>var tooltip = $('#jqxBarGauge').jqxBarGauge('tooltip');</CODE></PRE>",
+      "example": "",
+      "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxbargauge-tooltip-property",
+      "exampleDescription": "tooltip is set to a custom functionality",
+      "dataType": "object",
+      "ts_dataType": "BarGaugeTooltip",
+      "exampleInit": {
+        "tooltip": "tooltip",
+        "exampleData": "{\n          classname: 'myTooltip',\n          visible: true,\n          precision: 0,\n          formatFunction: function (value, index) {\n            return value + ' USD';\n          }\n        }"
+      },
+      "customExample": {
+        "codeType": "get"
+      }
+    },
+    {
+      "name": "useGradient",
+      "defaultValue": "true",
+      "description": "<P>Sets or gets useGradient of the BarGauge. Change visualization of the segments between flat color or with gradient. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>useGradient</CODE> property. </P>\n<PRE><CODE>$('#jqxBarGauge').jqxBarGauge({ useGradient: false });</CODE></PRE>\n\r\n<P>Get the <CODE>useGradient</CODE> property. </P>\n<PRE><CODE>var useGradient = $('#jqxBarGauge').jqxBarGauge('useGradient');</CODE></PRE>",
+      "example": "",
+      "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxbargauge-usegradient-property",
+      "exampleDescription": "useGradient is set to false",
+      "dataType": "boolean",
+      "exampleInit": {
+        "useGradient": "false"
+      },
+      "customExample": {
+        "codeType": "get"
+      }
+    },
+    {
+      "name": "values",
+      "defaultValue": "[]",
+      "description": "<P>Sets or gets array of values for the BarGauge. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>values</CODE> property. </P>\n<PRE><CODE>$('#jqxBarGauge').jqxBarGauge({ values: [11, 22, 33, 55, 88, 143] });</CODE></PRE>\n\r\n<P>Get the <CODE>values</CODE> property. </P>\n<PRE><CODE>var values = $('#jqxBarGauge').jqxBarGauge('values');</CODE></PRE>",
+      "example": "",
+      "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxbargauge-values-property",
+      "exampleDescription": "values is set to an array",
+      "dataType": "Array",
+      "ts_dataType": "Array<number>",
+      "exampleInit": {
+        "values": "[102, 115, 130, 137]"
+      },
+      "customExample": {
+        "codeType": "get"
+      }
+    },
+    {
+      "name": "width",
+      "defaultValue": "400",
+      "description": "<P>Sets or gets the BarGauge's width. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>width</CODE> property. </P>\n<PRE><CODE>$('#jqxBarGauge').jqxBarGauge({ width: 850 });</CODE></PRE>\n\r\n<P>Get the <CODE>width</CODE> property. </P>\n<PRE><CODE>var width = $('#jqxBarGauge').jqxBarGauge('width');</CODE></PRE>",
+      "example": "",
+      "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxbargauge-width-property",
+      "exampleDescription": "width is set to 850",
+      "dataType": "number",
+      "ts_dataType": "string | number",
+      "customExample": {
+        "codeType": "get"
+      }
+    }
+  ],
+  "events": [
+    {
+      "name": "drawEnd",
+      "description": "<P>The event is raised when the BarGauge finish rendering. Commonly used in combination with drawStart event. </P>\n<H4>Code examples </H4>\n<P>Bind to the <CODE>drawEnd</CODE> event by type: jqxBarGauge. </P>",
+      "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxbargauge-drawend-event",
+      "exampleDescription": "Bind to the drawEnd event by type: jqxBarGauge.",
+      "example": "<PRE><CODE>$('#jqxBarGauge').bind('drawEnd', function () { // Some code here. }); </CODE></PRE>"
+    },
+    {
+      "name": "drawStart",
+      "description": "<P>The event is raised when the BarGauge starts rendering again. Commonly used in combination with drawEnd event. </P>\n<H4>Code examples </H4>\n<P>Bind to the <CODE>drawStart</CODE> event by type: jqxBarGauge. </P>",
+      "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxbargauge-drawstart-event",
+      "exampleDescription": "Bind to the drawStart event by type: jqxBarGauge.",
+      "example": "<PRE><CODE>$('#jqxBarGauge').bind('drawStart', function () { // Some code here. }); </CODE></PRE>",
+      "customExample": {
+        "customCode": "&lt;template>\n    &lt;JqxBarGauge ref=\"myBarGauge\" @drawStart=\"onDrawStart($event)\"\n                 :width=\"600\" :height=\"600\" :max=\"150\"  />\n&lt;/template>\n\n&lt;script>\n    import JqxBarGauge from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbargauge.vue';\n\n    export default {\n        components: {\n            JqxBarGauge\n        },\n        mounted: function () {\n            this.$refs.myBarGauge.values = [102, 115, 130, 137];\n        },\n        methods: {\n            onDrawStart: function (event) {\n                alert('do something...');\n            }\n        }\n    }\n&lt;/script>"
+      }
+    },
+    {
+      "name": "initialized",
+      "description": "<P>Fires when the jqxBarGauge is rendered for the first time. The BarGauge is initialized. </P>\n<H4>Code examples </H4>\n<P>Bind to the <CODE>initialized</CODE> event by type: jqxBarGauge. </P>",
+      "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxbargauge-initialized-event",
+      "exampleDescription": "Bind to the initialized event by type: jqxBarGauge.",
+      "example": "<PRE><CODE>$('#jqxBarGauge').bind('initialized', function () { // Some code here. }); </CODE></PRE>"
+    },
+    {
+      "name": "tooltipClose",
+      "description": "<P>Fires when a BarGauge's tooltip is closed. </P>\n<H4>Code examples </H4>\n<P>Bind to the <CODE>tooltipClose</CODE> event by type: jqxBarGauge. </P>",
+      "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxbargauge-tooltipclose-event",
+      "exampleDescription": "Bind to the tooltipClose event by type: jqxBarGauge.",
+      "example": "<PRE><CODE>$('#jqxBarGauge').on('tooltipClose', function () { // Some code here. }); </CODE></PRE>",
+      "exampleInit": {
+        "tooltip": "{ visible: true }"
+      }
+    },
+    {
+      "name": "tooltipOpen",
+      "description": "<P>Fires when a BarGauge's tooltip is open. </P>\n<H4>Code examples </H4>\n<P>Bind to the <CODE>tooltipOpen</CODE> event by type: jqxBarGauge. </P>",
+      "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxbargauge-tooltipopen-event",
+      "exampleDescription": "Bind to the tooltipOpen event by type: jqxBarGauge.",
+      "example": "<PRE><CODE>$('#jqxBarGauge').on('tooltipOpen', function () { // Some code here. });</CODE></PRE>",
+      "exampleInit": {
+        "tooltip": "{ visible: true }"
+      }
+    },
+    {
+      "name": "valueChanged",
+      "description": "<P>Fires after the values are changed. </P>\n<H4>Code examples </H4>\n<P>Bind to the <CODE>valueChanged</CODE> event by type: jqxBarGauge. </P>",
+      "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxbargauge-valuechanged-event",
+      "exampleDescription": "Bind to the valueChanged event by type: jqxBarGauge.",
+      "example": "<PRE><CODE>$('#jqxBarGauge').on('valueChanged', function () { // Some code here. }); </CODE></PRE>"
+    }
+  ],
+  "methods": [
+    {
+      "name": "refresh",
+      "description": "<P>Refreshes the BarGauge. </P>\n<H4>Code examples </H4>\n<P>Invoke the <CODE>refresh</CODE> method. </P>\n<PRE><CODE>\r\n$('#jqxBarGauge').jqxBarGauge('refresh');\r\n</CODE></PRE>",
+      "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxbargauge-refresh-method",
+      "exampleDescription": "Invoke the refresh and redraws the widget.",
+      "returnDataType": "None",
+      "arguments": [
+        {
+          "name": "None",
+          "dataType": null,
+          "description": "",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "name": "render",
+      "description": "<P>Renders the BarGauge contents. This method completely refreshes the BarGauge. </P>\n<H4>Code examples </H4>\n<P>Invoke the <CODE>render</CODE> method. </P>\n<PRE><CODE>\r\n$('#jqxBarGauge').jqxBarGauge('refresh');\r\n</CODE></PRE>",
+      "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxbargauge-render-method",
+      "exampleDescription": "Invoke the render method.",
+      "returnDataType": "None",
+      "arguments": [
+        {
+          "name": "None",
+          "dataType": null,
+          "description": "",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "name": "val",
+      "description": "<P>Returns an array of the BarGauge values. </P>\n<H4>Code examples </H4>\n<P>Invoke the <CODE>val</CODE> method. </P>\n<PRE><CODE>var values = $(\"#jqxGauge\").jqxGauge('val');</CODE></PRE>\n<PRE><CODE>var values = $(\"#jqxGauge\").val();</CODE></PRE>\n<PRE><CODE>$(\"#jqxGauge\").jqxGauge('val', [14, 27, 35]);</CODE></PRE>\n<PRE><CODE>$(\"#jqxGauge\").val([14, 27, 35]);</CODE></PRE>",
+      "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxbargauge-val-method",
+      "exampleDescription": "Gets values in array from the BarGauge",
+      "returnDataType": "Array",
+      "ts_returnDataType": "Array<number>",
+      "arguments": [
+        {
+          "name": "value",
+          "dataType": "Array",
+          "ts_dataType": "Array<number>",
+          "description": "",
+          "optional": true
+        }
+      ],
+      "exampleInit": {
+        "args": [ "[30, 80, 120]" ]
+      }
+    }
+  ]
+}

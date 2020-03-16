@@ -1,0 +1,794 @@
+{
+    "widget": {
+        "name": "jqxGauge",
+        "description": "Displays an indicator within a range of values. Gauges can be used in a table or matrix to show the relative value of a field in a range of values in the data region, for example, as a KPI. It supports SVG and VML rendering.",
+        "angular2": {
+            "name": "jqxGaugeComponent",
+            "selector": "jqxGauge"
+        }
+    },
+    "dataTypes": [
+        {
+            "name": "GaugePosition",
+            "ts_dataType": "enum",
+            "enumOptions": [ "top", "bottom" ]
+        },
+        {
+            "name": "GaugeEasing",
+            "ts_dataType": "enum",
+            "enumOptions": [ "linear", "easeOutBack", "easeInQuad", "easeInOutCirc", "easeInOutSine", "easeOutCubic" ]
+        },
+        {
+            "name": "GaugeLabelsPosition",
+            "ts_dataType": "enum",
+            "enumOptions": [ "none", "inside", "outside" ]
+        },
+        {
+            "name": "GaugeStyle",
+            "ts_dataType": "interface",
+            "properties": [
+                {
+                    "name": "fill",
+                    "dataType": "string",
+                    "optional": "true",
+                    "displayName": "Fill",
+                    "defaultValue": "'theme-specific-color'"
+                },
+                {
+                    "name": "stroke",
+                    "dataType": "string",
+                    "optional": "true",
+                    "displayName": "Stroke",
+                    "defaultValue": "'theme-specific-color'"
+                }
+            ]
+        },
+        {
+            "name": "GaugeBorder",
+            "ts_dataType": "interface",
+            "properties": [
+                {
+                    "name": "size",
+                    "ts_dataType": "number | string",
+                    "optional": "true",
+                    "displayName": "Size",
+                    "defaultValue": "'10%'"
+                },
+                {
+                    "name": "visible",
+                    "dataType": "boolean",
+                    "optional": "true",
+                    "displayName": "Visible",
+                    "defaultValue": "true"
+                },
+                {
+                    "name": "style",
+                    "ts_dataType": "GaugeStyle",
+                    "optional": "true",
+                    "displayName": "Style",
+                    "defaultValue": "{ stroke: '#cccccc' }"
+                },
+                {
+                    "name": "showGradient",
+                    "dataType": "boolean",
+                    "optional": "true",
+                    "displayName": "Show gradient of the background",
+                    "defaultValue": "true"
+                }
+            ]
+        },
+        {
+            "name": "GaugeCaption",
+            "ts_dataType": "interface",
+            "properties": [
+                {
+                    "name": "value",
+                    "dataType": "string",
+                    "optional": "true",
+                    "displayName": "Value",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "position",
+                    "ts_dataType": "enum:GaugePosition",
+                    "optional": "true",
+                    "displayName": "Position",
+                    "defaultValue": "'bottom'"
+                },
+                {
+                    "name": "offset",
+                    "ts_dataType": "Array<number>",
+                    "optional": "true",
+                    "displayName": "Offset",
+                    "defaultValue": "[0, 0]"
+                },
+                {
+                    "name": "visible",
+                    "dataType": "boolean",
+                    "optional": "true",
+                    "displayName": "Show caption",
+                    "defaultValue": "true"
+                }
+            ]
+        },
+        {
+            "name": "GaugeCap",
+            "ts_dataType": "interface",
+            "properties": [
+                {
+                    "name": "size",
+                    "ts_dataType": "number | string",
+                    "optional": "true",
+                    "displayName": "Size",
+                    "defaultValue": "'4%'"
+                },
+                {
+                    "name": "visible",
+                    "ts_dataType": "boolean",
+                    "optional": "true",
+                    "displayName": "Visible",
+                    "defaultValue": "true"
+                },
+                {
+                    "name": "style",
+                    "ts_dataType": "GaugeStyle",
+                    "optional": "true",
+                    "displayName": "Style",
+                    "defaultValue": ""
+                }
+            ]
+        },
+        {
+            "name": "GaugeLabels",
+            "ts_dataType": "interface",
+            "properties": [
+                {
+                    "name": "distance",
+                    "dataType": "string",
+                    "optional": "true",
+                    "displayName": "Distance",
+                    "defaultValue": "'38%'"
+                },
+                {
+                    "name": "position",
+                    "ts_dataType": "enum:GaugeLabelsPosition",
+                    "optional": "true",
+                    "displayName": "Label position",
+                    "defaultValue": "'none'"
+                },
+                {
+                    "name": "interval",
+                    "ts_dataType": "number | string",
+                    "optional": "true",
+                    "displayName": "Interval",
+                    "defaultValue": "20"
+                },
+                {
+                    "name": "offset",
+                    "ts_dataType": "Array<number>",
+                    "optional": "true",
+                    "displayName": "Offset",
+                    "defaultValue": "[0, -10]"
+                },
+                {
+                    "name": "visible",
+                    "dataType": "boolean",
+                    "optional": "true",
+                    "displayName": "Show caption",
+                    "defaultValue": "true"
+                },
+                {
+                    "name": "formatValue",
+                    "ts_dataType": "(value?: number) => string",
+                    "optional": "true",
+                    "displayName": "Format displayed value",
+                    "defaultValue": ""
+                }
+            ]
+        },
+        {
+            "name": "GaugePointer",
+            "ts_dataType": "interface",
+            "properties": [
+                {
+                    "name": "pointerType",
+                    "dataType": "string",
+                    "optional": "true",
+                    "displayName": "Specifies the pointer type",
+                    "defaultValue": "'default'"
+                },
+                {
+                    "name": "style",
+                    "ts_dataType": "GaugeStyle",
+                    "optional": "true",
+                    "displayName": "Style",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "width",
+                    "ts_dataType": "number | string",
+                    "optional": "true",
+                    "displayName": "Width",
+                    "defaultValue": "'2%'"
+                },
+                {
+                    "name": "length",
+                    "ts_dataType": "number | string",
+                    "optional": "true",
+                    "displayName": "Length",
+                    "defaultValue": "'70%'"
+                },
+                {
+                    "name": "visible",
+                    "dataType": "boolean",
+                    "optional": "true",
+                    "displayName": "Show pointer",
+                    "defaultValue": "true"
+                }
+            ]
+        },
+        {
+            "name": "GaugeRanges",
+            "ts_dataType": "interface",
+            "properties": [
+                {
+                    "name": "startValue",
+                    "ts_dataType": "number | string",
+                    "optional": "false",
+                    "displayName": "Start value",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "endValue",
+                    "ts_dataType": "number | string",
+                    "optional": "false",
+                    "displayName": "End value",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "startWidth",
+                    "ts_dataType": "number | string",
+                    "optional": "false",
+                    "displayName": "Start width",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "endWidth",
+                    "ts_dataType": "number | string",
+                    "optional": "false",
+                    "displayName": "End width",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "startDistance",
+                    "ts_dataType": "number | string",
+                    "optional": "true",
+                    "displayName": "Start distance",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "endDistance",
+                    "ts_dataType": "number | string",
+                    "optional": "true",
+                    "displayName": "Start distance",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "style",
+                    "ts_dataType": "GaugeStyle",
+                    "optional": "false",
+                    "displayName": "Style",
+                    "defaultValue": ""
+                }
+            ]
+        },
+        {
+            "name": "GaugeTicks",
+            "ts_dataType": "interface",
+            "properties": [
+                {
+                    "name": "size",
+                    "ts_dataType": "number | string",
+                    "optional": "false",
+                    "displayName": "Size",
+                    "defaultValue": "'10%'"
+                },
+                {
+                    "name": "interval",
+                    "ts_dataType": "number | string",
+                    "optional": "false",
+                    "displayName": "Interval",
+                    "defaultValue": "5"
+                },
+                {
+                    "name": "visible",
+                    "dataType": "boolean",
+                    "optional": "true",
+                    "displayName": "Show ticks",
+                    "defaultValue": "true"
+                },
+                {
+                    "name": "style",
+                    "ts_dataType": "GaugeStyle",
+                    "optional": "true",
+                    "displayName": "GaugeStyle",
+                    "defaultValue": "{ stroke: '#898989'}"
+                }
+            ]
+        }
+    ],
+    "exampleElementsInit": {
+        "ticksMinor": "ticksMinor",
+        "ticksMajor": "ticksMajor",
+        "ranges": "ranges",
+        "value": "60"
+    },
+    "exampleInit": {
+        "ranges": "ranges",
+        "ticksMinor": "ticksMinor",
+        "ticksMajor": "ticksMajor",
+        "animationDuration": "1200"
+    },
+    "exampledInitExtraData": {
+        "properties": "ticksMinor: { interval: 5, size: '5%' },\n        ticksMajor: { interval: 10, size: '9%' },\n        ranges: [\n          { startValue: 0, endValue: 55, style: { fill: '#4bb648', stroke: '#4bb648' }, endWidth: 5, startWidth: 1 },\n          { startValue: 55, endValue: 110, style: { fill: '#fbd109', stroke: '#fbd109' }, endWidth: 10, startWidth: 5 },\n          { startValue: 110, endValue: 165, style: { fill: '#ff8000', stroke: '#ff8000' }, endWidth: 13, startWidth: 10 },\n          { startValue: 165, endValue: 220, style: { fill: '#e02629', stroke: '#e02629' }, endWidth: 16, startWidth: 13 }\n        ]",
+        "beforeCreate": "",
+        "mounted": "this.$refs.myGauge.value = 140;",
+        "methods": ""
+    },
+    "properties": [
+        {
+            "name": "animationDuration",
+            "defaultValue": "400",
+            "description": "<P>Sets or gets jqxGauge's animation duration [ms]. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>animationDuration</CODE> property. </P>\n<PRE><CODE>$('#jqxGauge').jqxGauge({ animationDuration: 300 });</CODE></PRE>\n\r\n<P>Get the <CODE>animationDuration</CODE> property. </P>\n<PRE><CODE>var animationDuration = $('#jqxGauge').jqxGauge('animationDuration');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/BLHrh/",
+            "exampleDescription": "animationDuration is set to 3000",
+            "dataType": "number",
+            "ts_dataType": "string | number",
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "border",
+            "defaultValue": "{ size: '10%', style: { stroke: '#cccccc'}, visible: true, showGradient: true }",
+            "description": "<P>Sets or gets the gauge's properties for it's border. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'size'-specifies the size of the border. Border's size can be set in percentage or in pixels</CODE></PRE>\n<PRE><CODE>'visible'-indicates if the border will be visible</CODE></PRE>\n<PRE><CODE>'style'-sets border style (color and thickness)</CODE></PRE>\n<PRE><CODE>'showGradient' - whether a gradient background will be used</CODE></PRE>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>border</CODE> property. </P>\n<PRE><CODE>$('#jqxGauge').jqxGauge({ border: { size: '11%', style: { stroke: '#898989'}, visible: true }});</CODE></PRE>\n\r\n<P>Get the <CODE>border</CODE> property. </P>\n<PRE><CODE>var border = $('#jqxGauge').jqxGauge('border');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/vC3v9/",
+            "exampleDescription": "border is set to { size: '11%', style: { stroke: '#898989'}, visible: true }",
+            "dataType": "object",
+            "ts_dataType": "GaugeBorder",
+            "exampleInit": {
+                "border": "border",
+                "exampleData": "{ size: '11%', style: { stroke: '#898989'}, visible: true }"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "caption",
+            "defaultValue": "{ value: '', position: 'bottom', offset: [0, 0], visible: true }",
+            "description": "<P>Sets or gets the gauge's properties for it's caption. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'value' - specifies the text</CODE></PRE>\n<PRE><CODE>'position' - specifies the caption position. There four different positions - top, bottom, left and right. You can customize the position using the offset property described bellow</CODE></PRE>\n<PRE><CODE>'offset' - array with two number elements. The first one indicates the left offset and the second one the top offset</CODE></PRE>\n<PRE><CODE>'visible' - indicates whether the caption will be visible</CODE></PRE>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>caption</CODE> property. </P>\n<PRE><CODE>$('#jqxGauge').jqxGauge({ caption: { value: 'jQWidgets', position: 'bottom', offset: [0, 10], visible: true }});</CODE></PRE>\n\r\n<P>Get the <CODE>caption</CODE> property. </P>\n<PRE><CODE>var caption = $('#jqxGauge').jqxGauge('caption');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/77N8L/",
+            "exampleDescription": "border is set to { value: 'jQWidgets', position: 'bottom', offset: [0, 10], visible: true }",
+            "dataType": "object",
+            "ts_dataType": "GaugeCaption",
+            "exampleInit": {
+                "caption": "caption",
+                "exampleData": "{ value: 'jQWidgets', position: 'bottom', offset: [0, 10], visible: true }"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "cap",
+            "defaultValue": "{ size: '4%', style: { fill: 'theme-specific-color', stroke: 'theme-specific-color' } , visible: true }",
+            "description": "<P>Sets or gets the gauge's properties for it's cap. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'size' - specifies the gauge's size. This property can be set as percentage or in pixels</CODE></PRE>\n<PRE><CODE>'visible' - indicates whether the cap will be visible</CODE></PRE>\n<PRE><CODE>'style' - specifies the gauge's cap styles. Here you can set it's fill or stroke colors</CODE></PRE>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>cap</CODE> property. </P>\n<PRE><CODE>$('#jqxGauge').jqxGauge({ cap: { size: '5%', style: { fill: '#ff0000', stroke: '#00ff00' } , visible: true }});</CODE></PRE>\n\r\n<P>Get the <CODE>cap</CODE> property. </P>\n<PRE><CODE>var cap = $('#jqxGauge').jqxGauge('cap');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/6VVsa/",
+            "exampleDescription": "cap is set to { size: '5%', style: { fill: '#ff0000', stroke: '#00ff00' } , visible: true }",
+            "dataType": "String | Object",
+            "ts_dataType": "GaugeCap",
+            "exampleInit": {
+                "cap": "cap",
+                "exampleData": "{ size: '5%', style: { fill: '#ff0000', stroke: '#00ff00' } , visible: true }"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "colorScheme",
+            "defaultValue": "'scheme01'",
+            "description": "<P>Sets the gauge's color pallete. jqxGauge suppports 11 color schemes from 'scheme01' to 'scheme11'. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>colorScheme</CODE> property. </P>\n<PRE><CODE>$('#jqxGauge').jqxGauge({ colorScheme: 10 });</CODE></PRE>\n\r\n<P>Get the <CODE>colorScheme</CODE> property. </P>\n<PRE><CODE>var colorScheme = $('#jqxGauge').jqxGauge('colorScheme');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/w4MdU/",
+            "exampleDescription": "colorScheme is set to 'scheme01'",
+            "dataType": "string",
+            "exampleInit": {
+                "colorScheme": "scheme01"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "disabled",
+            "defaultValue": "false",
+            "description": "<P>Sets or gets whether the jqxGauge is disabled. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>disabled</CODE> property. </P>\n<PRE><CODE>$('#jqxGauge').jqxGauge({ disabled: true });</CODE></PRE>\n\r\n<P>Get the <CODE>disabled</CODE> property. </P>\n<PRE><CODE>var disabled = $('#jqxGauge').jqxGauge('disabled');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/LMYcJ/",
+            "exampleDescription": "disabled is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "disabled": "true"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "easing",
+            "defaultValue": "linear",
+            "description": "<P>Sets or gets jqxGauge's animation easing. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'linear'</CODE></PRE>\n<PRE><CODE>'easeOutBack'</CODE></PRE>\n<PRE><CODE>'easeInQuad'</CODE></PRE>\n<PRE><CODE>'easeInOutCirc'</CODE></PRE>\n<PRE><CODE>'easeInOutSine'</CODE></PRE>\n<PRE><CODE>'easeOutCubic'</CODE></PRE>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>easing</CODE> property. </P>\n<PRE><CODE> $('#jqxGauge').jqxGauge({ easing: 300 });</CODE></PRE>\n\r\n<P>Get the <CODE>easing</CODE> property. </P>\n<PRE><CODE>var easing = $('#jqxGauge').jqxGauge('easing');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/TA3Hb/",
+            "exampleDescription": "easing is set to 'easeInOutSine'",
+            "dataType": "string",
+            "ts_dataType": "enum:GaugeEasing",
+            "exampleInit": {
+                "easing": "linear"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "endAngle",
+            "defaultValue": "270",
+            "description": "<P>Sets or gets gauge's endAngle. This property specifies the end of the gauge's scale and is measured in degrees. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>endAngle</CODE> property. </P>\n<PRE><CODE>$('#jqxGauge').jqxGauge({ endAngle: 70 });</CODE></PRE>\n\r\n<P>Get the <CODE>endAngle</CODE> property. </P>\n<PRE><CODE>var endAngle = $('#jqxGauge').jqxGauge('endAngle');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/jMUtT/",
+            "exampleDescription": "endAngle is set to 250",
+            "dataType": "number",
+            "ts_dataType": "number | string",
+            "exampleInit": {
+                "endAngle": "250"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "height",
+            "defaultValue": "350",
+            "description": "<P>Sets or gets the gauge's height. This property accepts size in pixels and percentage. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>height</CODE> property. </P>\n<PRE><CODE>$('#jqxGauge').jqxGauge({ height: 400 });</CODE></PRE>\n\r\n<P>Get the <CODE>height</CODE> property. </P>\n<PRE><CODE>var height = $('#jqxGauge').jqxGauge('height');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/CDvpF/",
+            "exampleDescription": "height is set to 400",
+            "dataType": "number",
+            "ts_dataType": "number | string",
+            "exampleInit": {
+                "height": "400"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "int64",
+            "defaultValue": "false",
+            "description": "<P>Enables the jqxGauge 64-bit number support. </P>\n\r\n<P><EM style=\"DISPLAY: none\" jQuery111108714208830381143=\"11\">Note:</EM> If this property is set to true, the properties <STRONG style=\"DISPLAY: none\" jQuery111108714208830381143=\"48\">value</STRONG>, <STRONG>min</STRONG>, <STRONG>max</STRONG>, ranges.<STRONG>startValue</STRONG>, ranges.<STRONG>endValue</STRONG>, ticksMinor.<STRONG>interval</STRONG>, ticksMajor.<STRONG>interval</STRONG> and labels.<STRONG>interval</STRONG> should be set to <EM style=\"DISPLAY: none\" jQuery111108714208830381143=\"12\">string</EM> values. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>int64</CODE> property. </P>\n<PRE><CODE>$('#jqxGauge').jqxGauge({ int64: true });</CODE></PRE>\n\r\n<P>Get the <CODE>int64</CODE> property. </P>\n<PRE><CODE>var int64 = $('#jqxGauge').jqxGauge('int64');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/ee9d23yy/",
+            "exampleDescription": "int64 is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "int64": "true"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "labels",
+            "defaultValue": "{ distance: '38%', position: 'none', interval: 20, offset: [0, -10], visible: true, formatValue: function (value) { return value; }}",
+            "description": "<P>Sets or gets the gauge's properties for it's labels. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'distance' - specifies the labels distance from the gauge's center. This value could be set in percents ('0%' - '100%') or using pixels. This property is with lower priority than the position property</CODE></PRE>\n<PRE><CODE>'position' - specifies the gauge's labels position. Possible values for this property are 'inside', 'outside' and 'none' (if you want to use the distance property). If it's value is inside the labels are going to be shown inside the scale otherwise they will be shown outside. This property is with higher priority than the distance property</CODE></PRE>\n<PRE><CODE>'interval' - specifies labels's frequency</CODE></PRE>\n<PRE><CODE>'offset' - specifies labels's offset. This property is array with two elements. The first one is the left offset and the second one is the top offset</CODE></PRE>\n<PRE><CODE>'style' - specifies the gauge's pointer style. Here you can set it's fill or stroke color</CODE></PRE>\n<PRE><CODE>'formatValue' - callback used for formatting the label. This function accepts a single parameter which the user can format and return to the labels renderer</CODE></PRE>\n<PRE><CODE>'visible' - indicates whether the labels will be visible</CODE></PRE>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>labels</CODE> property. </P>\n<PRE><CODE>$('#jqxGauge').jqxGauge({ labels: { distance: '50px', position: 'inside', interval: 20, offset: [0, -10], visible: true, formatValue: function (value) {return value;}}});\r\n</CODE></PRE>\n\r\n<P>Get the <CODE>labels</CODE> property. </P>\n<PRE><CODE>var labels = $('#jqxGauge').jqxGauge('labels');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/KXDjt/",
+            "exampleDescription": "labels is set to { distance: '50px', position: 'inside', interval: 20, offset: [0, -10], visible: true, formatValue: function (value) {return value;}",
+            "dataType": "object",
+            "ts_dataType": "GaugeLabels",
+            "exampleInit": {
+                "labels": "labels",
+                "exampleData": "{ distance: '50px', position: 'inside', interval: 20, offset: [0, -10], visible: true, formatValue: function (value) {return value; } }"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "min",
+            "defaultValue": "0",
+            "description": "<P>Sets or gets gauge's minimum value. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>min</CODE> property. </P>\n<PRE><CODE>$('#jqxGauge').jqxGauge({ min: 10 });</CODE></PRE>\n\r\n<P>Get the <CODE>min</CODE> property. </P>\n<PRE><CODE>var min = $('#jqxGauge').jqxGauge('min');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/2JYQH/",
+            "exampleDescription": "min is set to 10",
+            "dataType": "number",
+            "exampleInit": {
+                "min": "10"
+            },
+            "customExample": {
+                "codeType": "get",
+                "code": "&lt;template>\n  &lt;JqxGauge ref=\"myGauge\"\n    :min=\"10\"\n  />\n&lt;/template>\n \n&lt;script>\n  import JqxGauge from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxgauge.vue';\n \n  export default {\n    components: {\n      JqxGauge\n    },\n    mounted: function () {\n      this.$refs.myGauge.value = 140;\n    }\n  }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "max",
+            "defaultValue": "220",
+            "description": "<P>Sets or gets jqxGauge's max value. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>max</CODE> property. </P>\n<PRE><CODE>$('#jqxGauge').jqxGauge({ max: 20 });</CODE></PRE>\n\r\n<P>Get the <CODE>max</CODE> property. </P>\n<PRE><CODE>var max = $('#jqxGauge').jqxGauge('max');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/4kmT6/",
+            "exampleDescription": "max is set to 210",
+            "dataType": "number",
+            "ts_dataType": "number | string",
+            "exampleInit": {
+                "max": "210"
+            },
+            "customExample": {
+                "codeType": "get",
+                "code": "&lt;template>\n  &lt;JqxGauge ref=\"myGauge\"\n    :max=\"140\"\n  />\n&lt;/template>\n \n&lt;script>\n  import JqxGauge from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxgauge.vue';\n \n  export default {\n    components: {\n      JqxGauge\n    },\n    mounted: function () {\n      this.$refs.myGauge.value = 140;\n    }\n  }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "pointer",
+            "defaultValue": "{ pointerType: 'default', style: { fill: 'theme-specific-color', stroke: 'theme-specific-color' }, length: '70%', width: '2%', visible: true }",
+            "description": "<P>Sets or gets the gauge's properties for it's pointer. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'pointerType' - specifies the pointer type. Possible values for this property are - 'default' and 'rectangle'. If it's value is 'default' the pointer will be arrow otherwise it'll be rectangle</CODE></PRE>\n<PRE><CODE>'style' - specifies the gauge's pointer style. Here you can set it's fill or stroke color</CODE></PRE>\n<PRE><CODE>'width' - specifies pointer's width. This property can be set in percents ('0%' - '100%') or in pixels</CODE></PRE>\n<PRE><CODE>'length' - specifies pointer's length. This property can be set in percents ('0%' - '100%') or in pixels</CODE></PRE>\n<PRE><CODE>'visible' - indicates whether the pointer will be visible</CODE></PRE>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>pointer</CODE> property. </P>\n<PRE><CODE>$('#jqxGauge').jqxGauge({ pointer: { pointerType: 'default', style: { fill: '#ff0000', stroke: '#ff0000' }, length: '80%', width: '3%', visible: true }});</CODE></PRE>\n\r\n<P>Get the <CODE>pointer</CODE> property. </P>\n<PRE><CODE>var pointer = $('#jqxGauge').jqxGauge('pointer');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/KwwjJ/",
+            "exampleDescription": "pointer is set to { pointerType: 'default', style: { fill: '#ff0000', stroke: '#ff0000' }, length: '80%', width: '3%', visible: true }",
+            "dataType": "object",
+            "ts_dataType": "GaugePointer",
+            "exampleInit": {
+                "pointer": "pointer",
+                "exampleData": "{ pointerType: 'rectangle', style: { fill: '#ff0000', stroke: '#ff0000' }, length: '80%', width: '3%', visible: true }"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "radius",
+            "defaultValue": "'50%'",
+            "description": "<P>Sets or gets gauge's radius. This property accepts size in pixels and percentage. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>radius</CODE> property. </P>\n<PRE><CODE>$('#jqxGauge').jqxGauge({ radius: 200 });</CODE></PRE>\n\r\n<P>Get the <CODE>radius</CODE> property. </P>\n<PRE><CODE>var radius = $('#jqxGauge').jqxGauge('radius');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/NuXHd/",
+            "exampleDescription": "radius is set to 150",
+            "dataType": "number",
+            "ts_dataType": "number | string",
+            "exampleInit": {
+                "radius": "150"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "ranges",
+            "defaultValue": "[]",
+            "description": "<P>This property is array of objects. Each object is different range. The range is colored area with specified size. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'startValue'-the value from which the range will start</CODE></PRE>\n<PRE><CODE>'endValue'-the value where the current range will end</CODE></PRE>\n<PRE><CODE>'startWidth'-the width of the range in it's start</CODE></PRE>\n<PRE><CODE>'endWidth'-the end width of the range</CODE></PRE>\n<PRE><CODE>'startDistance [optional]'-this property is measured in pixels or percentage. It indicates the distance from the gauge's outer boundary to the start of the range</CODE></PRE>\n<PRE><CODE>'endDistance [optional]'-this property is measured in pixels or percentage. It indicates the distance from the gauge's outer boundary to the end of the range</CODE></PRE>\n<PRE><CODE>'style'-this property is object containing style information for the range. It accepts properties like 'fill', 'stroke', etc.</CODE></PRE>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>showRanges</CODE> property. </P>\n<PRE><CODE>\r\nvar ranges = [{\r\n    startValue: 0,\r\n    endValue: 35,\r\n    startWidth: 1,\r\n    endWidth: 5,\r\n    startDistance: '5%',\r\n    endDistance: '5%',\r\n    style: {\r\n        fill: '#dddddd',\r\n        stroke: '#dddddd'\r\n    }\r\n},\r\n{\r\n    startValue: 35,\r\n    endValue: 55,\r\n    startWidth: 5,\r\n    endWidth: 10,\r\n    startDistance: '5%',\r\n    endDistance: '5%',\r\n    style: {\r\n        fill: '#dddddd',\r\n        stroke: '#dddddd'\r\n    }\r\n}];\r\n$('#jqxGauge').jqxGauge({ ranges: ranges });\r\n</CODE></PRE>\n\r\n<P>Get the <CODE>ranges</CODE> property. </P>\n<PRE><CODE>var ranges = $('#jqxGauge').jqxGauge('ranges');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/NkeHv/",
+            "exampleDescription": "ranges is set to a custom array",
+            "dataType": "Array",
+            "ts_dataType": "Array<GaugeRanges>",
+            "exampleInit": {
+                "ranges": "ranges"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "startAngle",
+            "defaultValue": "30",
+            "description": "<P>Sets or gets gauge's startAngle. This property specifies the beggining of the gauge's scale and is measured in degrees. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>startAngle</CODE> property. </P>\n<PRE><CODE>$('#jqxGauge').jqxGauge({ startAngle: 10 });</CODE></PRE>\n\r\n<P>Get the <CODE>startAngle</CODE> property. </P>\n<PRE><CODE>var startAngle = $('#jqxGauge').jqxGauge('startAngle');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/FsCfG/",
+            "exampleDescription": "startAngle is set to 40",
+            "dataType": "number",
+            "ts_dataType": "number | string",
+            "exampleInit": {
+                "startAngle": "40",
+                "endAngle": "200"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "showRanges",
+            "defaultValue": "true",
+            "description": "<P>This property indicates whether the gauge's ranges will be visible. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>showRanges</CODE> property. </P>\n<PRE><CODE>$('#jqxGauge').jqxGauge({ showRanges: false });</CODE></PRE>\n\r\n<P>Get the <CODE>showRanges</CODE> property. </P>\n<PRE><CODE>var showRanges = $('#jqxGauge').jqxGauge('showRanges');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/4SAb8/",
+            "exampleDescription": "showRanges is set to false",
+            "dataType": "boolean",
+            "exampleInit": {
+                "showRanges": "true"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "styles",
+            "defaultValue": "{ fill: '#ffffff', stroke: '#ffffff' }",
+            "description": "<P>Sets or gets the gauge's style. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>style</CODE> property. </P>\n<PRE><CODE>$('#jqxGauge').jqxGauge({ style: { fill: '#cccccc', stroke: '#cccccc' }});</CODE></PRE>\n\r\n<P>Get the <CODE>style</CODE> property. </P>\n<PRE><CODE>var style = $('#jqxGauge').jqxGauge('style');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/cPs87/",
+            "exampleDescription": "styles is set to a custom object",
+            "dataType": "object",
+            "ts_dataType": "GaugeStyle",
+            "exampleInit": {
+                "styles": "styles",
+                "exampleData": "{ fill: '#cccccc', stroke: '#cccccc' }"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "ticksMajor",
+            "defaultValue": "{ size: '10%', interval: 5, style: { stroke: '#898989'}, visible: true }",
+            "description": "<P>Sets or gets the gauge's properties for it's major ticks. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'size'-specifies the length of the tick. This property is measured in pixels or percentage</CODE></PRE>\n<PRE><CODE>'interval'-specifies the ticks frequency. With interval equals to 5 each fifth value of the gauge will have a major tick</CODE></PRE>\n<PRE><CODE>'visible'-indicates if the major ticks will be visible</CODE></PRE>\n<PRE><CODE>'style'-sets ticks style (color and thickness)</CODE></PRE>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>ticksMajor</CODE> property. </P>\n<PRE><CODE>$('#jqxGauge').jqxGauge({ ticksMajor: { size: '10px', interval: 15, style: { stroke: '#898989'}, visible: true }});</CODE></PRE>\n\r\n<P>Get the <CODE>ticksMajor</CODE> property. </P>\n<PRE><CODE>var ticksMajor = $('#jqxGauge').jqxGauge('ticksMajor');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/zUTEC/",
+            "exampleDescription": "ticksMajor is set to {interval: 10, size: '9%' }",
+            "dataType": "object",
+            "ts_dataType": "GaugeTicks",
+            "exampleInit": {
+                "ticksMajor": "ticksMajor"
+            },
+            "customExample": {
+                "codeType": "get",
+                "code": "&lt;template>\n  &lt;JqxGauge ref=\"myGauge\"\n    :ticksMajor=\"ticksMajor\" :value=\"100\"\n  />\n&lt;/template>\n \n&lt;script>\n  import JqxGauge from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxgauge.vue';\n \n  export default {\n    components: {\n      JqxGauge\n    },\n    data: function () {\n      return  {\n        ticksMajor: { interval: 60, size: '15%' }\n      }\n    }\n  }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "ticksMinor",
+            "defaultValue": "{ size: '10%', interval: 5, style: { stroke: '#898989'}, visible: true }",
+            "description": "<P>Sets or gets the gauge's properties for it's minor ticks. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'size'-specifies the length of the tick. This property can be set in pixels or in percentag</CODE></PRE>\n<PRE><CODE>'interval'-specifies the ticks frequency. With interval equals to 5 each fifth value of the gauge will have a minor tick</CODE></PRE>\n<PRE><CODE>'visible'-indicates if the minor ticks will be visible</CODE></PRE>\n<PRE><CODE>'style'-sets ticks style (color and thickness)</CODE></PRE>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>ticksMinor</CODE> property. </P>\n<PRE><CODE>$('#jqxGauge').jqxGauge({ ticksMinor: { size: '5%', interval: 15, style: { stroke: '#898989'}, visible: true }});</CODE></PRE>\n\r\n<P>Get the <CODE>ticksMinor</CODE> property. </P>\n<PRE><CODE>var ticksMinor = $('#jqxGauge').jqxGauge('ticksMinor');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/L5JyJ/",
+            "exampleDescription": "ticksMinor is set to {interval: 5, size: '5%' }",
+            "dataType": "object",
+            "ts_dataType": "GaugeTicks",
+            "exampleInit": {
+                "ticksMinor": "ticksMinor"
+            },
+            "customExample": {
+                "codeType": "get",
+                "code": "&lt;template>\n  &lt;JqxGauge ref=\"myGauge\"\n    :ticksMinor=\"ticksMinor\" :value=\"100\"\n  />\n&lt;/template>\n \n&lt;script>\n  import JqxGauge from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxgauge.vue';\n \n  export default {\n    components: {\n      JqxGauge\n    },\n    data: function () {\n      return  {\n        ticksMinor: { interval: 1, size: '5%' }\n      }\n    }\n  }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "ticksDistance",
+            "defaultValue": "'20%\"",
+            "description": "<P>Sets and gets the ticks position. This property can be specified using percents (between '0%' and '100%') or using pixels. If the ticksRadius is '0%' this will position the ticks in the outer border of the gauge and if it's '100%' ticks will be positioned near the center. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>ticksDistance</CODE> property. </P>\n<PRE><CODE>$('#jqxGauge').jqxGauge({ ticksDistance: '26' });</CODE></PRE>\n\r\n<P>Get the <CODE>ticksDistance</CODE> property. </P>\n<PRE><CODE>var ticksDistance = $('#jqxGauge').jqxGauge('ticksDistance');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/8jDuX/",
+            "exampleDescription": "ticksDistance is set to '50%'",
+            "dataType": "string",
+            "exampleInit": {
+                "ticksDistance": "'50%'"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "value",
+            "defaultValue": "0",
+            "description": "<P>Sets or gets gauge's value. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>value</CODE> property. </P>\n<PRE><CODE>$('#jqxGauge').jqxGauge({ value: 15 });</CODE></PRE>\n\r\n<P>Get the <CODE>value</CODE> property. </P>\n<PRE><CODE>var value = $('#jqxGauge').jqxGauge('value');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/FuaBE/",
+            "exampleDescription": "value is set to 100",
+            "dataType": "number",
+            "exampleInit": {
+                "value": "100"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "width",
+            "defaultValue": "350",
+            "description": "<P>Sets or gets the gauge's width. This property accepts size in pixels and percentage. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>width</CODE> property. </P>\n<PRE><CODE>$('#jqxGauge').jqxGauge({ width: 400 });</CODE></PRE>\n\r\n<P>Get the <CODE>width</CODE> property. </P>\n<PRE><CODE>var width = $('#jqxGauge').jqxGauge('width');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/SyJUt/",
+            "exampleDescription": "width is set to 300",
+            "dataType": "number",
+            "ts_dataType": "number | string",
+            "exampleInit": {
+                "width": "300"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        }
+    ],
+    "events": [
+        {
+            "name": "valueChanging",
+            "description": "<P>The event is is triggered when the gauge's value is changing. </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>valueChanging</CODE> event by type: jqxGauge. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/Qhmxg/",
+            "exampleDescription": "Bind to the valueChanging event by type: jqxGauge.",
+            "example": "<PRE><CODE> $('#jqxGauge').bind('valueChanging', function (e) {\r\n    alert('Value changed: ' + e.args.value);\r\n});\r\n    $('#jqxGauge').jqxGauge('value', 220);\r\n</CODE>\r\n</PRE>"
+        },
+        {
+            "name": "valueChanged",
+            "description": "<P>The event is is triggered when the gauge's value is changed. </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>valueChanged</CODE> event by type: jqxGauge. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/gZNKh/",
+            "exampleDescription": "Bind to the valueChanged event by type: jqxGauge.",
+            "example": "<PRE><CODE> $('#jqxGauge').bind('valueChanged', function (e) {\r\n    alert('Value changed: ' + e.args.value);\r\n});\r\n    $('#jqxGauge').jqxGauge('value', 220);\r\n</CODE>\r\n</PRE>"
+        }
+    ],
+    "methods": [
+        {
+            "name": "disable",
+            "description": "<P>This method disables the gauge. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/PJBV9/",
+            "exampleDescription": "disables the jqxGauge.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "enable",
+            "description": "<P>This method enables the gauge. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/Fueqn/",
+            "exampleDescription": "enables the jqxGauge.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n    &lt;JqxGauge ref=\"myGauge\"\n              :ranges=\"ranges\" :ticksMinor=\"ticksMinor\" :ticksMajor=\"ticksMajor\" :animationDuration=\"1200\" />\n&lt;/template>\n\n&lt;script>\n    import JqxGauge from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxgauge.vue';\n\n    export default {\n        components: {\n            JqxGauge\n        },\n        data: function () {\n            return {\n                ticksMinor: { interval: 5, size: '5%' },\n                ticksMajor: { interval: 10, size: '9%' },\n                ranges: [\n                    { startValue: 0, endValue: 55, style: { fill: '#4bb648', stroke: '#4bb648' }, endWidth: 5, startWidth: 1 },\n                    { startValue: 55, endValue: 110, style: { fill: '#fbd109', stroke: '#fbd109' }, endWidth: 10, startWidth: 5 },\n                    { startValue: 110, endValue: 165, style: { fill: '#ff8000', stroke: '#ff8000' }, endWidth: 13, startWidth: 10 },\n                    { startValue: 165, endValue: 220, style: { fill: '#e02629', stroke: '#e02629' }, endWidth: 16, startWidth: 13 }\n                ]\n            }\n        },\n        mounted: function () {\n            this.$refs.myGauge.disable();\n\n            setTimeout(_ => {\n                this.$refs.myGauge.enable();\n                this.$refs.myGauge.value = 140;\n            }, 1000);\n        }\n    }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "val",
+            "description": "<P>Sets or gets the value. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/cWLkY/",
+            "exampleDescription": "sets new value in the jqxGauge.",
+            "returnDataType": "number",
+            "arguments": [
+                {
+                    "name": "value",
+                    "dataType": "number",
+                    "description": "",
+                    "optional": true
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n    &lt;JqxGauge ref=\"myGauge\" :value=\"140\"\n              :ranges=\"ranges\" :ticksMinor=\"ticksMinor\" :ticksMajor=\"ticksMajor\" :animationDuration=\"1200\" />\n&lt;/template>\n\n&lt;script>\n    import JqxGauge from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxgauge.vue';\n\n    export default {\n        components: {\n            JqxGauge\n        },\n        data: function () {\n            return {\n                ticksMinor: { interval: 5, size: '5%' },\n                ticksMajor: { interval: 10, size: '9%' },\n                ranges: [\n                    { startValue: 0, endValue: 55, style: { fill: '#4bb648', stroke: '#4bb648' }, endWidth: 5, startWidth: 1 },\n                    { startValue: 55, endValue: 110, style: { fill: '#fbd109', stroke: '#fbd109' }, endWidth: 10, startWidth: 5 },\n                    { startValue: 110, endValue: 165, style: { fill: '#ff8000', stroke: '#ff8000' }, endWidth: 13, startWidth: 10 },\n                    { startValue: 165, endValue: 220, style: { fill: '#e02629', stroke: '#e02629' }, endWidth: 16, startWidth: 13 }\n                ]\n            }\n        },\n        mounted: function () {\n            const value = this.$refs.myGauge.val();\n        }\n    }\n&lt;/script>"
+            }
+        }
+    ]
+}

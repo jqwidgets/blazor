@@ -1,0 +1,78 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/ivozhulev/git/jqwidgets-blazor/blazor-web.csproj": {}
+  },
+  "projects": {
+    "/Users/ivozhulev/git/jqwidgets-blazor/blazor-web.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/ivozhulev/git/jqwidgets-blazor/blazor-web.csproj",
+        "projectName": "blazor-web",
+        "projectPath": "/Users/ivozhulev/git/jqwidgets-blazor/blazor-web.csproj",
+        "packagesPath": "/Users/ivozhulev/.nuget/packages/",
+        "outputPath": "/Users/ivozhulev/git/jqwidgets-blazor/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/ivozhulev/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "dependencies": {
+            "Microsoft.AspNetCore.Blazor": {
+              "target": "Package",
+              "version": "[3.2.0-preview1.20073.1, )"
+            },
+            "Microsoft.AspNetCore.Blazor.Build": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.2.0-preview1.20073.1, )"
+            },
+            "Microsoft.AspNetCore.Blazor.DevServer": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.2.0-preview1.20073.1, )"
+            },
+            "Microsoft.AspNetCore.Blazor.HttpClient": {
+              "target": "Package",
+              "version": "[3.2.0-preview1.20073.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.102/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
