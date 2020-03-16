@@ -1,0 +1,259 @@
+{
+  "widget": {
+    "name": "jqxButtonGroup",
+    "description": "Enables the creation of groups of buttons.",
+    "angular2": {
+      "name": "jqxButtonGroupComponent",
+      "selector": "jqxButtonGroup"
+    }
+  },
+  "dataTypes": [
+    {
+      "name": "ButtonGroupMode",
+      "ts_dataType": "enum",
+      "enumOptions": [ "checkbox", "radio", "default" ]
+    },
+    {
+      "name": "ButtonGroupTemplate",
+      "ts_dataType": "enum",
+      "enumOptions": [ "default", "primary", "success", "warning", "danger", "info" ]
+    }
+  ],
+  "exampleInit": {
+  },
+  "exampleExtraTemplate": "<button style='padding: 4px 16px' id='Left' value='Left'></button>\n    <button style='padding: 4px 16px' id='Center' value='Center'></button>\n    <button style='padding: 4px 16px' id='Right' value='Right'></button>",
+  "properties": [
+    {
+      "name": "disabled",
+      "defaultValue": "false",
+      "description": "<P>Enables or disables the jqxButtonGroup. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>disabled</CODE> property. </P>\n<PRE><CODE>$('#jqxButtonGroup').jqxButtonGroup({disabled: false });</CODE></PRE>\n\r\n<P>Get the <CODE>disabled</CODE> property. </P>\n<PRE><CODE>var disabled = $('#jqxButtonGroup').jqxButtonGroup('disabled');</CODE></PRE>",
+      "example": "",
+      "exampleURL": "http://jsfiddle.net/jqwidgets/9zNH5/",
+      "exampleDescription": "disabled is set to true",
+      "dataType": "boolean",
+      "exampleInit": {
+        "disabled": "true"
+      }
+    },
+    {
+      "name": "enableHover",
+      "defaultValue": "false",
+      "description": "<P>Enables or disabled the highlight state. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>enableHover</CODE> property. </P>\n<PRE><CODE>$('#jqxButtonGroup').jqxButtonGroup({enableHover: true });</CODE></PRE>\n\r\n<P>Get the <CODE>enableHover</CODE> property. </P>\n<PRE><CODE>var enableHover = $('#jqxButtonGroup').jqxButtonGroup('enableHover');</CODE></PRE>",
+      "example": "",
+      "exampleURL": "http://jsfiddle.net/jqwidgets/kZuup/",
+      "exampleDescription": "enableHover is set to false",
+      "dataType": "boolean",
+      "exampleInit": {
+        "enableHover": "false"
+      }
+    },
+    {
+      "name": "mode",
+      "defaultValue": "'default'",
+      "description": "<P>Sets or gets the jqxButtonGroup's mode. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'checkbox'</CODE></PRE>\n<PRE><CODE>'radio'</CODE></PRE>\n<PRE><CODE>'default'</CODE></PRE>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>mode</CODE> property. </P>\n<PRE><CODE>$('#jqxButtonGroup').jqxButtonGroup({mode: 'radio' });</CODE></PRE>\n\r\n<P>Get the <CODE>mode</CODE> property. </P>\n<PRE><CODE>var mode = $('#jqxButtonGroup').jqxButtonGroup('mode');</CODE></PRE>",
+      "example": "",
+      "exampleURL": "http://jsfiddle.net/jqwidgets/zMkHN/",
+      "exampleDescription": "mode is set to 'radio'",
+      "dataType": "string",
+      "ts_dataType": "enum:ButtonGroupMode",
+      "exampleInit": {
+        "mode": "radio"
+      }
+    },
+    {
+      "name": "rtl",
+      "defaultValue": "false",
+      "description": "<P>Sets or gets a value indicating whether widget's elements are aligned to support locales using right-to-left fonts.</P>",
+      "example": "<pre><CODE>$('#jqxButtonGroup').jqxButtonGroup({rtl : true}); </CODE></pre>",
+      "exampleURL": "http://jsfiddle.net/jqwidgets/psfcr/",
+      "exampleDescription": "rtl is set to true",
+      "dataType": "boolean",
+      "exampleInit": {
+        "rtl": "true"
+      }
+    },
+    {
+      "name": "template",
+      "defaultValue": "'default'",
+      "description": "<P>Determines the template as an alternative of the default styles. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'default' - the default template. The style depends only on the \"theme\" property value.</CODE></PRE>\n<PRE><CODE>'primary' - dark blue style for extra visual weight.</CODE></PRE>\n<PRE><CODE>'success' - green style for successful or positive action.</CODE></PRE>\n<PRE><CODE>'warning' - orange style which indicates caution.</CODE></PRE>\n<PRE><CODE>'danger' - red style which indicates a dangerous or negative action.</CODE></PRE>\n<PRE><CODE>'info' - blue button, not tied to a semantic action or use.</CODE></PRE>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>template</CODE> property. </P>\n<PRE><CODE>$(\"#jqxButtonGroup\").jqxButtonGroup({ template: 'primary'});</CODE></PRE>\n\r\n<P>Get the <CODE>template</CODE> property. </P>\n<PRE><CODE>var template = $('#jqxButtonGroup').jqxButtonGroup('template');</CODE></PRE>",
+      "example": "",
+      "exampleURL": "http://jsfiddle.net/jqwidgets/gcjaoyfL/",
+      "exampleDescription": "template is set to 'success'",
+      "dataType": "string",
+      "ts_dataType": "enum:ButtonGroupTemplate",
+      "exampleInit": {
+        "template": "success"
+      }
+    },
+    {
+      "name": "theme",
+      "defaultValue": "''",
+      "description": "<P>Sets the widget's theme. </P>\n\r\n<UL><LI>Include the theme's CSS file after jqx.base.css.<BR>The following code example adds the 'material' theme. <PRE><CODE>\r\n<PRE><CODE>&lt;link rel=\"stylesheet\" href=\"../../jqwidgets/styles/jqx.base.css\" type=\"text/css\" /&gt;\r\n&lt;link rel=\"stylesheet\" href=\"../../jqwidgets/styles/jqx.material.css\" type=\"text/css\" /&gt;\r\n</CODE></PRE>\r\n</CODE></PRE>\r\n<LI>Set the widget's theme property to 'material' when you initialize it. </LI></UL>",
+      "example": "",
+      "exampleURL": "http://jsfiddle.net/jqwidgets/ECGMZ/",
+      "exampleDescription": "theme is set to 'material'",
+      "dataType": "string",
+      "exampleInit": {
+        "theme": "material"
+      }
+    }
+  ],
+  "events": [
+    {
+      "name": "buttonclick",
+      "description": "<P>This event is triggered when a button is clicked. </P>\n<H4>Code examples</H4>\n<P>Bind to the<CODE> buttonclick</CODE> event by type: jqxButtonGroup. </P>",
+      "exampleURL": "http://jsfiddle.net/jqwidgets/LDNJw/",
+      "exampleDescription": "Bind to the buttonclick event by type: jqxButtonGroup.",
+      "example": "<PRE><CODE>$('#jqxButtonGroup').on('buttonclick', function () { // Some code here. }); </CODE></PRE>"
+    },
+    {
+      "name": "selected",
+      "description": "<P>This event is triggered when a button is selected - in checkboxes or radio buttons mode. </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>selected</CODE> event by type: jqxButtonGroup. </P>",
+      "exampleURL": "http://jsfiddle.net/jqwidgets/EgyGK/",
+      "exampleDescription": "Bind to the selected event by type: jqxButtonGroup.",
+      "example": "<PRE><CODE>$('#jqxButtonGroup').on('selected', function () { // Some code here. }); </CODE></PRE>"
+    },
+    {
+      "name": "unselected",
+      "description": "<P>This event is triggered when a button is unselected - in checkbox or radio buttons mode. </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>unselected</CODE> event by type: jqxButtonGroup. </P>",
+      "exampleURL": "http://jsfiddle.net/jqwidgets/xchxP/",
+      "exampleDescription": "Bind to the unselected event by type: jqxButtonGroup.",
+      "example": "<PRE><CODE>$('#jqxButtonGroup').on('unselected', function () { // Some code here. }); </CODE></PRE>"
+    }
+  ],
+  "methods": [
+    {
+      "name": "disableAt",
+      "description": "<P>Disables a button at specific index. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>disableAt</CODE> method. </P>\n<PRE><CODE>$('#jqxButtonGroup').jqxButtonGroup('disableAt', 0); </CODE></PRE>",
+      "exampleURL": "http://jsfiddle.net/jqwidgets/v8upb/",
+      "exampleDescription": "disables a button of the ButtonGroup",
+      "returnDataType": "None",
+      "arguments": [
+        {
+          "name": "index",
+          "dataType": "number",
+          "description": "",
+          "optional": false
+        }
+      ],
+      "exampleInit": {
+        "args": [ "1" ]
+      }
+    },
+    {
+      "name": "disable",
+      "description": "<P>Disables jqxButtonGroup. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>disable</CODE> method. </P>\n<PRE><CODE>$('#jqxButtonGroup').jqxButtonGroup('disable'); </CODE></PRE>",
+      "exampleURL": "http://jsfiddle.net/jqwidgets/EDFm7/",
+      "exampleDescription": "disables the ButtonGroup",
+      "returnDataType": "None",
+      "arguments": [
+        {
+          "name": "None",
+          "dataType": null,
+          "description": "",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "name": "destroy",
+      "description": "<P>Destroys the widget. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>destroy</CODE> method. </P>\n<PRE><CODE>$('#jqxButtonGroup').jqxButtonGroup('destroy'); </CODE></PRE>",
+      "exampleURL": "http://jsfiddle.net/jqwidgets/Gbmr4/",
+      "exampleDescription": "destroys the buttonGroup",
+      "returnDataType": "None",
+      "arguments": [
+        {
+          "name": "None",
+          "dataType": null,
+          "description": "",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "name": "enable",
+      "description": "<P>Enables the jqxButtonGroup. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>enable</CODE> method. </P>\n<PRE><CODE>$('#jqxButtonGroup').jqxButtonGroup('enable'); </CODE></PRE>",
+      "exampleURL": "http://jsfiddle.net/jqwidgets/S9TqH/",
+      "exampleDescription": "enables the ButtonGroup",
+      "returnDataType": "None",
+      "arguments": [
+        {
+          "name": "None",
+          "dataType": null,
+          "description": "",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "name": "enableAt",
+      "description": "<P>Enables a button at specific index. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>enableAt</CODE> method. </P>\n<PRE><CODE>$('#jqxButtonGroup').jqxButtonGroup('enableAt', 0); </CODE></PRE>",
+      "exampleURL": "http://jsfiddle.net/jqwidgets/xwBkH/",
+      "exampleDescription": "enables a button of the ButtonGroup",
+      "returnDataType": "None",
+      "arguments": [
+        {
+          "name": "index",
+          "dataType": "number",
+          "description": "",
+          "optional": false
+        }
+      ],
+      "exampleInit": {
+        "args": [ "1" ]
+      }
+    },
+    {
+      "name": "getSelection",
+      "description": "<P>Gets the index or indexes of the selected button(s). <BR>\n<UL><LI>Returns undefined when the \"mode\" property is \"default\". \r\n<LI>Returns the index of the selected button when the \"mode\" property is set the \"radio\". For example, if the first button is selected, the retuned value is 0. \r\n<LI>Returns an array of the selected buttons when the \"mode\" property is set to \"checkbox\". For example, if you have a group of three buttons and the first and third buttons are selected, the returned value will be [0, 2] </LI></UL>\n<P></P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>getSelection</CODE> method. </P>\n<PRE><CODE>var jqxButtonGroup = $('#jqxButtonGroup').jqxButtonGroup('getSelection'); </CODE></PRE>",
+      "exampleURL": "http://jsfiddle.net/jqwidgets/dbkHp/",
+      "exampleDescription": "gets the selection of the ButtonGroup",
+      "returnDataType": "number/Array",
+      "ts_returnDataType": "any",
+      "arguments": [
+        {
+          "name": "None",
+          "dataType": null,
+          "description": "",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "name": "render",
+      "description": "<P>Renders the widget. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>render</CODE> method. </P>\n<PRE><CODE>$('#jqxButtonGroup').jqxButtonGroup('render'); </CODE></PRE>",
+      "exampleURL": "http://jsfiddle.net/jqwidgets/fcpMh/",
+      "exampleDescription": "render the buttonGroup",
+      "returnDataType": "None",
+      "arguments": [
+        {
+          "name": "None",
+          "dataType": null,
+          "description": "",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "name": "setSelection",
+      "description": "<P>Selects a button in checkbox or radio buttons mode </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>setSelection</CODE> method. The index is zero-based. For selecting the first button, call the method with 0. </P>\n<PRE><CODE>$('#jqxButtonGroup').jqxButtonGroup('setSelection', 0);</CODE></PRE>",
+      "exampleURL": "http://jsfiddle.net/jqwidgets/xzd7M/",
+      "exampleDescription": "sets the selection of the ButtonGroup",
+      "returnDataType": "None",
+      "arguments": [
+        {
+          "name": "index",
+          "dataType": "number",
+          "description": "",
+          "optional": false
+        }
+      ],
+      "exampleInit": {
+        "args": [ "1" ],
+        "extraData": {
+          "mode": "'radio'"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,336 @@
+{
+    "widget": {
+        "name": "jqxRadioButton",
+        "description": "Enables users make a choice among a set of mutually exclusive, related options. Users can choose one and only one option.",
+        "angular2": {
+            "name": "jqxRadioButtonComponent",
+            "selector": "jqxRadioButton"
+        }
+    },
+    "dataTypes": [
+
+    ],
+    "exampleExtraTemplate": "Radio Button",
+    "properties": [
+        {
+            "name": "animationShowDelay",
+            "defaultValue": "250",
+            "description": "<P>Sets or gets the delay of the fade animation when the Radio Button is going to be checked. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>animationShowDelay</CODE> property. </P>\n<PRE><CODE>$('#jqxRadioButton').jqxRadioButton({ animationShowDelay: 200 }); </CODE></PRE>\n\r\n<P>Get the <CODE>animationShowDelay</CODE> property. </P>\n<PRE><CODE>var animationShowDelay = $('#jqxRadioButton').jqxRadioButton('animationShowDelay'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/cPmyp/",
+            "exampleDescription": "animationShowDelay is set to 500",
+            "dataType": "number",
+            "exampleInit": {
+                "animationShowDelay": "500"
+            }
+        },
+        {
+            "name": "animationHideDelay",
+            "defaultValue": "300",
+            "description": "<P>Sets or gets the delay of the fade animation when the Radio Button is going to be unchecked. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>animationHideDelay</CODE> property. </P>\n<PRE><CODE>$('#jqxRadioButton').jqxRadioButton({ animationHideDelay: 200 }); </CODE></PRE>\n\r\n<P>Get the <CODE>animationHideDelay</CODE> property. </P>\n<PRE><CODE>var animationHideDelay = $('#jqxRadioButton').jqxRadioButton('animationHideDelay'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/eS3zM/",
+            "exampleDescription": "animationHideDelay is set to 500",
+            "dataType": "number",
+            "exampleInit": {
+                "animationHideDelay": "500"
+            },
+            "customExample": {
+                "codeType": "custom",
+                "code": "&lt;template>\n  &lt;div>\n    &lt;JqxRadioButton ref=\"myRadioButton\" \n      :animationHideDelay=\"500\">\n      Radio Button 1 \n    &lt;/JqxRadioButton> \n    &lt;JqxRadioButton ref=\"myRadioButton\" \n      :animationHideDelay=\"500\">\n      Radio Button 2 \n    &lt;/JqxRadioButton>\n  &lt;/div> \n&lt;/template>\n \n&lt;script>\n  import JqxRadioButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxradiobutton.vue'; \n \n  export default { \n    components: { \n      JqxRadioButton \n    } \n  } \n&lt;/script>"
+            }
+        },
+        {
+            "name": "boxSize",
+            "defaultValue": "\"13px\"",
+            "description": "<P>Sets or gets the Radio Button's size. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>boxSize</CODE> property. </P>\n<PRE><CODE>$('#jqxRadioButton').jqxRadioButton({ boxSize:\"15px\" }); </CODE></PRE>\n\r\n<P>Get the <CODE>boxSize</CODE> property. </P>\n<PRE><CODE>var boxSize = $('#jqxRadioButton').jqxRadioButton('boxSize'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/FQt4b/",
+            "exampleDescription": "boxSize is set to '15px'",
+            "dataType": "string",
+            "ts_dataType": "number | string",
+            "exampleInit": {
+                "boxSize": "18px"
+            }
+        },
+        {
+            "name": "checked",
+            "defaultValue": "false",
+            "description": "<P>Sets or gets whether the radio button is checked. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>checked</CODE> property. </P>\n<PRE><CODE>$('#jqxRadioButton').jqxRadioButton({ checked:true }); </CODE></PRE>\n\r\n<P>Get the <CODE>checked</CODE> property. </P>\n<PRE><CODE>var checked = $('#jqxRadioButton').jqxRadioButton('checked'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/yNjnM/",
+            "exampleDescription": "checked is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "checked": "true"
+            }
+        },
+        {
+            "name": "disabled",
+            "defaultValue": "false",
+            "description": "<P>Sets or gets whether the Radio Button is disabled. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>disabled</CODE> property. </P>\n<PRE><CODE>$('#jqxRadioButton').jqxRadioButton({ disabled:true }); </CODE></PRE>\n\r\n<P>Get the <CODE>disabled</CODE> property. </P>\n<PRE><CODE>var disabled = $('#jqxRadioButton').jqxRadioButton('disabled');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/DZ8dG/",
+            "exampleDescription": "disabled is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "disabled": "true"
+            }
+        },
+        {
+            "name": "enableContainerClick",
+            "defaultValue": "true",
+            "description": "<P>Sets or gets whether the clicks on the container are handled as clicks on the rounded button. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>enableContainerClick</CODE> property. </P>\n<PRE><CODE>$('#jqxRadioButton').jqxRadioButton({enableContainerClick :true }); </CODE></PRE>\n\r\n<P>Get the <CODE>enableContainerClick</CODE> property. </P>\n<PRE><CODE>var enableContainerClick = $('#jqxRadioButton').jqxRadioButton('enableContainerClick'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/3KcAA/",
+            "exampleDescription": "enableContainerClick is set to false",
+            "dataType": "boolean",
+            "exampleInit": {
+                "enableContainerClick": "false"
+            }
+        },
+        {
+            "name": "groupName",
+            "defaultValue": "\"\"",
+            "description": "<P>Sets or gets the group name. When this property is set, checking a radio button from the group, will uncheck only the radio buttons from the same group. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>groupName</CODE> property. </P>\n<PRE><CODE>$('#jqxRadioButton').jqxRadioButton({groupName :\"Panel\" }); </CODE></PRE>\n\r\n<P>Get the <CODE>groupName</CODE> property. </P>\n<PRE><CODE>var groupName = $('#jqxRadioButton').jqxRadioButton('groupName'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/XH6ch/",
+            "exampleDescription": "groupName is set to \"Group\"",
+            "dataType": "string",
+            "exampleInit": {
+                "groupName": "groupName",
+                "exampleData": "Group"
+            },
+            "customExample": {
+                "codeType": "custom",
+                "code": "&lt;template>\n  &lt;div>\n    &lt;JqxRadioButton ref=\"myRadioButton\" :groupName=\"'Group1'\">Group1 Button&lt;/JqxRadioButton> \n    &lt;JqxRadioButton ref=\"myRadioButton\" :groupName=\"'Group1'\">Group1 Button&lt;/JqxRadioButton> \n    &lt;br /> \n    &lt;JqxRadioButton ref=\"myRadioButton\" :groupName=\"'Group2'\">Group2 Button&lt;/JqxRadioButton> \n    &lt;JqxRadioButton ref=\"myRadioButton\" :groupName=\"'Group2'\">Group2 Button&lt;/JqxRadioButton> \n  &lt;/div> \n&lt;/template> \n \n&lt;script> \n  import JqxRadioButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxradiobutton.vue';\n \n  export default {\n    components: {\n      JqxRadioButton\n    }\n  } \n&lt;/script>"
+            }
+        },
+        {
+            "name": "hasThreeStates",
+            "defaultValue": "false",
+            "description": "<P>Sets or gets whether the radio button has 3 states - checked, unchecked and indeterminate. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>hasThreeStates</CODE> property. </P>\n<PRE><CODE>$('#jqxRadioButton').jqxRadioButton({ hasThreeStates:true }); </CODE></PRE>\n\r\n<P>Get the <CODE>hasThreeStates</CODE> property. </P>\n<PRE><CODE>var hasThreeStates = $('#jqxRadioButton').jqxRadioButton('hasThreeStates'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/kzGSs/",
+            "exampleDescription": "hasThreeStates is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "hasThreeStates": "true"
+            },
+            "customExample": {
+                "codeType": "custom",
+                "code": "&lt;template>\n  &lt;div> \n    &lt;JqxRadioButton ref=\"myRadioButton\" \n      :checked=\"null\" :hasThreeStates=\"true\"> \n      Radio Button \n    &lt;/JqxRadioButton> \n    &lt;JqxRadioButton ref=\"myRadioButton\" \n      :checked=\"null\" :hasThreeStates=\"true\">\n      Radio Button \n    &lt;/JqxRadioButton> \n  &lt;/div> \n&lt;/template> \n \n&lt;script> \n  import JqxRadioButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxradiobutton.vue'; \n \n  export default { \n    components: { \n      JqxRadioButton \n    } \n  } \n&lt;/script>"
+            }
+        },
+        {
+            "name": "height",
+            "defaultValue": "null",
+            "description": "<P>Sets or gets the jqxRadioButton's height. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>height</CODE> property. </P>\n<PRE><CODE>$('#jqxRadioButton').jqxRadioButton({height:\"400px\"});</CODE></PRE>\n\r\n<P>Get the <CODE>height</CODE> property. </P>\n<PRE><CODE>var height = $('#jqxRadioButton').jqxRadioButton('height');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/PAka5/",
+            "exampleDescription": "height is set to 25",
+            "dataType": "number",
+            "ts_dataType": "string | number",
+            "exampleInit": {
+                "height": "50"
+            }
+        },
+        {
+            "name": "rtl",
+            "defaultValue": "false",
+            "description": "<P>Sets or gets a value indicating whether widget's elements are aligned to support locales using right-to-left fonts.</P>",
+            "example": "<pre><CODE>$('#jqxRadioButton').jqxRadioButton({rtl : true}); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/4vAx9/",
+            "exampleDescription": "rtl is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "rtl": "true"
+            }
+        },
+        {
+            "name": "theme",
+            "defaultValue": "''",
+            "description": "<P>Sets the widget's theme. </P>\n\r\n<UL><LI>Include the theme's CSS file after jqx.base.css.<BR>The following code example adds the 'material' theme. <PRE><CODE>\r\n<PRE><CODE>&lt;link rel=\"stylesheet\" href=\"../../jqwidgets/styles/jqx.base.css\" type=\"text/css\" /&gt;\r\n&lt;link rel=\"stylesheet\" href=\"../../jqwidgets/styles/jqx.material.css\" type=\"text/css\" /&gt;\r\n</CODE></PRE>\r\n</CODE></PRE>\r\n<LI>Set the widget's theme property to 'material' when you initialize it. </LI></UL>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/zUmQC/",
+            "exampleDescription": "theme is set to 'material'",
+            "dataType": "string",
+            "exampleInit": {
+                "theme": "material"
+            }
+        },
+        {
+            "name": "width",
+            "defaultValue": "null",
+            "description": "<P>Sets or gets the jqxRadioButton's width. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>width</CODE> property. </P>\n<PRE><CODE>$('#jqxRadioButton').jqxRadioButton({width:\"200px\"});</CODE></PRE>\n\r\n<P>Get the <CODE>width</CODE> property. </P>\n<PRE><CODE>var width = $('#jqxRadioButton').jqxRadioButton('width');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/G4WWw/",
+            "exampleDescription": "width is set to 120",
+            "dataType": "number",
+            "ts_dataType": "string | number",
+            "exampleInit": {
+                "width": "150"
+            }
+        }
+    ],
+    "events": [
+        {
+            "name": "checked",
+            "description": "<P>This event is triggered when the Radio Button is checked. </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>checked</CODE> event by type: jqxRadioButton. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/mqePx/",
+            "exampleDescription": "Bind to the checked event by type: jqxRadioButton.",
+            "example": "<PRE><CODE>$('#jqxRadioButton').on('checked', function (event) { // Some code here. }); </CODE></PRE>"
+        },
+        {
+            "name": "change",
+            "description": "<P>This is triggered when the Radio Button's state changes from one state to another. </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>change</CODE> event by type: jqxRadioButton. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/BcQk4/",
+            "exampleDescription": "Bind to the change event by type: jqxRadioButton.",
+            "example": "<PRE><CODE>$('#jqxRadioButton').on('change', function (event) { var checked = event.args.checked;  var type = event.args.type; // keyboard, mouse or null depending on how the value was changed. }); </CODE></PRE>"
+        },
+        {
+            "name": "unchecked",
+            "description": "<P>This event is triggered when the Radio Button is unchecked. </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>unchecked</CODE> event by type: jqxRadioButton. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/MTrHD/",
+            "exampleDescription": "Bind to the unchecked event by type: jqxRadioButton.",
+            "example": "<PRE><CODE>$('#jqxRadioButton').on('unchecked', function (event) { // Some code here. }); </CODE></PRE>",
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;JqxRadioButton ref=\"myRadioButton1\" @unchecked=\"onUnchecked($event)\">Radio Button 1&lt;/JqxRadioButton>\n    &lt;JqxRadioButton ref=\"myRadioButton2\" @unchecked=\"onUnchecked($event)\">Radio Button 2&lt;/JqxRadioButton>\n  &lt;/div>\n&lt;/template>\n\n&lt;script>\n  import JqxRadioButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxradiobutton.vue';\n\n  export default {\n    components: {\n      JqxRadioButton\n    },\n    methods: {\n      onUnchecked: function (event) {\n        alert('do something...');\n      }\n    }\n  }\n&lt;/script>"
+            }
+        }
+    ],
+    "methods": [
+        {
+            "name": "check",
+            "description": "<P>Checks the radio button. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/WXqTV/",
+            "exampleDescription": "checks a button in the jqxRadioButton.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;JqxRadioButton ref=\"myRadioButton\">Radio Button&lt;/JqxRadioButton>\n    &lt;JqxButton @click=\"check()\">Check&lt;/JqxButton>\n    &lt;JqxButton @click=\"uncheck()\">Uncheck&lt;/JqxButton>\n  &lt;/div>\n&lt;/template>\n\n&lt;script>\n  import JqxRadioButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxradiobutton.vue';\n  import JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\n\n  export default {\n    components: {\n      JqxRadioButton,\n      JqxButton\n    },\n    methods: {\n      check: function () {\n        this.$refs.myRadioButton.check();\n      },\n      uncheck: function () {\n        this.$refs.myRadioButton.uncheck();\n      }\n    }\n  }\n&lt;/script>\n&lt;style>\n  .jqx-button {\n    display: inline-block;\n    margin-top: 15px;\n    margin-right: 20px;\n  }\n&lt;/style>"
+            }
+        },
+        {
+            "name": "disable",
+            "description": "<P>Disables the radio button. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/dfJUD/",
+            "exampleDescription": "disables a button in the jqxRadioButton.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;JqxRadioButton ref=\"myRadioButton\">Radio Button&lt;/JqxRadioButton>\n    &lt;JqxButton @click=\"enable()\">Enable&lt;/JqxButton>\n    &lt;JqxButton @click=\"disable()\">Disable&lt;/JqxButton>\n  &lt;/div>\n&lt;/template>\n&lt;script>\n  import JqxRadioButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxradiobutton.vue';\n  import JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\n  export default {\n    components: {\n      JqxRadioButton,\n      JqxButton\n    },\n    methods: {\n      enable: function () {\n        this.$refs.myRadioButton.enable();\n      },\n      disable: function () {\n        this.$refs.myRadioButton.disable();\n      }\n    }\n  }\n&lt;/script>\n&lt;style>\n  .jqx-button {\n    display: inline-block;\n    margin-top: 15px;\n    margin-right: 20px;\n  }\n&lt;/style>"
+            }
+        },
+        {
+            "name": "destroy",
+            "description": "<P>Destroys the widget. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>destroy</CODE>thod. </P>\n<PRE><CODE>$('#jqxRadioButton').jqxRadioButton('destroy'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/bbzdr/",
+            "exampleDescription": "destroy the jqxRadioButton.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "enable",
+            "description": "<P>Enables the radio button. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/3ceEN/",
+            "exampleDescription": "enables a button in the jqxRadioButton.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;JqxRadioButton ref=\"myRadioButton\">Radio Button&lt;/JqxRadioButton>\n    &lt;JqxButton @click=\"enable()\">Enable&lt;/JqxButton>\n    &lt;JqxButton @click=\"disable()\">Disable&lt;/JqxButton>\n  &lt;/div>\n&lt;/template>\n&lt;script>\n  import JqxRadioButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxradiobutton.vue';\n  import JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\n  export default {\n    components: {\n      JqxRadioButton,\n      JqxButton\n    },\n    methods: {\n      enable: function () {\n        this.$refs.myRadioButton.enable();\n      },\n      disable: function () {\n        this.$refs.myRadioButton.disable();\n      }\n    }\n  }\n&lt;/script>\n&lt;style>\n  .jqx-button {\n    display: inline-block;\n    margin-top: 15px;\n    margin-right: 20px;\n  }\n&lt;/style>"
+            }
+        },
+        {
+            "name": "focus",
+            "description": "<P>Focuses the widget. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>focus</CODE> method. </P>\n<PRE><CODE>$('#jqxRadioButton').jqxRadioButton('focus'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/7Fpwv/",
+            "exampleDescription": "focuses the jqxRadioButton.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "render",
+            "description": "<P>Renders the widget. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>render</CODE> method. </P>\n<PRE><CODE>$('#jqxRadioButton').jqxRadioButton('render'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/7C2fZ/",
+            "exampleDescription": "renders jqxRadioButton.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "uncheck",
+            "description": "<P>Unchecks the radio button. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/NuN75/",
+            "exampleDescription": "unchecks a button in the jqxRadioButton.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;JqxRadioButton ref=\"myRadioButton\">Radio Button&lt;/JqxRadioButton>\n    &lt;JqxButton @click=\"check()\">Check&lt;/JqxButton>\n    &lt;JqxButton @click=\"uncheck()\">Uncheck&lt;/JqxButton>\n  &lt;/div>\n&lt;/template>\n\n&lt;script>\n  import JqxRadioButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxradiobutton.vue';\n  import JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\n\n  export default {\n    components: {\n      JqxRadioButton,\n      JqxButton\n    },\n    methods: {\n      check: function () {\n        this.$refs.myRadioButton.check();\n      },\n      uncheck: function () {\n        this.$refs.myRadioButton.uncheck();\n      }\n    }\n  }\n&lt;/script>\n&lt;style>\n  .jqx-button {\n    display: inline-block;\n    margin-top: 15px;\n    margin-right: 20px;\n  }\n&lt;/style>"
+            }
+        },
+        {
+            "name": "val",
+            "description": "<P>Sets or gets the value. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/mZ9Ev/",
+            "exampleDescription": "sets a value in the jqxRadioButton.",
+            "returnDataType": "boolean",
+            "arguments": [
+                {
+                    "name": "value",
+                    "dataType": "boolean",
+                    "description": "",
+                    "optional": true
+                }
+            ]
+        }
+    ]
+}

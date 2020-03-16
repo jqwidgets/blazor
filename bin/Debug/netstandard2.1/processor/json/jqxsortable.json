@@ -1,0 +1,603 @@
+{
+    "widget": {
+        "name": "jqxSortable",
+        "description": "Enables users to change the position of elements through drag and drop.",
+        "angular2": {
+            "name": "jqxSortableComponent",
+            "selector": "jqxSortable"
+        }
+    },
+    "dataTypes": [
+        {
+            "name": "SortableTolerance",
+            "ts_dataType": "enum",
+            "enumOptions": [ "intersect", "pointer" ]
+        },
+        {
+            "name": "SortableCursorAt",
+            "ts_dataType": "interface",
+            "properties": [
+                {
+                    "name": "left",
+                    "dataType": "number",
+                    "optional": "true",
+                    "displayName": "Left",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "top",
+                    "dataType": "number",
+                    "optional": "true",
+                    "displayName": "Top",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "right",
+                    "dataType": "number",
+                    "optional": "true",
+                    "displayName": "Right",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "bottom",
+                    "dataType": "number",
+                    "optional": "true",
+                    "displayName": "Bottom",
+                    "defaultValue": ""
+                }
+            ]
+        }
+    ],
+    "exampleExtraTemplate": "<div>1</div>\n    <div>2</div>\n    <div>3</div>\n    <div>4</div>\n    <div>5</div>\n",
+    "exampleCSS": ".jqx-sortable div {\n     margin: 1px;\n     background-color: lightblue;\n     text-align: center; font-size: 20px;\n     width: 100px;\n     height: 30px;\n  }\n",
+    "properties": [
+        {
+            "name": "appendTo",
+            "defaultValue": "'parent'",
+            "description": "<P>Defines where the helper that moves with the mouse is being appended to during the drag (for example, to resolve overlap/zIndex issues). </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>appendTo</CODE> property. </P>\n<PRE><CODE>$('#jqxSortable').jqxSortable({appendTo: 'document.body'});</CODE></PRE>\n\r\n<P>Get the <CODE>appendTo</CODE> property. </P>\n<PRE><CODE>var appendTo = $('#jqxSortable').jqxSortable('appendTo'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxsortable-appendto-property",
+            "exampleDescription": "appendTo is set to 'document.body'",
+            "dataType": "string",
+            "exampleInit": {
+                "appendTo": "document.body"
+            }
+        },
+        {
+            "name": "axis",
+            "defaultValue": "null",
+            "description": "<P>If defined, the items can be dragged only horizontally or vertically. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'x'</CODE></PRE>\n<PRE><CODE>'y'</CODE></PRE>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>axis</CODE> property. </P>\n<PRE><CODE>$('#jqxSortable').jqxSortable({axis: 'y'});</CODE></PRE>\n\r\n<P>Get the <CODE>axis</CODE> property. </P>\n<PRE><CODE>var axis = $('#jqxSortable').jqxSortable('axis'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxsortable-axis-property",
+            "exampleDescription": "axis is set to 'y'",
+            "dataType": "string",
+            "ts_dataType": "number | string",
+            "exampleInit": {
+                "axis": "y"
+            }
+        },
+        {
+            "name": "cancel",
+            "defaultValue": "'input,textarea,button,select,option'",
+            "description": "<P>Prevents sorting if you start on elements matching the selector. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>cancel</CODE> property. </P>\n<PRE><CODE>$('#jqxSortable').jqxSortable({ cancel: '.not-sortable-item'}); </CODE></PRE>\n\r\n<P>Get the <CODE>cancel</CODE> property. </P>\n<PRE><CODE>var cancel = $('#jqxSortable').jqxSortable('cancel'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxsortable-cancel-property",
+            "exampleDescription": "cancel is set to '.not-sortable-item'",
+            "dataType": "string",
+            "exampleInit": {
+                "cancel": ".not-sortable-item"
+            },
+            "customExample": {
+                "codeType": "custom",
+                "code": "&lt;template>\n  &lt;JqxSortable ref=\"mySortable\"\n    :cancel=\"'.not-sortable-item'\">\n    &lt;div class=\"not-sortable-item\">1&lt;/div>\n    &lt;div class=\"sortable-item\">2&lt;/div>\n    &lt;div class=\"sortable-item\">3&lt;/div>\n    &lt;div class=\"sortable-item\">4&lt;/div>\n    &lt;div class=\"sortable-item\">5&lt;/div>\n  &lt;/JqxSortable>\n&lt;/template>\n \n&lt;script>\n  import JqxSortable from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxsortable.vue';\n \n  export default {\n    components: {\n      JqxSortable\n    }\n  } \n&lt;/script>\n \n&lt;style> \n  .jqx-sortable div {\n    margin: 1px; \n    background-color: lightblue; \n    text-align: center; \n    font-size: 20px; \n    width: 100px; \n    height: 30px; \n  }\n&lt;/style>"
+            }
+        },
+        {
+            "name": "connectWith",
+            "defaultValue": "true",
+            "description": "<P>A selector of other sortable elements that the items from this list should be connected to. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>connectWith</CODE> property. </P>\n<PRE><CODE>$('#jqxSortable').jqxSortable({ connectWith: '#sortable1, #sortable2' }); </CODE></PRE>\n\r\n<P>Get the <CODE>connectWith</CODE> property. </P>\n<PRE><CODE>var connectWith = $('#jqxSortable').jqxSortable('connectWith'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxsortable-connectwith-property",
+            "exampleDescription": "connectWith is set to '#sortable1, #sortable2'",
+            "dataType": "string",
+            "ts_dataType": "string | boolean",
+            "customExample": {
+                "codeType": "custom",
+                "code": "&lt;template>\n  &lt;div>\n    &lt;JqxSortable ref=\"mySortable1\" :autoCreate=\"false\">&lt;/JqxSortable>\n    &lt;JqxSortable ref=\"mySortable2\" :autoCreate=\"false\">&lt;/JqxSortable>\n  &lt;/div> \n&lt;/template> \n&lt;script> \n  import JqxSortable from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxsortable.vue'; \n  export default { \n    components: { \n      JqxSortable \n    }, \n    data: function () { \n      return { \n        options: { connectWith: '.sortable', opacity: 0.5 },\n        firstNames: ['Nancy', 'Andrew', 'Janet', 'Margaret', 'Steven', 'Michael', 'Robert', 'Laura', 'Anne'],\n        lastNames: ['Davolio', 'Fuller', 'Leverling', 'Peacock', 'Buchanan', 'Suyama', 'King', 'Callahan', 'Dodsworth'],\n      }\n    },\n    mounted: function () {\n      this.loadInfo();\n      this.$refs.mySortable1.createComponent(this.options);\n      this.$refs.mySortable2.createComponent(this.options);\n    },\n    methods: {\n      loadInfo: function () {\n        let sortableList1 = ''; \n        let sortableList2 = ''; \n        const firstNamesHalf = Math.floor(this.firstNames.length / 2);\n        for (let i = 0; i &lt; this.firstNames.length; i++) { \n          const element = '&lt;div>' + this.firstNames[i] + ' ' + this.lastNames[i] + '&lt;/div>';\n          if (i &lt; firstNamesHalf) {\n            sortableList1 = sortableList1 + element; \n          } else {\n            sortableList2 = sortableList2 + element; \n          }\n        }\n        const mySortable1 = this.$refs.mySortable1.$el;\n        const mySortable2 = this.$refs.mySortable2.$el;\n        mySortable1.classList.add('sortable');\n        mySortable2.classList.add('sortable');\n        mySortable1.innerHTML = sortableList1;\n        mySortable2.innerHTML = sortableList2;\n      }\n    }\n  } \n&lt;/script> \n&lt;style>\n  .jqx-sortable {\n    margin: 2px; \n    padding: 5px; \n    float: left; \n    width: 200px; \n    border: lightblue solid 1px; \n    margin-right: 30px; \n  } \n  .jqx-sortable div { \n    border-radius: 5px; \n    padding: 5px; \n    cursor: pointer; \n    background-color: white; \n    color: black; \n    border: 1px solid transparent; \n  } \n  .jqx-sortable div:hover { \n    border: 1px solid #356AA0; \n  } \n&lt;/style>"
+            }
+        },
+        {
+            "name": "containment",
+            "defaultValue": "false",
+            "description": "<P>Defines a bounding box that the sortable items are constrained to while dragging. </P>\n\r\n<H4>Code example </H4>\n\r\n<P>Set the <CODE>containment</CODE> property. </P>\n<PRE><CODE>$('#jqxSortable').jqxSortable({containment : '.sortable-container'}); </CODE></PRE>\n\r\n<P>Get the <CODE>containment</CODE> property. </P>\n<PRE><CODE>var containment = $('#jqxSortable').jqxSortable('containment'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxsortable-containment-property",
+            "exampleDescription": "containment is set to '.sortable-container'",
+            "dataType": "string",
+            "ts_dataType": "string | boolean",
+            "exampleInit": {
+                "containment": ".sortable-container"
+            },
+            "customExample": {
+                "codeType": "custom",
+                "code": "&lt;template>\n  &lt;div class=\"sortable-container\">\n    &lt;JqxSortable ref=\"mySortable\" :containment=\"'.sortable-container'\">\n      &lt;div class=\"sortable-item\">Nancy Davolio&lt;/div>\n      &lt;div class=\"sortable-item\">Andrew Fuller&lt;/div>\n      &lt;div class=\"sortable-item\">Janet Leverling&lt;/div>\n      &lt;div class=\"sortable-item\">Margaret Peacock&lt;/div>\n      &lt;div class=\"sortable-item\">Steven Buchanan&lt;/div>\n    &lt;/JqxSortable>\n  &lt;/div>\n&lt;/template>\n \n&lt;script>\n  import JqxSortable from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxsortable.vue';\n \n  export default {\n    components: {\n      JqxSortable\n    }\n  } \n&lt;/script>\n \n&lt;style>\n  .jqx-sortable {\n    margin: 2px;\n    padding: 5px;\n    width: 200px;\n    border: lightblue solid 2px;\n    float: left;\n  }\n  .sortable-item {\n    border-radius: 5px;\n    padding: 5px;\n    background-color: white;\n    color: black;\n  }\n  .sortable-item:hover {\n    background-color: #356AA0;\n    color: white;\n  } \n&lt;/style>"
+            }
+        },
+        {
+            "name": "cursor",
+            "defaultValue": "'auto'",
+            "description": "<P>Defines the cursor that is being shown while sorting. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>cursor</CODE> property. </P>\n<PRE><CODE>$('#jqxSortable').jqxSortable({cursor: 'move'});</CODE></PRE>\n\r\n<P>Get the <CODE>cursor</CODE> property. </P>\n<PRE><CODE>var cursor = $('#jqxSortable').jqxSortable('cursor');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxsortable-cursor-property",
+            "exampleDescription": "cursor is set to 'move'",
+            "dataType": "string",
+            "exampleInit": {
+                "cursor": "move"
+            }
+        },
+        {
+            "name": "cursorAt",
+            "defaultValue": "false",
+            "description": "<P>Moves the sorting element or helper so the cursor always appears to drag from the same position. Coordinates can be given as a hash using a combination of one or two keys: { top, left, right, bottom }. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>initContent</CODE> property. </P>\n<PRE><CODE>$('#jqxSortable').jqxSortable({ cursorAt: { left: 5, top:5 } }); </CODE></PRE>\n\r\n<P>Get the <CODE>cursorAt</CODE> property. </P>\n<PRE><CODE>var cursorAt = $('#jqxSortable').jqxSortable('cursorAt'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxsortable-cursorat-property",
+            "exampleDescription": "cursorAt is set to { left: 5, top:5 }",
+            "dataType": "object",
+            "ts_dataType": "SortableCursorAt",
+            "exampleInit": {
+                "cursorAt": "{ left: 5, top:5 }"
+            }
+        },
+        {
+            "name": "delay",
+            "defaultValue": "0",
+            "description": "<P>Time in milliseconds to define when the sorting should start. Adding a delay helps preventing unwanted drags when clicking on an element. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>delay</CODE> property. </P>\n<PRE><CODE>$('#jqxSortable').jqxSortable({ delay: 500 }); </CODE></PRE>\n\r\n<P>Get the <CODE>delay</CODE> property. </P>\n<PRE><CODE>var delay = $('#jqxSortable').jqxSortable('delay'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxsortable-delay-property",
+            "exampleDescription": "delay is set to 500",
+            "dataType": "number",
+            "exampleInit": {
+                "delay": "500"
+            }
+        },
+        {
+            "name": "disabled",
+            "defaultValue": "false",
+            "description": "<P>Disables the widget if set to true.</P>\n\r\n<H4>Code example </H4>\n\r\n<P>Set the <CODE>disabled</CODE> property. </P>\n<PRE><CODE>$('#jqxSortable').jqxSortable({disabled : true}); </CODE></PRE>\n\r\n<P>Get the <CODE>disabled</CODE> property. </P>\n<PRE><CODE>var disabled = $('#jqxSortable').jqxSortable('disabled'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxsortable-disabled-property",
+            "exampleDescription": "disabled is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "disabled": "true"
+            }
+        },
+        {
+            "name": "distance",
+            "defaultValue": "1",
+            "description": "<P>Tolerance, in pixels, for when sorting should start. If specified, sorting will not start until after mouse is dragged beyond distance. Can be used to allow for clicks on elements within a handle. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>distance</CODE> property. </P>\n<PRE><CODE>$('#jqxSortable').jqxSortable({distance: 10});</CODE></PRE>\n\r\n<P>Get the <CODE>distance</CODE> property. </P>\n<PRE><CODE>var distance = $('#jqxSortable').jqxSortable('distance'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxsortable-distance-property",
+            "exampleDescription": "distance is set to 10",
+            "dataType": "number",
+            "exampleInit": {
+                "distance": "10"
+            }
+        },
+        {
+            "name": "dropOnEmpty",
+            "defaultValue": "true",
+            "description": "<P>If false, items from this sortable can't be dropped on an empty connect sortable.</P>\n\r\n<H4>Code example </H4>\n\r\n<P>Set the <CODE>dropOnEmpty</CODE> property. </P>\n<PRE><CODE>$('#jqxSortable').jqxSortable({dropOnEmpty : false}); </CODE></PRE>\n\r\n<P>Get the <CODE>dropOnEmpty</CODE> property. </P>\n<PRE><CODE>var dropOnEmpty = $('#jqxSortable').jqxSortable('dropOnEmpty'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxsortable-droponempty-property",
+            "exampleDescription": "dropOnEmpty is set to false",
+            "dataType": "boolean",
+            "exampleInit": {
+                "dropOnEmpty": "false"
+            },
+            "customExample": {
+                "codeType": "custom",
+                "code": "&lt;template>\n  &lt;div>\n    &lt;JqxSortable ref=\"mySortable1\" :autoCreate=\"false\">&lt;/JqxSortable>\n    &lt;JqxSortable ref=\"mySortable2\" :autoCreate=\"false\">&lt;/JqxSortable>\n  &lt;/div> \n&lt;/template> \n&lt;script> \n  import JqxSortable from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxsortable.vue'; \n  export default { \n    components: { \n      JqxSortable \n    }, \n    data: function () { \n      return { \n        options: { connectWith: '.sortable', dropOnEmpty: false, opacity: 0.5 },\n        firstNames: ['Nancy', 'Andrew', 'Janet', 'Margaret', 'Steven'],\n        lastNames: ['Davolio', 'Fuller', 'Leverling', 'Peacock', 'Buchanan'],\n      }\n    },\n    mounted: function () {\n      this.loadInfo();\n      this.$refs.mySortable1.createComponent(this.options);\n      this.$refs.mySortable2.createComponent(this.options);\n    },\n    methods: {\n      loadInfo: function () {\n        let sortableList1 = ''; \n        let sortableList2 = ''; \n        for (let i = 0; i &lt; this.firstNames.length; i++) { \n          const element = '&lt;div>' + this.firstNames[i] + ' ' + this.lastNames[i] + '&lt;/div>';\n          sortableList1 = sortableList1 + element; \n        }\n        const mySortable1 = this.$refs.mySortable1.$el;\n        const mySortable2 = this.$refs.mySortable2.$el;\n        mySortable1.classList.add('sortable');\n        mySortable2.classList.add('sortable');\n        mySortable1.innerHTML = sortableList1;\n        mySortable2.innerHTML = sortableList2;\n      }\n    }\n  } \n&lt;/script> \n&lt;style>\n  .jqx-sortable {\n    margin: 2px; \n    padding: 5px; \n    float: left; \n    width: 200px; \n    border: lightblue solid 1px; \n    margin-right: 30px; \n  } \n  .jqx-sortable div { \n    border-radius: 5px; \n    padding: 5px; \n    cursor: pointer; \n    background-color: white; \n    color: black; \n    border: 1px solid transparent; \n  } \n  .jqx-sortable div:hover { \n    border: 1px solid #356AA0; \n  } \n&lt;/style>"
+            }
+        },
+        {
+            "name": "forceHelperSize",
+            "defaultValue": "false",
+            "description": "<P>If true, forces the helper to have a size. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>forceHelperSize</CODE> property. </P>\n<PRE><CODE>$('#jqxSortable').jqxSortable({ forceHelperSize: true }); </CODE></PRE>\n\r\n<P>Get the <CODE>forceHelperSize</CODE> property. </P>\n<PRE><CODE>var forceHelperSize = $('#jqxSortable').jqxSortable('forceHelperSize'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxsortable-forcehelpersize-property",
+            "exampleDescription": "forceHelperSize is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "forceHelperSize": "true"
+            }
+        },
+        {
+            "name": "forcePlaceholderSize",
+            "defaultValue": "false",
+            "description": "<P>Sets or gets the displaying of the popover's arrow. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>forcePlaceholderSize</CODE> property. </P>\n<PRE><CODE>$('#jqxSortable').jqxSortable({ forcePlaceholderSize: true }); </CODE></PRE>\n\r\n<P>Get the <CODE>forcePlaceholderSize</CODE> property. </P>\n<PRE><CODE>var forcePlaceholderSize = $('#jqxSortable').jqxSortable('forcePlaceholderSize'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxsortable-forceplaceholdersize-property",
+            "exampleDescription": "forcePlaceholderSize is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "forcePlaceholderSize": "true"
+            }
+        },
+        {
+            "name": "grid",
+            "defaultValue": "[ 0, 0 ]",
+            "description": "<P>Snaps the sorting element or helper to a grid, every x and y pixels. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>grid</CODE> property. </P>\n<PRE><CODE>$('#jqxSortable').jqxSortable({ \"grid\", [ 50, 50 ] }); </CODE></PRE>\n\r\n<P>Get the <CODE>grid</CODE> property. </P>\n<PRE><CODE>var grid = $('#jqxSortable').jqxSortable('grid'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxsortable-grid-property",
+            "exampleDescription": "grid is set to [ 50, 50 ]",
+            "dataType": "Array",
+            "ts_dataType": "Array<number>",
+            "exampleInit": {
+                "grid": "[ 50, 50 ]"
+            }
+        },
+        {
+            "name": "handle",
+            "defaultValue": "false",
+            "description": "<P>Restricts sort start click to the specified element. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>handle</CODE> property. </P>\n<PRE><CODE>$('#jqxSortable').jqxSortable({handle:'.handle'});</CODE></PRE>\n\r\n<P>Get the <CODE>handle</CODE> property. </P>\n<PRE><CODE>var handle = $('#jqxSortable').jqxSortable('handle');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxsortable-handle-property",
+            "exampleDescription": "handle is set to '.handle'",
+            "dataType": "string",
+            "ts_dataType": "string | boolean",
+            "exampleInit": {
+                "handle": "'.handle'"
+            },
+            "customExample": {
+                "codeType": "custom",
+                "code": "&lt;template> \n  &lt;JqxSortable ref=\"mySortable1\" :handle=\"'.handle'\">\n    &lt;div class=\"sortable-item\"> \n      &lt;div class=\"handle\">Drag me&lt;/div>\n      &lt;div>Nancy Davolio&lt;/div>\n    &lt;/div> \n    &lt;div class=\"sortable-item\">\n      &lt;div class=\"handle\">Drag me&lt;/div>\n      &lt;div>Andrew Fuller&lt;/div>\n    &lt;/div>\n    &lt;div class=\"sortable-item\">\n      &lt;div class=\"handle\">Drag me&lt;/div>\n      &lt;div>Janet Leverling&lt;/div>\n    &lt;/div>\n    &lt;div class=\"sortable-item\">\n      &lt;div class=\"handle\">Drag me&lt;/div>\n      &lt;div>Margaret Peacock&lt;/div>\n    &lt;/div>\n  &lt;/JqxSortable> \n&lt;/template> \n \n&lt;script> \n  import JqxSortable from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxsortable.vue'; \n \n  export default {\n    components: {\n      JqxSortable\n    }\n  } \n&lt;/script> \n \n&lt;style>\n  .jqx-sortable { \n    margin: 2px; \n    padding: 5px; \n    width: 200px; \n    border: lightblue solid 2px; \n    float: left; \n  } \n  .sortable-item { \n    border-radius: 5px; \n    padding: 5px; \n    background-color: white;\n    color: black;\n  }\n  .sortable-item:hover {\n    background-color: #356AA0;\n    color: white;\n  }\n  .handle {\n    color: lightgray;\n  }\n&lt;/style>"
+            }
+        },
+        {
+            "name": "helper",
+            "defaultValue": "'original'",
+            "description": "<P>Allows for a helper element to be used for dragging display. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>helper</CODE> property. </P>\n<PRE><CODE>$('#jqxSortable').jqxSortable({helper: 'clone'});</CODE></PRE>\n\r\n<P>Get the <CODE>helper</CODE> property. </P>\n<PRE><CODE>var helper = $('#jqxSortable').jqxSortable('helper');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxsortable-helper-property",
+            "exampleDescription": "helper is set to 'clone'",
+            "dataType": "string",
+            "ts_dataType": "(originalEvent?: any, content?: any) => void | 'original' | 'clone'",
+            "exampleInit": {
+                "helper": "clone"
+            }
+        },
+        {
+            "name": "items",
+            "defaultValue": "'> *'",
+            "description": "<P>Specifies which items inside the element should be sortable. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>items</CODE> property. </P>\n<PRE><CODE>$('#jqxSortable').jqxSortable({items: '&gt; div.sortable-item'});</CODE></PRE>\n\r\n<P>Get the <CODE>items</CODE> property. </P>\n<PRE><CODE>var items = $('#jqxSortable').jqxSortable('items');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxsortable-items-property",
+            "exampleDescription": "items is set to '> div.sortable-item'",
+            "dataType": "string",
+            "exampleInit": {
+                "items": "> div.sortable-item"
+            },
+            "customExample": {
+                "codeType": "custom",
+                "code": "&lt;template>\n  &lt;JqxSortable ref=\"mySortable1\" :items=\"'.sortable-item'\">\n    &lt;div class=\"item\">Members&lt;/div>\n    &lt;div class=\"sortable-item\">Nancy Davolio&lt;/div>\n    &lt;div class=\"sortable-item\">Andrew Fuller&lt;/div>\n    &lt;div class=\"sortable-item\">Janet Leverling&lt;/div>\n    &lt;div class=\"sortable-item\">Margaret Peacock&lt;/div>\n  &lt;/JqxSortable> \n&lt;/template> \n \n&lt;script>\n  import JqxSortable from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxsortable.vue';\n \n  export default {\n    components: {\n      JqxSortable\n    }\n  }\n&lt;/script> \n \n&lt;style> \n  .jqx-sortable { \n    margin: 2px; \n    padding: 5px; \n    width: 200px; \n    border: lightblue solid 2px; \n    float: left; \n  } \n  .sortable-item { \n    border-radius: 5px; \n    padding: 5px; \n    background-color: white; \n    color: black; \n  }\n  .item {\n    border-radius: 5px;\n    padding: 5px;\n    background-color: #578AA0;\n    color: white;\n  }\n  .sortable-item:hover {\n    background-color: #356AA0;\n    color: white;\n  } \n&lt;/style>"
+            }
+        },
+        {
+            "name": "opacity",
+            "defaultValue": "false",
+            "description": "<P>Defines the opacity of the helper while sorting. From 0.01 to 1. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>opacity</CODE> property. </P>\n<PRE><CODE>$('#jqxSortable').jqxSortable({opacity: 0.5});</CODE></PRE>\n\r\n<P>Get the <CODE>opacity</CODE> property. </P>\n<PRE><CODE>var opacity = $('#jqxSortable').jqxSortable('opacity');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxsortable-opacity-property",
+            "exampleDescription": "opacity is set to 0.5",
+            "dataType": "number",
+            "ts_dataType": "number | boolean",
+            "exampleInit": {
+                "opacity": "0.5"
+            }
+        },
+        {
+            "name": "placeholderShow",
+            "defaultValue": "\"original\"",
+            "description": "<P>A class name that gets applied to the otherwise white space. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>placeholderShow</CODE> property. </P>\n<PRE><CODE>$('#jqxSortable').jqxSortable({placeholderShow: 'sortable-placeholder'});</CODE></PRE>\n\r\n<P>Get the <CODE>placeholderShow</CODE> property. </P>\n<PRE><CODE>var placeholder = $('#jqxSortable').jqxSortable('placeholderShow');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxsortable-placeholdershow-property",
+            "exampleDescription": "placeholderShow is set to 'sortable-placeholder'",
+            "dataType": "string",
+            "ts_dataType": "string | boolean",
+            "exampleInit": {
+                "placeholderShow": "sortable-placeholder"
+            }
+        },
+        {
+            "name": "revert",
+            "defaultValue": "false",
+            "description": "<P>Whether the sortable items should revert to their new positions using a smooth animation. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>revert</CODE> property. </P>\n<PRE><CODE>$('#jqxSortable').jqxSortable({revert: 300});</CODE></PRE>\n\r\n<P>Get the <CODE>revert</CODE> property. </P>\n<PRE><CODE>var revert = $('#jqxSortable').jqxSortable('revert');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxsortable-revert-property",
+            "exampleDescription": "revert is set to true",
+            "dataType": "boolean",
+            "ts_dataType": "number | boolean",
+            "exampleInit": {
+                "revert": "true"
+            }
+        },
+        {
+            "name": "scroll",
+            "defaultValue": "true",
+            "description": "<P>If set to true, the page scrolls when coming to an edge. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>scroll</CODE> property. </P>\n<PRE><CODE>$('#jqxSortable').jqxSortable({scroll: false});</CODE></PRE>\n\r\n<P>Get the <CODE>scroll</CODE> property. </P>\n<PRE><CODE>var scroll = $('#jqxSortable').jqxSortable('scroll');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxsortable-scroll-property",
+            "exampleDescription": "scroll is set to false",
+            "dataType": "boolean",
+            "exampleInit": {
+                "scroll": "false"
+            }
+        },
+        {
+            "name": "scrollSensitivity",
+            "defaultValue": "20",
+            "description": "<P>Defines how near the mouse must be to an edge to start scrolling. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>scrollSensitivity</CODE> property. </P>\n<PRE><CODE>$('#jqxSortable').jqxSortable({scrollSensitivity: 10});</CODE></PRE>\n\r\n<P>Get the <CODE>scrollSensitivity</CODE> property. </P>\n<PRE><CODE>var scrollSensitivity = $('#jqxSortable').jqxSortable('scrollSensitivity');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxsortable-scrollsensitivity-property",
+            "exampleDescription": "scrollSensitivity is set to 10",
+            "dataType": "number",
+            "exampleInit": {
+                "scrollSensitivity": "10"
+            }
+        },
+        {
+            "name": "scrollSpeed",
+            "defaultValue": "20",
+            "description": "<P>Allows for a helper element to be used for dragging display. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>scrollSpeed</CODE> property. </P>\n<PRE><CODE>$('#jqxSortable').jqxSortable({scrollSpeed: 10});</CODE></PRE>\n\r\n<P>Get the <CODE>scrollSpeed</CODE> property. </P>\n<PRE><CODE>var scrollSpeed = $('#jqxSortable').jqxSortable('scrollSpeed');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxsortable-scrollspeed-property",
+            "exampleDescription": "scrollSpeed is set to 40",
+            "dataType": "number",
+            "exampleInit": {
+                "scrollSpeed": "40"
+            }
+        },
+        {
+            "name": "tolerance",
+            "defaultValue": "'intersect'",
+            "description": "<P>Specifies which mode to use for testing whether the item being moved is hovering over another item. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>tolerance</CODE> property. </P>\n<PRE><CODE>$('#jqxSortable').jqxSortable({tolerance: 'pointer'});</CODE></PRE>\n\r\n<P>Get the <CODE>tolerance</CODE> property. </P>\n<PRE><CODE>var tolerance = $('#jqxSortable').jqxSortable('tolerance');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxsortable-tolerance-property",
+            "exampleDescription": "tolerance is set to 'pointer'",
+            "dataType": "string",
+            "ts_dataType": "enum:SortableTolerance",
+            "exampleInit": {
+                "tolerance": "pointer"
+            }
+        },
+        {
+            "name": "zIndex",
+            "defaultValue": "1000",
+            "description": "<P>Allows for a helper element to be used for dragging display. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>zIndex</CODE> property. </P>\n<PRE><CODE>$('#jqxSortable').jqxSortable({zIndex: 9999});</CODE></PRE>\n\r\n<P>Get the <CODE>zIndex</CODE> property. </P>\n<PRE><CODE>var zIndex = $('#jqxSortable').jqxSortable('zIndex');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxsortable-zindex-property",
+            "exampleDescription": "zIndex is set to 9999",
+            "dataType": "number",
+            "exampleInit": {
+                "zIndex": "2000"
+            }
+        }
+    ],
+    "events": [
+        {
+            "name": "activate",
+            "description": "<P>This event is triggered on drag start when are used connected lists. </P>\n<H4>Code examples </H4>\n<P>Bind to the <CODE>activate</CODE> event by type: jqxSortable. </P>",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxsortable-events",
+            "exampleDescription": "Bind to the activate event by type: jqxSortable.",
+            "example": "<PRE><CODE>$('.jqxSortable').on('activate', function () { // Some code here. }); </CODE></PRE>"
+        },
+        {
+            "name": "beforeStop",
+            "description": "<P>This event is triggered when sorting stops, but when the placeholder/helper is still available. </P>\n<H4>Code examples </H4>\n<P>Bind to the <CODE>beforeStop</CODE> event by type: jqxSortable. </P>",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxsortable-events",
+            "exampleDescription": "Bind to the beforeStop event by type: jqxSortable.",
+            "example": "<PRE><CODE>$('#jqxSortable').on('beforeStop', function () { // Some code here. }); </CODE></PRE>"
+        },
+        {
+            "name": "change",
+            "description": "<P>This event is triggered when the DOM position of an item is changed. </P>\n<H4>Code examples </H4>\n<P>Bind to the <CODE>change</CODE> event by type: jqxSortable. </P>",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxsortable-events",
+            "exampleDescription": "Bind to the change event by type: jqxSortable.",
+            "example": "<PRE><CODE>$('#jqxSortable').on('change', function () { // Some code here. }); </CODE></PRE>"
+        },
+        {
+            "name": "deactivate",
+            "description": "<P>This event is triggered when sorting was stopped, is propagated to all possible connected lists. </P>\n<H4>Code examples </H4>\n<P>Bind to the <CODE>deactivate</CODE> event by type: jqxSortable. </P>",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxsortable-events",
+            "exampleDescription": "Bind to the deactivate event by type: jqxSortable.",
+            "example": "<PRE><CODE>$('#jqxSortable').on('deactivate', function () { // Some code here. }); </CODE></PRE>"
+        },
+        {
+            "name": "out",
+            "description": "<P>This event is triggered when a sortable item is moved away from a sortable list. </P>\n<H4>Code examples </H4>\n<P>Bind to the <CODE>out</CODE> event by type: jqxSortable. </P>",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxsortable-events",
+            "exampleDescription": "Bind to the out event by type: jqxSortable.",
+            "example": "<PRE><CODE>$('#jqxSortable').on('out', function () { // Some code here. }); </CODE></PRE>"
+        },
+        {
+            "name": "over",
+            "description": "<P>This event is triggered when a sortable item is moved into a sortable list. </P>\n<H4>Code examples </H4>\n<P>Bind to the <CODE>over</CODE> event by type: jqxSortable. </P>",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxsortable-events",
+            "exampleDescription": "Bind to the over event by type: jqxSortable.",
+            "example": "<PRE><CODE>$('#jqxSortable').on('over', function () { // Some code here. }); </CODE></PRE>"
+        },
+        {
+            "name": "receive",
+            "description": "<P>This event is triggered when an item from a connected sortable list has been dropped into another list. </P>\n<H4>Code examples </H4>\n<P>Bind to the <CODE>receive</CODE> event by type: jqxSortable. </P>",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxsortable-events",
+            "exampleDescription": "Bind to the receive event by type: jqxSortable.",
+            "example": "<PRE><CODE>$('#jqxSortable').on('receive', function () { // Some code here. }); </CODE></PRE>"
+        },
+        {
+            "name": "remove",
+            "description": "<P>This event is triggered when a sortable item from the list has been dropped into another. </P>\n<H4>Code examples </H4>\n<P>Bind to the <CODE>remove</CODE> event by type: jqxSortable. </P>",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxsortable-events",
+            "exampleDescription": "Bind to the remove event by type: jqxSortable.",
+            "example": "<PRE><CODE>$('#jqxSortable').on('remove', function () { // Some code here. }); </CODE></PRE>"
+        },
+        {
+            "name": "sort",
+            "description": "<P>This event is triggered during sorting. </P>\n<H4>Code examples </H4>\n<P>Bind to the <CODE>sort</CODE> event by type: jqxSortable. </P>",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxsortable-events",
+            "exampleDescription": "Bind to the sort event by type: jqxSortable.",
+            "example": "<PRE><CODE>$('#jqxSortable').on('sort', function () { // Some code here. }); </CODE></PRE>"
+        },
+        {
+            "name": "start",
+            "description": "<P>This event is triggered when sorting starts. </P>\n<H4>Code examples </H4>\n<P>Bind to the <CODE>start</CODE> event by type: jqxSortable. </P>",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxsortable-events",
+            "exampleDescription": "Bind to the start event by type: jqxSortable.",
+            "example": "<PRE><CODE>$('#jqxSortable').on('start', function () { // Some code here. }); </CODE></PRE>"
+        },
+        {
+            "name": "stop",
+            "description": "<P>This event is triggered when sorting has stopped. </P>\n<H4>Code examples </H4>\n<P>Bind to the <CODE>stop</CODE> event by type: jqxSortable. </P>",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxsortable-events",
+            "exampleDescription": "Bind to the stop event by type: jqxSortable.",
+            "example": "<PRE><CODE>$('#jqxSortable').on('stop', function () { // Some code here. }); </CODE></PRE>"
+        },
+        {
+            "name": "update",
+            "description": "<P>This event is triggered when the user stopped sorting and the DOM position has changed. </P>\n<H4>Code examples </H4>\n<P>Bind to the <CODE>update</CODE> event by type: jqxSortable. </P>",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxsortable-events",
+            "exampleDescription": "Bind to the update event by type: jqxSortable.",
+            "example": "<PRE><CODE>$('#jqxSortable').on('update', function () { // Some code here. }); </CODE></PRE>"
+        }
+    ],
+    "methods": [
+        {
+            "name": "cancelMethod",
+            "description": "<P>Cancels a change in the current sortable and reverts it to the state prior to when the current sort was started. </P>\n<H4>Code examples </H4>\n<P>Invoke the <CODE>cancel</CODE> method. </P>\n<PRE><CODE>$('#jqxSortable').jqxSortable('cancel'); </CODE></PRE>",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxsortable-cancel-method",
+            "exampleDescription": "cancel the changes",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "destroy",
+            "description": "<P>Removes the sortable functionality. </P>\n<H4>Code examples </H4>\n<P>Invoke the <CODE>destroy</CODE> method. </P>\n<PRE><CODE>$('#jqxSortable').jqxSortable('destroy'); </CODE></PRE>",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxsortable-destroy-method",
+            "exampleDescription": "destroy the widget",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "disable",
+            "description": "<P>Disables the widget. </P>\n<H4>Code examples </H4>\n<P>Invoke the <CODE>disable</CODE> method. </P>\n<PRE><CODE>$('#jqxSortable').jqxSortable('disable'); </CODE></PRE>",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxsortable-disable-method",
+            "exampleDescription": "disable the widget",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "enable",
+            "description": "<P>Enable the widget. </P>\n<H4>Code examples </H4>\n<P>Invoke the <CODE>enable</CODE> method. </P>\n<PRE><CODE>$('#jqxSortable').jqxSortable('enable'); </CODE></PRE>",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxsortable-enable-method",
+            "exampleDescription": "enable the widget",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "refresh",
+            "description": "<P>Refresh the items. </P>\n<H4>Code examples </H4>\n<P>Invoke the <CODE>refresh</CODE> method. </P>\n<PRE><CODE>$('#jqxSortable').jqxSortable('refresh'); </CODE></PRE>",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxsortable-refresh-method",
+            "exampleDescription": "refresh the items",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "refreshPositions",
+            "description": "<P>Refresh the cached positions of the sortable items. </P>\n<H4>Code examples </H4>\n<P>Invoke the <CODE>refreshPositions</CODE> method. </P>\n<PRE><CODE>$('#jqxSortable').jqxSortable('refreshPositions'); </CODE></PRE>",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxsortable-refreshpositions-method",
+            "exampleDescription": "refresh the positions of the items",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "serialize",
+            "description": "<P>Serializes the jqxSortable item ids into a form/ajax submittable string. Calling this method produces a hash that can be appended to any url to easily submit a new item order back to the server. </P>\n<H4>Code examples </H4>\n<P>Invoke the <CODE>serialize</CODE> method. </P>\n<PRE><CODE>$('#jqxSortable').jqxSortable('serialize'); </CODE></PRE>",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxsortable-serialize-method",
+            "exampleDescription": "serialize the items",
+            "returnDataType": "string",
+            "arguments": [
+                {
+                    "name": "object",
+                    "dataType": "any",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;JqxSortable ref=\"mySortable\">\n    &lt;div id=\"sort_1\">1&lt;/div>\n    &lt;div id=\"sort_1\">2&lt;/div>\n    &lt;div id=\"sort_1\">3&lt;/div>\n    &lt;div id=\"sort_1\">4&lt;/div>\n    &lt;div id=\"sort_1\">5&lt;/div>\n  &lt;/JqxSortable>\n&lt;/template>\n\n&lt;script>\n  import JqxSortable from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxsortable.vue';\n\n  export default {\n    components: {\n      JqxSortable\n    },\n    mounted: function () {\n      const value = this.$refs.mySortable.serialize({ key: 'sort' });\n      alert(value);\n    }\n  }\n&lt;/script>\n&lt;style>\n  .jqx-sortable div {\n    margin: 1px;\n    background-color: lightblue;\n    text-align: center;\n    font-size: 20px;\n    width: 100px;\n    height: 30px;\n  }\n&lt;/style>"
+            }
+
+        },
+        {
+            "name": "toArray",
+            "description": "<P>Serializes the jqxSortable item ids into an array of strings. </P>\n<H4>Code examples </H4>\n<P>Invoke the <CODE>toArray</CODE> method. </P>\n<PRE><CODE>$('#jqxSortable').jqxSortable('toArray'); </CODE></PRE>",
+            "exampleURL": "https://www.jqwidgets.com/jseditor/?key=jqxsortable-toarray-method",
+            "exampleDescription": "serialize the id's",
+            "returnDataType": "Array",
+            "ts_returnDataType": "Array<any>",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;JqxSortable ref=\"mySortable\">\n    &lt;div id=\"sort_1\">1&lt;/div>\n    &lt;div id=\"sort_2\">2&lt;/div>\n    &lt;div id=\"sort_3\">3&lt;/div>\n    &lt;div id=\"sort_4\">4&lt;/div>\n    &lt;div id=\"sort_5\">5&lt;/div>\n  &lt;/JqxSortable>\n&lt;/template>\n\n&lt;script>\n  import JqxSortable from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxsortable.vue';\n\n  export default {\n    components: {\n      JqxSortable\n    },\n    mounted: function () {\n      const array = this.$refs.mySortable.toArray();\n      console.log(array);\n    }\n  }\n&lt;/script>\n&lt;style>\n  .jqx-sortable div {\n    margin: 1px;\n    background-color: lightblue;\n    text-align: center;\n    font-size: 20px;\n    width: 100px;\n    height: 30px;\n  }\n&lt;/style>"
+            }
+        }
+    ]
+}

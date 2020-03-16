@@ -1,0 +1,95 @@
+{
+    "widget": {
+        "name": "jqxLinkButton",
+        "description": "Displays a button with anchor tag.",
+        "angular2": {
+            "name": "jqxLinkButtonComponent",
+            "selector": "jqxLinkButton"
+        }
+    },
+    "dataTypes": [
+        {
+            "name": "ButtonPositions",
+            "ts_dataType": "enum",
+            "enumOptions": [ "left", "center", "right", "top", "bottom", "topLeft", "bottomLeft", "topRight", "bottomRight" ]
+        },
+        {
+            "name": "ButtonRoundedCorners",
+            "ts_dataType": "enum",
+            "enumOptions": [ "top", "bottom", "all", "left", "right", "top-right", "top-left", "bottom-right", "bottom-left" ]
+        },
+        {
+            "name": "ButtonTextImageRelation",
+            "ts_dataType": "enum",
+            "enumOptions": [ "imageBeforeText", "imageAboveText", "textAboveImage", "textBeforeImage", "overlay" ]
+        },
+        {
+            "name": "ButtonTemplate",
+            "ts_dataType": "enum",
+            "enumOptions": [ "default", "primary", "success", "warning", "danger", "inverse", "info", "link" ]
+        }
+    ],
+    "exampleExtraTemplate": "Link Button",
+    "exampleInit": {
+        "width": "150",
+        "height": "50"
+    },
+    "properties": [
+        {
+            "name": "disabled",
+            "defaultValue": "false",
+            "description": "<P>Enables or disables the button. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>disabled</CODE> property. </P>\n<PRE><CODE>$('#jqxLinkButton').jqxLinkButton({disabled: false });</CODE></PRE>\n\r\n<P>Get the <CODE>disable</CODE> property. </P>\n<PRE><CODE>var disabled = $('#jqxLinkButton').jqxLinkButton('disabled');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/ZJB27/",
+            "exampleDescription": "disable is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "disabled": "true"
+            }
+        },
+        {
+            "name": "height",
+            "defaultValue": "null",
+            "description": "<P>Sets or gets the button's height. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>height</CODE> property. </P>\n<PRE><CODE>$('#jqxLinkButton').jqxLinkButton({ height: '25px' }); </CODE></PRE>\n\r\n<P>Get the <CODE>height</CODE> property. </P>\n<PRE><CODE>var height = $('#jqxLinkButton').jqxLinkButton('height');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/3fHqg/",
+            "exampleDescription": "height is set to '40px'",
+            "dataType": "number",
+            "ts_dataType": "string | number"
+        },
+        {
+            "name": "rtl",
+            "defaultValue": "false",
+            "description": "<P>Sets or gets a value indicating whether widget's elements are aligned to support locales using right-to-left fonts.</P>",
+            "example": "<pre><CODE>$('#jqxLinkButton').jqxLinkButton({rtl : true}); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/Mu2AS/",
+            "exampleDescription": "rtl is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "rtl": "true"
+            }
+        },
+        {
+            "name": "theme",
+            "defaultValue": "''",
+            "description": "<P>Sets the widget's theme. </P>\n\r\n<UL><LI>Include the theme's CSS file after jqx.base.css.<BR>The following code example adds the 'material' theme. <PRE><CODE>\r\n<PRE><CODE>&lt;link rel=\"stylesheet\" href=\"../../jqwidgets/styles/jqx.base.css\" type=\"text/css\" /&gt;\r\n&lt;link rel=\"stylesheet\" href=\"../../jqwidgets/styles/jqx.material.css\" type=\"text/css\" /&gt;\r\n</CODE></PRE>\r\n</CODE></PRE>\r\n<LI>Set the widget's theme property to 'material' when you initialize it. </LI></UL>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/yEFBC/",
+            "exampleDescription": "theme is set to 'material'",
+            "dataType": "string",
+            "exampleInit": {
+                "theme": "material"
+            }
+        },
+        {
+            "name": "width",
+            "defaultValue": "null",
+            "description": "<P>Sets ot gets the button's width. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>width</CODE> property. </P>\n<PRE><CODE>$('#jqxLinkButton').jqxLinkButton({ width: '250px'}); </CODE></PRE>\n\r\n<P>Get the <CODE>width</CODE> property. </P>\n<PRE><CODE>var width = $('#jqxLinkButton').jqxLinkButton('width');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/KwyHe/",
+            "exampleDescription": "width is set to '240px'",
+            "dataType": "number",
+            "ts_dataType": "string | number"
+        }
+    ]
+}

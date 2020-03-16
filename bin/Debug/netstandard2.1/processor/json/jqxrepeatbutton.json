@@ -1,0 +1,316 @@
+{
+    "widget": {
+        "name": "jqxRepeatButton",
+        "description": "Represents a button, which fires repeating click events, when the button is clicked.",
+        "angular2": {
+            "name": "jqxRepeatButtonComponent",
+            "selector": "jqxRepeatButton"
+        }
+    },
+    "dataTypes": [
+        {
+            "name": "ButtonPositions",
+            "ts_dataType": "enum",
+            "enumOptions": [ "left", "center", "right", "top", "bottom", "topLeft", "bottomLeft", "topRight", "bottomRight" ]
+        },
+        {
+            "name": "ButtonRoundedCorners",
+            "ts_dataType": "enum",
+            "enumOptions": [ "top", "bottom", "all", "left", "right", "top-right", "top-left", "bottom-right", "bottom-left" ]
+        },
+        {
+            "name": "ButtonTextImageRelation",
+            "ts_dataType": "enum",
+            "enumOptions": [ "imageBeforeText", "imageAboveText", "textAboveImage", "textBeforeImage", "overlay" ]
+        },
+        {
+            "name": "ButtonTemplate",
+            "ts_dataType": "enum",
+            "enumOptions": [ "default", "primary", "success", "warning", "danger", "inverse", "info", "link" ]
+        }
+    ],
+    "exampleInit": {
+        "value": "'Click'",
+        "width": "80"
+    },
+    "properties": [
+        {
+            "name": "delay",
+            "defaultValue": "50",
+            "description": "<P>Specifies the interval between two Click events. This property is available only in the jqxRepeatButton. The jqxRepeatButton raises Click events repeatedly when the button is pressed. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>delay</CODE> property. </P>\n<PRE><CODE>$(\"#jqxRepeatButton\").jqxRepeatButton({ delay: 25});</CODE></PRE>\n\r\n<P>Get the <CODE>delay</CODE> property. </P>\n<PRE><CODE>var delayed = $('#jqxRepeatButton').jqxRepeatButton('delay');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/ty7tZ/",
+            "exampleDescription": "delay is set to 50",
+            "dataType": "number",
+            "customExample": {
+                "codeType": "custom",
+                "code": "&lt;template> \n  &lt;div> \n    &lt;JqxRepeatButton ref=\"myRepeatButton\" @click=\"onClick()\" \n      :value=\"'Click'\" :width=\"80\" :delay=\"50\" />\n    &lt;div>{{ counter }}&lt;/div>\n  &lt;/div> \n&lt;/template> \n \n&lt;script>\n  import JqxRepeatButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxrepeatbutton.vue';\n \n  export default { \n    components: { \n      JqxRepeatButton \n    }, \n    data: function () { \n      return { \n        counter: 0 \n      } \n    },\n    methods: {\n      onClick: function () {\n        this.counter++;\n      }\n    }\n  }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "disabled",
+            "defaultValue": "false",
+            "description": "<P>Enables or disables the button. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>disabled</CODE> property. </P>\n<PRE><CODE>$('#jqxRepeatButton').jqxRepeatButton({disabled: false });</CODE></PRE>\n\r\n<P>Get the <CODE>disable</CODE> property. </P>\n<PRE><CODE>var disabled = $('#jqxRepeatButton').jqxRepeatButton('disabled');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/ZJB27/",
+            "exampleDescription": "disable is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "disabled": "true"
+            }
+        },
+        {
+            "name": "height",
+            "defaultValue": "null",
+            "description": "<P>Sets or gets the button's height. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>height</CODE> property. </P>\n<PRE><CODE>$('#jqxRepeatButton').jqxRepeatButton({ height: '25px' }); </CODE></PRE>\n\r\n<P>Get the <CODE>height</CODE> property. </P>\n<PRE><CODE>var height = $('#jqxRepeatButton').jqxRepeatButton('height');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/3fHqg/",
+            "exampleDescription": "height is set to '40px'",
+            "dataType": "number",
+            "ts_dataType": "number | string",
+            "exampleInit": {
+                "height": "40"
+            }
+        },
+        {
+            "name": "imgSrc",
+            "defaultValue": "\"\"",
+            "description": "<P>Sets or gets the button's image source. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>imgSrc</CODE> property. </P>\n<PRE><CODE>$('#jqxRepeatButton').jqxRepeatButton({ imgSrc: '../../images/andrew.png' }); </CODE></PRE>\n\r\n<P>Get the <CODE>imgSrc</CODE> property. </P>\n<PRE><CODE>var imgSrc = $('#jqxRepeatButton').jqxRepeatButton('imgSrc');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/xgjx0w92/",
+            "exampleDescription": "imgSrc is set to \"https://jqwidgets.com/jquery-widgets-demo/images/andrew.png\"",
+            "dataType": "string",
+            "exampleInit": {
+                "imgSrc": "https://jqwidgets.com/jquery-widgets-demo/images/andrew.png"
+            }
+        },
+        {
+            "name": "imgWidth",
+            "defaultValue": "16",
+            "description": "<P>Sets or gets the button's image width. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>imgWidth</CODE> property. </P>\n<PRE><CODE>$('#jqxRepeatButton').jqxRepeatButton({imgWidth: 16, imgSrc: '../../images/andrew.png' }); </CODE></PRE>\n\r\n<P>Get the <CODE>imgWidth</CODE> property. </P>\n<PRE><CODE>var imgWidth = $('#jqxRepeatButton').jqxRepeatButton('imgWidth');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/xgjx0w92/",
+            "exampleDescription": "imgWidth is set to 16",
+            "dataType": "number",
+            "ts_dataType": "number | string",
+            "exampleInit": {
+                "imgSrc": "https://jqwidgets.com/jquery-widgets-demo/images/andrew.png",
+                "imgWidth": "16"
+            }
+        },
+        {
+            "name": "imgHeight",
+            "defaultValue": "16",
+            "description": "<P>Sets or gets the button's image height. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>imgHeight</CODE> property. </P>\n<PRE><CODE>$('#jqxRepeatButton').jqxRepeatButton({imgHeight: 16, imgSrc: '../../images/andrew.png' }); </CODE></PRE>\n\r\n<P>Get the <CODE>imgHeight</CODE> property. </P>\n<PRE><CODE>var imgHeight = $('#jqxRepeatButton').jqxRepeatButton('imgHeight');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/xgjx0w92/",
+            "exampleDescription": "imgHeight is set to 16",
+            "dataType": "number",
+            "ts_dataType": "number | string",
+            "exampleInit": {
+                "imgSrc": "https://jqwidgets.com/jquery-widgets-demo/images/andrew.png",
+                "imgHeight": "16"
+            }
+        },
+        {
+            "name": "imgPosition",
+            "defaultValue": "'center'",
+            "description": "<P>Sets or gets the button's image position. Possible values: \"left\", \"top\", \"center\", \"bottom\", \"right\", \"topLeft\", \"bottomLeft\", \"topRight\", \"bottomRight\". </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>imgPosition</CODE> property. </P>\n<PRE><CODE>$('#jqxRepeatButton').jqxRepeatButton({imgPosition: \"left\", imgSrc: '../../images/andrew.png' }); </CODE></PRE>\n\r\n<P>Get the <CODE>imgPosition</CODE> property. </P>\n<PRE><CODE>var imgPosition = $('#jqxRepeatButton').jqxRepeatButton('imgPosition');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/xgjx0w92/",
+            "exampleDescription": "imgPosition is set to \"left\"",
+            "dataType": "string",
+            "ts_dataType": "enum:ButtonPositions",
+            "exampleInit": {
+                "imgSrc": "https://jqwidgets.com/jquery-widgets-demo/images/andrew.png",
+                "imgPosition": "left"
+            }
+
+        },
+        {
+            "name": "roundedCorners",
+            "defaultValue": "all",
+            "description": "<P>Enables or disables the rounded corners functionality. This property setting has effect in browsers which support CSS border-radius. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'all' - for all corners</CODE></PRE>\n<PRE><CODE>'top'- for top corners</CODE></PRE>\n<PRE><CODE>'bottom' - for bottom corners</CODE></PRE>\n<PRE><CODE>'left' - for left corners</CODE></PRE>\n<PRE><CODE>'right' - for right corners</CODE></PRE>\n<PRE><CODE>'top-right' - for top right corners</CODE></PRE>\n<PRE><CODE>'top-left' - for top left corners</CODE></PRE>\n<PRE><CODE>'bottom-right' - for bottom right corners</CODE></PRE>\n<PRE><CODE>'bottom-left' - for bottom left corners</CODE></PRE>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>roundedCorners</CODE> property. </P>\n<PRE><CODE>$(\"#jqxRepeatButton\").jqxRepeatButton({ roundedCorners: 'jqx-rc-t'});</CODE></PRE>\n\r\n<P>Get the <CODE>roundedCorners</CODE> property. </P>\n<PRE><CODE>var roundedCourners = $('#jqxRepeatButton').jqxRepeatButton('roundedCorners');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/6e4sC/",
+            "exampleDescription": "roundedCorners is set to 'all",
+            "dataType": "string",
+            "ts_dataType": "enum:ButtonRoundedCorners",
+            "exampleInit": {
+                "roundedCorners": "top"
+            }
+        },
+        {
+            "name": "rtl",
+            "defaultValue": "false",
+            "description": "<P>Sets or gets a value indicating whether widget's elements are aligned to support locales using right-to-left fonts.</P>",
+            "example": "<pre><CODE>$('#jqxRepeatButton').jqxRepeatButton({rtl : true}); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/Mu2AS/",
+            "exampleDescription": "rtl is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "rtl": "true"
+            }
+        },
+        {
+            "name": "textPosition",
+            "defaultValue": "",
+            "description": "<P>Sets or gets the button's text position. Possible values: \"left\", \"top\", \"center\", \"bottom\", \"right\", \"topLeft\", \"bottomLeft\", \"topRight\", \"bottomRight\". </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>textPosition</CODE> property. </P>\n<PRE><CODE>$('#jqxRepeatButton').jqxRepeatButton({textPosition: \"left\"}); </CODE></PRE>\n\r\n<P>Get the <CODE>textPosition</CODE> property. </P>\n<PRE><CODE>var textPosition = $('#jqxRepeatButton').jqxRepeatButton('textPosition');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/xgjx0w92/",
+            "exampleDescription": "textPosition is set to \"left\"",
+            "dataType": "string",
+            "ts_dataType": "enum:ButtonPositions",
+            "exampleInit": {
+                "textPosition": "left"
+            }
+        },
+        {
+            "name": "textImageRelation",
+            "defaultValue": "'overlay'",
+            "description": "<P>Sets or gets the button's text image relation. Possible values: \"imageBeforeText\", \"imageAboveText\", \"textAboveImage\", \"textBeforeImage\" and \"overlay\". </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>imageBeforeText</CODE> property. </P>\n<PRE><CODE>$('#jqxRepeatButton').jqxRepeatButton({textImageRelation: \"imageBeforeText\"}); </CODE></PRE>\n\r\n<P>Get the <CODE>imageBeforeText</CODE> property. </P>\n<PRE><CODE>var imageBeforeText = $('#jqxRepeatButton').jqxRepeatButton('imageBeforeText');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/xgjx0w92/",
+            "exampleDescription": "imageBeforeText is set to \"imageBeforeText\"",
+            "dataType": "string",
+            "ts_dataType": "enum:ButtonTextImageRelation",
+            "exampleInit": {
+                "imgSrc": "https://jqwidgets.com/jquery-widgets-demo/images/andrew.png",
+                "textImageRelation": "imageBeforeText"
+            }
+        },
+        {
+            "name": "theme",
+            "defaultValue": "''",
+            "description": "<P>Sets the widget's theme. </P>\n\r\n<UL><LI>Include the theme's CSS file after jqx.base.css.<BR>The following code example adds the 'material' theme. <PRE><CODE>\r\n<PRE><CODE>&lt;link rel=\"stylesheet\" href=\"../../jqwidgets/styles/jqx.base.css\" type=\"text/css\" /&gt;\r\n&lt;link rel=\"stylesheet\" href=\"../../jqwidgets/styles/jqx.material.css\" type=\"text/css\" /&gt;\r\n</CODE></PRE>\r\n</CODE></PRE>\r\n<LI>Set the widget's theme property to 'material' when you initialize it. </LI></UL>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/yEFBC/",
+            "exampleDescription": "theme is set to 'material'",
+            "dataType": "string",
+            "exampleInit": {
+                "theme": "material"
+            }
+        },
+        {
+            "name": "template",
+            "defaultValue": "'default'",
+            "description": "<P>Determines the button's template as an alternative of the default styles. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'default' - the default button's template. The button's style depends only on its \"theme\" property value.</CODE></PRE>\n<PRE><CODE>'primary' - dark blue button for extra visual weight.</CODE></PRE>\n<PRE><CODE>'success' - green button for successful or positive action.</CODE></PRE>\n<PRE><CODE>'warning' - orange button which indicates caution.</CODE></PRE>\n<PRE><CODE>'danger' - red button which indicates a dangerous or negative action.</CODE></PRE>\n<PRE><CODE>'inverse' - dark gray button, not tied to a semantic action or use.</CODE></PRE>\n<PRE><CODE>'info' - blue button, not tied to a semantic action or use.</CODE></PRE>\n<PRE><CODE>'link' - making it look like a link .</CODE></PRE>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>template</CODE> property. </P>\n<PRE><CODE>$(\"#jqxRepeatButton\").jqxRepeatButton({ template: 'primary'});</CODE></PRE>\n\r\n<P>Get the <CODE>template</CODE> property. </P>\n<PRE><CODE>var template = $('#jqxRepeatButton').jqxRepeatButton('template');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/CpVnv/",
+            "exampleDescription": "template is set to 'success'",
+            "dataType": "string",
+            "ts_dataType": "enum:ButtonTemplate",
+            "exampleInit": {
+                "template": "success"
+            }
+        },
+        {
+            "name": "toggled",
+            "defaultValue": "false",
+            "description": "<P>Sets or gets the button's toggle state. ( available in jqxToggleButton ). </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>toggled</CODE> property. </P>\n<PRE><CODE>$('#jqxRepeatButton').jqxToggleButton({ toggled: true }); </CODE></PRE>\n\r\n<P>Get the <CODE>toggled</CODE> property. </P>\n<PRE><CODE>var toggled = $('#jqxRepeatButton').jqxToggleButton('toggled');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/AX35A/",
+            "exampleDescription": "toggled is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "toggled": "true"
+            }
+        },
+        {
+            "name": "width",
+            "defaultValue": "null",
+            "description": "<P>Sets ot gets the button's width. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>width</CODE> property. </P>\n<PRE><CODE>$('#jqxRepeatButton').jqxRepeatButton({ width: '250px'}); </CODE></PRE>\n\r\n<P>Get the <CODE>width</CODE> property. </P>\n<PRE><CODE>var width = $('#jqxRepeatButton').jqxRepeatButton('width');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/KwyHe/",
+            "exampleDescription": "width is set to '240px'",
+            "dataType": "number",
+            "ts_dataType": "string | number"
+        },
+        {
+            "name": "value",
+            "defaultValue": "\"\"",
+            "description": "<P>Sets or gets the button's value. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>value</CODE> property. </P>\n<PRE><CODE>$('#jqxRepeatButton').jqxRepeatButton({value: \"Button\"}); </CODE></PRE>\n\r\n<P>Get the <CODE>textPosition</CODE> property. </P>\n<PRE><CODE>var value = $('#jqxRepeatButton').jqxRepeatButton('value');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/jvmacs16/",
+            "exampleDescription": "value is set to \"Button\"",
+            "dataType": "string",
+            "exampleInit": {
+                "value": "Button"
+            }
+        }
+    ],
+    "events": [
+        {
+            "name": "click",
+            "description": "<P>This event is triggered when the button is clicked. </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>click</CODE> event by type: jqxRepeatButton. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/qKcBU/",
+            "exampleDescription": "Bind to the click event by type: jqxRepeatButton.",
+            "example": "<PRE><CODE>$('#jqxRepeatButton').on('click', function () { // Some code here. }); </CODE></PRE>"
+        }
+    ],
+    "methods": [
+        {
+            "name": "destroy",
+            "description": "<P>Destroys the widget. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>destroy</CODE> method. </P>\n<PRE><CODE>$('#jqxRepeatButton').jqxRepeatButton('destroy'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/z2R6N/",
+            "exampleDescription": "destroys the button",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "focus",
+            "description": "<P>Focuses the widget. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>focus</CODE> method. </P>\n<PRE><CODE>$('#jqxRepeatButton').jqxRepeatButton('focus'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/SAVNh/",
+            "exampleDescription": "focus the button",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "render",
+            "description": "<P>Renders the widget. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>render</CODE> method. </P>\n<PRE><CODE>$('#jqxRepeatButton').jqxRepeatButton('render'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/vr3kw/",
+            "exampleDescription": "render the button",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "val",
+            "description": "<P>Sets or gets the value. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/mTqtr/",
+            "exampleDescription": "invoke the val method",
+            "returnDataType": "string",
+            "arguments": [
+                {
+                    "name": "value",
+                    "dataType": "string",
+                    "description": "",
+                    "optional": true
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;JqxRepeatButton ref=\"myRepeatButton\"\n           :value=\"'Click'\" :width=\"80\" />\n&lt;/template>\n\n&lt;script>\n  import JqxRepeatButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxrepeatbutton.vue';\n\n  export default {\n    components: {\n      JqxRepeatButton\n    },\n    mounted: function () {\n      this.$refs.myRepeatButton.val('Value');\n    }\n  }\n&lt;/script>"
+            }
+        }
+    ]
+}

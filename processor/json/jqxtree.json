@@ -1,0 +1,1100 @@
+{
+    "widget": {
+        "name": "jqxTree",
+        "description": "Represents a Tree that displays a hierarchical collection of items. You can populate it from 'UL' or by using its 'source' property.",
+        "angular2": {
+            "name": "jqxTreeComponent",
+            "selector": "jqxTree"
+        }
+    },
+    "dataTypes": [
+        {
+            "name": "TreeToggleMode",
+            "ts_dataType": "enum",
+            "enumOptions": [ "click", "dblclick" ]
+        },
+        {
+            "name": "TreeDragStart",
+            "ts_dataType": "interface",
+            "properties": [
+                {
+                    "name": "item",
+                    "dataType": "object",
+                    "optional": "true",
+                    "displayName": "Item",
+                    "defaultValue": ""
+                }
+            ]
+        },
+        {
+            "name": "TreeDragEnd",
+            "ts_dataType": "interface",
+            "properties": [
+                {
+                    "name": "dragItem",
+                    "dataType": "any",
+                    "optional": "true",
+                    "displayName": "DragItem",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "dropItem",
+                    "dataType": "any",
+                    "optional": "true",
+                    "displayName": "DropItem",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "args",
+                    "dataType": "any",
+                    "optional": "true",
+                    "displayName": "Args",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "dropPosition",
+                    "dataType": "any",
+                    "optional": "true",
+                    "displayName": "DropPosition",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "tree",
+                    "dataType": "any",
+                    "optional": "true",
+                    "displayName": "Tree",
+                    "defaultValue": ""
+                }
+            ]
+        },
+        {
+            "name": "TreeItem",
+            "ts_dataType": "interface",
+            "properties": [
+                {
+                    "name": "label",
+                    "dataType": "string",
+                    "optional": "true",
+                    "displayName": "Label",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "value",
+                    "dataType": "string",
+                    "optional": "true",
+                    "displayName": "Value",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "disabled",
+                    "dataType": "boolean",
+                    "optional": "true",
+                    "displayName": "Disabled",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "checked",
+                    "dataType": "boolean",
+                    "optional": "true",
+                    "displayName": "Checked",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "element",
+                    "dataType": "string",
+                    "ts_dataType": "any",
+                    "optional": "true",
+                    "displayName": "Element",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "parentElement",
+                    "dataType": "string",
+                    "ts_dataType": "any",
+                    "optional": "true",
+                    "displayName": "Parent Element",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "isExpanded",
+                    "dataType": "boolean",
+                    "optional": "true",
+                    "displayName": "IsExpanded",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "selected",
+                    "dataType": "boolean",
+                    "optional": "true",
+                    "displayName": "Selected",
+                    "defaultValue": ""
+                }
+            ]
+        },
+        {
+            "name": "TreeOffset",
+            "ts_dataType": "interface",
+            "properties": [
+                {
+                    "name": "top",
+                    "dataType": "number",
+                    "optional": "true",
+                    "displayName": "Top",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "left",
+                    "dataType": "number",
+                    "optional": "true",
+                    "displayName": "Left",
+                    "defaultValue": ""
+                }
+            ]
+        }
+    ],
+    "exampleExtraTemplate": "<ul>\n       <li item-selected='true'>Home</li>\n       <li item-expanded='true'>Solutions\n         <ul>\n           <li>Education</li>\n           <li>Financial services</li>\n           <li>Government</li>\n           <li>Manufacturing</li>\n           <li>Solutions\n             <ul>\n               <li>Consumer photo and video</li>\n               <li>Mobile</li>\n               <li>Rich Internet applications</li>\n               <li>Technical communication</li>\n               <li>Training and eLearning</li>\n               <li>Web conferencing</li>\n             </ul>\n           </li>\n           <li>All industries and solutions</li>\n         </ul>\n       </li>\n     </ul>",
+    "exampleElementsInit": {
+        "source": "data"
+    },
+    "exampleInit": {
+        "width": "400"
+    },
+    "properties": [
+        {
+            "name": "animationShowDuration",
+            "defaultValue": "350",
+            "description": "<P>Sets or gets the duration of the show animation. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>animationShowDuration</CODE> property. </P>\n<PRE><CODE>$('#jqxTree').jqxTree({ animationShowDuration: 500 }); </CODE></PRE>\n\r\n<P>Get the <CODE>animationShowDuration</CODE> property. </P>\n<PRE><CODE>var animationShowDuration = $('#jqxTree').jqxTree('animationShowDuration'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/mwskv/",
+            "exampleDescription": "animationShowDuration is set to 1000",
+            "dataType": "number",
+            "exampleInit": {
+                "animationShowDuration": "1000"
+            }
+        },
+        {
+            "name": "animationHideDuration",
+            "defaultValue": "fast",
+            "description": "<P>Sets or gets the duration of the hide animation. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>animationHideDuration</CODE> property. </P>\n<PRE><CODE>$('#jqxTree').jqxTree({ animationHideDuration: 500 }); </CODE></PRE>\n\r\n<P>Get the <CODE>animationHideDuration</CODE> property. </P>\n<PRE><CODE>var animationHideDuration = $('#jqxTree').jqxTree('animationHideDuration'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/Up7VT/",
+            "exampleDescription": "animationHideDuration is set to 1000",
+            "dataType": "number",
+            "exampleInit": {
+                "animationHideDuration": "1000"
+            }
+        },
+        {
+            "name": "allowDrag",
+            "defaultValue": "false",
+            "description": "<P>Enables the dragging of Tree Items.</P>",
+            "example": "<pre><CODE>$(\"#jqxTree\").jqxTree({allowDrag:true}); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/aG7FF/",
+            "exampleDescription": "allowDrag is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "allowDrop": "true",
+                "allowDrag": "true"
+            }
+        },
+        {
+            "name": "allowDrop",
+            "defaultValue": "false",
+            "description": "<P>Enables the dropping of Tree Items.</P>",
+            "example": "<pre><CODE>$(\"#jqxTree\").jqxTree({allowDrop:true}); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/aBYCY/",
+            "exampleDescription": "allowDrop is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "allowDrop": "true",
+                "allowDrag": "true"
+            }
+        },
+        {
+            "name": "checkboxes",
+            "defaultValue": "false",
+            "description": "<P>Sets or gets whether the tree should display a checkbox next to each item. In order to use this feature, you need to include the jqxcheckbox.js. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>checkboxes</CODE> property. </P>\n<PRE><CODE>$('#jqxTree').jqxTree({ checkboxes: true }); </CODE></PRE>\n\r\n<P>Get the <CODE>checkboxes</CODE> property. </P>\n<PRE><CODE>var checkboxes = $('#jqxTree').jqxTree('checkboxes'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/c3ZTB/",
+            "exampleDescription": "checkboxes is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "checkboxes": "true"
+            }
+        },
+        {
+            "name": "dragStart",
+            "defaultValue": "null",
+            "description": "<P>Callback function which is called when a drag operation starts. </P>",
+            "example": "<pre><CODE>$(\"#jqxTree\").jqxTree({dragStart: function (item)\r\n{\r\n    // disable dragging of 'Café au lait' item.\r\n    if (item.label == 'Café au lait')\r\n    return false;\r\n                        \r\n    // enable dragging for the item.\r\n    return true;\r\n}\r\n});\r\n                        </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/aQNUd/",
+            "exampleDescription": "dragStart is set to a custom function",
+            "dataType": "Function",
+            "ts_dataType": "(item: TreeDragStart['item']) => boolean",
+            "exampleInit": {
+                "dragStart": "dragStart",
+                "exampleData": "console.log(item);"
+            }
+        },
+        {
+            "name": "dragEnd",
+            "defaultValue": "null",
+            "description": "<P>Callback function which is called when a drag operation ends. </P>",
+            "example": "<pre><CODE>$('#jqxTree').jqxTree({ allowDrag: true, allowDrop: true, height: '300px', width: '220px', dragEnd: function (dragItem, dropItem, args, dropPosition, tree)\r\n{\r\n    // dragItem is the item which is dragged by the user.\r\n    // dropItem is the item over which we dropped the dragged item.\r\n    // args - dragEvent event arguments.\r\n    // dropPosition - the position of the dragItem regarding the possition of the dropItem. The possible values are: 'inside' - when the dragItem is dropped over the dropItem,\r\n    'before' - when the dragItem is dropped above the dropItem.\r\n    'after' - when the dragItem is dropped below the dropItem.\r\n    // tree - the jqxTree's jQuery object associated to the dropItem. If the tree's id is 'tree', this returns $(\"#tree\")                                                          \r\n    // to cancel the drop operation, return false.    \r\n}\r\n});\r\n                        </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/kDPyz/",
+            "exampleDescription": "dragEnd is set to a custom function",
+            "dataType": "Function",
+            "ts_dataType": "(dragItem?: TreeDragEnd['dragItem'], dropItem?: TreeDragEnd['dropItem'], args?: TreeDragEnd['args'], dropPosition?: TreeDragEnd['dropPosition'], tree?: TreeDragEnd['tree']) => boolean",
+            "exampleInit": {
+                "dragEnd": "dragEnd",
+                "exampleData": "console.log(dragItem);\n        console.log(dropItem)\n        console.log(args);\n        console.log(dropPosition);\n        console.log(tree);"
+            }
+        },
+        {
+            "name": "disabled",
+            "defaultValue": "false",
+            "description": "<P>Gets or sets whether the tree is disabled. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>disabled</CODE> property. </P>\n<PRE><CODE>$('#jqxTree').jqxTree({ disabled:true }); </CODE></PRE>\n\r\n<P>Get the <CODE>disabled</CODE> property. </P>\n<PRE><CODE>var disabled = $('#jqxTree').jqxTree('disabled');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/J2gFM/",
+            "exampleDescription": "disabled is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "disabled": "true"
+            }
+        },
+        {
+            "name": "easing",
+            "defaultValue": "'easeInOutCirc'",
+            "description": "<P>Sets or gets the animation's easing to one of the JQuery's supported easings. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>easing</CODE> property . </P>\n<PRE><CODE>$('#jqxTree').jqxTree({ easing: 'easeInOutCirc' }); </CODE></PRE>\n\r\n<P>Get the <CODE>easing</CODE> property. </P>\n<PRE><CODE>var easing = $('#jqxTree').jqxTree('easing'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/m8k4K/",
+            "exampleDescription": "easing is set to 'easeInOutCirc'",
+            "dataType": "string",
+            "exampleInit": {
+                "easing": "easeInOutCirc"
+            }
+        },
+        {
+            "name": "enableHover",
+            "defaultValue": "true",
+            "description": "<P>Enables or disables the hover state. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>enableHover</CODE> property. </P>\n<PRE><CODE>$('#jqxTree').jqxTree({ enableHover: true }); </CODE></PRE>\n\r\n<P>Get the <CODE>enableHover</CODE> property. </P>\n<PRE><CODE>var enableHover = $('#jqxTree').jqxTree('enableHover'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/c8tjU/",
+            "exampleDescription": "enableHover is set to false",
+            "dataType": "boolean",
+            "exampleInit": {
+                "enableHover": "false"
+            }
+        },
+        {
+            "name": "height",
+            "defaultValue": "null",
+            "description": "<P>Sets or gets the tree's height. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>height</CODE> property. </P>\n<PRE><CODE>$('#jqxTree').jqxTree({height:\"400px\"});</CODE></PRE>\n\r\n<P>Get the <CODE>height</CODE> property. </P>\n<PRE><CODE>var height = $('#jqxTree').jqxTree('height');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/ntEC8/",
+            "exampleDescription": "height is set to '300px'",
+            "dataType": "number",
+            "ts_dataType": "number | string",
+            "exampleInit": {
+                "height": "300"
+            }
+        },
+        {
+            "name": "hasThreeStates",
+            "defaultValue": "false",
+            "description": "<P>Sets or gets whether the tree checkboxes have three states - checked, unchecked and indeterminate. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>hasThreeStates</CODE> property. </P>\n<PRE><CODE>$('#jqxTree').jqxTree({ hasThreeStates: true }); </CODE></PRE>\n\r\n<P>Get the <CODE>hasThreeStates</CODE> property. </P>\n<PRE><CODE>var hasThreeStates = $('#jqxTree').jqxTree('hasThreeStates'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/h9CAa/",
+            "exampleDescription": "hasThreeStates is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "checkboxes": "true",
+                "hasThreeStates": "true"
+            }
+        },
+        {
+            "name": "incrementalSearch",
+            "defaultValue": "true",
+            "description": "<P>Determines whether the incremental search is enabled. The feature allows you to quickly find and select items by typing when the widget is on focus. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>incrementalSearch</CODE> property. </P>\n<PRE><CODE>$('#jqxTree').jqxTree({incrementalSearch:false});</CODE></PRE>\n\r\n<P>Get the <CODE>incrementalSearch</CODE> property. </P>\n<PRE><CODE>var incrementalSearch = $('#jqxTree').jqxTree('incrementalSearch');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/pB4K6/",
+            "exampleDescription": "incrementalSearch is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "incrementalSearch": "false"
+            }
+        },
+        {
+            "name": "keyboardNavigation",
+            "defaultValue": "true",
+            "description": "<P>Enables or disables the key navigation. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>keyboardNavigation</CODE> property. </P>\n<PRE><CODE>$('#jqxTree').jqxTree({ keyboardNavigation: true }); </CODE></PRE>\n\r\n<P>Get the <CODE>keyboardNavigation</CODE> property. </P>\n<PRE><CODE>var keyboardNavigation = $('#jqxTree').jqxTree('keyboardNavigation'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/9DAMf/",
+            "exampleDescription": "keyboardNavigation is set to false",
+            "dataType": "boolean",
+            "exampleInit": {
+                "keyboardNavigation": "false"
+            }
+        },
+        {
+            "name": "rtl",
+            "defaultValue": "false",
+            "description": "<P>Sets or gets a value indicating whether widget's elements are aligned to support locales using right-to-left fonts.</P>",
+            "example": "<pre><CODE>$('#jqxTree').jqxTree({rtl : true}); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/hxz5N/",
+            "exampleDescription": "rtl is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "rtl": "true"
+            }
+        },
+        {
+            "name": "source",
+            "defaultValue": "null",
+            "description": "<P>Specifies the jqxTree's data source. Use this property to populate the jqxTree. </P>\n\r\n<UL><LI>label - sets the item's label. \r\n<LI>value - sets the item's value. \r\n<LI>html - item's html. The html to be displayed in the item. \r\n<LI>id - sets the item's id. \r\n<LI>disabled - sets whether the item is enabled/disabled. \r\n<LI>checked - sets whether the item is checked/unchecked(when checkboxes are enabled). \r\n<LI>expanded - sets whether the item is expanded or collapsed. \r\n<LI>selected - sets whether the item is selected. \r\n<LI>items - sets an array of sub items. \r\n<LI>icon - sets the item's icon(url is expected). \r\n<LI>iconsize - sets the size of the item's icon. </LI></UL>\n\r\n<H4>Code examples</H4>\n\r\n<P>Initialize a jqxTree with the <CODE>source</CODE> property specified. </P>\n<PRE><CODE>\r\nvar source = [\r\n    { label: \"Item 1\", expanded: true, items: [\r\n        { label: \"Item 1.1\" },\r\n        { label: \"Item 1.2\", selected: true }\r\n    ]\r\n    },\r\n    { label: \"Item 2\" },\r\n    { label: \"Item 3\" },\r\n    { label: \"Item 4\", items: [\r\n        { label: \"Item 4.1\" },\r\n        { label: \"Item 4.2\" }\r\n    ]\r\n    },\r\n    { label: \"Item 5\" },\r\n    { label: \"Item 6\" },\r\n    { label: \"Item 7\" }\r\n];\r\n\r\n    // create jqxTree\r\n$('#jqxTree').jqxTree({ source: source, width: '330px'});\r\n                        </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/fFqzU/",
+            "exampleDescription": "source is set to source",
+            "dataType": "Array | Object",
+            "ts_dataType": "any",
+            "exampleInit": {
+                "source": "source",
+                "exampleData": "[\n          {\n            label: \"Mail\",\n            expanded: true,\n            items: [\n              { label: \"Calendar\" }, \n              { label: \"Contacts\" }\n            ]\n          },\n          {\n            label: \"Inbox\",\n            items: [\n              { label: \"Admin\" },\n              { label: \"Corporate\" },\n              { label: \"Finance\" },\n              { label: \"Other\" }\n            ]\n          },\n          { label: \"Deleted Items\" }\n        ]"
+            },
+            "customExample": {
+                "codeType": "custom",
+                "code": "&lt;template>\n  &lt;JqxTree ref=\"myTree\" :width=\"200\" :source=\"source\" /> \n&lt;/template>\n \n&lt;script>\n  import JqxTree from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxtree.vue';\n \n  export default {\n    components: {\n      JqxTree\n    },\n    data: function () {\n      return {\n        source: [\n          { \n            label: \"Mail\",\n            expanded: true,\n            items: [\n               { label: \"Calendar\" },\n               { label: \"Contacts\" }\n             ]\n           },\n           {\n             label: \"Inbox\",\n             items: [\n               { label: \"Admin\" },\n               { label: \"Corporate\" },\n               { label: \"Finance\" },\n               { label: \"Other\" }             \n             ]\n           },\n           { label: \"Deleted Items\" }\n         ]\n       }\n     }\n   } \n&lt;/script>"
+            }
+        },
+        {
+            "name": "toggleIndicatorSize",
+            "defaultValue": "16",
+            "description": "<P>Sets or gets the size of the expand/collapse arrows. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>toggleIndicatorSize</CODE> property. </P>\n<PRE><CODE>$('#jqxTree').jqxTree({ toggleIndicatorSize: 0 }); </CODE></PRE>\n\r\n<P>Get the <CODE>toggleIndicatorSize</CODE> property. </P>\n<PRE><CODE>var toggleIndicatorSize = $('#jqxTree').jqxTree('toggleIndicatorSize'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/3T38v/",
+            "exampleDescription": "toggleIndicatorSize is set to 20",
+            "dataType": "number",
+            "exampleInit": {
+                "toggleIndicatorSize": "20"
+            }
+        },
+        {
+            "name": "toggleMode",
+            "defaultValue": "dblclick",
+            "description": "<P>Sets or gets user interaction used for expanding or collapsing any item. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'click'</CODE></PRE>\n<PRE><CODE>'dblclick'</CODE></PRE>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>toggleMode</CODE> property. </P>\n<PRE><CODE>$('#jqxTree').jqxTree({ toggleMode: 'click' }); </CODE></PRE>\n\r\n<P>Get the <CODE>toggleMode</CODE> property. </P>\n<PRE><CODE>var toggleMode = $('#jqxTree').jqxTree('toggleMode'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/X3vE7/",
+            "exampleDescription": "toggleMode is set to 'click'",
+            "dataType": "string",
+            "ts_dataType": "enum:TreeToggleMode",
+            "exampleInit": {
+                "toggleMode": "click"
+            }
+        },
+        {
+            "name": "theme",
+            "defaultValue": "''",
+            "description": "<P>Sets the widget's theme. </P>\n\r\n<UL><LI>Include the theme's CSS file after jqx.base.css.<BR>The following code example adds the 'material' theme. <PRE><CODE>\r\n<PRE><CODE>&lt;link rel=\"stylesheet\" href=\"../../jqwidgets/styles/jqx.base.css\" type=\"text/css\" /&gt;\r\n&lt;link rel=\"stylesheet\" href=\"../../jqwidgets/styles/jqx.material.css\" type=\"text/css\" /&gt;\r\n</CODE></PRE>\r\n</CODE></PRE>\r\n<LI>Set the widget's theme property to 'material' when you initialize it. </LI></UL>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/a6rZu/",
+            "exampleDescription": "theme is set to 'material'",
+            "dataType": "string",
+            "exampleInit": {
+                "theme": "material"
+            }
+        },
+        {
+            "name": "width",
+            "defaultValue": "null",
+            "description": "<P>Sets or gets the tree's width. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>width</CODE> property. </P>\n<PRE><CODE>$('#jqxTree').jqxTree({width:\"200px\"});</CODE></PRE>\n\r\n<P>Get the <CODE>width</CODE> property. </P>\n<PRE><CODE>var width = $('#jqxTree').jqxTree('width');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/3TPhH/",
+            "exampleDescription": "width is set to '300px'",
+            "dataType": "number",
+            "ts_dataType": "string | number"
+        }
+    ],
+    "events": [
+        {
+            "name": "added",
+            "description": "<P>This event is triggered when the user adds a new tree item. </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>added</CODE> event by type: jqxTree. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/kE4xD/",
+            "exampleDescription": "Bind to the added event by type: jqxTree.",
+            "example": "<PRE><CODE>$('#jqxTree').on('added', function (event) { // Some code here. }); </CODE></PRE>",
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;JqxTree ref=\"myTree\" @added=\"onAdded($event)\"\n         :width=\"400\">\n      &lt;ul>\n        &lt;li item-selected='true'>Home&lt;/li>\n        &lt;li item-expanded='true'>\n          Solutions\n          &lt;ul>\n            &lt;li>Education&lt;/li>\n            &lt;li>Financial services&lt;/li>\n            &lt;li>Government&lt;/li>\n            &lt;li>Manufacturing&lt;/li>\n            &lt;li>\n              Solutions\n              &lt;ul>\n                &lt;li>Consumer photo and video&lt;/li>\n                &lt;li>Mobile&lt;/li>\n                &lt;li>Rich Internet applications&lt;/li>\n                &lt;li>Technical communication&lt;/li>\n                &lt;li>Training and eLearning&lt;/li>\n                &lt;li>Web conferencing&lt;/li>\n              &lt;/ul>\n            &lt;/li>\n            &lt;li>All industries and solutions&lt;/li>\n          &lt;/ul>\n        &lt;/li>\n      &lt;/ul>\n    &lt;/JqxTree>\n    &lt;jqxButton :width=\"50\" @click=\"add()\">Add&lt;/jqxButton>\n  &lt;/div>\n&lt;/template>\n\n&lt;script>\n  import JqxTree from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxtree.vue';\n  import JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\n\n  export default {\n    components: {\n      JqxTree,\n      JqxButton\n    },\n    methods: {\n      add: function () {\n        this.$refs.myTree.addTo({ label: 'Item' });\n      },\n      onAdded: function (event) {\n        alert('do something...');\n      }\n    }\n  }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "checkChange",
+            "description": "<P>This event is triggered when the user checks, unchecks or the checkbox is in indeterminate state. </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>checkChange</CODE> event by type: jqxTree. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/ASBn8/",
+            "exampleDescription": "Bind to the checkChange event by type: jqxTree.",
+            "example": "<PRE><CODE>$('#jqxTree').on('checkChange', function (event) \r\n{\r\n    var args = event.args;\r\n    var element = args.element;\r\n    var checked = args.checked;\r\n}); </CODE></PRE>",
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;JqxTree ref=\"myTree\" @checkChange=\"onCheckChange($event)\"\n       :width=\"400\" :checkboxes=\"true\">\n    &lt;ul>\n      &lt;li item-selected='true'>Home&lt;/li>\n      &lt;li item-expanded='true'>\n        Solutions\n        &lt;ul>\n          &lt;li>Education&lt;/li>\n          &lt;li>Financial services&lt;/li>\n          &lt;li>Government&lt;/li>\n          &lt;li>Manufacturing&lt;/li>\n          &lt;li>\n            Solutions\n            &lt;ul>\n              &lt;li>Consumer photo and video&lt;/li>\n              &lt;li>Mobile&lt;/li>\n              &lt;li>Rich Internet applications&lt;/li>\n              &lt;li>Technical communication&lt;/li>\n              &lt;li>Training and eLearning&lt;/li>\n              &lt;li>Web conferencing&lt;/li>\n            &lt;/ul>\n          &lt;/li>\n          &lt;li>All industries and solutions&lt;/li>\n        &lt;/ul>\n      &lt;/li>\n    &lt;/ul>\n  &lt;/JqxTree>\n&lt;/template>\n\n&lt;script>\n  import JqxTree from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxtree.vue';\n\n  export default {\n    components: {\n      JqxTree\n    },\n    methods: {\n      onCheckChange: function (event) {\n        alert('do something...');\n      }\n    }\n  }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "collapse",
+            "description": "<P>This event is triggered when the user collapses a tree item. </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>collapse</CODE> event by type: jqxTree. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/GrU6M/",
+            "exampleDescription": "Bind to the collapse event by type: jqxTree.",
+            "example": "<PRE><CODE>$('#jqxTree').on('collapse',function (event) {\r\n    var args = event.args;\r\n    var item = $('#jqxTree').jqxTree('getItem', args.element);\r\n    var label = item.label; \r\n});</CODE></PRE>"
+        },
+        {
+            "name": "dragStart",
+            "description": "<P>This event is triggered when the user starts a drag operation. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/y9htx/",
+            "exampleDescription": "Bind to the dragStart event by type: jqxTree.",
+            "example": "<PRE><CODE>$(\"#jqxTree\").on('dragStart', function (event) \r\n{\r\n    // get item's label.\r\n    var itemLabel = event.args.label;\r\n    // get item's value.\r\n    var itemValue = event.args.value;\r\n    // get the original dragStart event from the jqxDragDrop plug-in.\r\n    var originalEvent = event.args.originalEvent;\r\n    // using the originalEvent, you can retrieve the mouse cursor's position.\r\n    var x = event.args.originalEvent.pageX;\r\n    var y = event.args.originalEvent.pageY;\r\n    if (event.args.originalEvent.originalEvent.touches) {\r\n    var touch = event.args.originalEvent.originalEvent.changedTouches[0];\r\n    x = touch.pageX;\r\n    y = touch.pageY;\r\n}\r\n});\r\n                         </CODE></PRE>"
+        },
+        {
+            "name": "dragEnd",
+            "description": "<P>This event is triggered when the user drops an item. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/7TT7r/",
+            "exampleDescription": "Bind to the dragEnd event by type: jqxTree.",
+            "example": "<PRE><CODE>$(\"#jqxTree\").on('dragEnd', function (event) \r\n{\r\n    // get item's label.\r\n    var itemLabel = event.args.label;\r\n    // get item's value.\r\n    var itemValue = event.args.value;\r\n    // get the original dragStart event from the jqxDragDrop plug-in.\r\n    var originalEvent = event.args.originalEvent;\r\n    // using the originalEvent, you can retrieve the mouse cursor's position.\r\n    var x = event.args.originalEvent.pageX;\r\n    var y = event.args.originalEvent.pageY;\r\n    if (event.args.originalEvent.originalEvent.touches) {\r\n    var touch = event.args.originalEvent.originalEvent.changedTouches[0];\r\n    x = touch.pageX;\r\n    y = touch.pageY;\r\n}\r\n});\r\n                         </CODE></PRE>"
+        },
+        {
+            "name": "expand",
+            "description": "<P>This event is triggered when the user expands a tree item. </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>expand</CODE> event by type: jqxTree. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/M9KaF/",
+            "exampleDescription": "Bind to the expand event by type: jqxTree.",
+            "example": "<PRE><CODE>$('#jqxTree').on('expand', function (event) {\r\n    var args = event.args;\r\n    var item = $('#jqxTree').jqxTree('getItem', args.element);\r\n    var label = item.label; \r\n});</CODE></PRE>"
+        },
+        {
+            "name": "itemClick",
+            "description": "<P>This event is triggered when the user clicks a tree item. </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>itemClick</CODE> event by type: jqxTree. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/xm1maabe/",
+            "exampleDescription": "Bind to the itemClick event by type: jqxTree.",
+            "example": "<PRE><CODE>$('#jqxTree').on('itemClick',function (event)\r\n{\r\n    var args = event.args;\r\n    var item = $('#jqxTree').jqxTree('getItem', args.element);\r\n    var label = item.label; \r\n});\r\n</CODE></PRE>"
+        },
+        {
+            "name": "removed",
+            "description": "<P>This event is triggered when the user removes a tree item. </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>removed</CODE> event by type: jqxTree. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/JbArT/",
+            "exampleDescription": "Bind to the removed event by type: jqxTree.",
+            "example": "<PRE><CODE>$('#jqxTree').on('removed', function (event) { // Some code here. }); </CODE></PRE>",
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;JqxTree ref=\"myTree\" @removed=\"onRemoved($event)\"\n         :width=\"400\">\n      &lt;ul>\n        &lt;li item-selected='true'>Home&lt;/li>\n        &lt;li item-expanded='true'>\n          Solutions\n          &lt;ul>\n            &lt;li>Education&lt;/li>\n            &lt;li>Financial services&lt;/li>\n            &lt;li>Government&lt;/li>\n            &lt;li>Manufacturing&lt;/li>\n            &lt;li>\n              Solutions\n              &lt;ul>\n                &lt;li>Consumer photo and video&lt;/li>\n                &lt;li>Mobile&lt;/li>\n                &lt;li>Rich Internet applications&lt;/li>\n                &lt;li>Technical communication&lt;/li>\n                &lt;li>Training and eLearning&lt;/li>\n                &lt;li>Web conferencing&lt;/li>\n              &lt;/ul>\n            &lt;/li>\n            &lt;li>All industries and solutions&lt;/li>\n          &lt;/ul>\n        &lt;/li>\n      &lt;/ul>\n    &lt;/JqxTree>\n    &lt;jqxButton :width=\"150\" @click=\"remove()\">Remove Selected&lt;/jqxButton>\n  &lt;/div>\n&lt;/template>\n&lt;script>\n  import JqxTree from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxtree.vue';\n  import JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\n  export default {\n    components: {\n      JqxTree,\n      JqxButton\n    },\n    methods: {\n      remove: function () {\n        let selected = this.$refs.myTree.getSelectedItem();\n        this.$refs.myTree.removeItem(selected);\n      },\n      onRemoved: function (event) {\n        alert('do something...');\n      }\n    }\n  }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "select",
+            "description": "<P>This event is triggered when the user selects a tree item. </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>select</CODE> event by type: jqxTree. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/ccegq/",
+            "exampleDescription": "Bind to the select event by type: jqxTree.",
+            "example": "<PRE><CODE>$('#jqxTree').on('select',function (event)\r\n{\r\n    var args = event.args;\r\n    var item = $('#jqxTree').jqxTree('getItem', args.element);\r\n    var label = item.label; \r\n    var type = args.type; // mouse, keyboard or null. If the user selects with the mouse, the type will be \"mouse\".\r\n});\r\n</CODE></PRE>"
+        }
+    ],
+    "methods": [
+        {
+            "name": "addBefore",
+            "description": "<P>Adds an item as a sibling of another item.</P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/EBLCX/",
+            "exampleDescription": "adds new item in the jqxTree.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "item",
+                    "dataType": "object",
+                    "ts_dataType": "any",
+                    "description": "",
+                    "optional": false
+                },
+                {
+                    "name": "id",
+                    "dataType": "string",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;JqxTree ref=\"myTree\"\n       :width=\"400\">\n    &lt;ul>\n      &lt;li item-selected='true'>Home&lt;/li>\n      &lt;li item-expanded='true'>\n        Solutions\n        &lt;ul>\n          &lt;li>Education&lt;/li>\n          &lt;li>Financial services&lt;/li>\n          &lt;li>Government&lt;/li>\n          &lt;li>Manufacturing&lt;/li>\n          &lt;li>\n            Solutions\n            &lt;ul>\n              &lt;li>Consumer photo and video&lt;/li>\n              &lt;li>Mobile&lt;/li>\n              &lt;li>Rich Internet applications&lt;/li>\n              &lt;li>Technical communication&lt;/li>\n              &lt;li>Training and eLearning&lt;/li>\n              &lt;li>Web conferencing&lt;/li>\n            &lt;/ul>\n          &lt;/li>\n          &lt;li>All industries and solutions&lt;/li>\n        &lt;/ul>\n      &lt;/li>\n    &lt;/ul>\n  &lt;/JqxTree>\n&lt;/template>\n\n&lt;script>\n  import JqxTree from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxtree.vue';\n\n  export default {\n    components: {\n      JqxTree\n    },\n    mounted: function () {\n      let items = this.$refs.myTree.getItems();\n      let element = items[0].element;\n      this.$refs.myTree.addBefore('item', element);\n    }\n  }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "addAfter",
+            "description": "<P>Adds an item as a sibling of another item.</P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/DPK78/",
+            "exampleDescription": "adds new item in the jqxTree.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "item",
+                    "dataType": "object",
+                    "ts_dataType": "any",
+                    "description": "",
+                    "optional": false
+                },
+                {
+                    "name": "id",
+                    "dataType": "string",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;JqxTree ref=\"myTree\"\n       :width=\"400\">\n    &lt;ul>\n      &lt;li item-selected='true'>Home&lt;/li>\n      &lt;li item-expanded='true'>\n        Solutions\n        &lt;ul>\n          &lt;li>Education&lt;/li>\n          &lt;li>Financial services&lt;/li>\n          &lt;li>Government&lt;/li>\n          &lt;li>Manufacturing&lt;/li>\n          &lt;li>\n            Solutions\n            &lt;ul>\n              &lt;li>Consumer photo and video&lt;/li>\n              &lt;li>Mobile&lt;/li>\n              &lt;li>Rich Internet applications&lt;/li>\n              &lt;li>Technical communication&lt;/li>\n              &lt;li>Training and eLearning&lt;/li>\n              &lt;li>Web conferencing&lt;/li>\n            &lt;/ul>\n          &lt;/li>\n          &lt;li>All industries and solutions&lt;/li>\n        &lt;/ul>\n      &lt;/li>\n    &lt;/ul>\n  &lt;/JqxTree>\n&lt;/template>\n\n&lt;script>\n  import JqxTree from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxtree.vue';\n\n  export default {\n    components: {\n      JqxTree\n    },\n    mounted: function () {\n      let items = this.$refs.myTree.getItems();\n      let element = items[0].element;\n      this.$refs.myTree.addAfter('item', element);\n    }\n  }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "addTo",
+            "description": "<P>Adds an item.</P>",
+            "exampleURL": "",
+            "exampleDescription": "",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "item",
+                    "dataType": "object",
+                    "ts_dataType": "any",
+                    "description": "",
+                    "optional": false
+                },
+                {
+                    "name": "id",
+                    "dataType": "string",
+                    "ts_dataType": "string | null",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;JqxTree ref=\"myTree\"\n       :width=\"400\">\n    &lt;ul>\n      &lt;li item-selected='true'>Home&lt;/li>\n      &lt;li item-expanded='true'>\n        Solutions\n        &lt;ul>\n          &lt;li>Education&lt;/li>\n          &lt;li>Financial services&lt;/li>\n          &lt;li>Government&lt;/li>\n          &lt;li>Manufacturing&lt;/li>\n          &lt;li>\n            Solutions\n            &lt;ul>\n              &lt;li>Consumer photo and video&lt;/li>\n              &lt;li>Mobile&lt;/li>\n              &lt;li>Rich Internet applications&lt;/li>\n              &lt;li>Technical communication&lt;/li>\n              &lt;li>Training and eLearning&lt;/li>\n              &lt;li>Web conferencing&lt;/li>\n            &lt;/ul>\n          &lt;/li>\n          &lt;li>All industries and solutions&lt;/li>\n        &lt;/ul>\n      &lt;/li>\n    &lt;/ul>\n  &lt;/JqxTree>\n&lt;/template>\n\n&lt;script>\n  import JqxTree from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxtree.vue';\n\n  export default {\n    components: {\n      JqxTree\n    },\n    mounted: function () {\n      let items = this.$refs.myTree.getItems();\n      let element = items[0].element;\n      this.$refs.myTree.addTo('item', element);\n    }\n  }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "clear",
+            "description": "<P>Removes all elements.</P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/kNvRR/",
+            "exampleDescription": "clears all items in the jqxTree.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "checkAll",
+            "description": "<P>Checks all tree items.</P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/ZKu6Z/",
+            "exampleDescription": "checks all items in the jqxTree.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;JqxTree ref=\"myTree\"\n         :width=\"400\" :checkboxes=\"true\">\n      &lt;ul>\n        &lt;li item-selected='true'>Home&lt;/li>\n        &lt;li ref=\"solutions\" item-expanded='true'>\n          Solutions\n          &lt;ul>\n            &lt;li>Education&lt;/li>\n            &lt;li>Financial services&lt;/li>\n            &lt;li>Government&lt;/li>\n            &lt;li>Manufacturing&lt;/li>\n            &lt;li>\n              Solutions\n              &lt;ul>\n                &lt;li>Consumer photo and video&lt;/li>\n                &lt;li>Mobile&lt;/li>\n                &lt;li>Rich Internet applications&lt;/li>\n                &lt;li>Technical communication&lt;/li>\n                &lt;li>Training and eLearning&lt;/li>\n                &lt;li>Web conferencing&lt;/li>\n              &lt;/ul>\n            &lt;/li>\n            &lt;li>All industries and solutions&lt;/li>\n          &lt;/ul>\n        &lt;/li>\n      &lt;/ul>\n    &lt;/JqxTree>\n    &lt;jqxButton :width=\"150\" @click=\"checkAll()\">Check All&lt;/jqxButton>\n    &lt;jqxButton :width=\"150\" @click=\"uncheckAll()\">Uncheck All&lt;/jqxButton>\n  &lt;/div>\n&lt;/template>\n&lt;script>\n  import JqxTree from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxtree.vue';\n  import JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\n  export default {\n    components: {\n      JqxTree,\n      JqxButton\n    },\n    methods: {\n      checkAll: function () {\n        this.$refs.myTree.checkAll();\n      },\n      uncheckAll: function () {\n        this.$refs.myTree.uncheckAll();\n      }\n    }\n  }\n&lt;/script>\n&lt;style>\n  .jqx-button {\n    display: inline-block;\n    margin-top: 20px;\n    margin-right: 50px;\n  }\n&lt;/style>"
+            }
+        },
+        {
+            "name": "checkItem",
+            "description": "<P>Checks a tree item.</P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/pMZS7/",
+            "exampleDescription": "checks an item in the jqxTree.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "item",
+                    "dataType": "object",
+                    "ts_dataType": "any",
+                    "description": "",
+                    "optional": false
+                },
+                {
+                    "name": "checked",
+                    "dataType": "boolean",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;JqxTree ref=\"myTree\"\n         :width=\"400\" :checkboxes=\"true\">\n      &lt;ul>\n        &lt;li item-selected='true'>Home&lt;/li>\n        &lt;li ref=\"solutions\" item-expanded='true'>\n          Solutions\n          &lt;ul>\n            &lt;li>Education&lt;/li>\n            &lt;li>Financial services&lt;/li>\n            &lt;li ref=\"government\">Government&lt;/li>\n            &lt;li>Manufacturing&lt;/li>\n            &lt;li>\n              Solutions\n              &lt;ul>\n                &lt;li>Consumer photo and video&lt;/li>\n                &lt;li>Mobile&lt;/li>\n                &lt;li>Rich Internet applications&lt;/li>\n                &lt;li>Technical communication&lt;/li>\n                &lt;li>Training and eLearning&lt;/li>\n                &lt;li>Web conferencing&lt;/li>\n              &lt;/ul>\n            &lt;/li>\n            &lt;li>All industries and solutions&lt;/li>\n          &lt;/ul>\n        &lt;/li>\n      &lt;/ul>\n    &lt;/JqxTree>\n    &lt;jqxButton :width=\"150\" @click=\"check()\">Check 'Government'&lt;/jqxButton>\n    &lt;jqxButton :width=\"150\" @click=\"uncheck()\">Uncheck 'Government'&lt;/jqxButton>\n  &lt;/div>\n&lt;/template>\n&lt;script>\n  import JqxTree from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxtree.vue';\n  import JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\n  export default {\n    components: {\n      JqxTree,\n      JqxButton\n    },\n    methods: {\n      check: function () {\n        let item = this.$refs.government;\n        this.$refs.myTree.checkItem(item);\n      },\n      uncheck: function () {\n        let item = this.$refs.government;\n        this.$refs.myTree.uncheckItem(item);\n      }\n    }\n  }\n&lt;/script>\n&lt;style>\n  .jqx-button {\n    display: inline-block;\n    margin-top: 20px;\n    margin-right: 50px;\n  }\n&lt;/style>"
+            }
+        },
+        {
+            "name": "collapseAll",
+            "description": "<P>Collapses all items.</P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/Hnyrt/",
+            "exampleDescription": "collapse all items in the jqxTree.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "collapseItem",
+            "description": "<P>Collapses a tree item by passing an element as parameter.</P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/p4Tj9/",
+            "exampleDescription": "collapse an item in the jqxTree.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "item",
+                    "dataType": "object",
+                    "ts_dataType": "any",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;JqxTree ref=\"myTree\"\n         :width=\"400\">\n      &lt;ul>\n        &lt;li item-selected='true'>Home&lt;/li>\n        &lt;li ref=\"solutions\" item-expanded='true'>\n          Solutions\n          &lt;ul>\n            &lt;li>Education&lt;/li>\n            &lt;li>Financial services&lt;/li>\n            &lt;li>Government&lt;/li>\n            &lt;li>Manufacturing&lt;/li>\n            &lt;li>\n              Solutions\n              &lt;ul>\n                &lt;li>Consumer photo and video&lt;/li>\n                &lt;li>Mobile&lt;/li>\n                &lt;li>Rich Internet applications&lt;/li>\n                &lt;li>Technical communication&lt;/li>\n                &lt;li>Training and eLearning&lt;/li>\n                &lt;li>Web conferencing&lt;/li>\n              &lt;/ul>\n            &lt;/li>\n            &lt;li>All industries and solutions&lt;/li>\n          &lt;/ul>\n        &lt;/li>\n      &lt;/ul>\n    &lt;/JqxTree>\n    &lt;jqxButton :width=\"150\" @click=\"expand()\">Expand 'Solutions'&lt;/jqxButton>\n    &lt;jqxButton :width=\"150\" @click=\"collapse()\">Collapse 'Solutions'&lt;/jqxButton>\n  &lt;/div>\n&lt;/template>\n\n&lt;script>\n  import JqxTree from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxtree.vue';\n  import JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\n\n  export default {\n    components: {\n      JqxTree,\n      JqxButton\n    },\n    methods: {\n      expand: function () {\n        let item = this.$refs.solutions;\n        this.$refs.myTree.expandItem(item);\n      },\n      collapse: function () {\n        let item = this.$refs.solutions;\n        this.$refs.myTree.collapseItem(item);\n      }\n    }\n  }\n&lt;/script>\n&lt;style>\n  .jqx-button {\n    display: inline-block;\n    margin-top: 20px;\n    margin-right: 50px;\n  }\n&lt;/style>"
+            }
+        },
+        {
+            "name": "destroy",
+            "description": "<P>Destroy the jqxTree widget. The destroy method removes the jqxTree widget from the web page.</P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/26aEY/",
+            "exampleDescription": "destroy the jqxTree.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "disableItem",
+            "description": "<P>Disables a tree item.</P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/smv8K/",
+            "exampleDescription": "disables an item in the jqxTree.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "item",
+                    "dataType": "object",
+                    "ts_dataType": "any",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;JqxTree ref=\"myTree\"\n         :width=\"400\">\n      &lt;ul>\n        &lt;li item-selected='true'>Home&lt;/li>\n        &lt;li ref=\"solutions\" item-expanded='true'>\n          Solutions\n          &lt;ul>\n            &lt;li>Education&lt;/li>\n            &lt;li>Financial services&lt;/li>\n            &lt;li>Government&lt;/li>\n            &lt;li>Manufacturing&lt;/li>\n            &lt;li>\n              Solutions\n              &lt;ul>\n                &lt;li>Consumer photo and video&lt;/li>\n                &lt;li>Mobile&lt;/li>\n                &lt;li>Rich Internet applications&lt;/li>\n                &lt;li>Technical communication&lt;/li>\n                &lt;li>Training and eLearning&lt;/li>\n                &lt;li>Web conferencing&lt;/li>\n              &lt;/ul>\n            &lt;/li>\n            &lt;li>All industries and solutions&lt;/li>\n          &lt;/ul>\n        &lt;/li>\n      &lt;/ul>\n    &lt;/JqxTree>\n    &lt;jqxButton :width=\"150\" @click=\"disable()\">Disable 'Solutions'&lt;/jqxButton>\n    &lt;jqxButton :width=\"150\" @click=\"enable()\">Enable 'Solutions'&lt;/jqxButton>\n  &lt;/div>\n&lt;/template>\n&lt;script>\n  import JqxTree from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxtree.vue';\n  import JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\n  export default {\n    components: {\n      JqxTree,\n      JqxButton\n    },\n    methods: {\n      disable: function () {\n        let item = this.$refs.solutions;\n        this.$refs.myTree.disableItem(item);\n      },\n      enable: function () {\n        let item = this.$refs.solutions;\n        this.$refs.myTree.enableItem(item);\n      }\n    }\n  }\n&lt;/script>\n&lt;style>\n  .jqx-button {\n    display: inline-block;\n    margin-top: 20px;\n    margin-right: 50px;\n  }\n&lt;/style>"
+            }
+        },
+        {
+            "name": "ensureVisible",
+            "description": "<P>Ensures the visibility of an element. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/VvB6g/",
+            "exampleDescription": "ensures the vizibility of an element in the jqxTree.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "item",
+                    "dataType": "object",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;JqxTree ref=\"myTree\"\n       :width=\"300\" :height=\"150\">\n    &lt;ul>\n      &lt;li item-selected='true'>Home&lt;/li>\n      &lt;li item-expanded='true'>\n        Solutions\n        &lt;ul>\n          &lt;li>Education&lt;/li>\n          &lt;li>Financial services&lt;/li>\n          &lt;li>Government&lt;/li>\n          &lt;li>Manufacturing&lt;/li>\n          &lt;li>\n            Solutions\n            &lt;ul>\n              &lt;li>Consumer photo and video&lt;/li>\n              &lt;li>Mobile&lt;/li>\n              &lt;li>Rich Internet applications&lt;/li>\n              &lt;li>Technical communication&lt;/li>\n              &lt;li>Training and eLearning&lt;/li>\n              &lt;li>Web conferencing&lt;/li>\n            &lt;/ul>\n          &lt;/li>\n          &lt;li ref=\"industries\">All industries and solutions&lt;/li>\n        &lt;/ul>\n      &lt;/li>\n    &lt;/ul>\n  &lt;/JqxTree>\n&lt;/template>\n\n&lt;script>\n  import JqxTree from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxtree.vue';\n\n  export default {\n    components: {\n      JqxTree\n    },\n    mounted: function () {\n      let item = this.$refs.industries;\n      this.$refs.myTree.ensureVisible(item);\n    }\n  }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "enableItem",
+            "description": "<P>Enables a tree item.</P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/H7sTs/",
+            "exampleDescription": "enables an item in the jqxTree.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "item",
+                    "dataType": "object",
+                    "ts_dataType": "any",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;JqxTree ref=\"myTree\"\n         :width=\"400\">\n      &lt;ul>\n        &lt;li item-selected='true'>Home&lt;/li>\n        &lt;li ref=\"solutions\" item-expanded='true'>\n          Solutions\n          &lt;ul>\n            &lt;li>Education&lt;/li>\n            &lt;li>Financial services&lt;/li>\n            &lt;li>Government&lt;/li>\n            &lt;li>Manufacturing&lt;/li>\n            &lt;li>\n              Solutions\n              &lt;ul>\n                &lt;li>Consumer photo and video&lt;/li>\n                &lt;li>Mobile&lt;/li>\n                &lt;li>Rich Internet applications&lt;/li>\n                &lt;li>Technical communication&lt;/li>\n                &lt;li>Training and eLearning&lt;/li>\n                &lt;li>Web conferencing&lt;/li>\n              &lt;/ul>\n            &lt;/li>\n            &lt;li>All industries and solutions&lt;/li>\n          &lt;/ul>\n        &lt;/li>\n      &lt;/ul>\n    &lt;/JqxTree>\n    &lt;jqxButton :width=\"150\" @click=\"disable()\">Disable 'Solutions'&lt;/jqxButton>\n    &lt;jqxButton :width=\"150\" @click=\"enable()\">Enable 'Solutions'&lt;/jqxButton>\n  &lt;/div>\n&lt;/template>\n&lt;script>\n  import JqxTree from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxtree.vue';\n  import JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\n  export default {\n    components: {\n      JqxTree,\n      JqxButton\n    },\n    methods: {\n      disable: function () {\n        let item = this.$refs.solutions;\n        this.$refs.myTree.disableItem(item);\n      },\n      enable: function () {\n        let item = this.$refs.solutions;\n        this.$refs.myTree.enableItem(item);\n      }\n    }\n  }\n&lt;/script>\n&lt;style>\n  .jqx-button {\n    display: inline-block;\n    margin-top: 20px;\n    margin-right: 50px;\n  }\n&lt;/style>"
+            }
+        },
+        {
+            "name": "enableAll",
+            "description": "<P>Enables all items.</P>",
+            "exampleURL": "",
+            "exampleDescription": "enables all items in the jqxTree.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "expandAll",
+            "description": "<P>Expandes all items.</P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/QgKMu/",
+            "exampleDescription": "expand all items in the jqxTree.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "expandItem",
+            "description": "<P>Expands a tree item by passing an element as parameter.</P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/ZaaBJ/",
+            "exampleDescription": "expand an item in the jqxTree.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "item",
+                    "dataType": "object",
+                    "ts_dataType": "any",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;JqxTree ref=\"myTree\"\n         :width=\"400\">\n      &lt;ul>\n        &lt;li item-selected='true'>Home&lt;/li>\n        &lt;li ref=\"solutions\" item-expanded='true'>\n          Solutions\n          &lt;ul>\n            &lt;li>Education&lt;/li>\n            &lt;li>Financial services&lt;/li>\n            &lt;li>Government&lt;/li>\n            &lt;li>Manufacturing&lt;/li>\n            &lt;li>\n              Solutions\n              &lt;ul>\n                &lt;li>Consumer photo and video&lt;/li>\n                &lt;li>Mobile&lt;/li>\n                &lt;li>Rich Internet applications&lt;/li>\n                &lt;li>Technical communication&lt;/li>\n                &lt;li>Training and eLearning&lt;/li>\n                &lt;li>Web conferencing&lt;/li>\n              &lt;/ul>\n            &lt;/li>\n            &lt;li>All industries and solutions&lt;/li>\n          &lt;/ul>\n        &lt;/li>\n      &lt;/ul>\n    &lt;/JqxTree>\n    &lt;jqxButton :width=\"150\" @click=\"expand()\">Expand 'Solutions'&lt;/jqxButton>\n    &lt;jqxButton :width=\"150\" @click=\"collapse()\">Collapse 'Solutions'&lt;/jqxButton>\n  &lt;/div>\n&lt;/template>\n\n&lt;script>\n  import JqxTree from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxtree.vue';\n  import JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\n\n  export default {\n    components: {\n      JqxTree,\n      JqxButton\n    },\n    methods: {\n      expand: function () {\n        let item = this.$refs.solutions;\n        this.$refs.myTree.expandItem(item);\n      },\n      collapse: function () {\n        let item = this.$refs.solutions;\n        this.$refs.myTree.collapseItem(item);\n      }\n    }\n  }\n&lt;/script>\n&lt;style>\n  .jqx-button {\n    display: inline-block;\n    margin-top: 20px;\n    margin-right: 50px;\n  }\n&lt;/style>"
+            }
+        },
+        {
+            "name": "focus",
+            "description": "<P>Sets the focus to the widget. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/4a7jG/",
+            "exampleDescription": "focuses the jqxTree.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "getCheckedItems",
+            "description": "<P>Gets an array with all checked tree items.</P>\n<UL><LI>label - gets item's label. \r\n<LI>value - gets the item's value. \r\n<LI>disabled - gets whether the item is enabled/disabled. \r\n<LI>checked - gets whether the item is checked/unchecked. \r\n<LI>element - gets the item's LI tag. \r\n<LI>parentElement - gets the item's parent LI tag. \r\n<LI>isExpanded - gets whether the item is expanded or collapsed. \r\n<LI>selected - gets whether the item is selected or not. </LI></UL>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/tEDgb/",
+            "exampleDescription": "Invoke the getCheckedItems method of the jqxTree.",
+            "returnDataType": "Array",
+            "ts_returnDataType": "Array<TreeItem>",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;JqxTree ref=\"myTree\"\n       :width=\"400\" :checkboxes=\"true\">\n    &lt;ul>\n      &lt;li item-selected='true'>Home&lt;/li>\n      &lt;li item-expanded='true'>\n        Solutions\n        &lt;ul>\n          &lt;li ref=\"education\">Education&lt;/li>\n          &lt;li>Financial services&lt;/li>\n          &lt;li>Government&lt;/li>\n          &lt;li>Manufacturing&lt;/li>\n          &lt;li>\n            Solutions\n            &lt;ul>\n              &lt;li>Consumer photo and video&lt;/li>\n              &lt;li>Mobile&lt;/li>\n              &lt;li>Rich Internet applications&lt;/li>\n              &lt;li>Technical communication&lt;/li>\n              &lt;li>Training and eLearning&lt;/li>\n              &lt;li>Web conferencing&lt;/li>\n            &lt;/ul>\n          &lt;/li>\n          &lt;li>All industries and solutions&lt;/li>\n        &lt;/ul>\n      &lt;/li>\n    &lt;/ul>\n  &lt;/JqxTree>\n&lt;/template>\n&lt;script>\n  import JqxTree from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxtree.vue';\n  export default {\n    components: {\n      JqxTree\n    },\n    mounted: function () {\n      let item = this.$refs.education;\n      this.$refs.myTree.checkItem(item, true);\n      let items = this.$refs.myTree.getCheckedItems();\n    }\n  }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "getUncheckedItems",
+            "description": "<P>Gets an array with all unchecked tree items.</P>\n<UL><LI>label - gets item's label. \r\n<LI>value - gets the item's value. \r\n<LI>disabled - gets whether the item is enabled/disabled. \r\n<LI>checked - gets whether the item is checked/unchecked. \r\n<LI>element - gets the item's LI tag. \r\n<LI>parentElement - gets the item's parent LI tag. \r\n<LI>isExpanded - gets whether the item is expanded or collapsed. \r\n<LI>selected - gets whether the item is selected or not. </LI></UL>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/6pC5L/",
+            "exampleDescription": "Invoke the getUncheckedItems method of the jqxTree.",
+            "returnDataType": "Array",
+            "ts_returnDataType": "Array<TreeItem>",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;JqxTree ref=\"myTree\"\n       :width=\"400\" :checkboxes=\"true\">\n    &lt;ul>\n      &lt;li item-selected='true'>Home&lt;/li>\n      &lt;li item-expanded='true'>\n        Solutions\n        &lt;ul>\n          &lt;li ref=\"education\">Education&lt;/li>\n          &lt;li>Financial services&lt;/li>\n          &lt;li>Government&lt;/li>\n          &lt;li>Manufacturing&lt;/li>\n          &lt;li>\n            Solutions\n            &lt;ul>\n              &lt;li>Consumer photo and video&lt;/li>\n              &lt;li>Mobile&lt;/li>\n              &lt;li>Rich Internet applications&lt;/li>\n              &lt;li>Technical communication&lt;/li>\n              &lt;li>Training and eLearning&lt;/li>\n              &lt;li>Web conferencing&lt;/li>\n            &lt;/ul>\n          &lt;/li>\n          &lt;li>All industries and solutions&lt;/li>\n        &lt;/ul>\n      &lt;/li>\n    &lt;/ul>\n  &lt;/JqxTree>\n&lt;/template>\n&lt;script>\n  import JqxTree from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxtree.vue';\n  export default {\n    components: {\n      JqxTree\n    },\n    mounted: function () {\n      let item = this.$refs.education;\n      this.$refs.myTree.checkItem(item, true);\n      let items = this.$refs.myTree.getUncheckedItems();\n    }\n  }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "getItems",
+            "description": "<P>Gets an array with all tree items.</P>\n<UL><LI>label - gets item's label. \r\n<LI>value - gets the item's value. \r\n<LI>disabled - gets whether the item is enabled/disabled. \r\n<LI>checked - gets whether the item is checked/unchecked. \r\n<LI>element - gets the item's LI tag. \r\n<LI>parentElement - gets the item's parent LI tag. \r\n<LI>isExpanded - gets whether the item is expanded or collapsed. \r\n<LI>selected - gets whether the item is selected or not. </LI></UL>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/W4NZw/",
+            "exampleDescription": "Invoke the getItems method of the jqxTree.",
+            "returnDataType": "Array",
+            "ts_returnDataType": "Array<TreeItem>",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "getItem",
+            "description": "<P>Gets the tree item associated to a LI tag passed as parameter. The returned value is an object.</P>\n<UL><LI>label - gets item's label. \r\n<LI>value - gets the item's value. \r\n<LI>disabled - gets whether the item is enabled/disabled. \r\n<LI>checked - gets whether the item is checked/unchecked. \r\n<LI>element - gets the item's LI tag. \r\n<LI>parentElement - gets the item's parent LI tag. \r\n<LI>isExpanded - gets whether the item is expanded or collapsed. \r\n<LI>selected - gets whether the item is selected or not. </LI></UL>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/4ssYx/",
+            "exampleDescription": "Invoke the getItem method of the jqxTree.",
+            "returnDataType": "object",
+            "ts_returnDataType": "TreeItem",
+            "arguments": [
+                {
+                    "name": "element",
+                    "dataType": "string",
+                    "ts_dataType": "any",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;JqxTree ref=\"myTree\"\n       :width=\"400\">\n    &lt;ul>\n      &lt;li item-selected='true'>Home&lt;/li>\n      &lt;li item-expanded='true'>\n        Solutions\n        &lt;ul>\n          &lt;li>Education&lt;/li>\n          &lt;li>Financial services&lt;/li>\n          &lt;li ref=\"government\">Government&lt;/li>\n          &lt;li>Manufacturing&lt;/li>\n          &lt;li>\n            Solutions\n            &lt;ul>\n              &lt;li>Consumer photo and video&lt;/li>\n              &lt;li>Mobile&lt;/li>\n              &lt;li>Rich Internet applications&lt;/li>\n              &lt;li>Technical communication&lt;/li>\n              &lt;li>Training and eLearning&lt;/li>\n              &lt;li>Web conferencing&lt;/li>\n            &lt;/ul>\n          &lt;/li>\n          &lt;li>All industries and solutions&lt;/li>\n        &lt;/ul>\n      &lt;/li>\n    &lt;/ul>\n  &lt;/JqxTree>\n&lt;/template>\n\n&lt;script>\n  import JqxTree from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxtree.vue';\n\n  export default {\n    components: {\n      JqxTree\n    },\n    mounted: function () {\n      let ref = this.$refs.government;\n      let item = this.$refs.myTree.getItem(ref);\n      alert(item.label);\n    }\n  }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "getSelectedItem",
+            "description": "<P>Gets the selected tree item.</P>\n<UL><LI>label - gets item's label. \r\n<LI>value - gets the item's value. \r\n<LI>disabled - gets whether the item is enabled/disabled. \r\n<LI>checked - gets whether the item is checked/unchecked. \r\n<LI>element - gets the item's LI tag. \r\n<LI>parentElement - gets the item's parent LI tag. \r\n<LI>isExpanded - gets whether the item is expanded or collapsed. \r\n<LI>selected - gets whether the item is selected or not. </LI></UL>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/BQ7a6/",
+            "exampleDescription": "Invoke the getSelectedItem method of the jqxTree.",
+            "returnDataType": "object",
+            "ts_returnDataType": "TreeItem",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "getPrevItem",
+            "description": "<P>Gets the item above another item. The returned value is an object.</P>\n<UL><LI>label - gets item's label. \r\n<LI>value - gets the item's value. \r\n<LI>disabled - gets whether the item is enabled/disabled. \r\n<LI>checked - gets whether the item is checked/unchecked. \r\n<LI>element - gets the item's LI tag. \r\n<LI>parentElement - gets the item's parent LI tag. \r\n<LI>isExpanded - gets whether the item is expanded or collapsed. \r\n<LI>selected - gets whether the item is selected or not. </LI></UL>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/6L43j/",
+            "exampleDescription": "Invoke the getPrevItem method of the jqxTree.",
+            "returnDataType": "object",
+            "ts_returnDataType": "TreeItem",
+            "arguments": [
+                {
+                    "name": "item",
+                    "dataType": "object",
+                    "ts_dataType": "any",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n    &lt;JqxTree ref=\"myTree\"\n             :width=\"400\">\n        &lt;ul>\n            &lt;li>Home&lt;/li>\n            &lt;li item-expanded='true'>\n                Solutions\n                &lt;ul>\n                    &lt;li>Education&lt;/li>\n                    &lt;li>Financial services&lt;/li>\n                    &lt;li item-selected='true'>Government&lt;/li>\n                    &lt;li>Manufacturing&lt;/li>\n                    &lt;li>\n                        Solutions\n                        &lt;ul>\n                            &lt;li>Consumer photo and video&lt;/li>\n                            &lt;li>Mobile&lt;/li>\n                            &lt;li>Rich Internet applications&lt;/li>\n                            &lt;li>Technical communication&lt;/li>\n                            &lt;li>Training and eLearning&lt;/li>\n                            &lt;li>Web conferencing&lt;/li>\n                        &lt;/ul>\n                    &lt;/li>\n                    &lt;li>All industries and solutions&lt;/li>\n                &lt;/ul>\n            &lt;/li>\n        &lt;/ul>\n    &lt;/JqxTree>\n&lt;/template>\n\n&lt;script>\n    import JqxTree from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxtree.vue';\n\n    export default {\n        components: {\n            JqxTree\n        },\n        mounted: function () {\n            const selectedItem = this.$refs.myTree.getSelectedItem();\n            const value = this.$refs.myTree.getPrevItem(selectedItem);\n        }\n    }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "getNextItem",
+            "description": "<P>Gets the item below another item. The returned value is an object.</P>\n<UL><LI>label - gets item's label. \r\n<LI>value - gets the item's value. \r\n<LI>disabled - gets whether the item is enabled/disabled. \r\n<LI>checked - gets whether the item is checked/unchecked. \r\n<LI>element - gets the item's LI tag. \r\n<LI>parentElement - gets the item's parent LI tag. \r\n<LI>isExpanded - gets whether the item is expanded or collapsed. \r\n<LI>selected - gets whether the item is selected or not. </LI></UL>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/zHr3E/",
+            "exampleDescription": "Invoke the getNextItem method of the jqxTree.",
+            "returnDataType": "object",
+            "ts_returnDataType": "TreeItem",
+            "arguments": [
+                {
+                    "name": "item",
+                    "dataType": "object",
+                    "ts_dataType": "any",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n    &lt;JqxTree ref=\"myTree\"\n             :width=\"400\">\n        &lt;ul>\n            &lt;li>Home&lt;/li>\n            &lt;li item-expanded='true'>\n                Solutions\n                &lt;ul>\n                    &lt;li>Education&lt;/li>\n                    &lt;li>Financial services&lt;/li>\n                    &lt;li item-selected='true'>Government&lt;/li>\n                    &lt;li>Manufacturing&lt;/li>\n                    &lt;li>\n                        Solutions\n                        &lt;ul>\n                            &lt;li>Consumer photo and video&lt;/li>\n                            &lt;li>Mobile&lt;/li>\n                            &lt;li>Rich Internet applications&lt;/li>\n                            &lt;li>Technical communication&lt;/li>\n                            &lt;li>Training and eLearning&lt;/li>\n                            &lt;li>Web conferencing&lt;/li>\n                        &lt;/ul>\n                    &lt;/li>\n                    &lt;li>All industries and solutions&lt;/li>\n                &lt;/ul>\n            &lt;/li>\n        &lt;/ul>\n    &lt;/JqxTree>\n&lt;/template>\n\n&lt;script>\n    import JqxTree from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxtree.vue';\n\n    export default {\n        components: {\n            JqxTree\n        },\n        mounted: function () {\n            const selectedItem = this.$refs.myTree.getSelectedItem();\n            const value = this.$refs.myTree.getNextItem(selectedItem);\n        }\n    }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "hitTest",
+            "description": "<P>Gets an item at specific position. The method expects 2 parameters - left and top. The coordinates are relative to the document.</P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/8KQpc/",
+            "exampleDescription": "Invoke the hitTest method of the jqxTree.",
+            "returnDataType": "object",
+            "ts_returnDataType": "any",
+            "arguments": [
+                {
+                    "name": "left",
+                    "dataType": "number",
+                    "description": "",
+                    "optional": false
+                },
+                {
+                    "name": "top",
+                    "dataType": "number",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "100", "100" ]
+            }
+        },
+        {
+            "name": "removeItem",
+            "description": "<P>Removes an item.</P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/Jbeeu/",
+            "exampleDescription": "removes an item in the jqxTree.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "item",
+                    "dataType": "object",
+                    "ts_dataType": "any",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;JqxTree ref=\"myTree\"\n       :width=\"400\">\n    &lt;ul>\n      &lt;li item-selected='true'>Home&lt;/li>\n      &lt;li item-expanded='true'>\n        Solutions\n        &lt;ul>\n          &lt;li>Education&lt;/li>\n          &lt;li>Financial services&lt;/li>\n          &lt;li ref=\"government\">Government&lt;/li>\n          &lt;li>Manufacturing&lt;/li>\n          &lt;li>\n            Solutions\n            &lt;ul>\n              &lt;li>Consumer photo and video&lt;/li>\n              &lt;li>Mobile&lt;/li>\n              &lt;li>Rich Internet applications&lt;/li>\n              &lt;li>Technical communication&lt;/li>\n              &lt;li>Training and eLearning&lt;/li>\n              &lt;li>Web conferencing&lt;/li>\n            &lt;/ul>\n          &lt;/li>\n          &lt;li>All industries and solutions&lt;/li>\n        &lt;/ul>\n      &lt;/li>\n    &lt;/ul>\n  &lt;/JqxTree>\n&lt;/template>\n\n&lt;script>\n  import JqxTree from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxtree.vue';\n\n  export default {\n    components: {\n      JqxTree\n    },\n    mounted: function () {\n      let item = this.$refs.government;\n      this.$refs.myTree.removeItem(item);\n    }\n  }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "render",
+            "description": "<P>Renders the jqxTree widget.</P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/rUL6y/",
+            "exampleDescription": "renders the jqxTree.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "refresh",
+            "description": "<P>Refreshes the jqxTree widget. The refresh method will update the jqxTree's layout and size.</P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/hM9mL/",
+            "exampleDescription": "refresh the jqxTree.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "selectItem",
+            "description": "<P>Selects an item.</P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/yWBZJ/",
+            "exampleDescription": "selects item in the jqxTree.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "item",
+                    "dataType": "object",
+                    "ts_dataType": "any",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;JqxTree ref=\"myTree\"\n       :width=\"400\">\n    &lt;ul>\n      &lt;li item-selected='true'>Home&lt;/li>\n      &lt;li item-expanded='true'>\n        Solutions\n        &lt;ul>\n          &lt;li>Education&lt;/li>\n          &lt;li>Financial services&lt;/li>\n          &lt;li ref=\"government\">Government&lt;/li>\n          &lt;li>Manufacturing&lt;/li>\n          &lt;li>\n            Solutions\n            &lt;ul>\n              &lt;li>Consumer photo and video&lt;/li>\n              &lt;li>Mobile&lt;/li>\n              &lt;li>Rich Internet applications&lt;/li>\n              &lt;li>Technical communication&lt;/li>\n              &lt;li>Training and eLearning&lt;/li>\n              &lt;li>Web conferencing&lt;/li>\n            &lt;/ul>\n          &lt;/li>\n          &lt;li>All industries and solutions&lt;/li>\n        &lt;/ul>\n      &lt;/li>\n    &lt;/ul>\n  &lt;/JqxTree>\n&lt;/template>\n\n&lt;script>\n  import JqxTree from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxtree.vue';\n\n  export default {\n    components: {\n      JqxTree\n    },\n    mounted: function () {\n      let item = this.$refs.government;\n      this.$refs.myTree.selectItem(item);\n    }\n  }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "uncheckAll",
+            "description": "<P>Unchecks all tree items.</P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/6YMr8/",
+            "exampleDescription": "unchecks all items in the jqxTree.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;JqxTree ref=\"myTree\"\n         :width=\"400\" :checkboxes=\"true\">\n      &lt;ul>\n        &lt;li item-selected='true'>Home&lt;/li>\n        &lt;li ref=\"solutions\" item-expanded='true'>\n          Solutions\n          &lt;ul>\n            &lt;li>Education&lt;/li>\n            &lt;li>Financial services&lt;/li>\n            &lt;li>Government&lt;/li>\n            &lt;li>Manufacturing&lt;/li>\n            &lt;li>\n              Solutions\n              &lt;ul>\n                &lt;li>Consumer photo and video&lt;/li>\n                &lt;li>Mobile&lt;/li>\n                &lt;li>Rich Internet applications&lt;/li>\n                &lt;li>Technical communication&lt;/li>\n                &lt;li>Training and eLearning&lt;/li>\n                &lt;li>Web conferencing&lt;/li>\n              &lt;/ul>\n            &lt;/li>\n            &lt;li>All industries and solutions&lt;/li>\n          &lt;/ul>\n        &lt;/li>\n      &lt;/ul>\n    &lt;/JqxTree>\n    &lt;jqxButton :width=\"150\" @click=\"checkAll()\">Check All&lt;/jqxButton>\n    &lt;jqxButton :width=\"150\" @click=\"uncheckAll()\">Uncheck All&lt;/jqxButton>\n  &lt;/div>\n&lt;/template>\n&lt;script>\n  import JqxTree from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxtree.vue';\n  import JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\n  export default {\n    components: {\n      JqxTree,\n      JqxButton\n    },\n    methods: {\n      checkAll: function () {\n        this.$refs.myTree.checkAll();\n      },\n      uncheckAll: function () {\n        this.$refs.myTree.uncheckAll();\n      }\n    }\n  }\n&lt;/script>\n&lt;style>\n  .jqx-button {\n    display: inline-block;\n    margin-top: 20px;\n    margin-right: 50px;\n  }\n&lt;/style>"
+            }
+        },
+        {
+            "name": "uncheckItem",
+            "description": "<P>Unchecks a tree item.</P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/pD3by/",
+            "exampleDescription": "unchecks an item in the jqxTree.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "item",
+                    "dataType": "object",
+                    "ts_dataType": "any",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;JqxTree ref=\"myTree\"\n         :width=\"400\" :checkboxes=\"true\">\n      &lt;ul>\n        &lt;li item-selected='true'>Home&lt;/li>\n        &lt;li ref=\"solutions\" item-expanded='true'>\n          Solutions\n          &lt;ul>\n            &lt;li>Education&lt;/li>\n            &lt;li>Financial services&lt;/li>\n            &lt;li ref=\"government\">Government&lt;/li>\n            &lt;li>Manufacturing&lt;/li>\n            &lt;li>\n              Solutions\n              &lt;ul>\n                &lt;li>Consumer photo and video&lt;/li>\n                &lt;li>Mobile&lt;/li>\n                &lt;li>Rich Internet applications&lt;/li>\n                &lt;li>Technical communication&lt;/li>\n                &lt;li>Training and eLearning&lt;/li>\n                &lt;li>Web conferencing&lt;/li>\n              &lt;/ul>\n            &lt;/li>\n            &lt;li>All industries and solutions&lt;/li>\n          &lt;/ul>\n        &lt;/li>\n      &lt;/ul>\n    &lt;/JqxTree>\n    &lt;jqxButton :width=\"150\" @click=\"check()\">Check 'Government'&lt;/jqxButton>\n    &lt;jqxButton :width=\"150\" @click=\"uncheck()\">Uncheck 'Government'&lt;/jqxButton>\n  &lt;/div>\n&lt;/template>\n&lt;script>\n  import JqxTree from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxtree.vue';\n  import JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\n  export default {\n    components: {\n      JqxTree,\n      JqxButton\n    },\n    methods: {\n      check: function () {\n        let item = this.$refs.government;\n        this.$refs.myTree.checkItem(item);\n      },\n      uncheck: function () {\n        let item = this.$refs.government;\n        this.$refs.myTree.uncheckItem(item);\n      }\n    }\n  }\n&lt;/script>\n&lt;style>\n  .jqx-button {\n    display: inline-block;\n    margin-top: 20px;\n    margin-right: 50px;\n  }\n&lt;/style>"
+            }
+        },
+        {
+            "name": "updateItem",
+            "description": "<P>Updates an item.</P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/vDxbQ/",
+            "exampleDescription": "updates an item in the jqxTree.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "item",
+                    "dataType": "object",
+                    "ts_dataType": "any",
+                    "description": "",
+                    "optional": false
+                },
+                {
+                    "name": "newItem",
+                    "dataType": "object",
+                    "ts_dataType": "any",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;JqxTree ref=\"myTree\"\n       :width=\"400\">\n    &lt;ul>\n      &lt;li item-selected='true'>Home&lt;/li>\n      &lt;li item-expanded='true'>\n        Solutions\n        &lt;ul>\n          &lt;li>Education&lt;/li>\n          &lt;li>Financial services&lt;/li>\n          &lt;li>Government&lt;/li>\n          &lt;li>Manufacturing&lt;/li>\n          &lt;li>\n            Solutions\n            &lt;ul>\n              &lt;li>Consumer photo and video&lt;/li>\n              &lt;li>Mobile&lt;/li>\n              &lt;li>Rich Internet applications&lt;/li>\n              &lt;li>Technical communication&lt;/li>\n              &lt;li>Training and eLearning&lt;/li>\n              &lt;li>Web conferencing&lt;/li>\n            &lt;/ul>\n          &lt;/li>\n          &lt;li>All industries and solutions&lt;/li>\n        &lt;/ul>\n      &lt;/li>\n    &lt;/ul>\n  &lt;/JqxTree>\n&lt;/template>\n\n&lt;script>\n  import JqxTree from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxtree.vue';\n\n  export default {\n    components: {\n      JqxTree\n    },\n    mounted: function () {\n      let items = this.$refs.myTree.getItems();\n      this.$refs.myTree.updateItem(items[0], { label: 'Updated Item' });\n    }\n  }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "val",
+            "description": "<P>Sets or gets the selected item. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/XGUrU/",
+            "exampleDescription": "Invoke the val method of the jqxTree.",
+            "returnDataType": "string",
+            "arguments": [
+                {
+                    "name": "value",
+                    "dataType": "string",
+                    "description": "",
+                    "optional": true
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;JqxTree ref=\"myTree\"\n       :width=\"400\">\n    &lt;ul>\n      &lt;li item-selected='true'>Home&lt;/li>\n      &lt;li item-expanded='true'>\n        Solutions\n        &lt;ul>\n          &lt;li>Education&lt;/li>\n          &lt;li>Financial services&lt;/li>\n          &lt;li>Government&lt;/li>\n          &lt;li>Manufacturing&lt;/li>\n          &lt;li>\n            Solutions\n            &lt;ul>\n              &lt;li>Consumer photo and video&lt;/li>\n              &lt;li>Mobile&lt;/li>\n              &lt;li>Rich Internet applications&lt;/li>\n              &lt;li>Technical communication&lt;/li>\n              &lt;li>Training and eLearning&lt;/li>\n              &lt;li>Web conferencing&lt;/li>\n            &lt;/ul>\n          &lt;/li>\n          &lt;li>All industries and solutions&lt;/li>\n        &lt;/ul>\n      &lt;/li>\n    &lt;/ul>\n  &lt;/JqxTree>\n&lt;/template>\n\n&lt;script>\n  import JqxTree from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxtree.vue';\n\n  export default {\n    components: {\n      JqxTree\n    },\n    mounted: function () {\n      let item = this.$refs.myTree.val();\n    }\n  }\n&lt;/script>"
+            }
+        }
+    ]
+}

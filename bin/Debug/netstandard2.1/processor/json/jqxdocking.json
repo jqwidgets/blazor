@@ -1,0 +1,766 @@
+{
+    "widget": {
+        "name": "jqxDocking",
+        "description": "Enables the user to add windows and change their layout.",
+        "angular2": {
+            "name": "jqxDockingComponent",
+            "selector": "jqxDocking"
+        }
+    },
+    "dataTypes": [
+        {
+            "name": "DockingMode",
+            "ts_dataType": "enum",
+            "enumOptions": [ "default", "docked", "floating" ]
+        },
+        {
+            "name": "DockingOrientation",
+            "ts_dataType": "enum",
+            "enumOptions": [ "horizontal", "vertical" ]
+        },
+        {
+            "name": "DockingCookieOptions",
+            "ts_dataType": "interface",
+            "properties": [
+                {
+                    "name": "domain",
+                    "dataType": "string",
+                    "optional": "true",
+                    "displayName": "Domain",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "expires",
+                    "dataType": "number",
+                    "optional": "true",
+                    "displayName": "Expires",
+                    "defaultValue": ""
+                }
+            ]
+        }
+    ],
+    "exampleExtraTemplate": "<div>\n      <div id=\"window1\">\n        <div>Header 1...</div>\n        <div>Content 1...</div>\n      </div>\n      <div id=\"window2\">\n        <div>Header 2...</div>\n        <div>Content 2...</div>\n      </div>\n      <div>\n        <div>Header 3...</div>\n        <div>Content 3...</div>\n      </div>\n    </div>",
+    "properties": [
+        {
+            "name": "cookies",
+            "defaultValue": "false",
+            "description": "<P>Enables or disables the cookies. If the cookies are enabled then the docking layout is going to be saved and kept every time the page is being reloaded. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>cookies</CODE> property. </P>\n<PRE><CODE>$('#jqxDocking').jqxDocking({ cookies: true }); </CODE></PRE>\n\r\n<P>Get the <CODE>cookies</CODE> property. </P>\n<PRE><CODE>var cookies = $('#jqxDocking').jqxDocking('cookies');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/3vrBE/",
+            "exampleDescription": "cookies is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "cookies": "true"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "cookieOptions",
+            "defaultValue": "{}",
+            "description": "<P>Sets or gets the cookie options. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>cookieOptions</CODE> property. </P>\n<PRE><CODE>$('#jqxDocking').jqxDocking({ cookieOptions: { domain: 'jqwidgets.com', expires: 90 } }); </CODE></PRE>\n\r\n<P>Get the <CODE>cookieOptions</CODE> property. </P>\n<PRE><CODE>var cookieOptions = $('#jqxDocking').jqxDocking('cookieOptions');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/L8bPv/",
+            "exampleDescription": "cookieOptions is set to { domain: 'jqwidgets.com', expires: 90 }",
+            "dataType": "object",
+            "ts_dataType": "DockingCookieOptions",
+            "exampleInit": {
+                "cookies": "true",
+                "cookieOptions": "{ domain: 'jqwidgets.com', expires: 90 }"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "disabled",
+            "defaultValue": "false",
+            "description": "<P>Sets or gets whether the docking is disabled. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>disabled</CODE> property. </P>\n<PRE><CODE>$('#jqxDocking').jqxDocking({ disabled:true }); </CODE></PRE>\n\r\n<P>Get the <CODE>disabled</CODE> property. </P>\n<PRE><CODE>var disabled = $('#jqxDocking').jqxDocking('disabled');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/VtAwX/",
+            "exampleDescription": "disabled is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "disabled": "true"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "floatingWindowOpacity",
+            "defaultValue": "0.3",
+            "description": "<P>Sets or gets the opacity of the window which is currently dragged by the user. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>floatingWindowOpacity</CODE> property. </P>\n<PRE><CODE>$('#jqxDocking').jqxDocking({ floatingWindowOpacity: 0.5 }); </CODE></PRE>\n\r\n<P>Get the <CODE>floatingWindowOpacity</CODE> property. </P>\n<PRE><CODE>var floatingWindowOpacity = $('#jqxDocking').jqxDocking('floatingWindowOpacity');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/X4kkS/",
+            "exampleDescription": "floatingWindowOpacity is set to 0.5",
+            "dataType": "number",
+            "exampleInit": {
+                "floatingWindowOpacity": "0.4"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "height",
+            "defaultValue": "auto",
+            "description": "<P>Sets or gets the docking's height. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>height</CODE> property. </P>\n<PRE><CODE>$('#jqxDocking').jqxDocking({height:\"400px\"});</CODE></PRE>\n\r\n<P>Get the <CODE>height</CODE> property. </P>\n<PRE><CODE>var height = $('#jqxDocking').jqxDocking('height');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/payAV/",
+            "exampleDescription": "height is set to 300",
+            "dataType": "number",
+            "ts_dataType": "number | string",
+            "exampleInit": {
+                "height": "300"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "keyboardNavigation",
+            "defaultValue": "false",
+            "description": "<P>Enables or disables the jqxDocking's keyboard navigation. </P>",
+            "example": "<pre><CODE>$('#jqxDocking').jqxDocking({keyboardNavigation: true}); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/2907vLe5/",
+            "exampleDescription": "keyboardNavigation is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "keyboardNavigation": "true"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "mode",
+            "defaultValue": "default",
+            "description": "<P>Sets or gets docking's mode. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'default'-the user can  drop every window inside any docking panel or outside the docking panels</CODE></PRE>\n<PRE><CODE>'docked'-the user can drop every window just into the docking panels</CODE></PRE>\n<PRE><CODE>'floating'-the user can drop any window just outside of the docking panels.</CODE></PRE>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>mode</CODE> property. </P>\n<PRE><CODE>$('#jqxDocking').jqxDocking({ mode: 'docked' }); </CODE></PRE>\n\r\n<P>Get the <CODE>mode</CODE> property. </P>\n<PRE><CODE>var mode = $('#jqxDocking').jqxDocking('mode');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/YA9Kt/",
+            "exampleDescription": "mode is set to 'docked'",
+            "dataType": "string",
+            "ts_dataType": "enum:DockingMode",
+            "exampleInit": {
+                "mode": "docked",
+                "width": "200"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "orientation",
+            "defaultValue": "horizontal",
+            "description": "<P>Sets or gets docking's orientation. This property is setting whether the panels are going to be side by side or below each other. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>orientation</CODE> property. </P>\n<PRE><CODE>$('#jqxDocking').jqxDocking({ orientation: 'vertical' }); </CODE></PRE>\n\r\n<P>Get the <CODE>vertical</CODE> property. </P>\n<PRE><CODE>var vertical = $('#jqxDocking').jqxDocking('vertical');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/qT5JD/",
+            "exampleDescription": "orientation is set to 'vertical'",
+            "dataType": "string",
+            "ts_dataType": "enum:DockingOrientation",
+            "exampleInit": {
+                "orientation": "horizontal"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "rtl",
+            "defaultValue": "false",
+            "description": "<P>Sets ot gets a value indicating whether widget's elements are aligned to support locales using right-to-left fonts.</P>",
+            "example": "<pre><CODE>$('#jqxDocking').jqxDocking({rtl : true}); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/egf6b/",
+            "exampleDescription": "rtl is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "rtl": "true"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "theme",
+            "defaultValue": "''",
+            "description": "<P>Sets the widget's theme. </P>\n\r\n<UL><LI>Include the theme's CSS file after jqx.base.css.<BR>The following code example adds the 'material' theme. <PRE><CODE>\r\n<PRE><CODE>&lt;link rel=\"stylesheet\" href=\"../../jqwidgets/styles/jqx.base.css\" type=\"text/css\" /&gt;\r\n&lt;link rel=\"stylesheet\" href=\"../../jqwidgets/styles/jqx.material.css\" type=\"text/css\" /&gt;\r\n</CODE></PRE>\r\n</CODE></PRE>\r\n<LI>Set the widget's theme property to 'material' when you initialize it. </LI></UL>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/8zvUD/",
+            "exampleDescription": "theme is set to 'material'",
+            "dataType": "string",
+            "exampleInit": {
+                "theme": "material"
+            }
+        },
+        {
+            "name": "width",
+            "defaultValue": "auto",
+            "description": "<P>Sets or gets the docking's width. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>width</CODE> property. </P>\n<PRE><CODE>$('#jqxDocking').jqxDocking({width:\"200px\"});</CODE></PRE>\n\r\n<P>Get the <CODE>width</CODE> property. </P>\n<PRE><CODE>var width = $('#jqxDocking').jqxDocking('width');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/Zvrnq/",
+            "exampleDescription": "width is set to 300",
+            "dataType": "number",
+            "ts_dataType": "number | string",
+            "exampleInit": {
+                "width": "300"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        },
+        {
+            "name": "windowsMode",
+            "defaultValue": "null",
+            "description": "<P>Sets ot gets specific mode for each window. The value of the property is object with keys - window's ids and values - specific modes. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>windowsMode</CODE> property. </P>\n<PRE><CODE>$('#jqxDocking').jqxDocking({ windowsMode: { 'window0': 'default', 'window1': 'docked' } }); </CODE></PRE>\n\r\n<P>Get the <CODE>windowsMode</CODE> property. </P>\n<PRE><CODE>var windowsMode = $('#jqxDocking').jqxDocking('windowsMode');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/7XmRZ/",
+            "exampleDescription": "windowsMode is set to windowsMode: { 'window0': 'floating', 'window1': 'docked' }",
+            "dataType": "object",
+            "ts_dataType": "object",
+            "exampleInit": {
+                "windowsMode": "'{ 'window0': 'floating', 'window1': 'docked' }'"
+            },
+            "customExample": {
+                "codeType": "get",
+                "code": "&lt;template>\n  &lt;JqxDocking ref=\"myDocking\"\n    :width=\"400\"\n    :windowsMode=\"windowsMode\">\n    &lt;div>\n      &lt;div id=\"window1\">\n        &lt;div>Header 1...&lt;/div>\n        &lt;div>Content 1...&lt;/div>\n      &lt;/div>\n      &lt;div id=\"window2\">\n        &lt;div>Header 2...&lt;/div>\n        &lt;div>Content 2...&lt;/div>\n      &lt;/div>\n    &lt;/div>\n  &lt;/JqxDocking>\n&lt;/template>\n \n&lt;script>\n  import JqxDocking from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxdocking.vue';\n \n  export default {\n    components: {\n      JqxDocking\n    },\n    data: function () {\n        return {\n            windowsMode: { 'window1': 'floating', 'window2': 'docked' }\n        }\n    }\n  }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "windowsOffset",
+            "defaultValue": "5",
+            "description": "<P>Sets or gets the offset between the windows. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>windowsOffset</CODE> property. </P>\n<PRE><CODE>$('#jqxDocking').jqxDocking({ windowsOffset: 3 }); </CODE></PRE>\n\r\n<P>Get the <CODE>windowsOffset</CODE> property. </P>\n<PRE><CODE>var windowsOffset = $('#jqxDocking').jqxDocking('windowsOffset');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/CS4yY/",
+            "exampleDescription": "windowsOffset is set to 7",
+            "dataType": "number",
+            "exampleInit": {
+                "windowsOffset": "7"
+            },
+            "customExample": {
+                "codeType": "get"
+            }
+        }
+    ],
+    "events": [
+        {
+            "name": "dragStart",
+            "description": "<P>This event is triggered when the user start to drag any window. </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>dragStart</CODE> event by type: jqxDocking. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/fhxb9/",
+            "exampleDescription": "Bind to the dragStart event by type:jqxDocking",
+            "example": "<PRE><CODE>$('#jqxDocking').on('dragStart', function (event) { // Some code here. }); </CODE></PRE>"
+        },
+        {
+            "name": "dragEnd",
+            "description": "<P>This event is triggered when the user drop any window. </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>dragEnd</CODE> event by type: jqxDocking. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/tWTk4/",
+            "exampleDescription": "Bind to the dragEnd event by type:jqxDocking",
+            "example": "<PRE><CODE>$('#jqxDocking').on('dragEnd', function (event) { // Some code here. }); </CODE></PRE>"
+        }
+    ],
+    "methods": [
+        {
+            "name": "addWindow",
+            "description": "<P>Adding new window to the docking. This method accepts four arguments. The first one is id of the window we wish to add to the docking. The second argument is window's mode (default, docked, floating) the third argument is the panel's number and the last one is the position into the panel. The last three arguments are optional. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/HpawJ/",
+            "exampleDescription": "adds a new window",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "windowId",
+                    "dataType": "string",
+                    "description": "window's id",
+                    "optional": false
+                },
+                {
+                    "name": "mode",
+                    "dataType": "string",
+                    "description": "window's mode - 'default' or 'float'",
+                    "ts_dataType": "any",
+                    "optional": false
+                },
+                {
+                    "name": "panel",
+                    "dataType": "number",
+                    "description": "panel's index",
+                    "optional": false
+                },
+                {
+                    "name": "position",
+                    "dataType": "number",
+                    "ts_dataType": "any",
+                    "description": "window's index",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n&lt;div>\n    &lt;JqxButton @click=\"onClick($event)\" :width=\"60\" :height=\"18\">Click&lt;/JqxButton>\n      &lt;br/>\n    &lt;JqxDocking ref=\"myDocking\"\n    >\n      &lt;div>\n        &lt;div id=\"window1\">\n          &lt;div>Header 1&lt;/div>\n          &lt;div>Content 1&lt;/div>\n        &lt;/div>\n        &lt;div id=\"window2\">\n          &lt;div>Header 2&lt;/div>\n          &lt;div>Content 2&lt;/div>\n        &lt;/div>\n        &lt;div id=\"window3\">\n          &lt;div>Header 3&lt;/div>\n          &lt;div>Content 3&lt;/div>\n        &lt;/div>\n      &lt;/div>\n      &lt;div>\n        &lt;div id=\"window4\">\n          &lt;div>Header 4&lt;/div>\n          &lt;div>Content 4&lt;/div>\n        &lt;/div>\n      &lt;/div>\n    &lt;/JqxDocking>\n  &lt;/div>\n&lt;/template>\n \n&lt;script>\n  import JqxDocking from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxdocking.vue';\n  import JqxButton from \"jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue\";\n\n  export default {\n    components: {\n      JqxDocking,\n      JqxButton\n    },\n    methods: {\n      onClick() {\n        this.$refs.myDocking.addWindow('window3', 'default', 1, 1);\n      }\n    }\n  }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "closeWindow",
+            "description": "<P>Closing specific window.</P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/3MC4W/",
+            "exampleDescription": "closes a window",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "windowId",
+                    "dataType": "string",
+                    "description": "window's id",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "'window1'" ]
+            }
+        },
+        {
+            "name": "collapseWindow",
+            "description": "<P>Collapsing a specific window.</P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/VcEtB/",
+            "exampleDescription": "the first window is collapsed",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "windowId",
+                    "dataType": "string",
+                    "description": "window's id",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "'window1'" ]
+            }
+        },
+        {
+            "name": "destroy",
+            "description": "<P>Destroys the widget. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>destroy</CODE> method. </P>\n<PRE><CODE>$('#jqxDocking').jqxDocking('destroy'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/CRxaW/",
+            "exampleDescription": "destroys the jqxDocking",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "disableWindowResize",
+            "description": "<P>Disabling the resize of a specific window.</P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/sY7QA/",
+            "exampleDescription": "disables a window to resize",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "windowId",
+                    "dataType": "string",
+                    "description": "window's id",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "'window1'" ]
+            }
+        },
+        {
+            "name": "disable",
+            "description": "<P>Disabling the jqxDocking.</P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/8QmjP/",
+            "exampleDescription": "disables the jqxDocking",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "exportLayout",
+            "description": "<P>Exporting docking's layout into a JSON string.</P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/nQJ2X/",
+            "exampleDescription": "exports a layout out of the jqxDocking",
+            "returnDataType": "string",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;JqxButton @click=\"onClick($event)\" :width=\"60\" :height=\"18\">Click&lt;/JqxButton>\n      &lt;br/>\n    &lt;JqxDocking ref=\"myDocking\"\n    >\n      &lt;div>\n        &lt;div id=\"window1\" style=\"width: 340px;\">\n          &lt;div>Header 1&lt;/div>\n          &lt;div>Content 1&lt;/div>\n        &lt;/div>\n        &lt;div id=\"window2\" style=\"width: 340px;\">\n          &lt;div>Header 2&lt;/div>\n          &lt;div>Content 2&lt;/div>\n        &lt;/div>\n      &lt;/div>\n      &lt;div>\n        &lt;div id=\"window3\" style=\"width: 340px;\">\n          &lt;div>Header 3&lt;/div>\n          &lt;div>Content 3&lt;/div>\n        &lt;/div>\n        &lt;div id=\"window4\" style=\"width: 340px;\">\n          &lt;div>Header 4&lt;/div>\n          &lt;div>Content 4&lt;/div>\n        &lt;/div>\n      &lt;/div>\n    &lt;/JqxDocking>\n\n    &lt;div id=\"info\">&lt;/div>\n  &lt;/div>\n&lt;/template>\n \n&lt;script>\nimport JqxDocking from \"jqwidgets-scripts/jqwidgets-vue/vue_jqxdocking.vue\";\nimport JqxButton from \"jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue\";\n\nexport default {\n  components: {\n    JqxDocking,\n    JqxButton\n  },\n  methods: {\n    onClick() {      \n      let layout = this.$refs.myDocking.exportLayout();\n      document.getElementById('info').innerText = layout;\n    }\n  }\n};\n&lt;/script>"
+            }
+        },
+        {
+            "name": "enable",
+            "description": "<P>Enabling the docking</P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/DGKDj/",
+            "exampleDescription": "enables the jqxDocking",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;JqxButton @click=\"onClick($event)\" :width=\"60\" :height=\"18\">Click&lt;/JqxButton>\n      &lt;br/>\n    &lt;JqxDocking ref=\"myDocking\"\n      :disabled=\"true\"\n    >\n      &lt;div>\n        &lt;div id=\"window1\" style=\"width: 340px;\">\n          &lt;div>Header 1&lt;/div>\n          &lt;div>Content 1&lt;/div>\n        &lt;/div>\n        &lt;div id=\"window2\" style=\"width: 340px;\">\n          &lt;div>Header 2&lt;/div>\n          &lt;div>Content 2&lt;/div>\n        &lt;/div>\n      &lt;/div>\n    &lt;/JqxDocking>\n  &lt;/div>\n&lt;/template>\n \n&lt;script>\nimport JqxDocking from \"jqwidgets-scripts/jqwidgets-vue/vue_jqxdocking.vue\";\nimport JqxButton from \"jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue\";\n\nexport default {\n  components: {\n    JqxDocking,\n    JqxButton\n  },\n  methods: {\n    onClick() {      \n      this.$refs.myDocking.enable();\n    }\n  }\n};\n&lt;/script>"
+            }
+        },
+        {
+            "name": "expandWindow",
+            "description": "<P>Expanding a specific window.</P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/5HqkG/",
+            "exampleDescription": "the first window is expanded",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "windowId",
+                    "dataType": "string",
+                    "description": "window's id",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "'window1'" ]
+            },
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;JqxButton @click=\"onClick($event)\" :width=\"60\" :height=\"18\">Click&lt;/JqxButton>\n      &lt;br/>\n    &lt;JqxDocking ref=\"myDocking\"\n      :width=\"340\" :orientation=\"'horizontal'\"\n    >\n      &lt;div>\n        &lt;div id=\"window1\" style=\"width: 340px;\">\n          &lt;div>Header 1&lt;/div>\n          &lt;div>Content 1&lt;/div>\n        &lt;/div>\n        &lt;div id=\"window2\" style=\"width: 340px;\">\n          &lt;div>Header 2&lt;/div>\n          &lt;div>Content 2&lt;/div>\n        &lt;/div>\n      &lt;/div>\n    &lt;/JqxDocking>\n  &lt;/div>\n&lt;/template>\n \n&lt;script>\nimport JqxDocking from \"jqwidgets-scripts/jqwidgets-vue/vue_jqxdocking.vue\";\nimport JqxButton from \"jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue\";\n\nexport default {\n  components: {\n    JqxDocking,\n    JqxButton\n  },\n  mounted: function() {\n    this.$refs.myDocking.collapseWindow('window1');\n  },\n  methods: {\n    onClick() {      \n      this.$refs.myDocking.expandWindow('window1');\n    }\n  }\n};\n&lt;/script>"
+            }
+        },
+        {
+            "name": "enableWindowResize",
+            "description": "<P>Enabling the resize of a specific window which is not docked into a panel.</P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/ExSyh/",
+            "exampleDescription": "enables a window to resize",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "windowId",
+                    "dataType": "string",
+                    "description": "window's id",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "'window1'" ]
+            },
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;JqxButton @click=\"onClick($event)\" :width=\"60\" :height=\"18\">Click&lt;/JqxButton>\n      &lt;br/>\n    &lt;JqxDocking ref=\"myDocking\"\n      :width=\"340\" :orientation=\"'horizontal'\"\n      :windowsMode=\"windowsMode\"\n    >\n      &lt;div>\n        &lt;div ref=\"window1\" id=\"window1\" style=\"width: 340px;\">\n          &lt;div>Header 1&lt;/div>\n          &lt;div>You cannot resize that window.&lt;/div>\n        &lt;/div>\n        &lt;div id=\"window2\" style=\"width: 340px;\">\n          &lt;div>Header 2&lt;/div>\n          &lt;div>Content 2&lt;/div>\n        &lt;/div>\n      &lt;/div>\n    &lt;/JqxDocking>\n  &lt;/div>\n&lt;/template>\n \n&lt;script>\nimport JqxDocking from \"jqwidgets-scripts/jqwidgets-vue/vue_jqxdocking.vue\";\nimport JqxButton from \"jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue\";\n\nexport default {\n  components: {\n    JqxDocking,\n    JqxButton\n  },\n  data: function() {\n    return {\n      windowsMode: {\n        window1: \"floating\",\n        window2: \"docked\"\n      }\n    };\n  },\n  mounted: function() {\n    this.$refs.myDocking.disableWindowResize('window1');\n  },\n  methods: {\n    onClick() {      \n      this.$refs.myDocking.enableWindowResize('window1');\n      this.$refs.window1.children[0].children[1].innerText = \"You can resize that window\";\n    }\n  }\n};\n&lt;/script>"
+            }
+        },
+        {
+            "name": "focus",
+            "description": "<P>Focuses the widget. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>focus</CODE> method. </P>\n<PRE><CODE>$('#jqxDocking').jqxDocking('focus'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/2907vLe5/",
+            "exampleDescription": "Focuses the jqxDocking",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "hideAllCloseButtons",
+            "description": "<P>Hiding the close buttons of all windows.</P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/cgvTH/",
+            "exampleDescription": "hides all close buttons",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "hideAllCollapseButtons",
+            "description": "<P>Hiding the collapse buttons of all windows.</P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/Z5cAd/",
+            "exampleDescription": "hides all collapse buttons",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;JqxButton @click=\"onClick($event)\" :width=\"60\" :height=\"18\">Click&lt;/JqxButton>\n      &lt;br/>\n    &lt;JqxDocking ref=\"myDocking\"\n      :width=\"340\" :orientation=\"'horizontal'\"\n    >\n      &lt;div>\n        &lt;div id=\"window1\" style=\"width: 340px;\">\n          &lt;div>Header 1...&lt;/div>\n          &lt;div>Content 1...&lt;/div>\n        &lt;/div>\n        &lt;div id=\"window2\" style=\"width: 340px;\">\n          &lt;div>Header 2...&lt;/div>\n          &lt;div>Content 2...&lt;/div>\n        &lt;/div>\n      &lt;/div>\n    &lt;/JqxDocking>\n  &lt;/div>\n&lt;/template>\n \n&lt;script>\nimport JqxDocking from \"jqwidgets-scripts/jqwidgets-vue/vue_jqxdocking.vue\";\nimport JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\nexport default {\n  components: {\n    JqxDocking,\n    JqxButton\n  },\n  mounted: function() {\n    this.$refs.myDocking.showAllCollapseButtons();\n  },\n  methods: {\n    onClick() {\n      this.$refs.myDocking.hideAllCollapseButtons();\n    }\n  }\n};\n&lt;/script>"
+            }
+        },
+        {
+            "name": "hideCollapseButton",
+            "description": "<P>Hiding the collapse button of a specific window.</P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/Vhew8/",
+            "exampleDescription": "the collapse button of the firts window is hidden",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "windowId",
+                    "dataType": "string",
+                    "description": "window's id",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "'window1'" ]
+            },
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;JqxButton @click=\"onClick($event)\" :width=\"60\" :height=\"18\">Click&lt;/JqxButton>\n      &lt;br/>\n    &lt;JqxDocking ref=\"myDocking\"\n      :width=\"340\" :orientation=\"'horizontal'\"\n    >\n      &lt;div>\n        &lt;div id=\"window1\" style=\"width: 340px;\">\n          &lt;div>Header 1...&lt;/div>\n          &lt;div>Content 1...&lt;/div>\n        &lt;/div>\n        &lt;div id=\"window2\" style=\"width: 340px;\">\n          &lt;div>Header 2...&lt;/div>\n          &lt;div>Content 2...&lt;/div>\n        &lt;/div>\n      &lt;/div>\n    &lt;/JqxDocking>\n  &lt;/div>\n&lt;/template>\n \n&lt;script>\nimport JqxDocking from \"jqwidgets-scripts/jqwidgets-vue/vue_jqxdocking.vue\";\nimport JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\nexport default {\n  components: {\n    JqxDocking,\n    JqxButton\n  },\n  mounted: function() {\n    this.$refs.myDocking.showCollapseButton('window1');\n  },\n  methods: {\n    onClick() {\n      this.$refs.myDocking.hideCollapseButton('window1');\n    }\n  }\n};\n&lt;/script>"
+            }
+        },
+        {
+            "name": "hideCloseButton",
+            "description": "<P>Hiding the close button of a specific window.</P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/7FjkW/",
+            "exampleDescription": "the close button of the firts window is hidden",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "windowId",
+                    "dataType": "string",
+                    "description": "window's id",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "'window1'" ]
+            }
+        },
+        {
+            "name": "importLayout",
+            "description": "<P>Importing the docking layout from a JSON string.</P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/8ycmZ/",
+            "exampleDescription": "imports a layout in the jqxDocking",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "Json",
+                    "dataType": "string",
+                    "description": "The json string to import",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;JqxButton @click=\"onClick($event)\" :width=\"60\" :height=\"18\">Click&lt;/JqxButton>\n      &lt;br/>\n    &lt;JqxDocking ref=\"myDocking\"\n      :width=\"340\" :orientation=\"'horizontal'\"\n      :mode=\"'default'\" :windowsMode=\"windowsMode\"\n    >\n      &lt;div>\n        &lt;div id=\"window1\" style=\"width: 340px;\">\n          &lt;div>Header 1...&lt;/div>\n          &lt;div>Content 1...&lt;/div>\n        &lt;/div>\n        &lt;div id=\"window2\" style=\"width: 340px;\">\n          &lt;div>Header 2...&lt;/div>\n          &lt;div>Content 2...&lt;/div>\n        &lt;/div>\n      &lt;/div>\n    &lt;/JqxDocking>\n  &lt;/div>\n&lt;/template>\n \n&lt;script>\nimport JqxDocking from \"jqwidgets-scripts/jqwidgets-vue/vue_jqxdocking.vue\";\nimport JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\n\nexport default {\n  components: {\n    JqxDocking,\n    JqxButton\n  },\n  data: function () {\n      return {\n          windowsMode: { 'window1': 'floating', 'window2': 'docked' }\n      }\n  },\n  mounted: function() {\n    this.$refs.myDocking.move('window1', 100, 100);\n  },\n  methods: {\n    onClick() {\n      let layoutStructure = {\n        \"panel0\": {\n          \"window1\": {\n            \"collapsed\": true\n          }\n        },\n        \"panel1\": {\n          \"window2\": {\n            \"collapsed\": false\n          }\n        }\n      };\n      this.$refs.myDocking.importLayout(JSON.stringify(layoutStructure));\n    }\n  }\n};\n&lt;/script>"
+            }
+        },
+        {
+            "name": "move",
+            "description": "<P>Moving window to specific position into specific panel. This method have three parameters. The first one is id of the window we want to move, the second one is number of the panel where we want to move our window and the last one is the position into this panel. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/DtQpU/",
+            "exampleDescription": "moves a window in the jqxDocking",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "windowId",
+                    "dataType": "string",
+                    "description": "window's id",
+                    "optional": false
+                },
+                {
+                    "name": "panel",
+                    "dataType": "number",
+                    "description": "panel's index",
+                    "optional": false
+                },
+                {
+                    "name": "position",
+                    "dataType": "number",
+                    "description": "window's index in the panel",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;JqxDocking ref=\"myDocking\"\n    :width=\"340\" :windowsMode=\"windowsMode\"\n  >\n    &lt;div>\n      &lt;div id=\"window1\" style=\"width: 300px;\">\n        &lt;div>Header 1...&lt;/div>\n        &lt;div>Content 1...&lt;/div>\n      &lt;/div>\n      &lt;div id=\"window2\">\n        &lt;div>Header 2...&lt;/div>\n        &lt;div>Content 2...&lt;/div>\n      &lt;/div>\n    &lt;/div>\n  &lt;/JqxDocking>\n&lt;/template>\n \n&lt;script>\n  import JqxDocking from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxdocking.vue';\n \n  export default {\n    components: {\n      JqxDocking\n    },\n    data: function () {\n        return {\n            windowsMode: { 'window1': 'floating', 'window2': 'docked' }\n        }\n    },\n    mounted: function () {\n      this.$refs.myDocking.move('window1', 100, 100);\n    }\n  }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "pinWindow",
+            "description": "<P>Pinning a specific window</P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/K5ZCB/",
+            "exampleDescription": "pins a window",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "windowId",
+                    "dataType": "string",
+                    "description": "window's id",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "'window2'" ]
+            }
+        },
+        {
+            "name": "setWindowMode",
+            "description": "<P>Setting mode to a specific window. This method accepts two arguments - window id and mode type.</P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/e4Ff6/",
+            "exampleDescription": "sets the window's mode",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "windowId",
+                    "dataType": "string",
+                    "description": "window's id",
+                    "optional": false
+                },
+                {
+                    "name": "mode",
+                    "dataType": "string",
+                    "ts_dataType": "any",
+                    "description": "window's mode - 'default' or 'float'",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "'window2'", "'default'" ]
+            }
+        },
+        {
+            "name": "showCloseButton",
+            "description": "<P>Showing the close button of a specific window.</P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/kjzeU/",
+            "exampleDescription": "the close button of the firts window is shown",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "windowId",
+                    "dataType": "string",
+                    "description": "window's id",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "'window1'" ]
+            },
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;JqxButton @click=\"onClick($event)\" :width=\"60\" :height=\"18\">Click&lt;/JqxButton>\n      &lt;br/>\n    &lt;JqxDocking ref=\"myDocking\"\n    >\n      &lt;div>\n        &lt;div id=\"window1\">\n          &lt;div>Header 1...&lt;/div>\n          &lt;div>Content 1...&lt;/div>\n        &lt;/div>\n        &lt;div>\n          &lt;div>Header 2...&lt;/div>\n          &lt;div>Content 2...&lt;/div>\n        &lt;/div>\n      &lt;/div>\n    &lt;/JqxDocking>\n  &lt;/div>\n&lt;/template>\n \n&lt;script>\nimport JqxDocking from \"jqwidgets-scripts/jqwidgets-vue/vue_jqxdocking.vue\";\nimport JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\n\nexport default {\n  components: {\n    JqxDocking,\n    JqxButton\n  },\n  mounted: function() {\n    this.$refs.myDocking.hideAllCloseButtons();\n  },\n  methods: {\n    onClick() {\n      this.$refs.myDocking.showCloseButton(\"window1\");\n    }\n  }\n};\n&lt;/script>"
+            }
+        },
+        {
+            "name": "showCollapseButton",
+            "description": "<P>Showing the collapse button of a specific window.</P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/wxcvn/",
+            "exampleDescription": "the collapse button of the firts window is shown",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "windowId",
+                    "dataType": "string",
+                    "description": "window's id",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "'window1'" ]
+            },
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;JqxDocking ref=\"myDocking\"\n   >\n    &lt;div>\n      &lt;div id=\"window1\">\n        &lt;div>Header 1...&lt;/div>\n        &lt;div>Content 1...&lt;/div>\n      &lt;/div>\n      &lt;div>\n        &lt;div>Header 2...&lt;/div>\n        &lt;div>Content 2...&lt;/div>\n      &lt;/div>\n    &lt;/div>\n  &lt;/JqxDocking>\n&lt;/template>\n \n&lt;script>\n  import JqxDocking from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxdocking.vue';\n \n  export default {\n    components: {\n      JqxDocking\n    },\n    mounted: function () {\n      this.$refs.myDocking.showCollapseButton('window1');\n    }\n  }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "setWindowPosition",
+            "description": "<P>Moving window in floating mode to a specific position.</P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/yYMsC/",
+            "exampleDescription": "sets the possition of the window",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "windowId",
+                    "dataType": "string",
+                    "description": "window's id",
+                    "optional": false
+                },
+                {
+                    "name": "top",
+                    "dataType": "number",
+                    "ts_dataType": "any",
+                    "description": "",
+                    "optional": false
+                },
+                {
+                    "name": "left",
+                    "dataType": "number",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;JqxDocking ref=\"myDocking\"\n    :width=\"340\" :windowsMode=\"windowsMode\"\n  >\n    &lt;div>\n      &lt;div id=\"window1\" style=\"width: 300px;\">\n        &lt;div>Header 1...&lt;/div>\n        &lt;div>Content 1...&lt;/div>\n      &lt;/div>\n      &lt;div id=\"window2\">\n        &lt;div>Header 2...&lt;/div>\n        &lt;div>Content 2...&lt;/div>\n      &lt;/div>\n    &lt;/div>\n  &lt;/JqxDocking>\n&lt;/template>\n \n&lt;script>\n  import JqxDocking from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxdocking.vue';\n \n  export default {\n    components: {\n      JqxDocking\n    },\n    data: function () {\n        return {\n            windowsMode: { 'window1': 'floating', 'window2': 'docked' }\n        }\n    },\n    mounted: function () {\n      this.$refs.myDocking.setWindowPosition('window1', 170, 240);\n    }\n  }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "showAllCloseButtons",
+            "description": "<P>Showing the close buttons of all windows.</P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/NE2MB/",
+            "exampleDescription": "shows all close buttons",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;JqxButton @click=\"onClick($event)\" :width=\"60\" :height=\"18\">Click&lt;/JqxButton>\n    &lt;br/>\n    &lt;JqxDocking ref=\"myDocking\"\n    >\n      &lt;div>\n        &lt;div id=\"window1\">\n          &lt;div>Header 1...&lt;/div>\n          &lt;div>Content 1...&lt;/div>\n        &lt;/div>\n        &lt;div>\n          &lt;div>Header 2...&lt;/div>\n          &lt;div>Content 2...&lt;/div>\n        &lt;/div>\n      &lt;/div>\n    &lt;/JqxDocking>    \n  &lt;/div>\n&lt;/template>\n \n&lt;script>\n  import JqxDocking from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxdocking.vue';\n  import JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\n \n  export default {\n    components: {\n      JqxDocking,\n      JqxButton\n    },\n    mounted: function () {\n      this.$refs.myDocking.hideAllCloseButtons();\n    },\n    methods: {\n      onClick() {\n        this.$refs.myDocking.showAllCloseButtons();\n      }\n    }\n  }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "showAllCollapseButtons",
+            "description": "<P>Showing the collapse buttons of all windows.</P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/Kd9eZ/",
+            "exampleDescription": "shows all collapse buttons",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "unpinWindow",
+            "description": "<P>Unpinning a specific window</P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/rnP7w/",
+            "exampleDescription": "unpins a window",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "windowId",
+                    "dataType": "string",
+                    "description": "window's id",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;JqxButton @click=\"onClick($event)\" :width=\"60\" :height=\"20\">Unpin&lt;/JqxButton>\n    &lt;br/>\n    &lt;JqxDocking ref=\"myDocking\"\n    >\n      &lt;div>\n        &lt;div id=\"window1\">\n          &lt;div>Header 1...&lt;/div>\n          &lt;div>Content 1...&lt;/div>\n        &lt;/div>\n        &lt;div>\n          &lt;div>Header 2...&lt;/div>\n          &lt;div>Content 2...&lt;/div>\n        &lt;/div>\n      &lt;/div>\n    &lt;/JqxDocking>    \n  &lt;/div>\n&lt;/template>\n \n&lt;script>\n  import JqxDocking from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxdocking.vue';\n  import JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\n \n  export default {\n    components: {\n      JqxDocking,\n      JqxButton\n    },\n    mounted: function () {\n      this.$refs.myDocking.pinWindow('window1');\n    },\n    methods: {\n      onClick() {\n        this.$refs.myDocking.unpinWindow('window1');\n      }\n    }\n  }\n&lt;/script>"
+            }
+        }
+    ]
+}

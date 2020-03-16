@@ -1,0 +1,406 @@
+{
+    "widget": {
+        "name": "jqxTooltip",
+        "description": "Enables users to display a popup message. The tooltip can be used in combination with any html element.",
+        "angular2": {
+            "name": "jqxTooltipComponent",
+            "selector": "jqxTooltip"
+        }
+    },
+    "dataTypes": [
+        {
+            "name": "TooltipPosition",
+            "ts_dataType": "enum",
+            "enumOptions": [ "top", "bottom", "left", "right", "top-left", "bottom-left", "top-right", "bottom-right", "absolute", "mouse", "mouseenter", "default" ]
+        },
+        {
+            "name": "TooltipTrigger",
+            "ts_dataType": "enum",
+            "enumOptions": [ "hover", "click", "none" ]
+        }
+    ],
+    "exampleExtraTemplate": "<JqxButton :width=\"500\">Hover to see the tooltip</JqxButton>",
+    "exampleExtraImport": "jqxButton",
+    "exampleElementsInit": {
+        "selector": "container",
+        "content": "Tooltip",
+        "width": "220",
+        "position": "mouse"
+    },
+    "exampleInit": {
+        "content": "'This is a jqxButton'",
+        "position": "mouse"
+    },
+    "properties": [
+        {
+            "name": "absolutePositionX",
+            "defaultValue": "0",
+            "description": "<P>Sets or gets the tooltip's horizontal position if the position property is set to 'absolute'. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>absolutePositionX</CODE> property. </P>\n<PRE><CODE>$('#jqxTooltip').jqxTooltip({ absolutePositionX: 400 });</CODE></PRE>\n\r\n<P>Get the <CODE>absolutePositionX</CODE> property. </P>\n<PRE><CODE>var absolutePositionX = $('#jqxTooltip').jqxTooltip('absolutePositionX');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/HPUHy/",
+            "exampleDescription": "absolutePositionX is set to 10",
+            "dataType": "number",
+            "exampleInit": {
+                "position": "absolute",
+                "absolutePositionX": "20"
+            }
+        },
+        {
+            "name": "absolutePositionY",
+            "defaultValue": "0",
+            "description": "<P>Sets or gets the tooltip's vertical position if the position property is set to 'absolute'. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>absolutePositionY</CODE> property. </P>\n<PRE><CODE>$('#jqxTooltip').jqxTooltip({ absolutePositionY: 0 }); </CODE></PRE>\n\r\n<P>Get the <CODE>absolutePositionY</CODE> property. </P>\n<PRE><CODE>var absolutePositionY = $('#jqxTooltip').jqxTooltip('absolutePositionY');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/kamMQ/",
+            "exampleDescription": "absolutePositionY is set to 10",
+            "dataType": "number",
+            "exampleInit": {
+                "position": "absolute",
+                "absolutePositionY": "20"
+            }
+        },
+        {
+            "name": "autoHide",
+            "defaultValue": "true",
+            "description": "<P>Sets or gets whether the tooltip will automatically hide after duration equal to the autoHideDelay property. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>autoHide</CODE> property. </P>\n<PRE><CODE>$('#jqxTooltip').jqxTooltip({ autoHide: false });</CODE></PRE>\n\r\n<P>Get the <CODE>autoHide</CODE> property. </P>\n<PRE><CODE>var autoHide = $('#jqxTooltip').jqxTooltip('autoHide');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/kKkMj/",
+            "exampleDescription": "autoHide is set to false",
+            "dataType": "boolean",
+            "exampleInit": {
+                "position": "bottom",
+                "autoHide": "false"
+            }
+        },
+        {
+            "name": "autoHideDelay",
+            "defaultValue": "3000",
+            "description": "<P>Sets or gets the duration after which the tooltip automatically hides (works only if the autoHide property is set to true). If <CODE>autoHideDelay</CODE> is set to 0, the tooltip hides only after the mouse has left the parent element. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>autoHideDelay</CODE> property. </P>\n<PRE><CODE>$('#jqxTooltip').jqxTooltip({ autoHideDelay: 3000 });</CODE></PRE>\n\r\n<P>Get the <CODE>autoHideDelay</CODE> property. </P>\n<PRE><CODE>var autoHideDelay = $('#jqxTooltip').jqxTooltip('autoHideDelay');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/5vvtm/",
+            "exampleDescription": "autoHideDelay is set to 100",
+            "dataType": "number",
+            "exampleInit": {
+                "autoHideDelay": "100"
+            }
+        },
+        {
+            "name": "animationShowDelay",
+            "defaultValue": "'fast'",
+            "description": "<P>Sets or gets the duration of the tooltip animation at show. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>animationShowDelay</CODE> property. </P>\n<PRE><CODE>$('#jqxTooltip').jqxTooltip({ animationShowDelay: 250 });</CODE></PRE>\n\r\n<P>Get the <CODE>animationShowDelay</CODE> property. </P>\n<PRE><CODE>var animationShowDelay = $('#jqxTooltip').jqxTooltip('animationShowDelay');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/YWuLr/",
+            "exampleDescription": "animationShowDelay is set to 2000",
+            "dataType": "number",
+            "ts_dataType": "number | string",
+            "exampleInit": {
+                "animationShowDelay": "2000"
+            }
+        },
+        {
+            "name": "animationHideDelay",
+            "defaultValue": "'fast'",
+            "description": "<P>Sets or gets the duration of the tooltip animation at hide. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>animationHideDelay</CODE> property. </P>\n<PRE><CODE>$('#jqxTooltip').jqxTooltip({ animationHideDelay: 250 });</CODE></PRE>\n\r\n<P>Get the <CODE>animationHideDelay</CODE> property. </P>\n<PRE><CODE>var animationHideDelay = $('#jqxTooltip').jqxTooltip('animationHideDelay');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/xhTsD/",
+            "exampleDescription": "animationHideDelay is set to 2000",
+            "dataType": "number",
+            "ts_dataType": "number | string",
+            "exampleInit": {
+                "animationHideDelay": "2000"
+            }
+        },
+        {
+            "name": "content",
+            "defaultValue": "''",
+            "description": "<P>Sets or gets the content of jqxTooltip. It can be either plain text or HTML code. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>content</CODE> property. </P>\n<PRE><CODE>$('#jqxTooltip').jqxTooltip({ content: 'This is a jqxTooltip.' });</CODE></PRE>\n\r\n<P>Get the <CODE>content</CODE> property. </P>\n<PRE><CODE>var content = $('#jqxTooltip').jqxTooltip('content');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/DEEfy/",
+            "exampleDescription": "content is set to 'This is a jqxButton.'",
+            "dataType": "string"
+        },
+        {
+            "name": "closeOnClick",
+            "defaultValue": "true",
+            "description": "<P>Sets or gets whether the tooltip will close if it is clicked. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>closeOnClick</CODE> property. </P>\n<PRE><CODE>$('#jqxTooltip').jqxTooltip({ closeOnClick: false });</CODE></PRE>\n\r\n<P>Get the <CODE>closeOnClick</CODE> property. </P>\n<PRE><CODE>var closeOnClick = $('#jqxTooltip').jqxTooltip('closeOnClick');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/tC8Wj/",
+            "exampleDescription": "closeOnClick is set to false",
+            "dataType": "boolean",
+            "exampleInit": {
+                "closeOnClick": "false"
+            }
+        },
+        {
+            "name": "disabled",
+            "defaultValue": "false",
+            "description": "<P>Sets or gets whether the tooltip is disabled. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>disabled</CODE> property. </P>\n<PRE><CODE>$('#jqxTooltip').jqxTooltip({ disabled: true });</CODE></PRE>\n\r\n<P>Get the <CODE>disabled</CODE> property. </P>\n<PRE><CODE>var disabled = $('#jqxTooltip').jqxTooltip('disabled');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/7MKsu/",
+            "exampleDescription": "disabled is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "disabled": "true"
+            }
+        },
+        {
+            "name": "enableBrowserBoundsDetection",
+            "defaultValue": "true",
+            "description": "<P>Sets or gets whether jqxTooltip will be hidden if it leaves the browser bounds or will be offset so that it is always within the browser's bounds and visible. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>enableBrowserBoundsDetection</CODE> property. </P>\n<PRE><CODE>$('#jqxTooltip').jqxTooltip({ enableBrowserBoundsDetection: false });</CODE></PRE>\n\r\n<P>Get the <CODE>enableBrowserBoundsDetection</CODE> property. </P>\n<PRE><CODE>var enableBrowserBoundsDetection = $('#jqxTooltip').jqxTooltip('enableBrowserBoundsDetection');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/pjAJy/",
+            "exampleDescription": "enableBrowserBoundsDetection is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "enableBrowserBoundsDetection": "false"
+            }
+        },
+        {
+            "name": "height",
+            "defaultValue": "'auto'",
+            "description": "<P>Sets or gets the height of jqxTooltip. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>height</CODE> property. </P>\n<PRE><CODE>$('#jqxTooltip').jqxTooltip({ height: 200 });</CODE></PRE>\n\r\n<P>Get the <CODE>height</CODE> property. </P>\n<PRE><CODE>var height = $('#jqxTooltip').jqxTooltip('height');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/VGF2a/",
+            "exampleDescription": "height is set to 30",
+            "dataType": "number",
+            "ts_dataType": "number | string",
+            "exampleInit": {
+                "height": "30"
+            }
+        },
+        {
+            "name": "left",
+            "defaultValue": "0",
+            "description": "<P>Sets or gets the horizontal offset of jqxTooltip based on the position property. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>left</CODE> property. </P>\n<PRE><CODE>$('#jqxTooltip').jqxTooltip({ left: 10 });</CODE></PRE>\n\r\n<P>Get the <CODE>left</CODE> property. </P>\n<PRE><CODE>var left = $('#jqxTooltip').jqxTooltip('left');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/RVnCE/",
+            "exampleDescription": "left is set to 100",
+            "dataType": "number",
+            "exampleInit": {
+                "position": "'bottom'",
+                "left": "100"
+            }
+        },
+        {
+            "name": "name",
+            "defaultValue": "''",
+            "description": "<P>Sets or gets the name of the tooltip's group. Only one tooltip from a group can be shown at a time. By default, all tooltips are in a single group. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>name</CODE> property. </P>\n<PRE><CODE>$('#jqxTooltip').jqxTooltip({ name: 'tooltipGroup1' });</CODE></PRE>\n\r\n<P>Get the <CODE>name</CODE> property. </P>\n<PRE><CODE>var name = $('#jqxTooltip').jqxTooltip('name');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/tyte8/",
+            "exampleDescription": "name is set to 'tooltipGroup'",
+            "dataType": "string",
+            "exampleInit": {
+                "name": "tooltipGroup1"
+            }
+        },
+        {
+            "name": "opacity",
+            "defaultValue": "0.9",
+            "description": "<P>Sets or gets the tooltip's opacity.The value must be between 0 and 1. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>opacity</CODE> property. </P>\n<PRE><CODE>$('#jqxTooltip').jqxTooltip({ opacity: 1 });</CODE></PRE>\n\r\n<P>Get the <CODE>opacity</CODE> property. </P>\n<PRE><CODE>var opacity = $('#jqxTooltip').jqxTooltip('opacity');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/D6UuT/",
+            "exampleDescription": "opacity is set to 0.5",
+            "dataType": "number",
+            "exampleInit": {
+                "opacity": "0.5"
+            }
+        },
+        {
+            "name": "position",
+            "defaultValue": "'default'",
+            "description": "<P>Sets or gets the position of jqxTooltip. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'top' - the tooltip shows above the host element</CODE></PRE>\n<PRE><CODE>'bottom' - the tooltip shows below the host element</CODE></PRE>\n<PRE><CODE>'left' - the tooltip shows at the left of the host element</CODE></PRE>\n<PRE><CODE>'right' - the tooltip shows at the right of the host element</CODE></PRE>\n<PRE><CODE>'top-left' - the tooltip shows at the top-left side of the host element</CODE></PRE>\n<PRE><CODE>'bottom-left' - the tooltip shows at the bottom-left side of the host element</CODE></PRE>\n<PRE><CODE>'top-right' - the tooltip shows at the top-right side of the host element</CODE></PRE>\n<PRE><CODE>'bottom-right' - the tooltip shows at the bottom-right side of the host element</CODE></PRE>\n<PRE><CODE>'absolute' - the tooltip shows at an absolute position on screen, defined by the coordinate properties <CODE>absolutePositionX</CODE> and <CODE>absolutePositionY</CODE></CODE></PRE>\n<PRE><CODE>'mouse' - the tooltip shows after a short period of time at the position of the mouse cursor</CODE></PRE>\n<PRE><CODE>'mouseenter' - the tooltip shows where the mouse cursor has entered the host element</CODE></PRE>\n<PRE><CODE>'default' - the tooltip shows at the bottom-right side of the host element but does not make use of the <CODE>left</CODE> and <CODE>top</CODE> properties</CODE></PRE>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>position</CODE> property. </P>\n<PRE><CODE>$('#jqxTooltip').jqxTooltip({ position: 'top' });</CODE></PRE>\n\r\n<P>Get the <CODE>position</CODE> property. </P>\n<PRE><CODE>var position = $('#jqxTooltip').jqxTooltip('position');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/pUVZZ/",
+            "exampleDescription": "position is set to 'top'",
+            "dataType": "string",
+            "ts_dataType": "enum:TooltipPosition"
+        },
+        {
+            "name": "rtl",
+            "defaultValue": "false",
+            "description": "<P>Sets or gets whether the jqxTooltip's right-to-left support is enabled. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>rtl</CODE> property. </P>\n<PRE><CODE>$('#jqxTooltip').jqxTooltip({ rtl: true });</CODE></PRE>\n\r\n<P>Get the <CODE>rtl</CODE> property. </P>\n<PRE><CODE>var rtl = $('#jqxTooltip').jqxTooltip('rtl');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/gttNS/",
+            "exampleDescription": "rtl is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "rtl": "true"
+            }
+        },
+        {
+            "name": "showDelay",
+            "defaultValue": "100",
+            "description": "<P>Sets or gets the duration after which the tooltip will be shown. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>showDelay</CODE> property. </P>\n<PRE><CODE>$('#jqxTooltip').jqxTooltip({ showDelay: 1000 }); </CODE></PRE>\n\r\n<P>Get the <CODE>showDelay</CODE> property. </P>\n<PRE><CODE>var showDelay = $('#jqxTooltip').jqxTooltip('showDelay');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/rcqcn3qc/",
+            "exampleDescription": "showDelay is set to 200",
+            "dataType": "number",
+            "exampleInit": {
+                "showDelay": "200"
+            }
+        },
+        {
+            "name": "showArrow",
+            "defaultValue": "true",
+            "description": "<P>Sets or gets whether the tooltip's arrow will be shown. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>showArrow</CODE> property. </P>\n<PRE><CODE>$('#jqxTooltip').jqxTooltip({ showArrow: false });</CODE></PRE>\n\r\n<P>Get the <CODE>showArrow</CODE> property. </P>\n<PRE><CODE>var showArrow = $('#jqxTooltip').jqxTooltip('showArrow');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/VQ45L/",
+            "exampleDescription": "showArrow is set to false",
+            "dataType": "boolean",
+            "exampleInit": {
+                "showArrow": "false"
+            }
+        },
+        {
+            "name": "top",
+            "defaultValue": "0",
+            "description": "<P>Sets or gets the vertical offset of jqxTooltip based on the position property. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>top</CODE> property. </P>\n<PRE><CODE>$('#jqxTooltip').jqxTooltip({ top: 10 }); </CODE></PRE>\n\r\n<P>Get the <CODE>top</CODE> property. </P>\n<PRE><CODE>var top = $('#jqxTooltip').jqxTooltip('top');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/3pLKn/",
+            "exampleDescription": "top is set to 100",
+            "dataType": "number",
+            "ts_dataType": "number | string",
+            "exampleInit": {
+                "top": "100"
+            }
+        },
+        {
+            "name": "trigger",
+            "defaultValue": "'hover'",
+            "description": "<P>Sets or gets the way of triggering the tooltip. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'hover' - the tooltip shows immeadiately after hovering over the host element.</CODE></PRE>\n<PRE><CODE>'click' - the tooltip shows when the host element is clicked</CODE></PRE>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>trigger</CODE> property. </P>\n<PRE><CODE>$('#jqxTooltip').jqxTooltip({ trigger: 'click' });</CODE></PRE>\n\r\n<P>Get the <CODE>trigger</CODE> property. </P>\n<PRE><CODE>var trigger = $('#jqxTooltip').jqxTooltip('trigger');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/jxhQR/",
+            "exampleDescription": "trigger is set to 'click'",
+            "dataType": "string",
+            "ts_dataType": "enum:TooltipTrigger",
+            "exampleInit": {
+                "trigger": "click"
+            }
+        },
+        {
+            "name": "theme",
+            "defaultValue": "''",
+            "description": "<P>Sets the widget's theme. </P>\n\r\n<UL><LI>Include the theme's CSS file after jqx.base.css.<BR>The following code example adds the 'material' theme. <PRE><CODE>&lt;link rel=\"stylesheet\" href=\"../../jqwidgets/styles/jqx.base.css\"type=\"text/css\"/&gt;\r\n&lt;link rel=\"stylesheet\" href=\"../../jqwidgets/styles/jqx.material.css\" type=\"text/css\" /&gt;</CODE></PRE>\r\n<LI>Set the widget's theme property to 'material' when you initialize it. </LI></UL>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/XbWZ4/",
+            "exampleDescription": "theme is set to 'material'",
+            "dataType": "string",
+            "exampleInit": {
+                "theme": "material"
+            }
+        },
+        {
+            "name": "width",
+            "defaultValue": "'auto'",
+            "description": "<P>Sets or gets the width of jqxTooltip. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>width</CODE> property. </P>\n<PRE><CODE>$('#jqxTooltip').jqxTooltip({ width: 200 });</CODE></PRE>\n\r\n<P>Get the <CODE>width</CODE> property. </P>\n<PRE><CODE>var width = $('#jqxTooltip').jqxTooltip('width');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/fjG6B/",
+            "exampleDescription": "width is set to 200",
+            "dataType": "number",
+            "ts_dataType": "number | string",
+            "exampleInit": {
+                "width": "200"
+            }
+        }
+    ],
+    "events": [
+        {
+            "name": "close",
+            "description": "<P>This event is triggered when the tooltip is closed (hidden). </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>close</CODE> event by type: jqxTooltip. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/Q2waY/",
+            "exampleDescription": "Bind to the close event by type: jqxTooltip.",
+            "example": "<PRE><CODE>$('#jqxTooltip').bind('close', function () { // Some code here. }); </CODE></PRE>"
+        },
+        {
+            "name": "closing",
+            "description": "<P>This event is triggered when the tooltip is closing. </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>closing</CODE> event by type: jqxTooltip. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/v7q7g/",
+            "exampleDescription": "Bind to the closing event by type: jqxTooltip.",
+            "example": "<PRE><CODE>$('#jqxTooltip').bind('closing', function () { // Some code here. }); </CODE></PRE>"
+        },
+        {
+            "name": "open",
+            "description": "<P>This event is triggered when the tooltip is opened (shown). </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>open</CODE> event by type: jqxTooltip. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/MkxZM/",
+            "exampleDescription": "Bind to the open event by type: jqxTooltip.",
+            "example": "<PRE><CODE>$('#jqxTooltip').bind('open', function () { // Some code here. }); </CODE></PRE>"
+        },
+        {
+            "name": "opening",
+            "description": "<P>This event is triggered when the tooltip is opening. </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>opening</CODE> event by type: jqxTooltip. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/4zRGS/",
+            "exampleDescription": "Bind to the opening event by type: jqxTooltip.",
+            "example": "<PRE><CODE>$('#jqxTooltip').bind('opening', function () { // Some code here. }); </CODE></PRE>"
+        }
+    ],
+    "methods": [
+        {
+            "name": "close",
+            "description": "<P>Specifies a time before the tooltip closes. If it is not set, the tooltip closes immediately. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>close</CODE> method. </P>\n<PRE><CODE>// @param number.\r\n$('#jqxTooltip').jqxTooltip('close', 300);</CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/RdfEU/",
+            "exampleDescription": "closes the jqxTooltip.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "index",
+                    "dataType": "number",
+                    "description": "",
+                    "optional": true
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;JqxTooltip ref=\"myTooltip\"\n          :content=\"'This is a jqxButton'\" :position=\"'bottom'\" :autoHide=\"false\">\n      &lt;JqxButton :width=\"500\">Hover to see the tooltip&lt;/JqxButton>\n    &lt;/JqxTooltip>\n    &lt;JqxButton style=\"margin-top: 20px\" :width=\"80\" @click=\"close()\">Close&lt;/JqxButton>\n  &lt;/div>\n&lt;/template>\n\n&lt;script>\n  import JqxTooltip from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxtooltip.vue';\n  import JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\n\n  export default {\n    components: {\n      JqxTooltip,\n      JqxButton\n    },\n    methods: {\n      close: function () {\n        this.$refs.myTooltip.close();\n      }    \n    }\n  }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "destroy",
+            "description": "<P>Destroys the tooltip by removing it from the DOM. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>destroy</CODE> method. </P>\n<PRE><CODE>$(\"#jqxTooltip\").jqxTooltip('destroy');</CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/49Yy4/",
+            "exampleDescription": "destroy the jqxTooltip.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "open",
+            "description": "<P>Opens the tooltip. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>open</CODE> method. </P>\n<PRE><CODE>$('#jqxTooltip').jqxTooltip('open'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/gJtCd/",
+            "exampleDescription": "opens the jqxTooltip.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "left",
+                    "dataType": "number",
+                    "description": "",
+                    "optional": true
+                },
+                {
+                    "name": "top",
+                    "dataType": "number",
+                    "description": "",
+                    "optional": true
+                }
+            ]
+        },
+        {
+            "name": "refresh",
+            "description": "<P>Refreshes the tooltip. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>refresh</CODE> method. </P>\n<PRE><CODE>$(\"#jqxTooltip\").jqxTooltip('refresh');</CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/afsXy/",
+            "exampleDescription": "refreshes the jqxTooltip.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+}

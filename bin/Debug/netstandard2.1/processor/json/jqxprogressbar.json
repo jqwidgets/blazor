@@ -1,0 +1,344 @@
+{
+    "widget": {
+        "name": "jqxProgressBar",
+        "description": "Visually indicates the progress of a lengthy operation.",
+        "angular2": {
+            "name": "jqxProgressBarComponent",
+            "selector": "jqxProgressBar"
+        }
+    },
+    "dataTypes": [
+        {
+            "name": "ProgressBarLayout",
+            "ts_dataType": "enum",
+            "enumOptions": [ "normal", "reverse" ]
+        },
+        {
+            "name": "ProgressBarOrientation",
+            "ts_dataType": "enum",
+            "enumOptions": [ "vertical", "horizontal" ]
+        },
+        {
+            "name": "ProgressBarTemplate",
+            "ts_dataType": "enum",
+            "enumOptions": [ "default", "primary", "success", "warning", "danger", "info" ]
+        },
+        {
+            "name": "ProgressBarColorRanges",
+            "ts_dataType": "interface",
+            "properties": [
+                {
+                    "name": "stop",
+                    "dataType": "number",
+                    "ts_dataType": "number | string",
+                    "optional": "false",
+                    "displayName": "Stop",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "color",
+                    "dataType": "string",
+                    "optional": "false",
+                    "displayName": "Color",
+                    "defaultValue": ""
+                }
+            ]
+        },
+        {
+            "name": "ProgressBarRenderText",
+            "ts_dataType": "interface",
+            "properties": [
+                {
+                    "name": "text",
+                    "dataType": "string",
+                    "optional": "true",
+                    "displayName": "Text",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "value",
+                    "dataType": "number",
+                    "optional": "true",
+                    "displayName": "Value",
+                    "defaultValue": ""
+                }
+            ]
+        }
+    ],
+    "exampleInit": {
+        "width": "500",
+        "value": "50",
+        "showText": "true"
+    },
+    "properties": [
+        {
+            "name": "animationDuration",
+            "defaultValue": "300",
+            "description": "<P>Determines the duration of the progressbar's animation. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>animationDuration</CODE> property. </P>\n<PRE>$('#jqxProgressBar').jqxProgressBar({ animationDuration: 0 });<CODE></CODE></PRE>\n\r\n<P>Get the <CODE>animationDuration</CODE> property. </P>\n<PRE><CODE>var animationDuration = $('#jqxProgressBar').jqxProgressBar('animationDuration'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/pcLLb/",
+            "exampleDescription": "animationDuration is set to 3000",
+            "dataType": "number",
+            "exampleInit": {
+                "animationDuration": "1000"
+            }
+        },
+        {
+            "name": "colorRanges",
+            "defaultValue": "[]",
+            "description": "<P>Determines different color segments. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>colorRanges</CODE> property. </P>\n<PRE><CODE>\r\n$('#jqxProgressBar').jqxProgressBar({\r\n    colorRanges: [\r\n        { stop: 20, color: '#F4D1D1' },\r\n        { stop: 70, color: '#FF00FF' }\r\n    ]\r\n});\r\n</CODE></PRE>\n\r\n<UL><LI>stop - each one color start from zero to particular position. With decimal number is set a concrete stop. Possible values from ProgressBar's min to max. \r\n<LI>color - color of this segment. </LI></UL>\n\r\n<P>Get the <CODE>colorRanges</CODE> property. </P>\n<PRE><CODE>var colorRanges = $('#jqxProgressBar').jqxProgressBar('colorRanges');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/pp1jrtak/",
+            "exampleDescription": "set custom colorRanges",
+            "dataType": "Array",
+            "ts_dataType": "Array<ProgressBarColorRanges>",
+            "exampleInit": {
+                "colorRanges": "colorRanges",
+                "exampleData": "[\n          { stop: 20, color: \"red\" },\n          { stop: 70, color: \"blue\" }\n        ]"
+            }
+        },
+        {
+            "name": "disabled",
+            "defaultValue": "false",
+            "description": "<P>Determines whether the progress bar is disabled. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>disabled</CODE> property. </P>\n<PRE>$('#jqxProgressBar').jqxProgressBar({disabled:true});<CODE></CODE></PRE>\n\r\n<P>Get the <CODE>disabled</CODE> property. </P>\n<PRE><CODE>var disabled = $('#jqxProgressBar').jqxProgressBar('disabled'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/JKTXg/",
+            "exampleDescription": "disabled is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "disabled": "true"
+            }
+        },
+        {
+            "name": "height",
+            "defaultValue": "null",
+            "description": "<P>Sets or gets the progress bar's height. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>height</CODE> property. </P>\n<PRE>$('#jqxProgressBar').jqxProgressBar({height:\"100px\"  });<CODE></CODE></PRE>\n\r\n<P>Get the <CODE>height</CODE> property. </P>\n<PRE><CODE>var height = $('#jqxProgressBar').jqxProgressBar('height');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/uW5Cr/",
+            "exampleDescription": "height is set to 20",
+            "dataType": "number",
+            "ts_dataType": "string  | number",
+            "exampleInit": {
+                "height": "50"
+            }
+        },
+        {
+            "name": "layout",
+            "defaultValue": "\"normal\"",
+            "description": "<P>Sets or gets the jqxProgressBar's layout. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'normal'</CODE></PRE>\n<PRE><CODE>'reverse'-the slider is filled from right-to-left(horizontal progressbar) and from top-to-bottom(vertical progressbar)</CODE></PRE>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>layout</CODE> property. </P>\n<PRE><CODE>$('#jqxProgressBar').jqxProgressBar({ layout: \"reverse\" }); </CODE></PRE>\n\r\n<P>Get the <CODE>layout</CODE> property. </P>\n<PRE><CODE>var layout = $('#jqxProgressBar').jqxProgressBar('layout'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/SWRA9/",
+            "exampleDescription": "layout is set to 'reverse'",
+            "dataType": "string",
+            "ts_dataType": "enum:ProgressBarLayout",
+            "exampleInit": {
+                "layout": "reverse"
+            }
+        },
+        {
+            "name": "max",
+            "defaultValue": "100",
+            "description": "<P>Sets or gets the progress bar's max value. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>max</CODE> property. </P>\n<PRE><CODE>$('#jqxProgressBar').jqxProgressBar({  max: 150 });</CODE></PRE>\n\r\n<P>Get the <CODE>max</CODE> property. </P>\n<PRE><CODE>var max = $('#jqxProgressBar').jqxProgressBar('max');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/gSsd8/",
+            "exampleDescription": "max is set to 150",
+            "dataType": "number",
+            "ts_dataType": "string  | number",
+            "exampleInit": {
+                "max": "250"
+            }
+        },
+        {
+            "name": "min",
+            "defaultValue": "0",
+            "description": "<P>Sets or gets the progress bar's min value. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>min</CODE> property. </P>\n<PRE><CODE>$('#jqxProgressBar').jqxProgressBar({ min: 10 });</CODE></PRE>\n\r\n<P>Get the <CODE>min</CODE> property. </P>\n<PRE><CODE>var min = $('#jqxProgressBar').jqxProgressBar('min');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/jrHsy/",
+            "exampleDescription": "min is set to 10",
+            "dataType": "number",
+            "ts_dataType": "number | string",
+            "exampleInit": {
+                "min": "30"
+            }
+        },
+        {
+            "name": "orientation",
+            "defaultValue": "'horizontal'",
+            "description": "<P>Sets or gets the orientation. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'vertical'</CODE></PRE>\n<PRE><CODE>'horizontal'</CODE></PRE>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>orientation</CODE> property. </P>\n<PRE>$('#jqxProgressBar').jqxProgressBar({orientation: \"vertical\"  });<CODE></CODE></PRE>\n\r\n<P>Get the <CODE>orientation</CODE> property. </P>\n<PRE><CODE>var orientation = $('#jqxProgressBar').jqxProgressBar('orientation');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/ueWvv/",
+            "exampleDescription": "orientation is set to 'vertical'",
+            "dataType": "string",
+            "ts_dataType": "enum:ProgressBarOrientation",
+            "exampleInit": {
+                "width": "40",
+                "height": "500",
+                "orientation": "vertical"
+            }
+        },
+        {
+            "name": "rtl",
+            "defaultValue": "false",
+            "description": "<P>Sets or gets a value indicating whether widget's elements are aligned to support locales using right-to-left fonts.</P>",
+            "example": "<pre><CODE>$('#jqxProgressBar').jqxProgressBar({rtl : true}); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/YXXKh/",
+            "exampleDescription": "rtl is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "rtl": "true"
+            }
+        },
+        {
+            "name": "renderText",
+            "defaultValue": "null",
+            "description": "",
+            "example": "",
+            "exampleURL": "",
+            "exampleDescription": "",
+            "dataType": "Function",
+            "ts_dataType": "(text?: ProgressBarRenderText['text'], value?: ProgressBarRenderText['value']) => string",
+            "exampleInit": {
+                "renderText": "renderText",
+                "exampleData": "return \"&lt;span style='background: #ffe8a6; color: #e53d37; font-style: italic;'>\" + text + \"&lt;/span>\";"
+            }
+        },
+        {
+            "name": "showText",
+            "defaultValue": "false",
+            "description": "",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/tKrwD/",
+            "exampleDescription": "showText is set to true",
+            "dataType": "boolean"
+        },
+        {
+            "name": "template",
+            "defaultValue": "'default'",
+            "description": "<P>Determines the template as an alternative of the default styles. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'default' - the default template. The style depends only on the \"theme\" property value.</CODE></PRE>\n<PRE><CODE>'primary' - dark blue style for extra visual weight.</CODE></PRE>\n<PRE><CODE>'success' - green style for successful or positive action.</CODE></PRE>\n<PRE><CODE>'warning' - orange style which indicates caution.</CODE></PRE>\n<PRE><CODE>'danger' - red style which indicates a dangerous or negative action.</CODE></PRE>\n<PRE><CODE>'info' - blue button, not tied to a semantic action or use.</CODE></PRE>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>template</CODE> property. </P>\n<PRE><CODE>$(\"#jqxProgressBar\").jqxProgressBar({ template: 'primary'});</CODE></PRE>\n\r\n<P>Get the <CODE>template</CODE> property. </P>\n<PRE><CODE>var template = $('#jqxProgressBar').jqxProgressBar('template');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/q31yy6s4/",
+            "exampleDescription": "template is set to 'success'",
+            "dataType": "string",
+            "ts_dataType": "enum:ProgressBarTemplate",
+            "exampleInit": {
+                "template": "success"
+            }
+        },
+        {
+            "name": "theme",
+            "defaultValue": "''",
+            "description": "<P>Sets the widget's theme. </P>\n\r\n<UL><LI>Include the theme's CSS file after jqx.base.css.<BR>The following code example adds the 'material' theme. <PRE><CODE>\r\n<PRE><CODE>&lt;link rel=\"stylesheet\" href=\"../../jqwidgets/styles/jqx.base.css\" type=\"text/css\" /&gt;\r\n&lt;link rel=\"stylesheet\" href=\"../../jqwidgets/styles/jqx.material.css\" type=\"text/css\" /&gt;\r\n</CODE></PRE>\r\n</CODE></PRE>\r\n<LI>Set the widget's theme property to 'material' when you initialize it. </LI></UL>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/LpTmH/",
+            "exampleDescription": "theme is set to 'material'",
+            "dataType": "string",
+            "exampleInit": {
+                "theme": "material"
+            }
+        },
+        {
+            "name": "value",
+            "defaultValue": "0",
+            "description": "<P>Sets or gets the progress bar's value The value should be set between min(default value: 0) and max(default value: 100). </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>value</CODE> property. </P>\n<PRE><CODE>$('#jqxProgressBar').jqxProgressBar({  value: 100});</CODE></PRE>\n\r\n<P>Get the <CODE>value</CODE> property. </P>\n<PRE><CODE>var value = $('#jqxProgressBar').jqxProgressBar('value');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/BzEWx/",
+            "exampleDescription": "value is set to 50",
+            "dataType": "number",
+            "ts_dataType": "string | number"
+        },
+        {
+            "name": "width",
+            "defaultValue": "null",
+            "description": "<P>Sets or gets the progress bar's width. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>width</CODE> property. </P>\n<PRE>$('#jqxProgressBar').jqxProgressBar({width:\"250px\"  });<CODE></CODE></PRE>\n\r\n<P>Get the <CODE>width</CODE> property. </P>\n<PRE><CODE>var width = $('#jqxProgressBar').jqxProgressBar('width');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/99gEX/",
+            "exampleDescription": "width is set to 200",
+            "dataType": "number",
+            "ts_dataType": "string | number"
+        }
+    ],
+    "events": [
+        {
+            "name": "complete",
+            "description": "<P>This event is triggered when the value is equal to the max. value. </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>complete</CODE> event by type: jqxProgressBar. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/Q9ybm/",
+            "exampleDescription": "Bind to the complete event by type: jqxProgressBar.",
+            "example": "<PRE><CODE>$('#jqxProgressBar').on('complete', function (event) { // Some code here. }); </CODE></PRE>",
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;JqxProgressBar ref=\"myProgressBar\" @complete=\"onComplete($event)\"\n            :width=\"500\" :value=\"50\" :showText=\"true\" />\n    &lt;JqxButton style=\"margin-top: 15px;\" :width=\"80\" @click=\"setValue()\">Set value&lt;/JqxButton>\n  &lt;/div>\n&lt;/template>\n\n&lt;script>\n  import JqxProgressBar from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxprogressbar.vue';\n  import JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\n\n  export default {\n    components: {\n      JqxProgressBar,\n      JqxButton\n    },\n    methods: {\n      setValue: function () {\n        this.$refs.myProgressBar.val(100);\n      },\n      onComplete: function (event) {\n        alert('do something...');\n      }\n    }\n  }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "invalidValue",
+            "description": "<P>This event is triggered when the user enters an invalid value( value which is not number or is out of the min - max range. ) </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>invalidvalue</CODE> event by type: jqxProgressBar. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/Va4rN/",
+            "exampleDescription": "Bind to the invalidValue event by type: jqxProgressBar.",
+            "example": "<PRE><CODE>$('#jqxProgressBar').on('invalidValue', function (event) { // Some code here. });</CODE></PRE>",
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;JqxProgressBar ref=\"myProgressBar\" @invalidValue=\"onInvalidValue($event)\"\n            :width=\"500\" :value=\"50\" :showText=\"true\" :min=\"0\" :max=\"100\" />\n    &lt;JqxButton style=\"margin-top: 15px;\" :width=\"80\" @click=\"setValue()\">Set value&lt;/JqxButton>\n  &lt;/div>\n&lt;/template>\n\n&lt;script>\n  import JqxProgressBar from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxprogressbar.vue';\n  import JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\n\n  export default {\n    components: {\n      JqxProgressBar,\n      JqxButton\n    },\n    methods: {\n      setValue: function () {\n        this.$refs.myProgressBar.val(-5);\n      },\n      onInvalidValue: function (event) {\n        alert('do something...');\n      }\n    }\n  }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "valueChanged",
+            "description": "<P>This event is triggered when the value is changed. </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>valueChanged</CODE> event by type: jqxProgressBar. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/jMS2X/",
+            "exampleDescription": "Bind to the valuechanged event by type: jqxProgressBar.",
+            "example": "<PRE><CODE>$('#jqxProgressBar').on('valueChanged', function (event) { var value = event.currentValue; });</CODE></PRE>",
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;JqxProgressBar ref=\"myProgressBar\" @valueChanged=\"onValueChanged($event)\"\n            :width=\"500\" :value=\"50\" :showText=\"true\" />\n    &lt;JqxButton style=\"margin-top: 15px;\" :width=\"80\" @click=\"setValue()\">Set value&lt;/JqxButton>\n  &lt;/div>\n&lt;/template>\n&lt;script>\n  import JqxProgressBar from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxprogressbar.vue';\n  import JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\n  export default {\n    components: {\n      JqxProgressBar,\n      JqxButton\n    },\n    methods: {\n      setValue: function () {\n        this.$refs.myProgressBar.val(100);\n      },\n      onValueChanged: function (event) {\n        alert('do something...');\n      }\n    }\n  }\n&lt;/script>"
+            }
+        }
+    ],
+    "methods": [
+        {
+            "name": "actualValue",
+            "description": "<P>Sets the progress bar's value. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>actualValue</CODE> method. </P>\n<PRE><CODE>//@param number</CODE></PRE>\n<PRE><CODE>$('#jqxProgressBar').jqxProgressBar('actualValue', 50); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/ZKTCV/",
+            "exampleDescription": "changes the value in the jqxProgressBar.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "value",
+                    "dataType": "number",
+                    "ts_dataType": "number | string",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "20" ]
+            }
+        },
+        {
+            "name": "destroy",
+            "description": "<P>Destroys the widget. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>destroy</CODE> method. </P>\n<PRE><CODE>$('#jqxProgressBar').jqxProgressBar('destroy'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/cUWqp/",
+            "exampleDescription": "destroys the jqxProgressBar.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "val",
+            "description": "<P>Sets or gets the value. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/WbAGC/",
+            "exampleDescription": "sets a new value in the jqxProgressBar.",
+            "returnDataType": "number",
+            "arguments": [
+                {
+                    "name": "value",
+                    "dataType": "number",
+                    "ts_dataType": "number | string",
+                    "description": "",
+                    "optional": true
+                }
+            ]
+        }
+    ]
+}

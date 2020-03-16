@@ -1,0 +1,686 @@
+{
+    "widget": {
+        "name": "jqxNavigationBar",
+        "description": "Is Similar to Tabs, NavigationBar has header and content sections. Click headers to expand or collapse the content. Optionally you can change the default toggle mode to double-click or mouseover.",
+        "angular2": {
+            "name": "jqxNavigationBarComponent",
+            "selector": "jqxNavigationBar"
+        }
+    },
+    "dataTypes": [
+        {
+            "name": "NavigationBarAnimationType",
+            "ts_dataType": "enum",
+            "enumOptions": [ "none", "slide", "fade" ]
+        },
+        {
+            "name": "NavigationBarArrowPosition",
+            "ts_dataType": "enum",
+            "enumOptions": [ "left", "right" ]
+        },
+        {
+            "name": "NavigationBarExpandMode",
+            "ts_dataType": "enum",
+            "enumOptions": [ "single", "singleFitHeight", "multiple", "toggle", "none" ]
+        },
+        {
+            "name": "NavigationBarToggleMode",
+            "ts_dataType": "enum",
+            "enumOptions": [ "click", "dblclick", "none" ]
+        }
+    ],
+    "exampleExtraTemplate": "<div>Header 1</div>\n    <div>Content 1 <input type='button' id='button' value='Button' /></div>\n    <div>Header 2</div>\n    <div>Content 2</div>\n",
+    "exampleExtraImport": "jqxButton",
+    "exampleInit": {
+        "width": "400",
+        "height": "200"
+    },
+    "properties": [
+        {
+            "name": "animationType",
+            "defaultValue": "'slide'",
+            "description": "<P>Sets or gets the animation type. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'slide'</CODE></PRE>\n<PRE><CODE>'fade'</CODE></PRE>\n<PRE><CODE>'none'</CODE></PRE>",
+            "example": "<pre><CODE>$('#jqxNavigationBar').jqxNavigationBar({animationType: \"none\" }); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/wMR4f/",
+            "exampleDescription": "animationType is set to 'fade'",
+            "dataType": "string",
+            "ts_dataType": "enum:NavigationBarAnimationType",
+            "exampleInit": {
+                "animationType": "fade"
+            }
+        },
+        {
+            "name": "arrowPosition",
+            "defaultValue": "'right'",
+            "description": "<P>Sets or gets header's arrow position. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'left'</CODE></PRE>\n<PRE><CODE>'right'</CODE></PRE>",
+            "example": "<pre><CODE>$('#jqxNavigationBar').jqxNavigationBar({ arrowPosition: \"right\" }); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/xGUAm/",
+            "exampleDescription": "arrowPosition is set to 'left'",
+            "dataType": "string",
+            "ts_dataType": "enum:NavigationBarArrowPosition",
+            "exampleInit": {
+                "arrowPosition": "left"
+            }
+        },
+        {
+            "name": "collapseAnimationDuration",
+            "defaultValue": "400",
+            "description": "<P>Sets or gets the collapsing animation duration. </P>",
+            "example": "<pre><CODE>$('#jqxNavigationBar').jqxNavigationBar({ collapseAnimationDuration: 400});</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/aX7RB/",
+            "exampleDescription": "collapseAnimationDuration is set to 3000",
+            "dataType": "number",
+            "exampleInit": {
+                "collapseAnimationDuration": "3000"
+            }
+        },
+        {
+            "name": "disabled",
+            "defaultValue": "false",
+            "description": "<P>Sets or gets whether the navigation bar is disabled. </P>",
+            "example": "<pre><CODE>$('#jqxNavigationBar').jqxNavigationBar({ disabled:true }); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/m8A3p/",
+            "exampleDescription": "disabled is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "disabled": "true"
+            }
+        },
+        {
+            "name": "expandAnimationDuration",
+            "defaultValue": "400",
+            "description": "<P>Sets or gets the expanding animation duration. </P>",
+            "example": "<pre><CODE>$('#jqxNavigationBar').jqxNavigationBar({ expandAnimationDuration: 400 });\r\n                        </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/KjWzz/",
+            "exampleDescription": "expandAnimationDuration is set to 3000",
+            "dataType": "number",
+            "exampleInit": {
+                "expandAnimationDuration": "3000"
+            }
+        },
+        {
+            "name": "expandMode",
+            "defaultValue": "'singleFitHeight'",
+            "description": "<P>Sets or gets navigation bar's expand mode. Possible values ['single', 'singleFitHeight' 'multiple', 'toggle', 'none']. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'single' - only one item can be expanded. If the expanded item's height is greater than the value of the height property, a vertical scrollbar is shown.</CODE></PRE>\n<PRE><CODE>'singleFitHeight' - only one item can be expanded. If the expanded item's height is greater than the value of the height property, a vertical scrollbar is shown inside the content of the expanded item</CODE></PRE>\n<PRE><CODE>'multiple' - multiple items can be expanded. If the expanded items' height is greater than the value of the height property, a vertical scrollbar is shown.</CODE></PRE>\n<PRE><CODE>'toggle' - only one item can be expanded. The expanded item can also be collapsed.If the expanded item's height is greater than the value of the height property, a vertical scrollbar is shown</CODE></PRE>\n<PRE><CODE>'none' - no items can be expanded/collapsed</CODE></PRE>",
+            "example": "<pre><CODE>$('#jqxNavigationBar').jqxNavigationBar({ expandMode: \"none\" }); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/BZ6uU/",
+            "exampleDescription": "expandMode is set to 'single'",
+            "dataType": "string",
+            "ts_dataType": "enum:NavigationBarExpandMode",
+            "exampleInit": {
+                "expandMode": "single"
+            }
+        },
+        {
+            "name": "expandedIndexes",
+            "defaultValue": "[]",
+            "description": "<P>Sets or gets the expanded item(s). If the property <CODE>expandMode</CODE> is set to either 'single', 'singleFitHeight', 'toggle' or 'none', only the item corresponding to the first value in the array is expanded. If the property <CODE>expandMode</CODE> is set to either 'single' or 'singleFitHeight' and the expandedIndexes array is empty, the first item is expanded automatically. </P>",
+            "example": "<pre><CODE>$('#jqxNavigationBar').jqxNavigationBar({ expandedIndexes: [0, 1] }); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/NHHXc/",
+            "exampleDescription": "expandedIndexes is set to [0, 1]",
+            "dataType": "Array",
+            "ts_dataType": "Array<number>",
+            "exampleInit": {
+                "expandMode": "multiple",
+                "expandedIndexes": "[0, 1]"
+            }
+        },
+        {
+            "name": "height",
+            "defaultValue": "'auto'",
+            "description": "<P>Sets or gets the navigationbar's height. Possible values - 'auto' or string like this 'Npx' where N is any number or a numeric value in pixels. </P>",
+            "example": "<pre><CODE>$('#jqxNavigationBar').jqxNavigationBar({ height: 200 }); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/p9BPs/",
+            "exampleDescription": "height is set to 200",
+            "dataType": "number",
+            "ts_dataType": "string | number"
+        },
+        {
+            "name": "initContent",
+            "defaultValue": "null",
+            "description": "<P>Callback function called when an item's content needs to be initialized. Useful for initializing other widgets within the content of any of the items of jqxNavigationBar. The index argument shows which item is initialized. </P>",
+            "example": "<pre><CODE>$(\"#jqxNavigationBar\").jqxNavigationBar({initContent: function (index)\r\n{\r\n    $(\"#jqxButton\").jqxButton({ width: 100, height: 50 });\r\n}\r\n});\r\n                            </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/TMTgd/",
+            "exampleDescription": "initContent is set to a custom function",
+            "dataType": "function",
+            "ts_dataType": "(index:number) => void",
+            "exampleInit": {
+                "initContent": "initContent",
+                "exampleData": "jqwidgets.createInstance('#button', 'jqxButton', { width: 50, height: 50 });"
+            }
+        },
+        {
+            "name": "rtl",
+            "defaultValue": "false",
+            "description": "<P>Determines whether the right-to-left support is enabled. </P>",
+            "example": "<pre><CODE>$(\"#jqxNavigationBar\").jqxNavigationBar({ rtl: true }); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/fsy3k/",
+            "exampleDescription": "rtl is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "rtl": "true"
+            }
+        },
+        {
+            "name": "showArrow",
+            "defaultValue": "true",
+            "description": "<P>Sets or gets whether header's arrow is going to be shown. </P>",
+            "example": "<pre><CODE>$('#jqxNavigationBar').jqxNavigationBar({ showArrow: false }); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/4jLxU/",
+            "exampleDescription": "showArrow is set to false",
+            "dataType": "boolean",
+            "exampleInit": {
+                "showArrow": "false"
+            }
+        },
+        {
+            "name": "theme",
+            "defaultValue": "''",
+            "description": "<P>Sets the widget's theme. </P>\n\r\n<UL><LI>Include the theme's CSS file after jqx.base.css.<BR>The following code example adds the 'material' theme. <PRE><CODE>\r\n<PRE><CODE>&lt;link rel=\"stylesheet\" href=\"../../jqwidgets/styles/jqx.base.css\" type=\"text/css\" /&gt;\r\n&lt;link rel=\"stylesheet\" href=\"../../jqwidgets/styles/jqx.material.css\" type=\"text/css\" /&gt; </CODE></PRE>\r\n                                </CODE></PRE>\r\n<LI>Set the widget's theme property to 'material' when you initialize it. </LI></UL>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/4MJm3/",
+            "exampleDescription": "theme is set to 'material'",
+            "dataType": "string",
+            "exampleInit": {
+                "theme": "material"
+            }
+        },
+        {
+            "name": "toggleMode",
+            "defaultValue": "click",
+            "description": "<P>Sets or gets user interaction used for expanding or collapsing the content. Possible values ['click', 'dblclick', 'none']. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'click'</CODE></PRE>\n<PRE><CODE>'dblclick'</CODE></PRE>\n<PRE><CODE>'none'</CODE></PRE>",
+            "example": "<pre><CODE>$('#jqxNavigationBar').jqxNavigationBar({ toggleMode: \"none\" }); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/CMbmz/",
+            "exampleDescription": "toggleMode is set to 'dblclick'",
+            "dataType": "string",
+            "ts_dataType": "enum:NavigationBarToggleMode",
+            "exampleInit": {
+                "toggleMode": "dblclick"
+            }
+        },
+        {
+            "name": "width",
+            "defaultValue": "'auto'",
+            "description": "<P>Sets or gets the navigationbar's width. Possible values - 'auto' or string like this 'Npx' where N is any number or a numeric value in pixels. </P>",
+            "example": "<pre><CODE>$('#jqxNavigationBar').jqxNavigationBar({ width: 'auto' }); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/Er4FS/",
+            "exampleDescription": "width is set to 400",
+            "dataType": "number",
+            "ts_dataType": "string | number"
+        }
+    ],
+    "events": [
+        {
+            "name": "collapsingItem",
+            "description": "<P>This event is triggered when a jqxNavigationBar item is going to be collapsed. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/DGCre/",
+            "exampleDescription": "Bind to the collapsingItem event by type: jqxNavigationBar.",
+            "example": "<PRE><CODE>$('#jqxNavigationBar').on('collapsingItem', function (event) \r\n{\r\n    var collapsingItem = event.args.item; alert(\"Expanding item number: \" + collapsingItem); \r\n});</CODE></PRE>"
+        },
+        {
+            "name": "collapsedItem",
+            "description": "<P>This event is triggered when a jqxNavigationBar item is collapsed. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/C45sR/",
+            "exampleDescription": "Bind to the collapsedItem event by type: jqxNavigationBar.",
+            "example": "<PRE><CODE>$('#jqxNavigationBar').on('collapsedItem', function (event) \r\n{ \r\n    var collapsedItem0= event.args.item; alert(\"Expanding item number: \" + collapsedItem);\r\n});</CODE></PRE>"
+        },
+        {
+            "name": "expandingItem",
+            "description": "<P>This event is triggered when a jqxNavigationBar item is going to be expanded. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/XtGuB/",
+            "exampleDescription": "Bind to the expandingItem event by type: jqxNavigationBar.",
+            "example": "<PRE><CODE>$('#jqxNavigationBar').on('expandingItem', function (event) \r\n{ \r\n    var expandingItem = event.args.item; alert(\"Expanding item number: \" + expandingItem); \r\n});\r\n                            </CODE></PRE>"
+        },
+        {
+            "name": "expandedItem",
+            "description": "<P>This event is triggered when a jqxNavigationBar item is expanded. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/vUM9G/",
+            "exampleDescription": "Bind to the expandedItem event by type: jqxNavigationBar.",
+            "example": "<PRE><CODE>$('#jqxNavigationBar').on('expandedItem', function (event) \r\n{\r\n    var expandedItem = event.args.item; alert(\"Expanded item number: \" + expandedItem);\r\n});\r\n                         </CODE></PRE>"
+        }
+    ],
+    "methods": [
+        {
+            "name": "add",
+            "description": "<P>This method inserts an item at the bottom of the navigationbar. It has two parameters - header (the header of the new item) and content (the content of the new item). </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/W6bhm/",
+            "exampleDescription": "adds an item in the jqxNavigationBar.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "header",
+                    "dataType": "string",
+                    "ts_dataType": "number | string",
+                    "description": "",
+                    "optional": false
+                },
+                {
+                    "name": "content",
+                    "dataType": "string",
+                    "ts_dataType": "number | string",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "'Header'", "'Content'" ]
+            }
+        },
+        {
+            "name": "collapseAt",
+            "description": "<P>Collapsing item with any index. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/9BLbS/",
+            "exampleDescription": "collapses an item in the jqxNavigationBar.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "index",
+                    "dataType": "number",
+                    "ts_dataType": "number | string",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;JqxNavigationBar ref=\"myNavigationBar\"\n             :width=\"400\" :height=\"200\">\n      &lt;div>Header 1&lt;/div>\n      &lt;div>Content 1 &lt;input type='button' id='button' value='Button' />&lt;/div>\n      &lt;div>Header 2&lt;/div>\n      &lt;div>Content 2&lt;/div>\n    &lt;/JqxNavigationBar>\n    &lt;JqxButton @click=\"collapse\">Collapse First&lt;/JqxButton>\n    &lt;JqxButton @click=\"expand\">Expand First&lt;/JqxButton>\n  &lt;/div>\n&lt;/template>\n\n&lt;script>\n  import JqxNavigationBar from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxnavigationbar.vue';\n  import JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\n\n  export default {\n    components: {\n      JqxNavigationBar,\n      JqxButton\n    },\n    methods: {\n      collapse: function () {\n        this.$refs.myNavigationBar.collapseAt(0);\n      },\n      expand: function () {\n        this.$refs.myNavigationBar.expandAt(0);\n      }\n    }\n  }\n&lt;/script>\n&lt;style>\n  .jqx-button {\n    display: inline-block;\n    margin-top: 15px;\n    margin-right: 20px;\n  }\n&lt;/style>"
+            }
+        },
+        {
+            "name": "disableAt",
+            "description": "<P>Disabling item with any index. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/K975m/",
+            "exampleDescription": "disables an item in the jqxNavigationBar.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "index",
+                    "dataType": "number",
+                    "ts_dataType": "number | string",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;JqxNavigationBar ref=\"myNavigationBar\"\n             :width=\"400\" :height=\"200\">\n      &lt;div>Header 1&lt;/div>\n      &lt;div>Content 1 &lt;input type='button' id='button' value='Button' />&lt;/div>\n      &lt;div>Header 2&lt;/div>\n      &lt;div>Content 2&lt;/div>\n    &lt;/JqxNavigationBar>\n    &lt;JqxButton @click=\"disable\">Disable First&lt;/JqxButton>\n    &lt;JqxButton @click=\"enable\">Enable First&lt;/JqxButton>\n  &lt;/div>\n&lt;/template>\n\n&lt;script>\n  import JqxNavigationBar from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxnavigationbar.vue';\n  import JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\n\n  export default {\n    components: {\n      JqxNavigationBar,\n      JqxButton\n    },\n    methods: {\n      disable: function () {\n        this.$refs.myNavigationBar.disableAt(0);\n      },\n      enable: function () {\n        this.$refs.myNavigationBar.enableAt(0);\n      }\n    }\n  }\n&lt;/script>\n&lt;style>\n  .jqx-button {\n    display: inline-block;\n    margin-top: 15px;\n    margin-right: 20px;\n  }\n&lt;/style>"
+            }
+        },
+        {
+            "name": "disable",
+            "description": "<P>This method is disabling the navigation bar. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/avmWd/",
+            "exampleDescription": "disables the jqxNavigationBar.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;JqxNavigationBar ref=\"myNavigationBar\"\n             :width=\"400\" :height=\"200\">\n      &lt;div>Header 1&lt;/div>\n      &lt;div>Content 1 &lt;input type='button' id='button' value='Button' />&lt;/div>\n      &lt;div>Header 2&lt;/div>\n      &lt;div>Content 2&lt;/div>\n    &lt;/JqxNavigationBar>\n    &lt;JqxButton @click=\"disable\">Disable&lt;/JqxButton>\n    &lt;JqxButton @click=\"enable\">Enable&lt;/JqxButton>\n  &lt;/div>\n&lt;/template>\n&lt;script>\n  import JqxNavigationBar from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxnavigationbar.vue';\n  import JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\n  export default {\n    components: {\n      JqxNavigationBar,\n      JqxButton\n    },\n    methods: {\n      disable: function () {\n        this.$refs.myNavigationBar.disable();\n      },\n      enable: function () {\n        this.$refs.myNavigationBar.enable();\n      }\n    }\n  }\n&lt;/script>\n&lt;style>\n  .jqx-button {\n    display: inline-block;\n    margin-top: 15px;\n    margin-right: 20px;\n  }\n&lt;/style>"
+            }
+        },
+        {
+            "name": "destroy",
+            "description": "<P>This method destroys the navigationbar. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/wusBK/",
+            "exampleDescription": "destroy the jqxNavigationBar.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "expandAt",
+            "description": "<P>Expanding item with any index. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/nUTwg/",
+            "exampleDescription": "expands an item in the jqxNavigationBar.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "index",
+                    "dataType": "number",
+                    "ts_dataType": "number | string",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;JqxNavigationBar ref=\"myNavigationBar\"\n             :width=\"400\" :height=\"200\">\n      &lt;div>Header 1&lt;/div>\n      &lt;div>Content 1 &lt;input type='button' id='button' value='Button' />&lt;/div>\n      &lt;div>Header 2&lt;/div>\n      &lt;div>Content 2&lt;/div>\n    &lt;/JqxNavigationBar>\n    &lt;JqxButton @click=\"collapse\">Collapse First&lt;/JqxButton>\n    &lt;JqxButton @click=\"expand\">Expand First&lt;/JqxButton>\n  &lt;/div>\n&lt;/template>\n\n&lt;script>\n  import JqxNavigationBar from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxnavigationbar.vue';\n  import JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\n\n  export default {\n    components: {\n      JqxNavigationBar,\n      JqxButton\n    },\n    methods: {\n      collapse: function () {\n        this.$refs.myNavigationBar.collapseAt(0);\n      },\n      expand: function () {\n        this.$refs.myNavigationBar.expandAt(0);\n      }\n    }\n  }\n&lt;/script>\n&lt;style>\n  .jqx-button {\n    display: inline-block;\n    margin-top: 15px;\n    margin-right: 20px;\n  }\n&lt;/style>"
+            }
+        },
+        {
+            "name": "enableAt",
+            "description": "<P>Enabling item with any index. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/zw4vy/",
+            "exampleDescription": "enables an item in the jqxNavigationBar.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "index",
+                    "dataType": "number",
+                    "ts_dataType": "number | string",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;JqxNavigationBar ref=\"myNavigationBar\"\n             :width=\"400\" :height=\"200\">\n      &lt;div>Header 1&lt;/div>\n      &lt;div>Content 1 &lt;input type='button' id='button' value='Button' />&lt;/div>\n      &lt;div>Header 2&lt;/div>\n      &lt;div>Content 2&lt;/div>\n    &lt;/JqxNavigationBar>\n    &lt;JqxButton @click=\"disable\">Disable First&lt;/JqxButton>\n    &lt;JqxButton @click=\"enable\">Enable First&lt;/JqxButton>\n  &lt;/div>\n&lt;/template>\n\n&lt;script>\n  import JqxNavigationBar from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxnavigationbar.vue';\n  import JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\n\n  export default {\n    components: {\n      JqxNavigationBar,\n      JqxButton\n    },\n    methods: {\n      disable: function () {\n        this.$refs.myNavigationBar.disableAt(0);\n      },\n      enable: function () {\n        this.$refs.myNavigationBar.enableAt(0);\n      }\n    }\n  }\n&lt;/script>\n&lt;style>\n  .jqx-button {\n    display: inline-block;\n    margin-top: 15px;\n    margin-right: 20px;\n  }\n&lt;/style>"
+            }
+        },
+        {
+            "name": "enable",
+            "description": "<P>This method is enabling the navigation bar. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/64yhW/",
+            "exampleDescription": "enables the jqxNavigationBar.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;JqxNavigationBar ref=\"myNavigationBar\"\n             :width=\"400\" :height=\"200\">\n      &lt;div>Header 1&lt;/div>\n      &lt;div>Content 1 &lt;input type='button' id='button' value='Button' />&lt;/div>\n      &lt;div>Header 2&lt;/div>\n      &lt;div>Content 2&lt;/div>\n    &lt;/JqxNavigationBar>\n    &lt;JqxButton @click=\"disable\">Disable&lt;/JqxButton>\n    &lt;JqxButton @click=\"enable\">Enable&lt;/JqxButton>\n  &lt;/div>\n&lt;/template>\n&lt;script>\n  import JqxNavigationBar from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxnavigationbar.vue';\n  import JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\n  export default {\n    components: {\n      JqxNavigationBar,\n      JqxButton\n    },\n    methods: {\n      disable: function () {\n        this.$refs.myNavigationBar.disable();\n      },\n      enable: function () {\n        this.$refs.myNavigationBar.enable();\n      }\n    }\n  }\n&lt;/script>\n&lt;style>\n  .jqx-button {\n    display: inline-block;\n    margin-top: 15px;\n    margin-right: 20px;\n  }\n&lt;/style>"
+            }
+        },
+        {
+            "name": "focus",
+            "description": "<P>This method focuses on the navigationbar. When the widget is focused, keyboard navigation can be used. Here is a list of the keys, supported by jqxNavigationBar and their function: </P>\n<UL><LI><B>Enter</B>/<B>Spacebar</B> - if the focus is on an item header, collapses or expands the item. \r\n<LI><B>Left</B>/<B>Up arrow</B> - focuses on the previous item header or on the last one if the currently focused is the first one. \r\n<LI><B>Right</B>/<B>Down arrow</B> - focuses on the next item header or on the first one if the currently focused is the last one. \r\n<LI><B>End</B> - focuses on the last item header. \r\n<LI><B>Home</B> - focuses on the first item header. \r\n<LI><B>Tab</B> - focuses on the first header or the next element in the DOM. \r\n<LI><B>Ctrl</B>+<B>Up arrow</B> - if the focus is on an item content, focuses on its respective header. \r\n<LI><B>Ctrl</B>+<B>Down arrow</B> - if the focus is on an item header, focuses on its respective content. </LI></UL>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/aksuL/",
+            "exampleDescription": "focuses the jqxNavigationBar.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "getHeaderContentAt",
+            "description": "<P>Getting header content of item with any index. Returns a string value. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/Qvn5g/",
+            "exampleDescription": "gets the header's content in the jqxNavigationBar.",
+            "returnDataType": "string",
+            "arguments": [
+                {
+                    "name": "index",
+                    "dataType": "number",
+                    "ts_dataType": "number | string",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "1" ]
+            }
+        },
+        {
+            "name": "getContentAt",
+            "description": "<P>Getting content of item with any index. Returns a string value. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/rFfVq/",
+            "exampleDescription": "gets the content in the jqxNavigationBar.",
+            "returnDataType": "string",
+            "arguments": [
+                {
+                    "name": "index",
+                    "dataType": "number",
+                    "ts_dataType": "number | string",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "1" ]
+            }
+        },
+        {
+            "name": "hideArrowAt",
+            "description": "<P>Hiding the arrow of an item with specific index. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/CcBdd/",
+            "exampleDescription": "hides an arrow of an item in the jqxNavigationBar.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "index",
+                    "dataType": "number",
+                    "ts_dataType": "number | string",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;JqxNavigationBar ref=\"myNavigationBar\"\n             :width=\"400\" :height=\"200\">\n      &lt;div>Header 1&lt;/div>\n      &lt;div>Content 1 &lt;input type='button' id='button' value='Button' />&lt;/div>\n      &lt;div>Header 2&lt;/div>\n      &lt;div>Content 2&lt;/div>\n    &lt;/JqxNavigationBar>\n    &lt;JqxButton @click=\"hideArrow\">Hide Arrow&lt;/JqxButton>\n    &lt;JqxButton @click=\"showArrow\">Show Arrow&lt;/JqxButton>\n  &lt;/div>\n&lt;/template>\n&lt;script>\n  import JqxNavigationBar from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxnavigationbar.vue';\n  import JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\n  export default {\n    components: {\n      JqxNavigationBar,\n      JqxButton\n    },\n    methods: {\n      hideArrow: function () {\n        this.$refs.myNavigationBar.hideArrowAt(1);\n      },\n      showArrow: function () {\n        this.$refs.myNavigationBar.showArrowAt(1);\n      }\n    }\n  }\n&lt;/script>\n&lt;style>\n  .jqx-button {\n    display: inline-block;\n    margin-top: 15px;\n    margin-right: 20px;\n  }\n&lt;/style>"
+            }
+        },
+        {
+            "name": "invalidate",
+            "description": "<P>This method refreshes the navigationbar. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/MBBsk/",
+            "exampleDescription": "invalidates the jqxNavigationBar.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "insert",
+            "description": "<P>This method inserts an item at a specific index. It has three parameters - index, header (the header of the new item) and content (the content of the new item). </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/sJEPq/",
+            "exampleDescription": "inserts an item in the jqxNavigationBar.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "Index",
+                    "dataType": "number",
+                    "description": "",
+                    "optional": false
+                },
+                {
+                    "name": "header",
+                    "dataType": "string",
+                    "ts_dataType": "number | string",
+                    "description": "",
+                    "optional": false
+                },
+                {
+                    "name": "content",
+                    "dataType": "string",
+                    "ts_dataType": "number | string",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "1", "'Header'", "'Content'" ]
+            }
+        },
+        {
+            "name": "refresh",
+            "description": "<P>This method refreshes the navigationbar. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/tG93Y/",
+            "exampleDescription": "refreshes the jqxNavigationBar.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "render",
+            "description": "<P>This method renders the navigationbar. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/QFjgM/",
+            "exampleDescription": "renders the jqxNavigationBar.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "remove",
+            "description": "<P>This method removes an item at a specific index. The parameter (index) is optional and if it is not set, the method removes the last item. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/xKtN9/",
+            "exampleDescription": "removes an item in the jqxNavigationBar.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "index",
+                    "dataType": "number",
+                    "ts_dataType": "number | string",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "1" ]
+            }
+        },
+        {
+            "name": "setContentAt",
+            "description": "<P>Setting content to item with any index. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/RTWk4/",
+            "exampleDescription": "sets a content in the jqxNavigationBar.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "index",
+                    "dataType": "number",
+                    "description": "",
+                    "optional": false
+                },
+                {
+                    "name": "item",
+                    "dataType": "string",
+                    "ts_dataType": "number | string",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "1", "'Content'" ]
+            }
+        },
+        {
+            "name": "setHeaderContentAt",
+            "description": "<P>Setting header content to item with any index </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/7prP7/",
+            "exampleDescription": "sets new header's content in the jqxNavigationBar.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "index",
+                    "dataType": "number",
+                    "description": "",
+                    "optional": false
+                },
+                {
+                    "name": "item",
+                    "dataType": "string",
+                    "ts_dataType": "number | string",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "1", "'Header'" ]
+            }
+        },
+        {
+            "name": "showArrowAt",
+            "description": "<P>Showing the arrow of an item with specific index. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/SkZVy/",
+            "exampleDescription": "shows the arrow of an item in the jqxNavigationBar.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "index",
+                    "dataType": "number",
+                    "ts_dataType": "number | string",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;JqxNavigationBar ref=\"myNavigationBar\"\n             :width=\"400\" :height=\"200\">\n      &lt;div>Header 1&lt;/div>\n      &lt;div>Content 1 &lt;input type='button' id='button' value='Button' />&lt;/div>\n      &lt;div>Header 2&lt;/div>\n      &lt;div>Content 2&lt;/div>\n    &lt;/JqxNavigationBar>\n    &lt;JqxButton @click=\"hideArrow\">Hide Arrow&lt;/JqxButton>\n    &lt;JqxButton @click=\"showArrow\">Show Arrow&lt;/JqxButton>\n  &lt;/div>\n&lt;/template>\n&lt;script>\n  import JqxNavigationBar from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxnavigationbar.vue';\n  import JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\n  export default {\n    components: {\n      JqxNavigationBar,\n      JqxButton\n    },\n    methods: {\n      hideArrow: function () {\n        this.$refs.myNavigationBar.hideArrowAt(1);\n      },\n      showArrow: function () {\n        this.$refs.myNavigationBar.showArrowAt(1);\n      }\n    }\n  }\n&lt;/script>\n&lt;style>\n  .jqx-button {\n    display: inline-block;\n    margin-top: 15px;\n    margin-right: 20px;\n  }\n&lt;/style>"
+            }
+        },
+        {
+            "name": "update",
+            "description": "<P>This method updates an item at a specific index. It has three parameters - index, header (the new header of the item) and content (the new content of the item). </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/LBS9n/",
+            "exampleDescription": "updates an item in the jqxNavigationBar.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "index",
+                    "dataType": "number",
+                    "description": "",
+                    "optional": false
+                },
+                {
+                    "name": "header",
+                    "dataType": "string",
+                    "ts_dataType": "number | string",
+                    "description": "",
+                    "optional": false
+                },
+                {
+                    "name": "content",
+                    "dataType": "string",
+                    "ts_dataType": "number | string",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "1", "'Title'", "'Content'" ]
+            }
+        },
+        {
+            "name": "val",
+            "description": "<P>Sets or gets the expanded item. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/UVBLt/",
+            "exampleDescription": "set the expanded item in the jqxNavigationBar.",
+            "returnDataType": "string",
+            "ts_returnDataType": "string | number",
+            "arguments": [
+                {
+                    "name": "value",
+                    "dataType": "string",
+                    "ts_dataType": "number | string",
+                    "description": "",
+                    "optional": true
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;JqxNavigationBar ref=\"myNavigationBar\"\n           :width=\"400\" :height=\"200\">\n    &lt;div>Header 1&lt;/div>\n    &lt;div>Content 1 &lt;input type='button' id='button' value='Button' />&lt;/div>\n    &lt;div>Header 2&lt;/div>\n    &lt;div>Content 2&lt;/div>\n  &lt;/JqxNavigationBar>\n&lt;/template>\n\n&lt;script>\n  import JqxNavigationBar from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxnavigationbar.vue';\n  import JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\n\n  export default {\n    components: {\n      JqxNavigationBar,\n      JqxButton\n    },\n    mounted: function () {\n      this.$refs.myNavigationBar.val(1);\n    }\n  }\n&lt;/script>"
+            }
+        }
+    ]
+}

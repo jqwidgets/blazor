@@ -1,0 +1,333 @@
+{
+    "widget": {
+        "name": "jqxResponsivePanel",
+        "description": "Displays responsive panel with collapse point on resize.",
+        "angular2": {
+            "name": "jqxResponsivePanelComponent",
+            "selector": "jqxResponsivePanel"
+        }
+    },
+    "dataTypes": [
+        {
+            "name": "ResponsivePanelAnimationDirection",
+            "ts_dataType": "enum",
+            "enumOptions": [ "left", "right", "top", "bottom" ]
+        },
+        {
+            "name": "ResponsivePanelAnimationType",
+            "ts_dataType": "enum",
+            "enumOptions": [ "fade", "slide", "none" ]
+        }
+    ],
+    "exampleNewTemplate": "  <div>\n    <div id=\"toggleResponsivePanel\"></div>\n    <JqxResponsivePanel ref=\"myResponsivePanel\" :width=\"500\" :height=\"500\" :collapseBreakpoint=\"800\" :toggleButton=\"'#toggleResponsivePanel'\"{{configuration}}>\n      <h4>jQWidgets</h4>\n      <p>jQWidgets provides a comprehensive solution for building professional web sites and mobile apps. It is built entirely on open standards and technologies like HTML5, CSS, Javascript and jQuery. jQWidgets enables responsive web development and helps you create apps and websites that look beautiful on desktops, tablets and smart phones.</p>\n      <input type='button' id='button' value='Learn more' />\n    </JqxResponsivePanel>\n  </div>\n",
+    "exampleElementsInit": {
+        "width": "25%",
+        "height": "100%",
+        "collapseBreakpoint": 700,
+        "toggleButton": "#toggleResponsivePanel",
+        "animationType": "none",
+        "autoClose": false
+    },
+    "properties": [
+        {
+            "name": "animationDirection",
+            "defaultValue": "'left'",
+            "description": "<P>Sets or gets the direction of the animation. You can use this property when \"animationType\" is set to 'slide'. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'left'</CODE></PRE>\n<PRE><CODE>'right'</CODE></PRE>\n<PRE><CODE>'top'</CODE></PRE>\n<PRE><CODE>'bottom'</CODE></PRE>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>animationDirection</CODE> property. </P>\n<PRE><CODE>$('#jqxResponsivePanel').jqxResponsivePanel({ animationDirection: 'top' }); </CODE></PRE>\n\r\n<P>Get the <CODE>animationDirection</CODE> property. </P>\n<PRE><CODE>var opacity = $('#jqxResponsivePanel').jqxResponsivePanel('animationDirection');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/1efhfx45/",
+            "exampleDescription": "animationDirection is set to 'top'",
+            "dataType": "string",
+            "ts_dataType": "enum:ResponsivePanelAnimationDirection",
+            "exampleInit": {
+                "animationType": "fade",
+                "animationDirection": "top"
+            }
+        },
+        {
+            "name": "animationHideDelay",
+            "defaultValue": "'fast'",
+            "description": "<P>Sets or gets the speed of the animation when the panel hides. The delay represents the time of starting until the final hiding. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>animationHideDelay</CODE> property. </P>\n<PRE><CODE>$('#jqxResponsivePanel').jqxResponsivePanel({ animationHideDelay: 'slow' }); </CODE></PRE>\n\r\n<P>Get the <CODE>animationHideDelay</CODE> property. </P>\n<PRE><CODE>var animationHideDelay = $('#jqxResponsivePanel').jqxResponsivePanel('animationHideDelay');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/cou33rs7/",
+            "exampleDescription": "animationHideDelay is set to 800",
+            "dataType": "string | number",
+            "ts_dataType": "number | string",
+            "exampleInit": {
+                "animationType": "fade",
+                "animationHideDelay": "800"
+            }
+        },
+        {
+            "name": "animationShowDelay",
+            "defaultValue": "'fast'",
+            "description": "<P>Sets or gets the speed of the animation when the panel shows. The delay represents the time of it's starting until the final positioning. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>animationShowDelay</CODE> property. </P>\n<PRE><CODE>$('#jqxResponsivePanel').jqxResponsivePanel({ animationShowDelay: 'slow' }); </CODE></PRE>\n\r\n<P>Get the <CODE>animationShowDelay</CODE> property. </P>\n<PRE><CODE>var hoverOpacity = $('#jqxResponsivePanel').jqxResponsivePanel('animationShowDelay');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/mh4fxzcw/",
+            "exampleDescription": "animationShowDelay is set to 800",
+            "dataType": "number",
+            "ts_dataType": "number | string",
+            "exampleInit": {
+                "animationType": "fade",
+                "animationShowDelay": "800"
+            }
+        },
+        {
+            "name": "animationType",
+            "defaultValue": "'fade'",
+            "description": "<P>Sets the type of animation using for show/hide the panel. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'fade'</CODE></PRE>\n<PRE><CODE>'slide'</CODE></PRE>\n<PRE><CODE>'none'</CODE></PRE>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>animationType</CODE> property. </P>\n<PRE><CODE>$('#jqxResponsivePanel').jqxResponsivePanel({ animationType: 'slide' }); </CODE></PRE>\n\r\n<P>Get the <CODE>animationType</CODE> property. </P>\n<PRE><CODE>var animationType = $('#jqxResponsivePanel').jqxResponsivePanel('animationType');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/owz0v1hz/",
+            "exampleDescription": "animationType is set to 'slide'",
+            "dataType": "string",
+            "ts_dataType": "enum:ResponsivePanelAnimationType",
+            "exampleInit": {
+                "animationType": "none"
+            }
+        },
+        {
+            "name": "autoClose",
+            "defaultValue": "true",
+            "description": "<P>When is set to true, after click outside of the responsive panel it closes. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>autoClose</CODE> property. </P>\n<PRE><CODE>$('#jqxResponsivePanel').jqxResponsivePanel({ autoClose: false }); </CODE></PRE>\n\r\n<P>Get the <CODE>autoClose</CODE> property. </P>\n<PRE><CODE>var autoClose = $('#jqxResponsivePanel').jqxResponsivePanel('autoClose');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/a6ykwoah/",
+            "exampleDescription": "autoClose is set to false",
+            "dataType": "boolean",
+            "exampleInit": {
+                "autoClose": "false"
+            }
+        },
+        {
+            "name": "collapseBreakpoint",
+            "defaultValue": "1000",
+            "description": "<P>If is set, changes the browser's width, where the panel shows/hides. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>collapseBreakpoint</CODE> property. </P>\n<PRE><CODE>$('#jqxResponsivePanel').jqxResponsivePanel({ collapseBreakpoint: 1000 });</CODE></PRE>\n\r\n<P>Get the <CODE>collapseBreakpoint</CODE> property. </P>\n<PRE><CODE>var collapseBreakpoint = $('#jqxResponsivePanel').jqxResponsivePanel('collapseBreakpoint');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/1s5jL46d/",
+            "exampleDescription": "collapseBreakpoint is set to 600",
+            "dataType": "number"
+        },
+        {
+            "name": "collapseWidth",
+            "defaultValue": "null",
+            "description": "<P>Sets or gets the width of the panel when it is collapsed. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>collapseWidth</CODE> property. </P>\n<PRE><CODE>$('#jqxResponsivePanel').jqxResponsivePanel({ collapseWidth: 1000 });</CODE></PRE>\n\r\n<P>Get the <CODE>collapseWidth</CODE> property. </P>\n<PRE><CODE>var collapseWidth = $('#jqxResponsivePanel').jqxResponsivePanel('collapseWidth');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/x56nbegb/",
+            "exampleDescription": "collapseWidth is set to 600",
+            "dataType": "number",
+            "exampleInit": {
+                "collapseWidth": "800"
+            }
+        },
+        {
+            "name": "height",
+            "defaultValue": "null",
+            "description": "<P>Sets or gets the responsive panel's height. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>height</CODE> property. </P>\n<PRE><CODE>$(\"#jqxResponsivePanel\").jqxResponsivePanel({ height: 400 });</CODE></PRE>\n\r\n<P>Get the <CODE>height</CODE> property. </P>\n<PRE><CODE>var height = $('#jqxResponsivePanel').jqxResponsivePanel('height');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/jz646z10/",
+            "exampleDescription": "height is set to 400",
+            "dataType": "number",
+            "ts_dataType": "string | number"
+        },
+        {
+            "name": "initContent",
+            "defaultValue": "null",
+            "description": "<P>Initializes the responsive panel content. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>initContent</CODE> property. </P>\n<PRE><CODE>$('#jqxResponsivePanel').jqxResponsivePanel({ initContent: function () {\r\n    $('#jqxButton').jqxButton({ width: 80 });\r\n}\r\n});</CODE></PRE>\n\r\n<P>Get the <CODE>initContent</CODE> property. </P>\n<PRE><CODE>var initContent = $('#jqxResponsivePanel').jqxResponsivePanel('initContent');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/f0q2uLt9/",
+            "exampleDescription": "initContent is set to a custom function",
+            "dataType": "function",
+            "ts_dataType": "() => void",
+            "customExample": {
+                "codeType": "custom",
+                "code": "&lt;template>\n  &lt;div>\n    &lt;div id=\"toggleResponsivePanel\">&lt;/div>\n    &lt;JqxResponsivePanel ref=\"myResponsivePanel\" :width=\"500\" :height=\"500\" :collapseBreakpoint=\"800\" :toggleButton=\"'#toggleResponsivePanel'\" :initContent=\"initContent\">\n      &lt;h4>jQWidgets&lt;/h4>\n      &lt;p>jQWidgets provides a comprehensive solution for building professional web sites and mobile apps. It is built entirely on open standards and technologies like HTML5, CSS, Javascript and jQuery. jQWidgets enables responsive web development and helps you create apps and websites that look beautiful on desktops, tablets and smart phones.&lt;/p>\n      &lt;input type='button' id='button' value='Learn more' />\n    &lt;/JqxResponsivePanel>\n  &lt;/div>\n&lt;/template>\n\n&lt;script>\n  import JqxResponsivePanel from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxresponsivepanel.vue';\n  import JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\n\n  export default {\n    components: {\n      JqxResponsivePanel,\n      JqxButton\n    },\n    methods: {\n      initContent: function () {\n        jqwidgets.createInstance('#button', 'jqxButton', { width: 100, height: 50 });\n      }\n    }\n  }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "theme",
+            "defaultValue": "''",
+            "description": "<P>Sets the widget's theme. </P>\n\r\n<UL><LI>Include the theme's CSS file after jqx.base.css.<BR>The following code example adds the 'material' theme. <PRE><CODE>\r\n<PRE><CODE>&lt;link rel=\"stylesheet\" href=\"../../jqwidgets/styles/jqx.base.css\" type=\"text/css\" /&gt;\r\n&lt;link rel=\"stylesheet\" href=\"../../jqwidgets/styles/jqx.material.css\" type=\"text/css\" /&gt;\r\n</CODE></PRE>\r\n</CODE></PRE>\r\n<LI>Set the widget's theme property to 'material' when you initialize it. </LI></UL>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/5jbLs7zw/",
+            "exampleDescription": "theme is set to 'material'",
+            "dataType": "string",
+            "exampleInit": {
+                "theme": "material"
+            }
+        },
+        {
+            "name": "toggleButton",
+            "defaultValue": "null",
+            "description": "<P>Sets or gets the element, where toggleButton is rendered. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>toggleButton</CODE> property. </P>\n<PRE><CODE>$('#jqxResponsivePanel').jqxResponsivePanel({ toggleButton: $('#toggleResponsivePanel') }); </CODE></PRE>\n\r\n<P>Get the <CODE>toggleButton</CODE> property. </P>\n<PRE><CODE>var toggleButton = $('#jqxResponsivePanel').jqxResponsivePanel('toggleButton');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/vtyz8vm9/",
+            "exampleDescription": "toggleButton is set to $('#responsivePanelButton')",
+            "dataType": "string",
+            "ts_dataType": "string | any"
+        },
+        {
+            "name": "toggleButtonSize",
+            "defaultValue": "30",
+            "description": "<P>Sets the size of toggleButton. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>toggleButtonSize</CODE> property. </P>\n<PRE><CODE>$('#jqxResponsivePanel').jqxResponsivePanel({ toggleButtonSize: 40 }); </CODE></PRE>\n\r\n<P>Get the <CODE>toggleButtonSize</CODE> property. </P>\n<PRE><CODE>var toggleButtonSize = $('#jqxResponsivePanel').jqxResponsivePanel('toggleButtonSize');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/2tf9zffd/",
+            "exampleDescription": "toggleButtonSize is set to 40",
+            "dataType": "number",
+            "ts_dataType": "number | string",
+            "exampleInit": {
+                "toggleButtonSize": "40"
+            }
+        },
+        {
+            "name": "width",
+            "defaultValue": "null",
+            "description": "<P>Sets or gets the responsive panel's width. </P>\n\r\n<H4>Code examples </H4>\n\r\n<P>Set the <CODE>width</CODE> property. </P>\n<PRE><CODE>$(\"#jqxResponsivePanel\").jqxResponsivePanel({ width: 200 });</CODE></PRE>\n\r\n<P>Get the <CODE>width</CODE> property. </P>\n<PRE><CODE>var width = $('#jqxResponsivePanel').jqxResponsivePanel('width');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/xgvsab3j/",
+            "exampleDescription": "width is set to 300",
+            "dataType": "number",
+            "ts_dataType": "string | number"
+        }
+    ],
+    "events": [
+        {
+            "name": "close",
+            "description": "<P>This event is triggered when the responsive panel finishes it's closing. </P>\n<H4>Code examples </H4>\n<P>Bind to the <CODE>close</CODE> event by type: jqxResponsivePanel. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/du41t2dq/",
+            "exampleDescription": "Bind to the close event by type: jqxResponsivePanel.",
+            "example": "<PRE><CODE>$('#jqxResponsivePanel').on('close', function () { // Some code here. }); </CODE></PRE>"
+        },
+        {
+            "name": "collapse",
+            "description": "<P>This event is triggered when the the browser's width becomes smaller than the value of <STRONG>collapseBreakpoint</STRONG>. </P>\n<H4>Code examples </H4>\n<P>Bind to the <CODE>collapse</CODE> event by type: jqxResponsivePanel. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/tvf6LjLt/",
+            "exampleDescription": "Bind to the collapse event by type: jqxResponsivePanel.",
+            "example": "<PRE><CODE>$('#jqxResponsivePanel').on('collapse', function () { // Some code here. }); </CODE></PRE>"
+        },
+        {
+            "name": "expand",
+            "description": "<P>This event is triggered when the the browser's width becomes greather than the value of <STRONG>collapseBreakpoint</STRONG>. </P>\n<H4>Code examples </H4>\n<P>Bind to the <CODE>expand</CODE> event by type: jqxResponsivePanel. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/xkdasbga/",
+            "exampleDescription": "Bind to the expand event by type: jqxResponsivePanel.",
+            "example": "<PRE><CODE>$('#jqxResponsivePanel').on('expand', function () { // Some code here. }); </CODE></PRE>"
+        },
+        {
+            "name": "open",
+            "description": "<P>This event is triggered when the responsive panel finishes it's opening. </P>\n<H4>Code examples </H4>\n<P>Bind to the <CODE>open</CODE> event by type: jqxResponsivePanel. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/e01gm73s/",
+            "exampleDescription": "Bind to the open event by type: jqxResponsivePanel.",
+            "example": "<PRE><CODE>$('#jqxResponsivePanel').on('open', function () { // Some code here. }); </CODE></PRE>"
+        }
+    ],
+    "methods": [
+        {
+            "name": "close",
+            "description": "<P>Closes the responsive panel. </P>\n<H4>Code examples </H4>\n<P>Invoke the <CODE>close</CODE> method. </P>\n<PRE><CODE>$('#jqxResponsivePanel').jqxResponsivePanel('close'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/q1hg97yo/",
+            "exampleDescription": "closes the widget",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;div id=\"toggleResponsivePanel\">&lt;/div>\n    &lt;JqxResponsivePanel ref=\"myResponsivePanel\" :width=\"500\" :height=\"200\" :collapseBreakpoint=\"2000\" :toggleButton=\"'#toggleResponsivePanel'\">\n      &lt;h4>jQWidgets&lt;/h4>\n      &lt;p>jQWidgets provides a comprehensive solution for building professional web sites and mobile apps. It is built entirely on open standards and technologies like HTML5, CSS, Javascript and jQuery. jQWidgets enables responsive web development and helps you create apps and websites that look beautiful on desktops, tablets and smart phones.&lt;/p>\n      &lt;input type='button' id='button' value='Learn more' />\n    &lt;/JqxResponsivePanel>\n    &lt;JqxButton @click=\"open\">Open&lt;/JqxButton>\n    &lt;JqxButton @click=\"close\">Close&lt;/JqxButton>\n  &lt;/div>\n&lt;/template>\n\n&lt;script>\n  import JqxResponsivePanel from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxresponsivepanel.vue';\n  import JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\n\n  export default {\n    components: {\n      JqxResponsivePanel,\n      JqxButton\n    },\n    methods: {\n      open: function () {\n        this.$refs.myResponsivePanel.open();\n      },\n      close: function () {\n        this.$refs.myResponsivePanel.close();\n      }\n    }\n  }\n&lt;/script>\n&lt;style>\n  .jqx-button {\n    display: inline-block;\n    margin-top: 15px;\n    margin-right: 20px;\n  }\n&lt;/style>"
+            }
+        },
+        {
+            "name": "destroy",
+            "description": "<P>Destroy the widget. </P>\n<H4>Code examples </H4>\n<P>Invoke the <CODE>destroy</CODE> method. </P>\n<PRE><CODE>$('#jqxResponsivePanel').jqxResponsivePanel('destroy'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/L1fvj0vn/",
+            "exampleDescription": "destroy the widget",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "isCollapsed",
+            "description": "<P>Returns <EM style=\"DISPLAY: none\" jQuery111109851182249644648=\"25\">true</EM> or <EM style=\"DISPLAY: none\" jQuery111109851182249644648=\"26\">false</EM> when the panel is collapsed or expanded. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>isCollapsed</CODE> method. </P>\n<PRE><CODE>$('#jqxResponsivePanel').jqxResponsivePanel('isCollapsed'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/h67c49gc/",
+            "exampleDescription": "checks if the panel is collapsed",
+            "returnDataType": "boolean",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "isOpened",
+            "description": "<P>Returns <EM style=\"DISPLAY: none\" jQuery111109851182249644648=\"30\">true</EM> or <EM style=\"DISPLAY: none\" jQuery111109851182249644648=\"31\">false</EM> when the panel is opened or closed. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>isOpened</CODE> method. </P>\n<PRE><CODE>$('#jqxResponsivePanel').jqxResponsivePanel('isOpened'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/h67c49gc/",
+            "exampleDescription": "checks if the panel is opened",
+            "returnDataType": "boolean",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "open",
+            "description": "<P>Open the responsive panel. </P>\n<H4>Code examples </H4>\n<P>Invoke the <CODE>open</CODE> method. </P>\n<PRE><CODE>$('#jqxResponsivePanel').jqxResponsivePanel('open'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/409gmjkp/",
+            "exampleDescription": "opens the widget",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;div>\n    &lt;div id=\"toggleResponsivePanel\">&lt;/div>\n    &lt;JqxResponsivePanel ref=\"myResponsivePanel\" :width=\"500\" :height=\"200\" :collapseBreakpoint=\"2000\" :toggleButton=\"'#toggleResponsivePanel'\">\n      &lt;h4>jQWidgets&lt;/h4>\n      &lt;p>jQWidgets provides a comprehensive solution for building professional web sites and mobile apps. It is built entirely on open standards and technologies like HTML5, CSS, Javascript and jQuery. jQWidgets enables responsive web development and helps you create apps and websites that look beautiful on desktops, tablets and smart phones.&lt;/p>\n      &lt;input type='button' id='button' value='Learn more' />\n    &lt;/JqxResponsivePanel>\n    &lt;JqxButton @click=\"open\">Open&lt;/JqxButton>\n    &lt;JqxButton @click=\"close\">Close&lt;/JqxButton>\n  &lt;/div>\n&lt;/template>\n\n&lt;script>\n  import JqxResponsivePanel from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxresponsivepanel.vue';\n  import JqxButton from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxbuttons.vue';\n\n  export default {\n    components: {\n      JqxResponsivePanel,\n      JqxButton\n    },\n    methods: {\n      open: function () {\n        this.$refs.myResponsivePanel.open();\n      },\n      close: function () {\n        this.$refs.myResponsivePanel.close();\n      }\n    }\n  }\n&lt;/script>\n&lt;style>\n  .jqx-button {\n    display: inline-block;\n    margin-top: 15px;\n    margin-right: 20px;\n  }\n&lt;/style>"
+            }
+        },
+        {
+            "name": "refresh",
+            "description": "<P>Refreshes the widget. </P>\n<H4>Code examples </H4>\n<P>Invoke the <CODE>refresh</CODE> method. </P>\n<PRE><CODE>$('#jqxResponsivePanel').jqxResponsivePanel('refresh'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/8t6bvthz/",
+            "exampleDescription": "refresh the widget",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "render",
+            "description": "<P>Render the widget. </P>\n<H4>Code examples </H4>\n<P>Invoke the <CODE>render</CODE> method. </P>\n<PRE><CODE>$('#jqxResponsivePanel').jqxResponsivePanel('render'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/y3anywaj/",
+            "exampleDescription": "render the widget",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+}

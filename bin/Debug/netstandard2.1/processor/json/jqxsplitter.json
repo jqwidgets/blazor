@@ -1,0 +1,307 @@
+{
+    "widget": {
+        "name": "jqxSplitter",
+        "description": "Displays a Splitter. It divides two panels with a split bar and the size of each panel can be adjusted through the split bar.",
+        "angular2": {
+            "name": "jqxSplitterComponent",
+            "selector": "jqxSplitter"
+        }
+    },
+    "dataTypes": [
+        {
+            "name": "SplitterOrientation",
+            "ts_dataType": "enum",
+            "enumOptions": [ "horizontal", "vertical" ]
+        },
+        {
+            "name": "SplitterPanel",
+            "ts_dataType": "interface",
+            "properties": [
+                {
+                    "name": "size",
+                    "dataType": "number",
+                    "ts_dataType": "number | string",
+                    "optional": "true",
+                    "displayName": "Size",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "min",
+                    "dataType": "number",
+                    "ts_dataType": "number | string",
+                    "optional": "true",
+                    "displayName": "Min",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "collapsible",
+                    "dataType": "boolean",
+                    "optional": "true",
+                    "displayName": "Collapsible",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "collapsed",
+                    "dataType": "boolean",
+                    "optional": "true",
+                    "displayName": "Collapsed",
+                    "defaultValue": ""
+                }
+            ]
+        }
+    ],
+    "exampleExtraTemplate": "<div>Left Side</div>\n    <div>Right Side</div>",
+    "exampleInit": {
+        "width": 600,
+        "height": 600
+    },
+    "properties": [
+        {
+            "name": "disabled",
+            "defaultValue": "false",
+            "description": "<P>Sets or gets the disabled property. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>disabled</CODE> property. </P>\n<PRE><CODE>$('#jqxSplitter').jqxSplitter({ disabled: true });</CODE></PRE>\n\r\n<P>Get the <CODE>disabled</CODE> property. </P>\n<PRE><CODE>var disabled = $('#jqxSplitter').jqxSplitter('disabled');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/qKDES/",
+            "exampleDescription": "disabled is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "disabled": "true"
+            }
+        },
+        {
+            "name": "height",
+            "defaultValue": "300",
+            "description": "<P>Sets or gets the jqxSplitter's height. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>height</CODE> property. </P>\n<PRE><CODE>$(\"#jqxSplitter\").jqxSplitter({ height: 250});</CODE></PRE>\n\r\n<P>Get the <CODE>height</CODE> property. </P>\n<PRE><CODE>var height = $('#jqxSplitter').jqxSplitter('height');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/uUZtq/",
+            "exampleDescription": "height is set to '300px'",
+            "dataType": "number",
+            "ts_dataType": "string | number"
+        },
+        {
+            "name": "orientation",
+            "defaultValue": "'vertical'",
+            "description": "<P>Sets or gets the orientation property. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>orientation</CODE> property. </P>\n<PRE><CODE>$('#jqxSplitter').jqxSplitter({ width: 600, height: 480, orientation: 'horizontal', panels: [{ size: 300 }, { size: 300}] });</CODE></PRE>\n\r\n<P>Get the <CODE>orientation</CODE> property. </P>\n<PRE><CODE>var orientation = $('#jqxSplitter').jqxSplitter('orientation');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/3dfG7/",
+            "exampleDescription": "orientation is set to 'horizontal'",
+            "dataType": "string",
+            "ts_dataType": "enum:SplitterOrientation",
+            "exampleInit": {
+                "orientation": "horizontal"
+            }
+        },
+        {
+            "name": "panels",
+            "defaultValue": "[]",
+            "description": "<P>Sets or gets the panels property. </P>\n\r\n<UL><LI>size - sets the panel's size. \r\n<LI>min - sets the panel's minimum size. \r\n<LI>collapsible - sets whether the panel is collapsible. \r\n<LI>collapsed - sets whether the panel is collapsed. </LI></UL>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>panels</CODE> property. </P>\n<PRE><CODE>$('#jqxSplitter').jqxSplitter({ width: 600, height: 480, panels: [{ size: 300 }, { size: 300}] });</CODE></PRE>\n\r\n<P>Get the <CODE>panels</CODE> property. </P>\n<PRE><CODE>var panels = $('#jqxSplitter').jqxSplitter('panels');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/HbwtB/",
+            "exampleDescription": "panels is set to a custom array",
+            "dataType": "Array",
+            "ts_dataType": "Array<SplitterPanel>",
+            "exampleInit": {
+                "panels": "panels",
+                "exampleData": "[{ size: 100 }, { size: 200 }]"
+            }
+        },
+        {
+            "name": "resizable",
+            "defaultValue": "true",
+            "description": "<P>Sets or gets the resizable property. When this property is set to false, the user will not be able to move the split bar. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>resizable</CODE> property. </P>\n<PRE><CODE>$('#jqxSplitter').jqxSplitter({ resizable: false });</CODE></PRE>\n\r\n<P>Get the <CODE>resizable</CODE> property. </P>\n<PRE><CODE>var resizable = $('#jqxSplitter').jqxSplitter('resizable');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/dpkpd/",
+            "exampleDescription": "resizable is set to false",
+            "dataType": "boolean",
+            "exampleInit": {
+                "resizable": "false"
+            }
+        },
+        {
+            "name": "splitBarSize",
+            "defaultValue": "5",
+            "description": "<P>Sets or gets the size of the split bar. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>splitBarSize</CODE> property. </P>\n<PRE><CODE>$('#jqxSplitter').jqxSplitter({ splitBarSize: 15 });</CODE></PRE>\n\r\n<P>Get the <CODE>splitBarSize</CODE> property. </P>\n<PRE><CODE>var splitBarSize = $('#jqxSplitter').jqxSplitter('splitBarSize');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/umKwM/",
+            "exampleDescription": "splitBarSize is set to 10",
+            "dataType": "number",
+            "exampleInit": {
+                "splitBarSize": "10"
+            }
+        },
+        {
+            "name": "showSplitBar",
+            "defaultValue": "true",
+            "description": "<P>Sets or gets whether the split bar is displayed. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>showSplitBar</CODE> property. </P>\n<PRE><CODE>$('#jqxSplitter').jqxSplitter({ showSplitBar: false });</CODE></PRE>\n\r\n<P>Get the <CODE>showSplitBar</CODE> property. </P>\n<PRE><CODE>var showSplitBar = $('#jqxSplitter').jqxSplitter('showSplitBar');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/VqSu8/",
+            "exampleDescription": "showSplitBar is set to false",
+            "dataType": "boolean",
+            "exampleInit": {
+                "showSplitBar": "false"
+            }
+        },
+        {
+            "name": "theme",
+            "defaultValue": "''",
+            "description": "<P>Sets the widget's theme. </P>\n\r\n<UL><LI>Include the theme's CSS file after jqx.base.css.<BR>The following code example adds the 'material' theme. <PRE><CODE>\r\n<PRE><CODE>&lt;link rel=\"stylesheet\" href=\"../../jqwidgets/styles/jqx.base.css\" type=\"text/css\" /&gt;\r\n&lt;link rel=\"stylesheet\" href=\"../../jqwidgets/styles/jqx.material.css\" type=\"text/css\" /&gt;\r\n</CODE></PRE>\r\n</CODE></PRE>\r\n<LI>Set the widget's theme property to 'material' when you initialize it. </LI></UL>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/5KATQ/",
+            "exampleDescription": "theme is set to 'material'",
+            "dataType": "string",
+            "exampleInit": {
+                "theme": "material"
+            }
+        },
+        {
+            "name": "width",
+            "defaultValue": "300",
+            "description": "<P>Sets or gets the jqxSplitter's width. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>width</CODE> property. </P>\n<PRE><CODE>$(\"#jqxSplitter\").jqxSplitter({ width: 250});</CODE></PRE>\n\r\n<P>Get the <CODE>width</CODE> property. </P>\n<PRE><CODE>var width = $('#jqxSplitter').jqxSplitter('width');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/33cwD/",
+            "exampleDescription": "width is set to '300px'",
+            "dataType": "number",
+            "ts_dataType": "string | number"
+        }
+    ],
+    "events": [
+        {
+            "name": "collapsed",
+            "description": "<P>This event is triggered when a panel is collapsed. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/NkSbV/",
+            "exampleDescription": "Bind to the collapsed event by type: jqxSplitter.",
+            "example": "<PRE><CODE>$('#jqxSplitter').on('collapsed', \r\nfunction (event) {       \r\n    var panels = event.args.panels;\r\n    // get first panel.\r\n    var panel1 = panels[0];\r\n    // get second panel.\r\n    var panel2 = panels[1];\r\n    // panel index.\r\n    var index = event.args.index;\r\n});\r\n                         </CODE></PRE>"
+        },
+        {
+            "name": "expanded",
+            "description": "<P>This event is triggered when a panel is expanded. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/GKqSV/",
+            "exampleDescription": "Bind to the expanded event by type: jqxSplitter.",
+            "example": "<PRE><CODE>$('#jqxSplitter').on('expanded', \r\nfunction (event) {       \r\n    var panels = event.args.panels;\r\n    // get first panel.\r\n    var panel1 = panels[0];\r\n    // get second panel.\r\n    var panel2 = panels[1];\r\n    // panel index.\r\n    var index = event.args.index;\r\n});\r\n                         </CODE></PRE>"
+        },
+        {
+            "name": "resize",
+            "description": "<P>This event is triggered when the 'resize' operation has ended. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/x9ytb/",
+            "exampleDescription": "Bind to the resize event by type: jqxSplitter.",
+            "example": "<PRE><CODE>$('#jqxSplitter').on('resize', \r\nfunction (event) {       \r\n    var panels = event.args.panels;\r\n    // get first panel.\r\n    var panel1 = panels[0];\r\n    // get second panel.\r\n    var panel2 = panels[1];\r\n});\r\n                         </CODE></PRE>"
+        },
+        {
+            "name": "resizeStart",
+            "description": "<P>This event is triggered when the 'resizeStart' operation has started. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/hPe8j/",
+            "exampleDescription": "Bind to the resizeStart event by type: jqxSplitter.",
+            "example": "<PRE><CODE>$('#jqxSplitter').on('resizeStart', \r\nfunction (event) {       \r\n    var panels = event.args.panels;\r\n    // get first panel.\r\n    var panel1 = panels[0];\r\n    // get second panel.\r\n    var panel2 = panels[1];\r\n});\r\n                         </CODE></PRE>"
+        }
+    ],
+    "methods": [
+        {
+            "name": "collapse",
+            "description": "<P>Collapse a panel. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/KxCpU/",
+            "exampleDescription": "collapses the jqxSplitter.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "destroy",
+            "description": "<P>Destroys the jqxSplitter. This method will remove the jqxSplitter from the DOM and will remove all internal event handlers and styles. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/RK7rk/",
+            "exampleDescription": "destroy the jqxSplitter.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "disable",
+            "description": "<P>Disables the jqxSplitter. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/Hhmqs/",
+            "exampleDescription": "disables the jqxSplitter.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "enable",
+            "description": "<P>Enables the jqxSplitter. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/uWhJQ/",
+            "exampleDescription": "enables the jqxSplitter.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "extraData": {
+                "disabled": "true"
+            }
+        },
+        {
+            "name": "expand",
+            "description": "<P>Expands a panel. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/avazm/",
+            "exampleDescription": "expands the jqxSplitter.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "render",
+            "description": "<P>Renders the jqxSplitter. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/eSQNg/",
+            "exampleDescription": "renders the jqxSplitter.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "refresh",
+            "description": "<P>Refreshes the jqxSplitter. This method will perform a layout and will arrange the split panels. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/qpbT6/",
+            "exampleDescription": "refresh the jqxSplitter.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,557 @@
+{
+    "widget": {
+        "name": "jqxRangeSelector",
+        "description": "Can easily be used to select a numeric or date range. The API of jqxRangeSelector allows for a variety of user settings to be applied such as setting the range in numbers, days, weeks, months, years, etc.",
+        "angular2": {
+            "name": "jqxRangeSelectorComponent",
+            "selector": "jqxRangeSelector"
+        }
+    },
+    "dataTypes": [
+        {
+            "name": "RangeSelectorLabelsFormat",
+            "ts_dataType": "enum",
+            "enumOptions": [ "d", "f", "n", "c", "p", "dd", "ddd", "dddd", "h", "hh", "H", "HH", "m", "mm", "M", "MM", "MMM", "MMMM", "s", "ss", "t", "tt", "y", "yy", "yyy", "yyyy" ]
+        },
+        {
+            "name": "RangeSelectorPosition",
+            "ts_dataType": "enum",
+            "enumOptions": [ "left", "right" ]
+        },
+        {
+            "name": "RangeSelectorRange",
+            "ts_dataType": "interface",
+            "properties": [
+                {
+                    "name": "from",
+                    "dataType": "number",
+                    "ts_dataType": "number | string | Date",
+                    "optional": "true",
+                    "displayName": "From",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "to",
+                    "dataType": "number",
+                    "ts_dataType": "number | string | Date",
+                    "optional": "true",
+                    "displayName": "To",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "min",
+                    "dataType": "number",
+                    "ts_dataType": "number | string | object",
+                    "optional": "true",
+                    "displayName": "Min",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "max",
+                    "dataType": "number",
+                    "ts_dataType": "number | string | object",
+                    "optional": "true",
+                    "displayName": "Max",
+                    "defaultValue": ""
+                }
+            ]
+        },
+        {
+            "name": "RangeSelectorGetRange",
+            "ts_dataType": "interface",
+            "properties": [
+                {
+                    "name": "from",
+                    "dataType": "number",
+                    "ts_dataType": "number | string",
+                    "optional": "true",
+                    "displayName": "From",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "to",
+                    "dataType": "number",
+                    "ts_dataType": "number | string",
+                    "optional": "true",
+                    "displayName": "To",
+                    "defaultValue": ""
+                }
+            ]
+        },
+        {
+            "name": "RangeSelectorLabelsFormatFunction",
+            "ts_dataType": "interface",
+            "properties": [
+                {
+                    "name": "value",
+                    "dataType": "string",
+                    "ts_dataType": "number | string",
+                    "optional": "true",
+                    "displayName": "Value",
+                    "defaultValue": ""
+                }
+            ]
+        },
+        {
+            "name": "RangeSelectorMarkersFormatFunction",
+            "ts_dataType": "interface",
+            "properties": [
+                {
+                    "name": "value",
+                    "dataType": "string",
+                    "ts_dataType": "number | string",
+                    "optional": "true",
+                    "displayName": "Value",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "position",
+                    "dataType": "string",
+                    "optional": "true",
+                    "displayName": "Position",
+                    "defaultValue": ""
+                }
+            ]
+        },
+        {
+            "name": "RangeSelectorGroupLabelsFormatFunction",
+            "ts_dataType": "interface",
+            "properties": [
+                {
+                    "name": "value",
+                    "dataType": "string",
+                    "optional": "true",
+                    "displayName": "Value",
+                    "defaultValue": ""
+                },
+                {
+                    "name": "date",
+                    "dataType": "object",
+                    "optional": "true",
+                    "displayName": "Date",
+                    "defaultValue": ""
+                }
+            ]
+        }
+    ],
+    "properties": [
+        {
+            "name": "disabled",
+            "defaultValue": "false",
+            "description": "<P>Sets or gets whether the range selector is disabled. </P>",
+            "example": "<pre><CODE>$('#jqxRangeSelector').jqxRangeSelector({ disabled: true });</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/KDxmv/",
+            "exampleDescription": "disabled is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "disabled": "true"
+            }
+        },
+        {
+            "name": "groupLabelsFormatFunction",
+            "defaultValue": "null",
+            "description": "<P>A custom callback function for rendering the major labels. Has two arguments - the value of the major label and the date object. </P>\n\r\n<P><I>Note</I>: major labels are applied only if the data type is date. </P>",
+            "example": "<pre><CODE>$('#jqxRangeSelector').jqxRangeSelector({ majorLabelRenderer: function (value,\r\n                            date) { return \"&lt;span style='font-style: italic;'&gt;\" + value + \"&lt;span&gt;\";\r\n                            } });</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/fHKZ9/",
+            "exampleDescription": "majorLabelRenderer is set to a custom function",
+            "dataType": "Function",
+            "ts_dataType": "(value: RangeSelectorGroupLabelsFormatFunction['value'], date: RangeSelectorGroupLabelsFormatFunction['date']) => string",
+            "exampleInit": {
+                "showGroupLabels": "true",
+                "min": "June 15, 2013",
+                "max": "August 21, 2013",
+                "labelsFormat": "dd",
+                "markersFormat": "d",
+                "minorTicksInterval": "day",
+                "majorTicksInterval": "week",
+                "groupLabelsFormatFunction": "groupLabelsFormatFunction",
+                "exampleData": "return \"&lt;span style='font-style: italic;'>\" + value + \"&lt;span>\";"
+            }
+        },
+        {
+            "name": "height",
+            "defaultValue": "100",
+            "description": "<P>Sets or gets the range selector's height.<BR>Possible values: </P>\n\r\n<UL><LI>\"Npx\", where N is a number; \r\n<LI>numeric value in pixels. </LI></UL>",
+            "example": "<pre><CODE>$('#jqxRangeSelector').jqxRangeSelector({ height: 75 });</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/jvH69/",
+            "exampleDescription": "height is set to 100",
+            "dataType": "number",
+            "ts_dataType": "string | number",
+            "exampleInit": {
+                "height": "200"
+            }
+        },
+        {
+            "name": "labelsFormat",
+            "defaultValue": "null",
+            "description": "<P>Sets or gets the format of the labels.<BR>Possible number formats: </P>\n\r\n<UL><LI>'d' - decimal numbers; \r\n<LI>'f'- floating-point numbers; \r\n<LI>'n' - integer numbers; \r\n<LI>'c' - currency numbers; \r\n<LI>'p' - percentage numbers. </LI></UL>\n\r\n<P>Possible date formats: </P>\n\r\n<P><I>Note</I>: When the data type is date, the <CODE>labelsFormat</CODE> property must always be set. </P>\n\r\n<UL><LI>'d' - the day of the month; \r\n<LI>'dd' - the day of the month; \r\n<LI>'ddd' - the abbreviated name of the day of the week; \r\n<LI>'dddd' - the full name of the day of the week; \r\n<LI>'h' - the hour, using a 12-hour clock from 1 to 12; \r\n<LI>'hh' - the hour, using a 12-hour clock from 01 to 12; \r\n<LI>'H' - the hour, using a 24-hour clock from 0 to 23; \r\n<LI>'HH' - the hour, using a 24-hour clock from 00 to 23; \r\n<LI>'m' - the minute, from 0 through 59; \r\n<LI>'mm' - the minutes,from 00 though 59; \r\n<LI>'M' - the month, from 1 through 12; \r\n<LI>'MM' - the month, from 01 through 12; \r\n<LI>'MMM' - the abbreviated name of the month; \r\n<LI>'MMMM' - the full name of the month; \r\n<LI>'s' - the second, from 0 through 59; \r\n<LI>'ss' - the second, from 00 through 59; \r\n<LI>'t' - the first character of the AM/PM designator; \r\n<LI>'tt' - the AM/PM designator; \r\n<LI>'y' - the year, from 0 to 99; \r\n<LI>'yy' - the year, from 00 to 99; \r\n<LI>'yyy' - the year, with a minimum of three digits; \r\n<LI>'yyyy' - the year as a four-digit number. </LI></UL>",
+            "example": "<pre><CODE>$('#jqxRangeSelector').jqxRangeSelector({ labelsFormat: 'c' });</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/q549Q/",
+            "exampleDescription": "labelsFormat is set to 'p",
+            "dataType": "string",
+            "ts_dataType": "string",
+            "exampleInit": {
+                "labelsFormat": "p"
+            }
+        },
+        {
+            "name": "labelsFormatFunction",
+            "defaultValue": "null",
+            "description": "<P>A custom callback function for rendering the labels. Has one argument - the value of the label. </P>",
+            "example": "<pre><CODE>$('#jqxRangeSelector').jqxRangeSelector({ labelsFormatFunction: function (value){\r\n                            return \"&lt;span style='color: red;'&gt;\" + value + \"&lt;span&gt;\"; } });</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/tM6KS/",
+            "exampleDescription": "labelsFormatFunction is set to a custom function",
+            "dataType": "Function",
+            "ts_dataType": "(value: RangeSelectorLabelsFormatFunction['value']) => string",
+            "exampleInit": {
+                "labelsFormatFunction": "labelsFormatFunction",
+                "exampleData": "return \"&lt;span style='color: red;'>\" + value + \"&lt;span>\";"
+            }
+        },
+        {
+            "name": "labelsOnTicks",
+            "defaultValue": "true",
+            "description": "",
+            "example": "",
+            "exampleURL": "",
+            "exampleDescription": "",
+            "dataType": "boolean",
+            "exampleInit": {
+                "labelsOnTicks": "false"
+            }
+        },
+        {
+            "name": "markersFormat",
+            "defaultValue": "null",
+            "description": "<P>Sets or gets the format of the markers.<BR>Possible number formats: </P>\n\r\n<UL><LI>'d' - decimal numbers; \r\n<LI>'f'- floating-point numbers; \r\n<LI>'n' - integer numbers; \r\n<LI>'c' - currency numbers; \r\n<LI>'p' - percentage numbers. </LI></UL>\n\r\n<P>Possible date formats: </P>\n\r\n<P><I>Note</I>: When the data type is date, the <CODE>markersFormat</CODE> property must always be set. </P>\n\r\n<UL><LI>'d' - the day of the month; \r\n<LI>'dd' - the day of the month; \r\n<LI>'ddd' - the abbreviated name of the day of the week; \r\n<LI>'dddd' - the full name of the day of the week; \r\n<LI>'h' - the hour, using a 12-hour clock from 1 to 12; \r\n<LI>'hh' - the hour, using a 12-hour clock from 01 to 12; \r\n<LI>'H' - the hour, using a 24-hour clock from 0 to 23; \r\n<LI>'HH' - the hour, using a 24-hour clock from 00 to 23; \r\n<LI>'m' - the minute, from 0 through 59; \r\n<LI>'mm' - the minutes,from 00 though 59; \r\n<LI>'M' - the month, from 1 through 12; \r\n<LI>'MM' - the month, from 01 through 12; \r\n<LI>'MMM' - the abbreviated name of the month; \r\n<LI>'MMMM' - the full name of the month; \r\n<LI>'s' - the second, from 0 through 59; \r\n<LI>'ss' - the second, from 00 through 59; \r\n<LI>'t' - the first character of the AM/PM designator; \r\n<LI>'tt' - the AM/PM designator; \r\n<LI>'y' - the year, from 0 to 99; \r\n<LI>'yy' - the year, from 00 to 99; \r\n<LI>'yyy' - the year, with a minimum of three digits; \r\n<LI>'yyyy' - the year as a four-digit number. </LI></UL>",
+            "example": "<pre><CODE>$('#jqxRangeSelector').jqxRangeSelector({ markersFormat: \"MMMM\" });</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/h366N/",
+            "exampleDescription": "markersFormat is set to 'p'",
+            "dataType": "string",
+            "ts_dataType": "string",
+            "exampleInit": {
+                "markersFormat": "p"
+            }
+        },
+        {
+            "name": "markersFormatFunction",
+            "defaultValue": "null",
+            "description": "",
+            "example": "",
+            "exampleURL": "",
+            "exampleDescription": "",
+            "dataType": "Function",
+            "ts_dataType": "(value: RangeSelectorMarkersFormatFunction['value'], position: RangeSelectorMarkersFormatFunction['position']) => string",
+            "exampleInit": {
+                "markersFormatFunction": "markersFormatFunction",
+                "exampleData": "return \"&lt;span style='color: red;'>\" + value + \"&lt;span>\";"
+            }
+        },
+        {
+            "name": "majorTicksInterval",
+            "defaultValue": "10",
+            "description": "<P>Sets or gets the interval between major ticks. <BR>Possible values: </P>\n\r\n<UL><LI>number; \r\n<LI>object with one of the properties: { milliseconds, seconds, minutes, hours, days, weeks, months, years }; \r\n<LI>one of the following strings: \"millisecond\", \"second\", \"minute\", \"hour\", \"day\", \"week\", \"month\", \"year\". </LI></UL>",
+            "example": "<pre><CODE>$('#jqxRangeSelector').jqxRangeSelector({ majorTicksInterval: { days: 2}\r\n                            });</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/Lf6AN/",
+            "exampleDescription": "majorTicksInterval is set to 10",
+            "dataType": "Number | String | Object ",
+            "ts_dataType": "any",
+            "exampleInit": {
+                "majorTicksInterval": "5"
+            }
+        },
+        {
+            "name": "minorTicksInterval",
+            "defaultValue": "5",
+            "description": "<P>Sets or gets the interval between minor ticks. <BR>Possible values: </P>\n\r\n<UL><LI>number; \r\n<LI>object with one of the properties: { milliseconds, seconds, minutes, hours, days, weeks, months, years }; \r\n<LI>one of the following strings: \"millisecond\", \"second\", \"minute\", \"hour\", \"day\", \"week\", \"month\", \"year\". </LI></UL>",
+            "example": "<pre><CODE>$('#jqxRangeSelector').jqxRangeSelector({ minorTicksInterval: \"hour\" });</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/NZEcV/",
+            "exampleDescription": "minorTicksInterval is set to 1",
+            "dataType": "Number | String | Object ",
+            "ts_dataType": "any",
+            "exampleInit": {
+                "showMinorTicks": "true",
+                "minorTicksInterval": "1"
+            }
+        },
+        {
+            "name": "max",
+            "defaultValue": "100",
+            "description": "<P>Sets or gets the maximum value of the range selector scale.<BR>Possible values: </P>\n\r\n<UL><LI>number; \r\n<LI>date object; \r\n<LI>date string. </LI></UL>",
+            "example": "<pre><CODE>$('#jqxRangeSelector').jqxRangeSelector({ max: 300 });</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/mUAbZ/",
+            "exampleDescription": "max is set to 95",
+            "dataType": "Number | String | Date",
+            "ts_dataType": "any",
+            "exampleInit": {
+                "max": "80"
+            }
+        },
+        {
+            "name": "min",
+            "defaultValue": "0",
+            "description": "<P>Sets or gets the minimum value of the range selector scale.<BR>Possible values: </P>\n\r\n<UL><LI>number; \r\n<LI>date object; \r\n<LI>date string. </LI></UL>",
+            "example": "<pre><CODE>$('#jqxRangeSelector').jqxRangeSelector({ min: \"August 17, 2013\" });</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/692MC/",
+            "exampleDescription": "min is set to 5",
+            "dataType": "Number | String | Date",
+            "ts_dataType": "any",
+            "exampleInit": {
+                "min": "5"
+            }
+        },
+        {
+            "name": "moveOnClick",
+            "defaultValue": "true",
+            "description": "<P>Sets or gets whether the position of the slider can be changed by clicking on the range selector.<BR></P>",
+            "example": "<pre><CODE>$('#jqxRangeSelector').jqxRangeSelector({ moveOnClick: false });</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/2gDq7/",
+            "exampleDescription": "moveOnClick is set to false",
+            "dataType": "boolean",
+            "exampleInit": {
+                "moveOnClick": "false"
+            }
+        },
+        {
+            "name": "padding",
+            "defaultValue": "\"auto\"",
+            "description": "<P>Sets or gets the range selector's padding.<BR>Possible values: </P>\n\r\n<UL><LI>\"auto\"; \r\n<LI>\"Npx\", where N is a number; \r\n<LI>numeric value in pixels. </LI></UL>",
+            "example": "<pre><CODE>$('#jqxRangeSelector').jqxRangeSelector({ padding: \"0px\" });</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/kumWj/",
+            "exampleDescription": "padding is set to \"0px\"",
+            "dataType": "string | number",
+            "ts_dataType": "number | string",
+            "exampleInit": {
+                "padding": "padding",
+                "exampleData": "'40px 40px 0px 40px'"
+            }
+        },
+        {
+            "name": "range",
+            "defaultValue": "{ from: 0, to: Infinity, min: 0, max: Infinity }",
+            "description": "<P>An object containing the following properties: </P>\n\r\n<UL><LI><B>from</B> - the start of the initially selected range.<BR>Possible values: number, date object, date string; \r\n<LI><B>to</B> - the end of the initially selected range;<BR>Possible values: number, date object, date string; \r\n<LI><B>min</B> - the minimum value of the selection. <BR>Possible values: number, object with one of the properties: { milliseconds, seconds, minutes, hours, days, weeks } or one of the following strings: \"millisecond\", \"second\", \"minute\", \"hour\", \"day\", \"week\" \r\n<LI><B>max</B> - the maximum value of the selection. <BR>Possible values: number, object with one of the properties: { milliseconds, seconds, minutes, hours, days, weeks } or one of the following strings: \"millisecond\", \"second\", \"minute\", \"hour\", \"day\", \"week\" </LI></UL>",
+            "example": "<pre><CODE>$('#jqxRangeSelector').jqxRangeSelector({ range: { from: \"01 October, 2013\",\r\n                            to: \"10 October, 2013\", min: \"day\", max: { days: 10}} });</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/N2WuY/",
+            "exampleDescription": "range is set to from 10 to 50",
+            "dataType": "object",
+            "ts_dataType": "RangeSelectorRange",
+            "exampleInit": {
+                "range": "{ from: 10, to: 50 }"
+            }
+        },
+        {
+            "name": "resizable",
+            "defaultValue": "true",
+            "description": "<P>Sets or gets whether the range selector's slider can be resized. </P>\n\r\n<P><I>Note</I>: If <CODE>resizable</CODE> is set to <I>false</I>, the slider can only be resized programmatically with the method <CODE>setValue</CODE>. </P>",
+            "example": "<pre><CODE>$('#jqxRangeSelector').jqxRangeSelector({ resizable: false });</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/zCZj3/",
+            "exampleDescription": "resizable is set to false",
+            "dataType": "boolean",
+            "exampleInit": {
+                "range": "{ from: 10, to: 50 }",
+                "resizable": "false"
+            }
+        },
+        {
+            "name": "rtl",
+            "defaultValue": "false",
+            "description": "<P>Sets or gets whether the jqxRangeSelector's right-to-left support is enabled. </P>",
+            "example": "<pre><CODE>$('#jqxRangeSelector').jqxRangeSelector({ rtl: true });</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/wb5ZU/",
+            "exampleDescription": "rtl is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "rtl": "true"
+            }
+        },
+        {
+            "name": "showGroupLabels",
+            "defaultValue": "false",
+            "description": "",
+            "example": "",
+            "exampleURL": "",
+            "exampleDescription": "",
+            "dataType": "boolean",
+            "exampleInit": {
+                "showGroupLabels": "true",
+                "min": "June 15, 2013",
+                "max": "August 21, 2013",
+                "labelsFormat": "dd",
+                "markersFormat": "d",
+                "minorTicksInterval": "day",
+                "majorTicksInterval": "week"
+            }
+        },
+        {
+            "name": "showMinorTicks",
+            "defaultValue": "false",
+            "description": "<P>Sets or gets whether minor ticks will be displayed. </P>",
+            "example": "<pre><CODE>$('#jqxRangeSelector').jqxRangeSelector({ showMinorTicks: true });</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/6h78H/",
+            "exampleDescription": "showMinorTicks is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "showMinorTicks": "true"
+            }
+        },
+        {
+            "name": "snapToTicks",
+            "defaultValue": "true",
+            "description": "<P>Sets or gets whether the slider will snap to the major and minor ticks. </P>",
+            "example": "<pre><CODE>$('#jqxRangeSelector').jqxRangeSelector({ snapToTicks: false });</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/veCx3/",
+            "exampleDescription": "snapToTicks is set to false",
+            "dataType": "boolean",
+            "exampleInit": {
+                "snapToTicks": "false"
+            }
+        },
+        {
+            "name": "showMajorLabels",
+            "defaultValue": "false",
+            "description": "<P>Sets or gets whether the major labels will be shown. </P>\n\r\n<P><I>Note</I>: major labels are applied only if the data type is date. </P>",
+            "example": "<pre><CODE>$('#jqxRangeSelector').jqxRangeSelector({ showMajorLabels: false });</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/4R7pq/",
+            "exampleDescription": "showMajorLabels is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "showMajorLabels": "true"
+            }
+        },
+        {
+            "name": "showMarkers",
+            "defaultValue": "true",
+            "description": "<P>Sets or gets whether the markers will be shown. </P>",
+            "example": "<pre><CODE>$('#jqxRangeSelector').jqxRangeSelector({ showMarkers: false });</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/Lh7X5/",
+            "exampleDescription": "showMarkers is set to false",
+            "dataType": "boolean",
+            "exampleInit": {
+                "showMarkers": "false"
+            }
+        },
+        {
+            "name": "theme",
+            "defaultValue": "\"\"",
+            "description": "<P>Sets the widget's theme. </P>\n\r\n<UL><LI>Include the theme's CSS file after jqx.base.css.<BR>The following code example adds the 'material' theme. <PRE><CODE>&lt;link rel=\"stylesheet\" href=\"../../jqwidgets/styles/jqx.base.css\"type=\"text/css\"\r\n                                    /&gt; &lt;link rel=\"stylesheet\" href=\"../../jqwidgets/styles/jqx.material.css\"\r\n                                    type=\"text/css\" /&gt;</CODE></PRE>\r\n<LI>Set the widget's theme property to 'material' when you initialize it. <PRE><CODE>$('#jqxRangeSelector').jqxRangeSelector({ theme: 'material' });</CODE></PRE></LI></UL>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/RJNcR/",
+            "exampleDescription": "theme is set to 'material'",
+            "dataType": "string",
+            "exampleInit": {
+                "theme": "material"
+            }
+        },
+        {
+            "name": "width",
+            "defaultValue": "400",
+            "description": "<P>Sets or gets the range selector's width.<BR>Possible values: </P>\n\r\n<UL><LI>\"Npx\", where N is a number; \r\n<LI>numeric value in pixels. </LI></UL>",
+            "example": "<pre><CODE>$('#jqxRangeSelector').jqxRangeSelector({ width: \"200px\" });</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/nQrQp/",
+            "exampleDescription": "width is set to 500",
+            "dataType": "number",
+            "ts_dataType": "string | number",
+            "exampleInit": {
+                "width": "500"
+            }
+        }
+    ],
+    "events": [
+        {
+            "name": "change",
+            "description": "<P>This event is triggered when the slected range is changed. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/J7yLJ/",
+            "exampleDescription": "Bind to the change event by type: jqxRangeSelector.",
+            "example": "<PRE><CODE>$('#jqxRangeSelector').on('change', function () { // Some code here. });\r\n                        </CODE></PRE>"
+        }
+    ],
+    "methods": [
+        {
+            "name": "destroy",
+            "description": "<P>Removes the range selector from the DOM. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/ZvWmQ/",
+            "exampleDescription": "destroy the jqxRangeSelector.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "getRange",
+            "description": "<P>Gets the selected range. Returns an object with two fields. </P>\n<P>Range object fields: </P>\n<UL><LI>from - the start of the selection - number or date object; \r\n<LI>to - the end of the selection - number or date object. </LI></UL>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/zD9qm/",
+            "exampleDescription": "gets the range of the jqxRangeSelector.",
+            "returnDataType": "object",
+            "ts_returnDataType": "RangeSelectorGetRange",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "render",
+            "description": "<P>Renders the range selector. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/Mbh4q/",
+            "exampleDescription": "renders the jqxRangeSelector.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "refresh",
+            "description": "<P>Refreshes the range selector. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/9teEE/",
+            "exampleDescription": "refreshes the jqxRangeSelector.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "setRange",
+            "description": "<P>Sets the selected range. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/qXXkC/",
+            "exampleDescription": "sets a new range of the jqxRangeSelector.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "from",
+                    "dataType": "number/Date",
+                    "ts_dataType": "any",
+                    "description": "",
+                    "optional": false
+                },
+                {
+                    "name": "to",
+                    "dataType": "number/Date",
+                    "ts_dataType": "any",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "20", "80" ]
+            }
+        }
+    ]
+}

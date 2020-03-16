@@ -1,0 +1,309 @@
+{
+    "widget": {
+        "name": "jqxPanel",
+        "description": "Enables users to display content in a scrollable panel.",
+        "angular2": {
+            "name": "jqxPanelComponent",
+            "selector": "jqxPanel"
+        }
+    },
+    "dataTypes": [
+        {
+            "name": "PanelSizeMode",
+            "ts_dataType": "enum",
+            "enumOptions": [ "fixed", "wrap" ]
+        }
+    ],
+    "exampleExtraTemplate": "<div style='margin: 10px;'>\n      <h3>Early History of the Internet</h3>\n    </div>\n    <div> \n      <ul> \n        <li>1961 First packet-switching papers</li>\n        <li>1966 Merit Network founded</li>\n        <li>1966 ARPANET planning starts</li>\n        <li>1969 ARPANET carries its first packets</li>\n        <li>1970 Mark I network at NPL (UK)</li>\n        <li>1970 Network Information Center (NIC)</li>\n        <li>1971 Merit Network's packet-switched network operational</li>\n        <li>1971 Tymnet packet-switched network</li>\n        <li>1972 Internet Assigned Numbers Authority (IANA) established</li>\n      </ul>\n    </div>",
+    "exampleInit": {
+        "width": "250",
+        "height": "250"
+    },
+    "properties": [
+        {
+            "name": "autoUpdate",
+            "defaultValue": "false",
+            "description": "<P>Automatically updates the panel, if its children size is changed. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>autoUpdate</CODE> property. </P>\n<PRE><CODE>$('#jqxPanel').jqxPanel({autoUpdate: true});</CODE></PRE>\n\r\n<P>Get the <CODE>autoUpdate</CODE> property. </P>\n<PRE><CODE>var autoUpdate = $('#jqxPanel').jqxPanel('autoUpdate'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/2kM2t/",
+            "exampleDescription": "autoUpdate is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "autoUpdate": "true"
+            }
+        },
+        {
+            "name": "disabled",
+            "defaultValue": "false",
+            "description": "<P>Sets or gets whether the panel is disabled. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>disabled</CODE> property. </P>\n<PRE><CODE>$('#jqxPanel').jqxPanel({ disabled:true }); </CODE></PRE>\n\r\n<P>Get the <CODE>disabled</CODE> property. </P>\n<PRE><CODE>var disabled = $('#jqxPanel').jqxPanel('disabled'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/TtCVX/",
+            "exampleDescription": "disabled is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "disabled": "true"
+            }
+        },
+        {
+            "name": "height",
+            "defaultValue": "null",
+            "description": "<P>Sets or gets the panel's height. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>height</CODE> property. </P>\n<PRE><CODE>$('#jqxPanel').jqxPanel({height:\"400px\"});</CODE></PRE>\n\r\n<P>Get the <CODE>height</CODE> property. </P>\n<PRE><CODE>var height = $('#jqxPanel').jqxPanel('height');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/DRpF6/",
+            "exampleDescription": "height is set to 250",
+            "dataType": "number",
+            "ts_dataType": "string | number"
+        },
+        {
+            "name": "rtl",
+            "defaultValue": "false",
+            "description": "<P>Sets or gets a value indicating whether widget's elements are aligned to support locales using right-to-left fonts.</P>",
+            "example": "<pre><CODE>$('#jqxPanel').jqxPanel({rtl : true}); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/c236J/",
+            "exampleDescription": "rtl is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "rtl": "true"
+            }
+        },
+        {
+            "name": "sizeMode",
+            "defaultValue": "'fixed'",
+            "description": "<P>Sets or gets the sizing mode. In the 'fixed' mode, the panel displays scrollbars, if its content requires it. In the wrap mode, the scrollbars are not displayed and the panel automatically changes its size. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'fixed'</CODE></PRE>\n<PRE><CODE>'wrap'</CODE></PRE>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>sizeMode</CODE> property. </P>\n<PRE><CODE>$('#jqxPanel').jqxPanel({sizeMode: \"wrap\"});</CODE></PRE>\n\r\n<P>Get the <CODE>sizeMode</CODE> property. </P>\n<PRE><CODE>var sizeMode = $('#jqxPanel').jqxPanel('sizeMode'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/nhbH6/",
+            "exampleDescription": "sizeMode is set to 'wrap'",
+            "dataType": "string",
+            "ts_dataType": "enum:PanelSizeMode",
+            "exampleInit": {
+                "sizeMode": "wrap"
+            }
+        },
+        {
+            "name": "scrollBarSize",
+            "defaultValue": "17",
+            "description": "<P>Sets or gets the scrollbar's size. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>scrollBarSize</CODE> property. </P>\n<PRE><CODE>$('#jqxPanel').jqxPanel({ scrollBarSize: 20 }); </CODE></PRE>\n\r\n<P>Get the <CODE>scrollBarSize</CODE> property. </P>\n<PRE><CODE>var scrollBarSize = $('#jqxPanel').jqxPanel('scrollBarSize'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/gK7Cy/",
+            "exampleDescription": "scrollBarSize is set to 20",
+            "dataType": "number",
+            "ts_dataType": "number | string",
+            "exampleInit": {
+                "scrollBarSize": "20"
+            }
+        },
+        {
+            "name": "theme",
+            "defaultValue": "''",
+            "description": "<P>Sets the widget's theme. </P>\n\r\n<UL><LI>Include the theme's CSS file after jqx.base.css.<BR>The following code example adds the 'material' theme. <PRE><CODE>\r\n<PRE><CODE>&lt;link rel=\"stylesheet\" href=\"../../jqwidgets/styles/jqx.base.css\" type=\"text/css\" /&gt;\r\n&lt;link rel=\"stylesheet\" href=\"../../jqwidgets/styles/jqx.material.css\" type=\"text/css\" /&gt;\r\n</CODE></PRE>\r\n</CODE></PRE>\r\n<LI>Set the widget's theme property to 'material' when you initialize it. </LI></UL>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/SjGV5/",
+            "exampleDescription": "theme is set to 'material'",
+            "dataType": "string",
+            "exampleInit": {
+                "theme": "material"
+            }
+        },
+        {
+            "name": "width",
+            "defaultValue": "null",
+            "description": "<P>Sets or gets the panel's width. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>width</CODE> property. </P>\n<PRE><CODE>$('#jqxPanel').jqxPanel({width:\"200px\"});</CODE></PRE>\n\r\n<P>Get the <CODE>width</CODE> property. </P>\n<PRE><CODE>var width = $('#jqxPanel').jqxPanel('width');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/XmKFp/",
+            "exampleDescription": "width is set to 250",
+            "dataType": "number",
+            "ts_dataType": "string | number"
+        }
+    ],
+    "events": [],
+    "methods": [
+        {
+            "name": "append",
+            "description": "<P>Appends an element to the panel's content. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>append</CODE> method. </P>\n<PRE><CODE>$('#jqxPanel').jqxPanel('append', $('#elementId')[0]);</CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/acwZB/",
+            "exampleDescription": "appends an element in the jqxPanel.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "HTMLElement",
+                    "dataType": "object",
+                    "ts_dataType": "any",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;JqxPanel ref=\"myPanel\"\n       :width=\"250\" :height=\"250\">\n    &lt;div style='margin: 10px;'>\n      &lt;h3>Early History of the Internet&lt;/h3>\n    &lt;/div>\n    &lt;div>\n      &lt;ul>\n        &lt;li>1961 First packet-switching papers&lt;/li>\n        &lt;li>1966 Merit Network founded&lt;/li>\n        &lt;li>1966 ARPANET planning starts&lt;/li>\n        &lt;li>1969 ARPANET carries its first packets&lt;/li>\n        &lt;li>1970 Mark I network at NPL (UK)&lt;/li>\n        &lt;li>1970 Network Information Center (NIC)&lt;/li>\n        &lt;li>1971 Merit Network's packet-switched network operational&lt;/li>\n        &lt;li>1971 Tymnet packet-switched network&lt;/li>\n        &lt;li>1972 Internet Assigned Numbers Authority (IANA) established&lt;/li>\n      &lt;/ul>\n    &lt;/div>\n  &lt;/JqxPanel>\n&lt;/template>\n\n&lt;script>\n  import JqxPanel from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxpanel.vue';\n\n  export default {\n    components: {\n      JqxPanel\n    },\n    mounted: function () {\n      let div = document.createElement('div');\n      div.innerHTML = 'Custom Content';\n      this.$refs.myPanel.append(div);\n    }\n  }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "clearcontent",
+            "description": "<P>Clears the panel's content. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>clearcontent</CODE> method. </P>\n<PRE><CODE>$('#jqxPanel').jqxPanel('clearcontent');</CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/mzbtD/",
+            "exampleDescription": "clears the content of the jqxPanel.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "destroy",
+            "description": "<P>Destroys the widget. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>destroy</CODE> method. </P>\n<PRE><CODE>$('#jqxPanel').jqxPanel('destroy'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/H5hgB/",
+            "exampleDescription": "destroy the jqxPanel.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "focus",
+            "description": "<P>Focuses the widget. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>focus</CODE> method. </P>\n<PRE><CODE>$('#jqxPanel').jqxPanel('focus'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/Mhkjh/",
+            "exampleDescription": "focuses the jqxPanel.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "getScrollHeight",
+            "description": "<P>Get the scrollable height. Returns a number. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>getScrollHeight</CODE> method. </P>\n<PRE><CODE>var height = $('#jqxPanel').jqxPanel('getScrollHeight');</CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/ArF4E/",
+            "exampleDescription": "gets the scroll's height in the jqxPanel.",
+            "returnDataType": "number",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "getVScrollPosition",
+            "description": "<P>Get the vertical scrollbar's position. Returns a number. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>getVScrollPosition</CODE> method. </P>\n<PRE><CODE>var position = $('#jqxPanel').jqxPanel('getVScrollPosition');</CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/HUWbk/",
+            "exampleDescription": "gets the scroll's position in the jqxPanel.",
+            "returnDataType": "number",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "getScrollWidth",
+            "description": "<P>Get the scrollable width. Returns a number. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>getScrollWidth</CODE> method. </P>\n<PRE><CODE>var width = $('#jqxPanel').jqxPanel('getScrollWidth');</CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/X5mjW/",
+            "exampleDescription": "gets the scroll's width in the jqxPanel.",
+            "returnDataType": "number",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "getHScrollPosition",
+            "description": "<P>Get the horizontal scrollbar's position. Returns a number. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>getHScrollPosition</CODE> method. </P>\n<PRE><CODE>var position = $('#jqxPanel').jqxPanel('getHScrollPosition');</CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/RU7An/",
+            "exampleDescription": "gets the scroll's possition in the jqxPanel.",
+            "returnDataType": "number",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "prepend",
+            "description": "<P>Prepends an element to the panel's content. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>prepend</CODE> method. </P>\n<PRE><CODE>$('#jqxPanel').jqxPanel('prepend', $('#elementId')[0]);</CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/wuabs/",
+            "exampleDescription": "prepends an element in the jqxPanel.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "HTMLElement",
+                    "dataType": "object",
+                    "ts_dataType": "any",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "customExample": {
+                "customCode": "&lt;template>\n  &lt;JqxPanel ref=\"myPanel\"\n       :width=\"250\" :height=\"250\">\n    &lt;div style='margin: 10px;'>\n      &lt;h3>Early History of the Internet&lt;/h3>\n    &lt;/div>\n    &lt;div>\n      &lt;ul>\n        &lt;li>1961 First packet-switching papers&lt;/li>\n        &lt;li>1966 Merit Network founded&lt;/li>\n        &lt;li>1966 ARPANET planning starts&lt;/li>\n        &lt;li>1969 ARPANET carries its first packets&lt;/li>\n        &lt;li>1970 Mark I network at NPL (UK)&lt;/li>\n        &lt;li>1970 Network Information Center (NIC)&lt;/li>\n        &lt;li>1971 Merit Network's packet-switched network operational&lt;/li>\n        &lt;li>1971 Tymnet packet-switched network&lt;/li>\n        &lt;li>1972 Internet Assigned Numbers Authority (IANA) established&lt;/li>\n      &lt;/ul>\n    &lt;/div>\n  &lt;/JqxPanel>\n&lt;/template>\n\n&lt;script>\n  import JqxPanel from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxpanel.vue';\n\n  export default {\n    components: {\n      JqxPanel\n    },\n    mounted: function () {\n      let div = document.createElement('div');\n      div.innerHTML = 'Custom Content';\n      this.$refs.myPanel.prepend(div);\n    }\n  }\n&lt;/script>"
+            }
+        },
+        {
+            "name": "remove",
+            "description": "<P>Remove an element from the panel's content. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>remove</CODE> method. </P>\n<PRE><CODE>$('#jqxPanel').jqxPanel('remove', $('#elementId')[0]);</CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/xMJrh/",
+            "exampleDescription": "removes an element in the jqxPanel.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "HTMLElement",
+                    "dataType": "object",
+                    "ts_dataType": "any",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "document.querySelector('li')" ]
+            }
+        },
+        {
+            "name": "scrollTo",
+            "description": "<P>Scroll to specific position. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>scrollTo</CODE> method. </P>\n<PRE><CODE>$('#jqxPanel').jqxPanel('scrollTo', 10, 20);</CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/aP5Vu/",
+            "exampleDescription": "scrolls to a specific position in the jqxPanel.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "left",
+                    "dataType": "number",
+                    "ts_dataType": "number | string",
+                    "description": "",
+                    "optional": false
+                },
+                {
+                    "name": "top",
+                    "dataType": "number",
+                    "ts_dataType": "number | string",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "0", "20" ]
+            }
+        }
+    ]
+}

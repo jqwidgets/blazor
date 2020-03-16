@@ -1,0 +1,530 @@
+{
+    "widget": {
+        "name": "jqxNumberInput",
+        "description": "Enables users to input numbers.",
+        "angular2": {
+            "name": "jqxNumberInputComponent",
+            "selector": "jqxNumberInput"
+        }
+    },
+    "dataTypes": [
+        {
+            "name": "NumberInputMode",
+            "ts_dataType": "enum",
+            "enumOptions": [ "advanced", "simple" ]
+        },
+        {
+            "name": "NumberInputPromptChar",
+            "ts_dataType": "enum",
+            "enumOptions": [ "_", "?", ";", "#" ]
+        },
+        {
+            "name": "NumberInputSymbolPosition",
+            "ts_dataType": "enum",
+            "enumOptions": [ "left", "right" ]
+        },
+        {
+            "name": "NumberInputTextAlign",
+            "ts_dataType": "enum",
+            "enumOptions": [ "left", "right", "center" ]
+        },
+        {
+            "name": "NumberInputTemplate",
+            "ts_dataType": "enum",
+            "enumOptions": [ "default", "primary", "success", "warning", "danger", "info" ]
+        }
+    ],
+    "properties": [
+        {
+            "name": "allowNull",
+            "defaultValue": "true",
+            "description": "<P>Determines whether the widget's value could be null. </P>",
+            "example": "<pre><CODE>$('#jqxNumberInput').jqxNumberInput({allowNull: false});</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/au135551/",
+            "exampleDescription": "allowNull is set to false",
+            "dataType": "boolean",
+            "exampleInit": {
+                "allowNull": "false"
+            }
+        },
+        {
+            "name": "decimal",
+            "defaultValue": "0",
+            "description": "<P>Sets or gets the input's number. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>decimal</CODE> property. </P>\n<PRE><CODE>$(\"#jqxNumberInput\").jqxNumberInput({ decimal: 5 }) </CODE></PRE>\n\r\n<P>Get the <CODE>decimal</CODE> property. </P>\n<PRE><CODE>var decimal = $('#jqxNumberInput').jqxNumberInput('decimal');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/zRBeY/",
+            "exampleDescription": "decimal is set to 2",
+            "dataType": "number",
+            "ts_dataType": "number | string",
+            "exampleInit": {
+                "decimal": "2"
+            }
+        },
+        {
+            "name": "disabled",
+            "defaultValue": "false",
+            "description": "<P>Determines whether jqxNumberInput is disabled. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>disabled</CODE> property. </P>\n<PRE><CODE>$(\"#jqxNumberInput\").jqxNumberInput({ disabled: true }) </CODE></PRE>\n\r\n<P>Get the <CODE>disabled</CODE> property. </P>\n<PRE><CODE>var disabled = $('#jqxNumberInput').jqxNumberInput('disabled');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/vSYL7/",
+            "exampleDescription": "disabled is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "disabled": "true"
+            }
+        },
+        {
+            "name": "decimalDigits",
+            "defaultValue": "2",
+            "description": "<P>Indicates the number of decimal places to use in numeric values. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>decimalDigits</CODE> property. </P>\n<PRE>$(\"#jqxNumberInput\").jqxNumberInput({ decimalDigits: 3 })<CODE></CODE></PRE>\n\r\n<P>Get the <CODE>decimalDigits</CODE> property. </P>\n<PRE><CODE>var decimalDigits = $('#jqxNumberInput').jqxNumberInput('decimalDigits'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/vXnUr/",
+            "exampleDescription": "decimalDigits is set to 3",
+            "dataType": "number",
+            "ts_dataType": "number | string",
+            "exampleInit": {
+                "decimalDigits": "3"
+            }
+        },
+        {
+            "name": "decimalSeparator",
+            "defaultValue": "'.'",
+            "description": "<P>Sets or gets the char to use as the decimal separator in numeric values. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>decimalSeparator</CODE> property. </P>\n<PRE>$(\"#jqxNumberInput\").jqxNumberInput({ decimalSeparator: \",\" })<CODE></CODE></PRE>\n\r\n<P>Get the <CODE>decimalSeparator</CODE> property. </P>\n<PRE><CODE>var decimalSeparator = $('#jqxNumberInput').jqxNumberInput('decimalSeparator'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/eCnzK/",
+            "exampleDescription": "decimalSeparator is set to ','",
+            "dataType": "string",
+            "ts_dataType": "number | string",
+            "exampleInit": {
+                "decimalSeparator": "','"
+            }
+        },
+        {
+            "name": "digits",
+            "defaultValue": "8",
+            "description": "<P>Sets or gets the digits in the input </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>digits</CODE> property. </P>\n<PRE>$(\"#jqxNumberInput\").jqxNumberInput({ digits: 8})<CODE></CODE></PRE>\n\r\n<P>Get the <CODE>digits</CODE> property. </P>\n<PRE><CODE>var digits = $('#jqxNumberInput').jqxNumberInput('digits'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/Ljcn2/",
+            "exampleDescription": "digits is set to 5",
+            "dataType": "number",
+            "ts_dataType": "number | string",
+            "exampleInit": {
+                "digits": "8"
+            }
+        },
+        {
+            "name": "groupSeparator",
+            "defaultValue": "','",
+            "description": "<P>Sets or gets the string that separates groups of digits to the left of the decimal in numeric values. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>groupSeparator</CODE> property. </P>\n<PRE>$(\"#jqxNumberInput\").jqxNumberInput({ groupSeparator: \".\" })<CODE></CODE></PRE>\n\r\n<P>Get the <CODE>groupSeparator</CODE> property. </P>\n<PRE><CODE>var groupSeparator = $('#jqxNumberInput').jqxNumberInput('groupSeparator'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/pRPDU/",
+            "exampleDescription": "groupSeparator is set to '.'",
+            "dataType": "string",
+            "ts_dataType": "string",
+            "exampleInit": {
+                "groupSeparator": "'.'"
+            }
+        },
+        {
+            "name": "groupSize",
+            "defaultValue": "3",
+            "description": "<P>Sets or gets the number of digits in each group to the left of the decimal in numeric values. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>groupSize</CODE> property. </P>\n<PRE>$(\"#jqxNumberInput\").jqxNumberInput({ groupSize: 5 })<CODE></CODE></PRE>\n\r\n<P>Get the <CODE>groupSize</CODE> property. </P>\n<PRE><CODE>var groupSize = $('#jqxNumberInput').jqxNumberInput('groupSize'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/Mv3L7/",
+            "exampleDescription": "groupSize is set to 2",
+            "dataType": "number",
+            "ts_dataType": "number | string",
+            "exampleInit": {
+                "groupSize": "2"
+            }
+        },
+        {
+            "name": "height",
+            "defaultValue": "null",
+            "description": "<P>Sets or gets the height of the input in pixels. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>height</CODE> property. </P>\n<PRE><CODE>$(\"#jqxNumberInput\").jqxNumberInput({ height: '50px' }) </CODE></PRE>\n\r\n<P>Get the <CODE>height</CODE> property. </P>\n<PRE><CODE>var height = $('#jqxNumberInput').jqxNumberInput('height');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/SzVkL/",
+            "exampleDescription": "height is set to '25px'",
+            "dataType": "number",
+            "ts_dataType": "string | number",
+            "exampleInit": {
+                "height": "25"
+            }
+        },
+        {
+            "name": "inputMode",
+            "defaultValue": "'advanced'",
+            "description": "<P>Sets or gets the input's mode. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'advanced'- the number input behavior resembles a masked input with numeric mask</CODE></PRE>\n<PRE><CODE>'simple'-the  widget works as a normal textbox, but restricts the user's input to numbers</CODE></PRE>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>inputMode</CODE> property. </P>\n<PRE><CODE>$(\"#jqxNumberInput\").jqxNumberInput({ inputMode: 'simple' });</CODE></PRE>\n\r\n<P>Get the <CODE>inputMode</CODE> property. </P>\n<PRE><CODE>var inputMode = $('#jqxNumberInput').jqxNumberInput('inputMode'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/GtGWM/",
+            "exampleDescription": "inputMode is set to 'simple'",
+            "dataType": "string",
+            "ts_dataType": "enum:NumberInputMode",
+            "exampleInit": {
+                "inputMode": "simple"
+            }
+        },
+        {
+            "name": "min",
+            "defaultValue": "-99999999",
+            "description": "<P>Sets or gets the input's minimum value. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>min</CODE> property. </P>\n<PRE><CODE>$(\"#jqxNumberInput\").jqxNumberInput({ min: 5 }) </CODE></PRE>\n\r\n<P>Get the <CODE>min</CODE> property. </P>\n<PRE><CODE>var min = $('#jqxNumberInput').jqxNumberInput('min');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/SasJs/",
+            "exampleDescription": "min is set to 2",
+            "dataType": "number",
+            "ts_dataType": "number | string",
+            "exampleInit": {
+                "min": "2"
+            }
+        },
+        {
+            "name": "max",
+            "defaultValue": "99999999",
+            "description": "<P>Sets or gets the input's maximum value. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>max</CODE> property. </P>\n<PRE><CODE>$(\"#jqxNumberInput\").jqxNumberInput({ max: 50 }) </CODE></PRE>\n\r\n<P>Get the <CODE>max</CODE> property. </P>\n<PRE><CODE>var max = $('#jqxNumberInput').jqxNumberInput('max');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/gvEPF/",
+            "exampleDescription": "max is set to 50",
+            "dataType": "number",
+            "ts_dataType": "number | string",
+            "exampleInit": {
+                "max": "50"
+            }
+        },
+        {
+            "name": "negativeSymbol",
+            "defaultValue": "'-'",
+            "description": "<P>Sets or gets the string to use as negative symbol. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>negativeSymbol</CODE> property. </P>\n<PRE>$(\"#jqxNumberInput\").jqxNumberInput({ negativeSymbol: '-'})<CODE></CODE></PRE>\n\r\n<P>Get the <CODE>negativeSymbol</CODE> property. </P>\n<PRE><CODE>var negativeSymbol = $('#jqxNumberInput').jqxNumberInput('negativeSymbol'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/KgYYq/",
+            "exampleDescription": "symbolPosition is set to '-'",
+            "dataType": "string",
+            "exampleInit": {
+                "negativeSymbol": "'-'"
+            }
+        },
+        {
+            "name": "placeHolder",
+            "defaultValue": "\"\"",
+            "description": "<P>Determines the widget's place holder displayed when the widget's value is null. </P>",
+            "example": "<pre><CODE>$('#jqxNumberInput').jqxNumberInput({placeHolder: \"Null Value\"});</CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/zt5xLv6u/",
+            "exampleDescription": "placeHolder is set to \"Null Value\"",
+            "dataType": "string",
+            "ts_dataType": "number | string",
+            "exampleInit": {
+                "placeHolder": "Null Value"
+            },
+            "customExample": {
+                "codeType": "custom",
+                "code": "&lt;template> \n  &lt;JqxNumberInput ref=\"myNumberInput\" :placeHolder=\"'Null Value'\" /> \n&lt;/template> \n \n&lt;script> \n  import JqxNumberInput from 'jqwidgets-scripts/jqwidgets-vue/vue_jqxnumberinput.vue'; \n \n  export default { \n    components: { \n      JqxNumberInput \n    }, \n    mounted: function () { \n      this.$refs.myNumberInput.val(null); \n    } \n  } \n&lt;/script>"
+            }
+        },
+        {
+            "name": "promptChar",
+            "defaultValue": "-",
+            "description": "<P>Sets or gets the prompt char displayed when an editable char is empty. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'_'</CODE></PRE>\n<PRE><CODE>'?'</CODE></PRE>\n<PRE><CODE>';'</CODE></PRE>\n<PRE><CODE>'#'</CODE></PRE>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>promptChar</CODE> property. </P>\n<PRE>$(\"#jqxNumberInput\").jqxNumberInput({ promptChar: \"#\" })<CODE></CODE></PRE>\n\r\n<P>Get the <CODE>promptChar</CODE> property. </P>\n<PRE><CODE>var promptChar = $('#jqxNumberInput').jqxNumberInput('promptChar'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/hnyr6/",
+            "exampleDescription": "promptChar is set to '#'",
+            "dataType": "string",
+            "ts_dataType": "enum:NumberInputPromptChar",
+            "exampleInit": {
+                "promptChar": "'#'"
+            }
+        },
+        {
+            "name": "rtl",
+            "defaultValue": "false",
+            "description": "<P>Sets or gets a value indicating whether widget's elements are aligned to support locales using right-to-left fonts.</P>",
+            "example": "<pre><CODE>$('#jqxNumberInput').jqxNumberInput({rtl : true}); </CODE></pre>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/36bY3/",
+            "exampleDescription": "rtl is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "rtl": "true",
+                "spinButtons": "true"
+            }
+        },
+        {
+            "name": "readOnly",
+            "defaultValue": "false",
+            "description": "<P>Sets or gets the readOnly state of the input. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>readOnly</CODE> property. </P>\n<PRE>$(\"#jqxNumberInput\").jqxNumberInput({ readOnly: true })<CODE></CODE></PRE>\n\r\n<P>Get the <CODE>readOnly</CODE> property. </P>\n<PRE><CODE>var readOnly = $('#jqxNumberInput').jqxNumberInput('readOnly'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/mw5yj/",
+            "exampleDescription": "readOnly is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "readOnly": "true"
+            }
+        },
+        {
+            "name": "spinMode",
+            "defaultValue": "'advanced'",
+            "description": "<P>Sets or gets the spin mode. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'advanced'- the value is increased depending on the caret's position</CODE></PRE>\n<PRE><CODE>'simple'-pecifies that the spin behavior is disabled</CODE></PRE>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>spinMode</CODE> property. </P>\n<PRE><CODE>$(\"#jqxNumberInput\").jqxNumberInput({ spinMode: 'simple' });</CODE></PRE>\n\r\n<P>Get the <CODE>spinMode</CODE> property. </P>\n<PRE><CODE>var spinMode = $('#jqxNumberInput').jqxNumberInput('spinMode'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/4UpZG/",
+            "exampleDescription": "spinMode is set to 'simple'",
+            "dataType": "string",
+            "ts_dataType": "enum:NumberInputMode",
+            "exampleInit": {
+                "spinButtons": "true",
+                "spinMode": "simple"
+            }
+        },
+        {
+            "name": "spinButtons",
+            "defaultValue": "false",
+            "description": "<P>Shows or hides the spin buttons. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>spinButtons</CODE> property. </P>\n<PRE><CODE>$(\"#jqxNumberInput\").jqxNumberInput({ spinButtons: true });</CODE></PRE>\n\r\n<P>Get the <CODE>spinButtons</CODE> property. </P>\n<PRE><CODE>var spinButtons = $('#jqxNumberInput').jqxNumberInput('spinButtons'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/M5mbm/",
+            "exampleDescription": "spinButtons is set to true",
+            "dataType": "boolean",
+            "exampleInit": {
+                "spinButtons": "true"
+            }
+        },
+        {
+            "name": "spinButtonsWidth",
+            "defaultValue": "18",
+            "description": "<P>Sets or gets the width of the spin buttons. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>spinButtonsWidth</CODE> property. </P>\n<PRE><CODE>$(\"#jqxNumberInput\").jqxNumberInput({ spinButtonsWidth: 20 });</CODE></PRE>\n\r\n<P>Get the <CODE>spinButtonsWidth</CODE> property. </P>\n<PRE><CODE>var spinButtonsWidth = $('#jqxNumberInput').jqxNumberInput('spinButtonsWidth'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/skfMP/",
+            "exampleDescription": "spinButtonsWidth is set to 30",
+            "dataType": "number",
+            "exampleInit": {
+                "spinButtons": "true",
+                "spinButtonsWidth": "30"
+            }
+        },
+        {
+            "name": "spinButtonsStep",
+            "defaultValue": "1",
+            "description": "<P>Sets or gets the increase/decrease step. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>spinButtonsStep</CODE> property. </P>\n<PRE><CODE>$(\"#jqxNumberInput\").jqxNumberInput({ spinButtonsStep: 1 });</CODE></PRE>\n\r\n<P>Get the <CODE>spinButtonsStep</CODE> property. </P>\n<PRE><CODE>var spinButtonsStep = $('#jqxNumberInput').jqxNumberInput('spinButtonsStep'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/ah5t6/",
+            "exampleDescription": "spinButtonsStep is set to 10",
+            "dataType": "number",
+            "ts_dataType": "number | string",
+            "exampleInit": {
+                "spinButtons": "true",
+                "spinButtonsStep": "10"
+            }
+        },
+        {
+            "name": "symbol",
+            "defaultValue": "''",
+            "description": "<P>Sets or gets the string to use as currency or percentage symbol. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>symbol</CODE> property. </P>\n<PRE>$(\"#jqxNumberInput\").jqxNumberInput({ symbol: '$' })<CODE></CODE></PRE>\n\r\n<P>Get the <CODE>symbol</CODE> property. </P>\n<PRE><CODE>var symbol = $('#jqxNumberInput').jqxNumberInput('symbol'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/xqKEb/",
+            "exampleDescription": "symbol is set to '$'",
+            "dataType": "string",
+            "exampleInit": {
+                "symbol": "'&#36;'"
+            }
+        },
+        {
+            "name": "symbolPosition",
+            "defaultValue": "'left'",
+            "description": "<P>Sets or gets the position of the symbol in the input. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'left'</CODE></PRE>\n<PRE><CODE></CODE>'right'</PRE>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>symbolPosition</CODE> property. </P>\n<PRE>$(\"#jqxNumberInput\").jqxNumberInput({ symbolPosition: 'right'})<CODE></CODE></PRE>\n\r\n<P>Get the <CODE>symbolPosition</CODE> property. </P>\n<PRE><CODE>var symbolPosition = $('#jqxNumberInput').jqxNumberInput('symbolPosition'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/v94Tq/",
+            "exampleDescription": "symbolPosition is set to 'right'",
+            "dataType": "string",
+            "ts_dataType": "enum:NumberInputSymbolPosition",
+            "exampleInit": {
+                "symbol": "'@'",
+                "symbolPosition": "right"
+            }
+        },
+        {
+            "name": "textAlign",
+            "defaultValue": "'right'",
+            "description": "<P>Sets or gets the alignment. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>textAlign</CODE> property. </P>\n<PRE><CODE>$(\"#jqxNumberInput\").jqxNumberInput({ textAlign: \"left\" });</CODE></PRE>\n\r\n<P>Get the <CODE>textAlign</CODE> property. </P>\n<PRE><CODE>var textAlign = $('#jqxNumberInput').jqxNumberInput('textAlign'); </CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/n7ca3/",
+            "exampleDescription": "textAlign is set to 'left'",
+            "dataType": "string",
+            "ts_dataType": "enum:NumberInputTextAlign",
+            "exampleInit": {
+                "textAlign": "left"
+            }
+        },
+        {
+            "name": "template",
+            "defaultValue": "'default'",
+            "description": "<P>Determines the template as an alternative of the default styles. </P>\n<B>Possible Values:</B>\n<PRE><CODE>'default' - the default template. The style depends only on the \"theme\" property value.</CODE></PRE>\n<PRE><CODE>'primary' - dark blue style for extra visual weight.</CODE></PRE>\n<PRE><CODE>'success' - green style for successful or positive action.</CODE></PRE>\n<PRE><CODE>'warning' - orange style which indicates caution.</CODE></PRE>\n<PRE><CODE>'danger' - red style which indicates a dangerous or negative action.</CODE></PRE>\n<PRE><CODE>'info' - blue button, not tied to a semantic action or use.</CODE></PRE>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>template</CODE> property. </P>\n<PRE><CODE>$(\"#jqxNumberInput\").jqxNumberInput({ template: 'primary'});</CODE></PRE>\n\r\n<P>Get the <CODE>template</CODE> property. </P>\n<PRE><CODE>var template = $('#jqxNumberInput').jqxNumberInput('template');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/n829fhfp/",
+            "exampleDescription": "template is set to 'success'",
+            "dataType": "string",
+            "ts_dataType": "enum:NumberInputTemplate",
+            "exampleInit": {
+                "spinButtons": "true",
+                "template": "success"
+            }
+        },
+        {
+            "name": "theme",
+            "defaultValue": "''",
+            "description": "<P>Sets the widget's theme. </P>\n\r\n<UL><LI>Include the theme's CSS file after jqx.base.css.<BR>The following code example adds the 'material' theme. <PRE><CODE>\r\n<PRE><CODE>&lt;link rel=\"stylesheet\" href=\"../../jqwidgets/styles/jqx.base.css\" type=\"text/css\" /&gt;\r\n&lt;link rel=\"stylesheet\" href=\"../../jqwidgets/styles/jqx.material.css\" type=\"text/css\" /&gt;\r\n</CODE></PRE>\r\n</CODE></PRE>\r\n<LI>Set the widget's theme property to 'material' when you initialize it. </LI></UL>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/KYpGE/",
+            "exampleDescription": "theme is set to 'material'",
+            "dataType": "string",
+            "exampleInit": {
+                "theme": "material"
+            }
+        },
+        {
+            "name": "value",
+            "defaultValue": "null",
+            "description": "",
+            "example": "",
+            "exampleURL": "",
+            "exampleDescription": "",
+            "dataType": "number",
+            "ts_dataType": "number | string",
+            "exampleInit": {
+                "value": "100"
+            }
+        },
+        {
+            "name": "width",
+            "defaultValue": "null",
+            "description": "<P>Sets or gets the width of the input in pixels. Only positive values have effect. </P>\n\r\n<H4>Code examples</H4>\n\r\n<P>Set the <CODE>width</CODE> property. </P>\n<PRE><CODE>$(\"#jqxNumberInput\").jqxNumberInput({ width: '250px' }) </CODE></PRE>\n\r\n<P>Get the <CODE>width</CODE> property. </P>\n<PRE><CODE>var width = $('#jqxNumberInput').jqxNumberInput('width');</CODE></PRE>",
+            "example": "",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/KSk9W/",
+            "exampleDescription": "width is set to '250px'",
+            "dataType": "number",
+            "ts_dataType": "string | number",
+            "exampleInit": {
+                "width": "250"
+            }
+        }
+    ],
+    "events": [
+        {
+            "name": "change",
+            "description": "<P>This event is triggered when the value is changed and the control's focus is lost. </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>change</CODE> event by type: jqxNumberInput. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/JLL4T/",
+            "exampleDescription": "Bind to the change event by type: jqxNumberInput.",
+            "example": "<PRE><CODE>$('#jqxNumberInput').on('change', function (event) \r\n{\r\n    var value = event.args.value;\r\n    var type = event.args.type; // keyboard, mouse or null depending on how the value was changed.\r\n}); </CODE></PRE>"
+        },
+        {
+            "name": "textchanged",
+            "description": "<P>This event is triggered when the user entered entered a text. </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>textchanged</CODE> event by type: jqxNumberInput. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/66qLc/",
+            "exampleDescription": "Bind to the textchanged event by type: jqxNumberInput.",
+            "example": "<PRE><CODE>$('#jqxNumberInput').on('textchanged', function (event) \r\n{\r\n    var text = event.args.text;\r\n});\r\n                        </CODE></PRE>"
+        },
+        {
+            "name": "valueChanged",
+            "description": "<P>This event is triggered after value is changed. </P>\n<H4>Code examples</H4>\n<P>Bind to the <CODE>valueChanged</CODE> event by type: jqxNumberInput. </P>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/pk2Gz/",
+            "exampleDescription": "Bind to the valueChanged event by type: jqxNumberInput.",
+            "example": "<PRE><CODE>$('#jqxNumberInput').on('valueChanged', function (event)\r\n{\r\n    var value = event.args.value;\r\n}); </CODE></PRE>"
+        }
+    ],
+    "methods": [
+        {
+            "name": "clear",
+            "description": "<P>Clears the value. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>clear</CODE> method. </P>\n<PRE><CODE>$('#jqxNumberInput').jqxNumberInput('clear');</CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/XbXT7/",
+            "exampleDescription": "clears the value in the jqxNumberInput.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "extraData": {
+                "decimal": "200"
+            }
+        },
+        {
+            "name": "destroy",
+            "description": "<P>Destroys the widget. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>destroy</CODE> method. </P>\n<PRE><CODE>$('#jqxNumberInput').jqxNumberInput('destroy'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/bSBj7/",
+            "exampleDescription": "destroys the jqxNumberInput.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "focus",
+            "description": "<P>Focuses the widget. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>focus</CODE> method. </P>\n<PRE><CODE>$('#jqxNumberInput').jqxNumberInput('focus'); </CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/uVetE/",
+            "exampleDescription": "focuses the jqxNumberInput.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ]
+        },
+        {
+            "name": "getDecimal",
+            "description": "<P>Gets the value. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>getDecimal</CODE> method. </P>\n<PRE><CODE>var value = $('#jqxNumberInput').jqxNumberInput('getDecimal');</CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/6Uf2r/",
+            "exampleDescription": "gets the decimal in the jqxNumberInput.",
+            "returnDataType": "number",
+            "arguments": [
+                {
+                    "name": "None",
+                    "dataType": null,
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "extraData": {
+                "decimal": "200"
+            }
+        },
+        {
+            "name": "setDecimal",
+            "description": "<P>Sets the value. </P>\n<H4>Code examples</H4>\n<P>Invoke the <CODE>setDecimal</CODE> method. </P>\n<PRE><CODE>$('#jqxNumberInput').jqxNumberInput('setDecimal', 555);</CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/eYcyG/",
+            "exampleDescription": "sets the decimal in the jqxNumberInput.",
+            "returnDataType": "None",
+            "arguments": [
+                {
+                    "name": "index",
+                    "dataType": "number",
+                    "ts_dataType": "number | string",
+                    "description": "",
+                    "optional": false
+                }
+            ],
+            "exampleInit": {
+                "args": [ "200" ]
+            }
+        },
+        {
+            "name": "val",
+            "description": "<P>Sets or gets the value. </P>\n<H4>Code examples</H4>\n<P>Get the value using the <CODE>val</CODE> method. </P>\n<PRE><CODE>var value = $('#jqxNumberInput').jqxNumberInput('val');</CODE></PRE>\n<PRE><CODE>var value = $('#jqxMaskedInput').val();</CODE></PRE>\n<P>Set the value using the <CODE>val</CODE> method. </P>\n<PRE><CODE>$('#jqxNumberInput').jqxNumberInput('val', 561.23);</CODE></PRE>\n<PRE><CODE>$('#jqxNumberInput').val(1242);</CODE></PRE>",
+            "exampleURL": "http://jsfiddle.net/jqwidgets/arK9a/",
+            "exampleDescription": "sets the value in the jqxNumberInput.",
+            "returnDataType": "number",
+            "arguments": [
+                {
+                    "name": "value",
+                    "dataType": "string",
+                    "ts_dataType": "number | string",
+                    "description": "",
+                    "optional": true
+                }
+            ]
+        }
+    ]
+}

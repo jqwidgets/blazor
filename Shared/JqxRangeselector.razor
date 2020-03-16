@@ -1,0 +1,297 @@
+@using System.Text.Json;
+@inject IJSRuntime JSRuntime;
+
+<div id="@componentID">@ChildContent</div>
+
+@code {
+    [Parameter]
+    public bool disabled {
+        get { return getterProp<bool>("disabled"); }
+        set { setterProp("disabled", value); }
+    }
+
+    [Parameter]
+    public object groupLabelsFormatFunction {
+        get { return getterProp<object>("groupLabelsFormatFunction"); }
+        set { setterProp("groupLabelsFormatFunction", value); }
+    }
+
+    [Parameter]
+    public object height {
+        get { return getterProp<object>("height"); }
+        set { setterProp("height", value); }
+    }
+
+    [Parameter]
+    public string labelsFormat {
+        get { return getterProp<string>("labelsFormat"); }
+        set { setterProp("labelsFormat", value); }
+    }
+
+    [Parameter]
+    public object labelsFormatFunction {
+        get { return getterProp<object>("labelsFormatFunction"); }
+        set { setterProp("labelsFormatFunction", value); }
+    }
+
+    [Parameter]
+    public bool labelsOnTicks {
+        get { return getterProp<bool>("labelsOnTicks"); }
+        set { setterProp("labelsOnTicks", value); }
+    }
+
+    [Parameter]
+    public string markersFormat {
+        get { return getterProp<string>("markersFormat"); }
+        set { setterProp("markersFormat", value); }
+    }
+
+    [Parameter]
+    public object markersFormatFunction {
+        get { return getterProp<object>("markersFormatFunction"); }
+        set { setterProp("markersFormatFunction", value); }
+    }
+
+    [Parameter]
+    public object majorTicksInterval {
+        get { return getterProp<object>("majorTicksInterval"); }
+        set { setterProp("majorTicksInterval", value); }
+    }
+
+    [Parameter]
+    public object minorTicksInterval {
+        get { return getterProp<object>("minorTicksInterval"); }
+        set { setterProp("minorTicksInterval", value); }
+    }
+
+    [Parameter]
+    public object max {
+        get { return getterProp<object>("max"); }
+        set { setterProp("max", value); }
+    }
+
+    [Parameter]
+    public object min {
+        get { return getterProp<object>("min"); }
+        set { setterProp("min", value); }
+    }
+
+    [Parameter]
+    public bool moveOnClick {
+        get { return getterProp<bool>("moveOnClick"); }
+        set { setterProp("moveOnClick", value); }
+    }
+
+    [Parameter]
+    public object padding {
+        get { return getterProp<object>("padding"); }
+        set { setterProp("padding", value); }
+    }
+
+    [Parameter]
+    public object range {
+        get { return getterProp<object>("range"); }
+        set { setterProp("range", value); }
+    }
+
+    [Parameter]
+    public bool resizable {
+        get { return getterProp<bool>("resizable"); }
+        set { setterProp("resizable", value); }
+    }
+
+    [Parameter]
+    public bool rtl {
+        get { return getterProp<bool>("rtl"); }
+        set { setterProp("rtl", value); }
+    }
+
+    [Parameter]
+    public bool showGroupLabels {
+        get { return getterProp<bool>("showGroupLabels"); }
+        set { setterProp("showGroupLabels", value); }
+    }
+
+    [Parameter]
+    public bool showMinorTicks {
+        get { return getterProp<bool>("showMinorTicks"); }
+        set { setterProp("showMinorTicks", value); }
+    }
+
+    [Parameter]
+    public bool snapToTicks {
+        get { return getterProp<bool>("snapToTicks"); }
+        set { setterProp("snapToTicks", value); }
+    }
+
+    [Parameter]
+    public bool showMajorLabels {
+        get { return getterProp<bool>("showMajorLabels"); }
+        set { setterProp("showMajorLabels", value); }
+    }
+
+    [Parameter]
+    public bool showMarkers {
+        get { return getterProp<bool>("showMarkers"); }
+        set { setterProp("showMarkers", value); }
+    }
+
+    [Parameter]
+    public string theme {
+        get { return getterProp<string>("theme"); }
+        set { setterProp("theme", value); }
+    }
+
+    [Parameter]
+    public object width {
+        get { return getterProp<object>("width"); }
+        set { setterProp("width", value); }
+    }
+
+    [Parameter]
+    public object options {
+        set { setOptions(value); }
+    }
+
+    [Parameter]
+    public Action<IDictionary<string, object>> onChange { get; set; }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    private string[] paramsToBlock = { "ChildContent", "onChange" };
+
+    private IDictionary<string, string> paramsToChange = new Dictionary<string, string>
+    {
+        { "isChecked", "checked" },
+        { "isReadonly", "readonly" },
+        { "isDecimal", "decimal" }
+    };
+
+    private bool shouldSetters;
+
+    private string componentID;
+
+    private IDictionary<string, object> initialOptions = new Dictionary<string, object>();
+
+    public void destroy()
+    {
+        setterMethod("destroy");
+    }
+
+    public object getRange()
+    {
+        return getterMethod<object>("getRange");
+    }
+
+    public void render()
+    {
+        setterMethod("render");
+    }
+
+    public void refresh()
+    {
+        setterMethod("refresh");
+    }
+
+    public void setRange(object from, object to)
+    {
+        setterMethod("setRange", from, to);
+    }
+
+    public override async Task SetParametersAsync(ParameterView parameters)
+    {
+        await base.SetParametersAsync(parameters);
+
+        foreach(var parameter in parameters.ToDictionary())
+        {
+            var key = parameter.Key;
+            var value = parameter.Value;
+
+            if (!paramsToBlock.Contains(key))
+            {
+                if (paramsToChange.ContainsKey(key))
+                {
+                    key = paramsToChange[key];
+                }
+
+                initialOptions[key] = value;
+            }
+        }
+
+        shouldSetters = true;
+    }
+
+    protected override void OnInitialized()
+    {
+        componentID = ((IJSInProcessRuntime)JSRuntime).Invoke<string>("jqxBlazor.generateID");
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxRangeSelector", initialOptions);
+            attachEvents();
+        }
+    }
+
+    private void attachEvents()
+    {
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "change", "emitRangeSelectorEvent", DotNetObjectReference.Create(new EventsHandler(onChange)));
+    }
+
+    private T getterProp<T>(string name)
+    {
+        shouldSetters = false;
+        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageProps", componentID, name);
+    }
+
+    private void setterProp(string name, object value)
+    {
+        if (shouldSetters)
+        {
+            ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.manageProps", componentID, name, value);
+        }
+    }
+
+    private T getterMethod<T>(string name)
+    {
+        shouldSetters = false;
+        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", componentID, name);
+    }
+
+    private void setterMethod(string name, params object[] args)
+    {
+        shouldSetters = false;
+        ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.manageMethods", componentID, name, args);
+    }
+
+    private void setOptions(object options)
+    {
+        shouldSetters = false;
+        ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.setOptions", componentID, options);
+    }
+
+    public class EventsHandler
+    {
+        private Action<IDictionary<string, object>> componentEvent;
+
+        public EventsHandler(Action<IDictionary<string, object>> e)
+        {
+            componentEvent = e;
+        }
+
+        [JSInvokable]
+        public void emitRangeSelectorEvent(object e)
+        {
+            if (componentEvent != null)
+            {
+                var eventAsJson = JsonSerializer.Serialize(e);
+                var eventAsDictionary = JsonSerializer.Deserialize<IDictionary<string, object>>(eventAsJson);
+
+                componentEvent.Invoke(eventAsDictionary);
+            }
+        }
+    }
+}
