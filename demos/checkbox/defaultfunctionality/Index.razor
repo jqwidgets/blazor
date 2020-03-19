@@ -1,4 +1,4 @@
-﻿@page "/"
+﻿@page "/EDITTHIS"
 @inject IJSRuntime JSRuntime;
 
 <div style='font-family: Verdana Arial; font-size: 12px; width: 400px;'>
@@ -21,11 +21,11 @@
     <br />
     <div style='float: left; width: 400px; margin-top: 10px;'>
         <h3 style='margin-left: 15px;'>States</h3>
-        <JqxCheckbox width="width" height="height" isChecked="true"><span @ref="checkBox10Span">Checked</span></JqxCheckbox>
+        <JqxCheckbox onChange="checkbox10Handler" width="width" height="height" isChecked="true"><span @ref="checkBox10Span">Checked</span></JqxCheckbox>
         <JqxCheckbox width="width" height="height">Unchecked</JqxCheckbox>
     </div>
     <div style='float: left; width: 400px; margin-top: 10px;'>
-        <JqxCheckbox width="width" height="height" hasThreeStates="true" isChecked="null" >Indeterminate</JqxCheckbox>
+        <JqxCheckbox width="width" height="height" hasThreeStates="true" isChecked="null">Indeterminate</JqxCheckbox>
         <JqxCheckbox width="width" height="height" isChecked="true" disabled="true">Disabled</JqxCheckbox>
     </div>
 </div>
@@ -35,11 +35,10 @@
     int width = 120;
     int height = 25;
 
-    private void checkbox10Handler(Action<IDictionary<string, object>> e) {
-        var isChecked = true; //e["checked"];
-        Console.WriteLine(isChecked);
+    private void checkbox10Handler(IDictionary<string, object> e) {
+        var isChecked = e["checked"];
 
-        JSRuntime.InvokeAsync<object>("Example.updateInnerHtml", new object[2]{ checkBox10Span, isChecked });
+        JSRuntime.InvokeVoidAsync("Example.updateInnerHtml", checkBox10Span, isChecked);
     }
  
-} 
+}
