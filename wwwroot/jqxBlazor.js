@@ -5,10 +5,18 @@ window.jqxBlazor = {
         return JQXLite.generateID();
     },
     createComponent: function(id, name, options) {
+        if (options.options) {
+            options = { ...options, ...options.options };
+            delete options.options;
+        }
+
         instances[id] = new window[name]('#' + id, options);
     },
     setOptions: function(id, options) {
         instances[id].setOptions(options);
+    },
+    getOptions: function(params) {
+        return params;
     },
     manageProps: function(id, name, value) {
         if (id) {

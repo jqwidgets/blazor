@@ -149,9 +149,7 @@
     }
 
     [Parameter]
-    public object options {
-        set { setOptions(value); }
-    }
+    public object options { get; set; }
 
     [Parameter]
     public Action<IDictionary<string, object>> onClosed { get; set; }
@@ -171,7 +169,13 @@
     {
         { "isChecked", "checked" },
         { "isReadonly", "readonly" },
-        { "isDecimal", "decimal" }
+        { "isDecimal", "decimal" },
+        { "dragEnd", "onDragEnd" },
+        { "drag", "onDrag" },
+        { "dragStart", "onDragStart" },
+        { "targetDrop", "onTargetDrop" },
+        { "dropTargetEnter", "onDropTargetEnter" },
+        { "dropTargetLeave", "onDropTargetLeave" }
     };
 
     private bool shouldSetters;
@@ -228,6 +232,18 @@
     public void setItemOpenDirection(object item, string horizontaldirection, string verticaldirection)
     {
         setterMethod("setItemOpenDirection", item, horizontaldirection, verticaldirection);
+    }
+
+    public IDictionary<string, object> getOptions()
+    {
+        shouldSetters = false;
+        return ((IJSInProcessRuntime)JSRuntime).Invoke<IDictionary<string, object>>("jqxBlazor.getOptions", this);
+    }
+
+    public void setOptions(object options)
+    {
+        shouldSetters = false;
+        ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.setOptions", componentID, options);
     }
 
     public override async Task SetParametersAsync(ParameterView parameters)
@@ -298,12 +314,6 @@
     {
         shouldSetters = false;
         ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.manageMethods", componentID, name, args);
-    }
-
-    private void setOptions(object options)
-    {
-        shouldSetters = false;
-        ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.setOptions", componentID, options);
     }
 
     public class EventsHandler

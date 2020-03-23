@@ -1,44 +1,44 @@
 ﻿@page "/"
-@inject IJSRuntime JSRuntime;
 
-<div style='font-family: Verdana Arial; font-size: 12px; width: 400px;'>
-    <div style='float: left; width: 400px;'>
-        <h3 style='margin-left: 15px;'>Categories</h3>
-        <JqxCheckbox width="width" height="height" enableContainerClick="false">Entertainment</JqxCheckbox>
-        <JqxCheckbox width="width" height="height" isChecked="true">Computers</JqxCheckbox>
-        <JqxCheckbox width="width" height="height">Sports</JqxCheckbox>
-    </div>
-    <div style='float: left; width: 400px; margin-top: 10px;'>
-        <JqxCheckbox width="width" height="height">Health</JqxCheckbox>
-        <JqxCheckbox width="width" height="height">Finance</JqxCheckbox>
-        <JqxCheckbox width="width" height="height">Travel</JqxCheckbox>
-    </div>
-    <div style='float: left; width: 400px; margin-top: 10px;'>
-        <JqxCheckbox width="width" height="height">Music</JqxCheckbox>
-        <JqxCheckbox width="width" height="height">Technology</JqxCheckbox> 
-        <JqxCheckbox width="width" height="height">Publishing</JqxCheckbox>
-    </div>
-    <br />
-    <div style='float: left; width: 400px; margin-top: 10px;'>
-        <h3 style='margin-left: 15px;'>States</h3>
-        <JqxCheckbox onChange="checkbox10Handler" width="width" height="height" isChecked="true"><span @ref="checkBox10Span">Checked</span></JqxCheckbox>
-        <JqxCheckbox width="width" height="height">Unchecked</JqxCheckbox>
-    </div>
-    <div style='float: left; width: 400px; margin-top: 10px;'>
-        <JqxCheckbox width="width" height="height" hasThreeStates="true" isChecked="null">Indeterminate</JqxCheckbox>
-        <JqxCheckbox width="width" height="height" isChecked="true" disabled="true">Disabled</JqxCheckbox>
-    </div>
-</div>
+<JqxBarGauge @ref="myBarGauge" width="200" options="options"></JqxBarGauge>
+
+<button @onclick="setOptions">Set Options</button>
+
+<button @onclick="getOptions">Get Options</button>
 
 @code { 
-    ElementReference checkBox10Span;
-    int width = 120;
-    int height = 25;
 
-    private void checkbox10Handler(IDictionary<string, object> e) {
-        var isChecked = e["checked"];
-
-        JSRuntime.InvokeVoidAsync("Example.updateInnerHtml", checkBox10Span, isChecked);
-    }
+    JqxBarGauge myBarGauge;
  
+    Dictionary<string, object> options = new Dictionary<string, object>()
+    {
+        { "width", 500 },
+        { "height", 500 },
+        { "values", new double[]{30, 50, 70, 100} }
+    };
+
+    private void setOptions()
+    {
+        IDictionary<string, object> options = new Dictionary<string, object>()
+        {
+            { "width", 1000 },
+            { "height", 500 },
+            { "values", new double[]{0, 20, 30, 500} }
+        };
+
+        myBarGauge.setOptions(options);
+    }
+
+    private void getOptions()
+    {
+        IDictionary<string, object> options = myBarGauge.getOptions();
+        
+        Console.WriteLine(options["width"]);
+
+        foreach(var item in options)
+        {
+            Console.WriteLine(item);
+        }
+    }
+
 } 
