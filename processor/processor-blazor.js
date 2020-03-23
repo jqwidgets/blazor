@@ -1,25 +1,25 @@
 'use strict';
 
 const widgetNames = [
-    'jqxbargauge', 'jqxbulletchart', 'jqxbuttongroup', 'jqxbuttons', 'jqxcalendar', 'jqxchart', 'jqxcheckbox',
-    'jqxcolorpicker', 'jqxcombobox', 'jqxcomplexinput', 'jqxdatatable', 'jqxdatetimeinput', 'jqxdocking',
-    'jqxdockinglayout', 'jqxdockpanel', 'jqxdragdrop', 'jqxdraw', 'jqxdropdownbutton', 'jqxdropdownlist',
-    'jqxeditor', 'jqxexpander', 'jqxfileupload', 'jqxform', 'jqxformattedinput', 'jqxgauge', 'jqxgrid',
-    'jqxinput', 'jqxkanban', 'jqxknob', 'jqxlayout', 'jqxlineargauge', 'jqxlinkbutton', 'jqxlistbox',
-    'jqxlistmenu', 'jqxloader', 'jqxmaskedinput', 'jqxmenu', 'jqxnavbar', 'jqxnavigationbar',
-    'jqxnotification', 'jqxnumberinput', 'jqxpanel', 'jqxpasswordinput', 'jqxpivotdesigner',
-    'jqxpivotgrid', 'jqxpopover', 'jqxprogressbar', 'jqxradiobutton', 'jqxrangeselector',
-    'jqxrating', 'jqxrepeatbutton', 'jqxresponsivepanel', 'jqxribbon', 'jqxscheduler',
-    'jqxscrollbar', 'jqxscrollview', 'jqxslider', 'jqxsortable', 'jqxsplitter',
-    'jqxswitchbutton', 'jqxtabs', 'jqxtagcloud', 'jqxtogglebutton', 'jqxtextarea',
-    'jqxtoolbar', 'jqxtooltip', 'jqxtree', 'jqxtreegrid', 'jqxtreemap',
-    'jqxvalidator', 'jqxwindow', 'jqxheatmap', 'jqxtimepicker'
+    'JqxBarGauge', 'JqxBulletChart', 'JqxButtonGroup', 'JqxButtons', 'JqxCalendar', 'JqxChart', 'JqxCheckBox',
+    'JqxColorPicker', 'JqxComboBox', 'JqxComplexInput', 'JqxDataTable', 'JqxDateTimeInput', 'JqxDocking',
+    'JqxDockingLayout', 'JqxDockPanel', 'JqxDragDrop', 'JqxDraw', 'JqxDropDownButton', 'JqxDropDownList',
+    'JqxEditor', 'JqxExpander', 'JqxFileUpload', 'JqxForm', 'JqxFormattedInput', 'JqxGauge', 'JqxGrid',
+    'JqxInput', 'JqxKanban', 'JqxKnob', 'JqxLayout', 'JqxLinearGauge', 'JqxLinkButton', 'JqxListBox',
+    'JqxListMenu', 'JqxLoader', 'JqxMaskedInput', 'JqxMenu', 'JqxNavBar', 'JqxNavigationBar',
+    'JqxNotification', 'JqxNumberInput', 'JqxPanel', 'JqxPasswordInput', 'JqxPivotDesigner',
+    'JqxPivotGrid', 'JqxPopover', 'JqxProgressBar', 'JqxRadioButton', 'JqxRangeSelector',
+    'JqxRating', 'JqxRepeatButton', 'JqxResponsivePanel', 'JqxRibbon', 'JqxScheduler',
+    'JqxScrollBar', 'JqxScrollView', 'JqxSlider', 'JqxSortable', 'JqxSplitter',
+    'JqxSwitchButton', 'JqxTabs', 'JqxTagCloud', 'JqxToggleButton', 'JqxTextArea',
+    'JqxToolBar', 'JqxToolTip', 'JqxTree', 'JqxTreeGrid', 'JqxTreeMap',
+    'JqxValidator', 'JqxWindow', 'JqxHeatMap', 'JqxTimePicker'
 ];
 
 (function init() {
     for (const name of widgetNames) {
         const inFile = `json/${name}.json`;
-        const outFile = `../Shared/Jqx${name.slice(3).charAt(0).toUpperCase() + name.slice(4)}.razor`;
+        const outFile = `../Shared/${name}.razor`;
 
         processDefsFile(inFile, outFile);
     }
@@ -28,22 +28,22 @@ const widgetNames = [
 function getTemplate(widgetName) {
     let template = '<div id="@componentID">@ChildContent</div>';
 
-    if (widgetName === 'jqxButton' || widgetName === 'jqxToggleButton') {
+    if (widgetName === 'JqxButton' || widgetName === 'JqxToggleButton') {
         template = '<button id="@componentID">@ChildContent</button>';
     }
-    else if (widgetName === 'jqxComplexInput') {
+    else if (widgetName === 'JqxComplexInput') {
         template = '<div id="@componentID" style="display: inline-flex;"><input><div>@ChildContent</div></div>';
     }
-    else if (widgetName === 'jqxDateTimeInput' || widgetName === 'jqxMaskedInput' || widgetName === 'jqxNumberInput') {
+    else if (widgetName === 'JqxDateTimeInput' || widgetName === 'JqxMaskedInput' || widgetName === 'JqxNumberInput') {
         template = '<input id="@componentID">';
     }
-    else if (widgetName === 'jqxInput') {
+    else if (widgetName === 'JqxInput') {
         template = '<input id="@componentID" type="text" >';
     }
-    else if (widgetName === 'jqxFormattedInput') {
+    else if (widgetName === 'JqxFormattedInput') {
         template = '<div id="@componentID"><input type="text"><div></div><div></div></div>';
     }
-    else if (widgetName === 'jqxPasswordInput') {
+    else if (widgetName === 'JqxPasswordInput') {
         template = '<input id="@componentID" type="password">';
     }
 
@@ -108,7 +108,7 @@ function processDefsFile(inFile, outFile) {
     let outData = '';
     const obj = JSON.parse(data);
     const widgetName = obj['widget'].name;
-    const widgetNameWithoutJQX = widgetName.slice(3);
+    const widgetNameWithoutJqx = widgetName.slice(3);
 
     outData += `@using System.Text.Json;\n`;
     outData += `@inject IJSRuntime JSRuntime;\n\n`;
@@ -123,12 +123,18 @@ function processDefsFile(inFile, outFile) {
     const forbiddenPropertieNames = {
         checked: { okName: 'isChecked' },
         readonly: { okName: 'isReadonly' },
-        decimal: { okName: 'isDecimal' }
+        decimal: { okName: 'isDecimal' },
+        onDragEnd: { okName: 'dragEnd' },
+        onDrag: { okName: 'drag' },
+        onDragStart: { okName: 'dragStart' },
+        onTargetDrop: { okName: 'targetDrop' },
+        onDropTargetEnter: { okName: 'dropTargetEnter' },
+        onDropTargetLeave: { okName: 'dropTargetLeave' },
     };
-
+         
     for (const property of obj.properties) {
         const jsonDataType = property.ts_dataType ? property.ts_dataType : property.dataType;
-        const dataType = getDataType(widgetNameWithoutJQX, jsonDataType);
+        const dataType = getDataType(widgetNameWithoutJqx, jsonDataType);
         let propertyNameValidated = property.name;
 
         if (forbiddenPropertieNames[property.name]) {
@@ -143,18 +149,11 @@ function processDefsFile(inFile, outFile) {
     }
 
     outData += `    [Parameter]\n`;
-    outData += `    public object options {\n`;
-    outData += `        set { setOptions(value); }\n`;
-    outData += `    }\n\n`;
+    outData += `    public object options { get; set; }\n\n`;
 
     if (obj.events) {
         for (const event of obj.events) {
             let eventNameWithOn = 'on' + event.name.charAt(0).toUpperCase() + event.name.slice(1);
-
-            // Due to conflict of names between events and methods
-            if (widgetName === 'jqxDragDrop') {
-                eventNameWithOn += 'Event';
-            }
 
             paramsToBlock += `"${eventNameWithOn}", `;
     
@@ -207,7 +206,7 @@ function processDefsFile(inFile, outFile) {
 
         for (const method of obj.methods) {
             const jsonDataType = method.ts_returnDataType ? method.ts_returnDataType : method.returnDataType;
-            const dataType = getDataType(widgetNameWithoutJQX, jsonDataType);
+            const dataType = getDataType(widgetNameWithoutJqx, jsonDataType);
             let methodArguments = '';
             let methodArgumentsNames = ', ';
     
@@ -224,7 +223,7 @@ function processDefsFile(inFile, outFile) {
                     }
     
                     const jsonDataType = argument.ts_dataType ? argument.ts_dataType : argument.dataType;
-                    const dataType = getDataType(widgetNameWithoutJQX, jsonDataType);
+                    const dataType = getDataType(widgetNameWithoutJqx, jsonDataType);
     
                     methodArguments += `${dataType} ${argumentNameValidated}, `;
                     methodArgumentsNames += `${argumentNameValidated}, `;
@@ -249,6 +248,18 @@ function processDefsFile(inFile, outFile) {
             }
         }
     }
+
+    outData += `    public IDictionary<string, object> getOptions()\n`;
+    outData += `    {\n`;
+    outData += `        shouldSetters = false;\n`;
+    outData += `        return ((IJSInProcessRuntime)JSRuntime).Invoke<IDictionary<string, object>>("jqxBlazor.getOptions", this);\n`;
+    outData += `    }\n\n`;
+
+    outData += `    public void setOptions(object options)\n`;
+    outData += `    {\n`;
+    outData += `        shouldSetters = false;\n`;
+    outData += `        ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.setOptions", componentID, options);\n`;
+    outData += `    }\n\n`;
     // End Widget Methods
 
 
@@ -292,12 +303,7 @@ function processDefsFile(inFile, outFile) {
         for (const event of obj.events) {
             let eventNameWithOn = 'on' + event.name.charAt(0).toUpperCase() + event.name.slice(1);
 
-            // Due to conflict of names between events and methods
-            if (widgetName === 'jqxDragDrop') {
-                eventNameWithOn += 'Event';
-            }
-
-            outData += `        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "${event.name}", "emit${widgetNameWithoutJQX}Event", DotNetObjectReference.Create(new EventsHandler(${eventNameWithOn})));\n`; 
+            outData += `        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "${event.name}", "emit${widgetNameWithoutJqx}Event", DotNetObjectReference.Create(new EventsHandler(${eventNameWithOn})));\n`; 
         }
     }
     outData += `    }\n\n`;
@@ -328,12 +334,6 @@ function processDefsFile(inFile, outFile) {
     outData += `        ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.manageMethods", componentID, name, args);\n`;
     outData += `    }\n\n`;
 
-    outData += `    private void setOptions(object options)\n`;
-    outData += `    {\n`;
-    outData += `        shouldSetters = false;\n`;
-    outData += `        ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.setOptions", componentID, options);\n`;
-    outData += `    }\n\n`;
-
     if (obj.events) {
         outData += `    public class EventsHandler\n`;
         outData += `    {\n`;
@@ -343,7 +343,7 @@ function processDefsFile(inFile, outFile) {
         outData += `            componentEvent = e;\n`;
         outData += `        }\n\n`;
         outData += `        [JSInvokable]\n`;
-        outData += `        public void emit${widgetNameWithoutJQX}Event(object e)\n`;
+        outData += `        public void emit${widgetNameWithoutJqx}Event(object e)\n`;
         outData += `        {\n`;
         outData += `            if (componentEvent != null)\n`;
         outData += `            {\n`;

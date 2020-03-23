@@ -65,37 +65,37 @@
     }
 
     [Parameter]
-    public object onDragEnd {
+    public object dragEnd {
         get { return getterProp<object>("onDragEnd"); }
         set { setterProp("onDragEnd", value); }
     }
 
     [Parameter]
-    public object onDrag {
+    public object drag {
         get { return getterProp<object>("onDrag"); }
         set { setterProp("onDrag", value); }
     }
 
     [Parameter]
-    public object onDragStart {
+    public object dragStart {
         get { return getterProp<object>("onDragStart"); }
         set { setterProp("onDragStart", value); }
     }
 
     [Parameter]
-    public object onTargetDrop {
+    public object targetDrop {
         get { return getterProp<object>("onTargetDrop"); }
         set { setterProp("onTargetDrop", value); }
     }
 
     [Parameter]
-    public object onDropTargetEnter {
+    public object dropTargetEnter {
         get { return getterProp<object>("onDropTargetEnter"); }
         set { setterProp("onDropTargetEnter", value); }
     }
 
     [Parameter]
-    public object onDropTargetLeave {
+    public object dropTargetLeave {
         get { return getterProp<object>("onDropTargetLeave"); }
         set { setterProp("onDropTargetLeave", value); }
     }
@@ -125,35 +125,39 @@
     }
 
     [Parameter]
-    public object options {
-        set { setOptions(value); }
-    }
+    public object options { get; set; }
 
     [Parameter]
-    public Action<IDictionary<string, object>> onDragStartEvent { get; set; }
+    public Action<IDictionary<string, object>> onDragStart { get; set; }
 
     [Parameter]
-    public Action<IDictionary<string, object>> onDragEndEvent { get; set; }
+    public Action<IDictionary<string, object>> onDragEnd { get; set; }
 
     [Parameter]
-    public Action<IDictionary<string, object>> onDraggingEvent { get; set; }
+    public Action<IDictionary<string, object>> onDragging { get; set; }
 
     [Parameter]
-    public Action<IDictionary<string, object>> onDropTargetEnterEvent { get; set; }
+    public Action<IDictionary<string, object>> onDropTargetEnter { get; set; }
 
     [Parameter]
-    public Action<IDictionary<string, object>> onDropTargetLeaveEvent { get; set; }
+    public Action<IDictionary<string, object>> onDropTargetLeave { get; set; }
 
     [Parameter]
     public RenderFragment ChildContent { get; set; }
 
-    private string[] paramsToBlock = { "ChildContent", "onDragStartEvent", "onDragEndEvent", "onDraggingEvent", "onDropTargetEnterEvent", "onDropTargetLeaveEvent" };
+    private string[] paramsToBlock = { "ChildContent", "onDragStart", "onDragEnd", "onDragging", "onDropTargetEnter", "onDropTargetLeave" };
 
     private IDictionary<string, string> paramsToChange = new Dictionary<string, string>
     {
         { "isChecked", "checked" },
         { "isReadonly", "readonly" },
-        { "isDecimal", "decimal" }
+        { "isDecimal", "decimal" },
+        { "dragEnd", "onDragEnd" },
+        { "drag", "onDrag" },
+        { "dragStart", "onDragStart" },
+        { "targetDrop", "onTargetDrop" },
+        { "dropTargetEnter", "onDropTargetEnter" },
+        { "dropTargetLeave", "onDropTargetLeave" }
     };
 
     private bool shouldSetters;
@@ -161,6 +165,18 @@
     private string componentID;
 
     private IDictionary<string, object> initialOptions = new Dictionary<string, object>();
+
+    public IDictionary<string, object> getOptions()
+    {
+        shouldSetters = false;
+        return ((IJSInProcessRuntime)JSRuntime).Invoke<IDictionary<string, object>>("jqxBlazor.getOptions", this);
+    }
+
+    public void setOptions(object options)
+    {
+        shouldSetters = false;
+        ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.setOptions", componentID, options);
+    }
 
     public override async Task SetParametersAsync(ParameterView parameters)
     {
@@ -201,11 +217,11 @@
 
     private void attachEvents()
     {
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "dragStart", "emitDragDropEvent", DotNetObjectReference.Create(new EventsHandler(onDragStartEvent)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "dragEnd", "emitDragDropEvent", DotNetObjectReference.Create(new EventsHandler(onDragEndEvent)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "dragging", "emitDragDropEvent", DotNetObjectReference.Create(new EventsHandler(onDraggingEvent)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "dropTargetEnter", "emitDragDropEvent", DotNetObjectReference.Create(new EventsHandler(onDropTargetEnterEvent)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "dropTargetLeave", "emitDragDropEvent", DotNetObjectReference.Create(new EventsHandler(onDropTargetLeaveEvent)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "dragStart", "emitDragDropEvent", DotNetObjectReference.Create(new EventsHandler(onDragStart)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "dragEnd", "emitDragDropEvent", DotNetObjectReference.Create(new EventsHandler(onDragEnd)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "dragging", "emitDragDropEvent", DotNetObjectReference.Create(new EventsHandler(onDragging)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "dropTargetEnter", "emitDragDropEvent", DotNetObjectReference.Create(new EventsHandler(onDropTargetEnter)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "dropTargetLeave", "emitDragDropEvent", DotNetObjectReference.Create(new EventsHandler(onDropTargetLeave)));
     }
 
     private T getterProp<T>(string name)
@@ -232,12 +248,6 @@
     {
         shouldSetters = false;
         ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.manageMethods", componentID, name, args);
-    }
-
-    private void setOptions(object options)
-    {
-        shouldSetters = false;
-        ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.setOptions", componentID, options);
     }
 
     public class EventsHandler
