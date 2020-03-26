@@ -1,4 +1,6 @@
-library/bin
-library/obj
+bin
+obj
 dev-project/bin
 dev-project/obj
+library/jqwidgets-blazor/bin
+library/jqwidgets-blazor/obj
