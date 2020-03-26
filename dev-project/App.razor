@@ -1,0 +1,48 @@
+﻿<JqxBarGauge @ref="myBarGauge" width="200" colorScheme="customColors" customColorScheme="customColorScheme" options="options"></JqxBarGauge>
+
+<button @onclick="setOptions">Set Options</button>
+
+<button @onclick="getOptions">Get Options</button>
+
+@code { 
+
+    JqxBarGauge myBarGauge;
+
+    object customColorScheme = new Dictionary<string, object>()
+    {
+        { "name", "customColors" },
+        { "colors", new string[]{ "blue", "green", "red", "orange" } }
+    };
+
+    Dictionary<string, object> options = new Dictionary<string, object>()
+    {
+        { "width", 500 },
+        { "height", 500 },
+        { "values", new double[]{30, 50, 70, 100} }
+    };
+
+    private void setOptions()
+    {
+        IDictionary<string, object> options = new Dictionary<string, object>()
+        {
+            { "width", 1000 },
+            { "height", 500 },
+            { "values", new double[]{0, 20, 30, 500} }
+        };
+
+        myBarGauge.setOptions(options);
+    }
+
+    private void getOptions()
+    {
+        IDictionary<string, object> options = myBarGauge.getOptions();
+        
+        Console.WriteLine(options["width"]);
+
+        foreach(var item in options)
+        {
+            Console.WriteLine(item);
+        }
+    }
+
+} 

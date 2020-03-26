@@ -19,9 +19,9 @@ const widgetNames = [
 (function init() {
     for (const name of widgetNames) {
         const inFile = `json/${name}.json`;
-        const outFile = `../Shared/${name}.razor`;
+        const outFile = `../library/jqwidgets-blazor/Components/${name}.razor`;
 
-        processDefsFile(inFile, outFile);
+        processJSON(inFile, outFile);
     }
 })();
 
@@ -96,7 +96,7 @@ function getDataType(widgetName, type) {
     return 'object';
 }
 
-function processDefsFile(inFile, outFile) {
+function processJSON(inFile, outFile) {
     const fs = require(`fs`);
     const data = fs.readFileSync(inFile);
 
