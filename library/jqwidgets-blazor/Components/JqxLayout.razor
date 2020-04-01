@@ -71,9 +71,12 @@
     public Action<IDictionary<string, object>> onUnpin { get; set; }
 
     [Parameter]
+    public Action onComponentReady { get; set; }
+
+    [Parameter]
     public RenderFragment ChildContent { get; set; }
 
-    private string[] paramsToBlock = { "ChildContent", "onPin", "onResize", "onUnpin" };
+    private string[] paramsToBlock = { "onComponentReady", "ChildContent", "onPin", "onResize", "onUnpin" };
 
     private IDictionary<string, string> paramsToChange = new Dictionary<string, string>
     {
@@ -165,6 +168,7 @@
         {
             ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxLayout", initialOptions);
             attachEvents();
+            onComponentReady.Invoke();
         }
     }
 

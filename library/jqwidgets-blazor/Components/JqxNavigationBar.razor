@@ -104,9 +104,12 @@
     public Action<IDictionary<string, object>> onExpandedItem { get; set; }
 
     [Parameter]
+    public Action onComponentReady { get; set; }
+
+    [Parameter]
     public RenderFragment ChildContent { get; set; }
 
-    private string[] paramsToBlock = { "ChildContent", "onCollapsingItem", "onCollapsedItem", "onExpandingItem", "onExpandedItem" };
+    private string[] paramsToBlock = { "onComponentReady", "ChildContent", "onCollapsingItem", "onCollapsedItem", "onExpandingItem", "onExpandedItem" };
 
     private IDictionary<string, string> paramsToChange = new Dictionary<string, string>
     {
@@ -298,6 +301,7 @@
         {
             ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxNavigationBar", initialOptions);
             attachEvents();
+            onComponentReady.Invoke();
         }
     }
 

@@ -56,9 +56,12 @@
     public object options { get; set; }
 
     [Parameter]
+    public Action onComponentReady { get; set; }
+
+    [Parameter]
     public RenderFragment ChildContent { get; set; }
 
-    private string[] paramsToBlock = { "ChildContent" };
+    private string[] paramsToBlock = { "onComponentReady", "ChildContent" };
 
     private IDictionary<string, string> paramsToChange = new Dictionary<string, string>
     {
@@ -180,6 +183,7 @@
         {
             ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxPanel", initialOptions);
             attachEvents();
+            onComponentReady.Invoke();
         }
     }
 

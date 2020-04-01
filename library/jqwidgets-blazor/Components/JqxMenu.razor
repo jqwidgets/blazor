@@ -161,9 +161,12 @@
     public Action<IDictionary<string, object>> onShown { get; set; }
 
     [Parameter]
+    public Action onComponentReady { get; set; }
+
+    [Parameter]
     public RenderFragment ChildContent { get; set; }
 
-    private string[] paramsToBlock = { "ChildContent", "onClosed", "onItemclick", "onShown" };
+    private string[] paramsToBlock = { "onComponentReady", "ChildContent", "onClosed", "onItemclick", "onShown" };
 
     private IDictionary<string, string> paramsToChange = new Dictionary<string, string>
     {
@@ -280,6 +283,7 @@
         {
             ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxMenu", initialOptions);
             attachEvents();
+            onComponentReady.Invoke();
         }
     }
 

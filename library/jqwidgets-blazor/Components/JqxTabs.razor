@@ -203,9 +203,12 @@
     public Action<IDictionary<string, object>> onUnselected { get; set; }
 
     [Parameter]
+    public Action onComponentReady { get; set; }
+
+    [Parameter]
     public RenderFragment ChildContent { get; set; }
 
-    private string[] paramsToBlock = { "ChildContent", "onAdd", "onCollapsed", "onDragStart", "onDragEnd", "onExpanded", "onRemoved", "onSelecting", "onSelected", "onTabclick", "onUnselecting", "onUnselected" };
+    private string[] paramsToBlock = { "onComponentReady", "ChildContent", "onAdd", "onCollapsed", "onDragStart", "onDragEnd", "onExpanded", "onRemoved", "onSelecting", "onSelected", "onTabclick", "onUnselecting", "onUnselected" };
 
     private IDictionary<string, string> paramsToChange = new Dictionary<string, string>
     {
@@ -422,6 +425,7 @@
         {
             ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxTabs", initialOptions);
             attachEvents();
+            onComponentReady.Invoke();
         }
     }
 

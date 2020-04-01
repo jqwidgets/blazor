@@ -764,9 +764,12 @@
     public Action<IDictionary<string, object>> onSort { get; set; }
 
     [Parameter]
+    public Action onComponentReady { get; set; }
+
+    [Parameter]
     public RenderFragment ChildContent { get; set; }
 
-    private string[] paramsToBlock = { "ChildContent", "onBindingcomplete", "onColumnresized", "onColumnreordered", "onColumnclick", "onCellclick", "onCelldoubleclick", "onCellselect", "onCellunselect", "onCellvaluechanged", "onCellbeginedit", "onCellendedit", "onFilter", "onGroupschanged", "onGroupexpand", "onGroupcollapse", "onPagechanged", "onPagesizechanged", "onRowclick", "onRowdoubleclick", "onRowselect", "onRowunselect", "onRowexpand", "onRowcollapse", "onSort" };
+    private string[] paramsToBlock = { "onComponentReady", "ChildContent", "onBindingcomplete", "onColumnresized", "onColumnreordered", "onColumnclick", "onCellclick", "onCelldoubleclick", "onCellselect", "onCellunselect", "onCellvaluechanged", "onCellbeginedit", "onCellendedit", "onFilter", "onGroupschanged", "onGroupexpand", "onGroupcollapse", "onPagechanged", "onPagesizechanged", "onRowclick", "onRowdoubleclick", "onRowselect", "onRowunselect", "onRowexpand", "onRowcollapse", "onSort" };
 
     private IDictionary<string, string> paramsToChange = new Dictionary<string, string>
     {
@@ -1448,6 +1451,7 @@
         {
             ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxGrid", initialOptions);
             attachEvents();
+            onComponentReady.Invoke();
         }
     }
 
