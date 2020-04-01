@@ -47,9 +47,12 @@
     public Action<IDictionary<string, object>> onColorchange { get; set; }
 
     [Parameter]
+    public Action onComponentReady { get; set; }
+
+    [Parameter]
     public RenderFragment ChildContent { get; set; }
 
-    private string[] paramsToBlock = { "ChildContent", "onColorchange" };
+    private string[] paramsToBlock = { "onComponentReady", "ChildContent", "onColorchange" };
 
     private IDictionary<string, string> paramsToChange = new Dictionary<string, string>
     {
@@ -126,6 +129,7 @@
         {
             ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxColorPicker", initialOptions);
             attachEvents();
+            onComponentReady.Invoke();
         }
     }
 

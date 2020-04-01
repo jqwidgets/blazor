@@ -83,9 +83,12 @@
     public Action<IDictionary<string, object>> onChange { get; set; }
 
     [Parameter]
+    public Action onComponentReady { get; set; }
+
+    [Parameter]
     public RenderFragment ChildContent { get; set; }
 
-    private string[] paramsToBlock = { "ChildContent", "onChange" };
+    private string[] paramsToBlock = { "onComponentReady", "ChildContent", "onChange" };
 
     private IDictionary<string, string> paramsToChange = new Dictionary<string, string>
     {
@@ -207,6 +210,7 @@
         {
             ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxComplexInput", initialOptions);
             attachEvents();
+            onComponentReady.Invoke();
         }
     }
 

@@ -107,9 +107,12 @@
     public Action<IDictionary<string, object>> onClick { get; set; }
 
     [Parameter]
+    public Action onComponentReady { get; set; }
+
+    [Parameter]
     public RenderFragment ChildContent { get; set; }
 
-    private string[] paramsToBlock = { "ChildContent", "onClick" };
+    private string[] paramsToBlock = { "onComponentReady", "ChildContent", "onClick" };
 
     private IDictionary<string, string> paramsToChange = new Dictionary<string, string>
     {
@@ -201,6 +204,7 @@
         {
             ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxButton", initialOptions);
             attachEvents();
+            onComponentReady.Invoke();
         }
     }
 

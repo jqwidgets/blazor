@@ -118,7 +118,7 @@ function processJSON(inFile, outFile) {
 
     outData += `@code {\n`;
 
-    let paramsToBlock = '    private string[] paramsToBlock = { "ChildContent", ';
+    let paramsToBlock = '    private string[] paramsToBlock = { "onComponentReady", "ChildContent", ';
     // Start Widget Properties
     const forbiddenPropertieNames = {
         checked: { okName: 'isChecked' },
@@ -165,6 +165,9 @@ function processJSON(inFile, outFile) {
 
 
     // Start Internal Properties
+    outData += `    [Parameter]\n`;
+    outData += `    public Action onComponentReady { get; set; }\n\n`;
+
     outData += `    [Parameter]\n`;
     outData += `    public RenderFragment ChildContent { get; set; }\n\n`;
 
@@ -294,6 +297,7 @@ function processJSON(inFile, outFile) {
     outData += `        {\n`;
     outData += `            ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "${widgetName}", initialOptions);\n`;
     outData += `            attachEvents();\n`;
+    outData += `            onComponentReady.Invoke();\n`;
     outData += `        }\n`;
     outData += `    }\n\n`;
     

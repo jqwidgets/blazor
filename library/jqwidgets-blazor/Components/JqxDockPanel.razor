@@ -35,9 +35,12 @@
     public Action<IDictionary<string, object>> onLayout { get; set; }
 
     [Parameter]
+    public Action onComponentReady { get; set; }
+
+    [Parameter]
     public RenderFragment ChildContent { get; set; }
 
-    private string[] paramsToBlock = { "ChildContent", "onLayout" };
+    private string[] paramsToBlock = { "onComponentReady", "ChildContent", "onLayout" };
 
     private IDictionary<string, string> paramsToChange = new Dictionary<string, string>
     {
@@ -109,6 +112,7 @@
         {
             ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxDockPanel", initialOptions);
             attachEvents();
+            onComponentReady.Invoke();
         }
     }
 

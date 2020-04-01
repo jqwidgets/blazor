@@ -113,9 +113,12 @@
     public Action<IDictionary<string, object>> onPivotitemdblclick { get; set; }
 
     [Parameter]
+    public Action onComponentReady { get; set; }
+
+    [Parameter]
     public RenderFragment ChildContent { get; set; }
 
-    private string[] paramsToBlock = { "ChildContent", "onPivotitemexpanding", "onPivotitemexpanded", "onPivotitemcollapsing", "onPivotitemcollapsed", "onSortchanging", "onSortchanged", "onSortremoving", "onSortremoved", "onPivotitemselectionchanged", "onPivotcellmousedown", "onPivotcellmouseup", "onPivotcellclick", "onPivotcelldblclick", "onPivotitemmousedown", "onPivotitemmouseup", "onPivotitemclick", "onPivotitemdblclick" };
+    private string[] paramsToBlock = { "onComponentReady", "ChildContent", "onPivotitemexpanding", "onPivotitemexpanded", "onPivotitemcollapsing", "onPivotitemcollapsed", "onSortchanging", "onSortchanged", "onSortremoving", "onSortremoved", "onPivotitemselectionchanged", "onPivotcellmousedown", "onPivotcellmouseup", "onPivotcellclick", "onPivotcelldblclick", "onPivotitemmousedown", "onPivotitemmouseup", "onPivotitemclick", "onPivotitemdblclick" };
 
     private IDictionary<string, string> paramsToChange = new Dictionary<string, string>
     {
@@ -207,6 +210,7 @@
         {
             ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxPivotGrid", initialOptions);
             attachEvents();
+            onComponentReady.Invoke();
         }
     }
 

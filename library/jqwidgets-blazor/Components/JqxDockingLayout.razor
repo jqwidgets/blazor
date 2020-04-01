@@ -80,9 +80,12 @@
     public Action<IDictionary<string, object>> onUnpin { get; set; }
 
     [Parameter]
+    public Action onComponentReady { get; set; }
+
+    [Parameter]
     public RenderFragment ChildContent { get; set; }
 
-    private string[] paramsToBlock = { "ChildContent", "onDock", "onFloatGroupClosed", "onFloat", "onPin", "onResize", "onUnpin" };
+    private string[] paramsToBlock = { "onComponentReady", "ChildContent", "onDock", "onFloatGroupClosed", "onFloat", "onPin", "onResize", "onUnpin" };
 
     private IDictionary<string, string> paramsToChange = new Dictionary<string, string>
     {
@@ -179,6 +182,7 @@
         {
             ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxDockingLayout", initialOptions);
             attachEvents();
+            onComponentReady.Invoke();
         }
     }
 

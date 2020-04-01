@@ -107,9 +107,12 @@
     public Action<IDictionary<string, object>> onValueChanged { get; set; }
 
     [Parameter]
+    public Action onComponentReady { get; set; }
+
+    [Parameter]
     public RenderFragment ChildContent { get; set; }
 
-    private string[] paramsToBlock = { "ChildContent", "onComplete", "onInvalidValue", "onValueChanged" };
+    private string[] paramsToBlock = { "onComponentReady", "ChildContent", "onComplete", "onInvalidValue", "onValueChanged" };
 
     private IDictionary<string, string> paramsToChange = new Dictionary<string, string>
     {
@@ -196,6 +199,7 @@
         {
             ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxProgressBar", initialOptions);
             attachEvents();
+            onComponentReady.Invoke();
         }
     }
 

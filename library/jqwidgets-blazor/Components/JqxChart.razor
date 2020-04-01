@@ -236,9 +236,12 @@
     public Action<IDictionary<string, object>> onRangeSelectionChanged { get; set; }
 
     [Parameter]
+    public Action onComponentReady { get; set; }
+
+    [Parameter]
     public RenderFragment ChildContent { get; set; }
 
-    private string[] paramsToBlock = { "ChildContent", "onToggle", "onClick", "onRefreshBegin", "onRefreshEnd", "onRangeSelectionChanging", "onRangeSelectionChanged" };
+    private string[] paramsToBlock = { "onComponentReady", "ChildContent", "onToggle", "onClick", "onRefreshBegin", "onRefreshEnd", "onRangeSelectionChanging", "onRangeSelectionChanged" };
 
     private IDictionary<string, string> paramsToChange = new Dictionary<string, string>
     {
@@ -460,6 +463,7 @@
         {
             ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxChart", initialOptions);
             attachEvents();
+            onComponentReady.Invoke();
         }
     }
 

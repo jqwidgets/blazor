@@ -158,9 +158,12 @@
     public Action<IDictionary<string, object>> onItemClick { get; set; }
 
     [Parameter]
+    public Action onComponentReady { get; set; }
+
+    [Parameter]
     public RenderFragment ChildContent { get; set; }
 
-    private string[] paramsToBlock = { "ChildContent", "onBindingComplete", "onItemClick" };
+    private string[] paramsToBlock = { "onComponentReady", "ChildContent", "onBindingComplete", "onItemClick" };
 
     private IDictionary<string, string> paramsToChange = new Dictionary<string, string>
     {
@@ -282,6 +285,7 @@
         {
             ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxTagCloud", initialOptions);
             attachEvents();
+            onComponentReady.Invoke();
         }
     }
 
