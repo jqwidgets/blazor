@@ -143,9 +143,12 @@
     public Action<IDictionary<string, object>> onDropTargetLeave { get; set; }
 
     [Parameter]
+    public Action onComponentReady { get; set; }
+
+    [Parameter]
     public RenderFragment ChildContent { get; set; }
 
-    private string[] paramsToBlock = { "ChildContent", "onDragStart", "onDragEnd", "onDragging", "onDropTargetEnter", "onDropTargetLeave" };
+    private string[] paramsToBlock = { "onComponentReady", "ChildContent", "onDragStart", "onDragEnd", "onDragging", "onDropTargetEnter", "onDropTargetLeave" };
 
     private IDictionary<string, string> paramsToChange = new Dictionary<string, string>
     {
@@ -212,6 +215,7 @@
         {
             ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxDragDrop", initialOptions);
             attachEvents();
+            onComponentReady.Invoke();
         }
     }
 

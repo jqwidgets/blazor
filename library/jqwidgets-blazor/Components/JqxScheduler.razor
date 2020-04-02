@@ -383,9 +383,12 @@
     public Action<IDictionary<string, object>> onViewChange { get; set; }
 
     [Parameter]
+    public Action onComponentReady { get; set; }
+
+    [Parameter]
     public RenderFragment ChildContent { get; set; }
 
-    private string[] paramsToBlock = { "ChildContent", "onAppointmentChange", "onAppointmentClick", "onAppointmentDoubleClick", "onAppointmentDelete", "onAppointmentAdd", "onBindingComplete", "onCellClick", "onCellDoubleClick", "onContextMenuOpen", "onContextMenuClose", "onContextMenuItemClick", "onContextMenuCreate", "onDateChange", "onEditRecurrenceDialogOpen", "onEditRecurrenceDialogClose", "onEditDialogCreate", "onEditDialogOpen", "onEditDialogClose", "onViewChange" };
+    private string[] paramsToBlock = { "onComponentReady", "ChildContent", "onAppointmentChange", "onAppointmentClick", "onAppointmentDoubleClick", "onAppointmentDelete", "onAppointmentAdd", "onBindingComplete", "onCellClick", "onCellDoubleClick", "onContextMenuOpen", "onContextMenuClose", "onContextMenuItemClick", "onContextMenuCreate", "onDateChange", "onEditRecurrenceDialogOpen", "onEditRecurrenceDialogClose", "onEditDialogCreate", "onEditDialogOpen", "onEditDialogClose", "onViewChange" };
 
     private IDictionary<string, string> paramsToChange = new Dictionary<string, string>
     {
@@ -602,6 +605,7 @@
         {
             ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxScheduler", initialOptions);
             attachEvents();
+            onComponentReady.Invoke();
         }
     }
 

@@ -374,9 +374,12 @@
     public Action<IDictionary<string, object>> onRowCollapse { get; set; }
 
     [Parameter]
+    public Action onComponentReady { get; set; }
+
+    [Parameter]
     public RenderFragment ChildContent { get; set; }
 
-    private string[] paramsToBlock = { "ChildContent", "onBindingComplete", "onCellBeginEdit", "onCellEndEdit", "onCellValueChanged", "onColumnResized", "onColumnReordered", "onSort", "onFilter", "onPageChanged", "onPageSizeChanged", "onRowClick", "onRowDoubleClick", "onRowSelect", "onRowUnselect", "onRowBeginEdit", "onRowEndEdit", "onRowExpand", "onRowCollapse" };
+    private string[] paramsToBlock = { "onComponentReady", "ChildContent", "onBindingComplete", "onCellBeginEdit", "onCellEndEdit", "onCellValueChanged", "onColumnResized", "onColumnReordered", "onSort", "onFilter", "onPageChanged", "onPageSizeChanged", "onRowClick", "onRowDoubleClick", "onRowSelect", "onRowUnselect", "onRowBeginEdit", "onRowEndEdit", "onRowExpand", "onRowCollapse" };
 
     private IDictionary<string, string> paramsToChange = new Dictionary<string, string>
     {
@@ -678,6 +681,7 @@
         {
             ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxDataTable", initialOptions);
             attachEvents();
+            onComponentReady.Invoke();
         }
     }
 

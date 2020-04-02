@@ -152,9 +152,12 @@
     public Action<IDictionary<string, object>> onValueChanged { get; set; }
 
     [Parameter]
+    public Action onComponentReady { get; set; }
+
+    [Parameter]
     public RenderFragment ChildContent { get; set; }
 
-    private string[] paramsToBlock = { "ChildContent", "onDrawEnd", "onDrawStart", "onInitialized", "onTooltipClose", "onTooltipOpen", "onValueChanged" };
+    private string[] paramsToBlock = { "onComponentReady", "ChildContent", "onDrawEnd", "onDrawStart", "onInitialized", "onTooltipClose", "onTooltipOpen", "onValueChanged" };
 
     private IDictionary<string, string> paramsToChange = new Dictionary<string, string>
     {
@@ -241,6 +244,7 @@
         {
             ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxBarGauge", initialOptions);
             attachEvents();
+            onComponentReady.Invoke();
         }
     }
 

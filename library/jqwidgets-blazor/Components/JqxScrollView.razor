@@ -83,9 +83,12 @@
     public Action<IDictionary<string, object>> onPageChanged { get; set; }
 
     [Parameter]
+    public Action onComponentReady { get; set; }
+
+    [Parameter]
     public RenderFragment ChildContent { get; set; }
 
-    private string[] paramsToBlock = { "ChildContent", "onPageChanged" };
+    private string[] paramsToBlock = { "onComponentReady", "ChildContent", "onPageChanged" };
 
     private IDictionary<string, string> paramsToChange = new Dictionary<string, string>
     {
@@ -172,6 +175,7 @@
         {
             ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxScrollView", initialOptions);
             attachEvents();
+            onComponentReady.Invoke();
         }
     }
 

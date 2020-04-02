@@ -206,9 +206,12 @@
     public Action<IDictionary<string, object>> onSlideEnd { get; set; }
 
     [Parameter]
+    public Action onComponentReady { get; set; }
+
+    [Parameter]
     public RenderFragment ChildContent { get; set; }
 
-    private string[] paramsToBlock = { "ChildContent", "onChange", "onSlide", "onSlideStart", "onSlideEnd" };
+    private string[] paramsToBlock = { "onComponentReady", "ChildContent", "onChange", "onSlide", "onSlideStart", "onSlideEnd" };
 
     private IDictionary<string, string> paramsToChange = new Dictionary<string, string>
     {
@@ -325,6 +328,7 @@
         {
             ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxSlider", initialOptions);
             attachEvents();
+            onComponentReady.Invoke();
         }
     }
 

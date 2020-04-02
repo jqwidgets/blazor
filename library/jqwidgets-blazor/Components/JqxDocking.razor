@@ -92,9 +92,12 @@
     public Action<IDictionary<string, object>> onDragEnd { get; set; }
 
     [Parameter]
+    public Action onComponentReady { get; set; }
+
+    [Parameter]
     public RenderFragment ChildContent { get; set; }
 
-    private string[] paramsToBlock = { "ChildContent", "onDragStart", "onDragEnd" };
+    private string[] paramsToBlock = { "onComponentReady", "ChildContent", "onDragStart", "onDragEnd" };
 
     private IDictionary<string, string> paramsToChange = new Dictionary<string, string>
     {
@@ -286,6 +289,7 @@
         {
             ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxDocking", initialOptions);
             attachEvents();
+            onComponentReady.Invoke();
         }
     }
 

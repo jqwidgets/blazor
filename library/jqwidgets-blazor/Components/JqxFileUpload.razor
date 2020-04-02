@@ -110,9 +110,12 @@
     public Action<IDictionary<string, object>> onUploadEnd { get; set; }
 
     [Parameter]
+    public Action onComponentReady { get; set; }
+
+    [Parameter]
     public RenderFragment ChildContent { get; set; }
 
-    private string[] paramsToBlock = { "ChildContent", "onRemove", "onSelect", "onUploadStart", "onUploadEnd" };
+    private string[] paramsToBlock = { "onComponentReady", "ChildContent", "onRemove", "onSelect", "onUploadStart", "onUploadEnd" };
 
     private IDictionary<string, string> paramsToChange = new Dictionary<string, string>
     {
@@ -219,6 +222,7 @@
         {
             ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxFileUpload", initialOptions);
             attachEvents();
+            onComponentReady.Invoke();
         }
     }
 

@@ -134,9 +134,12 @@
     public Action<IDictionary<string, object>> onRadixChange { get; set; }
 
     [Parameter]
+    public Action onComponentReady { get; set; }
+
+    [Parameter]
     public RenderFragment ChildContent { get; set; }
 
-    private string[] paramsToBlock = { "ChildContent", "onChange", "onClose", "onOpen", "onRadixChange" };
+    private string[] paramsToBlock = { "onComponentReady", "ChildContent", "onChange", "onClose", "onOpen", "onRadixChange" };
 
     private IDictionary<string, string> paramsToChange = new Dictionary<string, string>
     {
@@ -258,6 +261,7 @@
         {
             ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxFormattedInput", initialOptions);
             attachEvents();
+            onComponentReady.Invoke();
         }
     }
 

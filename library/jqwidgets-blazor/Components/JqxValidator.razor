@@ -80,9 +80,12 @@
     public Action<IDictionary<string, object>> onValidationSuccess { get; set; }
 
     [Parameter]
+    public Action onComponentReady { get; set; }
+
+    [Parameter]
     public RenderFragment ChildContent { get; set; }
 
-    private string[] paramsToBlock = { "ChildContent", "onValidationError", "onValidationSuccess" };
+    private string[] paramsToBlock = { "onComponentReady", "ChildContent", "onValidationError", "onValidationSuccess" };
 
     private IDictionary<string, string> paramsToChange = new Dictionary<string, string>
     {
@@ -174,6 +177,7 @@
         {
             ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxValidator", initialOptions);
             attachEvents();
+            onComponentReady.Invoke();
         }
     }
 

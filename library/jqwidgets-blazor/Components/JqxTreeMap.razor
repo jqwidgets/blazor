@@ -119,9 +119,12 @@
     public Action<IDictionary<string, object>> onBindingComplete { get; set; }
 
     [Parameter]
+    public Action onComponentReady { get; set; }
+
+    [Parameter]
     public RenderFragment ChildContent { get; set; }
 
-    private string[] paramsToBlock = { "ChildContent", "onBindingComplete" };
+    private string[] paramsToBlock = { "onComponentReady", "ChildContent", "onBindingComplete" };
 
     private IDictionary<string, string> paramsToChange = new Dictionary<string, string>
     {
@@ -198,6 +201,7 @@
         {
             ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxTreeMap", initialOptions);
             attachEvents();
+            onComponentReady.Invoke();
         }
     }
 
