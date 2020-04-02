@@ -1,0 +1,55 @@
+﻿<JqxDateTimeInput @ref="dateTimeInput" width="250" height="25"></JqxDateTimeInput>
+<br />
+<div>
+    <div style="font-family: 'Verdana', 'sans-serif'; font-size: 13px;">Choose Format:</div>
+    <br />
+   <JqxDropDownList width="230" height="25" source="source" selectedIndex="0" onSelect="onSelect"></JqxDropDownList>
+</div>
+
+@code {
+    JqxDateTimeInput dateTimeInput;
+    string[] source = new string[]{
+        "short date pattern", "long date pattern", "short time pattern", "long time pattern",
+                "long date, short time pattern", "long date, long time pattern", "month/day pattern", "month/year pattern", "custom"
+    };
+
+    private void onSelect(IDictionary<string, object> e) {
+        IDictionary<string, object> newFormat;
+
+        switch(int.Parse(e["index"].ToString())) 
+        {
+            case 0:
+                newFormat = new Dictionary<string, object>() { { "formatString", "d"} };                
+                break;
+            case 1:
+                newFormat = new Dictionary<string, object>() { { "formatString", "D"} };  
+                break;
+            case 2:
+                newFormat = new Dictionary<string, object>() { { "formatString", "t"} };  
+                break;
+            case 3:
+                newFormat = new Dictionary<string, object>() { { "formatString", "T"} };  
+                break;
+            case 4:
+                newFormat = new Dictionary<string, object>() { { "formatString", "f"} };  
+                break;
+            case 5:
+                newFormat = new Dictionary<string, object>() { { "formatString", "F"} };  
+                break;
+            case 6:
+                newFormat = new Dictionary<string, object>() { { "formatString", "M"} };  
+                break;
+            case 7:
+                newFormat = new Dictionary<string, object>() { { "formatString", "Y"} };  
+                break;
+            case 8:
+                newFormat = new Dictionary<string, object>() { { "formatString", "dddd-MMMM-yyyy"} };  
+                break;            
+            default: 
+                newFormat = new Dictionary<string, object>() { { "formatString", "d"} }; 
+                break; 
+        }
+
+        dateTimeInput.setOptions(newFormat); 
+    } 
+}
