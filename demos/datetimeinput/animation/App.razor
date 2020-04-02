@@ -1,6 +1,4 @@
-﻿@page "/datetimeinput/animation" 
-
-<div style="float: left; font-size: 12px; font-family: Verdana;">
+﻿<div style="float: left; font-size: 12px; font-family: Verdana;">
     <h3>Animation Type</h3>
     <JqxRadioButton isChecked="false" onChecked="onNoneChecked">None</JqxRadioButton>
     <JqxRadioButton isChecked="false" onChecked="onSlideChecked">Slide</JqxRadioButton>
@@ -43,3 +41,15 @@
         dateTimeInput.setOptions(options);
     }
 }
+
+<style>
+    .jqx-datetimeinput {
+        float: left; 
+        margin-top: 20px; 
+        margin-left: 100px;
+    }
+    
+    .jqx-radiobutton {
+        margin-top: 10px;
+    }
+</style>
