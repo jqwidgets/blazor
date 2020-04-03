@@ -175,7 +175,7 @@
         {
             ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxScrollView", initialOptions);
             attachEvents();
-            onComponentReady.Invoke();
+            onComponentReady?.Invoke();
         }
     }
 

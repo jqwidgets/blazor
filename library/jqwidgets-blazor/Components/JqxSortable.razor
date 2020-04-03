@@ -311,7 +311,7 @@
         {
             ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxSortable", initialOptions);
             attachEvents();
-            onComponentReady.Invoke();
+            onComponentReady?.Invoke();
         }
     }
 

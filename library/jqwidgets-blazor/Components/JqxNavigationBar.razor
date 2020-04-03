@@ -301,7 +301,7 @@
         {
             ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxNavigationBar", initialOptions);
             attachEvents();
-            onComponentReady.Invoke();
+            onComponentReady?.Invoke();
         }
     }
 

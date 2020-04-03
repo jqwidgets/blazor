@@ -230,7 +230,7 @@
         {
             ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxKanban", initialOptions);
             attachEvents();
-            onComponentReady.Invoke();
+            onComponentReady?.Invoke();
         }
     }
 
