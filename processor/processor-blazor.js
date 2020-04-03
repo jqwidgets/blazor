@@ -297,7 +297,7 @@ function processJSON(inFile, outFile) {
     outData += `        {\n`;
     outData += `            ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "${widgetName}", initialOptions);\n`;
     outData += `            attachEvents();\n`;
-    outData += `            onComponentReady.Invoke();\n`;
+    outData += `            onComponentReady?.Invoke();\n`;
     outData += `        }\n`;
     outData += `    }\n\n`;
     
