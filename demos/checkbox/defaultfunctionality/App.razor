@@ -1,4 +1,4 @@
-﻿@inject IJSRuntime JSRuntime;
+@inject IJSRuntime JSRuntime;
 
 <div style='font-family: Verdana Arial; font-size: 12px; width: 400px;'>
     <div style='float: left; width: 400px;'>
@@ -65,7 +65,6 @@
         
         JSRuntime.InvokeVoidAsync("Example.updateInnerHtml", checkBox12Span, newLabel);
     }
-
     private void checkbox12IndeterminateHandler(IDictionary<string, object> e) {
         string newLabel = "Indeterminate"; 
 
