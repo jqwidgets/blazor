@@ -12,10 +12,12 @@
 
 @code {
     JqxDateTimeInput dateTimeInput;
+
     string animationType = "fade";
     string dropDownHorizontalAlignment = "right";
 
-    private void onNoneChecked(IDictionary<string, object> e) {
+    private void onNoneChecked(IDictionary<string, object> e)
+    {
         IDictionary<string, object> options = new Dictionary<string, object>()
         {
             { "animationType", "none" }
@@ -23,7 +25,9 @@
 
         dateTimeInput.setOptions(options);
     }
-    private void onSlideChecked(IDictionary<string, object> e) {
+    
+    private void onSlideChecked(IDictionary<string, object> e)
+    {
         IDictionary<string, object> options = new Dictionary<string, object>()
         {
             { "animationType", "slide" }
@@ -32,7 +36,8 @@
         dateTimeInput.setOptions(options);
     }
 
-    private void onFadeChecked(IDictionary<string, object> e) {
+    private void onFadeChecked(IDictionary<string, object> e)
+    {
         IDictionary<string, object> options = new Dictionary<string, object>()
         {
             { "animationType", "fade" }

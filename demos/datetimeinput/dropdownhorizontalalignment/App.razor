@@ -11,10 +11,12 @@
 
 @code {
     JqxDateTimeInput dateTimeInput;
+
     string animationType = "fade";
     string dropDownHorizontalAlignment = "right";
 
-    private void onLeftChecked(IDictionary<string, object> e) {
+    private void onLeftChecked(IDictionary<string, object> e)
+    {
         IDictionary<string, object> options = new Dictionary<string, object>()
         {
             { "dropDownHorizontalAlignment", "left" }
@@ -22,7 +24,9 @@
 
         dateTimeInput.setOptions(options);
     }
-    private void onRightChecked(IDictionary<string, object> e) {
+
+    private void onRightChecked(IDictionary<string, object> e)
+    {
         IDictionary<string, object> options = new Dictionary<string, object>()
         {
             { "dropDownHorizontalAlignment", "right" }

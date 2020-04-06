@@ -38,19 +38,22 @@
     int width = 120;
     int height = 25;
 
-    private void checkbox10Handler(IDictionary<string, object> e) {
+    private void checkbox10Handler(IDictionary<string, object> e) 
+    {
         var isChecked = e["checked"];
         string newLabel = isChecked.ToString() == "True" ? "Checked": "Unchecked";
         JSRuntime.InvokeVoidAsync("Example.updateInnerHtml", checkBox10Span, newLabel);
     }
 
-    private void checkbox11Handler(IDictionary<string, object> e) {
+    private void checkbox11Handler(IDictionary<string, object> e) 
+    {
         var isChecked = e["checked"];
         string newLabel = isChecked.ToString() == "True" ? "Checked": "Unchecked";
         JSRuntime.InvokeVoidAsync("Example.updateInnerHtml", checkBox11Span, newLabel);
     }
     
-    private void checkbox12ChangeHandler(IDictionary<string, object> e) {
+    private void checkbox12ChangeHandler(IDictionary<string, object> e) 
+    {
         string isChecked = e["checked"].ToString();
       
         string newLabel = "";
@@ -65,7 +68,8 @@
         
         JSRuntime.InvokeVoidAsync("Example.updateInnerHtml", checkBox12Span, newLabel);
     }
-    private void checkbox12IndeterminateHandler(IDictionary<string, object> e) {
+    private void checkbox12IndeterminateHandler(IDictionary<string, object> e) 
+    {
         string newLabel = "Indeterminate"; 
 
         JSRuntime.InvokeVoidAsync("Example.updateInnerHtml", checkBox12Span, newLabel);
@@ -74,7 +78,7 @@
 
 <style>
     .jqx-checkbox {
-    margin-left: 10px;
-    float: left;
-}
+        margin-left: 10px;
+        float: left;
+    }
 </style>

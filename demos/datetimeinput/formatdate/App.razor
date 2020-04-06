@@ -1,5 +1,6 @@
 ﻿<JqxDateTimeInput @ref="dateTimeInput" width="250" height="25"></JqxDateTimeInput>
 <br />
+
 <div>
     <div style="font-family: 'Verdana', 'sans-serif'; font-size: 13px;">Choose Format:</div>
     <br />
@@ -8,12 +9,14 @@
 
 @code {
     JqxDateTimeInput dateTimeInput;
+
     string[] source = new string[]{
         "short date pattern", "long date pattern", "short time pattern", "long time pattern",
                 "long date, short time pattern", "long date, long time pattern", "month/day pattern", "month/year pattern", "custom"
     };
 
-    private void onSelect(IDictionary<string, object> e) {
+    private void onSelect(IDictionary<string, object> e)
+    {
         IDictionary<string, object> newFormat;
 
         switch(int.Parse(e["index"].ToString())) 

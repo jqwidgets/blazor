@@ -1,5 +1,6 @@
 ﻿<JqxDateTimeInput width="270" height="25"
     onOpen="onOpen" onClose="onClose" onValueChanged="onValueChanged"></JqxDateTimeInput>
+
 <div style='margin-left: 20px; float: left;'>
     <div>
         <span>Events:</span>
@@ -10,13 +11,18 @@
 @code { 
     JqxPanel myPanel;
 
-    private void onOpen(IDictionary<string, object> e) {
+    private void onOpen(IDictionary<string, object> e)
+    {
         myPanel.prepend("<div style='margin-top: 5px;'>Popup Opened</div>");
     }
-    private void onClose(IDictionary<string, object> e) {
+
+    private void onClose(IDictionary<string, object> e)
+    {
         myPanel.prepend("<div style='margin-top: 5px;'>Popup Closed</div>");
     }
-    private void onValueChanged(IDictionary<string, object> e) {
+
+    private void onValueChanged(IDictionary<string, object> e)
+    {
         myPanel.clearcontent();
         myPanel.prepend("<div style='margin-top: 5px;'>New Value: " + e["date"] + "</div>");
     }
