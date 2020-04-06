@@ -1,0 +1,80 @@
+﻿<JqxComboBox width="300" height="30" source="source" selectedIndex="0"></JqxComboBox>
+
+@code {
+    private IDictionary<string, object>[] source;
+
+    protected override void OnInitialized()
+    {
+        source = buildSource();
+    }
+
+    private IDictionary<string, object>[] buildSource()
+    {
+        Dictionary<string, object>[] source = new Dictionary<string, object>[12];
+        source[0] = new Dictionary<string, object>();
+        source[1] = new Dictionary<string, object>();
+        source[2] = new Dictionary<string, object>();
+        source[3] = new Dictionary<string, object>();
+        source[4] = new Dictionary<string, object>();
+        source[5] = new Dictionary<string, object>();
+        source[6] = new Dictionary<string, object>();
+        source[7] = new Dictionary<string, object>();
+        source[8] = new Dictionary<string, object>();
+        source[9] = new Dictionary<string, object>();
+        source[10] = new Dictionary<string, object>();
+        source[11] = new Dictionary<string, object>();
+        
+        // Business & Investing
+        source[0].Add("html", "<div style='padding: 1px;'><div>Title: Do the Work</div><div>Author: Steven Pressfield</div></div>");
+        source[0].Add("label", "Do the Work");
+        source[0].Add("group", "Business & Investing");
+
+        source[1].Add("html", "<div style='padding: 1px;'><div>Title: Think and Grow Rich</div><div>Author: Napoleon Hill</div></div>");
+        source[1].Add("label", "Think and Grow Rich");
+        source[1].Add("group", "Business & Investing");
+
+        source[2].Add("html", "<div style='padding: 1px;'><div>Title: The Toyota Way to Continuous...</div><div>Author: Jeffrey K. Liker</div></div>");
+        source[2].Add("label", "The Toyota Way to Continuous...");
+        source[2].Add("group", "Business & Investing");
+
+        source[3].Add("html", "<div style='padding: 1px;'><div>Title: Redesigning Leadership</div><div>Author: John Maeda</div></div>");
+        source[3].Add("label", "Redesigning Leadership");
+        source[3].Add("group", "Business & Investing");
+
+        // Computer & Internet Books
+        source[4].Add("html", "<div style='padding: 1px;'><div>Title: MacBook Pro Portable Genius</div><div>Author: Brad Miser</div></div>");
+        source[4].Add("label", "MacBook Pro Portable Genius");
+        source[4].Add("group", "Computer & Internet Books");
+
+        source[5].Add("html", "<div style='padding: 1px;'><div>Title: Social Media Metrics Secrets</div><div>Author: John Lovett</div></div>");
+        source[5].Add("label", "Social Media Metrics Secrets");
+        source[5].Add("group", "Computer & Internet Books");
+
+        source[6].Add("html", "<div style='padding: 1px;'><div>Title: iPad 2: The Missing Manual</div><div>Author: J D Biersdorfer J.D</div></div>");
+        source[6].Add("label", "iPad 2: The Missing Manual");
+        source[6].Add("group", "Computer & Internet Books");
+
+        // History
+        source[7].Add("html", "<div style='padding: 1px;'><div>Lincoln and His Admirals</div><div>Author: Craig L. Symonds</div></div>");
+        source[7].Add("label", "Lincoln and His Admirals");
+        source[7].Add("group", "History");
+
+        source[8].Add("html", "<div style='padding: 1px;'><div>The Dogs of War: 1861</div><div>Author: Emory M. Thomas</div></div>");
+        source[8].Add("label", "The Dogs of War: 1861");
+        source[8].Add("group", "History");
+
+        source[9].Add("html", "<div style='padding: 1px;'><div>Cleopatra: A Life</div><div>Author:Stacy Schiff</div></div>");
+        source[9].Add("label", "Cleopatra: A Life");
+        source[9].Add("group", "History");
+
+        source[10].Add("html", "<div style='padding: 1px;'><div>Mother Teresa: A Biography</div><div>Author: Meg Greene</div></div>");
+        source[10].Add("label", "Mother Teresa: A Biography");
+        source[10].Add("group", "History");
+
+        source[11].Add("html", "<div style='padding: 1px;'><div>The Federalist Papers</div><div>Author: John Jay</div></div>");
+        source[11].Add("label", "The Federalist Papers");
+        source[11].Add("group", "History");
+        
+        return source;
+    }
+}

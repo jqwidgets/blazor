@@ -1,0 +1,84 @@
+﻿<div style="float: left; font-size: 12px; font-family: Verdana;">
+    <h3>Animation Type</h3>
+    <JqxRadioButton isChecked="false" onChecked="onNoneChecked">None</JqxRadioButton>
+    <JqxRadioButton isChecked="false" onChecked="onSlideChecked">Slide</JqxRadioButton>
+    <JqxRadioButton isChecked="true" onChecked="onFadeChecked">Fade</JqxRadioButton>
+</div>
+
+<JqxComboBox @ref="comboBox" 
+    width="150" height="30" dropDownWidth="200" animationType="animationType" 
+    source="source" selectedIndex="0" dropDownHorizontalAlignment="dropDownHorizontalAlignment">
+</JqxComboBox>
+
+@code {
+    JqxComboBox comboBox;
+
+    string animationType = "fade";
+    string dropDownHorizontalAlignment = "right";
+
+    string[] source = new string[20]
+    {
+        "Maria Anders",
+        "Ana Trujillo",
+        "Antonio Moreno",
+        "Thomas Hardy",
+        "Christina Berglund",
+        "Hanna Moos",
+        "Frdrique Citeaux",
+        "Martn Sommer",
+        "Laurence Lebihan",
+        "Elizabeth Lincoln",
+        "Victoria Ashworth",
+        "Patricio Simpson",
+        "Francisco Chang",
+        "Yang Wang",
+        "Pedro Afonso",
+        "Elizabeth Brown",
+        "Sven Ottlieb",
+        "Janine Labrune",
+        "Ann Devon",
+        "Roland Mendel",
+    };
+
+    private void onNoneChecked(IDictionary<string, object> e)
+    {
+        IDictionary<string, object> options = new Dictionary<string, object>()
+        {
+            { "animationType", "none" }
+        };
+
+        comboBox.setOptions(options);
+    }
+
+    private void onSlideChecked(IDictionary<string, object> e)
+    {
+        IDictionary<string, object> options = new Dictionary<string, object>()
+        {
+            { "animationType", "slide" }
+        };
+
+        comboBox.setOptions(options);
+    }
+
+    private void onFadeChecked(IDictionary<string, object> e)
+    {
+        IDictionary<string, object> options = new Dictionary<string, object>()
+        {
+            { "animationType", "fade" }
+        };
+
+        comboBox.setOptions(options);
+    }
+}
+
+<style>
+    .jqx-combobox {
+        float: left; 
+        margin-top: 20px; 
+        margin-left: 100px;
+    }
+    
+    .jqx-radiobutton {
+        margin-top: 10px;
+    }
+</style>

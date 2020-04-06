@@ -1,0 +1,73 @@
+﻿<div style="float: left; font-size: 12px; font-family: Verdana;">
+    <h3>Alignment</h3>
+    <JqxRadioButton isChecked="false" onChecked="onLeftChecked">Left</JqxRadioButton>
+    <JqxRadioButton isChecked="true" onChecked="onRightChecked">Right</JqxRadioButton>
+</div>
+
+<JqxComboBox @ref="comboBox" 
+    width="150" height="30" dropDownWidth="200" selectedIndex="0" source="source"
+    dropDownHorizontalAlignment="dropDownHorizontalAlignment" displayMember="ContactName" valueMember="CompanyName">
+</JqxComboBox>
+
+@code {
+    JqxComboBox comboBox;
+
+    string animationType = "fade";
+    string dropDownHorizontalAlignment = "right";
+
+    string[] source = new string[20]
+    {
+        "Maria Anders",
+        "Ana Trujillo",
+        "Antonio Moreno",
+        "Thomas Hardy",
+        "Christina Berglund",
+        "Hanna Moos",
+        "Frdrique Citeaux",
+        "Martn Sommer",
+        "Laurence Lebihan",
+        "Elizabeth Lincoln",
+        "Victoria Ashworth",
+        "Patricio Simpson",
+        "Francisco Chang",
+        "Yang Wang",
+        "Pedro Afonso",
+        "Elizabeth Brown",
+        "Sven Ottlieb",
+        "Janine Labrune",
+        "Ann Devon",
+        "Roland Mendel",
+    };
+
+    private void onLeftChecked(IDictionary<string, object> e)
+    {
+        IDictionary<string, object> options = new Dictionary<string, object>()
+        {
+            { "dropDownHorizontalAlignment", "left" }
+        };
+
+        comboBox.setOptions(options);
+    }
+
+    private void onRightChecked(IDictionary<string, object> e)
+    {
+        IDictionary<string, object> options = new Dictionary<string, object>()
+        {
+            { "dropDownHorizontalAlignment", "right" }
+        };
+
+        comboBox.setOptions(options);
+    }
+}
+
+<style>
+    .jqx-combobox {
+        float: left; 
+        margin-top: 20px; 
+        margin-left: 100px;
+    }
+
+    .jqx-radiobutton {
+        margin-top: 10px;
+    }
+</style>

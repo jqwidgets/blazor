@@ -1,0 +1,71 @@
+﻿<JqxComboBox @ref="comboBox" 
+    width="150" height="30" dropDownWidth="200" selectedIndex="0" 
+    source="source" dropDownVerticalAlignment="dropDownVerticalAlignment">
+</JqxComboBox>
+
+<div style="float: left; margin-left: 100px; margin-top:270px; font-size: 12px; font-family: Verdana;">
+    <h3>Alignment</h3>
+    <JqxRadioButton isChecked="true" onChecked="onTopChecked">Top</JqxRadioButton>
+    <JqxRadioButton isChecked="false" onChecked="onBottomChecked">Bottom</JqxRadioButton>
+</div>
+
+@code {
+    JqxComboBox comboBox;
+
+    string dropDownVerticalAlignment = "top";
+
+    string[] source = new string[20]
+    {
+        "Maria Anders",
+        "Ana Trujillo",
+        "Antonio Moreno",
+        "Thomas Hardy",
+        "Christina Berglund",
+        "Hanna Moos",
+        "Frdrique Citeaux",
+        "Martn Sommer",
+        "Laurence Lebihan",
+        "Elizabeth Lincoln",
+        "Victoria Ashworth",
+        "Patricio Simpson",
+        "Francisco Chang",
+        "Yang Wang",
+        "Pedro Afonso",
+        "Elizabeth Brown",
+        "Sven Ottlieb",
+        "Janine Labrune",
+        "Ann Devon",
+        "Roland Mendel",
+    };
+
+    private void onTopChecked(IDictionary<string, object> e)
+    {
+        IDictionary<string, object> options = new Dictionary<string, object>()
+        {
+            { "dropDownVerticalAlignment", "top" }
+        };
+
+        comboBox.setOptions(options);
+    }
+
+    private void onBottomChecked(IDictionary<string, object> e)
+    {
+        IDictionary<string, object> options = new Dictionary<string, object>()
+        {
+            { "dropDownVerticalAlignment", "bottom" }
+        };
+
+        comboBox.setOptions(options);
+    }
+}
+
+<style>
+    .jqx-combobox {
+        float: left; 
+        margin-top: 270px; 
+    }
+
+    .jqx-radiobutton {
+        margin-top: 10px;
+    }
+</style>
