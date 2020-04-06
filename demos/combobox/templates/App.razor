@@ -1,0 +1,63 @@
+﻿<div>Default</div>
+<JqxComboBox width="300" height="30" source="source" selectedIndex="1" ></JqxComboBox>
+<br />
+
+<div>Primary</div>
+<JqxComboBox width="300" height="30" source="source" selectedIndex="1" template="primaryTemplate"></JqxComboBox>
+<br />
+
+<div>Success</div>
+<JqxComboBox width="300" height="30" source="source" selectedIndex="1" template="successTemplate"></JqxComboBox>
+<br />
+
+<div>Info</div>
+<JqxComboBox width="300" height="30" source="source" selectedIndex="1" template="infoTemplate"></JqxComboBox>
+<br /><br />
+
+<div>Warning</div>
+<JqxComboBox width="300" height="30" source="source" selectedIndex="1" template="warningTemplate"></JqxComboBox>
+<br /><br />
+
+<div>Danger</div>
+<JqxComboBox width="300" height="30" source="source" selectedIndex="1" template="dangerTemplate"></JqxComboBox>
+<br /><br />
+
+@code {
+    string primaryTemplate = "primary";
+    string successTemplate = "success";
+    string infoTemplate = "info";
+    string warningTemplate = "warning";
+    string dangerTemplate = "danger";
+    
+    string[] source = new string[28]
+    {
+        "Affogato",
+        "Americano",
+        "Bicerin",
+        "Breve",
+        "Café Bombón",
+        "Café au lait",
+        "Caffé Corretto",
+        "Café Crema",
+        "Caffé Latte",
+        "Caffé macchiato",
+        "Café mélange",
+        "Coffee milk",
+        "Cafe mocha",
+        "Cappuccino",
+        "Carajillo",
+        "Cortado",
+        "Cuban espresso",
+        "Espresso",
+        "Eiskaffee",
+        "The Flat White",
+        "Frappuccino",
+        "Galao",
+        "Greek frappé coffee",
+        "Iced Coffee",
+        "Indian filter coffee",
+        "Instant coffee",
+        "Irish coffee",
+        "Liqueur coffee"
+    };
+}

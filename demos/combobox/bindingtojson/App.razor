@@ -1,0 +1,27 @@
+﻿@inject HttpClient Http;
+@inject IJSRuntime JSRuntime;
+
+<JqxComboBox
+    onSelect="selectEvent"
+    width="200" height="30" source="source" selectedIndex="3"
+    displayMember="ContactName" valueMember="CompanyName">
+</JqxComboBox>
+
+<div @ref="selectionLog" style="font-size: 12px; font-family: Verdana;"></div>
+
+@code {
+    ElementReference selectionLog;
+
+    private object[] source;
+    
+    protected override async Task OnInitializedAsync()
+    {
+        source = await Http.GetJsonAsync<object[]>("sampledata/customers.txt");
+    }
+
+    private void selectEvent(IDictionary<string, object> e)
+    {
+        var item = e["item"];
+        JSRuntime.InvokeAsync<string>("Example.updateInnerHtml", selectionLog, item);
+    }
+}
