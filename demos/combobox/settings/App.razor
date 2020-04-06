@@ -1,0 +1,161 @@
+﻿<JqxComboBox @ref="myComboBox" width="200" height="30" source="source" selectedIndex="0"></JqxComboBox>
+
+<JqxExpander width="250" height="200" showArrow="false" toggleMode="toggleMode">
+    <div>
+        <div>Settings</div>
+    </div>
+    <div>
+        <div style="padding: 10px;">
+            <span>Search Type:</span>
+            <JqxDropDownList source="dropDownSource" width="220" height="30" selectedIndex="0" onSelect="onSelect"></JqxDropDownList>
+        </div>
+        <div style='margin-top: 10px;'>
+            <JqxButtons width="80" onClick="open">Open</JqxButtons>
+            <JqxButtons width="80" onClick="close">Close</JqxButtons>
+        </div>
+        <div>
+            <JqxCheckBox width="120" onChange="autoCompleteOnChanged">Auto complete</JqxCheckBox>
+            <JqxCheckBox width="120" isChecked="true" onChange="enabledOnChanged">Enabled</JqxCheckBox>
+        </div>
+    </div>
+</JqxExpander>
+
+@code { 
+    JqxComboBox myComboBox;
+
+    string toggleMode = "none";
+    
+    List<string> source = new List<string>()
+    {
+        "Affogato",
+        "Americano",
+        "Bicerin",
+        "Breve",
+        "Café Bombón",
+        "Café au lait",
+        "Caffé Corretto",
+        "Café Crema",
+        "Caffé Latte",
+        "Caffé macchiato",
+        "Café mélange",
+        "Coffee milk",
+        "Cafe mocha",
+        "Cappuccino",
+        "Carajillo",
+        "Cortado",
+        "Cuban espresso",
+        "Espresso",
+        "Eiskaffee",
+        "The Flat White",
+        "Frappuccino",
+        "Galao",
+        "Greek frappé coffee",
+        "Iced Coffee",
+        "Indian filter coffee",
+        "Instant coffee",
+        "Irish coffee",
+        "Liqueur coffee"
+    };
+
+    string[] dropDownSource = new string[7]
+    {
+        "Starts with(Case Sensitive)",
+		"Ends with",
+		"Ends with(Case Sensitive)",
+		"Contains",
+		"Contains(Case Sensitive)",
+		"Equal",
+		"Equal(Case Sensitive)"
+    };
+
+    private void open(IDictionary<string, object> e) 
+    {
+        myComboBox.open();
+    }
+
+    private void close(IDictionary<string, object> e) 
+    {
+        myComboBox.close();
+    }
+
+    private void autoCompleteOnChanged(IDictionary<string, object> e) 
+    {
+        var isChecked = e["checked"];
+        var options = new Dictionary<string, object>()
+        {
+            { "autoComplete", isChecked }
+        };
+        myComboBox.setOptions(options);
+    }
+
+    private void enabledOnChanged(IDictionary<string, object> e) 
+    {
+        bool disabled = false; 
+        if (e["checked"].ToString() == "False") {
+            disabled = !disabled;
+        }
+        var options = new Dictionary<string, object>()
+        {
+            { "disabled", disabled }
+        };
+        myComboBox.setOptions(options);
+    }
+
+    private void onSelect(IDictionary<string, object> e) 
+    {
+        string searchType = "";
+        switch (e["index"]) {
+            case 0:
+                searchType = "startswithignorecase";
+                break;
+            case 1:
+                searchType = "startswith";
+                break;
+            case 2:
+                searchType = "endswithignorecase";
+                break;
+            case 3:
+                searchType = "endswith";
+                break;
+            case 4:
+                searchType = "containsignorecase";
+                break;
+            case 5:
+                searchType = "contains";
+                break;
+            case 6:
+                searchType = "equalsignorecase";
+                break;
+            case 7:
+                searchType = "equals";
+                break;
+        }
+
+        var options = new Dictionary<string, object>()
+        {
+            { "searchMode", searchType }
+        };
+        myComboBox.setOptions(options);
+    }
+}
+
+<style>
+    .jqx-combobox {
+        float: left;
+        margin-top: 10px;       
+    }
+
+    .jqx-checkbox {
+        margin-top: 10px;
+    }
+
+    .jqx-expander {
+        float: left; 
+        margin-left: 100px; 
+        margin-top: 10px;
+    }
+
+    .jqx-button {
+        display: inline-block;
+    }
+</style>
