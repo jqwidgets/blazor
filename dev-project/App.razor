@@ -1,48 +1,229 @@
-﻿<JqxBarGauge @ref="myBarGauge" width="200" colorScheme="customColors" customColorScheme="customColorScheme" options="options"></JqxBarGauge>
+﻿@inject HttpClient Http;
+@inject IJSRuntime JSRuntime;
 
-<button @onclick="setOptions">Set Options</button>
+<JqxDropDownList @ref="myDropDownList"
+    onSelect="selectEvent"
+    width="200" height="30" source="source" selectedIndex="selectedIndex"
+    displayMember="ContactName" valueMember="CompanyName" options="options">
+</JqxDropDownList>
 
-<button @onclick="getOptions">Get Options</button>
+<div @ref=selectionlog style="font-size: 12px; font-family: Verdana;"></div>
 
-@code { 
+@code {
+    JqxDropDownList myDropDownList;
+    private object[] source;
+    ElementReference selectionlog;
+    private int selectedIndex = -1;
+    private string cookieName = "jqxDropDownList_jqxWidget";
+    IDictionary<string, object> options;
 
-    JqxBarGauge myBarGauge;
-
-    object customColorScheme = new Dictionary<string, object>()
+    static string nonIntIndex;
+    static string NonIntIndex
     {
-        { "name", "customColors" },
-        { "colors", new string[]{ "blue", "green", "red", "orange" } }
-    };
-
-    Dictionary<string, object> options = new Dictionary<string, object>()
-    {
-        { "width", 500 },
-        { "height", 500 },
-        { "values", new double[]{30, 50, 70, 100} }
-    };
-
-    private void setOptions()
-    {
-        IDictionary<string, object> options = new Dictionary<string, object>()
+        get
         {
-            { "width", 1000 },
-            { "height", 500 },
-            { "values", new double[]{0, 20, 30, 500} }
-        };
-
-        myBarGauge.setOptions(options);
-    }
-
-    private void getOptions()
-    {
-        IDictionary<string, object> options = myBarGauge.getOptions();
-        
-        Console.WriteLine(options["width"]);
-
-        foreach(var item in options)
+            return nonIntIndex ?? "0";
+        }
+        set
         {
-            Console.WriteLine(item);
+            nonIntIndex = value;
         }
     }
 
-} 
+    // private async Task GetSelectedIndex()
+    // {
+    //     // IAsyncEnumerator<int> = IAsyncEnumerator<int>();
+    //     NonIntIndex = await JSRuntime.InvokeAsync<string>("Example.getCookie", cookieName);
+    //     Console.WriteLine("NonIntIndex: " + NonIntIndex);
+    //     await Task.Delay(1000);
+    //     return Task;
+    // }
+
+    public async Task<int> GetPageLength(string name)
+    {
+        NonIntIndex = await JSRuntime.InvokeAsync<string>("Example.getCookie", name);
+        int newValue = Int16.Parse(NonIntIndex);
+        Console.WriteLine("newValue: " + newValue + " type: " + newValue.GetType());
+        return newValue;
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        source = await Http.GetJsonAsync<object[]>("sampledata/customers.txt");
+
+
+        // NonIntIndex = await JSRuntime.InvokeAsync<string>("Example.getCookie", cookieName);
+
+        // selectedIndex = await Int16.Parse(NonIntIndex);
+
+        selectedIndex = await GetPageLength(cookieName);
+
+        @* var t = Task.Run(async delegate
+              {
+                 await Task.Delay(1000);
+                 return 42;
+              });
+        t.Wait();
+        Console.WriteLine(
+            "Task t Status: {0}, Result: {1}",
+            t.Status,
+            t.Result
+        ); *@
+        
+        @* var taskSelectedindex = Task.Run(await JSRuntime.InvokeAsync<System.Action>("Example.getCookie", cookieName));
+        taskSelectedindex.Wait(500);
+        Console.WriteLine(taskSelectedindex); *@
+        
+
+        /*
+        // var currentValue = await JSRuntime.InvokeAsync<string>("Example.getCookie", cookieName);
+        // selectedIndex = Int16.Parse(currentValue);
+
+        // var currentValue = await JSRuntime.InvokeAsync<string>("Example.getCookie", cookieName);
+        // selectedIndex = Int16.Parse(await JSRuntime.InvokeAsync<string>("Example.getCookie", cookieName));
+
+        NonIntIndex = await JSRuntime.InvokeAsync<string>("Example.getCookie", cookieName);
+        // NonIntIndex = null;
+
+        // selectedIndex = Int16.Parse(await JSRuntime.InvokeAsync<string>("Example.getCookie", cookieName))?.() => { return 0; };
+        Console.WriteLine("The next row will show result of the \"selectedIndex\"");
+        Console.WriteLine("selectedIndex: " + selectedIndex);
+        Console.WriteLine("NonIntIndex: " + NonIntIndex);
+        Console.WriteLine("String.IsNullOrEmpty(NonIntIndex): " + String.IsNullOrEmpty(NonIntIndex));
+
+        // string y = (Session["key"] ?? "none").ToString();
+        // var currentResult = await JSRuntime.InvokeAsync<string>("Example.getCookie", cookieName) ?? 11;
+        // string y = (currentResult ?? "0").ToString();
+        // Console.WriteLine("currentResult: {0}", currentResult);
+        // Console.WriteLine("y: {0}", y);
+
+        selectedIndex = 0;
+
+        //Console.WriteLine("Result of the GetSelectedIndex() -> {0}", GetSelectedIndex());
+        */
+
+
+
+
+
+
+        // Async TryParse
+        // https://stackoverflow.com/questions/37810660/async-tryparse-pattern
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        //try
+        //{
+        //    // var currentValue = await JSRuntime.InvokeAsync<string>("Example.getCookie", cookieName);
+        //    selectedIndex = Int16.Parse(await JSRuntime.InvokeAsync<string>("Example.getCookie", cookieName));
+        //    Console.WriteLine("The next row will show result of the \"selectedIndex\"");
+        //    Console.WriteLine(selectedIndex);
+        //}
+        //catch (System.Exception)
+        //{
+        //    return 0;
+        //    Console.WriteLine(4554);
+        //    throw;
+        //}
+        //finally
+        //{
+        //    selectedIndex = 0;
+        //}
+        
+        // String.IsNullOrEmpty(str)
+
+        // if (selectedIndex == -1 || String.IsNullOrEmpty(currentValue))
+        // if (String.IsNullOrEmpty(currentValue))
+        // {
+        //     Console.WriteLine(7777);
+        // }
+        // else
+        // {
+        //     Console.WriteLine(8888);
+        // }
+        
+        @* Console.WriteLine(selectedIndex); *@
+        @*
+        *@
+        options = new Dictionary<string, object>()
+        {
+            { "selectedIndex", selectedIndex },
+            { "source", source }
+        };
+
+        this.myDropDownList.setOptions(options);
+    }
+
+    // ДА ОПИТАМ С "OnAfterRenderAsync"
+    // https://docs.microsoft.com/en-us/aspnet/core/blazor/lifecycle?view=aspnetcore-3.1
+    /*
+    protected override async void OnAfterRender(bool firstRender)
+    {
+        // var currentIndex = JSRuntime.InvokeAsync<string>("Example.getCookie", cookieName);
+        // Console.WriteLine("7007 text message with info - current index: \"{0}\"", currentIndex);
+
+        if (firstRender)
+        {
+            Console.WriteLine(1111);
+
+            // selectedIndex = Int16.Parse(JSRuntime.InvokeAsync<string>("Example.getCookie", cookieName));
+            var indexValue = await JSRuntime.InvokeAsync<string>("Example.getCookie", cookieName);
+            int myInt = Int16.Parse(indexValue);
+
+            // Console.WriteLine("My Int: {0} - after that it will update the widget with setOptions() method", myInt);
+            // options = new Dictionary<string, object>()
+            // {
+            //     { "selectedIndex", myInt }
+            // };
+            // this.myDropDownList.setOptions(options);
+           
+        }
+        else
+        {
+            Console.WriteLine(2222);
+        }
+    }
+    */
+
+/*
+var index = $.jqx.cookie.cookie("jqxDropDownList_jqxWidget");
+if (undefined == index) index = 0;
+$("#jqxWidget").jqxDropDownList({ selectedIndex: index, source: dataAdapter, displayMember: "ContactName", valueMember: "CompanyName", width: 200, height: 30,});
+// subscribe to the select event.
+$("#jqxWidget").on('select', function (event) {
+    // save the index in cookie.
+    $.jqx.cookie.cookie("jqxDropDownList_jqxWidget", event.args.index);
+});
+*/
+    private void selectEvent(IDictionary<string, object> e)
+    {
+        var item = e["item"];
+        @* JSRuntime.InvokeAsync<string>("Example.updateInnerHtml", selectionlog, item); *@
+        // var name = "jqxDropDownList_jqxWidget";
+        // var value = "test";
+        // var days = 1;
+
+        JSRuntime.InvokeAsync<string>("Example.setCookie", item, e["index"]);
+
+        // var test = await JSRuntime.InvokeAsync<string>("Example.WriteCookie", name, value, days);
+        // Console.WriteLine(test);
+
+        // JSRuntime.InvokeAsync<string>("Example.WriteCookie", name, value);
+    }
+
+    @* public async static Task WriteCookieAsync(string name, string value, int days)
+    {
+        // var test = await JSRuntime.Current.InvokeAsync<object>("blazorExtensions.WriteCookie", name, value, days);
+        // var test = await JSRuntime.InvokeAsync<string>("blazorExtensions.WriteCookie", name, value, days);
+    } *@
+}
