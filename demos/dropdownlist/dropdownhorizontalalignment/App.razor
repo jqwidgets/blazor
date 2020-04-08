@@ -1,0 +1,41 @@
+﻿@inject HttpClient Http;
+@inject IJSRuntime JSRuntime;
+
+<div style="float: left; font-size: 13px; font-family: Verdana;">
+    <h3>Alignment</h3>
+    <div>
+        <JqxRadioButton onChecked="handleLeft" isChecked="false">Left</JqxRadioButton>
+    </div>
+    <div style="margin-top: 10px;">
+        <JqxRadioButton onChecked="handleRight" isChecked="true">Right</JqxRadioButton>
+    </div>
+</div>
+
+<div style="float: left; margin-top: 20px; margin-left: 100px;">
+    <JqxDropDownList
+        @ref="myDropDownList"
+        width="150" height="30" source="source" selectedIndex="0"
+        dropDownHorizontalAlignment="align" dropDownWidth="200"
+        displayMember="ContactName" valueMember="CompanyName">
+    </JqxDropDownList>
+</div>
+
+@code {
+    JqxDropDownList myDropDownList;
+    string align = "right";
+    private object[] source;
+    protected override async Task OnInitializedAsync()
+    {
+        source = await Http.GetJsonAsync<object[]>("sampledata/customers.txt");
+    }
+
+    private void handleRight(IDictionary<string, object> e)
+    {
+        this.myDropDownList.dropDownHorizontalAlignment = "right";
+    }
+
+    private void handleLeft(IDictionary<string, object> e)
+    {
+        this.myDropDownList.dropDownHorizontalAlignment = "left";
+    }
+}
