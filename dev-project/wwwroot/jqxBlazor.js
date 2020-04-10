@@ -29,11 +29,7 @@ window.jqxBlazor = {
     },
     manageMethods: function(id, name, args) {
         if (id) {
-            if (args) {
-                instances[id][name](...args);
-            } else {
-                return instances[id][name]();
-            }
+            return instances[id][name](...args);
         }
     },
     manageEvents: function(id, eventName, methodName, dotNet) {

@@ -295,14 +295,9 @@
 
     private IDictionary<string, object> initialOptions = new Dictionary<string, object>();
 
-    public bool addItem()
+    public bool addItem(object item)
     {
-        return getterMethod<bool>("addItem");
-    }
-
-    public void addItem(object item)
-    {
-        setterMethod("addItem", item);
+        return getterMethod<bool>("addItem", item);
     }
 
     public void clearSelection()
@@ -370,24 +365,14 @@
         setterMethod("focus");
     }
 
-    public object getItem()
+    public object getItem(double index)
     {
-        return getterMethod<object>("getItem");
+        return getterMethod<object>("getItem", index);
     }
 
-    public void getItem(double index)
+    public object getItemByValue(string value)
     {
-        setterMethod("getItem", index);
-    }
-
-    public object getItemByValue()
-    {
-        return getterMethod<object>("getItemByValue");
-    }
-
-    public void getItemByValue(string value)
-    {
-        setterMethod("getItemByValue", value);
+        return getterMethod<object>("getItemByValue", value);
     }
 
     public object[] getVisibleItems()
@@ -420,14 +405,9 @@
         return getterMethod<double>("getSelectedIndex");
     }
 
-    public bool insertAt()
+    public bool insertAt(object item, double index)
     {
-        return getterMethod<bool>("insertAt");
-    }
-
-    public void insertAt(object item, double index)
-    {
-        setterMethod("insertAt", item, index);
+        return getterMethod<bool>("insertAt", item, index);
     }
 
     public bool isOpened()
@@ -455,24 +435,14 @@
         setterMethod("open");
     }
 
-    public bool removeItem()
+    public bool removeItem(object item)
     {
-        return getterMethod<bool>("removeItem");
+        return getterMethod<bool>("removeItem", item);
     }
 
-    public void removeItem(object item)
+    public bool removeAt(double index)
     {
-        setterMethod("removeItem", item);
-    }
-
-    public bool removeAt()
-    {
-        return getterMethod<bool>("removeAt");
-    }
-
-    public void removeAt(double index)
-    {
-        setterMethod("removeAt", index);
+        return getterMethod<bool>("removeAt", index);
     }
 
     public void selectIndex(double index)
@@ -580,8 +550,12 @@
         if (firstRender)
         {
             ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxComboBox", initialOptions);
-            attachEvents();
-            onComponentReady?.Invoke();
+
+            Task.Delay(200).ContinueWith((action) =>
+            {
+                attachEvents();
+                onComponentReady?.Invoke();
+            }); 
         }
     }
 
@@ -610,10 +584,10 @@
         }
     }
 
-    private T getterMethod<T>(string name)
+    private T getterMethod<T>(string name, params object[] args)
     {
         shouldSetters = false;
-        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", componentID, name);
+        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", componentID, name, args);
     }
 
     private void setterMethod(string name, params object[] args)

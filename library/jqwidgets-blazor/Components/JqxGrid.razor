@@ -830,84 +830,44 @@
         setterMethod("focus");
     }
 
-    public double getcolumnindex()
+    public double getcolumnindex(string dataField)
     {
-        return getterMethod<double>("getcolumnindex");
+        return getterMethod<double>("getcolumnindex", dataField);
     }
 
-    public void getcolumnindex(string dataField)
+    public object getcolumn(string dataField)
     {
-        setterMethod("getcolumnindex", dataField);
+        return getterMethod<object>("getcolumn", dataField);
     }
 
-    public object getcolumn()
+    public object getcolumnproperty(string dataField, string propertyName)
     {
-        return getterMethod<object>("getcolumn");
+        return getterMethod<object>("getcolumnproperty", dataField, propertyName);
     }
 
-    public void getcolumn(string dataField)
+    public string getrowid(double rowBoundIndex)
     {
-        setterMethod("getcolumn", dataField);
+        return getterMethod<string>("getrowid", rowBoundIndex);
     }
 
-    public object getcolumnproperty()
+    public object getrowdata(double rowBoundIndex)
     {
-        return getterMethod<object>("getcolumnproperty");
+        return getterMethod<object>("getrowdata", rowBoundIndex);
     }
 
-    public void getcolumnproperty(string dataField, string propertyName)
+    public object getrowdatabyid(string rowID)
     {
-        setterMethod("getcolumnproperty", dataField, propertyName);
+        return getterMethod<object>("getrowdatabyid", rowID);
     }
 
-    public string getrowid()
+    public double getrowboundindexbyid(string rowID)
     {
-        return getterMethod<string>("getrowid");
+        return getterMethod<double>("getrowboundindexbyid", rowID);
     }
 
-    public void getrowid(double rowBoundIndex)
+    public double getrowboundindex(double rowDisplayIndex)
     {
-        setterMethod("getrowid", rowBoundIndex);
-    }
-
-    public object getrowdata()
-    {
-        return getterMethod<object>("getrowdata");
-    }
-
-    public void getrowdata(double rowBoundIndex)
-    {
-        setterMethod("getrowdata", rowBoundIndex);
-    }
-
-    public object getrowdatabyid()
-    {
-        return getterMethod<object>("getrowdatabyid");
-    }
-
-    public void getrowdatabyid(string rowID)
-    {
-        setterMethod("getrowdatabyid", rowID);
-    }
-
-    public double getrowboundindexbyid()
-    {
-        return getterMethod<double>("getrowboundindexbyid");
-    }
-
-    public void getrowboundindexbyid(string rowID)
-    {
-        setterMethod("getrowboundindexbyid", rowID);
-    }
-
-    public double getrowboundindex()
-    {
-        return getterMethod<double>("getrowboundindex");
-    }
-
-    public void getrowboundindex(double rowDisplayIndex)
-    {
-        setterMethod("getrowboundindex", rowDisplayIndex);
+        return getterMethod<double>("getrowboundindex", rowDisplayIndex);
     }
 
     public object[] getrows()
@@ -955,24 +915,14 @@
         setterMethod("hiderowdetails", rowBoundIndex);
     }
 
-    public bool iscolumnvisible()
+    public bool iscolumnvisible(string dataField)
     {
-        return getterMethod<bool>("iscolumnvisible");
+        return getterMethod<bool>("iscolumnvisible", dataField);
     }
 
-    public void iscolumnvisible(string dataField)
+    public bool iscolumnpinned(string dataField)
     {
-        setterMethod("iscolumnvisible", dataField);
-    }
-
-    public bool iscolumnpinned()
-    {
-        return getterMethod<bool>("iscolumnpinned");
-    }
-
-    public void iscolumnpinned(string dataField)
-    {
-        setterMethod("iscolumnpinned", dataField);
+        return getterMethod<bool>("iscolumnpinned", dataField);
     }
 
     public void localizestrings(object localizationobject)
@@ -1100,14 +1050,9 @@
         return getterMethod<double>("getrootgroupscount");
     }
 
-    public object getgroup()
+    public object getgroup(double groupIndex)
     {
-        return getterMethod<object>("getgroup");
-    }
-
-    public void getgroup(double groupIndex)
-    {
-        setterMethod("getgroup", groupIndex);
+        return getterMethod<object>("getgroup", groupIndex);
     }
 
     public void insertgroup(double groupIndex, string dataField)
@@ -1150,14 +1095,9 @@
         return getterMethod<object>("getfilterinformation");
     }
 
-    public object getcolumnat()
+    public object getcolumnat(double index)
     {
-        return getterMethod<object>("getcolumnat");
-    }
-
-    public void getcolumnat(double index)
-    {
-        setterMethod("getcolumnat", index);
+        return getterMethod<object>("getcolumnat", index);
     }
 
     public void removefilter(string dataField, bool refreshGrid)
@@ -1220,64 +1160,34 @@
         setterMethod("endrowedit", rowBoundIndex, confirmChanges);
     }
 
-    public object getcell()
+    public object getcell(double rowBoundIndex, string datafield)
     {
-        return getterMethod<object>("getcell");
+        return getterMethod<object>("getcell", rowBoundIndex, datafield);
     }
 
-    public void getcell(double rowBoundIndex, string datafield)
+    public object getcellatposition(double left, double top)
     {
-        setterMethod("getcell", rowBoundIndex, datafield);
+        return getterMethod<object>("getcellatposition", left, top);
     }
 
-    public object getcellatposition()
+    public string getcelltext(double rowBoundIndex, string dataField)
     {
-        return getterMethod<object>("getcellatposition");
+        return getterMethod<string>("getcelltext", rowBoundIndex, dataField);
     }
 
-    public void getcellatposition(double left, double top)
+    public string getcelltextbyid(string rowID, string dataField)
     {
-        setterMethod("getcellatposition", left, top);
+        return getterMethod<string>("getcelltextbyid", rowID, dataField);
     }
 
-    public string getcelltext()
+    public object getcellvaluebyid(string rowID, string dataField)
     {
-        return getterMethod<string>("getcelltext");
+        return getterMethod<object>("getcellvaluebyid", rowID, dataField);
     }
 
-    public void getcelltext(double rowBoundIndex, string dataField)
+    public object getcellvalue(double rowBoundIndex, string dataField)
     {
-        setterMethod("getcelltext", rowBoundIndex, dataField);
-    }
-
-    public string getcelltextbyid()
-    {
-        return getterMethod<string>("getcelltextbyid");
-    }
-
-    public void getcelltextbyid(string rowID, string dataField)
-    {
-        setterMethod("getcelltextbyid", rowID, dataField);
-    }
-
-    public object getcellvaluebyid()
-    {
-        return getterMethod<object>("getcellvaluebyid");
-    }
-
-    public void getcellvaluebyid(string rowID, string dataField)
-    {
-        setterMethod("getcellvaluebyid", rowID, dataField);
-    }
-
-    public object getcellvalue()
-    {
-        return getterMethod<object>("getcellvalue");
-    }
-
-    public void getcellvalue(double rowBoundIndex, string dataField)
-    {
-        setterMethod("getcellvalue", rowBoundIndex, dataField);
+        return getterMethod<object>("getcellvalue", rowBoundIndex, dataField);
     }
 
     public bool isBindingCompleted()
@@ -1360,14 +1270,9 @@
         setterMethod("unselectcell", rowBoundIndex, dataField);
     }
 
-    public string getcolumnaggregateddata()
+    public string getcolumnaggregateddata(string dataField, object[] aggregates)
     {
-        return getterMethod<string>("getcolumnaggregateddata");
-    }
-
-    public void getcolumnaggregateddata(string dataField, object[] aggregates)
-    {
-        setterMethod("getcolumnaggregateddata", dataField, aggregates);
+        return getterMethod<string>("getcolumnaggregateddata", dataField, aggregates);
     }
 
     public void refreshaggregates()
@@ -1380,14 +1285,9 @@
         setterMethod("renderaggregates");
     }
 
-    public object exportdata()
+    public object exportdata(string dataType, string fileName, bool exportHeader, double[] rows, bool exportHiddenColumns, string serverURL, string charSet)
     {
-        return getterMethod<object>("exportdata");
-    }
-
-    public void exportdata(string dataType, string fileName, bool exportHeader, double[] rows, bool exportHiddenColumns, string serverURL, string charSet)
-    {
-        setterMethod("exportdata", dataType, fileName, exportHeader, rows, exportHiddenColumns, serverURL, charSet);
+        return getterMethod<object>("exportdata", dataType, fileName, exportHeader, rows, exportHiddenColumns, serverURL, charSet);
     }
 
     public object getstate()
@@ -1450,8 +1350,12 @@
         if (firstRender)
         {
             ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxGrid", initialOptions);
-            attachEvents();
-            onComponentReady?.Invoke();
+
+            Task.Delay(200).ContinueWith((action) =>
+            {
+                attachEvents();
+                onComponentReady?.Invoke();
+            }); 
         }
     }
 
@@ -1497,10 +1401,10 @@
         }
     }
 
-    private T getterMethod<T>(string name)
+    private T getterMethod<T>(string name, params object[] args)
     {
         shouldSetters = false;
-        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", componentID, name);
+        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", componentID, name, args);
     }
 
     private void setterMethod(string name, params object[] args)

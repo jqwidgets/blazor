@@ -250,14 +250,9 @@
         setterMethod("refreshPositions");
     }
 
-    public string serialize()
+    public string serialize(object obj)
     {
-        return getterMethod<string>("serialize");
-    }
-
-    public void serialize(object obj)
-    {
-        setterMethod("serialize", obj);
+        return getterMethod<string>("serialize", obj);
     }
 
     public object[] toArray()
@@ -310,8 +305,12 @@
         if (firstRender)
         {
             ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxSortable", initialOptions);
-            attachEvents();
-            onComponentReady?.Invoke();
+
+            Task.Delay(200).ContinueWith((action) =>
+            {
+                attachEvents();
+                onComponentReady?.Invoke();
+            }); 
         }
     }
 
@@ -345,10 +344,10 @@
         }
     }
 
-    private T getterMethod<T>(string name)
+    private T getterMethod<T>(string name, params object[] args)
     {
         shouldSetters = false;
-        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", componentID, name);
+        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", componentID, name, args);
     }
 
     private void setterMethod(string name, params object[] args)

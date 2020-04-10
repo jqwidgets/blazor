@@ -464,14 +464,9 @@
         setterMethod("ensureVisible", item, resourceId);
     }
 
-    public object exportData()
+    public object exportData(string format)
     {
-        return getterMethod<object>("exportData");
-    }
-
-    public void exportData(string format)
-    {
-        setterMethod("exportData", format);
+        return getterMethod<object>("exportData", format);
     }
 
     public void focus()
@@ -479,14 +474,9 @@
         setterMethod("focus");
     }
 
-    public object getAppointmentProperty()
+    public object getAppointmentProperty(string appointmentId, string name)
     {
-        return getterMethod<object>("getAppointmentProperty");
-    }
-
-    public void getAppointmentProperty(string appointmentId, string name)
-    {
-        setterMethod("getAppointmentProperty", appointmentId, name);
+        return getterMethod<object>("getAppointmentProperty", appointmentId, name);
     }
 
     public object getSelection()
@@ -604,8 +594,12 @@
         if (firstRender)
         {
             ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxScheduler", initialOptions);
-            attachEvents();
-            onComponentReady?.Invoke();
+
+            Task.Delay(200).ContinueWith((action) =>
+            {
+                attachEvents();
+                onComponentReady?.Invoke();
+            }); 
         }
     }
 
@@ -646,10 +640,10 @@
         }
     }
 
-    private T getterMethod<T>(string name)
+    private T getterMethod<T>(string name, params object[] args)
     {
         shouldSetters = false;
-        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", componentID, name);
+        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", componentID, name, args);
     }
 
     private void setterMethod(string name, params object[] args)

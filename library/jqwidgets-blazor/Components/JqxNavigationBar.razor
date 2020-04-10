@@ -175,24 +175,14 @@
         setterMethod("focus");
     }
 
-    public string getHeaderContentAt()
+    public string getHeaderContentAt(object index)
     {
-        return getterMethod<string>("getHeaderContentAt");
+        return getterMethod<string>("getHeaderContentAt", index);
     }
 
-    public void getHeaderContentAt(object index)
+    public string getContentAt(object index)
     {
-        setterMethod("getHeaderContentAt", index);
-    }
-
-    public string getContentAt()
-    {
-        return getterMethod<string>("getContentAt");
-    }
-
-    public void getContentAt(object index)
-    {
-        setterMethod("getContentAt", index);
+        return getterMethod<string>("getContentAt", index);
     }
 
     public void hideArrowAt(object index)
@@ -300,8 +290,12 @@
         if (firstRender)
         {
             ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxNavigationBar", initialOptions);
-            attachEvents();
-            onComponentReady?.Invoke();
+
+            Task.Delay(200).ContinueWith((action) =>
+            {
+                attachEvents();
+                onComponentReady?.Invoke();
+            }); 
         }
     }
 
@@ -327,10 +321,10 @@
         }
     }
 
-    private T getterMethod<T>(string name)
+    private T getterMethod<T>(string name, params object[] args)
     {
         shouldSetters = false;
-        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", componentID, name);
+        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", componentID, name, args);
     }
 
     private void setterMethod(string name, params object[] args)

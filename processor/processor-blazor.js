@@ -26,24 +26,26 @@ const widgetNames = [
 })();
 
 function getTemplate(widgetName) {
+    const name = widgetName.toLowerCase();
+
     let template = '<div id="@componentID">@ChildContent</div>';
 
-    if (widgetName === 'JqxButton' || widgetName === 'JqxToggleButton') {
+    if (name === 'jqxbutton' || name === 'jqxtogglebutton') {
         template = '<button id="@componentID">@ChildContent</button>';
     }
-    else if (widgetName === 'JqxComplexInput') {
+    else if (name === 'jqxcomplexinput') {
         template = '<div id="@componentID" style="display: inline-flex;"><input><div>@ChildContent</div></div>';
     }
-    else if (widgetName === 'JqxDateTimeInput' || widgetName === 'JqxMaskedInput' || widgetName === 'JqxNumberInput') {
+    else if (name === 'jqxdatetimeinput' || name === 'jqxmaskedinput' || name === 'jqxnumberinput') {
         template = '<input id="@componentID">';
     }
-    else if (widgetName === 'JqxInput') {
+    else if (name === 'jqxinput') {
         template = '<input id="@componentID" type="text" >';
     }
-    else if (widgetName === 'JqxFormattedInput') {
+    else if (name === 'jqxformattedinput') {
         template = '<div id="@componentID"><input type="text"><div></div><div></div></div>';
     }
-    else if (widgetName === 'JqxPasswordInput') {
+    else if (name === 'jqxpasswordinput') {
         template = '<input id="@componentID" type="password">';
     }
 
@@ -207,6 +209,8 @@ function processJSON(inFile, outFile) {
             event: { okName: 'e' }
         };
 
+        const methodsWhichAreBothGettersAndSetters = [ 'val' ];
+
         for (const method of obj.methods) {
             const jsonDataType = method.ts_returnDataType ? method.ts_returnDataType : method.returnDataType;
             const dataType = getDataType(widgetNameWithoutJqx, jsonDataType);
@@ -216,7 +220,7 @@ function processJSON(inFile, outFile) {
             if (method.arguments) {
                 for (const argument of method.arguments) {
                     let argumentNameValidated = argument.name;
-
+ 
                     if (argument.name.toLowerCase() === 'none') {
                         break;
                     }
@@ -235,19 +239,31 @@ function processJSON(inFile, outFile) {
     
             methodArguments = methodArguments.slice(0, methodArguments.length - 2);
             methodArgumentsNames = methodArgumentsNames.slice(0, methodArgumentsNames.length - 2);
-            
-            if (dataType !== 'void') {
+
+            if (methodsWhichAreBothGettersAndSetters.indexOf(method.name) !== -1) {
                 outData += `    public ${dataType} ${method.name}()\n`;
                 outData += `    {\n`;
                 outData += `        return getterMethod<${dataType}>("${method.name}");\n`;
                 outData += `    }\n\n`;
-            }
-    
-            if (dataType === 'void' || methodArguments.length !== 0) {
+
                 outData += `    public void ${method.name}(${methodArguments})\n`;
                 outData += `    {\n`;
                 outData += `        setterMethod("${method.name}"${methodArgumentsNames});\n`;
                 outData += `    }\n\n`;
+            } else {
+                if (dataType !== 'void') {
+                    outData += `    public ${dataType} ${method.name}(${methodArguments})\n`;
+                    outData += `    {\n`;
+                    outData += `        return getterMethod<${dataType}>("${method.name}"${methodArgumentsNames});\n`;
+                    outData += `    }\n\n`;
+                }
+        
+                if (dataType === 'void') {
+                    outData += `    public void ${method.name}(${methodArguments})\n`;
+                    outData += `    {\n`;
+                    outData += `        setterMethod("${method.name}"${methodArgumentsNames});\n`;
+                    outData += `    }\n\n`;
+                }
             }
         }
     }
@@ -295,9 +311,12 @@ function processJSON(inFile, outFile) {
     outData += `    {\n`;
     outData += `        if (firstRender)\n`;
     outData += `        {\n`;
-    outData += `            ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "${widgetName}", initialOptions);\n`;
-    outData += `            attachEvents();\n`;
-    outData += `            onComponentReady?.Invoke();\n`;
+    outData += `            ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "${widgetName}", initialOptions);\n\n`;
+    outData += `            Task.Delay(200).ContinueWith((action) =>\n`;
+    outData += `            {\n`;
+    outData += `                attachEvents();\n`;
+    outData += `                onComponentReady?.Invoke();\n`;
+    outData += `            }); \n`;
     outData += `        }\n`;
     outData += `    }\n\n`;
     
@@ -326,10 +345,10 @@ function processJSON(inFile, outFile) {
     outData += `        }\n`;
     outData += `    }\n\n`;
 
-    outData += `    private T getterMethod<T>(string name)\n`;
+    outData += `    private T getterMethod<T>(string name, params object[] args)\n`;
     outData += `    {\n`;
     outData += `        shouldSetters = false;\n`;
-    outData += `        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", componentID, name);\n`;
+    outData += `        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", componentID, name, args);\n`;
     outData += `    }\n\n`;
 
     outData += `    private void setterMethod(string name, params object[] args)\n`;

@@ -45,14 +45,9 @@
         setterMethod("attr", element, attributes);
     }
 
-    public object circle()
+    public object circle(double cx, double cy, double r, object attributes)
     {
-        return getterMethod<object>("circle");
-    }
-
-    public void circle(double cx, double cy, double r, object attributes)
-    {
-        setterMethod("circle", cx, cy, r, attributes);
+        return getterMethod<object>("circle", cx, cy, r, attributes);
     }
 
     public void clear()
@@ -60,14 +55,9 @@
         setterMethod("clear");
     }
 
-    public string getAttr()
+    public string getAttr(object element, object attributes)
     {
-        return getterMethod<string>("getAttr");
-    }
-
-    public void getAttr(object element, object attributes)
-    {
-        setterMethod("getAttr", element, attributes);
+        return getterMethod<string>("getAttr", element, attributes);
     }
 
     public object getSize()
@@ -75,24 +65,14 @@
         return getterMethod<object>("getSize");
     }
 
-    public object line()
+    public object line(double x1, double y1, double x2, double y2, object attributes)
     {
-        return getterMethod<object>("line");
+        return getterMethod<object>("line", x1, y1, x2, y2, attributes);
     }
 
-    public void line(double x1, double y1, double x2, double y2, object attributes)
+    public object measureText(string text, double angle, object attributes)
     {
-        setterMethod("line", x1, y1, x2, y2, attributes);
-    }
-
-    public object measureText()
-    {
-        return getterMethod<object>("measureText");
-    }
-
-    public void measureText(string text, double angle, object attributes)
-    {
-        setterMethod("measureText", text, angle, attributes);
+        return getterMethod<object>("measureText", text, angle, attributes);
     }
 
     public void on(object element, string e, object func)
@@ -105,24 +85,14 @@
         setterMethod("off", element, e, func);
     }
 
-    public object path()
+    public object path(string path, object attributes)
     {
-        return getterMethod<object>("path");
+        return getterMethod<object>("path", path, attributes);
     }
 
-    public void path(string path, object attributes)
+    public object pieslice(double cx, double xy, object innerRadius, object outerRadius, double fromAngle, double endAngle, double centerOffset, object attributes)
     {
-        setterMethod("path", path, attributes);
-    }
-
-    public object pieslice()
-    {
-        return getterMethod<object>("pieslice");
-    }
-
-    public void pieslice(double cx, double xy, object innerRadius, object outerRadius, double fromAngle, double endAngle, double centerOffset, object attributes)
-    {
-        setterMethod("pieslice", cx, xy, innerRadius, outerRadius, fromAngle, endAngle, centerOffset, attributes);
+        return getterMethod<object>("pieslice", cx, xy, innerRadius, outerRadius, fromAngle, endAngle, centerOffset, attributes);
     }
 
     public void refresh()
@@ -130,14 +100,9 @@
         setterMethod("refresh");
     }
 
-    public object rect()
+    public object rect(double x, double y, object width, object height, object attributes)
     {
-        return getterMethod<object>("rect");
-    }
-
-    public void rect(double x, double y, object width, object height, object attributes)
-    {
-        setterMethod("rect", x, y, width, height, attributes);
+        return getterMethod<object>("rect", x, y, width, height, attributes);
     }
 
     public void saveAsJPEG(string image, string url)
@@ -150,14 +115,9 @@
         setterMethod("saveAsPNG", image, url);
     }
 
-    public object text()
+    public object text(string text, double x, double y, object width, object height, double angle, object attributes, bool clip, string halign, string valign, string rotateAround)
     {
-        return getterMethod<object>("text");
-    }
-
-    public void text(string text, double x, double y, object width, object height, double angle, object attributes, bool clip, string halign, string valign, string rotateAround)
-    {
-        setterMethod("text", text, x, y, width, height, angle, attributes, clip, halign, valign, rotateAround);
+        return getterMethod<object>("text", text, x, y, width, height, angle, attributes, clip, halign, valign, rotateAround);
     }
 
     public IDictionary<string, object> getOptions()
@@ -205,8 +165,12 @@
         if (firstRender)
         {
             ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxDraw", initialOptions);
-            attachEvents();
-            onComponentReady?.Invoke();
+
+            Task.Delay(200).ContinueWith((action) =>
+            {
+                attachEvents();
+                onComponentReady?.Invoke();
+            }); 
         }
     }
 
@@ -228,10 +192,10 @@
         }
     }
 
-    private T getterMethod<T>(string name)
+    private T getterMethod<T>(string name, params object[] args)
     {
         shouldSetters = false;
-        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", componentID, name);
+        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", componentID, name, args);
     }
 
     private void setterMethod(string name, params object[] args)

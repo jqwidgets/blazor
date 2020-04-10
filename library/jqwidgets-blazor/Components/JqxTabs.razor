@@ -289,24 +289,14 @@
         setterMethod("focus");
     }
 
-    public string getTitleAt()
+    public string getTitleAt(double index)
     {
-        return getterMethod<string>("getTitleAt");
+        return getterMethod<string>("getTitleAt", index);
     }
 
-    public void getTitleAt(double index)
+    public object getContentAt(double index)
     {
-        setterMethod("getTitleAt", index);
-    }
-
-    public object getContentAt()
-    {
-        return getterMethod<object>("getContentAt");
-    }
-
-    public void getContentAt(double index)
-    {
-        setterMethod("getContentAt", index);
+        return getterMethod<object>("getContentAt", index);
     }
 
     public object getDisabledTabsCount()
@@ -424,8 +414,12 @@
         if (firstRender)
         {
             ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxTabs", initialOptions);
-            attachEvents();
-            onComponentReady?.Invoke();
+
+            Task.Delay(200).ContinueWith((action) =>
+            {
+                attachEvents();
+                onComponentReady?.Invoke();
+            }); 
         }
     }
 
@@ -458,10 +452,10 @@
         }
     }
 
-    private T getterMethod<T>(string name)
+    private T getterMethod<T>(string name, params object[] args)
     {
         shouldSetters = false;
-        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", componentID, name);
+        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", componentID, name, args);
     }
 
     private void setterMethod(string name, params object[] args)

@@ -149,24 +149,14 @@
         setterMethod("destroy");
     }
 
-    public object getColumn()
+    public object getColumn(string dataField)
     {
-        return getterMethod<object>("getColumn");
+        return getterMethod<object>("getColumn", dataField);
     }
 
-    public void getColumn(string dataField)
+    public object getColumnItems(string dataField)
     {
-        setterMethod("getColumn", dataField);
-    }
-
-    public object getColumnItems()
-    {
-        return getterMethod<object>("getColumnItems");
-    }
-
-    public void getColumnItems(string dataField)
-    {
-        setterMethod("getColumnItems", dataField);
+        return getterMethod<object>("getColumnItems", dataField);
     }
 
     public object getItems()
@@ -229,8 +219,12 @@
         if (firstRender)
         {
             ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxKanban", initialOptions);
-            attachEvents();
-            onComponentReady?.Invoke();
+
+            Task.Delay(200).ContinueWith((action) =>
+            {
+                attachEvents();
+                onComponentReady?.Invoke();
+            }); 
         }
     }
 
@@ -257,10 +251,10 @@
         }
     }
 
-    private T getterMethod<T>(string name)
+    private T getterMethod<T>(string name, params object[] args)
     {
         shouldSetters = false;
-        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", componentID, name);
+        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", componentID, name, args);
     }
 
     private void setterMethod(string name, params object[] args)
