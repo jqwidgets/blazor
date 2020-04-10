@@ -276,14 +276,9 @@
         return getterMethod<object>("getItems");
     }
 
-    public object getItem()
+    public object getItem(object element)
     {
-        return getterMethod<object>("getItem");
-    }
-
-    public void getItem(object element)
-    {
-        setterMethod("getItem", element);
+        return getterMethod<object>("getItem", element);
     }
 
     public object getSelectedItem()
@@ -291,34 +286,19 @@
         return getterMethod<object>("getSelectedItem");
     }
 
-    public object getPrevItem()
+    public object getPrevItem(object item)
     {
-        return getterMethod<object>("getPrevItem");
+        return getterMethod<object>("getPrevItem", item);
     }
 
-    public void getPrevItem(object item)
+    public object getNextItem(object item)
     {
-        setterMethod("getPrevItem", item);
+        return getterMethod<object>("getNextItem", item);
     }
 
-    public object getNextItem()
+    public object hitTest(double left, double top)
     {
-        return getterMethod<object>("getNextItem");
-    }
-
-    public void getNextItem(object item)
-    {
-        setterMethod("getNextItem", item);
-    }
-
-    public object hitTest()
-    {
-        return getterMethod<object>("hitTest");
-    }
-
-    public void hitTest(double left, double top)
-    {
-        setterMethod("hitTest", left, top);
+        return getterMethod<object>("hitTest", left, top);
     }
 
     public void removeItem(object item)
@@ -411,8 +391,12 @@
         if (firstRender)
         {
             ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxTree", initialOptions);
-            attachEvents();
-            onComponentReady?.Invoke();
+
+            Task.Delay(200).ContinueWith((action) =>
+            {
+                attachEvents();
+                onComponentReady?.Invoke();
+            }); 
         }
     }
 
@@ -443,10 +427,10 @@
         }
     }
 
-    private T getterMethod<T>(string name)
+    private T getterMethod<T>(string name, params object[] args)
     {
         shouldSetters = false;
-        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", componentID, name);
+        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", componentID, name, args);
     }
 
     private void setterMethod(string name, params object[] args)

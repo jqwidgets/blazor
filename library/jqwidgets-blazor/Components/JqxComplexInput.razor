@@ -1,7 +1,7 @@
 @using System.Text.Json;
 @inject IJSRuntime JSRuntime;
 
-<div id="@componentID">@ChildContent</div>
+<div id="@componentID" style="display: inline-flex;"><input><div>@ChildContent</div></div>
 
 @code {
     [Parameter]
@@ -114,34 +114,19 @@
         setterMethod("destroy");
     }
 
-    public string getDecimalNotation()
+    public string getDecimalNotation(string part, string decimalNotation)
     {
-        return getterMethod<string>("getDecimalNotation");
+        return getterMethod<string>("getDecimalNotation", part, decimalNotation);
     }
 
-    public void getDecimalNotation(string part, string decimalNotation)
+    public double getReal(double complexnumber)
     {
-        setterMethod("getDecimalNotation", part, decimalNotation);
+        return getterMethod<double>("getReal", complexnumber);
     }
 
-    public double getReal()
+    public double getImaginary(double complexnumber)
     {
-        return getterMethod<double>("getReal");
-    }
-
-    public void getReal(double complexnumber)
-    {
-        setterMethod("getReal", complexnumber);
-    }
-
-    public double getImaginary()
-    {
-        return getterMethod<double>("getImaginary");
-    }
-
-    public void getImaginary(double complexnumber)
-    {
-        setterMethod("getImaginary", complexnumber);
+        return getterMethod<double>("getImaginary", complexnumber);
     }
 
     public void render()
@@ -209,8 +194,12 @@
         if (firstRender)
         {
             ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxComplexInput", initialOptions);
-            attachEvents();
-            onComponentReady?.Invoke();
+
+            Task.Delay(200).ContinueWith((action) =>
+            {
+                attachEvents();
+                onComponentReady?.Invoke();
+            }); 
         }
     }
 
@@ -233,10 +222,10 @@
         }
     }
 
-    private T getterMethod<T>(string name)
+    private T getterMethod<T>(string name, params object[] args)
     {
         shouldSetters = false;
-        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", componentID, name);
+        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", componentID, name, args);
     }
 
     private void setterMethod(string name, params object[] args)

@@ -110,14 +110,9 @@
         setterMethod("submit", action, target, method);
     }
 
-    public object getComponentByName()
+    public object getComponentByName(string name)
     {
-        return getterMethod<object>("getComponentByName");
-    }
-
-    public void getComponentByName(string name)
-    {
-        setterMethod("getComponentByName", name);
+        return getterMethod<object>("getComponentByName", name);
     }
 
     public IDictionary<string, object> getOptions()
@@ -165,8 +160,12 @@
         if (firstRender)
         {
             ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxForm", initialOptions);
-            attachEvents();
-            onComponentReady?.Invoke();
+
+            Task.Delay(200).ContinueWith((action) =>
+            {
+                attachEvents();
+                onComponentReady?.Invoke();
+            }); 
         }
     }
 
@@ -190,10 +189,10 @@
         }
     }
 
-    private T getterMethod<T>(string name)
+    private T getterMethod<T>(string name, params object[] args)
     {
         shouldSetters = false;
-        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", componentID, name);
+        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", componentID, name, args);
     }
 
     private void setterMethod(string name, params object[] args)

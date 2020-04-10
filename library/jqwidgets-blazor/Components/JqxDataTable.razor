@@ -475,14 +475,9 @@
         setterMethod("endCellEdit", rowIndex, dataField);
     }
 
-    public object exportData()
+    public object exportData(object exportDataType)
     {
-        return getterMethod<object>("exportData");
-    }
-
-    public void exportData(object exportDataType)
-    {
-        setterMethod("exportData", exportDataType);
+        return getterMethod<object>("exportData", exportDataType);
     }
 
     public void focus()
@@ -490,14 +485,9 @@
         setterMethod("focus");
     }
 
-    public object getColumnProperty()
+    public object getColumnProperty(string dataField, string propertyName)
     {
-        return getterMethod<object>("getColumnProperty");
-    }
-
-    public void getColumnProperty(string dataField, string propertyName)
-    {
-        setterMethod("getColumnProperty", dataField, propertyName);
+        return getterMethod<object>("getColumnProperty", dataField, propertyName);
     }
 
     public void goToPage(double pageIndex)
@@ -530,14 +520,9 @@
         return getterMethod<object[]>("getView");
     }
 
-    public object getCellValue()
+    public object getCellValue(double rowIndex, string dataField)
     {
-        return getterMethod<object>("getCellValue");
-    }
-
-    public void getCellValue(double rowIndex, string dataField)
-    {
-        setterMethod("getCellValue", rowIndex, dataField);
+        return getterMethod<object>("getCellValue", rowIndex, dataField);
     }
 
     public void hideColumn(string dataField)
@@ -680,8 +665,12 @@
         if (firstRender)
         {
             ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxDataTable", initialOptions);
-            attachEvents();
-            onComponentReady?.Invoke();
+
+            Task.Delay(200).ContinueWith((action) =>
+            {
+                attachEvents();
+                onComponentReady?.Invoke();
+            }); 
         }
     }
 
@@ -721,10 +710,10 @@
         }
     }
 
-    private T getterMethod<T>(string name)
+    private T getterMethod<T>(string name, params object[] args)
     {
         shouldSetters = false;
-        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", componentID, name);
+        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", componentID, name, args);
     }
 
     private void setterMethod(string name, params object[] args)

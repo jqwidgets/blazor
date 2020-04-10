@@ -1,7 +1,7 @@
 @using System.Text.Json;
 @inject IJSRuntime JSRuntime;
 
-<div id="@componentID">@ChildContent</div>
+<input id="@componentID">
 
 @code {
     [Parameter]
@@ -291,8 +291,12 @@
         if (firstRender)
         {
             ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxNumberInput", initialOptions);
-            attachEvents();
-            onComponentReady?.Invoke();
+
+            Task.Delay(200).ContinueWith((action) =>
+            {
+                attachEvents();
+                onComponentReady?.Invoke();
+            }); 
         }
     }
 
@@ -317,10 +321,10 @@
         }
     }
 
-    private T getterMethod<T>(string name)
+    private T getterMethod<T>(string name, params object[] args)
     {
         shouldSetters = false;
-        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", componentID, name);
+        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", componentID, name, args);
     }
 
     private void setterMethod(string name, params object[] args)

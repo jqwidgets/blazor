@@ -259,14 +259,9 @@
 
     private IDictionary<string, object> initialOptions = new Dictionary<string, object>();
 
-    public bool addItem()
+    public bool addItem(object Item)
     {
-        return getterMethod<bool>("addItem");
-    }
-
-    public void addItem(object Item)
-    {
-        setterMethod("addItem", Item);
+        return getterMethod<bool>("addItem", Item);
     }
 
     public void beginUpdate()
@@ -359,24 +354,14 @@
         return getterMethod<object[]>("getCheckedItems");
     }
 
-    public object getItem()
+    public object getItem(double Index)
     {
-        return getterMethod<object>("getItem");
+        return getterMethod<object>("getItem", Index);
     }
 
-    public void getItem(double Index)
+    public object getItemByValue(object Item)
     {
-        setterMethod("getItem", Index);
-    }
-
-    public object getItemByValue()
-    {
-        return getterMethod<object>("getItemByValue");
-    }
-
-    public void getItemByValue(object Item)
-    {
-        setterMethod("getItemByValue", Item);
+        return getterMethod<object>("getItemByValue", Item);
     }
 
     public object getSelectedItem()
@@ -534,8 +519,12 @@
         if (firstRender)
         {
             ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxListBox", initialOptions);
-            attachEvents();
-            onComponentReady?.Invoke();
+
+            Task.Delay(200).ContinueWith((action) =>
+            {
+                attachEvents();
+                onComponentReady?.Invoke();
+            }); 
         }
     }
 
@@ -564,10 +553,10 @@
         }
     }
 
-    private T getterMethod<T>(string name)
+    private T getterMethod<T>(string name, params object[] args)
     {
         shouldSetters = false;
-        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", componentID, name);
+        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", componentID, name, args);
     }
 
     private void setterMethod(string name, params object[] args)

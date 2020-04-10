@@ -265,14 +265,9 @@
 
     private IDictionary<string, object> initialOptions = new Dictionary<string, object>();
 
-    public bool addItem()
+    public bool addItem(object item)
     {
-        return getterMethod<bool>("addItem");
-    }
-
-    public void addItem(object item)
-    {
-        setterMethod("addItem", item);
+        return getterMethod<bool>("addItem", item);
     }
 
     public void clearSelection()
@@ -345,24 +340,14 @@
         setterMethod("focus");
     }
 
-    public object getItem()
+    public object getItem(double index)
     {
-        return getterMethod<object>("getItem");
+        return getterMethod<object>("getItem", index);
     }
 
-    public void getItem(double index)
+    public object getItemByValue(string itemValue)
     {
-        setterMethod("getItem", index);
-    }
-
-    public object getItemByValue()
-    {
-        return getterMethod<object>("getItemByValue");
-    }
-
-    public void getItemByValue(string itemValue)
-    {
-        setterMethod("getItemByValue", itemValue);
+        return getterMethod<object>("getItemByValue", itemValue);
     }
 
     public object getItems()
@@ -530,8 +515,12 @@
         if (firstRender)
         {
             ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxDropDownList", initialOptions);
-            attachEvents();
-            onComponentReady?.Invoke();
+
+            Task.Delay(200).ContinueWith((action) =>
+            {
+                attachEvents();
+                onComponentReady?.Invoke();
+            }); 
         }
     }
 
@@ -560,10 +549,10 @@
         }
     }
 
-    private T getterMethod<T>(string name)
+    private T getterMethod<T>(string name, params object[] args)
     {
         shouldSetters = false;
-        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", componentID, name);
+        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", componentID, name, args);
     }
 
     private void setterMethod(string name, params object[] args)

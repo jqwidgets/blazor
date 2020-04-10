@@ -292,74 +292,39 @@
         setterMethod("removeColorScheme", schemeName);
     }
 
-    public double getItemsCount()
+    public double getItemsCount(double groupIndex, double serieIndex)
     {
-        return getterMethod<double>("getItemsCount");
+        return getterMethod<double>("getItemsCount", groupIndex, serieIndex);
     }
 
-    public void getItemsCount(double groupIndex, double serieIndex)
+    public object getItemCoord(double groupIndex, double serieIndex, double itemIndex)
     {
-        setterMethod("getItemsCount", groupIndex, serieIndex);
+        return getterMethod<object>("getItemCoord", groupIndex, serieIndex, itemIndex);
     }
 
-    public object getItemCoord()
+    public object getXAxisRect(double groupIndex)
     {
-        return getterMethod<object>("getItemCoord");
+        return getterMethod<object>("getXAxisRect", groupIndex);
     }
 
-    public void getItemCoord(double groupIndex, double serieIndex, double itemIndex)
+    public object[] getXAxisLabels(double groupIndex)
     {
-        setterMethod("getItemCoord", groupIndex, serieIndex, itemIndex);
+        return getterMethod<object[]>("getXAxisLabels", groupIndex);
     }
 
-    public object getXAxisRect()
+    public object getValueAxisRect(double groupIndex)
     {
-        return getterMethod<object>("getXAxisRect");
+        return getterMethod<object>("getValueAxisRect", groupIndex);
     }
 
-    public void getXAxisRect(double groupIndex)
+    public object[] getValueAxisLabels(double groupIndex)
     {
-        setterMethod("getXAxisRect", groupIndex);
+        return getterMethod<object[]>("getValueAxisLabels", groupIndex);
     }
 
-    public object[] getXAxisLabels()
+    public string[] getColorScheme(string colorScheme)
     {
-        return getterMethod<object[]>("getXAxisLabels");
-    }
-
-    public void getXAxisLabels(double groupIndex)
-    {
-        setterMethod("getXAxisLabels", groupIndex);
-    }
-
-    public object getValueAxisRect()
-    {
-        return getterMethod<object>("getValueAxisRect");
-    }
-
-    public void getValueAxisRect(double groupIndex)
-    {
-        setterMethod("getValueAxisRect", groupIndex);
-    }
-
-    public object[] getValueAxisLabels()
-    {
-        return getterMethod<object[]>("getValueAxisLabels");
-    }
-
-    public void getValueAxisLabels(double groupIndex)
-    {
-        setterMethod("getValueAxisLabels", groupIndex);
-    }
-
-    public string[] getColorScheme()
-    {
-        return getterMethod<string[]>("getColorScheme");
-    }
-
-    public void getColorScheme(string colorScheme)
-    {
-        setterMethod("getColorScheme", colorScheme);
+        return getterMethod<string[]>("getColorScheme", colorScheme);
     }
 
     public void hideSerie(double groupIndex, double serieIndex, double itemIndex)
@@ -397,24 +362,14 @@
         setterMethod("saveAsPDF", fileName, exportServerUrl);
     }
 
-    public object getXAxisValue()
+    public object getXAxisValue(double offset, double groupIndex)
     {
-        return getterMethod<object>("getXAxisValue");
+        return getterMethod<object>("getXAxisValue", offset, groupIndex);
     }
 
-    public void getXAxisValue(double offset, double groupIndex)
+    public object getValueAxisValue(double offset, double groupIndex)
     {
-        setterMethod("getXAxisValue", offset, groupIndex);
-    }
-
-    public object getValueAxisValue()
-    {
-        return getterMethod<object>("getValueAxisValue");
-    }
-
-    public void getValueAxisValue(double offset, double groupIndex)
-    {
-        setterMethod("getValueAxisValue", offset, groupIndex);
+        return getterMethod<object>("getValueAxisValue", offset, groupIndex);
     }
 
     public IDictionary<string, object> getOptions()
@@ -462,8 +417,12 @@
         if (firstRender)
         {
             ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxChart", initialOptions);
-            attachEvents();
-            onComponentReady?.Invoke();
+
+            Task.Delay(200).ContinueWith((action) =>
+            {
+                attachEvents();
+                onComponentReady?.Invoke();
+            }); 
         }
     }
 
@@ -491,10 +450,10 @@
         }
     }
 
-    private T getterMethod<T>(string name)
+    private T getterMethod<T>(string name, params object[] args)
     {
         shouldSetters = false;
-        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", componentID, name);
+        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", componentID, name, args);
     }
 
     private void setterMethod(string name, params object[] args)

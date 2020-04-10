@@ -530,14 +530,9 @@
         setterMethod("endCellEdit", rowKey, dataField, cancelChanges);
     }
 
-    public object exportData()
+    public object exportData(object exportDataType)
     {
-        return getterMethod<object>("exportData");
-    }
-
-    public void exportData(object exportDataType)
-    {
-        setterMethod("exportData", exportDataType);
+        return getterMethod<object>("exportData", exportDataType);
     }
 
     public void focus()
@@ -545,14 +540,9 @@
         setterMethod("focus");
     }
 
-    public object getColumnProperty()
+    public object getColumnProperty(string dataField, string propertyName)
     {
-        return getterMethod<object>("getColumnProperty");
-    }
-
-    public void getColumnProperty(string dataField, string propertyName)
-    {
-        setterMethod("getColumnProperty", dataField, propertyName);
+        return getterMethod<object>("getColumnProperty", dataField, propertyName);
     }
 
     public void goToPage(double pageIndex)
@@ -575,24 +565,14 @@
         return getterMethod<object[]>("getSelection");
     }
 
-    public string getKey()
+    public string getKey(object row)
     {
-        return getterMethod<string>("getKey");
+        return getterMethod<string>("getKey", row);
     }
 
-    public void getKey(object row)
+    public object getRow(object rowKey)
     {
-        setterMethod("getKey", row);
-    }
-
-    public object getRow()
-    {
-        return getterMethod<object>("getRow");
-    }
-
-    public void getRow(object rowKey)
-    {
-        setterMethod("getRow", rowKey);
+        return getterMethod<object>("getRow", rowKey);
     }
 
     public object getRows()
@@ -610,14 +590,9 @@
         return getterMethod<object>("getView");
     }
 
-    public object getCellValue()
+    public object getCellValue(object rowKey, string dataField)
     {
-        return getterMethod<object>("getCellValue");
-    }
-
-    public void getCellValue(object rowKey, string dataField)
-    {
-        setterMethod("getCellValue", rowKey, dataField);
+        return getterMethod<object>("getCellValue", rowKey, dataField);
     }
 
     public void hideColumn(string dataField)
@@ -650,14 +625,9 @@
         setterMethod("removeFilter", dataField);
     }
 
-    public object scrollOffset()
+    public object scrollOffset(double top, double left)
     {
-        return getterMethod<object>("scrollOffset");
-    }
-
-    public void scrollOffset(double top, double left)
-    {
-        setterMethod("scrollOffset", top, left);
+        return getterMethod<object>("scrollOffset", top, left);
     }
 
     public void setColumnProperty(string dataField, string propertyName, object propertyValue)
@@ -760,8 +730,12 @@
         if (firstRender)
         {
             ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxTreeGrid", initialOptions);
-            attachEvents();
-            onComponentReady?.Invoke();
+
+            Task.Delay(200).ContinueWith((action) =>
+            {
+                attachEvents();
+                onComponentReady?.Invoke();
+            }); 
         }
     }
 
@@ -803,10 +777,10 @@
         }
     }
 
-    private T getterMethod<T>(string name)
+    private T getterMethod<T>(string name, params object[] args)
     {
         shouldSetters = false;
-        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", componentID, name);
+        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", componentID, name, args);
     }
 
     private void setterMethod(string name, params object[] args)

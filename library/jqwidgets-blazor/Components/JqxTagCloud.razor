@@ -189,14 +189,9 @@
         setterMethod("destroy");
     }
 
-    public double findTagIndex()
+    public double findTagIndex(string tag)
     {
-        return getterMethod<double>("findTagIndex");
-    }
-
-    public void findTagIndex(string tag)
-    {
-        setterMethod("findTagIndex", tag);
+        return getterMethod<double>("findTagIndex", tag);
     }
 
     public object[] getHiddenTagsList()
@@ -284,8 +279,12 @@
         if (firstRender)
         {
             ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxTagCloud", initialOptions);
-            attachEvents();
-            onComponentReady?.Invoke();
+
+            Task.Delay(200).ContinueWith((action) =>
+            {
+                attachEvents();
+                onComponentReady?.Invoke();
+            }); 
         }
     }
 
@@ -309,10 +308,10 @@
         }
     }
 
-    private T getterMethod<T>(string name)
+    private T getterMethod<T>(string name, params object[] args)
     {
         shouldSetters = false;
-        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", componentID, name);
+        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", componentID, name, args);
     }
 
     private void setterMethod(string name, params object[] args)
