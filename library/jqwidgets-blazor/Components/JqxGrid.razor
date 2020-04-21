@@ -563,8 +563,8 @@
     }
 
     [Parameter]
-    public object[] pagesizeoptions {
-        get { return getterProp<object[]>("pagesizeoptions"); }
+    public object pagesizeoptions {
+        get { return getterProp<object>("pagesizeoptions"); }
         set { setterProp("pagesizeoptions", value); }
     }
 
@@ -1145,7 +1145,7 @@
         setterMethod("closemenu");
     }
 
-    public void deleterow(object[] rowIds)
+    public void deleterow(object rowIds)
     {
         setterMethod("deleterow", rowIds);
     }
@@ -1215,7 +1215,7 @@
         setterMethod("showvalidationpopup", rowBoundIndex, dataField, validationMessage);
     }
 
-    public void updaterow(object[] rowIds, object data)
+    public void updaterow(object rowIds, object data)
     {
         setterMethod("updaterow", rowIds, data);
     }

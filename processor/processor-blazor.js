@@ -1,19 +1,19 @@
-'use strict';
+`use strict`;
 
 const widgetNames = [
-    'JqxBarGauge', 'JqxBulletChart', 'JqxButtonGroup', 'JqxButtons', 'JqxCalendar', 'JqxChart', 'JqxCheckBox',
-    'JqxColorPicker', 'JqxComboBox', 'JqxComplexInput', 'JqxDataTable', 'JqxDateTimeInput', 'JqxDocking',
-    'JqxDockingLayout', 'JqxDockPanel', 'JqxDragDrop', 'JqxDraw', 'JqxDropDownButton', 'JqxDropDownList',
-    'JqxEditor', 'JqxExpander', 'JqxFileUpload', 'JqxForm', 'JqxFormattedInput', 'JqxGauge', 'JqxGrid',
-    'JqxInput', 'JqxKanban', 'JqxKnob', 'JqxLayout', 'JqxLinearGauge', 'JqxLinkButton', 'JqxListBox',
-    'JqxListMenu', 'JqxLoader', 'JqxMaskedInput', 'JqxMenu', 'JqxNavBar', 'JqxNavigationBar',
-    'JqxNotification', 'JqxNumberInput', 'JqxPanel', 'JqxPasswordInput', 'JqxPivotDesigner',
-    'JqxPivotGrid', 'JqxPopover', 'JqxProgressBar', 'JqxRadioButton', 'JqxRangeSelector',
-    'JqxRating', 'JqxRepeatButton', 'JqxResponsivePanel', 'JqxRibbon', 'JqxScheduler',
-    'JqxScrollBar', 'JqxScrollView', 'JqxSlider', 'JqxSortable', 'JqxSplitter',
-    'JqxSwitchButton', 'JqxTabs', 'JqxTagCloud', 'JqxToggleButton', 'JqxTextArea',
-    'JqxToolBar', 'JqxToolTip', 'JqxTree', 'JqxTreeGrid', 'JqxTreeMap',
-    'JqxValidator', 'JqxWindow', 'JqxHeatMap', 'JqxTimePicker'
+    `JqxBarGauge`, `JqxBulletChart`, `JqxButtonGroup`, `JqxButtons`, `JqxCalendar`, `JqxChart`, `JqxCheckBox`,
+    `JqxColorPicker`, `JqxComboBox`, `JqxComplexInput`, `JqxDataTable`, `JqxDateTimeInput`, `JqxDocking`,
+    `JqxDockingLayout`, `JqxDockPanel`, `JqxDragDrop`, `JqxDraw`, `JqxDropDownButton`, `JqxDropDownList`,
+    `JqxEditor`, `JqxExpander`, `JqxFileUpload`, `JqxForm`, `JqxFormattedInput`, `JqxGauge`, `JqxGrid`,
+    `JqxInput`, `JqxKanban`, `JqxKnob`, `JqxLayout`, `JqxLinearGauge`, `JqxLinkButton`, `JqxListBox`,
+    `JqxListMenu`, `JqxLoader`, `JqxMaskedInput`, `JqxMenu`, `JqxNavBar`, `JqxNavigationBar`,
+    `JqxNotification`, `JqxNumberInput`, `JqxPanel`, `JqxPasswordInput`, `JqxPivotDesigner`,
+    `JqxPivotGrid`, `JqxPopover`, `JqxProgressBar`, `JqxRadioButton`, `JqxRangeSelector`,
+    `JqxRating`, `JqxRepeatButton`, `JqxResponsivePanel`, `JqxRibbon`, `JqxScheduler`,
+    `JqxScrollBar`, `JqxScrollView`, `JqxSlider`, `JqxSortable`, `JqxSplitter`,
+    `JqxSwitchButton`, `JqxTabs`, `JqxTagCloud`, `JqxToggleButton`, `JqxTextArea`,
+    `JqxToolBar`, `JqxToolTip`, `JqxTree`, `JqxTreeGrid`, `JqxTreeMap`,
+    `JqxValidator`, `JqxWindow`, `JqxHeatMap`, `JqxTimePicker`
 ];
 
 (function init() {
@@ -26,27 +26,29 @@ const widgetNames = [
 })();
 
 function getTemplate(widgetName) {
-    const name = widgetName.toLowerCase();
+    let template;
 
-    let template = '<div id="@componentID">@ChildContent</div>';
-
-    if (name === 'jqxbutton' || name === 'jqxtogglebutton') {
-        template = '<button id="@componentID">@ChildContent</button>';
-    }
-    else if (name === 'jqxcomplexinput') {
-        template = '<div id="@componentID" style="display: inline-flex;"><input><div>@ChildContent</div></div>';
-    }
-    else if (name === 'jqxdatetimeinput' || name === 'jqxmaskedinput' || name === 'jqxnumberinput') {
-        template = '<input id="@componentID">';
-    }
-    else if (name === 'jqxinput') {
-        template = '<input id="@componentID" type="text" >';
-    }
-    else if (name === 'jqxformattedinput') {
-        template = '<div id="@componentID"><input type="text"><div></div><div></div></div>';
-    }
-    else if (name === 'jqxpasswordinput') {
-        template = '<input id="@componentID" type="password">';
+    switch (widgetName.toLowerCase()) {
+        case `jqxbutton` || `jqxtogglebutton`:
+            template = `<button id="@componentID">@ChildContent</button>`;
+            break;
+        case `jqxcomplexinput`:
+            template = `<div id="@componentID" style="display: inline-flex;"><input><div>@ChildContent</div></div>`;
+            break;
+        case `jqxdatetimeinput` || `jqxmaskedinput` || `jqxnumberinput`:
+            template = `<input id="@componentID">`;
+            break;
+        case `jqxinput`:
+            template = `<input id="@componentID" type="text" >`;
+            break;
+        case `jqxformattedinput`:
+            template = `<div id="@componentID"><input type="text"><div></div><div></div></div>`;
+            break;
+        case `jqxpasswordinput`:
+            template = `<input id="@componentID" type="password">`;
+            break;
+        default:
+            template = `<div id="@componentID">@ChildContent</div>`;
     }
 
     return template;
@@ -54,48 +56,45 @@ function getTemplate(widgetName) {
 
 // width/height
 function getDataType(widgetName, type) {
-    if (type &&
-        type.indexOf(widgetName) === -1 &&
-        type.indexOf('=>') === -1 &&
-        type.indexOf('enum') === -1 &&
-        type.indexOf('date') === -1 &&
-        type.indexOf('Date') === -1) {
-        type = type
-            .toLowerCase()
-            .replace(/int/g, 'double')
-            .replace(/number/g, 'double')
-            .replace(/boolean/g, 'bool')
-            .replace(/any/g, 'object')
-            .replace(/none/g, 'void');
+    if (!type ||
+        type.indexOf(widgetName) !== -1 || // interfaces
+        type.indexOf(`|`) !== -1 || // union types are not supported in C#
+        type.indexOf(`=>`) !== -1 ||
+        type.indexOf(`enum`) !== -1) {
 
-        if (type.indexOf('array') !== -1 || type.indexOf('[') !== -1) {
-            if (type.indexOf('|') !== -1) {
-                return 'object[]';
-            }
-
-            if (type.indexOf('string') !== -1) {
-                return 'string[]';
-            }
-
-            if (type.indexOf('double') !== -1) {
-                return 'double[]';
-            }
-
-            if (type.indexOf('bool') !== -1) {
-                return 'bool[]';
-            }
-
-            return 'object[]';
-        }
-
-        if (type.indexOf('|') !== -1) {
-            return 'object';
-        }
-
-        return type;
+        return `object`;
     }
 
-    return 'object';
+    type = type
+        .toLowerCase()
+        .replace(/int/g, `double`)
+        .replace(/number/g, `double`)
+        .replace(/boolean/g, `bool`)
+        .replace(/date/g, `DateTime`)
+        .replace(/any/g, `object`)
+        .replace(/none/g, `void`);
+
+    if (type.indexOf(`array`) !== -1 || type.indexOf(`[`) !== -1) {
+        if (type.indexOf(`string`) !== -1) {
+            return `string[]`;
+        }
+
+        if (type.indexOf(`double`) !== -1) {
+            return `double[]`;
+        }
+
+        if (type.indexOf(`bool`) !== -1) {
+            return `bool[]`;
+        }
+
+        if (type.indexOf(`DateTime`) !== -1) {
+            return `DateTime[]`;
+        }
+
+        return `object[]`;
+    }
+
+    return type;
 }
 
 function processJSON(inFile, outFile) {
@@ -107,9 +106,9 @@ function processJSON(inFile, outFile) {
         return false;
     }
 
-    let outData = '';
+    let outData = ``;
     const obj = JSON.parse(data);
-    const widgetName = obj['widget'].name;
+    const widgetName = obj[`widget`].name;
     const widgetNameWithoutJqx = widgetName.slice(3);
 
     outData += `@using System.Text.Json;\n`;
@@ -120,18 +119,18 @@ function processJSON(inFile, outFile) {
 
     outData += `@code {\n`;
 
-    let paramsToBlock = '    private string[] paramsToBlock = { "onComponentReady", "ChildContent", ';
+    let paramsToBlock = `    private string[] paramsToBlock = { "onComponentReady", "ChildContent", `;
     // Start Widget Properties
     const forbiddenPropertieNames = {
-        checked: { okName: 'isChecked' },
-        readonly: { okName: 'isReadonly' },
-        decimal: { okName: 'isDecimal' },
-        onDragEnd: { okName: 'dragEnd' },
-        onDrag: { okName: 'drag' },
-        onDragStart: { okName: 'dragStart' },
-        onTargetDrop: { okName: 'targetDrop' },
-        onDropTargetEnter: { okName: 'dropTargetEnter' },
-        onDropTargetLeave: { okName: 'dropTargetLeave' },
+        checked: { okName: `isChecked` },
+        readonly: { okName: `isReadonly` },
+        decimal: { okName: `isDecimal` },
+        onDragEnd: { okName: `dragEnd` },
+        onDrag: { okName: `drag` },
+        onDragStart: { okName: `dragStart` },
+        onTargetDrop: { okName: `targetDrop` },
+        onDropTargetEnter: { okName: `dropTargetEnter` },
+        onDropTargetLeave: { okName: `dropTargetLeave` },
     };
          
     for (const property of obj.properties) {
@@ -155,7 +154,7 @@ function processJSON(inFile, outFile) {
 
     if (obj.events) {
         for (const event of obj.events) {
-            let eventNameWithOn = 'on' + event.name.charAt(0).toUpperCase() + event.name.slice(1);
+            let eventNameWithOn = `on` + event.name.charAt(0).toUpperCase() + event.name.slice(1);
 
             paramsToBlock += `"${eventNameWithOn}", `;
     
@@ -204,24 +203,24 @@ function processJSON(inFile, outFile) {
     // Start Widget Methods
     if (obj.methods) {
         const forbiddenAgrumentNames = {
-            checked: { okName: 'isChecked' },
-            object: { okName: 'obj' },
-            event: { okName: 'e' }
+            checked: { okName: `isChecked` },
+            object: { okName: `obj` },
+            event: { okName: `e` }
         };
 
-        const methodsWhichAreBothGettersAndSetters = [ 'val' ];
+        const methodsWhichAreBothGettersAndSetters = [ `val` ];
 
         for (const method of obj.methods) {
             const jsonDataType = method.ts_returnDataType ? method.ts_returnDataType : method.returnDataType;
             const dataType = getDataType(widgetNameWithoutJqx, jsonDataType);
-            let methodArguments = '';
-            let methodArgumentsNames = ', ';
+            let methodArguments = ``;
+            let methodArgumentsNames = `, `;
     
             if (method.arguments) {
                 for (const argument of method.arguments) {
                     let argumentNameValidated = argument.name;
  
-                    if (argument.name.toLowerCase() === 'none') {
+                    if (argument.name.toLowerCase() === `none`) {
                         break;
                     }
 
@@ -251,14 +250,14 @@ function processJSON(inFile, outFile) {
                 outData += `        setterMethod("${method.name}"${methodArgumentsNames});\n`;
                 outData += `    }\n\n`;
             } else {
-                if (dataType !== 'void') {
+                if (dataType !== `void`) {
                     outData += `    public ${dataType} ${method.name}(${methodArguments})\n`;
                     outData += `    {\n`;
                     outData += `        return getterMethod<${dataType}>("${method.name}"${methodArgumentsNames});\n`;
                     outData += `    }\n\n`;
                 }
         
-                if (dataType === 'void') {
+                if (dataType === `void`) {
                     outData += `    public void ${method.name}(${methodArguments})\n`;
                     outData += `    {\n`;
                     outData += `        setterMethod("${method.name}"${methodArgumentsNames});\n`;
@@ -324,7 +323,7 @@ function processJSON(inFile, outFile) {
     outData += `    {\n`;
     if (obj.events) {
         for (const event of obj.events) {
-            let eventNameWithOn = 'on' + event.name.charAt(0).toUpperCase() + event.name.slice(1);
+            let eventNameWithOn = `on` + event.name.charAt(0).toUpperCase() + event.name.slice(1);
 
             outData += `        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "${event.name}", "emit${widgetNameWithoutJqx}Event", DotNetObjectReference.Create(new EventsHandler(${eventNameWithOn})));\n`; 
         }
@@ -382,7 +381,7 @@ function processJSON(inFile, outFile) {
     outData += `}\n`;
 
     try {
-        fs.writeFileSync(outFile, outData, 'utf8');
+        fs.writeFileSync(outFile, outData, `utf8`);
     } catch (error) {
         console.error(error);
     }
