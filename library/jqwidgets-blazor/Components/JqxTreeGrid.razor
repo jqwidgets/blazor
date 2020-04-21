@@ -161,8 +161,8 @@
     }
 
     [Parameter]
-    public object[] pageSizeOptions {
-        get { return getterProp<object[]>("pageSizeOptions"); }
+    public object pageSizeOptions {
+        get { return getterProp<object>("pageSizeOptions"); }
         set { setterProp("pageSizeOptions", value); }
     }
 
@@ -495,12 +495,12 @@
         setterMethod("destroy");
     }
 
-    public void deleteRow(object[] rowKey)
+    public void deleteRow(object rowKey)
     {
         setterMethod("deleteRow", rowKey);
     }
 
-    public void expandRow(object[] rowKey)
+    public void expandRow(object rowKey)
     {
         setterMethod("expandRow", rowKey);
     }
@@ -605,7 +605,7 @@
         return getterMethod<bool>("isBindingCompleted");
     }
 
-    public void lockRow(object[] rowKey)
+    public void lockRow(object rowKey)
     {
         setterMethod("lockRow", rowKey);
     }
@@ -640,7 +640,7 @@
         setterMethod("showColumn", dataField);
     }
 
-    public void selectRow(object[] rowId)
+    public void selectRow(object rowId)
     {
         setterMethod("selectRow", rowId);
     }
@@ -665,7 +665,7 @@
         setterMethod("updateBoundData");
     }
 
-    public void unselectRow(object[] rowId)
+    public void unselectRow(object rowId)
     {
         setterMethod("unselectRow", rowId);
     }
@@ -680,7 +680,7 @@
         setterMethod("updateRow", rowId, data);
     }
 
-    public void unlockRow(object[] rowId)
+    public void unlockRow(object rowId)
     {
         setterMethod("unlockRow", rowId);
     }

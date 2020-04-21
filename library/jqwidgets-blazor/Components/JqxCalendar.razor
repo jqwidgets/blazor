@@ -131,8 +131,8 @@
     }
 
     [Parameter]
-    public object restrictedDates {
-        get { return getterProp<object>("restrictedDates"); }
+    public DateTime[] restrictedDates {
+        get { return getterProp<DateTime[]>("restrictedDates"); }
         set { setterProp("restrictedDates", value); }
     }
 
@@ -209,8 +209,8 @@
     }
 
     [Parameter]
-    public object value {
-        get { return getterProp<object>("value"); }
+    public DateTime value {
+        get { return getterProp<DateTime>("value"); }
         set { setterProp("value", value); }
     }
 

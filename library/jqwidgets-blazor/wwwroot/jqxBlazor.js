@@ -10,8 +10,6 @@ window.jqxBlazor = {
             delete options.options;
         }
 
-        options = checkForIsoStrings(options);
-
         instances[id] = new window[name]('#' + id, options);
     },
     setOptions: function(id, options) {
@@ -31,7 +29,11 @@ window.jqxBlazor = {
     },
     manageMethods: function(id, name, args) {
         if (id) {
-            return instances[id][name](...args);
+            if (args) {
+                instances[id][name](...args);
+            } else {
+                return instances[id][name]();
+            }
         }
     },
     manageEvents: function(id, eventName, methodName, dotNet) {
@@ -49,20 +51,3 @@ window.jqxBlazor = {
         });
     }
 };
-
-function checkForIsoStrings(options) {
-    for (let [key, value] of Object.entries(options)) {
-        if (typeof value !== 'string') {
-            continue;
-        }
-
-        const dateRegexp = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}$/;
-        const matches = value.match(dateRegexp);
-
-        if (matches) {
-            options[key] = new Date(value);
-        }
-    }
-
-    return options;
-}
