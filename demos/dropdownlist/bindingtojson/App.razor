@@ -10,8 +10,10 @@
 <div @ref="selectionlog" style="font-size: 12px; font-family: Verdana;"></div>
 
 @code {
-    private object[] source;
     ElementReference selectionlog;
+    
+    private object[] source;
+
     protected override async Task OnInitializedAsync()
     {
         source = await Http.GetJsonAsync<object[]>("sampledata/customers.txt");

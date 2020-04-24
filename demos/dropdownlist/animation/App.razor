@@ -6,9 +6,11 @@
     <div>
         <JqxRadioButton onChecked="handleNone" isChecked="false">None</JqxRadioButton>
     </div>
+
     <div style="margin-top: 10px;">
         <JqxRadioButton onChecked="handleSlide" isChecked="false">Slide</JqxRadioButton>
     </div>
+
     <div style="margin-top: 10px;">
         <JqxRadioButton onChecked="handleFade" isChecked="true">Fade</JqxRadioButton>
     </div>
@@ -26,9 +28,11 @@
 
 @code {
     JqxDropDownList myDropDownList;
+
     string align = "right";
     string animation = "fade";
-    private object[] source;
+    object[] source;
+
     protected override async Task OnInitializedAsync()
     {
         source = await Http.GetJsonAsync<object[]>("sampledata/customers.txt");

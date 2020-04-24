@@ -8,11 +8,11 @@
 </JqxDropDownList>
 
 @code {
-    private object[] source;
-    private int selectedIndex = 0;
-    private string cookieName = "jqxDropDownList_jqxWidget";
+    object[] source;
+    int selectedIndex = 0;
+    string cookieName = "jqxDropDownList_jqxWidget";
 
-    protected override async Task OnInitializedAsync()
+    private override async Task OnInitializedAsync()
     {
         source = await Http.GetJsonAsync<object[]>("sampledata/customers.txt");
         selectedIndex = Int16.Parse(await JSRuntime.InvokeAsync<string>("Example.getCookie", cookieName));

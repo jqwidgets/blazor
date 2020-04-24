@@ -4,6 +4,7 @@
     <div style="float: left; margin-top: 10px;">
         <JqxDropDownList onSelect="SelectEvent" onUnselect="UnselectEvent" width="200" height="25" source="source" selectedIndex="0"></JqxDropDownList>
     </div>
+
     <div style="margin-left: 20px; margin-top: 10px; float: left;">
         <div>
             <span>Events:</span>
@@ -15,7 +16,8 @@
 @code {
     ElementReference selectionlog;
     
-    string[] source = new string[] {
+    string[] source = new string[]
+    {
         "Affogato",
         "Americano",
         "Bicerin",
@@ -57,4 +59,4 @@
         var item = e["item"];
         JSRuntime.InvokeAsync<string>("Example.handleUnselect", selectionlog, item);
     }
-} 
+}

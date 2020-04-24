@@ -6,6 +6,7 @@
     <div>
         <JqxRadioButton onChecked="handleLeft" isChecked="false">Left</JqxRadioButton>
     </div>
+
     <div style="margin-top: 10px;">
         <JqxRadioButton onChecked="handleRight" isChecked="true">Right</JqxRadioButton>
     </div>
@@ -22,8 +23,10 @@
 
 @code {
     JqxDropDownList myDropDownList;
+
     string align = "right";
-    private object[] source;
+    object[] source;
+
     protected override async Task OnInitializedAsync()
     {
         source = await Http.GetJsonAsync<object[]>("sampledata/customers.txt");

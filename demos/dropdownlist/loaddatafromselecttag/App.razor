@@ -4,6 +4,7 @@
     <div style="float: left;">
         <JqxDropDownList @ref="myDropDownList" onComponentReady="onReady" onSelect="select" width="200" height="25"></JqxDropDownList>
     </div>
+
     <div style="float: left;">
         <select @ref="selectComponent" @onchange="OnChange" style="height: 30px; width: 200px; margin-left: 30px;" id="select">
             <option value="0">Affogato</option>
@@ -37,18 +38,20 @@
 
 @code {
     JqxDropDownList myDropDownList;
+
     ElementReference selectComponent;
-    protected bool updating;
+
+    bool updating;
     
     private void select(IDictionary<string, object> e)
     {
         if (e["item"] is object && !updating) {
             var item = e["item"];
-            JSRuntime.InvokeAsync<string>("Example.handleSelect", updating, item, selectComponent);
+            JSRuntime.InvokeAsync<string>("Example.handleSelect", item, selectComponent);
         }
     }
 
-    public async void OnChange(ChangeEventArgs e)
+    private async void OnChange(ChangeEventArgs e)
     {
         updating = true;
         int currentIndex = Int16.Parse(e.Value.ToString());
@@ -64,4 +67,4 @@
         options.Add("selectedIndex", 0);
         myDropDownList.setOptions(options);
     }
-} 
+}

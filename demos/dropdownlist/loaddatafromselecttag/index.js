@@ -1,5 +1,5 @@
 window.Example = {
-    handleSelect: function (updating, item, element) {
+    handleSelect: function (item, element) {
         element.value = item.value;
     }
 };

@@ -1,9 +1,8 @@
-﻿@inject IJSRuntime JSRuntime;
-
-<JqxDropDownList @ref="myDropDownList" onComponentReady="onReady" width="200" height="30" source="countries" rtl="true"></JqxDropDownList>
+﻿<JqxDropDownList @ref="myDropDownList" onComponentReady="onReady" width="200" height="30" source="countries" rtl="true"></JqxDropDownList>
 
 @code {
     JqxDropDownList myDropDownList;
+
     Dictionary<string, object>[] countries = new Dictionary<string, object>[]
     {
         new Dictionary<string, object>() { { "value", "AF" }, { "label", "Afghanistan" } },
@@ -240,4 +239,4 @@
         var item = myDropDownList.getItemByValue("US");
         myDropDownList.selectItem(item);
     }
-} 
+}

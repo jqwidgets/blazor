@@ -1,5 +1,4 @@
 ﻿@inject HttpClient Http;
-@inject IJSRuntime JSRuntime;
 
 <div style="float: left; margin-top: 270px;">
     <JqxDropDownList
@@ -15,6 +14,7 @@
     <div>
         <JqxRadioButton onChecked="handleTop" isChecked="true">Top</JqxRadioButton>
     </div>
+
     <div style="margin-top: 10px;">
         <JqxRadioButton onChecked="handleBottom" isChecked="false">Bottom</JqxRadioButton>
     </div>
@@ -22,8 +22,10 @@
 
 @code {
     JqxDropDownList myDropDownList;
+    
     string align = "top";
-    private object[] source;
+    object[] source;
+
     protected override async Task OnInitializedAsync()
     {
         source = await Http.GetJsonAsync<object[]>("sampledata/customers.txt");

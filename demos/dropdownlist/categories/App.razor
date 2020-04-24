@@ -2,13 +2,15 @@
 
 @code { 
     JqxDropDownList myWidget;
-    private IDictionary<string, object>[] source;
+    
+    IDictionary<string, object>[] source;
+
     protected override void OnInitialized()
     {
         source = buildSource();
     }
 
-    private IDictionary<string, object>[] buildSource()
+    IDictionary<string, object>[] buildSource()
     {
         Dictionary<string, object>[] source = new Dictionary<string, object>[12];
         source[0] = new Dictionary<string, object>();
@@ -77,4 +79,4 @@
         
         return source;
     }
-} 
+}

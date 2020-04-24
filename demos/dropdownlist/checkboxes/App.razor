@@ -14,10 +14,14 @@
 </div>
 
 @code {
-    private object[] source;
     ElementReference selectionlog;
+
     ElementReference checkedItemsLog;
+
     JqxDropDownList myDropDownList;
+    
+    object[] source;
+
     protected override async Task OnInitializedAsync()
     {
         source = await Http.GetJsonAsync<object[]>("sampledata/customers.txt");
