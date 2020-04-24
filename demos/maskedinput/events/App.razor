@@ -1,0 +1,33 @@
+﻿<div>
+    <div style='font-size: 13px; font-family: verdana; margin-top: 10px;'>Phone Number</div>
+    <JqxMaskedInput @ref="myMaskedInput" onChange="onChange" width=250 height=25 mask="(###)###-####"></JqxMaskedInput>
+
+    <div style='margin-left: 0px; margin-top: 20px;'>
+        <div>
+            <span>Events:</span>
+            <JqxPanel @ref="myPanel" width=300 height=250></JqxPanel>
+        </div>
+    </div>
+</div>
+
+@code {
+    JqxMaskedInput myMaskedInput;
+    JqxPanel myPanel;
+
+    private void onChange(IDictionary<string, object> e)
+    {
+        string value = myMaskedInput.value.ToString();
+        myPanel.clearcontent();
+        myPanel.append("<div style='margin-top: 5px;'>Value: " + value + "</div>");
+    }
+} 
+
+<style>
+    .jqx-numberinput {
+       margin-top: 3px; 
+    }
+
+    .jqx-panel {
+        border: none;
+    }
+</style> 

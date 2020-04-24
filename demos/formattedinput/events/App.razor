@@ -1,0 +1,50 @@
+﻿<JqxFormattedInput
+    onOpen="onOpen" onClose="onClose" onChange="onChange" onRadixChange="onRadixChange"
+    width=300 height=25 radix=radix value=value spinButtons=true dropDown=true>
+</JqxFormattedInput>
+
+<div style="margin-top: 150px;">Events log:</div>
+<JqxPanel @ref="myPanel" width=300 height=150></JqxPanel>
+
+@code {
+    JqxPanel myPanel;
+
+    string radix = "decimal";
+    string value = "190";
+
+    public void onOpen(IDictionary<string, object> e)
+    {
+        Console.WriteLine(6);
+        myPanel.append("<strong>" + e["type"] + "</strong><br />");
+    }
+
+    public void onClose(IDictionary<string, object> e)
+    {
+        Console.WriteLine(19);
+        myPanel.append("<strong>" + e["type"] + "</strong><br />");
+    }
+
+    public void onChange(IDictionary<string, object> e)
+    {
+        Console.WriteLine(1);
+        var newValue = e["value"];
+        var oldValue = e["oldValue"];
+        var radix = e["radix"];
+
+        myPanel.append("<strong>change</strong><br />" +
+                    "value: " + newValue + ", old value: " + oldValue + ", radix: " + radix + "<br />");
+    }
+
+    public void onRadixChange(IDictionary<string, object> e)
+    {
+        Console.WriteLine(14);
+        var newRadix = e["radix"];
+        var oldRadix = e["oldRadix"];
+        var newValue = e["value"];
+        var oldValue = e["oldValue"];
+
+        myPanel.append("<strong>radixChange</strong><br />" +
+                    "radix: " + newRadix + ", old radix: " + oldRadix +
+                    "<br />value: " + newValue + ", old value: " + oldValue + "<br />");
+    }
+}

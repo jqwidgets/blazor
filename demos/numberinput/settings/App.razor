@@ -1,0 +1,122 @@
+﻿<div style="font-size: 13px; font-family: Verdana; float: left;">
+    <JqxNumberInput @ref="myNumberInput" width=250 height=25 min=0 spinButtons=true symbol="$"></JqxNumberInput>
+    <div>
+        <div style="float: left;">
+            <JqxCheckBox width="170" isChecked=true onChange="onChange">Show Spin Buttons</JqxCheckBox>
+
+            <div style="margin-top: 10px;">Symbol Position</div>
+            <JqxRadioButton isChecked=true onChecked="onLeftChecked">Left</JqxRadioButton>
+            <JqxRadioButton onChecked="onRightChecked">Right</JqxRadioButton>
+        </div>
+        <div style="margin-left: 30px; float: left;">
+            <div style="margin-top: 20px; margin-bottom:10px;">Symbol</div>
+            <JqxDropDownList 
+                onSelect="onSymbolSelect"
+                width=60 height=20 source="symbols" 
+                autoDropDownHeight=true selectedIndex=0>
+            </JqxDropDownList>
+
+            <div style="margin-top: 10px; margin-bottom: 10px;">Decimal Digits</div>
+            <JqxDropDownList
+                onSelect="onDecimalDigitsSelect"
+                width=60 height=20 source="decimaldigits" 
+                autoDropDownHeight=true selectedIndex=2>
+            </JqxDropDownList>
+
+            <div style="margin-top: 10px; margin-bottom: 10px;">Digits</div>
+            <JqxDropDownList 
+                onSelect="onDigitsSelect" 
+                width=60 height=20 source="digits" 
+                autoDropDownHeight=true selectedIndex=7>
+            </JqxDropDownList>        
+        </div>
+    </div>
+</div>
+
+@code { 
+    JqxNumberInput myNumberInput;
+
+    string[] symbols = new string[4] { "$", "%", "€", "None" };
+    string[] decimaldigits = new string[5] { "0", "1", "2", "3", "4" };
+    string[] digits = new string[8] { "1", "2", "3", "4", "5", "6", "7", "8" };
+
+    private void onChange(IDictionary<string, object> e)
+    {
+        string isChecked = e["checked"].ToString();
+
+        IDictionary<string, object> options = new Dictionary<string, object>(){};
+
+        if (isChecked == "True") {
+            options.Add("spinButtons", true);
+        } else {
+            options.Add("spinButtons", false);
+        }
+        
+        myNumberInput.setOptions(options);
+    }
+
+    private void onLeftChecked(IDictionary<string, object> e)
+    {
+        IDictionary<string, object> options = new Dictionary<string, object>()
+        {
+            { "symbolPosition", "left" }
+        };
+        myNumberInput.setOptions(options);
+    }
+
+    private void onRightChecked(IDictionary<string, object> e)
+    {
+        IDictionary<string, object> options = new Dictionary<string, object>()
+        {
+            { "symbolPosition", "right" }
+        };
+        myNumberInput.setOptions(options);
+    }
+
+    private void onSymbolSelect(IDictionary<string, object> e)
+    {
+        int index = int.Parse(e["index"].ToString());
+        string newSymbol = "";
+        if (index != 3) 
+        {
+            newSymbol = symbols[index];
+        }
+        IDictionary<string, object> options = new Dictionary<string, object>()
+        {
+            { "symbol", newSymbol }
+        };
+        myNumberInput.setOptions(options);
+    }
+
+    private void onDecimalDigitsSelect(IDictionary<string, object> e)
+    {
+        IDictionary<string, object> options = new Dictionary<string, object>()
+        {
+            { "decimalDigits", decimaldigits[int.Parse(e["index"].ToString())] }
+        };
+        myNumberInput.setOptions(options);
+    }
+
+    private void onDigitsSelect(IDictionary<string, object> e)
+    {
+        IDictionary<string, object> options = new Dictionary<string, object>()
+        {
+            { "digits", digits[int.Parse(e["index"].ToString())] }
+        };
+        myNumberInput.setOptions(options);
+    }
+} 
+
+<style>
+    .jqx-numberinput {
+       margin-top: 3px; 
+    }
+
+    .jqx-checkbox {
+        margin-top: 20px;
+    }
+
+    .jqx-radiobutton {
+        margin-top: 5px;
+    }
+</style> 

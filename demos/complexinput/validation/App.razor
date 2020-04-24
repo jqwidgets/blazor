@@ -1,0 +1,14 @@
+﻿<JqxComplexInput @ref="myComplexInput" width=250 height=25 value="15 + 7.2i" spinButtons=false></JqxComplexInput>
+
+<div style="margin-top: 20px;">
+    <JqxButtons width=200 onClick="onClick">Set wrong value: "11- 2ii"</JqxButtons>
+</div>
+
+@code {
+    JqxComplexInput myComplexInput;
+
+    private void onClick(IDictionary<string, object> e)
+    {
+        myComplexInput.val("11- 2ii");
+    }
+}

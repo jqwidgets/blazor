@@ -1,0 +1,20 @@
+﻿<JqxComplexInput onChange="onChange" width=300 height=25 value="15 + 7i" spinButtons=true></JqxComplexInput>
+
+<div style='margin-top: 20px;'>Events log:</div>        
+<JqxPanel @ref="myPanel" width=300 height=150></JqxPanel>
+
+@code {
+    JqxPanel myPanel;
+
+    private void onChange(IDictionary<string, object> e)
+    {
+        var value = e["value"];
+        var oldValue = e["oldValue"];
+        var realPart = e["realPart"];
+        var imaginaryPart = e["imaginaryPart"];     
+
+        myPanel.append("<strong>change</strong><br />" +
+                        "value: " + value + ", old value: " + oldValue +
+                        ",<br /> real part: " + realPart + ", imaginary part: " + imaginaryPart + "<br />");
+    }
+} 

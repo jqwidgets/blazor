@@ -1,0 +1,49 @@
+﻿<div style="font-size: 13px; font-family: Verdana;">
+    <div style='margin-top: 10px;'>Numeric</div>
+    <JqxMaskedInput @ref="numericInput" width=250 height=25></JqxMaskedInput>
+
+    <div style='margin-top: 10px;'>Zip Code</div>
+    <JqxMaskedInput @ref="zipCodeInput" width=250 height=25 mask="#####-####"></JqxMaskedInput>
+
+    <div style='margin-top: 10px;'>SSN</div>
+    <JqxMaskedInput @ref="snnInput" width=250 height=25 mask="###-##-####"></JqxMaskedInput>
+
+    <div style='margin-top: 10px;'>Phone Number</div>
+    <JqxMaskedInput @ref="phoneInput" width=250 height=25 mask="(###)###-####"></JqxMaskedInput>
+
+    <div style='margin-top: 10px;'>IP Address (ex: 255.255.255.255)</div>
+    <JqxMaskedInput @ref="regexInput" width=250 height=25 mask="[0-2][0-5][0-5].[0-2][0-5][0-5].[0-2][0-5][0-5].[0-2][0-5][0-5]"></JqxMaskedInput>
+
+    <div style='margin-top: 10px;'> Disabled</div>
+    <JqxMaskedInput @ref="disabledInput" width=250 height=25 disabled=true></JqxMaskedInput>
+</div>
+<JqxButtons width="100" onClick="onClick">Clear Values</JqxButtons>
+
+@code {
+    JqxMaskedInput numericInput;
+    JqxMaskedInput zipCodeInput;
+    JqxMaskedInput snnInput;
+    JqxMaskedInput phoneInput;
+    JqxMaskedInput regexInput;
+    JqxMaskedInput disabledInput;
+    
+    private void onClick(IDictionary<string, object> e)
+    {
+        numericInput.clear();
+        zipCodeInput.clear();
+        snnInput.clear();
+        phoneInput.clear();
+        regexInput.clear();
+        disabledInput.clear();
+    }
+}
+
+<style>
+    .jqx-maskedinput {
+        margin-top: 3px;
+    }
+
+    .jqx-button {
+        margin-top: 10px;
+    }
+</style>

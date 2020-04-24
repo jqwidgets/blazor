@@ -1,0 +1,24 @@
+﻿@inject IJSRuntime JSRuntime;
+
+<JqxComplexInput @ref="myComplexInput" width=250 height=25 value="15 + 7.2i"></JqxComplexInput>
+
+<div style="margin-top: 20px;">
+    <JqxButtons width=150 onClick="getReal">Get real part</JqxButtons>
+    <JqxButtons width=150 onClick="getImaginary">Get imaginary part</JqxButtons>
+</div>
+
+@code {
+    JqxComplexInput myComplexInput;
+
+    private void getReal(IDictionary<string, object> e)
+    {
+        double realPart = myComplexInput.getReal();
+        JSRuntime.InvokeVoidAsync("Example.alert", "Real part is " + realPart);
+    }
+
+    private void getImaginary(IDictionary<string, object> e)
+    {
+        double imaginaryPart = myComplexInput.getImaginary();
+        JSRuntime.InvokeVoidAsync("Example.alert", "Imaginary part is " + imaginaryPart);
+    }
+}

@@ -1,0 +1,42 @@
+﻿<div style='float: left;'>
+    <div style='margin-top: 10px;'>Number</div>
+    <JqxNumberInput 
+        onChange="onChange" onTextchanged="onTextChanged"
+        width=250 height=25 spinButtons="true">
+    </JqxNumberInput>
+
+    <div style='margin-left: 0px; margin-top: 20px; float: left;'>
+        <div>
+            <span>Events:</span>
+            <JqxPanel @ref="myPanel" width=300 height=250></JqxPanel>
+        </div>
+    </div>
+</div>
+
+@code { 
+    JqxPanel myPanel;
+
+    string inputMode = "simple";
+
+    private void onChange(IDictionary<string, object> e)
+    {
+        myPanel.clearcontent();
+        myPanel.append("<div style='margin-top: 5px;'>Value: " + e["value"] + "</div>");
+    }
+
+    private void onTextChanged(IDictionary<string, object> e)
+    {
+        myPanel.clearcontent();
+        myPanel.append("<div style='margin-top: 5px;'>Text: " + e["text"] + "</div>");
+    }
+} 
+
+<style>
+    .jqx-numberinput {
+       margin-top: 3px; 
+    }
+
+    .jqx-panel {
+        border: none;
+    }
+</style> 
