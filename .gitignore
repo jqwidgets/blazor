@@ -4,6 +4,7 @@ dev-project/bin
 dev-project/obj
 dev-project/wwwroot/index.js
 dev-project/App.razor
+dev-project/wwwroot
 library/jqwidgets-blazor/bin
 library/jqwidgets-blazor/obj
 library/jqwidgets-blazor/wwwroot/jqwidgets
