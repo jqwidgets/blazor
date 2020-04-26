@@ -1,0 +1,67 @@
+﻿@inject IJSRuntime JSRuntime;
+
+<div style="float: left; width: 500px;" id="jqxWidget">
+    <div style="float: left;">
+        <JqxListBox @ref="myListBox" onComponentReady="onReady" onSelect="select" width="250" height="300"></JqxListBox>
+    </div>
+
+    <div style="float: left;">
+        <select @ref="selectComponent" @onchange="OnChange" style="height: 250px; width: 200px; margin-left: 30px;" size="2" id="select">
+            <option value="0">Affogato</option>
+            <option value="1">Americano</option>
+            <option value="2">Bicerin</option>
+            <option value="3">Breve</option>
+            <option value="4">Café Bombón</option>
+            <option value="5">Caffé Corretto</option>
+            <option value="6">Café Crema</option>
+            <option value="7">Caffé Latte</option>
+            <option value="8">Caffé macchiato</option>
+            <option value="9">Café mélange</option>
+            <option value="10">Coffee milk</option>
+            <option value="11">Cafe mocha</option>
+            <option value="12">Cappuccino</option>
+            <option value="13">Carajillo</option>
+            <option value="14">Cuban espresso</option>
+            <option value="15">Espresso</option>
+            <option selected="true" value="16">The Flat White</option>
+            <option value="17">Frappuccino</option>
+            <option value="18">Galao</option>
+            <option value="19">Greek frappé coffee</option>
+            <option value="20">Iced Coffee</option>
+            <option value="21">Indian filter coffee</option>
+            <option value="22">Instant coffee</option>
+            <option value="23">Irish coffee</option>
+            <option value="24">Liqueur coffee</option>
+        </select>
+    </div>
+</div>
+
+@code {
+    JqxListBox myListBox;
+
+    ElementReference selectComponent;
+
+    bool updating;
+    
+    private void select(IDictionary<string, object> e)
+    {
+        if (e["item"] is object && !updating) {
+            var item = e["item"];
+            JSRuntime.InvokeAsync<string>("Example.handleSelect", item, selectComponent);
+        }
+    }
+
+    private async void OnChange(ChangeEventArgs e)
+    {
+        updating = true;
+        int currentIndex = Int16.Parse(e.Value.ToString());
+        myListBox.selectIndex(currentIndex);
+        myListBox.ensureVisible(currentIndex);
+        updating = false;
+    }
+
+    private void onReady()
+    {
+        myListBox.loadFromSelect("select");
+    }
+}

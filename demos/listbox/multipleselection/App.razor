@@ -1,0 +1,64 @@
+﻿@inject IJSRuntime JSRuntime;
+
+<JqxListBox @ref="myListBox" onComponentReady="onReady" onChange="change" source="source" multiple="true" width="250" height="350"></JqxListBox>
+
+<div @ref="selectionlog" style="margin-top: 30px; font-size: 13px; font-family: Verdana;"></div>
+
+@code {
+    JqxListBox myListBox;
+
+    ElementReference selectionlog;
+
+    string[] source = new string[]
+    {
+        "Affogato",
+        "Americano",
+        "Bicerin",
+        "Breve",
+        "Café Bombón",
+        "Café au lait",
+        "Caffé Corretto",
+        "Café Crema",
+        "Caffé Latte",
+        "Caffé macchiato",
+        "Café mélange",
+        "Coffee milk",
+        "Cafe mocha",
+        "Cappuccino",
+        "Carajillo",
+        "Cortado",
+        "Cuban espresso",
+        "Espresso",
+        "Eiskaffee",
+        "The Flat White",
+        "Frappuccino",
+        "Galao",
+        "Greek frappé coffee",
+        "Iced Coffee",
+        "Indian filter coffee",
+        "Instant coffee",
+        "Irish coffee",
+        "Liqueur coffee"
+    };
+
+    public void displaySelectedItems()
+    {
+        var items = myListBox.getSelectedItems();
+        JSRuntime.InvokeAsync<string>("Example.updateInnerHtml", selectionlog, items);
+    }
+
+    private void onReady()
+    {
+        myListBox.selectIndex(2);
+        myListBox.selectIndex(5);
+        myListBox.selectIndex(7);
+    }
+
+    private void change(IDictionary<string, object> e)
+    {
+        if (e["item"] is object)
+        {
+            displaySelectedItems();
+        }
+    }
+}
