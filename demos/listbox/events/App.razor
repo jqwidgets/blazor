@@ -1,0 +1,71 @@
+﻿@inject IJSRuntime JSRuntime;
+
+<div style="float: left; width: 500px;">
+    <div style="float: left; margin-top: 10px;">
+        <JqxListBox @ref="myListBox" onComponentReady="onReady" onSelect="SelectEvent" onUnselect="UnselectEvent" width="250" height="300" source="source"></JqxListBox>
+    </div>
+
+    <div style="margin-left: 20px; margin-top: 10px; float: left;">
+        <div>
+            <span>Events:</span>
+            <div @ref="selectionlog" style="font-size: 12px; font-family: Verdana;"></div>
+        </div>
+    </div>
+</div>
+
+@code {
+    ElementReference selectionlog;
+
+    JqxListBox myListBox;
+    
+    string[] source = new string[]
+    {
+        "Affogato",
+        "Americano",
+        "Bicerin",
+        "Breve",
+        "Café Bombón",
+        "Café au lait",
+        "Caffé Corretto",
+        "Café Crema",
+        "Caffé Latte",
+        "Caffé macchiato",
+        "Café mélange",
+        "Coffee milk",
+        "Cafe mocha",
+        "Cappuccino",
+        "Carajillo",
+        "Cortado",
+        "Cuban espresso",
+        "Espresso",
+        "Eiskaffee",
+        "The Flat White",
+        "Frappuccino",
+        "Galao",
+        "Greek frappé coffee",
+        "Iced Coffee",
+        "Indian filter coffee",
+        "Instant coffee",
+        "Irish coffee",
+        "Liqueur coffee"
+    };
+
+    private void SelectEvent(IDictionary<string, object> e)
+    {
+        string index = e["index"].ToString();
+        var item = myListBox.getItem(Int16.Parse(index));
+        JSRuntime.InvokeAsync<string>("Example.handleSelect", selectionlog, item);
+    }
+
+    private void UnselectEvent(IDictionary<string, object> e)
+    {
+        string index = e["index"].ToString();
+        var item = myListBox.getItem(Int16.Parse(index));
+        JSRuntime.InvokeAsync<string>("Example.handleUnselect", selectionlog, item);
+    }
+    
+    private void onReady()
+    {
+        myListBox.disableAt(5);
+    }
+}
