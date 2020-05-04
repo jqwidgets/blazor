@@ -1,0 +1,58 @@
+﻿<JqxBulletChart 
+    width=500 height=80 barSize=barSize title="Revenue 2017 YTD"
+    description="(U.S $ in thousands)" labelsFormat=labelsFormat ticks=ticks
+    ranges=ranges pointer=pointer target=target showTooltip=true>
+</JqxBulletChart>
+
+@code {
+    string barSize = "40%";
+    string labelsFormat = "c";
+
+    IList<IDictionary<string, object>> ranges = new List<IDictionary<string, object>>()
+    {
+        new Dictionary<string, object>()
+        {
+            { "startValue", 0 },
+            { "endValue", 200 },
+            { "color", "#CC0000" },
+            { "opacity", 1 }
+        },
+        new Dictionary<string, object>()
+        {
+            { "startValue", 200 },
+            { "endValue", 250 },
+            { "color", "#FFD633" },
+            { "opacity", 1 }
+        },
+        new Dictionary<string, object>()
+        {
+            { "startValue", 250 },
+            { "endValue", 300 },
+            { "color", "#00CC00" },
+            { "opacity", 1 }
+        }
+    };
+
+    IDictionary<string, object> pointer = new Dictionary<string, object>()
+    {
+        { "value", 270 },
+        { "label", "Revenue 2018 YTD" },
+        { "size", "25%" },
+        { "color", "" },
+    };
+
+    IDictionary<string, object> target = new Dictionary<string, object>()
+    {
+        { "value", 260 },
+        { "label", "Revenue 2017 YTD" },
+        { "size", 4 },
+        { "color", "" },
+    };
+
+    IDictionary<string, object> ticks = new Dictionary<string, object>()
+    {
+        { "position", "far" },
+        { "interval", 50 },
+        { "size", 10 }
+    };
+}

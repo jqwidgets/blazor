@@ -1,0 +1,70 @@
+﻿<label style="font-size: 13px; font-family: Verdana;">
+    Hover over the pointer or target for more information.
+</label>
+
+<JqxBulletChart 
+    width=500 height=100 barSize=barSize title="Student grade"
+    description="(in points)" ranges=ranges pointer=pointer
+    target=target ticks=ticks showTooltip=true>
+</JqxBulletChart>
+
+@code {
+    string barSize = "50%";
+
+    IList<IDictionary<string, object>> ranges = new List<IDictionary<string, object>>()
+    {
+        new Dictionary<string, object>()
+        {
+            { "startValue", 0 },
+            { "endValue", 60},
+            { "color", "#191970" }
+        },
+        new Dictionary<string, object>()
+        {
+            { "startValue", 60 },
+            { "endValue", 70 },
+            { "color", "#191970" }
+        },
+        new Dictionary<string, object>()
+        {
+            { "startValue", 70 },
+            { "endValue", 80 },
+            { "color", "#191970" }
+        },
+        new Dictionary<string, object>()
+        {
+            { "startValue", 80 },
+            { "endValue", 90 },
+            { "color", "#191970" }
+        },
+        new Dictionary<string, object>()
+        {
+            { "startValue", 90 },
+            { "endValue", 100 },
+            { "color", "#191970" }
+        }
+    };
+
+    IDictionary<string, object> pointer = new Dictionary<string, object>()
+    {
+        { "value", 83 },
+        { "label", "Grade" },
+        { "size", "25%" },
+        { "color", "#1E90FF" }
+    };
+
+    IDictionary<string, object> target = new Dictionary<string, object>()
+    {
+        { "value", 75 },
+        { "label", "Average grade" },
+        { "size", 4 },
+        { "color", "#00FFFF" }
+    };
+
+    IDictionary<string, object> ticks = new Dictionary<string, object>()
+    {
+        { "position", "far" },
+        { "interval", 10 },
+        { "size", 10 }
+    };
+}
