@@ -1,9 +1,10 @@
 @using System.Text.Json;
 @inject IJSRuntime JSRuntime;
 
-<button id="@componentID">@ChildContent</button>
+<div id="@componentID">@ChildContent</div>
 
 @code {
+
     [Parameter]
     public bool disabled {
         get { return getterProp<bool>("disabled"); }
@@ -264,4 +265,5 @@
             }
         }
     }
+
 }

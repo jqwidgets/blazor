@@ -4,6 +4,7 @@
 <div id="@componentID">@ChildContent</div>
 
 @code {
+
     [Parameter]
     public string[] columns {
         get { return getterProp<string[]>("columns"); }
@@ -252,4 +253,5 @@
             }
         }
     }
+
 }

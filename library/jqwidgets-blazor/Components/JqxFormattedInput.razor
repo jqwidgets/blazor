@@ -1,9 +1,10 @@
 @using System.Text.Json;
 @inject IJSRuntime JSRuntime;
 
-<div id="@componentID"><input type="text"><div></div><div></div></div>
+@((MarkupString)componentMarkup)
 
 @code {
+
     [Parameter]
     public bool disabled {
         get { return getterProp<bool>("disabled"); }
@@ -158,6 +159,8 @@
 
     private string componentID;
 
+    private string componentMarkup;
+
     private IDictionary<string, object> initialOptions = new Dictionary<string, object>();
 
     public void close()
@@ -210,7 +213,12 @@
         return getterMethod<object>("val");
     }
 
-    public void val(object value)
+    public object val(string value)
+    {
+        return getterMethod<object>("val", value);
+    }
+
+    public void val(int value)
     {
         setterMethod("val", value);
     }
@@ -247,6 +255,7 @@
             }
         }
 
+        getMarkup();
         shouldSetters = true;
     }
 
@@ -324,4 +333,42 @@
             }
         }
     }
+    private void getMarkup()
+    {
+        object rtl;
+        initialOptions.TryGetValue("rtl", out rtl);
+
+        object dropDown;
+        initialOptions.TryGetValue("dropDown", out dropDown);
+
+        object spinButtons;
+        initialOptions.TryGetValue("spinButtons", out spinButtons);
+
+        if ((bool)rtl && (bool)dropDown && (bool)spinButtons)
+        {
+            componentMarkup = "<div id='" + componentID + "'><div></div><div></div><input></div>";
+            return;
+        }
+
+        if (!(bool)rtl && (bool)dropDown && (bool)spinButtons)
+        {
+            componentMarkup = "<div id='" + componentID + "'><input><div></div><div></div></div>";
+            return;
+        }
+
+        if (((bool)rtl && (bool)dropDown) || ((bool)rtl && (bool)spinButtons))
+        {
+            componentMarkup = "<div id='" + componentID + "'><div></div><input></div>";
+            return;
+        }
+
+        if ((!(bool)rtl && (bool)dropDown) || (!(bool)rtl && (bool)spinButtons))
+        {
+            componentMarkup = "<div id='" + componentID + "'><input><div></div></div>";
+            return;
+        }
+
+        componentMarkup = "<div id='" + componentID + "'><input></div>";
+    }
+
 }

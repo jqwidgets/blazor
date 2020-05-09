@@ -1,9 +1,10 @@
 @using System.Text.Json;
 @inject IJSRuntime JSRuntime;
 
-<input id="@componentID">
+<div id="@componentID">@ChildContent</div>
 
 @code {
+
     [Parameter]
     public object animationType {
         get { return getterProp<object>("animationType"); }
@@ -432,4 +433,5 @@
             }
         }
     }
+
 }

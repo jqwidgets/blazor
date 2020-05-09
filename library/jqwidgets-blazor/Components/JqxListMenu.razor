@@ -4,6 +4,7 @@
 <div id="@componentID">@ChildContent</div>
 
 @code {
+
     [Parameter]
     public bool alwaysShowNavigationArrows {
         get { return getterProp<bool>("alwaysShowNavigationArrows"); }
@@ -252,5 +253,6 @@
         shouldSetters = false;
         ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.manageMethods", componentID, name, args);
     }
+
 
 }

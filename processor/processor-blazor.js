@@ -1,6 +1,6 @@
 `use strict`;
 
-const widgetNames = [
+const widgets = [
     `JqxBarGauge`, `JqxBulletChart`, `JqxButtonGroup`, `JqxButtons`, `JqxCalendar`, `JqxChart`, `JqxCheckBox`,
     `JqxColorPicker`, `JqxComboBox`, `JqxComplexInput`, `JqxDataTable`, `JqxDateTimeInput`, `JqxDocking`,
     `JqxDockingLayout`, `JqxDockPanel`, `JqxDragDrop`, `JqxDraw`, `JqxDropDownButton`, `JqxDropDownList`,
@@ -16,86 +16,23 @@ const widgetNames = [
     `JqxValidator`, `JqxWindow`, `JqxHeatMap`, `JqxTimePicker`
 ];
 
+const widgetsWithDynamicMarkup = [
+    `jqxformattedinput`
+];
+
 (function init() {
-    for (const name of widgetNames) {
+    for (let name of widgets) {
         const inFile = `json/${name}.json`;
+
+        if (name === 'JqxButtons') {
+            name = 'JqxButton';
+        }
+
         const outFile = `../library/jqwidgets-blazor/Components/${name}.razor`;
 
         processJSON(inFile, outFile);
     }
 })();
-
-function getTemplate(widgetName) {
-    let template;
-
-    switch (widgetName.toLowerCase()) {
-        case `jqxbutton` || `jqxtogglebutton`:
-            template = `<button id="@componentID">@ChildContent</button>`;
-            break;
-        case `jqxcomplexinput`:
-            template = `<div id="@componentID" style="display: inline-flex;"><input><div>@ChildContent</div></div>`;
-            break;
-        case `jqxdatetimeinput` || `jqxmaskedinput` || `jqxnumberinput`:
-            template = `<input id="@componentID">`;
-            break;
-        case `jqxinput`:
-            template = `<input id="@componentID" type="text" >`;
-            break;
-        case `jqxformattedinput`:
-            template = `<div id="@componentID"><input type="text"><div></div><div></div></div>`;
-            break;
-        case `jqxpasswordinput`:
-            template = `<input id="@componentID" type="password">`;
-            break;
-        default:
-            template = `<div id="@componentID">@ChildContent</div>`;
-    }
-
-    return template;
-}
-
-// width/height
-function getDataType(widgetName, type) {
-    if (!type ||
-        type.indexOf(widgetName) !== -1 || // interfaces
-        type.indexOf(`|`) !== -1 || // union types are not supported in C#
-        type.indexOf(`=>`) !== -1 ||
-        type.indexOf(`enum`) !== -1) {
-
-        return `object`;
-    }
-
-    type = type
-        .toLowerCase()
-        .replace(/int/g, `double`)
-        .replace(/number/g, `double`)
-        .replace(/boolean/g, `bool`)
-        .replace(/date/g, `DateTime`)
-        .replace(/any/g, `object`)
-        .replace(/none/g, `void`);
-
-    if (type.indexOf(`array`) !== -1 || type.indexOf(`[`) !== -1) {
-        if (type.indexOf(`string`) !== -1) {
-            return `string[]`;
-        }
-
-        if (type.indexOf(`double`) !== -1) {
-            return `double[]`;
-        }
-
-        if (type.indexOf(`bool`) !== -1) {
-            return `bool[]`;
-        }
-
-        if (type.indexOf(`DateTime`) !== -1) {
-            return `DateTime[]`;
-        }
-
-        return `object[]`;
-    }
-
-    return type;
-}
 
 function processJSON(inFile, outFile) {
     const fs = require(`fs`);
@@ -108,16 +45,24 @@ function processJSON(inFile, outFile) {
 
     let outData = ``;
     const obj = JSON.parse(data);
-    const widgetName = obj[`widget`].name;
-    const widgetNameWithoutJqx = widgetName.slice(3);
+    const widget = obj[`widget`].name;
+    const widgetToLowerCase = widget.toLowerCase();
+    const widgetWithoutJqx = widget.slice(3);
+    const isWidgetWithDynamicMarkup = widgetsWithDynamicMarkup.indexOf(widgetToLowerCase) !== -1;
 
     outData += `@using System.Text.Json;\n`;
     outData += `@inject IJSRuntime JSRuntime;\n\n`;
 
-    outData += getTemplate(widgetName);
+    
+    if (isWidgetWithDynamicMarkup) {
+        outData += `@((MarkupString)componentMarkup)`;
+    } else {
+        outData += getMarkup(widget);
+    }
+
     outData += `\n\n`;
 
-    outData += `@code {\n`;
+    outData += `@code {\n\n`;
 
     let paramsToBlock = `    private string[] paramsToBlock = { "onComponentReady", "ChildContent", `;
     // Start Widget Properties
@@ -135,7 +80,7 @@ function processJSON(inFile, outFile) {
          
     for (const property of obj.properties) {
         const jsonDataType = property.ts_dataType ? property.ts_dataType : property.dataType;
-        const dataType = getDataType(widgetNameWithoutJqx, jsonDataType);
+        const dataType = getDataType(widgetWithoutJqx, jsonDataType);
         let propertyNameValidated = property.name;
 
         if (forbiddenPropertieNames[property.name]) {
@@ -196,6 +141,10 @@ function processJSON(inFile, outFile) {
 
     outData += `    private string componentID;\n\n`;
 
+    if (isWidgetWithDynamicMarkup) {
+        outData += `    private string componentMarkup;\n\n`;
+    }
+
     outData += `    private IDictionary<string, object> initialOptions = new Dictionary<string, object>();\n\n`;
     // End Internal Properties
 
@@ -208,60 +157,67 @@ function processJSON(inFile, outFile) {
             event: { okName: `e` }
         };
 
+        const methodsWithCustomImplementation = {
+            jqxformattedinput: [`val`]
+        };
         const methodsWhichAreBothGettersAndSetters = [ `val` ];
 
         for (const method of obj.methods) {
-            const jsonDataType = method.ts_returnDataType ? method.ts_returnDataType : method.returnDataType;
-            const dataType = getDataType(widgetNameWithoutJqx, jsonDataType);
-            let methodArguments = ``;
-            let methodArgumentsNames = `, `;
-    
-            if (method.arguments) {
-                for (const argument of method.arguments) {
-                    let argumentNameValidated = argument.name;
- 
-                    if (argument.name.toLowerCase() === `none`) {
-                        break;
-                    }
-
-                    if (forbiddenAgrumentNames[argument.name]) {
-                        argumentNameValidated = forbiddenAgrumentNames[argument.name].okName;
-                    }
-    
-                    const jsonDataType = argument.ts_dataType ? argument.ts_dataType : argument.dataType;
-                    const dataType = getDataType(widgetNameWithoutJqx, jsonDataType);
-    
-                    methodArguments += `${dataType} ${argumentNameValidated}, `;
-                    methodArgumentsNames += `${argumentNameValidated}, `;
-                }
-            }
-    
-            methodArguments = methodArguments.slice(0, methodArguments.length - 2);
-            methodArgumentsNames = methodArgumentsNames.slice(0, methodArgumentsNames.length - 2);
-
-            if (methodsWhichAreBothGettersAndSetters.indexOf(method.name) !== -1) {
-                outData += `    public ${dataType} ${method.name}()\n`;
-                outData += `    {\n`;
-                outData += `        return getterMethod<${dataType}>("${method.name}");\n`;
-                outData += `    }\n\n`;
-
-                outData += `    public void ${method.name}(${methodArguments})\n`;
-                outData += `    {\n`;
-                outData += `        setterMethod("${method.name}"${methodArgumentsNames});\n`;
-                outData += `    }\n\n`;
+            if (methodsWithCustomImplementation[widgetToLowerCase] && methodsWithCustomImplementation[widgetToLowerCase].indexOf(method.name) !== -1) {
+                outData += getMethodsWithCustomImplementation(widgetToLowerCase, method.name);
             } else {
-                if (dataType !== `void`) {
-                    outData += `    public ${dataType} ${method.name}(${methodArguments})\n`;
-                    outData += `    {\n`;
-                    outData += `        return getterMethod<${dataType}>("${method.name}"${methodArgumentsNames});\n`;
-                    outData += `    }\n\n`;
+                const jsonDataType = method.ts_returnDataType ? method.ts_returnDataType : method.returnDataType;
+                const dataType = getDataType(widgetWithoutJqx, jsonDataType);
+                let methodArguments = ``;
+                let methodArgumentsNames = `, `;
+        
+                if (method.arguments) {
+                    for (const argument of method.arguments) {
+                        let argumentNameValidated = argument.name;
+    
+                        if (argument.name.toLowerCase() === `none`) {
+                            break;
+                        }
+
+                        if (forbiddenAgrumentNames[argument.name]) {
+                            argumentNameValidated = forbiddenAgrumentNames[argument.name].okName;
+                        }
+        
+                        const jsonDataType = argument.ts_dataType ? argument.ts_dataType : argument.dataType;
+                        const dataType = getDataType(widgetWithoutJqx, jsonDataType);
+        
+                        methodArguments += `${dataType} ${argumentNameValidated}, `;
+                        methodArgumentsNames += `${argumentNameValidated}, `;
+                    }
                 }
         
-                if (dataType === `void`) {
+                methodArguments = methodArguments.slice(0, methodArguments.length - 2);
+                methodArgumentsNames = methodArgumentsNames.slice(0, methodArgumentsNames.length - 2);
+
+                if (methodsWhichAreBothGettersAndSetters.indexOf(method.name) !== -1) {
+                    outData += `    public ${dataType} ${method.name}()\n`;
+                    outData += `    {\n`;
+                    outData += `        return getterMethod<${dataType}>("${method.name}");\n`;
+                    outData += `    }\n\n`;
+
                     outData += `    public void ${method.name}(${methodArguments})\n`;
                     outData += `    {\n`;
                     outData += `        setterMethod("${method.name}"${methodArgumentsNames});\n`;
                     outData += `    }\n\n`;
+                } else {
+                    if (dataType !== `void`) {
+                        outData += `    public ${dataType} ${method.name}(${methodArguments})\n`;
+                        outData += `    {\n`;
+                        outData += `        return getterMethod<${dataType}>("${method.name}"${methodArgumentsNames});\n`;
+                        outData += `    }\n\n`;
+                    }
+            
+                    if (dataType === `void`) {
+                        outData += `    public void ${method.name}(${methodArguments})\n`;
+                        outData += `    {\n`;
+                        outData += `        setterMethod("${method.name}"${methodArgumentsNames});\n`;
+                        outData += `    }\n\n`;
+                    }
                 }
             }
         }
@@ -298,6 +254,9 @@ function processJSON(inFile, outFile) {
     outData += `                initialOptions[key] = value;\n`;
     outData += `            }\n`;
     outData += `        }\n\n`;
+    if (isWidgetWithDynamicMarkup) {
+        outData += `        getMarkup();\n`;
+    }
     outData += `        shouldSetters = true;\n`;
     outData += `    }\n\n`;
 
@@ -310,7 +269,7 @@ function processJSON(inFile, outFile) {
     outData += `    {\n`;
     outData += `        if (firstRender)\n`;
     outData += `        {\n`;
-    outData += `            ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "${widgetName}", initialOptions);\n\n`;
+    outData += `            ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "${widget}", initialOptions);\n\n`;
     outData += `            Task.Delay(200).ContinueWith((action) =>\n`;
     outData += `            {\n`;
     outData += `                attachEvents();\n`;
@@ -325,7 +284,7 @@ function processJSON(inFile, outFile) {
         for (const event of obj.events) {
             let eventNameWithOn = `on` + event.name.charAt(0).toUpperCase() + event.name.slice(1);
 
-            outData += `        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "${event.name}", "emit${widgetNameWithoutJqx}Event", DotNetObjectReference.Create(new EventsHandler(${eventNameWithOn})));\n`; 
+            outData += `        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "${event.name}", "emit${widgetWithoutJqx}Event", DotNetObjectReference.Create(new EventsHandler(${eventNameWithOn})));\n`; 
         }
     }
     outData += `    }\n\n`;
@@ -365,7 +324,7 @@ function processJSON(inFile, outFile) {
         outData += `            componentEvent = e;\n`;
         outData += `        }\n\n`;
         outData += `        [JSInvokable]\n`;
-        outData += `        public void emit${widgetNameWithoutJqx}Event(object e)\n`;
+        outData += `        public void emit${widgetWithoutJqx}Event(object e)\n`;
         outData += `        {\n`;
         outData += `            if (componentEvent != null)\n`;
         outData += `            {\n`;
@@ -376,9 +335,13 @@ function processJSON(inFile, outFile) {
         outData += `        }\n`;
         outData += `    }\n`;
     }
+
+    if (isWidgetWithDynamicMarkup) {
+        outData += getDynamicMarkup(widgetToLowerCase);
+    }
     // End Internal Methods
 
-    outData += `}\n`;
+    outData += `\n}\n`;
 
     try {
         fs.writeFileSync(outFile, outData, `utf8`);
@@ -388,3 +351,134 @@ function processJSON(inFile, outFile) {
 
     return true;
 };
+
+function getMarkup(widget) {
+    let markup;
+
+    switch (widget) {
+        case `jqxbutton` || `jqxtogglebutton`:
+            markup = `<button id="@componentID">@ChildContent</button>`;
+            break;
+        case `jqxcomplexinput`:
+            markup = `<div id="@componentID"><input><div>@ChildContent</div></div>`;
+            break;
+        case `jqxdatetimeinput` || `jqxmaskedinput` || `jqxnumberinput`:
+            markup = `<input id="@componentID">`;
+            break;
+        case `jqxinput`:
+            markup = `<input id="@componentID">`;
+            break;
+        case `jqxpasswordinput`:
+            markup = `<input id="@componentID" type="password">`;
+            break;
+        default:
+            markup = `<div id="@componentID">@ChildContent</div>`;
+    }
+
+    return markup;
+}
+
+function getDynamicMarkup(widget) {
+    let outData = '';
+
+    if (widget === 'jqxformattedinput') {
+        outData += `    private void getMarkup()\n`;
+        outData += `    {\n`;
+        outData += `        object rtl;\n`;
+        outData += `        initialOptions.TryGetValue("rtl", out rtl);\n\n`;
+        outData += `        object dropDown;\n`;
+        outData += `        initialOptions.TryGetValue("dropDown", out dropDown);\n\n`;
+        outData += `        object spinButtons;\n`;
+        outData += `        initialOptions.TryGetValue("spinButtons", out spinButtons);\n\n`;
+        outData += `        if ((bool)rtl && (bool)dropDown && (bool)spinButtons)\n`;
+        outData += `        {\n`;
+        outData += `            componentMarkup = "<div id='" + componentID + "'><div></div><div></div><input></div>";\n`;
+        outData += `            return;\n`;
+        outData += `        }\n\n`;
+        outData += `        if (!(bool)rtl && (bool)dropDown && (bool)spinButtons)\n`;
+        outData += `        {\n`;
+        outData += `            componentMarkup = "<div id='" + componentID + "'><input><div></div><div></div></div>";\n`;
+        outData += `            return;\n`;
+        outData += `        }\n\n`;
+        outData += `        if (((bool)rtl && (bool)dropDown) || ((bool)rtl && (bool)spinButtons))\n`;
+        outData += `        {\n`;
+        outData += `            componentMarkup = "<div id='" + componentID + "'><div></div><input></div>";\n`;
+        outData += `            return;\n`;
+        outData += `        }\n\n`;
+        outData += `        if ((!(bool)rtl && (bool)dropDown) || (!(bool)rtl && (bool)spinButtons))\n`;
+        outData += `        {\n`;
+        outData += `            componentMarkup = "<div id='" + componentID + "'><input><div></div></div>";\n`;
+        outData += `            return;\n`;
+        outData += `        }\n\n`;
+        outData += `        componentMarkup = "<div id='" + componentID + "'><input></div>";\n`;
+        outData += `    }\n`;
+    }
+
+    return outData;
+}
+
+function getDataType(widget, type) {
+    type = type.toLowerCase();
+
+    if (!type ||
+        type.indexOf(widget.toLowerCase()) !== -1 || // interfaces
+        type.indexOf(`|`) !== -1 || // union types are not supported in C#
+        type.indexOf(`=>`) !== -1 ||
+        type.indexOf(`enum`) !== -1) {
+
+        return `object`;
+    }
+
+    type = type
+        .replace(/int/g, `double`)
+        .replace(/number/g, `double`)
+        .replace(/boolean/g, `bool`)
+        .replace(/date/g, `DateTime`)
+        .replace(/any/g, `object`)
+        .replace(/none/g, `void`);
+
+    if (type.indexOf(`array`) !== -1 || type.indexOf(`[`) !== -1) {
+        if (type.indexOf(`string`) !== -1) {
+            return `string[]`;
+        }
+
+        if (type.indexOf(`double`) !== -1) {
+            return `double[]`;
+        }
+
+        if (type.indexOf(`bool`) !== -1) {
+            return `bool[]`;
+        }
+
+        if (type.indexOf(`DateTime`) !== -1) {
+            return `DateTime[]`;
+        }
+
+        return `object[]`;
+    }
+
+    return type;
+}
+
+function getMethodsWithCustomImplementation(widget, method) {
+    let outData = '';
+
+    if (widget === 'jqxformattedinput' && method === 'val') {
+        outData += `    public object val()\n`;
+        outData += `    {\n`;
+        outData += `        return getterMethod<object>("val");\n`;
+        outData += `    }\n\n`;
+
+        outData += `    public object val(string value)\n`;
+        outData += `    {\n`;
+        outData += `        return getterMethod<object>("val", value);\n`;
+        outData += `    }\n\n`;
+
+        outData += `    public void val(int value)\n`;
+        outData += `    {\n`;
+        outData += `        setterMethod("val", value);\n`;
+        outData += `    }\n\n`;
+    }
+
+    return outData;
+}

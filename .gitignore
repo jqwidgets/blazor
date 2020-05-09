@@ -4,3 +4,4 @@ dev-project/bin
 dev-project/obj
 library/jqwidgets-blazor/bin
 library/jqwidgets-blazor/obj
+library/jqwidgets-blazor/wwwroot/jqwidgets

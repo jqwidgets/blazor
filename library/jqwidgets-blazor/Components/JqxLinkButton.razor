@@ -4,6 +4,7 @@
 <div id="@componentID">@ChildContent</div>
 
 @code {
+
     [Parameter]
     public bool disabled {
         get { return getterProp<bool>("disabled"); }
@@ -147,5 +148,6 @@
         shouldSetters = false;
         ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.manageMethods", componentID, name, args);
     }
+
 
 }

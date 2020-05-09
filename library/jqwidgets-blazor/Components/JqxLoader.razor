@@ -4,6 +4,7 @@
 <div id="@componentID">@ChildContent</div>
 
 @code {
+
     [Parameter]
     public bool autoOpen {
         get { return getterProp<bool>("autoOpen"); }
@@ -187,5 +188,6 @@
         shouldSetters = false;
         ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.manageMethods", componentID, name, args);
     }
+
 
 }
