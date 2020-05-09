@@ -1,9 +1,10 @@
 @using System.Text.Json;
 @inject IJSRuntime JSRuntime;
 
-<div id="@componentID" style="display: inline-flex;"><input><div>@ChildContent</div></div>
+<div id="@componentID">@ChildContent</div>
 
 @code {
+
     [Parameter]
     public object decimalNotation {
         get { return getterProp<object>("decimalNotation"); }
@@ -255,4 +256,5 @@
             }
         }
     }
+
 }

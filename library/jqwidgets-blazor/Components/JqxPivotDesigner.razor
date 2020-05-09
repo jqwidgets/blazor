@@ -4,6 +4,7 @@
 <div id="@componentID">@ChildContent</div>
 
 @code {
+
     [Parameter]
     public string type {
         get { return getterProp<string>("type"); }
@@ -134,5 +135,6 @@
         shouldSetters = false;
         ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.manageMethods", componentID, name, args);
     }
+
 
 }

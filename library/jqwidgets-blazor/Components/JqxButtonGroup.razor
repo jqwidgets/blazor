@@ -4,6 +4,7 @@
 <div id="@componentID">@ChildContent</div>
 
 @code {
+
     [Parameter]
     public bool disabled {
         get { return getterProp<bool>("disabled"); }
@@ -227,4 +228,5 @@
             }
         }
     }
+
 }
