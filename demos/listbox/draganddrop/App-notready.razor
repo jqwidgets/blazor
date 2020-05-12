@@ -1,0 +1,86 @@
+﻿@inject IJSRuntime JSRuntime;
+
+<div>
+    <div style="float: left;">
+        <JqxListBox @ref="listBoxA" checkboxes="true" allowDrop="true" allowDrag="true" source="data" width="250" height="300"></JqxListBox>
+    </div>
+
+    <div style="margin-left: 20px; float: left;">
+        <JqxListBox @ref="listBoxB" checkboxes="true" allowDrop="true" allowDrag="true" source="data" width="250" height="300"></JqxListBox>
+    </div>
+
+    <div style="width: 200px; height: 200px; float: left; margin-left: 20px;">
+        <textarea @ref="textarea" rows="5"></textarea>
+    </div>
+
+    <div style="font-size: 13px; font-family: Verdana; padding-top: 20px; clear: both;">
+        <b>Events Log:</b>
+        <div @ref="dragStartLog"></div>
+        <div @ref="dragEndLog"></div>
+        <br />
+        <b>Note:</b>
+        <br />
+        Dragging of "Breve" is disabled.
+        <br />
+        Dropping of "Frappuccino" is disabled.
+    </div>
+</div>
+
+@code {
+    JqxListBox listBoxA;
+
+    JqxListBox listBoxB;
+    
+    ElementReference textarea;
+
+    ElementReference dragStartLog;
+
+    ElementReference dragEndLog;
+
+    string[] data1 = new string[]
+    {
+        "Affogato",
+        "Americano",
+        "Bicerin",
+        "Breve",
+        "Café Bombón",
+        "Café au lait",
+        "Caffé Corretto",
+        "Café Crema",
+        "Caffé Latte",
+        "Caffé macchiato",
+        "Café mélange",
+        "Coffee milk",
+        "Cafe mocha"
+    };
+    string[] data2 = new string[]
+    {
+        "Cappuccino",
+        "Carajillo",
+        "Cortado",
+        "Cuban espresso",
+        "Espresso",
+        "Eiskaffee",
+        "The Flat White",
+        "Frappuccino",
+        "Galao",
+        "Greek frappé coffee",
+        "Iced Coffee",
+        "Indian filter coffee",
+        "Instant coffee",
+        "Irish coffee",
+        "Liqueur coffee"
+    };
+
+    private void handleDragStart(IDictionary<string, object> e)
+    {
+        var item = e["item"];
+        // JSRuntime.InvokeAsync<string>("Example.handleDragStart", listBoxA, listBoxB, dragStartLog, item);
+    }
+    
+    private void handleDragEnd(IDictionary<string, object> e)
+    {
+        var item = e["item"];
+        // JSRuntime.InvokeAsync<string>("Example.handleDragEnd", listBoxA, listBoxB, dragEndLog, item);
+    }
+}
