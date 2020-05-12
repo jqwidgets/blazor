@@ -1,48 +1,42 @@
-﻿<JqxBarGauge @ref="myBarGauge" width="200" colorScheme="customColors" customColorScheme="customColorScheme" options="options"></JqxBarGauge>
+﻿@inject HttpClient Http;
+@inject IJSRuntime JSRuntime;
 
-<button @onclick="setOptions">Set Options</button>
+<JqxDropDownList @ref="myDropDownList"
+    onComponentReady="onReady"
+    onCheckChange="checkChange"
+    width="200" height="30" source="source" checkboxes="true"
+    displayMember="ContactName" valueMember="CompanyName">
+</JqxDropDownList>
 
-<button @onclick="getOptions">Get Options</button>
+<div style="float: left; margin-left: 20px; font-size: 13px; font-family: Verdana;">
+    <div @ref="selectionlog"></div>
+    <div @ref="checkedItemsLog" style="max-width: 300px; margin-top: 20px;"></div>
+</div>
 
-@code { 
+@code {
+    JqxDropDownList myDropDownList;
+    ElementReference selectionlog;
 
-    JqxBarGauge myBarGauge;
+    ElementReference checkedItemsLog;
 
-    object customColorScheme = new Dictionary<string, object>()
+    private object[] source;
+
+    protected override async Task OnInitializedAsync()
     {
-        { "name", "customColors" },
-        { "colors", new string[]{ "blue", "green", "red", "orange" } }
-    };
-
-    Dictionary<string, object> options = new Dictionary<string, object>()
-    {
-        { "width", 500 },
-        { "height", 500 },
-        { "values", new double[]{30, 50, 70, 100} }
-    };
-
-    private void setOptions()
-    {
-        IDictionary<string, object> options = new Dictionary<string, object>()
-        {
-            { "width", 1000 },
-            { "height", 500 },
-            { "values", new double[]{0, 20, 30, 500} }
-        };
-
-        myBarGauge.setOptions(options);
+        source = await Http.GetJsonAsync<object[]>("sampledata/customers.txt");
     }
 
-    private void getOptions()
+    private void checkChange(IDictionary<string, object> e)
     {
-        IDictionary<string, object> options = myBarGauge.getOptions();
-        
-        Console.WriteLine(options["width"]);
-
-        foreach(var item in options)
-        {
-            Console.WriteLine(item);
+        if (e["item"] is object) {
+            var item = e["item"];
+            var items = myDropDownList.getCheckedItems();
+            JSRuntime.InvokeAsync<string>("Example.updateInnerHtml", selectionlog, checkedItemsLog, item, items);
         }
     }
 
-} 
+    private void onReady()
+    {
+        myDropDownList.checkIndex(0);
+    }
+}

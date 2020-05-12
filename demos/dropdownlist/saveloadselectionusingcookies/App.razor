@@ -1,0 +1,26 @@
+﻿@inject HttpClient Http;
+@inject IJSRuntime JSRuntime;
+
+<JqxDropDownList
+    onSelect="selectEvent"
+    width="200" height="30" source="source" selectedIndex="selectedIndex"
+    displayMember="ContactName" valueMember="CompanyName">
+</JqxDropDownList>
+
+@code {
+    object[] source;
+    int selectedIndex = 0;
+    string cookieName = "jqxDropDownList_jqxWidget";
+
+    private override async Task OnInitializedAsync()
+    {
+        source = await Http.GetJsonAsync<object[]>("sampledata/customers.txt");
+        selectedIndex = Int16.Parse(await JSRuntime.InvokeAsync<string>("Example.getCookie", cookieName));
+    }
+
+    private void selectEvent(IDictionary<string, object> e)
+    {
+        var item = e["item"];
+        JSRuntime.InvokeAsync<string>("Example.setCookie", e["index"], cookieName);
+    }
+}

@@ -1,0 +1,27 @@
+﻿@inject HttpClient Http;
+@inject IJSRuntime JSRuntime;
+
+<JqxDropDownList
+    onSelect="selectEvent"
+    width="200" height="30" source="source" selectedIndex="2"
+    displayMember="ContactName" valueMember="CompanyName">
+</JqxDropDownList>
+
+<div @ref="selectionlog" style="font-size: 12px; font-family: Verdana;"></div>
+
+@code {
+    ElementReference selectionlog;
+    
+    private object[] source;
+
+    protected override async Task OnInitializedAsync()
+    {
+        source = await Http.GetJsonAsync<object[]>("sampledata/customers.txt");
+    }
+
+    private void selectEvent(IDictionary<string, object> e)
+    {
+        var item = e["item"];
+        JSRuntime.InvokeAsync<string>("Example.updateInnerHtml", selectionlog, item);
+    }
+}
