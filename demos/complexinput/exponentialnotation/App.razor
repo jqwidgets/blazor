@@ -16,20 +16,20 @@
         
         <div style="margin-top: 20px;">
             <h4>Real part</h4>
-            <JqxButtons width=buttonWidth onClick="getRealDecimal">Get decimal value</JqxButtons>
-            <JqxButtons width=buttonWidth onClick="getRealExponential">Get exponential notation</JqxButtons>
+            <JqxButton width=buttonWidth onClick="getRealDecimal">Get decimal value</JqxButton>
+            <JqxButton width=buttonWidth onClick="getRealExponential">Get exponential notation</JqxButton>
             <br />
-            <JqxButtons width=buttonWidth onClick="getRealScientific">Get scientific notation</JqxButtons>
-            <JqxButtons width=buttonWidth onClick="getRealEngineering">Get engineering notation</JqxButtons>
+            <JqxButton width=buttonWidth onClick="getRealScientific">Get scientific notation</JqxButton>
+            <JqxButton width=buttonWidth onClick="getRealEngineering">Get engineering notation</JqxButton>
         </div>
 
         <div style="margin-top: 20px;">
             <h4>Imaginary part</h4>
-            <JqxButtons width=buttonWidth onClick="getImaginaryDecimal">Get decimal value</JqxButtons>
-            <JqxButtons width=buttonWidth onClick="getImaginaryExponential">Get exponential notation</JqxButtons>
+            <JqxButton width=buttonWidth onClick="getImaginaryDecimal">Get decimal value</JqxButton>
+            <JqxButton width=buttonWidth onClick="getImaginaryExponential">Get exponential notation</JqxButton>
             <br />
-            <JqxButtons width=buttonWidth onClick="getImaginaryScientific">Get scientific notation</JqxButtons>
-            <JqxButtons width=buttonWidth onClick="getImaginaryEngineering">Get engineering notation</JqxButtons>
+            <JqxButton width=buttonWidth onClick="getImaginaryScientific">Get scientific notation</JqxButton>
+            <JqxButton width=buttonWidth onClick="getImaginaryEngineering">Get engineering notation</JqxButton>
         </div>
     </div>
 </JqxExpander>
@@ -43,7 +43,19 @@
 
     private void onDropDownChange(IDictionary<string, object> e) 
     {
+        var index = e["index"];
 
+        var label = notationsSource[int.Parse(index.ToString())];
+        if (label == "decimal")
+        {
+            label = "default";
+        }
+        var options = new Dictionary<string, string>() 
+        {
+            { "decimalNotation", label }
+        };
+
+        myComplexInput.setOptions(options);
     }
 
     private void getRealDecimal(IDictionary<string, object> e) 
