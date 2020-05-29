@@ -53,14 +53,14 @@
     private void SelectEvent(IDictionary<string, object> e)
     {
         string index = e["index"].ToString();
-        var item = myListBox.getItem(Int16.Parse(index));
+        var item = myListBox.getItem(int.Parse(index));
         JSRuntime.InvokeAsync<string>("Example.handleSelect", selectionlog, item);
     }
 
     private void UnselectEvent(IDictionary<string, object> e)
     {
         string index = e["index"].ToString();
-        var item = myListBox.getItem(Int16.Parse(index));
+        var item = myListBox.getItem(int.Parse(index));
         JSRuntime.InvokeAsync<string>("Example.handleUnselect", selectionlog, item);
     }
     

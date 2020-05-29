@@ -1,0 +1,32 @@
+﻿@* 
+    Blazor has good tree shaking so when it builds for production
+    only includes the needed modules for the demo. As in the release the modules
+    are reused, we need this modules to be all the needed for all demos.
+
+    If some demo when build misses a module, copy/paste this file
+    in App.razor, build the project and copy/paste the generated modules
+    in the release folder.
+
+    BUILD: dotnet publish -c release
+    FROM:  dev-project/bin/release/netstandard2.1/publish/blazor-web/dist/_framework/_bin/
+    TO:    release/common/_framework/_bin/
+*@
+
+@inject HttpClient Http;
+
+<JqxComboBox></JqxComboBox>
+
+<div></div>
+
+@code {
+
+    private object[] source;
+    
+    protected override async Task OnInitializedAsync()
+    {
+        var asd = int.Parse("22");
+
+        source = await Http.GetJsonAsync<object[]>("../sampledata/customers.txt");
+    }
+
+}

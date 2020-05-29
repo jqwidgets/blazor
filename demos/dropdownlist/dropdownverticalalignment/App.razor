@@ -28,7 +28,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        source = await Http.GetJsonAsync<object[]>("sampledata/customers.txt");
+        source = await Http.GetJsonAsync<object[]>("../sampledata/customers.txt");
     }
 
     private void handleBottom(IDictionary<string, object> e)

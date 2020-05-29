@@ -54,7 +54,7 @@
     private async void OnChange(ChangeEventArgs e)
     {
         updating = true;
-        int currentIndex = Int16.Parse(e.Value.ToString());
+        int currentIndex = int.Parse(e.Value.ToString());
         myListBox.selectIndex(currentIndex);
         myListBox.ensureVisible(currentIndex);
         updating = false;

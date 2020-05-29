@@ -1,42 +1,10 @@
-﻿@inject HttpClient Http;
-@inject IJSRuntime JSRuntime;
-
-<JqxDropDownList @ref="myDropDownList"
-    onComponentReady="onReady"
-    onCheckChange="checkChange"
-    width="200" height="30" source="source" checkboxes="true"
-    displayMember="ContactName" valueMember="CompanyName">
-</JqxDropDownList>
-
-<div style="float: left; margin-left: 20px; font-size: 13px; font-family: Verdana;">
-    <div @ref="selectionlog"></div>
-    <div @ref="checkedItemsLog" style="max-width: 300px; margin-top: 20px;"></div>
+﻿<div style="text-align: center; width: 250px; font-family: 'Verdana', sans-serif; font-size: 13px;">
+    The navigation is restricted from 01/01/2017 to 01/01/2020
 </div>
+<br />
+
+@* <JqxDateTimeInput width="250" height="25" min="min" max="max"></JqxDateTimeInput> *@
 
 @code {
-    JqxDropDownList myDropDownList;
-    ElementReference selectionlog;
-
-    ElementReference checkedItemsLog;
-
-    private object[] source;
-
-    protected override async Task OnInitializedAsync()
-    {
-        source = await Http.GetJsonAsync<object[]>("sampledata/customers.txt");
-    }
-
-    private void checkChange(IDictionary<string, object> e)
-    {
-        if (e["item"] is object) {
-            var item = e["item"];
-            var items = myDropDownList.getCheckedItems();
-            JSRuntime.InvokeAsync<string>("Example.updateInnerHtml", selectionlog, checkedItemsLog, item, items);
-        }
-    }
-
-    private void onReady()
-    {
-        myDropDownList.checkIndex(0);
-    }
+    DateTime value = new DateTime(2017, 1, 18);
 }
