@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title id="Description">Blazor FormattedInput Validation.</title>
+        <meta name="description" content="This is an example of a restriced input in Blazor FormattedInput." />
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+        <meta charset="UTF-8">
+
+        <link rel="stylesheet" href="../common/jqwidgets/styles/jqx.base.css" type="text/css" />
+
+        <script src="../scripts/demos.js"></script>
+
+        <script src="../common/jqwidgets/jqxcore.js"></script>
+        <script src="../common/jqwidgets/jqxformattedinput.js"></script>
+
+        <script src="../common/jqxBlazor.js"></script>
+
+        <script src="../demos/formattedinput/validation/index.js"></script>
+
+        <script src="../demos/formattedinput/validation/blazor.webassembly.js"></script>
+    </head>
+
+    <body>
+        <div class="example-description">
+            In this Blazor FormattedInput demo the input is restricted from 0 to 1000 (decimal). When the user enters a value whose decimal equivalent is not from 0 to 1000, the Blazor FormattedInput automatically updates the value to the chosen numeral system's equivalent of 0 or 1000 depending on whether the value's decimal equivalent is below 0 or above 1000. That happens on blur event or Enter keypress.
+        </div>
+
+        <app>Loading...</app>
+    </body>
+
+ </html>

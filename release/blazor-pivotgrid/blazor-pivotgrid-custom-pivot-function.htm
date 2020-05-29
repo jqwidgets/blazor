@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title id="Description">jQWidgets Blazor PivotGrid - Custom pivot aggregation functions</title>
+        <meta name="description" content="<base href=../demos/pivotgrid/custom/" />
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+        <meta charset="UTF-8">
+
+        <link rel="stylesheet" href="../common/jqwidgets/styles/jqx.base.css" type="text/css" />
+
+        <script src="../scripts/demos.js"></script>
+
+        <script src="../common/jqwidgets/jqxcore.js"></script>
+        <script src="../common/jqwidgets/jqxdata.js"></script>
+        <script src="../common/jqwidgets/jqxbuttons.js"></script>
+        <script src="../common/jqwidgets/jqxscrollbar.js"></script>
+        <script src="../common/jqwidgets/jqxmenu.js"></script>
+        <script src="../common/jqwidgets/jqxwindow.js"></script>
+        <script src="../common/jqwidgets/jqxdragdrop.js"></script>
+        <script src="../common/jqwidgets/jqxcheckbox.js"></script>
+        <script src="../common/jqwidgets/jqxinput.js"></script>
+        <script src="../common/jqwidgets/jqxlistbox.js"></script>
+        <script src="../common/jqwidgets/jqxdropdownlist.js"></script>
+        <script src="../common/jqwidgets/jqxpivot.js"></script>
+        <script src="../common/jqwidgets/jqxpivotgrid.js"></script>
+        <script src="../common/jqwidgets/jqxpivotdesigner.js"></script>
+
+        <script src="../common/jqxBlazor.js"></script>
+
+        <script src="../demos/pivotgrid/custom/index.js"></script>
+
+        <script src="../demos/pivotgrid/custom/blazor.webassembly.js"></script>
+    </head>
+
+    <body>
+        <div class="example-description">
+            <h2>Description</h2>
+        <div style="width: 800px;">
+            This is an example of the Blazor Pivot Grid with custom a custom data aggregation function. The pivot grid component provides
+            several built-in functions: count, sum, min, max, average, product. In this example, we implement a custom
+            function that calculates the variance of the data points of the respective pivot grid cell. To add or modify existing
+            data aggregations, set the customAggregationFunctions property of the pivot data source. Each pivot
+            aggregation functions must have a unique name, take an array of values as a parameter and return a number.
+            For performance reasons, make sure that the function runs as quickly as possible. The Blazor pivot grid will call the function
+            multiple times during the data pivoting operations.
+        </div>
+
+        <app>Loading...</app>
+    </body>
+
+ </html>

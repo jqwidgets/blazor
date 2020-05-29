@@ -14,8 +14,8 @@
 
     private override async Task OnInitializedAsync()
     {
-        source = await Http.GetJsonAsync<object[]>("sampledata/customers.txt");
-        selectedIndex = Int16.Parse(await JSRuntime.InvokeAsync<string>("Example.getCookie", cookieName));
+        source = await Http.GetJsonAsync<object[]>("../sampledata/customers.txt");
+        selectedIndex = int.Parse(await JSRuntime.InvokeAsync<string>("Example.getCookie", cookieName));
     }
 
     private void selectEvent(IDictionary<string, object> e)

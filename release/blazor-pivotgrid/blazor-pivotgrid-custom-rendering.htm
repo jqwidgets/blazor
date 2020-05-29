@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title id="Description">jQWidgets Blazor PivotGrid - using custom HTML rendering in rows, columns and pivot cells</title>
+        <meta name="description" content="<base href=../demos/pivotgrid/custom/" />
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+        <meta charset="UTF-8">
+
+        <link rel="stylesheet" href="../common/jqwidgets/styles/jqx.base.css" type="text/css" />
+
+        <script src="../scripts/demos.js"></script>
+
+        <script src="../common/jqwidgets/jqxcore.js"></script>
+        <script src="../common/jqwidgets/jqxdata.js"></script>
+        <script src="../common/jqwidgets/jqxbuttons.js"></script>
+        <script src="../common/jqwidgets/jqxscrollbar.js"></script>
+        <script src="../common/jqwidgets/jqxmenu.js"></script>
+        <script src="../common/jqwidgets/jqxwindow.js"></script>
+        <script src="../common/jqwidgets/jqxdragdrop.js"></script>
+        <script src="../common/jqwidgets/jqxcheckbox.js"></script>
+        <script src="../common/jqwidgets/jqxinput.js"></script>
+        <script src="../common/jqwidgets/jqxlistbox.js"></script>
+        <script src="../common/jqwidgets/jqxdropdownlist.js"></script>
+        <script src="../common/jqwidgets/jqxpivot.js"></script>
+        <script src="../common/jqwidgets/jqxpivotgrid.js"></script>
+        <script src="../common/jqwidgets/jqxpivotdesigner.js"></script>
+
+        <script src="../common/jqxBlazor.js"></script>
+
+        <script src="../demos/pivotgrid/custom/index.js"></script>
+
+        <script src="../demos/pivotgrid/custom/blazor.webassembly.js"></script>
+    </head>
+
+    <body>
+        <div class="example-description">
+            <h2>Description</h2>
+        <div style="width: 800px;">
+            This is an example of Blazor Pivot Grid with custom style of the grid cells depending on their current value. You can change the
+            rendering of any cell, row or column and insert your own HTML content by implementing the itemsRenderer and cellsRenderer functions.
+            In this case, the custom code simply chooses among five predefined colors and sets the backgroundColor property of the
+            cell content. This color customization is applied only to the cells with 'Sum' aggregation function. You can change
+            the code of the itemsRender and cellsRenderer functions and implement your own customization logic using standard HTML and CSS.
+        </div>
+
+        <app>Loading...</app>
+    </body>
+
+ </html>

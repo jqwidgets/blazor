@@ -1,0 +1,33 @@
+{
+    "assemblies": 
+    [
+        "../common/_framework/_bin/Microsoft.AspNetCore.Blazor.dll",
+        "../common/_framework/_bin/Microsoft.AspNetCore.Blazor.HttpClient.dll",
+        "../common/_framework/_bin/Microsoft.AspNetCore.Components.Web.dll",
+        "../common/_framework/_bin/Microsoft.AspNetCore.Components.dll",
+        "../common/_framework/_bin/Microsoft.Bcl.AsyncInterfaces.dll",
+        "../common/_framework/_bin/Microsoft.Extensions.Configuration.Abstractions.dll",
+        "../common/_framework/_bin/Microsoft.Extensions.Configuration.dll",
+        "../common/_framework/_bin/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+        "../common/_framework/_bin/Microsoft.Extensions.DependencyInjection.dll",
+        "../common/_framework/_bin/Microsoft.Extensions.Logging.Abstractions.dll",
+        "../common/_framework/_bin/Microsoft.Extensions.Primitives.dll",
+        "../common/_framework/_bin/Microsoft.JSInterop.dll",
+        "../common/_framework/_bin/Mono.WebAssembly.Interop.dll",
+        "../common/_framework/_bin/System.Core.dll",
+        "../common/_framework/_bin/System.Net.Http.dll",
+        "../common/_framework/_bin/System.Runtime.CompilerServices.Unsafe.dll",
+        "../common/_framework/_bin/System.Text.Encodings.Web.dll",
+        "../common/_framework/_bin/System.Text.Json.dll",
+        "../common/_framework/_bin/System.dll",
+        "../common/_framework/_bin/WebAssembly.Bindings.dll",
+        "../common/_framework/_bin/WebAssembly.Net.Http.dll",
+        "../common/_framework/_bin/jqwidgets-blazor.dll",
+        "../common/_framework/_bin/jqwidgets-blazor.pdb",
+        "../common/_framework/_bin/mscorlib.dll",
+        "../demos/combobox/multiselect/index.dll"
+    ],
+    "entryAssembly": "index",
+    "linkerEnabled": true
+}    
+    
