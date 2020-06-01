@@ -1,0 +1,100 @@
+﻿<JqxExpander showArrow="false" toggleMode="toggleMode" width="300" height="400">
+    <div>
+        Folders
+    </div>
+    <div style="overflow: hidden;">
+        <JqxTree width="width" height="height" source="source"></JqxTree>
+    </div>
+</JqxExpander>
+
+@code {
+    string toggleMode = "none";
+    string width = "100%";
+    string height = "100%";
+
+    Dictionary<string, object>[] source = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>()
+        {
+            { "icon", "../../images/mailIcon.png" },
+            { "label", "Mail" },
+            { "expanded", "true" },
+            {
+                "items",
+                new Dictionary<string, object>[]
+                {
+                    new Dictionary<string, object>()
+                    {
+                        { "icon", "../../images/calendarIcon.png" },
+                        { "label", "Calendar" }
+                    },
+                    new Dictionary<string, object>()
+                    {
+                        { "icon", "../../images/contactsIcon.png" },
+                        { "label", "Contacts" },
+                        { "selected", "true" }
+                    }
+                }
+            }
+        },
+        new Dictionary<string, object>()
+        {
+            { "icon", "../../images/folder.png" },
+            { "label", "Inbox" },
+            { "expanded", "true" },
+            {
+                "items",
+                new Dictionary<string, object>[]
+                {
+                    new Dictionary<string, object>()
+                    {
+                        { "icon", "../../images/folder.png" },
+                        { "label", "Admin" }
+                    },
+                    new Dictionary<string, object>()
+                    {
+                        { "icon", "../../images/folder.png" },
+                        { "label", "Corporate" }
+                    },
+                    new Dictionary<string, object>()
+                    {
+                        { "icon", "../../images/folder.png" },
+                        { "label", "Finance" }
+                    },
+                    new Dictionary<string, object>()
+                    {
+                        { "icon", "../../images/folder.png" },
+                        { "label", "Other" }
+                    }                    
+                }
+            }
+        },
+        new Dictionary<string, object>()
+        {
+            { "icon", "../../images/recycle.png" },
+            { "label", "Deleted Items" }
+        },
+        new Dictionary<string, object>()
+        {
+            { "icon", "../../images/notesIcon.png" },
+            { "label", "Notes" }
+        },
+        new Dictionary<string, object>()
+        {
+            { "icon", "../../images/settings.png" },
+            { "label", "Settings" },
+            { "iconsize", 14 }
+        },
+        new Dictionary<string, object>()
+        {
+            { "icon", "../../images/favorites.png" },
+            { "label", "Favorites" }
+        }
+    };
+}
+
+<style>
+    [role="tree"] {
+        border: none;
+    }
+</style>
