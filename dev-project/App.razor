@@ -1,10 +1,86 @@
-﻿<div style="text-align: center; width: 250px; font-family: 'Verdana', sans-serif; font-size: 13px;">
-    The navigation is restricted from 01/01/2017 to 01/01/2020
-</div>
-<br />
-
-@* <JqxDateTimeInput width="250" height="25" min="min" max="max"></JqxDateTimeInput> *@
+<JqxTreeGrid source="source" columns="columns" columnGroups="columnGroups"></JqxTreeGrid>
 
 @code {
-    DateTime value = new DateTime(2017, 1, 18);
+
+    static Dictionary<string, object>[] data = new Dictionary<string, object>[] 
+    {
+        new Dictionary<string, object>()
+        {
+            { "id", "1" },
+            { "name", "Header 1" },
+            { "budget", "9999" },
+            { "children", new Dictionary<string, object>[] 
+                {
+                    new Dictionary<string, object>()
+                    {
+                        { "id", "2" },
+                        { "name", "Header 2" },
+                        { "budget", "2222" }
+                    }
+                }
+            }
+        }
+    };
+
+    Dictionary<string, object> source = new Dictionary<string, object>
+    {
+        { "dataType", "json" },
+        { "datafields", new Dictionary<string, object>[] 
+            {
+                new Dictionary<string, object>()
+                {
+                    { "name", "name" },
+                    { "type", "string" }
+                },
+                new Dictionary<string, object>()
+                {
+                    { "name", "budget" },
+                    { "type", "string" }
+                },
+                new Dictionary<string, object>()
+                {
+                    { "name", "id" },
+                    { "type", "string" }
+                },
+                new Dictionary<string, object>()
+                {
+                    { "name", "children" },
+                    { "type", "array" }
+                }
+            }
+        },
+        { "hierarchy", new Dictionary<string, object>
+            {
+                { "root", "children" }
+            }
+        },
+        { "localData", data },
+        { "id", "id" }
+    };
+
+    Dictionary<string, object>[] columns = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>()
+        {
+            { "dataField", "name" },
+            { "text", "Name" },
+            { "columnGroup", "JSTCorp" }
+        },
+        new Dictionary<string, object>()
+        {
+            { "dataField", "budget" },
+            { "text", "Budget" },
+            { "columnGroup", "JSTCorp" }
+        }
+    };
+
+    Dictionary<string, object>[] columnGroups = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>()
+        {
+            { "text", "JST Corp." },
+            { "name", "JSTCorp" }
+        }
+    };
+
 }
