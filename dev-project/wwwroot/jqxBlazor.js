@@ -12,6 +12,8 @@ window.jqxBlazor = {
 
         options = checkForIsoStrings(options);
 
+        options = checkForDataAdapterNeed(options);
+
         instances[id] = new window[name]('#' + id, options);
     },
     setOptions: function(id, options) {
@@ -62,6 +64,14 @@ function checkForIsoStrings(options) {
         if (matches) {
             options[key] = new Date(value);
         }
+    }
+
+    return options;
+}
+
+function checkForDataAdapterNeed(options) {
+    if (options.source && options.source.dataFields) {
+        options.source = new jqx.dataAdapter(options.source);
     }
 
     return options;
