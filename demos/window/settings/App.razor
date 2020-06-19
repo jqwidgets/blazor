@@ -1,0 +1,128 @@
+﻿@inject IJSRuntime JSRuntime;
+
+<div style="width: 100%; height: 650px;" id="jqxWidget">
+    <div style="display: inline-block;">
+        <JqxButton onClick="handleOpen" width="80">Open</JqxButton>
+    </div>
+    <div style="display: inline-block; margin-left: 3px;">
+        <JqxButton onClick="handleClose" width="80">Close</JqxButton>
+    </div>
+    <div style="display: inline-block; margin-left: 3px;">
+        <JqxButton onClick="handlePin" width="80">Pin</JqxButton>
+    </div>
+    <div style="display: inline-block; margin-left: 3px;">
+        <JqxButton onClick="handleUnpin" width="80">Unpin</JqxButton>
+    </div>
+    <div style="display: inline-block; margin-left: 3px;">
+        <JqxButton onClick="handleCollapse" width="80">Collapse</JqxButton>
+    </div>
+    <div style="display: inline-block; margin-left: 3px;">
+        <JqxButton onClick="handleExpand" width="80">Expand</JqxButton>
+    </div>
+
+    <div
+        id="mainDemoContainer">
+        <JqxWindow @ref="customWindow" position="position" width="400" height="120" resizable="false" cancelButton="cancelButton">
+            <div id="customWindowHeader">
+                <span id="captureContainer" style="float: left">Find </span>
+            </div>
+            <div id="customWindowContent" style="overflow: hidden">
+                <div style="margin: 10px">
+                    Fi<u>n</u>d what:
+                    <input id="searchTextInput" @oninput="OnSetValue" type="text" style="width: 175px; height: 20px; border: 1px solid #aaa" />
+                    <div style="float: right">
+                        <div style="margin-bottom: 5px;">
+                            <JqxButton @ref="findButton" width="80" disabled="true">Find Next</JqxButton>
+                        </div>
+                        <div id="cancelButton">
+                            <JqxButton width="80" disabled="false">Cancel</JqxButton>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <JqxCheckBox onChange="handleMatchCase" width="150">
+                        Match case
+                    </JqxCheckBox>
+            </div>
+        </div>
+        </JqxWindow>
+    </div>
+</div>
+
+@code {
+    JqxWindow customWindow;
+
+    JqxButton findButton;
+
+    string cancelButton = "#cancelButton";
+
+    Dictionary<string, object> position = new Dictionary<string, object>() { { "x", 20 }, { "y", 70 } };
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var result = await JSRuntime.InvokeAsync<string>("Example.getCoordinates", "#jqxWidget");
+            string[] tokens = result.Split(";");
+            int[] convertedItems = Array.ConvertAll<string, int>(tokens, int.Parse);
+            int top = convertedItems[0];
+            int left = convertedItems[1];
+            var newPosition = new Dictionary<string, object>()
+            {
+                { "x", (left + 50) },
+                { "y", (top + 50) }
+            };
+
+            customWindow.setOptions(new Dictionary<string, object>() { { "position", newPosition } });
+        }
+    }
+
+    private void handleOpen(IDictionary<string, object> e)
+    {
+        customWindow.open();
+    }
+
+    private void handleClose(IDictionary<string, object> e)
+    {
+        customWindow.close();
+    }
+
+    private void handlePin(IDictionary<string, object> e)
+    {
+        customWindow.setOptions(new Dictionary<string, object>() { { "draggable", false } });
+    }
+
+    private void handleUnpin(IDictionary<string, object> e)
+    {
+        customWindow.setOptions(new Dictionary<string, object>() { { "draggable", true } });
+    }
+
+    private void handleCollapse(IDictionary<string, object> e)
+    {
+        customWindow.collapse();
+    }
+
+    private void handleExpand(IDictionary<string, object> e)
+    {
+        customWindow.expand();
+    }
+    
+    private void handleMatchCase(IDictionary<string, object> e)
+    {
+        // Do Something
+    }
+
+    private async void OnSetValue(EventArgs EventArgs)
+    {
+        var result = await JSRuntime.InvokeAsync<string>("Example.getValue", "#searchTextInput");
+        
+        if (result.ToString() != "")
+        {
+            findButton.setOptions(new Dictionary<string, object>() { { "disabled", false } });
+        }
+        else
+        {
+            findButton.setOptions(new Dictionary<string, object>() { { "disabled", true } });
+        }
+    }
+}
