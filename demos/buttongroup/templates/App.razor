@@ -1,0 +1,50 @@
+﻿<div>Default</div>
+<JqxButtonGroup mode=mode>
+  <button style="padding: 4px 16px" value='Left'></button>
+  <button style="padding: 4px 16px" value='Center'></button>
+  <button style="padding: 4px 16px" value='Right'></button>
+</JqxButtonGroup>
+<br />
+<div>Primary</div>
+<JqxButtonGroup mode=mode template="primaryTemplate">
+  <button style="padding: 4px 16px" value='Left'></button>
+  <button style="padding: 4px 16px" value='Center'></button>
+  <button style="padding: 4px 16px" value='Right'></button>
+</JqxButtonGroup>
+<br />
+<div>Success</div>
+<JqxButtonGroup mode=mode template="successTemplate">
+  <button style="padding: 4px 16px" value='Left'></button>
+  <button style="padding: 4px 16px" value='Center'></button>
+  <button style="padding: 4px 16px" value='Right'></button>
+</JqxButtonGroup>
+<br />
+<div>Info</div>
+<JqxButtonGroup mode=mode template="infoTemplate">
+  <button style="padding: 4px 16px" value='Left'></button>
+  <button style="padding: 4px 16px" value='Center'></button>
+  <button style="padding: 4px 16px" value='Right'></button>
+</JqxButtonGroup>
+<br />
+<div>Warning</div>
+<JqxButtonGroup mode=mode template="warningTemplate">
+  <button style="padding: 4px 16px" value='Left'></button>
+  <button style="padding: 4px 16px" value='Center'></button>
+  <button style="padding: 4px 16px" value='Right'></button>
+</JqxButtonGroup>
+<br />
+<div>Danger</div>
+<JqxButtonGroup mode=mode template="dangerTemplate">
+  <button style="padding: 4px 16px" value='Left'></button>
+  <button style="padding: 4px 16px" value='Center'></button>
+  <button style="padding: 4px 16px" value='Right'></button>
+</JqxButtonGroup>
+
+@code {
+    string mode = "checkbox";
+    string primaryTemplate = "primary";
+    string successTemplate = "success";
+    string infoTemplate = "info";
+    string warningTemplate = "warning";
+    string dangerTemplate = "danger";
+}

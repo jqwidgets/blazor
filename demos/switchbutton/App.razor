@@ -1,0 +1,185 @@
+﻿@inject IJSRuntime JSRuntime;
+
+<div id="settings-panel">
+  <div class="sections-top-shadow"></div>
+  <div class="settings-section-top settings-section">
+    <div class="settings-label">Ringtone</div>
+    <div class="settings-setter">
+      <div class="settings-melody">Marimba</div>
+    </div>
+  </div>
+  <div class="settings-section">
+    <div class="settings-label">New Mail</div>
+    <div class="settings-setter">
+        <JqxSwitchButton
+            onChange="onChanged1" 
+            width=81 height=27 isChecked=true>
+        </JqxSwitchButton>     
+    </div>
+  </div>
+  <div class="settings-section">
+    <div class="settings-label">Sent Mail</div>
+    <div class="settings-setter">
+        <JqxSwitchButton
+            onChange="onChanged2" 
+            width=81 height=27 isChecked=true>
+        </JqxSwitchButton>     
+    </div>
+  </div>
+  <div class="settings-section">
+    <div class="settings-label">Calendar Alerts</div>
+    <div class="settings-setter">
+        <JqxSwitchButton
+            onChange="onChanged3" 
+            width=81 height=27 isChecked=true>
+        </JqxSwitchButton>  
+    </div>
+  </div>
+  <div class="settings-section">
+    <div class="settings-label">Lock Sounds</div>
+    <div class="settings-setter">
+        <JqxSwitchButton
+            onChange="onChanged4" 
+            width=81 height=27 isChecked=true>
+        </JqxSwitchButton>  
+    </div>
+  </div>
+  <div class="sections-section-bottom settings-section">
+    <div class="settings-label">Keyboard Clicks</div>
+    <div class="settings-setter">
+        <JqxSwitchButton
+            onChange="onChanged5" 
+            width=81 height=27 isChecked=true>
+        </JqxSwitchButton>  
+    </div>
+  </div>
+</div>
+<div class="events-container">
+  <div>Events:</div>
+  <div @ref="log"></div>
+</div>
+
+@code {
+    ElementReference log;
+
+    public void onChanged1(IDictionary<string, object> e)
+    {
+        Console.WriteLine(123);
+        var isChecked = bool.Parse(e["checked"].ToString()) ? "Checked" : "Unchecked";
+        
+        JSRuntime.InvokeVoidAsync("Example.updateInnerHtml", log, "New Mail: " + isChecked);
+    }
+    public void onChanged2(IDictionary<string, object> e)
+    {
+        var isChecked = bool.Parse(e["checked"].ToString()) ? "Checked" : "Unchecked";
+
+        JSRuntime.InvokeVoidAsync("Example.updateInnerHtml", log, "Sent Mail: " + isChecked);
+    }
+    public void onChanged3(IDictionary<string, object> e)
+    {
+        var isChecked = bool.Parse(e["checked"].ToString()) ? "Checked" : "Unchecked";
+
+        JSRuntime.InvokeVoidAsync("Example.updateInnerHtml", log, "Calendar Alerts: " + isChecked);
+    }
+    public void onChanged4(IDictionary<string, object> e)
+    {
+        var isChecked = bool.Parse(e["checked"].ToString()) ? "Checked" : "Unchecked";
+
+        JSRuntime.InvokeVoidAsync("Example.updateInnerHtml", log, "Lock Sounds: " + isChecked);
+    }
+    public void onChanged5(IDictionary<string, object> e)
+    {
+        var isChecked = bool.Parse(e["checked"].ToString()) ? "Checked" : "Unchecked";
+
+        JSRuntime.InvokeVoidAsync("Example.updateInnerHtml", log, "Keyboard clicks: " + isChecked);
+    }
+}
+
+<style>
+    #settings-panel
+    {
+        background-color: #fff;
+        padding: 20px;
+        display: inline-block;
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+        position: relative;
+    }
+    .settings-section
+    {
+        background-color: #f7f7f7;
+        height: 45px;
+        width: 500px;
+        border: 1px solid #b4b7bc;
+        border-bottom-width: 0px;
+    }
+    .settings-section-top
+    {
+        border-bottom-width: 0px;
+        -moz-border-radius-topleft: 10px;
+        -webkit-border-top-left-radius: 10px;
+        border-top-left-radius: 10px;
+        -moz-border-radius-topright: 10px;
+        -webkit-border-top-right-radius: 10px;
+        border-top-right-radius: 10px;            
+    }
+    .sections-section-bottom
+    {
+        border-bottom-width: 1px;
+        -moz-border-radius-bottomleft: 10px;
+        -webkit-border-bottom-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+        -moz-border-radius-bottomright: 10px;
+        -webkit-border-bottom-right-radius: 10px;
+        border-bottom-right-radius: 10px;            
+    }
+    .sections-top-shadow
+    {
+        width: 500px;
+        height: 1px;
+        position: absolute;
+        top: 21px;
+        left: 21px;
+        height: 30px;
+        border-top: 1px solid #e4e4e4;
+        -moz-border-radius-topleft: 10px;
+        -webkit-border-top-left-radius: 10px;
+        border-top-left-radius: 10px;
+        -moz-border-radius-topright: 10px;
+        -webkit-border-top-right-radius: 10px;
+        border-top-right-radius: 10px;  
+    }
+    .settings-label
+    {
+        font-weight: bold;
+        font-family: Sans-Serif;
+        font-size: 14px;
+        margin-left: 14px;
+        margin-top: 15px;
+        float: left;
+    }
+    .settings-melody
+    {
+        color: #385487;
+        font-family: Sans-Serif;
+        font-size: 14px;
+        display: inline-block;
+        margin-top: 7px;
+    }
+    .settings-setter
+    {
+        float: right;
+        margin-right: 14px;
+        margin-top: 8px;
+    }
+    .events-container
+    {
+        margin-left: 20px;
+    }
+    #theme
+    {
+        margin-left: 20px;
+        margin-bottom: 20px;
+    }
+</style>
