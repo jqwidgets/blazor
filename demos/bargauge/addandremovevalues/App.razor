@@ -1,0 +1,109 @@
+@inject IJSRuntime JSRuntime;
+
+<JqxBarGauge @ref="myBarGauge"
+    width=600 height=600 relativeInnerRadius=relativeInnerRadius max=500
+    values=values baseValue=50 startAngle=0 endAngle=360 colorScheme="scheme05"
+    title=title tooltip=tooltip barSpacing=9 animationDuration=0 labels=labels>
+</JqxBarGauge>
+
+<div style="margin-left: 50px; margin-top: 50px; float: left;">
+  <JqxListBox @ref="myListBox" 
+    onComponentReady="onListBoxReady" onCheckChange="onCheckChange"
+    width=300 source=source displayMember=displayMember
+    valueMember=valueMember checkboxes=true>
+  </JqxListBox>
+  <br />
+  <br />
+  <div @ref="log">
+    <strong>Summary calories: 970</strong>
+  </div>
+</div>
+
+@code {
+    JqxBarGauge myBarGauge;
+    JqxListBox myListBox;
+    ElementReference log;  
+
+    string displayMember = "name";
+    string valueMember = "calories";
+
+    double relativeInnerRadius = 0.2;
+    double[] values = new double[] { 450, 190, 330 };
+
+    IDictionary<string, object> tooltip = new Dictionary<string, object>()
+    {
+        { "visible", true }
+    };
+
+    IDictionary<string, object> title = new Dictionary<string, object>()
+    {
+        { "text", "Nutritional Values" }
+    };
+
+    IDictionary<string, int> labels = new Dictionary<string, int>()
+    {
+        { "precision", 0 }, 
+        { "indent", 15 }, 
+        { "connectorWidth", 1 }
+    };
+
+    Dictionary<string, string>[] source = new Dictionary<string, string>[]
+    {
+        new Dictionary<string, string>() { { "id", "1" }, { "name", "Hot Chocolate" }, { "calories", "370" } },
+        new Dictionary<string, string>() { { "id", "2" }, { "name", "Peppermint Hot Chocolate"}, { "calories", "440" } },
+        new Dictionary<string, string>() { { "id", "3" }, { "name", "Salted Caramel Hot Chocolate" }, { "calories", "450" } },
+        new Dictionary<string, string>() { { "id", "4" }, { "name", "White Hot Chocolate"}, { "calories", "420" } },
+        new Dictionary<string, string>() { { "id", "5" }, { "name", "Caffe Americano" }, { "calories", "15" } },
+        new Dictionary<string, string>() { { "id", "6" }, { "name", "Caffe Latte"}, { "calories", "190" } },
+        new Dictionary<string, string>() { { "id", "7" }, { "name", "Caffe Mocha" }, { "calories", "330" } } 
+    };
+
+    private void onListBoxReady()
+    {
+        myListBox.checkIndex(2);
+        myListBox.checkIndex(5);
+        myListBox.checkIndex(6);
+    }
+
+    private void onCheckChange(IDictionary<string, object> e) 
+    {
+        double changedValue = double.Parse(e["value"].ToString());
+        double[] values = myBarGauge.values;
+        if (bool.Parse(e["checked"].ToString()))
+        {  
+            if (!values.Contains(changedValue)) {      
+                double[] newValues = new double[values.Length + 1];
+                for (int i = 0; i < values.Length; i++)
+                {
+                    newValues[i] = values[i];
+                }
+                newValues[values.Length] = changedValue;
+
+                myBarGauge.setOptions(new Dictionary<string, object>()
+                {
+                    { "values", newValues }
+                });
+            }
+        }
+        else
+        {
+            List<double> newValuesList = new List<double>();
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] != changedValue)
+                {
+                    newValuesList.Add(values[i]);
+                }
+            }
+            double[] newValues = newValuesList.ToArray();
+            myBarGauge.setOptions(new Dictionary<string, object>()
+            {
+                { "values", newValues }
+            });
+        }
+        
+        var checkedItems = myListBox.getCheckedItems();
+
+        JSRuntime.InvokeVoidAsync("Example.logSum", log, checkedItems);
+    }
+}
