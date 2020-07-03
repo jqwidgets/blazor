@@ -1,0 +1,146 @@
+<JqxScheduler @ref="myScheduler"
+     width=800 height=600 source=source showLegend=true view=view date=date
+    appointmentDataFields=appointmentDataFields resources=resources views=views>    
+</JqxScheduler>
+
+@code {
+    JqxScheduler myScheduler;
+    DateTime date = new DateTime(2020, 6, 29);
+
+    string view = "weekView";
+
+    IDictionary<string, string> appointmentDataFields = new Dictionary<string, string>()
+    {
+        { "from", "start" },
+        { "to", "end" },
+        { "id", "id" },
+        { "description", "description" },
+        { "location", "location" },
+        { "subject", "start" },
+        { "resourceId", "calendar" }
+    };
+
+    IDictionary<string, object> resources = new Dictionary<string, object>()
+    {
+        { "colorScheme", "scheme05" },
+        { "dataField", "calendar" },
+        { "source", source }
+    };
+
+    string[] views = new string[]
+    {
+        "dayView",
+        "weekView",
+        "monthView"
+    };
+
+    static Dictionary<string, object>[] data = new Dictionary<string, object>[] 
+    {
+        new Dictionary<string, object>()
+        {
+            { "id", "id1" },
+            { "description", "George brings projector for presentations." },
+            { "location", "" },
+            { "subject", "Quarterly Project Review Meeting" },
+            { "calendar", "Room 1" },
+            { "start", "2020-6-29 16:00" },
+            { "end", "2020-6-29 19:00" }
+        },
+        new Dictionary<string, object>()
+        {
+            { "id", "id2" },
+            { "description", "aaa" },
+            { "location", "" },
+            { "subject", "IT Group Mtg." },
+            { "calendar", "Room 2" },
+            { "start", new DateTime(2020, 6, 30, 9, 0, 0).ToString("yyyy-M-dd H:mm")},
+            { "end", new DateTime(2020, 6, 30, 10, 0, 0).ToString("yyyy-M-dd H:mm") }
+        },
+        new Dictionary<string, object>()
+        {
+            { "id", "id3" },
+            { "description", "bbb" },
+            { "location", "" },
+            { "subject", "Course Social Media" },
+            { "calendar", "Room 3" },
+            { "start", new DateTime(2020, 7, 1, 11, 0, 0).ToString("yyyy-M-dd H:mm") },
+            { "end", new DateTime(2020, 7, 1, 13, 0, 0).ToString("yyyy-M-dd H:mm") }
+        },
+        @* new Dictionary<string, object>()
+        {
+            { "id", "id4" },
+            { "description", "" },
+            { "location", "" },
+            { "subject", "New Projects Planning" },
+            { "calendar", "Room 1" },
+            { "start", new DateTime(2020, 10, 23, 16, 0, 0) },
+            { "end", new DateTime(2020, 10, 23, 18, 0, 0) }
+        },
+        new Dictionary<string, object>()
+        {
+            { "id", "id5" },
+            { "description", "" },
+            { "location", "" },
+            { "subject", "Interview with James" },
+            { "calendar", "Room 1" },
+            { "start", new DateTime(2020, 10, 25, 15, 0, 0) },
+            { "end", new DateTime(2020, 10, 25, 17, 0, 0) }
+        },
+        new Dictionary<string, object>()
+        {
+            { "id", "id6" },
+            { "description", "" },
+            { "location", "" },
+            { "subject", "Interview with Nancy" },
+            { "calendar", "Room 4" },
+            { "start", new DateTime(2020, 10, 26, 14, 0, 0) },
+            { "end", new DateTime(2020, 10, 26, 16, 0, 0) }
+        } *@
+    };
+
+    static Dictionary<string, object> source = new Dictionary<string, object>
+    {
+        { "dataType", "array" },
+        { "dataFields", new Dictionary<string, object>[] 
+            {
+                new Dictionary<string, object>()
+                {
+                    { "name", "id" },
+                    { "type", "string" }
+                },
+                new Dictionary<string, object>()
+                {
+                    { "name", "description" },
+                    { "type", "string" }
+                },
+                new Dictionary<string, object>()
+                {
+                    { "name", "location" },
+                    { "type", "string" }
+                },
+                new Dictionary<string, object>()
+                {
+                    { "name", "subject" },
+                    { "type", "string" }
+                },
+                new Dictionary<string, object>()
+                {
+                    { "name", "calendar" },
+                    { "type", "string" }
+                },
+                new Dictionary<string, object>()
+                {
+                    { "name", "start" },
+                    { "type", "date" }
+                },
+                new Dictionary<string, object>()
+                {
+                    { "name", "end" },
+                    { "type", "date" }
+                }
+            }
+        },        
+        { "id", "id" },
+        { "localData", data }
+    };
+}
