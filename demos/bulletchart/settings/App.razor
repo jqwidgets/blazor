@@ -1,0 +1,313 @@
+﻿<JqxBulletChart @ref="myBulletChart"
+    width=500 height=80 barSize=barSize ranges=ranges ticks=ticks
+    title="Revenue 2019 YTD" description="(U.S. $ in thousands)" animationDuration=0
+    pointer=pointer target=target labelsFormat=labelsFormat showTooltip=true>
+</JqxBulletChart>
+
+<JqxExpander width=210 height=500 toggleMode=toggleMode showArrow=false>
+    <div>jqxBulletChart Settings</div>
+    <div>
+        <div style="padding: 5px">
+            <JqxCheckBox isChecked=true onChange=showLabelsCheckboxChange>Show Labels</JqxCheckBox>
+            <ul style="list-style: none;padding: 0; margin-top: 10px; margin-left: 20px; font-family: Verdana; font-size: 12px">
+                <li>
+                  <JqxRadioButton @ref="nearRadio" onChecked=nearRadioChecked isChecked=false groupName="position">Near</JqxRadioButton>
+                </li>
+                <li>
+                  <JqxRadioButton @ref="farRadio" onChecked=farRadioChecked isChecked=false groupName="position">Far</JqxRadioButton>
+                </li>
+                <li>
+                  <JqxRadioButton @ref="bothRadio" onChecked=bothRadioChecked isChecked=true groupName="position">Both</JqxRadioButton>
+                </li>
+            </ul>
+            <br />
+            <div>Labels Format:</div>
+            <ul style="list-style: none;padding: 0; margin-top: 10px; margin-left: 20px; font-family: Verdana; font-size: 12px">
+              <li>
+                <JqxRadioButton onChecked=currencyRadioChecked isChecked=true groupName="format">Currency</JqxRadioButton>
+              </li>
+              <li>
+                <JqxRadioButton onChecked=percentRadioChecked isChecked=false groupName="format">Percent</JqxRadioButton>
+              </li>
+              <li>
+                <JqxRadioButton onChecked=noneRadioChecked isChecked=false groupName="format">None</JqxRadioButton>
+              </li>
+            </ul>
+            <br />
+            <JqxCheckBox isChecked=false onChange=enableAnimationCheckboxChange>Enable Animation</JqxCheckBox>
+            <br />
+            <div>Pointer Value:</div>
+            <JqxSlider onChange=valueSliderChange
+                width=175 min=0 max=300 step=10 showTicks=false
+                mode=sliderMode showButtons="false" value=sliderValue>  
+            </JqxSlider>
+            <br />
+            <div>Pointer Color:</div>
+            <JqxDropDownList onChange=pointerDropDownListChange 
+                width=dropDownListWidth height=25 selectedIndex=4
+                source=colorChoices autoDropDownHeight=true>
+            </JqxDropDownList>
+            <br />
+            <div>Target Color:</div>
+            <JqxDropDownList onChange=targetDropDownListChange 
+                width=dropDownListWidth height=25 selectedIndex=4
+                source=colorChoices autoDropDownHeight=true>
+            </JqxDropDownList>
+            <br />
+            <JqxCheckBox onChange=disabledCheckboxChange isChecked=false>Disabled</JqxCheckBox>
+            <JqxCheckBox onChange=rtlCheckboxChange isChecked=false>Right-to-Left</JqxCheckBox>
+        </div>
+    </div>
+</JqxExpander>
+
+@code {
+    JqxBulletChart myBulletChart;
+    JqxRadioButton nearRadio;
+    JqxRadioButton farRadio;
+    JqxRadioButton bothRadio;
+
+    string barSize = "40%";
+    string labelsFormat = "c";
+    string toggleMode = "none";
+    string sliderMode = "fixed";
+    int sliderValue = 270;
+    string dropDownListWidth = "100%";
+    string[] colorChoices = new string[] { "Black", "Red", "Green", "Blue", "From theme" };
+
+    IList<IDictionary<string, object>> ranges = new List<IDictionary<string, object>>()
+    {
+        new Dictionary<string, object>()
+        {
+            { "startValue", 0 },
+            { "endValue", 200 },
+            { "color", "#000000" },
+            { "opacity", 0.5 }
+        },
+        new Dictionary<string, object>()
+        {
+            { "startValue", 200 },
+            { "endValue", 250 },
+            { "color", "#000000" },
+            { "opacity", 0.3 }
+        },
+        new Dictionary<string, object>()
+        {
+            { "startValue", 250 },
+            { "endValue", 300 },
+            { "color", "#000000" },
+            { "opacity", 0.1 }
+        }
+    };
+
+    IDictionary<string, object> pointer = new Dictionary<string, object>()
+    {
+        { "value", 270 },
+        { "label", "Revenue 2019 YTD" },
+        { "size", "25%" },
+        { "color", "" }
+    };
+
+    IDictionary<string, object> target = new Dictionary<string, object>()
+    {
+        { "value", 260 },
+        { "label", "Revenue 2018 YTD" },
+        { "size", 4 },
+        { "color", "" }
+    };
+
+    IDictionary<string, object> ticks = new Dictionary<string, object>()
+    {
+        { "position", "both" },
+        { "interval", 50 },
+        { "size", 10 }
+    };
+
+    private void showLabelsCheckboxChange(IDictionary<string, object> e)
+    {
+        string isChecked = e["checked"].ToString();
+        if (isChecked == "True")
+        {
+            nearRadio.enable();
+            farRadio.enable();
+            bothRadio.enable();
+            IDictionary<string, object> ticks = null;
+            if (nearRadio.isChecked)
+            {
+                ticks = new Dictionary<string, object>() 
+                { 
+                    { "ticks", new Dictionary<string, string>(){ { "position", "near" } } }                                          
+                };            
+            }
+            else if (farRadio.isChecked)
+            {
+                ticks = new Dictionary<string, object>() 
+                { 
+                    { "ticks", new Dictionary<string, string>(){ { "position", "far" } } }                                          
+                }; 
+            }
+            else
+            {
+                ticks = new Dictionary<string, object>() 
+                { 
+                    { "ticks", new Dictionary<string, string>(){ { "position", "both" } } }                                          
+                }; 
+            }
+            myBulletChart.setOptions(ticks);
+        }
+        else 
+        {
+            var ticks = new Dictionary<string, object>() 
+            { 
+                { "ticks", new Dictionary<string, string>(){ { "position", "none" } } }                                          
+            };                      
+            myBulletChart.setOptions(ticks);
+            
+            nearRadio.disable();
+            farRadio.disable();
+            bothRadio.disable();
+        }
+    }
+
+    private void enableAnimationCheckboxChange(IDictionary<string, object> e)
+    {
+        string isChecked = e["checked"].ToString();
+
+        IDictionary<string, int> animationDuration = null;
+        if (isChecked == "True")
+        {
+            animationDuration = new Dictionary<string, int>() { { "animationDuration", 400 } };
+        }
+        else 
+        {
+            animationDuration = new Dictionary<string, int>() { { "animationDuration", 0 } };
+        }
+
+        myBulletChart.setOptions(animationDuration);
+    }
+
+    private void nearRadioChecked(IDictionary<string, object> e)
+    {
+        var ticks = new Dictionary<string, object>() 
+        { 
+            { "ticks", new Dictionary<string, string>(){ { "position", "near" } } }                                          
+        };
+        myBulletChart.setOptions(ticks);
+    }
+
+    private void farRadioChecked(IDictionary<string, object> e)
+    {
+        var ticks = new Dictionary<string, object>() 
+        { 
+            { "ticks", new Dictionary<string, string>(){ { "position", "far" } } }                                          
+        };
+        myBulletChart.setOptions(ticks);
+    }
+
+    private void bothRadioChecked(IDictionary<string, object> e)
+    {
+        var ticks = new Dictionary<string, object>() 
+        { 
+            { "ticks", new Dictionary<string, string>(){ { "position", "both" } } }                                          
+        };
+        myBulletChart.setOptions(ticks);
+    }    
+
+    private void currencyRadioChecked(IDictionary<string, object> e)
+    {
+        var labelsFormat = new Dictionary<string, string>() { { "labelsFormat", "c" } };
+        myBulletChart.setOptions(labelsFormat);
+    }
+
+    private void percentRadioChecked(IDictionary<string, object> e)
+    {
+        var labelsFormat = new Dictionary<string, string>() { { "labelsFormat", "p" } };
+        myBulletChart.setOptions(labelsFormat);
+    }
+
+    private void noneRadioChecked(IDictionary<string, object> e)
+    {
+        var labelsFormat = new Dictionary<string, string>() { { "labelsFormat", null} };
+        myBulletChart.setOptions(labelsFormat);
+    } 
+
+    private void disabledCheckboxChange(IDictionary<string, object> e)
+    {
+        string isChecked = e["checked"].ToString();   
+
+        IDictionary<string, bool> disabled = null;
+        if (isChecked == "True")
+        {
+            disabled = new Dictionary<string, bool>() { { "disabled", true} };            
+        }
+        else
+        {
+            disabled = new Dictionary<string, bool>() { { "disabled", false} };    
+        }
+
+        myBulletChart.setOptions(disabled);
+    }
+
+    private void rtlCheckboxChange(IDictionary<string, object> e)
+    {
+        string isChecked = e["checked"].ToString();   
+             
+        IDictionary<string, bool> rtl = null;
+        if (isChecked == "True")
+        {
+            rtl = new Dictionary<string, bool>() { { "rtl", true} };            
+        }
+        else
+        {
+            rtl = new Dictionary<string, bool>() { { "rtl", false} };    
+        }
+
+        myBulletChart.setOptions(rtl);
+    } 
+
+    private void valueSliderChange(IDictionary<string, object> e)
+    {
+        double newValue = Double.Parse(e["value"].ToString());
+        Console.WriteLine(newValue);
+        myBulletChart.val(newValue);      
+    } 
+
+    private void pointerDropDownListChange(IDictionary<string, object> e)
+    {
+        string choice = colorChoices[int.Parse(e["index"].ToString())];
+        string newColor = "";
+        if (choice != "From theme")
+        {
+            newColor = choice;
+        }
+
+        var pointer = new Dictionary<string, object>()
+        {
+            { "pointer", new Dictionary<string, string>() { { "color", newColor } } }
+        };
+
+        myBulletChart.setOptions(pointer);
+    } 
+    
+    private void targetDropDownListChange(IDictionary<string, object> e)
+    {
+        string choice = colorChoices[int.Parse(e["index"].ToString())];
+        string newColor = "";
+        if (choice != "From theme")
+        {
+            newColor = choice;
+        }
+
+        var target = new Dictionary<string, object>()
+        {
+            { "target", new Dictionary<string, string>() { { "color", newColor } } }
+        };
+        
+        myBulletChart.setOptions(target);
+    }         
+}
+
+<style>
+    .jqx-expander {
+        margin-top: 20px;
+    }
+</style>

@@ -1,0 +1,57 @@
+﻿<JqxBulletChart 
+    width=500 height=80 barSize=barSize title="Profit"
+    description="(1000s)" ranges=ranges pointer=pointer
+    target=target ticks=ticks showTooltip=true>
+</JqxBulletChart>
+
+@code {
+    string barSize = "40%";
+
+    IList<IDictionary<string, object>> ranges = new List<IDictionary<string, object>>()
+    {
+        new Dictionary<string, object>()
+        {
+            { "startValue", -50 },
+            { "endValue", 150 },
+            { "color", "#000000" },
+            { "opacity", 0.5 }
+        },
+        new Dictionary<string, object>()
+        {
+            { "startValue", 150 },
+            { "endValue", 200 },
+            { "color", "#000000" },
+            { "opacity", 0.3 }
+        },
+        new Dictionary<string, object>()
+        {
+            { "startValue", 200 },
+            { "endValue", 250 },
+            { "color", "#000000" },
+            { "opacity", 0.1 }
+        }
+    };
+
+    IDictionary<string, object> pointer = new Dictionary<string, object>()
+    {
+        { "value", -20 },
+        { "label", "Profit" },
+        { "size", "25%" },
+        { "color", "Black" }
+    };
+
+    IDictionary<string, object> target = new Dictionary<string, object>()
+    {
+        { "value", 200 },
+        { "label", "Target profit" },
+        { "size", 4 },
+        { "color", "Black" }
+    };
+
+    IDictionary<string, object> ticks = new Dictionary<string, object>()
+    {
+        { "position", "far" },
+        { "interval", 50 },
+        { "size", 10 }
+    };
+}
