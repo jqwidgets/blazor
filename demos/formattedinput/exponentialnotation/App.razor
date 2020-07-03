@@ -1,0 +1,44 @@
+﻿@inject IJSRuntime JSRuntime;
+
+<JqxFormattedInput @ref="myFormattedInput"
+    width=250 height=25 radix=radix decimalNotation=decimalNotation>
+</JqxFormattedInput>
+
+<div style="margin-top: 20px;">
+    <JqxButton width=buttonWidth onClick="getDecimal">Get decimal value</JqxButton>
+    <JqxButton width=buttonWidth onClick="getExponential">Get exponential notation</JqxButton>
+    <br />
+    <JqxButton width=buttonWidth onClick="getScientific">Get scientific notation</JqxButton>
+    <JqxButton width=buttonWidth onClick="getEngineering">Get engineering notation</JqxButton>
+</div>
+
+@code {
+    JqxFormattedInput myFormattedInput;
+    string radix = "decimal";
+    string decimalNotation = "exponential";   
+    int buttonWidth = 175;
+
+    private void getDecimal(IDictionary<string, object> e) 
+    {
+        var decimalValue = myFormattedInput.val("decimal");
+        JSRuntime.InvokeVoidAsync("Example.alert", "Decimal value: " + decimalValue);
+    }
+
+    private void getExponential(IDictionary<string, object> e) 
+    {
+        var exponentialValue = myFormattedInput.val("exponential");
+        JSRuntime.InvokeVoidAsync("Example.alert", "Exponential notation: " + exponentialValue);
+    }
+
+    private void getScientific(IDictionary<string, object> e) 
+    {
+        var scientificValue = myFormattedInput.val("scientific");
+        JSRuntime.InvokeVoidAsync("Example.alert", "Scientific notation: " + scientificValue);
+    }
+
+    private void getEngineering(IDictionary<string, object> e) 
+    {
+        var engineeringValue = myFormattedInput.val("engineering");
+        JSRuntime.InvokeVoidAsync("Example.alert", "Engineering notation: " + engineeringValue);
+    }
+}

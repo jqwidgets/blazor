@@ -1,0 +1,37 @@
+﻿<div style="font-size: 13px; font-family: Verdana; float: left;">
+    <div style='margin-top: 10px;'>Default</div>
+    <JqxNumberInput width="width" height="height" spinButtons="spinButtons"></JqxNumberInput>
+
+    <div style='margin-top: 10px;'>Primary</div>
+    <JqxNumberInput width="width" height="height" spinButtons="spinButtons" template="primaryTemplate"></JqxNumberInput>
+
+    <div style='margin-top: 10px;'>Success</div>
+    <JqxNumberInput width="width" height="height" spinButtons="spinButtons" template="successTemplate"></JqxNumberInput>
+
+    <div style='margin-top: 10px;'>Info</div>
+    <JqxNumberInput width="width" height="height" spinButtons="spinButtons" template="infoTemplate"></JqxNumberInput>
+
+    <div style='margin-top: 10px;'>Warning</div>
+    <JqxNumberInput width="width" height="height" spinButtons="spinButtons" template="warningTemplate"></JqxNumberInput>
+
+    <div style='margin-top: 10px;'>Danger</div>
+    <JqxNumberInput width="width" height="height" spinButtons="spinButtons" template="dangerTemplate"></JqxNumberInput>
+</div>
+
+@code { 
+    int width = 250;
+    int height = 25;
+    bool spinButtons = true;
+    
+    string primaryTemplate = "primary";
+    string successTemplate = "success";
+    string infoTemplate = "info";
+    string warningTemplate = "warning";
+    string dangerTemplate = "danger";
+} 
+
+<style>
+    .jqx-numberinput {
+       margin-top: 3px; 
+    }
+</style> 
