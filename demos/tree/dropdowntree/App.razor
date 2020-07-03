@@ -1,0 +1,55 @@
+﻿@inject IJSRuntime JSRuntime;
+
+<JqxDropDownButton @ref="myDropDownButton" width="150" height="25">
+    <div @onmouseup="HandleMouseUp">
+        <JqxTree width="200" height="220">
+            <ul>
+                <li item-selected="true">Home</li>
+                <li item-expanded="true">Solutions
+                    <ul>
+                        <li>Education</li>
+                        <li>Financial services</li>
+                        <li>Government</li>
+                        <li>Manufacturing</li>
+                        <li>Solutions
+                            <ul>
+                                <li>eLearning</li>
+                                <li>Mobile</li>
+                                <li>RIA</li>
+                                <li>Training</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>Products
+                    <ul>
+                        <li>PC products</li>
+                        <li>Mobile products</li>
+                        <li>All products</li>
+                    </ul>
+                </li>
+            </ul>
+        </JqxTree>
+    </div>
+</JqxDropDownButton>
+
+@code {
+    JqxDropDownButton myDropDownButton;
+
+    
+    async Task ChangeDropdownbuttonContent (double x, double y)
+    {
+        var text = await JSRuntime.InvokeAsync<string>("Example.changeContent", x, y);
+        var dropDownContent = "<div style='position: relative; margin-left: 4px; margin-top: 5px;'>" + text + "</div>";
+
+        myDropDownButton.setContent(dropDownContent);
+    }
+
+    void HandleMouseUp(MouseEventArgs args)
+    {
+        double startX = args.ClientX;
+        double startY = args.ClientY;
+
+        ChangeDropdownbuttonContent(startX, startY);
+    }
+}
