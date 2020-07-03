@@ -1,0 +1,110 @@
+﻿<div id="chartContainer">
+    <JqxChart
+        title="Top 5 most populated countries" description="Statistics for 2018"
+        enableAnimations=true showLegend=true padding=padding titlePadding=titlePadding
+        source=sampleData xAxis=xAxis valueAxis=valueAxis seriesGroups=seriesGroups 
+        colorScheme="scheme01">
+    </JqxChart>
+</div>
+
+@code {
+    IDictionary<string, object>[] sampleData = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>() 
+        {
+            { "Country", "China" }, { "Population", 1347350000 }, { "Percent", 19.18 }
+        }, 
+        new Dictionary<string, object>() 
+        { 
+            { "Country", "India" }, { "Population", 1210193422 }, { "Percent", 17.22 }
+        },
+        new Dictionary<string, object>() 
+        { 
+            { "Country", "USA" }, { "Population", 313912000 }, { "Percent", 4.47 }
+        },
+        new Dictionary<string, object>() 
+        { 
+            { "Country", "Indonesia" }, { "Population", 237641326 }, { "Percent", 3.38 }
+        },
+        new Dictionary<string, object>() 
+        { 
+            { "Country", "Brazil" }, { "Population", 192376496 }, { "Percent", 2.74 }
+        }
+    };
+
+    IDictionary<string, int> padding = new Dictionary<string, int>()
+    {
+        { "left", 20 },
+        { "top", 5 },
+        { "right", 20 },
+        { "bottom", 5 }
+    };
+
+    IDictionary<string, int> titlePadding = new Dictionary<string, int>()
+    {
+        { "left", 90 },
+        { "top", 0 },
+        { "right", 0 },
+        { "bottom", 10 }
+    };    
+
+    IDictionary<string, object> xAxis = new Dictionary<string, object>()
+    {
+        { "dataField", "Country" },         
+        { 
+            "gridLines", 
+            new Dictionary<string, object>()
+            {
+                { "visible", true }
+            }
+        },               
+        { "flip", false }
+    };
+
+    IDictionary<string, object> valueAxis = new Dictionary<string, object>()
+    {
+        { "flip", true },       
+        {
+            "labels", 
+            new Dictionary<string, object>()
+            {
+                { "visible", true }          
+            }
+        }
+    };
+
+    IDictionary<string, object>[] seriesGroups = new Dictionary<string, object>[]
+    {      
+        new Dictionary<string, object>() 
+        { 
+            { "type", "column" },
+            { "orientation", "horizontal" }, 
+            { "columnsGapPercent", 50 },
+            {
+                "toolTipFormatSettings",                 
+                new Dictionary<string, object>() 
+                { 
+                    { "thousandsSeparator", "," }
+                }                
+            },
+            {
+                "series", 
+                new Dictionary<string, object>[]
+                {
+                    new Dictionary<string, object>() 
+                    { 
+                        { "dataField", "Population" }, 
+                        { "displayText", "Population (millions)" }
+                    }
+                }
+            }
+        }
+    };
+}
+
+<style>
+    #chartContainer > div {
+        width: 800px;
+        height: 500px;
+    }
+</style>

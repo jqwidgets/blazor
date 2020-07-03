@@ -1,0 +1,182 @@
+﻿<div id="chartContainer">
+<JqxChart 
+    title="Fitness & exercise weekly scorecard" description="Time spent in vigorous exercise by activity"
+    showLegend=true enableAnimations=true padding=padding titlePadding=titlePadding 
+    source=sampleData xAxis=xAxis valueAxis=valueAxis seriesGroups=seriesGroups colorScheme="scheme05">    
+</JqxChart>
+</div>
+
+@code {
+    IDictionary<string, object>[] sampleData = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>() 
+        {
+            { "Day", "Monday" }, { "Running", 30 }, { "Swimming", 10 }, { "Cycling", 25 }, { "Goal", 40 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "Day", "Tuesday" }, { "Running", 25 }, { "Swimming", 15 }, { "Cycling", 10 }, { "Goal", 50 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "Day", "Wednesday" }, { "Running", 30 }, { "Swimming", 10 }, { "Cycling", 25 }, { "Goal", 60 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "Day", "Thursday" }, { "Running", 40 }, { "Swimming", 20 }, { "Cycling", 25 }, { "Goal", 40 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "Day", "Friday" }, { "Running", 45 }, { "Swimming", 20 }, { "Cycling", 25 }, { "Goal", 50 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "Day", "Saturday" }, { "Running", 30 }, { "Swimming", 20 }, { "Cycling", 30 }, { "Goal", 60 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "Day", "Sunday" }, { "Running", 20 }, { "Swimming", 30 }, { "Cycling", 10 }, { "Goal", 90 }
+        }    
+    };
+    
+    IDictionary<string, int> padding = new Dictionary<string, int>()
+    {
+        { "left", 10 },
+        { "top", 10 },
+        { "right", 15 },
+        { "bottom", 10 }
+    };
+
+    IDictionary<string, int> titlePadding = new Dictionary<string, int>()
+    {
+        { "left", 90 },
+        { "top", 0 },
+        { "right", 0 },
+        { "bottom", 10 }
+    };    
+
+    IDictionary<string, object> xAxis = new Dictionary<string, object>()
+    {
+        { "dataField", "Day" },
+        { "unitInterval", 1 },   
+        { "valuesOnTicks", false },     
+        { 
+            "tickMarks", 
+            new Dictionary<string, object>()
+            {
+                { "visible", true },
+                { "interval", 1 }
+            }
+        },
+        { 
+            "gridLinesInterval", 
+            new Dictionary<string, object>()
+            {
+                { "visible", true },
+                { "interval", 1 }
+            }
+        },        
+        { 
+            "padding", 
+            new Dictionary<string, object>()
+            {
+                { "bottom", 10 }
+            }
+        }
+    };
+
+    IDictionary<string, object> valueAxis = new Dictionary<string, object>()
+    {
+        { "unitInterval", 10 },
+        { "minValue", 0 },
+        { "maxValue", 50 },
+        { 
+            "title", 
+            new Dictionary<string, string>()
+            {
+                { "text", "Time in minutes<br><br>" }
+            }
+        },
+        { 
+            "labels", 
+            new Dictionary<string, string>()
+            {
+                { "horizontalAlignment", "right" }
+            }
+        }
+    };
+
+    IDictionary<string, object>[] seriesGroups = new Dictionary<string, object>[]
+    {      
+        new Dictionary<string, object>() 
+        { 
+            { "type", "line" }, 
+            { 
+                "series", 
+                new List<Dictionary<string, object>>()
+                {
+                    new Dictionary<string, object>()
+                    {
+                        { "dataField", "Swimming" },
+                        { "symbolType", "square" },
+                        {
+                            "labels",
+                            new Dictionary<string, object>()
+                            {
+                                { "visible", true },
+                                { "backgroundColor", "#FEFEFE" },
+                                { "backgroundOpacity", 0.2 },
+                                { "borderColor", "#7FC4EF" },
+                                { "borderOpacity", 0.7 },
+                                { 
+                                    "padding", 
+                                    new Dictionary<string, object>()
+                                    {
+                                        { "left", 5 },
+                                        { "right", 5 },
+                                        { "top", 0 },
+                                        { "bottom", 0 }
+                                    }
+                                }
+                            }
+                        }
+
+                    },
+                    new Dictionary<string, object>()
+                    {
+                        { "dataField", "Running" },
+                        { "symbolType", "square" },
+                        {
+                            "labels",
+                            new Dictionary<string, object>()
+                            {
+                                { "visible", true },
+                                { "backgroundColor", "#FEFEFE" },
+                                { "backgroundOpacity", 0.2 },
+                                { "borderColor", "#7FC4EF" },
+                                { "borderOpacity", 0.7 },
+                                { 
+                                    "padding", 
+                                    new Dictionary<string, object>()
+                                    {
+                                        { "left", 5 },
+                                        { "right", 5 },
+                                        { "top", 0 },
+                                        { "bottom", 0 }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    };
+}
+
+<style>
+    #chartContainer > div {
+        width: 800px;
+        height: 450px;
+    }
+</style>

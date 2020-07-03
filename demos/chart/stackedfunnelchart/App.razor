@@ -1,0 +1,145 @@
+﻿<div id="chartContainer">
+    <JqxChart
+        title="Stacked Funnel Chart" 
+        description="This example demonstrates stacked funnel chart with positive and negative values"
+        showLegend=true enableAnimations=false padding=padding titlePadding=titlePadding
+        source=sampleData xAxis=xAxis valueAxis=valueAxis seriesGroups=seriesGroups 
+        colorScheme="scheme02">
+    </JqxChart>
+</div>
+
+@code {
+    IDictionary<string, object>[] sampleData = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>() { 
+            { "Index", "1" }, { "SerieA", -30 }, { "SerieB", -10 }, { "SerieC", -25 } 
+        },
+        new Dictionary<string, object>() { 
+            { "Index", "2" }, { "SerieA", -25 }, { "SerieB", -25 }, { "SerieC", 10 } 
+        },
+        new Dictionary<string, object>() { 
+            { "Index", "3" }, { "SerieA", 30 }, { "SerieB", 10 }, { "SerieC", 25 } 
+        },
+        new Dictionary<string, object>() { 
+            { "Index", "4" }, { "SerieA", 35 }, { "SerieB", 25 }, { "SerieC", 45 } 
+        },
+        new Dictionary<string, object>() { 
+            { "Index", "5" }, { "SerieA", 10 }, { "SerieB", 20 }, { "SerieC", 25 } 
+        },
+        new Dictionary<string, object>() { 
+            { "Index", "6" }, { "SerieA", 30 }, { "SerieB", 10 }, { "SerieC", 30 } 
+        },
+        new Dictionary<string, object>() { 
+            { "Index", "7" }, { "SerieA", 60 }, { "SerieB", 45 }, { "SerieC", 10 }
+        }
+    };
+
+    IDictionary<string, int> padding = new Dictionary<string, int>()
+    {
+        { "left", 15 },
+        { "top", 15 },
+        { "right", 15 },
+        { "bottom", 15 }
+    };
+
+    IDictionary<string, int> titlePadding = new Dictionary<string, int>()
+    {
+        { "left", 90 },
+        { "top", 0 },
+        { "right", 0 },
+        { "bottom", 10 }
+    };    
+
+    IDictionary<string, object> xAxis = new Dictionary<string, object>()
+    {
+        { "dataField", "Index" },
+        { 
+            "tickMarks", 
+            new Dictionary<string, object>()
+            {
+                { "visible", true },
+                { "interval", 1 }
+            }
+        },
+        { 
+            "gridLines", 
+            new Dictionary<string, object>()
+            {
+                { "visible", true },
+                { "interval", 1 }
+            }
+        }
+    };
+
+    IDictionary<string, object> valueAxis = new Dictionary<string, object>()
+    {
+        { 
+            "labels", 
+            new Dictionary<string, object>()
+            {
+                { "horizontalAlignment", "right" }
+            }
+        }
+    };
+
+    List<Dictionary<string, object>> seriesGroups = new List<Dictionary<string, object>>()
+    {      
+        new Dictionary<string, object>() 
+        { 
+            { "type", "stackedcolumn" },
+            { "columnsGapPercent", 50 },
+            { "seriesGapPercent", 0 },
+            { "columnsTopWidthPercent", 100 },
+            { "columnsBottomWidthPercent", 30 },
+            {
+                "series", 
+                new Dictionary<string, object>[]
+                {
+                    new Dictionary<string, object>() 
+                    { 
+                        { "dataField", "SerieA" },
+                        { "displayText", "Serie A"},
+                        {
+                            "labels",
+                            new Dictionary<string, object>() 
+                            {
+                                { "visible", true }
+                            }
+                        }
+                    },
+                    new Dictionary<string, object>() 
+                    { 
+                        { "dataField", "SerieB" },
+                        { "displayText", "Serie B"},
+                        {
+                            "labels",
+                            new Dictionary<string, object>() 
+                            {
+                                { "visible", true }
+                            }
+                        }
+                    },
+                    new Dictionary<string, object>() 
+                    { 
+                        { "dataField", "SerieC" },
+                        { "displayText", "Serie C"},
+                        {
+                            "labels",
+                            new Dictionary<string, object>() 
+                            {
+                                { "visible", true }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    };
+}
+
+<style>
+    #chartContainer > div {
+        width: 800px;
+        height: 500px;
+    }
+</style>

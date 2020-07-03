@@ -1,0 +1,106 @@
+﻿<div id="chartContainer">
+    <JqxChart
+        title="Logarithmic Scale Axis Example"
+        description="Sample logarithmic scale axis with base 2"
+        enableAnimations=true padding=padding titlePadding=titlePadding
+        source=sampleData xAxis=xAxis valueAxis=valueAxis seriesGroups=seriesGroups>
+    </JqxChart>
+</div>
+
+@code {
+    IDictionary<string, object>[] sampleData = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>() { { "a", 0.35 }, { "b", 14.5 } }, 
+        new Dictionary<string, object>() { { "a", 1 }, { "b", 2.5 } },
+        new Dictionary<string, object>() { { "a", 10 }, { "b", 0.2 } },
+        new Dictionary<string, object>() { { "a", 100 }, { "b", 205 } },
+        new Dictionary<string, object>() { { "a", 1 }, { "b", 100 } },
+        new Dictionary<string, object>() { { "a", 5.11 }, { "b", 10.13 } },
+        new Dictionary<string, object>() { { "a", 20.13 }, { "b", 10.13 } },
+        new Dictionary<string, object>() { { "a", 600 }, { "b", 300 } }
+    };
+
+    IDictionary<string, int> padding = new Dictionary<string, int>()
+    {
+        { "left", 5 },
+        { "top", 5 },
+        { "right", 5 },
+        { "bottom", 5 }
+    };
+
+    IDictionary<string, int> titlePadding = new Dictionary<string, int>()
+    {
+        { "left", 0 },
+        { "top", 0 },
+        { "right", 0 },
+        { "bottom", 10 }
+    };    
+
+    IDictionary<string, object> xAxis = new Dictionary<string, object>()
+    {
+        { "dataField", "" }
+    };
+
+    IDictionary<string, object> valueAxis = new Dictionary<string, object>()
+    {
+        { "logarithmicScale", true },
+        { "logarithmicScaleBase", 2 },
+        { "unitInterval", 1 },
+        { 
+            "title", 
+            new Dictionary<string, object>()
+            {
+                { "text", "Value" }
+            }        
+        },
+        {
+            "labels",
+            new Dictionary<string, object>()
+            {
+                { 
+                    "formatSettings",
+                    new Dictionary<string, object>()
+                    {
+                        { "decimalPlaces", 3 }
+                    } 
+                },
+                { "horizontalAlignment", "right" },
+            }
+        }
+    };
+
+    List<Dictionary<string, object>> seriesGroups = new List<Dictionary<string, object>>()
+    {      
+        new Dictionary<string, object>() 
+        { 
+            { "type", "column" },            
+            {
+                "series", 
+                new Dictionary<string, object>[]
+                {
+                    new Dictionary<string, object>() { { "dataField", "a" }, { "displayText", "A" } },
+                    new Dictionary<string, object>() { { "dataField", "b" }, { "displayText", "B" } }
+                }
+            }
+        },
+        new Dictionary<string, object>() 
+        { 
+            { "type", "line" },            
+            {
+                "series", 
+                new Dictionary<string, object>[]
+                {
+                    new Dictionary<string, object>() { { "dataField", "a" }, { "displayText", "A2" } },
+                    new Dictionary<string, object>() { { "dataField", "b" }, { "displayText", "B2" } }
+                }
+            }
+        }
+    };
+}
+
+<style>
+    #chartContainer > div {
+        width: 800px;
+        height: 500px;
+    }
+</style>
