@@ -1,0 +1,55 @@
+<JqxKnob 
+    value=-100 min=-100 max=100 step=0.5 startAngle=120
+    endAngle=480 snapToStep=true rotation=rotation
+    marks=marks labels=labels progressBar=progressBar pointer=pointer
+    spinner=spinner dial=dial dragStartAngle=120 dragEndAngle=420>
+</JqxKnob>
+
+@code {
+    string rotation = "clockwise";
+
+    IDictionary<string, object> marks = new Dictionary<string, object>()
+    {
+        { "colorRemaining", "#333" }, { "colorProgress", "#17a25d" },
+        { "offset", "75%" }, { "thickness", 2 }, { "size", "1%" },
+        { "majorSize", "1%" }, { "majorInterval", 10 }, { "minorInterval", 5 }    
+    };
+
+    IDictionary<string, object> labels = new Dictionary<string, object>()
+    {
+        { "offset", "88%" }, { "step", 20 }, { "visible", true }
+    };
+
+    IDictionary<string, object> progressBar = new Dictionary<string, object>()
+    {
+        { "size", "70%" }, { "offset", "0%" }
+    };
+
+    IDictionary<string, object> pointer = new Dictionary<string, object>()
+    {
+        { "type", "arrow" }, { "thickness", 20 },
+        { "style", new Dictionary<string, object>() { { "fill", "#ff6126" }, { "stoke", "#333"} } },
+        { "size", "60%" }, { "offset", "50%" }
+    };
+
+    IDictionary<string, object> spinner = new Dictionary<string, object>()
+    {
+        { "style", new Dictionary<string, object>() { { "fill", "#17a25d" }, { "stoke", "#17a25d"} } },
+        { "innerRadius", "65%" }, { "outerRadius", "70%" },       
+        { 
+            "marks", 
+            new Dictionary<string, object>() 
+            {
+                { "colorRemaining", "#fff" }, { "colorProgress", "#fff" },
+                { "offset", "68%" }, { "thickness", 4 }, { "type", "circle" }, { "size", "5%" },
+                { "majorSize", "5%" }, { "majorInterval", 20 }, { "minorInterval", 20 } 
+            } 
+        }
+    };
+
+    IDictionary<string, object> dial = new Dictionary<string, object>()
+    {
+        { "style", new Dictionary<string, object>() { { "fill", "#17a25d" }, { "stoke", "#17a25d"} } },
+        { "innerRadius", "0%" }, { "outerRadius", "50%" }
+    };
+}

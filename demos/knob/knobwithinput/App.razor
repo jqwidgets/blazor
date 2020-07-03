@@ -1,0 +1,71 @@
+<JqxKnob @ref="myKnob" onChange="onKnobChange"
+    width=400 height=400 value=30 min=0 max=100 rotation=rotation
+    startAngle=270 endAngle=630 progressBar=progressBar pointer=pointer dial=dial>
+</JqxKnob>
+
+<JqxNumberInput @ref="myNumberInput" onChange="onInputChange"
+    inputMode=inputMode decimalDigits=0 value=30>
+</JqxNumberInput>
+
+@code {
+    JqxKnob myKnob;
+    JqxNumberInput myNumberInput;
+
+    string inputMode = "simple";
+    string rotation = "clockwise";
+
+    IDictionary<string, object> progressBar = new Dictionary<string, object>()
+    {        
+        { "style", new Dictionary<string, object>() { { "fill", "#00a644" } } },
+        { "background", new Dictionary<string, object>() { { "fill", "#eeeeee" } } },
+        { "size", "30%" }, { "offset", "70%" }
+    };
+
+    IDictionary<string, object> pointer = new Dictionary<string, object>() 
+    {
+        { "type", "line" },
+        { "style", new Dictionary<string, object>() { { "fill", "#00a644" } } },
+        { "size", "30%" }, { "offset", "70%" }, { "thickness", 20 }
+    };
+
+    IDictionary<string, object> dial = new Dictionary<string, object>()
+    {
+        { "style", new Dictionary<string, object>() { { "fill", "#fff" } } },
+        { "innerRadius", "68%" }, { "outerRadius", "92%" },
+        { "startAngle", 0 }, { "endAngle", 360 }
+    };
+
+    private void onKnobChange(IDictionary<string, object> e) 
+    {
+        myNumberInput.val(e["value"]);
+    }
+
+    private void onInputChange(IDictionary<string, object> e) 
+    {
+        myKnob.val(e["value"]);
+    }
+}
+
+<style>
+    input {
+        width: 110px !important;
+        height: 70px !important;
+        font-size: 48px !important;
+        position: absolute;
+        vertical-align: middle;
+        border: 0px !important;
+        font-weight: bold;
+        font-variant: normal;
+        font-stretch: normal;                
+        color: #00a644;                
+        background: none;
+        margin-top: -35px;
+        margin-left:-55px;
+        left: 185px;
+        top: 200px;
+    }
+
+    .jqx-numberinput {
+        border: none;
+    }
+</style>

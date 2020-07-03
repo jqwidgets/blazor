@@ -1,0 +1,60 @@
+<JqxKnob
+    width=width height=height value=60 min=0 max=100 startAngle=120
+    endAngle=420 snapToStep=true rotation=rotation 
+    marks=marks labels=labels progressBar=progressBar pointer=pointer>
+</JqxKnob>
+
+@code {
+    string width = "75%";
+    string height = "75%";
+    string rotation = "clockwise";
+
+    IDictionary<string, object> marks = new Dictionary<string, object>()
+    {
+        { 
+            "colorRemaining",
+            new Dictionary<string, object>() { { "color", "grey" }, { "border", "grey" } }
+        },
+        { 
+            "colorProgress",
+            new Dictionary<string, object>() { { "color", "00a4e1" }, { "border", "00a4e1"} }
+        },
+        { "type", "line" }, { "offset", "71%" }, { "thickness", 3 }, { "size", "6%" }, 
+        { "majorSize", "9%" }, { "majorInterval", 10 }, { "minorInterval", 2 }    
+    };
+
+    IDictionary<string, object> labels = new Dictionary<string, object>()
+    {
+        { "offset", "88%" }, { "step", 10 }, { "visible", true }
+    };
+
+    IDictionary<string, object> progressBar = new Dictionary<string, object>()
+    {
+        { 
+            "style",
+            new Dictionary<string, object>() { { "fill", "#00a4e1" }, { "stoke", "grey" } }
+        },
+        { "size", "9%" }, { "offset", "60%" },
+        { 
+            "background",
+            new Dictionary<string, object>() { { "fill", "grey" }, { "stoke", "grey" } }
+        }
+    };
+
+    IDictionary<string, object> pointer = new Dictionary<string, object>()
+    {
+        { "type", "arrow" },
+        { 
+            "style",
+            new Dictionary<string, object>() { { "fill", "#00a4e1" }, { "stoke", "grey" } }
+        },
+        { "size", "59%" }, { "offset", "49%" }, { "thickness", 20 }
+    };
+}
+
+<style>
+    html, body {
+        width: 100%;
+        height: 100%;
+    }
+</style>
