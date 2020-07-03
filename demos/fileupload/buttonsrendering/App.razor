@@ -1,0 +1,10 @@
+<JqxFileUpload 
+    width=300 uploadUrl="imageUpload.php" fileInputName="fileToUpload"
+    cancelTemplate=cancelTemplate browseTemplate=browseTemplate uploadTemplate=uploadTemplate>
+</JqxFileUpload>
+
+@code {
+    string cancelTemplate = "danger";
+    string browseTemplate = "success";
+    string uploadTemplate = "primary";
+}
