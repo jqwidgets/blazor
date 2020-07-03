@@ -1,0 +1,64 @@
+<JqxDataTable
+    width=850 source=source columns=columns altRows=true 
+    pageable=true sortable=true groups=groups>
+</JqxDataTable>
+
+@code {
+    string[] groups = new string[] { "SupplierName" };
+   IDictionary<string, object> source = new Dictionary<string, object>()
+    {
+        { "datatype", "xml" },
+        { 
+            "dataFields",
+            new Dictionary<string, string>[]
+            {
+                new Dictionary<string, string>() { { "name", "SupplierName" }, { "type", "string" } },
+                new Dictionary<string, string>() { { "name", "Quantity" }, { "type", "number" } },
+                new Dictionary<string, string>() { { "name", "OrderDate" }, { "type", "date" } },
+                new Dictionary<string, string>() { { "name", "OrderAddress" }, { "type", "string" } },
+                new Dictionary<string, string>() { { "name", "Freight" }, { "type", "number" } },
+                new Dictionary<string, string>() { { "name", "Price" }, { "type", "number" } },
+                new Dictionary<string, string>() { { "name", "City" }, { "type", "string" } },
+                new Dictionary<string, string>() { { "name", "ProductName" }, { "type", "string" } },
+                new Dictionary<string, string>() { { "name", "Address" }, { "type", "string" } }
+            }
+        },
+        { "url", "./sampledata/orderdetailsextended.xml" },
+        { "root", "DATA" },
+        { "record", "ROW" }
+    };
+
+    IDictionary<string, object>[] columns = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>() 
+        {
+            { "text", "Supplier Name" }, { "hidden", true },{ "cellsAlign", "left" }, { "align", "left" },
+            { "datafield", "SupplierName" }, { "width", 280 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Product Name" }, { "cellsAlign", "left" }, { "align", "left" },
+            { "datafield", "ProductName" }, { "width", 250 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Quantity" }, { "cellsAlign", "right" }, { "align", "right" },
+            { "datafield", "Quantity" }, { "cellsformat", "d" }, { "width", 80 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Price" }, { "cellsAlign", "right" }, { "align", "right" },
+            { "datafield", "Price" }, { "cellsformat", "c2" }, { "width", 70 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Address" }, { "cellsAlign", "center" }, { "align", "center" },
+            { "datafield", "Address" }, { "width", 250 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "City" }, { "cellsAlign", "center" }, { "align", "center" },
+            { "datafield", "City" }
+        }
+    };
+}
