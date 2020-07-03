@@ -1,0 +1,134 @@
+﻿<JqxGrid @ref="myGrid"
+    width=670 height=300 source=source columns=columns
+    editable=true selectionmode=selectionMode onComponentReady="onGridReady">
+</JqxGrid>
+
+<div style="font-family: Verdana; font-size: 12px; width: 670px">
+    <ul>
+        <li><b>Left Arrow</b> key is pressed - Selects the left cell, when the Grid is not in edit mode. Otherwise, the key stroke is handled by the editor.</li>
+        <li><b>Right Arrow</b> key is pressed - Selects the right cell, when the Grid is not in edit mode. Otherwise, the key stroke is handled by the editor.</li>
+        <li><b>Up Arrow</b> key is pressed - Selects the cell above, when the Grid is not in edit mode. Otherwise, the key stroke is handled by the editor.</li>
+        <li><b>Down Arrow</b> key is pressed - Selects the cell below, when the Grid is not in edit mode. Otherwise, the key stroke is handled by the editor.</li>
+        <li><b>Page Up/Down</b> is pressed - Navigate Up or Down with one page, when the Grid is not in edit mode. Otherwise, the key stroke is handled by the editor.</li>
+        <li><b>Home/End</b> is pressed - Navigate to the first or last row, when the Grid is not in edit mode. Otherwise, the key stroke is handled by the editor.</li>
+        <li><b>Enter</b> key is pressed - Moves one cell down in 'multiplecellsadvanced' selection mode. If the cell is in edit mode, saves the new value and moves one cell down. In the other selection modes, shows the selected cell's editor. If the cell is in editmode, hides the cell's editor and saves the new value. The editor's value is equal to the cell's value.</li>
+        <li><b>Esc</b> key is pressed - Hides the cell's editor and cancels the changes.</li>
+        <li><b>Tab</b> key is pressed - Selects the right cell. If the Grid is in edit mode, saves the edit cell's value, closes its editor, selects the right cell and opens its editor.</li>
+        <li><b>Shift+Tab</b> keys are pressed - Selects the left cell. If the Grid is in edit mode, saves the edit cell's value, closes its editor, selects the left cell and opens its editor.</li>
+        <li><b>F2</b> key is pressed - shows the selected cell's editor when the Grid is in edit mode.</li>
+        <li><b>Space</b> key is pressed - Toggles the checkbox editor's check state when the selected cell's column is a checkbox column and the Grid is editable.</li>
+        <li><b>Shift+Arrow</b> key extends the selection.</li>
+        <li><b>Shift</b> extends the selection when the user clicks on a cell or row..</li>
+        <li><b>Ctrl</b> key is pressed - in 'multiplecellsextended, multiplecellsadvanced and multiplerowsextended' selection mode, extends the selection when the user clicks on a cell or row. </li>
+        <li><b>Ctrl+Arrow</b> key - moves to an edge. </li>
+        <li><b>Ctrl+C</b> Copy. </li>
+        <li><b>Ctrl+X</b> Cut. </li>
+        <li><b>Ctrl+V</b> Paste. </li>
+        <li><b>Page Down</b> - Moves one screen down</li>
+        <li><b>Page Up</b> - Moves one screen up</li>
+        <li><b>Home</b> - Moves to the beginning</li>
+        <li><b>End</b> - Moves to the end</li>
+        <li>Typing in a cell when the Grid is 'editable' will put the cell in edit mode.</li>
+    </ul>
+</div>
+
+@code {
+    JqxGrid myGrid;
+    string selectionMode = "multiplecellsadvanced";
+
+    IDictionary<string, object> source = new Dictionary<string, object>()
+    {
+        { 
+            "dataFields",
+            new Dictionary<string, string>[]
+            {
+                new Dictionary<string, string>() { { "name", "firstname" }, { "type", "string" } },
+                new Dictionary<string, string>() { { "name", "lastname" }, { "type", "string" } },
+                new Dictionary<string, string>() { { "name", "productname" }, { "type", "string" } },
+                new Dictionary<string, string>() { { "name", "available" }, { "type", "bool" } },
+                new Dictionary<string, string>() { { "name", "date" }, { "type", "date" } },
+                new Dictionary<string, string>() { { "name", "quantity" }, { "type", "number" } },
+                new Dictionary<string, string>() { { "name", "price" }, { "type", "number" } },
+                new Dictionary<string, string>() { { "name", "total" }, { "type", "number" } }
+            }
+        },
+        { "datatype", "array" },
+        { "localdata", generateData(100) }
+    };
+
+    IDictionary<string, object>[] columns = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>() 
+        {
+            { "text", "First Name" }, { "datafield", "firstname" }, { "width", 120 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Last Name" }, { "datafield", "lastname" }, { "width", 120 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Product" }, { "datafield", "productname" }, { "width", 170 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Available" }, { "datafield", "available" }, { "columntype", "checkbox" }, { "width", 67 }, 
+            { "cellsalign", "center" }, { "align", "center" }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Order Date" }, { "datafield", "date" }, { "width", 120 }, { "cellsformat", "d" }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Quantity" }, { "datafield", "quantity" }, { "width", 80 }, { "cellsalign", "right" }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Unit Price" }, { "datafield", "price" }, { "width", 80 }, { "cellsalign", "right" }, { "cellsformat", "c2" }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Total" }, { "datafield", "total" }, { "cellsalign", "right" }, { "cellsformat", "c2" }
+        }
+    };
+
+    private void onGridReady()
+    {
+        myGrid.selectcell(0, "firstname");
+        myGrid.focus();
+    }
+
+    public static IList<IDictionary<string, object>> generateData(int number)
+    {
+        IList<IDictionary<string, object>> data = new List<IDictionary<string, object>>();
+
+        string[] firstNames = new string[] { "Andrew", "Nancy", "Shelley", "Regina", "Yoshi", "Antoni", "Mayumi", "Ian", "Peter", "Lars", "Petra", "Martin", "Sven", "Elio", "Beate", "Cheryl", "Michael", "Guylene" };
+        string[] lastNames = new string[] { "Fuller", "Davolio", "Burke", "Murphy", "Nagase", "Saavedra", "Ohno", "Devling", "Wilson", "Peterson", "Winkler", "Bein", "Petersen", "Rossi", "Vileid", "Saylor", "Bjorn", "Nodier" };
+        string[] productNames = new string[] { "Black Tea", "Green Tea", "Caffe Espresso", "Doubleshot Espresso", "Caffe Latte", "White Chocolate Mocha", "Cramel Latte", "Caffe Americano", "Cappuccino", "Espresso Truffle", "Espresso con Panna", "Peppermint Mocha Twist" };
+        double[] priceValues = new double[] { 2.25, 1.5, 3.0, 3.3, 4.5, 3.6, 3.8, 2.5, 5.0, 1.75, 3.25, 4.0 };
+
+        Random random = new Random();
+        for (int i = 0; i < number; i++)
+        {
+           
+            Dictionary<string, object> row = new Dictionary<string, object>();
+            int productIndex = random.Next(0, productNames.Count());    
+            double price = priceValues[productIndex];
+            int quantity = random.Next(1, 100);
+
+            row.Add("firstname", firstNames[random.Next(0, firstNames.Length)]);
+            row.Add("lastname", lastNames[random.Next(0, lastNames.Length)]);
+            row.Add("productname", productNames[random.Next(0, productNames.Length)]);
+            row.Add("available", random.Next(2) % 2 == 0 ? true : false );
+            row.Add("data", new DateTime().AddDays(random.Next(500)));
+            row.Add("price", price);
+            row.Add("quantity", quantity);
+            row.Add("total", price * quantity);
+
+            data.Add(row);
+        }
+
+        return data;
+    }
+}
