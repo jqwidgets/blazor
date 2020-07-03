@@ -1,0 +1,86 @@
+<JqxBarGauge @ref="myBarGauge"
+    width=600 height=600 relativeInnerRadius=relativeInnerRadius 
+    max=255 values=values startAngle=0 endAngle=90 colorScheme="rgb" 
+    customColorScheme=customColorScheme title=title labels=labels>
+</JqxBarGauge>
+
+<div style="float: left">
+  <span style="font-style: italic;">Red</span>
+  <JqxSlider @ref="redSlider" onChange="setColor"
+    mode=mode min=0 max=255 ticksFrequency=25.5 
+    value=170 step=25.5>
+  </JqxSlider>
+  <span style="font-style: italic;">Green</span>
+  <JqxSlider @ref="greenSlider" onChange="setColor"
+    mode=mode min=0 max=255 ticksFrequency=25.5 
+    value=255 step=25.5>
+  </JqxSlider>
+  <span style="font-style: italic;">Blue</span>
+  <JqxSlider @ref="blueSlider" onChange="setColor"
+    mode=mode min=0 max=255 ticksFrequency=25.5 
+    value=187 step=25.5>
+  </JqxSlider>
+</div>
+
+@code {
+    JqxBarGauge myBarGauge;
+    JqxSlider redSlider;
+    JqxSlider greenSlider;
+    JqxSlider blueSlider;
+
+    string mode = "fixed";
+
+    double relativeInnerRadius = 0.5;
+    double[] values = new double[] { 187, 255, 170 };
+
+    IDictionary<string, object> customColorScheme = new Dictionary<string, object>()
+    {
+        { "name", "rgb" },
+        { "colors", new string[] { "#307DD7", "#89A54E", "#AA4643" } }
+    };
+
+    IDictionary<string, object> title = new Dictionary<string, object>()
+    {
+        { "text", "jqxBarGauge" },
+        {
+            "font",
+            new Dictionary<string, int>() { { "size", 40 } }
+        },
+        { "verticalAlignment", "top" },
+        {
+            "margin",
+            new Dictionary<string, int>() 
+            {
+                { "bottom", 0 },
+                { "top", 0 },
+                { "left", 0 },
+                { "right", 0 }
+            }
+        },
+        {
+            "subtitle",
+            new Dictionary<string, object>() 
+            {
+                { "text", "( visualization of \"RGB\" color proportions )" },
+                { "font", new Dictionary<string, int>() { { "size", 20 } } }
+            }
+        }
+    };
+
+    IDictionary<string, int> labels = new Dictionary<string, int>()
+    {
+        { "precision", 0 }, { "indent", 10 }
+    };
+
+    private void setColor(IDictionary<string, object> e) 
+    {
+        double red = double.Parse(redSlider.value.ToString());
+        double green = double.Parse(greenSlider.value.ToString());
+        double blue = double.Parse(blueSlider.value.ToString());
+
+        myBarGauge.setOptions(new Dictionary<string, object>()
+        {
+            { "values", new double[] { blue, green, red } }
+        });
+    }
+}

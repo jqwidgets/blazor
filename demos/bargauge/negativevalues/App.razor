@@ -1,0 +1,16 @@
+<JqxBarGauge
+    width=600 height=600 relativeInnerRadius=relativeInnerRadius 
+    min=-45 max=45 baseValue=0 values=values startAngle=270 endAngle=90 
+    colorScheme="scheme02" animationDuration=0 labels=labels>
+</JqxBarGauge>
+
+@code {    
+    double relativeInnerRadius = 0.2;
+    double[] values = new double[] { 12, -35, -14.78, 29.5, 23.124, 41 };
+
+    IDictionary<string, int> labels = new Dictionary<string, int>()
+    {
+        { "precision", 1 }, 
+        { "indent", 15 }
+    };   
+}
