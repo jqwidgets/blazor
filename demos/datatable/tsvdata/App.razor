@@ -1,0 +1,48 @@
+<JqxDataTable
+    width=850 source=source columns=columns
+    columnsResize=true pageable=true pagerButtonsCount=10>
+</JqxDataTable>
+
+@code {
+
+   IDictionary<string, object> source = new Dictionary<string, object>()
+    {
+        { "datatype", "tab" },
+        { 
+            "dataFields",
+            new Dictionary<string, string>[]
+            {
+                new Dictionary<string, string>() { { "name", "Year" }, { "type", "int" } },
+                new Dictionary<string, string>() { { "name", "HPI" }, { "type", "float" } },
+                new Dictionary<string, string>() { { "name", "BuildCost" }, { "type", "float" } },
+                new Dictionary<string, string>() { { "name", "Population" }, { "type", "float" } },
+                new Dictionary<string, string>() { { "name", "Rate" }, { "type", "float" } }
+            }
+        },
+        { "url", "./sampledata/homeprices.txt" }
+    };
+
+    IDictionary<string, object>[] columns = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>() 
+        {
+            { "text", "Year" }, { "datafield", "Year" }, { "width", 200 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "HPI" }, { "datafield", "HPI" }, { "cellsformat", "f2" }, { "width", 200 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Build Cost" }, { "datafield", "BuildCost" }, { "cellsformat", "f2" }, { "width", 180 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Population" }, { "datafield", "Population" }, { "cellsformat", "f2" }, { "width", 100 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Rate" }, { "datafield", "Rate" }, { "cellsformat", "f5" }
+        }
+    };
+}
