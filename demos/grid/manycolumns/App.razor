@@ -1,0 +1,48 @@
+﻿<JqxGrid
+    width=850 source=source columns=columns>
+</JqxGrid>
+
+@code {
+    static IList<IDictionary<string, object>> data = new List<IDictionary<string, object>>() {};
+    static IList<IDictionary<string, object>> datafields = new List<IDictionary<string, object>>() {};
+    static IList<IDictionary<string, object>> columns = new List<IDictionary<string, object>>() {};
+
+    IDictionary<string, object> source = new Dictionary<string, object>()
+    {        
+        { "localdata", data },
+        { "datatype", "array" },
+        { "dataFields", datafields }
+    };
+
+    protected override void OnInitialized()
+    {
+        generateData();
+    }
+    public static void generateData()
+    {
+        for (int i = 0; i < 200; i++)
+        {
+            Dictionary<string, object> row = new Dictionary<string, object>();
+            for (int j = 0; j < 200; j++)
+            {
+                row.Add("Name" + j, "Cell " + (1 + i) + "." + (1 + j));
+                if (i == 0)
+                {
+                    columns.Add(new Dictionary<string, object>()
+                    {
+                        { "datafield", "Name" + j },
+                        { "text", "Column " + (1 + j) },
+                        { "width", 100 }
+                    });
+
+                    datafields.Add(new Dictionary<string, object>()
+                    {
+                        { "name", "Name" + j },
+                        { "type", "string" }
+                    });
+                }
+            }   
+            data.Add(row);
+        }        
+    }
+}
