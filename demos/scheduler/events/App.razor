@@ -1,0 +1,88 @@
+@inject IJSRuntime JSRuntime;
+
+<JqxScheduler @ref="myScheduler" onComponentReady="onReady" onCellClick="onCellClick"
+    onAppointmentAdd="onAppointmentAdd" onAppointmentDoubleClick="onAppointmentDoubleClick"
+    onAppointmentChange="onAppointmentChange" onAppointmentDelete="onAppointmentDelete"
+    width=800 height=600 source=source view=view rowsHeight=40
+    appointmentDataFields=appointmentDataFields views=views>
+</JqxScheduler>
+
+<br />
+<div>Event Log:</div>
+<div @ref="myLog"></div>
+
+@code {
+    JqxScheduler myScheduler;
+    ElementReference myLog;
+
+    string view = "weekView";
+
+    IDictionary<string, string> appointmentDataFields = new Dictionary<string, string>()
+    {
+        { "from", "start" },
+        { "to", "end" },
+        { "id", "id" },
+        { "description", "about" },
+        { "location", "address" },
+        { "subject", "name" },
+        { "style", "style" },
+        { "status", "status" }
+    };
+
+    string[] views = new string[]
+    {
+        "dayView",
+        "weekView"       
+    };
+
+    Dictionary<string, object> source = new Dictionary<string, object>
+    {
+        { "dataType", "json" },
+        { "dataFields", new Dictionary<string, string>[]
+            {
+                new Dictionary<string, string>() { { "name", "id" }, { "type", "string" } },
+                new Dictionary<string, string>() { { "name", "status" }, { "type", "string" } },
+                new Dictionary<string, string>() { { "name", "about" }, { "type", "string" } },
+                new Dictionary<string, string>() { { "name", "address" }, { "type", "string" } },
+                new Dictionary<string, string>() { { "name", "company" }, { "type", "string" } },
+                new Dictionary<string, string>() { { "name", "name" }, { "type", "string" } },
+                new Dictionary<string, string>() { { "name", "style" }, { "type", "string" } },
+                new Dictionary<string, string>() { { "name", "calendar" }, { "type", "string" } },
+                new Dictionary<string, string>() { { "name", "start" }, { "type", "date" }, { "format", "yyyy-MM-dd HH:mm"} },
+                new Dictionary<string, string>() { { "name", "end" }, { "type", "date" }, { "format", "yyyy-MM-dd HH:mm"} }
+            }
+        },
+        { "id", "id" },
+        { "url", "./sampledata/appointments.txt" }
+    };
+
+    private void onReady()
+    {
+        myScheduler.ensureAppointmentVisible("55f99b75e5102735f12ae957");
+    }
+
+    private void onAppointmentAdd(IDictionary<string, object> e) 
+    {
+        JSRuntime.InvokeVoidAsync("Example.updateInnerHtml", myLog, "appointmentAdd is raised");
+    }
+
+    private void onAppointmentDoubleClick(IDictionary<string, object> e) 
+    {
+        JSRuntime.InvokeVoidAsync("Example.updateInnerHtml", myLog, "appointmentDoubleClick is raised");
+    }
+
+    private void onAppointmentChange(IDictionary<string, object> e) 
+    {
+        JSRuntime.InvokeVoidAsync("Example.updateInnerHtml", myLog, "appointmentChange is raised");
+    }
+
+    private void onAppointmentDelete(IDictionary<string, object> e) 
+    {
+        JSRuntime.InvokeVoidAsync("Example.updateInnerHtml", myLog, "appointmentDelete is raised");
+    }
+
+    private void onCellClick(IDictionary<string, object> e) 
+    {
+        JSRuntime.InvokeVoidAsync("Example.updateInnerHtml", myLog, "cellClick is raised");
+    }
+}
