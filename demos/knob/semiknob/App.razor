@@ -1,0 +1,40 @@
+<JqxKnob
+    value=-100 min=-100 max=100 startAngle=200 endAngle=340 
+    snapToStep=true rotation=rotation marks=marks labels=labels 
+    progressBar=progressBar pointer=pointer spinner=spinner 
+    step=0.5 dragStartAngle=120 dragEndAngle=420>
+</JqxKnob>
+
+@code {
+    string rotation = "clockwise";
+
+    IDictionary<string, object> marks = new Dictionary<string, object>()
+    {
+        { "colorRemaining", "#333" }, { "colorProgress", "#17a25d" },
+        { "offset", "75%" }, { "thickness", 2 }, { "size", "1%" }, { "majorSize", "1%" },
+        { "majorInterval", 10 }, { "minorInterval", 5 }    
+    };
+
+    IDictionary<string, object> labels = new Dictionary<string, object>()
+    {
+        { "offset", "88%" }, { "step", 20 }, { "visible", true }
+    };
+
+    IDictionary<string, object> progressBar = new Dictionary<string, object>()
+    {        
+        { "size", "70%" }, { "offset", "0%" }
+    };
+
+    IDictionary<string, object> pointer = new Dictionary<string, object>() 
+    { 
+        { "type", "line" }, { "thickness", 4 },
+        { "style", new Dictionary<string, object>() { { "fill", "#ff6126" }, { "stroke", "#333" } } },
+        { "size", "70%" }, { "offset", "0%" }
+    };
+
+    IDictionary<string, object> spinner = new Dictionary<string, object>()
+    {
+        { "style", new Dictionary<string, object>() { { "fill", "#17a25d" }, { "stroke", "#17a25d" } } },
+        { "innerRadius", "35%" }, { "outerRadius", "70%" }
+    };
+}
