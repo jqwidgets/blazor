@@ -1,0 +1,16 @@
+<JqxLoader @ref="myLoader"
+    imagePosition=imagePosition width=100 height=60 isModal=true>
+</JqxLoader>
+
+<JqxButton width=150 onClick="openLoaderClick">Open Loader</JqxButton>
+
+@code {
+    JqxLoader myLoader;
+
+    string imagePosition = "top";
+
+    private void openLoaderClick(IDictionary<string, object> e)
+    {
+        myLoader.open(null, null);
+    }
+}

@@ -1,0 +1,28 @@
+<JqxLoader @ref="myLoader"
+    text=text width=60 height=60>
+</JqxLoader>
+
+<JqxButton width=150 onClick="openLoaderClick">Open Loader</JqxButton>
+<JqxButton width=100 onClick="closeLoaderClick">Close</JqxButton>
+
+@code {
+    JqxLoader myLoader;
+
+    string text = "";
+
+    private void openLoaderClick(IDictionary<string, object> e)
+    {
+        myLoader.open(null, null);
+    }
+
+    private void closeLoaderClick(IDictionary<string, object> e)
+    {
+        myLoader.close();
+    }
+}
+
+<style>
+    .jqx-button {
+        display: inline-block;
+    }
+</style>
