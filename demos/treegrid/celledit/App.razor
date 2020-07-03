@@ -1,10 +1,31 @@
-﻿<JqxTreeGrid @ref="myTreeGrid" width="width" sortable="true" source="datasource" columns="columns"></JqxTreeGrid>
+﻿@inject IJSRuntime JSRuntime;
+
+<JqxTreeGrid @ref="myTreeGrid" onCellBeginEdit="cellBeginEdit" onCellEndEdit="cellEndEdit" width="width" editable="true" editSettings="editSettings" sortable="true" source="datasource" columns="columns"></JqxTreeGrid>
+
+<div style="font-size: 13px; font-family: Verdana; width: 800px; margin-top: 20px;">
+    <h4>Event Log</h4>
+    <div @ref="logElement" style="max-height: 300px; overflow: auto;"></div>
+</div>
 
 @code {
     JqxTreeGrid myTreeGrid;
 
+    ElementReference logElement;
+
     object width = "850";
-    
+
+    Dictionary<string, object> editSettings = new Dictionary<string, object>()
+    {
+        { "saveOnPageChange", true },
+        { "saveOnBlur", true },
+        { "saveOnSelectionChange", true },
+        { "cancelOnEsc", true },
+        { "saveOnEnter", true },
+        { "editSingleCell", true },
+        { "editOnDoubleClick", true },
+        { "editOnF2", true }
+    };
+
     Dictionary<string, object> datasource = new Dictionary<string, object>()
     {
         {
@@ -170,47 +191,19 @@
         {
             { "text", "First Name" },
             { "dataField", "FirstName" },
-            { "columnGroup", "Name" },
             { "width", 200 }
         },
         new Dictionary<string, object>()
         {
             { "text", "Last Name" },
             { "dataField", "LastName" },
-            { "columnGroup", "Name" },
-            { "width", 120 }
-        },
-        new Dictionary<string, object>()
-        {
-            { "text", "Title" },
-            { "dataField", "Title" },
-            { "width", 160 }
-        },
-        new Dictionary<string, object>()
-        {
-            { "text", "Birth Date" },
-            { "dataField", "BirthDate" },
-            { "cellsFormat", "d" },
-            { "width", 120 }
-        },
-        new Dictionary<string, object>()
-        {
-            { "text", "Hire Date" },
-            { "dataField", "HireDate" },
-            { "cellsFormat", "d" },
-            { "width", 120 }
-        },
-        new Dictionary<string, object>()
-        {
-            { "text", "Address" },
-            { "dataField", "Address" },
-            { "width", 250 }
+            { "width", 200 }
         },
         new Dictionary<string, object>()
         {
             { "text", "City" },
             { "dataField", "City" },
-            { "width", 120 }
+            { "width", 200 }
         },
         new Dictionary<string, object>()
         {
@@ -218,4 +211,22 @@
             { "dataField", "Country" }
         }
     };
+
+    private void cellBeginEdit(IDictionary<string, object> e)
+    {
+        string value = e["value"].ToString();
+        string columnDataField = e["dataField"].ToString();
+        string rowKey = e["key"].ToString();        
+        string message = "cellBeginEdit - Row ID: " + rowKey + ", Column: " + columnDataField + ", Value: " + value + "<br/>";
+        JSRuntime.InvokeAsync<string>("Example.showMessage", logElement, message);
+    }
+
+    private void cellEndEdit(IDictionary<string, object> e)
+    {
+        string value = e["value"].ToString();
+        string columnDataField = e["dataField"].ToString();
+        string rowKey = e["key"].ToString();        
+        string message = "<br/>cellEndEdit - Row ID: " + rowKey + ", Column: " + columnDataField + ", Value: " + value + "<br/>";
+        JSRuntime.InvokeAsync<string>("Example.showMessage", logElement, message);
+    }
 }

@@ -1,10 +1,10 @@
-﻿<JqxTreeGrid @ref="myTreeGrid" width="width" sortable="true" source="datasource" columns="columns"></JqxTreeGrid>
+﻿<JqxTreeGrid @ref="myTreeGrid" onComponentReady="Ready" width="width" sortable="true" source="datasource" columns="columns"></JqxTreeGrid>
 
 @code {
     JqxTreeGrid myTreeGrid;
 
     object width = "850";
-    
+
     Dictionary<string, object> datasource = new Dictionary<string, object>()
     {
         {
@@ -170,21 +170,19 @@
         {
             { "text", "First Name" },
             { "dataField", "FirstName" },
-            { "columnGroup", "Name" },
             { "width", 200 }
         },
         new Dictionary<string, object>()
         {
             { "text", "Last Name" },
             { "dataField", "LastName" },
-            { "columnGroup", "Name" },
-            { "width", 120 }
+            { "width", 170 }
         },
         new Dictionary<string, object>()
         {
             { "text", "Title" },
             { "dataField", "Title" },
-            { "width", 160 }
+            { "width", 200 }
         },
         new Dictionary<string, object>()
         {
@@ -215,7 +213,15 @@
         new Dictionary<string, object>()
         {
             { "text", "Country" },
-            { "dataField", "Country" }
+            { "dataField", "Country" },
+            { "width", 120 }
         }
     };
+
+    private void Ready()
+    {
+        myTreeGrid.lockRow(2);
+        myTreeGrid.lockRow(1);
+        myTreeGrid.lockRow(3);
+    }
 }
