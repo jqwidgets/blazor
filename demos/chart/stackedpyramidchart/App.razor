@@ -1,0 +1,117 @@
+﻿<div id="chartContainer">
+    <JqxChart
+        title="Stacked Pyramid series" description=""
+        showLegend=true enableAnimations=false padding=padding titlePadding=titlePadding
+        source=sampleData xAxis=xAxis valueAxis=valueAxis seriesGroups=seriesGroups 
+        colorScheme="scheme06">
+    </JqxChart>
+</div>
+
+@code {
+    IDictionary<string, object>[] sampleData = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>() { 
+            { "Index", "1" }, { "SerieA", -30 }, { "SerieB", -10 }, { "SerieC", -25 } 
+        },
+        new Dictionary<string, object>() { 
+            { "Index", "2" }, { "SerieA", -25 }, { "SerieB", -25 }, { "SerieC", 10 } 
+        },
+        new Dictionary<string, object>() { 
+            { "Index", "3" }, { "SerieA", 30 }, { "SerieB", 0 }, { "SerieC", 25 } 
+        },
+        new Dictionary<string, object>() { 
+            { "Index", "4" }, { "SerieA", 35 }, { "SerieB", 25 }, { "SerieC", 45 } 
+        },
+        new Dictionary<string, object>() { 
+            { "Index", "5" }, { "SerieA", 0 }, { "SerieB", 20 }, { "SerieC", 25 } 
+        }
+    };
+
+    IDictionary<string, int> padding = new Dictionary<string, int>()
+    {
+        { "left", 15 },
+        { "top", 15 },
+        { "right", 15 },
+        { "bottom", 15 }
+    };
+
+    IDictionary<string, int> titlePadding = new Dictionary<string, int>()
+    {
+        { "left", 90 },
+        { "top", 0 },
+        { "right", 0 },
+        { "bottom", 10 }
+    };    
+
+    IDictionary<string, object> xAxis = new Dictionary<string, object>()
+    {
+        { "flip", true },
+        { "dataField", "Index" },
+        { 
+            "tickMarks", 
+            new Dictionary<string, object>()
+            {
+                { "visible", true },
+                { "interval", 1 }
+            }
+        },
+        { 
+            "gridLines", 
+            new Dictionary<string, object>()
+            {
+                { "visible", true },
+                { "interval", 1 }
+            }
+        }
+    };
+
+    IDictionary<string, object> valueAxis = new Dictionary<string, object>()
+    {
+        { "flip", true },
+        { 
+            "labels", 
+            new Dictionary<string, object>()
+            {
+                { "horizontalAlignment", "right" }
+            }
+        }
+    };
+
+    List<Dictionary<string, object>> seriesGroups = new List<Dictionary<string, object>>()
+    {      
+        new Dictionary<string, object>() 
+        {
+            { "orientation", "horizontal" },
+            { "type", "stackedcolumn" },
+            { "columnsGapPercent", 50 },
+            { "seriesGapPercent", 0 },
+            { "columnsTopWidthPercent", 0 },
+            { "columnsBottomWidthPercent", 100 },
+            {
+                "series", 
+                new Dictionary<string, object>[]
+                {
+                    new Dictionary<string, object>() 
+                    { 
+                        { "dataField", "SerieA" }, { "displayText", "Serie A" }
+                    },
+                    new Dictionary<string, object>() 
+                    { 
+                        { "dataField", "SerieB" }, { "displayText", "Serie B" }
+                    },
+                    new Dictionary<string, object>() 
+                    { 
+                        { "dataField", "SerieC" }, { "displayText", "Serie C" }
+                    }
+                }
+            }
+        }
+    };
+}
+
+<style>
+    #chartContainer > div {
+        width: 800px;
+        height: 500px;
+    }
+</style>

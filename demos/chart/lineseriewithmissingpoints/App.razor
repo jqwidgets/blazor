@@ -1,0 +1,134 @@
+﻿<div id="chartContainer">
+    <JqxChart @ref="myChart"
+        title="Line serie with missing points" 
+        description="Sample line serie with missing and invalid values"
+        showLegend=true padding=padding titlePadding=titlePadding source=sampleData 
+        xAxis=xAxis seriesGroups=seriesGroups colorScheme="scheme05">    
+    </JqxChart>
+</div>
+<p style="font-family: Verdana; font-size: 12px">Select missing points display mode:</p>
+<JqxDropDownList onSelect="dropDownOnSelect"
+    width=220 height=25 selectedIndex=0
+    dropDownHeight=77 source=source>
+</JqxDropDownList>
+
+@code {
+    JqxChart myChart;
+
+    static int?[] sampleData = new int?[]{ 29, null, 10, 15, 10, null, null, 30, 25, null, 33, 19, 11 };
+
+    string[] source = new string[] { "skip", "zero", "connect" };
+   
+    IDictionary<string, int> padding = new Dictionary<string, int>()
+    {
+        { "left", 5 },
+        { "top", 5 },
+        { "right", 15 },
+        { "bottom", 5 }
+    };
+
+    IDictionary<string, int> titlePadding = new Dictionary<string, int>()
+    {
+        { "left", 0 },
+        { "top", 0 },
+        { "right", 0 },
+        { "bottom", 10 }
+    };    
+
+    IDictionary<string, object> xAxis = new Dictionary<string, object>()
+    {
+        { "text", "x" }, 
+        { "valuesOnTicks", false }
+    };
+
+    IDictionary<string, object>[] seriesGroups = new Dictionary<string, object>[]
+    {      
+        new Dictionary<string, object>() 
+        { 
+            { "type", "line" }, 
+            { "source", sampleData }, 
+            { 
+                "valueAxis",                 
+                new Dictionary<string, object>()
+                {
+                    { 
+                        "title", 
+                        new Dictionary<string, object>()
+                        {
+                            { "text", "Value<br>" }
+                        } 
+                    }
+                }                
+            },
+            { 
+                "series", 
+                new List<Dictionary<string, object>>()
+                {
+                    new Dictionary<string, object>()
+                    {
+                        { "emptyPointsDisplay", "skip" },
+                        { "displayText", "Value" },
+                        { "lineWidth", 2 },
+                        { "symbolSize", 8 },
+                        { "symbolType", "circle" }
+                    }
+                }
+            }
+        }
+    };
+
+    private void dropDownOnSelect(IDictionary<string, object> e)
+    {
+        int index = int.Parse(e["index"].ToString());
+        var options = new Dictionary<string, object>()
+        {
+            {
+                "seriesGroups",
+                new Dictionary<string, object>[]
+                {      
+                    new Dictionary<string, object>() 
+                    { 
+                        { "type", "line" }, 
+                        { "source", sampleData }, 
+                        { 
+                            "valueAxis",                 
+                            new Dictionary<string, object>()
+                            {
+                                { 
+                                    "title", 
+                                    new Dictionary<string, object>()
+                                    {
+                                        { "text", "Value<br>" }
+                                    } 
+                                }
+                            }                
+                        },
+                        { 
+                            "series", 
+                            new List<Dictionary<string, object>>()
+                            {
+                                new Dictionary<string, object>()
+                                {
+                                    { "emptyPointsDisplay", source[index] },
+                                    { "displayText", "Value" },
+                                    { "lineWidth", 2 },
+                                    { "symbolSize", 8 },
+                                    { "symbolType", "circle" }
+                                }
+                            }
+                        }
+                    }
+                }
+            } 
+        };
+
+        myChart.setOptions(options);
+    }
+}
+
+<style>
+    #chartContainer > div {
+        width: 800px;
+        height: 500px;
+    }
+</style>

@@ -1,0 +1,132 @@
+﻿<div class="chartContainer">
+    <JqxChart
+        title="" description="Stat counter"
+        showLegend=true enableAnimations=false padding=padding titlePadding=titlePadding
+        source=dataStatCounter showBorderLine=true seriesGroups=seriesGroups colorScheme="scheme03">
+    </JqxChart>
+</div>
+
+<div class="chartContainer">
+    <JqxChart
+        title="" description="W3C counter"
+        showLegend=true enableAnimations=false padding=padding titlePadding=titlePadding
+        source=dataW3CCounter showBorderLine=true seriesGroups=seriesGroups colorScheme="scheme03">
+    </JqxChart>
+</div>
+
+<div class="chartContainer">
+    <JqxChart
+        title="" description="Wikimedia"
+        showLegend=true enableAnimations=false padding=padding titlePadding=titlePadding
+        source=dataWikimedia showBorderLine=true seriesGroups=seriesGroups colorScheme="scheme03">
+    </JqxChart>
+</div>
+
+<div class="chartContainer">
+    <JqxChart
+        title="" description="Net Applications"
+        showLegend=true enableAnimations=false padding=padding titlePadding=titlePadding
+        source=dataNetApplications showBorderLine=true seriesGroups=seriesGroups colorScheme="scheme03">
+    </JqxChart>
+</div>
+
+@code {
+    IDictionary<string, object>[] dataStatCounter = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>() { { "Browser", "Chrome" }, { "Share", 45.6 } },
+        new Dictionary<string, object>() { { "Browser", "IE" }, { "Share", 24.6 } },
+        new Dictionary<string, object>() { { "Browser", "Firefox" }, { "Share", 20.4 } },
+        new Dictionary<string, object>() { { "Browser", "Safari" }, { "Share", 5.1 } },
+        new Dictionary<string, object>() { { "Browser", "Opera" }, { "Share", 1.3 } },
+        new Dictionary<string, object>() { { "Browser", "Other" }, { "Share", 3.0 } }
+    };
+
+    IDictionary<string, object>[] dataW3CCounter = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>() { { "Browser", "Chrome" }, { "Share", 34.1 } },
+        new Dictionary<string, object>() { { "Browser", "IE" }, { "Share", 20.3 } },
+        new Dictionary<string, object>() { { "Browser", "Firefox" }, { "Share", 18.3 } },
+        new Dictionary<string, object>() { { "Browser", "Safari" }, { "Share", 17.8 } },
+        new Dictionary<string, object>() { { "Browser", "Opera" }, { "Share", 2.7 } },
+        new Dictionary<string, object>() { { "Browser", "Other" }, { "Share", 6.8 } }
+    };
+
+    IDictionary<string, object>[] dataWikimedia = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>() { { "Browser", "Chrome" }, { "Share", 42.7 } },
+        new Dictionary<string, object>() { { "Browser", "IE" }, { "Share", 18.0 } },
+        new Dictionary<string, object>() { { "Browser", "Firefox" }, { "Share", 15.3 } },
+        new Dictionary<string, object>() { { "Browser", "Safari" }, { "Share", 6.1 } },
+        new Dictionary<string, object>() { { "Browser", "Opera" }, { "Share", 2.4 } },
+        new Dictionary<string, object>() { { "Browser", "Other" }, { "Share", 15.6 } }
+    };
+
+    IDictionary<string, object>[] dataNetApplications = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>() { { "Browser", "Chrome" }, { "Share", 16.4 } },
+        new Dictionary<string, object>() { { "Browser", "IE" }, { "Share", 55.2 } },
+        new Dictionary<string, object>() { { "Browser", "Firefox" }, { "Share", 18.0 } },
+        new Dictionary<string, object>() { { "Browser", "Safari" }, { "Share", 5.8 } },
+        new Dictionary<string, object>() { { "Browser", "Opera" }, { "Share", 1.3 } },
+        new Dictionary<string, object>() { { "Browser", "Other" }, { "Share", 3.4 } }
+    };
+
+    IDictionary<string, int> padding = new Dictionary<string, int>()
+    {
+        { "left", 5 },
+        { "top", 5 },
+        { "right", 5 },
+        { "bottom", 5 }
+    };
+
+    IDictionary<string, int> titlePadding = new Dictionary<string, int>()
+    {
+        { "left", 0 },
+        { "top", 0 },
+        { "right", 0 },
+        { "bottom", 10 }
+    };    
+
+    List<Dictionary<string, object>> seriesGroups = new List<Dictionary<string, object>>()
+    {      
+        new Dictionary<string, object>() 
+        { 
+            { "type", "pie" },
+            { "showLegend", true },
+            { "enableSeriesToggle", true },
+            {
+                "series", 
+                new Dictionary<string, object>[]
+                {
+                    new Dictionary<string, object>() 
+                    { 
+                        { "dataField", "Share" }, 
+                        { "displayText", "Browser" }, 
+                        { "showLabels", true },
+                        { "labelRadius", 160 },
+                        { "labelLinesEnabled", true },
+                        { "labelLinesAngles", true },
+                        { "labelsAutoRotate", false },
+                        { "initialAngle", 0 },
+                        { "radius", 125 },
+                        { "minAngle", 0 },
+                        { "maxAngle", 180 },
+                        { "centerOffset", 0 },
+                        { "offsetY", 170 }
+                    }
+                }
+            }
+        }
+    };
+}
+
+<style>
+    .chartContainer {
+        float: left;
+    }
+
+    .chartContainer > div {
+        width: 400px;
+        height: 250px;        
+    }
+</style>

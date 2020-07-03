@@ -1,0 +1,112 @@
+﻿<div id="chartContainer">
+    <JqxChart
+        title="Stacked waterfall series with logarithmic axis" 
+        description="Logarithmic base 2"
+        padding=padding titlePadding=titlePadding source=sampleData xAxis=xAxis 
+        valueAxis=valueAxis seriesGroups=seriesGroups>
+    </JqxChart>
+</div>
+
+@code {
+    IDictionary<string, object>[] sampleData = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>() { { "a", 35 }, { "b", 40 } }, 
+        new Dictionary<string, object>() { { "a", 10 }, { "b", 25 } },
+        new Dictionary<string, object>() { { "a", 20 }, { "b", 20 } },
+        new Dictionary<string, object>() { { "a", 30 }, { "b", 25 } },
+        new Dictionary<string, object>() { { "a", 40 }, { "b", 17 } },
+        new Dictionary<string, object>() { { "a", 45 }, { "b", 20 } },
+        new Dictionary<string, object>() { { "a", 20 }, { "b", 30 } }
+    };
+
+    IDictionary<string, int> padding = new Dictionary<string, int>()
+    {
+        { "left", 5 },
+        { "top", 5 },
+        { "right", 5 },
+        { "bottom", 5 }
+    };
+
+    IDictionary<string, int> titlePadding = new Dictionary<string, int>()
+    {
+        { "left", 0 },
+        { "top", 0 },
+        { "right", 0 },
+        { "bottom", 10 }
+    };    
+
+    IDictionary<string, object> xAxis = new Dictionary<string, object>()
+    {
+        { 
+            "gridLines",
+            new Dictionary<string, object>()
+            {
+                { "visible", true }
+            } 
+        },
+        {
+            "tickMarks",
+            new Dictionary<string, object>()
+            {
+                { "visible", true }
+            } 
+        }
+    };
+
+    IDictionary<string, object> valueAxis = new Dictionary<string, object>()
+    {
+        { "logarithmicScale", true },
+        { "logarithmicScaleBase", 2 },
+        {
+            "title", 
+            new Dictionary<string, object>()
+            {
+                { "text", "Value<br>" }
+            }        
+        },
+        {
+            "labels",
+            new Dictionary<string, object>()
+            {
+                {
+                    "formatSettings",
+                    new Dictionary<string, object>()
+                    {
+                        { "decimalPlaces", 0 }
+                    }
+                },
+                { "horizontalAlignment", "right" }
+            }
+        }
+    };
+
+    List<Dictionary<string, object>> seriesGroups = new List<Dictionary<string, object>>()
+    {      
+        new Dictionary<string, object>() 
+        { 
+            { "type", "stackedwaterfall" },
+            { "columnsMaxWidth", 50 },           
+            {
+                "series", 
+                new Dictionary<string, object>[]
+                {
+                    new Dictionary<string, object>() 
+                    { 
+                        { "dataField", "a" }, { "displayText", "A" }
+                    },
+                    new Dictionary<string, object>() 
+                    { 
+                        { "dataField", "b" }, { "displayText", "B" }, { "summary", "c" }
+                    }
+                }
+            }
+        }
+    };
+}
+
+<style>
+    #chartContainer > div {
+        width: 800px;
+        height: 500px;
+    }
+</style>

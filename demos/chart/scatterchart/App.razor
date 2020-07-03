@@ -1,0 +1,180 @@
+﻿<div id="chartContainer">
+  <JqxChart @ref="myChart"
+      title="Sales by City in Q1 and Q2" description=""
+      enableAnimations=true showLegend=true padding=padding titlePadding=titlePadding 
+      source=sampleData xAxis=xAxis valueAxis=valueAxis seriesGroups=seriesGroups
+      colorScheme="scheme01">
+  </JqxChart>
+</div>
+
+<table style="width: 550px">
+  <tbody>
+    <tr>
+      <td>
+        <p>Select Serie 1 Symbol:</p>
+        <JqxDropDownList @ref="dropDownSerie1Symbol" onChange="dropDownSerie1SymbolOnChange"
+            width=200 height=25 selectedIndex=2
+            dropDownHeight=100 source=symbolsList>
+        </JqxDropDownList>
+      </td>
+      <td>
+        <p>Select Serie 2 Symbol:</p>
+        <JqxDropDownList @ref="dropDownSerie2Symbol" onChange="dropDownSerie2SymbolOnChange"
+            width=200 height=25 selectedIndex=1
+            dropDownHeight=100 source=symbolsList>
+        </JqxDropDownList>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+@code {
+    JqxChart myChart;
+    JqxDropDownList dropDownSerie1Symbol;
+    JqxDropDownList dropDownSerie2Symbol;
+
+    IDictionary<string, object>[] sampleData = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>() 
+        {
+          { "City", "New York" }, { "SalesQ1", 310500 }, { "SalesQ2", 210500 }, { "YoYGrowth", 1.05 }
+        }, 
+        new Dictionary<string, object>() 
+        {
+          { "City", "London" }, { "SalesQ1", 120000 }, { "SalesQ2", 169000 }, { "YoYGrowth", 1.15 }
+        },
+        new Dictionary<string, object>() 
+        {
+          { "City", "Paris" }, { "SalesQ1", 205000 }, { "SalesQ2", 275500 }, { "YoYGrowth", 1.45 }
+        },
+        new Dictionary<string, object>() 
+        {
+          { "City", "Tokyo" }, { "SalesQ1", 187000 }, { "SalesQ2", 130100 }, { "YoYGrowth", 0.45 }
+        },
+        new Dictionary<string, object>() 
+        {
+          { "City", "Berlin" }, { "SalesQ1", 187000 }, { "SalesQ2", 113000 }, { "YoYGrowth", 1.65 }
+        },
+        new Dictionary<string, object>() 
+        {
+          { "City", "San Francisco" }, { "SalesQ1", 142000 }, { "SalesQ2", 102000 }, { "YoYGrowth", 0.75 }
+        },
+        new Dictionary<string, object>() 
+        {
+          { "City", "Chicago" }, { "SalesQ1", 171000 }, { "SalesQ2", 124000 }, { "YoYGrowth", 0.75 }
+        }
+    };
+
+    IDictionary<string, int> padding = new Dictionary<string, int>()
+    {
+        { "left", 5 },
+        { "top", 5 },
+        { "right", 5 },
+        { "bottom", 5 }
+    };
+
+    IDictionary<string, int> titlePadding = new Dictionary<string, int>()
+    {
+        { "left", 90 },
+        { "top", 0 },
+        { "right", 0 },
+        { "bottom", 10 }
+    };
+
+    IDictionary<string, object> xAxis = new Dictionary<string, object>()
+    {
+        { "dataField", "City" },
+        { "valuesOnTicks", false }
+    };
+
+    IDictionary<string, object> valueAxis = new Dictionary<string, object>()
+    {
+        { "unitInterval", 50000 },
+        { "minValue", 50000 },
+        { "maxValue", 350000 },     
+        {
+            "title", 
+            new Dictionary<string, object>()
+            {
+                { "text", "Sales ($)<br>" }          
+            }
+        },
+        {
+            "labels",
+            new Dictionary<string, object>()
+            {
+                { 
+                    "formatSettings",
+                    new Dictionary<string, object>()
+                    {
+                        { "prefix", "$" },
+                        { "thousandsSeparator", "," }
+                    }
+                },
+                { "horizontalAlignment", "right" }
+            }
+        }
+    };
+
+    static Dictionary<string, object>[] series = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>() 
+        { 
+            { "dataField", "SalesQ1" },
+            { "displayText", "Sales in Q1" },
+            { "symbolSize", 20 },
+            { "symbolType", "circle" }
+        },
+        new Dictionary<string, object>() 
+        { 
+            { "dataField", "SalesQ2" },
+            { "displayText", "Sales in Q2" },
+            { "symbolSize", 20 },
+            { "symbolType", "diamond" }
+        }
+    };
+
+    IDictionary<string, object>[] seriesGroups = new Dictionary<string, object>[]
+    {      
+        new Dictionary<string, object>() 
+        { 
+            { "type", "bubble" },
+            { "series", series }
+        }
+    };
+
+    string[] symbolsList = new string[] { "circle", "diamond", "square", "triangle_up", "triangle_down", "triangle_left", "triangle_right" };
+
+    public void dropDownSerie1SymbolOnChange(IDictionary<string, object> e)
+    {
+        int index = int.Parse(e["index"].ToString());
+        string symbol = symbolsList[index];
+        
+        series[0]["symbolType"] = symbol;
+
+        updateChartSeriesGroups();
+    }
+
+    public void dropDownSerie2SymbolOnChange(IDictionary<string, object> e)
+    {
+        int index = int.Parse(e["index"].ToString());
+        string symbol = symbolsList[index];
+        
+        series[1]["symbolType"] = symbol;
+
+        updateChartSeriesGroups();
+    }
+
+    public void updateChartSeriesGroups()
+    {
+        var options = new Dictionary<string, object>() { { "seriesGroups", seriesGroups } };
+        myChart.setOptions(options);
+    }    
+}
+
+<style>
+    #chartContainer > div {
+        width: 800px;
+        height: 500px;
+    }
+</style>

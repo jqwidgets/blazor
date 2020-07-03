@@ -1,0 +1,104 @@
+﻿<div id="chartContainer">
+    <JqxChart
+        title="EU Population between 2003 and 2014" description="data source: Eurostat"
+        showLegend=false enableAnimations=true padding=padding titlePadding=titlePadding
+        source=data xAxis=xAxis valueAxis=valueAxis seriesGroups=seriesGroups colorScheme="scheme06">
+    </JqxChart>
+</div>
+
+@code {
+    IDictionary<string, object>[] data = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>() { { "year", 2003 }, { "population", 490815046 } }, 
+        new Dictionary<string, object>() { { "year", 2004 }, { "population", 492709300 } },
+        new Dictionary<string, object>() { { "year", 2005 }, { "population", 494774599 } },
+        new Dictionary<string, object>() { { "year", 2006 }, { "population", 496633373 } },
+        new Dictionary<string, object>() { { "year", 2007 }, { "population", 498408547 } },
+        new Dictionary<string, object>() { { "year", 2008 }, { "population", 500418320 } },
+        new Dictionary<string, object>() { { "year", 2009 }, { "population", 502186144 } },
+        new Dictionary<string, object>() { { "year", 2010 }, { "population", 503379305 } },
+        new Dictionary<string, object>() { { "year", 2011 }, { "population", 504961522 } },
+        new Dictionary<string, object>() { { "year", 2012 }, { "population", 504582506 } },
+        new Dictionary<string, object>() { { "year", 2013 }, { "population", 505674965 } },
+        new Dictionary<string, object>() { { "year", 2014 }, { "population", 507416607 } },
+        new Dictionary<string, object>() { { "year", "Total" }, { "summary", true } }
+    };
+
+    protected override void OnInitialized()
+    {
+        for (int i = data.Length - 2; i > 0; i--)
+        {
+            data[i]["population"] = 
+                int.Parse(data[i]["population"].ToString()) - int.Parse(data[i - 1]["population"].ToString());
+        }        
+    }
+    
+    IDictionary<string, int> padding = new Dictionary<string, int>()
+    {
+        { "left", 10 },
+        { "top", 5 },
+        { "right", 10 },
+        { "bottom", 5 }
+    };
+
+    IDictionary<string, int> titlePadding = new Dictionary<string, int>()
+    {
+        { "left", 90 },
+        { "top", 0 },
+        { "right", 0 },
+        { "bottom", 10 }
+    };    
+
+    IDictionary<string, object> xAxis = new Dictionary<string, object>()
+    {
+        { "type", "basic" },
+        { "dataField", "year" },
+        { "displayText", "Year" },
+        { 
+            "labels", 
+            new Dictionary<string, object>()
+            {
+                { "angle", 0 }
+            }
+        }
+    };
+
+    IDictionary<string, object> valueAxis = new Dictionary<string, object>()
+    {
+        {
+            "title", 
+            new Dictionary<string, object>()
+            {
+                { "text", "Population<br>" }
+            }        
+        },
+        { "unitInterval", 1000000 }
+    };
+
+    List<Dictionary<string, object>> seriesGroups = new List<Dictionary<string, object>>()
+    {      
+        new Dictionary<string, object>() 
+        { 
+            { "type", "waterfall" },        
+            {
+                "series", 
+                new Dictionary<string, object>[]
+                {
+                    new Dictionary<string, object>() 
+                    { 
+                        { "dataField", "population" }, 
+                        { "summary", "summary" },
+                        { "displayText", "Population change" }
+                    }
+                }
+            }
+        }
+    };
+}
+
+<style>
+    #chartContainer > div {
+        width: 800px;
+        height: 500px;
+    }
+</style>

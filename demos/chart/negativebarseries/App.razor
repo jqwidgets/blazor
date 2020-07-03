@@ -1,0 +1,126 @@
+﻿<div id="chartContainer">
+    <JqxChart
+        title="CPI inflation comparison by country" description="Years: 2018 vs 2019"
+        showLegend=true enableAnimations=false padding=padding titlePadding=titlePadding
+        source=sampleData xAxis=xAxis valueAxis=valueAxis seriesGroups=seriesGroups 
+        colorScheme="scheme02">
+    </JqxChart>
+</div>
+
+@code {
+    IDictionary<string, object>[] sampleData = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>() 
+        {
+            { "Country", "Switzerland" }, { "Inflation2012", -0.95 }, { "Inflation2011", -0.72 }
+        }, 
+        new Dictionary<string, object>() 
+        {
+            { "Country", "USA" }, { "Inflation2012", 2.35 }, { "Inflation2011", 2.96 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "Country", "Germany" }, { "Inflation2012", 2.03 }, { "Inflation2011", 2.10 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "Country", "India" }, { "Inflation2012", 8.38 }, { "Inflation2011", 6.49 }
+        }, 
+        new Dictionary<string, object>() 
+        {
+            { "Country", "China" }, { "Inflation2012", 3.34 }, { "Inflation2011", 4.06 }
+        }, 
+        new Dictionary<string, object>() 
+        {
+            { "Country", "Canada" }, { "Inflation2012", 2.05 }, { "Inflation2011", 2.30 }
+        }
+    };
+
+    IDictionary<string, int> padding = new Dictionary<string, int>()
+    {
+        { "left", 20 },
+        { "top", 5 },
+        { "right", 20 },
+        { "bottom", 5 }
+    };
+
+    IDictionary<string, int> titlePadding = new Dictionary<string, int>()
+    {
+        { "left", 90 },
+        { "top", 0 },
+        { "right", 0 },
+        { "bottom", 10 }
+    };    
+
+    IDictionary<string, object> xAxis = new Dictionary<string, object>()
+    {
+        { "dataField", "Country" }
+    };
+
+    IDictionary<string, object> valueAxis = new Dictionary<string, object>()
+    {
+        { 
+            "title", 
+            new Dictionary<string, object>()
+            {
+                { "visible", false }
+            }        
+        },
+        { "unitInterval", 1 },
+        { "minValue", -5 },
+        { "maxValue", 10 },
+        { 
+            "labels", 
+            new Dictionary<string, object>()
+            {
+                { 
+                    "formatSettings",
+                    new Dictionary<string, object>()
+                    {
+                        { "sufix", "%" }
+                    } 
+                }
+            }
+        }
+    };
+
+    List<Dictionary<string, object>> seriesGroups = new List<Dictionary<string, object>>()
+    {      
+        new Dictionary<string, object>() 
+        { 
+            { "type", "column" },
+            { "orientation", "horizontal" },
+            { "columnsGapPercent", 50 },
+            { 
+                "toolTipFormatSettings",
+                new Dictionary<string, object>()
+                {
+                    { "sufix", "%" }
+                }
+            },
+            {
+                "series", 
+                new Dictionary<string, object>[]
+                {
+                    new Dictionary<string, object>() 
+                    { 
+                        { "dataField", "Inflation2012" }, 
+                        { "displayText", "Inflation 2012" }
+                    },
+                    new Dictionary<string, object>() 
+                    { 
+                        { "dataField", "Inflation2011" }, 
+                        { "displayText", "Inflation 2011" }
+                    }
+                }
+            }
+        }
+    };
+}
+
+<style>
+    #chartContainer > div {
+        width: 800px;
+        height: 500px;
+    }
+</style>

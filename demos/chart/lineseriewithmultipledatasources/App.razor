@@ -1,0 +1,140 @@
+﻿<div id="chartContainer">
+    <JqxChart
+        title="Fitness & exercise weekly scorecard" description="Time spent in vigorous exercise"
+        showLegend=true enableAnimations=true padding=padding titlePadding=titlePadding source=days 
+        xAxis=xAxis valueAxis=valueAxis seriesGroups=seriesGroups colorScheme="scheme02">    
+    </JqxChart>
+</div>
+
+@code {
+    IDictionary<string, string>[] days = new Dictionary<string, string>[]
+    {
+        new Dictionary<string, string>() { { "Day", "Monday" } }, 
+        new Dictionary<string, string>() { { "Day", "Tuesday" } }, 
+        new Dictionary<string, string>() { { "Day", "Wednesday" } }, 
+        new Dictionary<string, string>() { { "Day", "Thursday" } }, 
+        new Dictionary<string, string>() { { "Day", "Friday" } }, 
+        new Dictionary<string, string>() { { "Day", "Saturday" } },
+        new Dictionary<string, string>() { { "Day", "Sunday" } } 
+    };
+
+    static IDictionary<string, int>[] Keith = new Dictionary<string, int>[]
+    {
+        new Dictionary<string, int>() { { "Minutes", 30 } }, 
+        new Dictionary<string, int>() { { "Minutes", 25 } }, 
+        new Dictionary<string, int>() { { "Minutes", 30 } }, 
+        new Dictionary<string, int>() { { "Minutes", 35 } }, 
+        new Dictionary<string, int>() { { "Minutes", 20 } }, 
+        new Dictionary<string, int>() { { "Minutes", 30 } },
+        new Dictionary<string, int>() { { "Minutes", 60 } }
+    };
+
+    static IDictionary<string, int>[] Erica = new Dictionary<string, int>[]
+    {
+        new Dictionary<string, int>() { { "Minutes", 15 } }, 
+        new Dictionary<string, int>() { { "Minutes", 25 } }, 
+        new Dictionary<string, int>() { { "Minutes", 20 } }, 
+        new Dictionary<string, int>() { { "Minutes", 25 } }, 
+        new Dictionary<string, int>() { { "Minutes", 20 } }, 
+        new Dictionary<string, int>() { { "Minutes", 20 } },
+        new Dictionary<string, int>() { { "Minutes", 45 } }
+    };
+
+    static IDictionary<string, int>[] George = new Dictionary<string, int>[]
+    {
+        new Dictionary<string, int>() { { "Minutes", 25 } }, 
+        new Dictionary<string, int>() { { "Minutes", 30 } }, 
+        new Dictionary<string, int>() { { "Minutes", 25 } }, 
+        new Dictionary<string, int>() { { "Minutes", 45 } }, 
+        new Dictionary<string, int>() { { "Minutes", 25 } }, 
+        new Dictionary<string, int>() { { "Minutes", 30 } },
+        new Dictionary<string, int>() { { "Minutes", 90 } }
+    };
+   
+    IDictionary<string, int> padding = new Dictionary<string, int>()
+    {
+        { "left", 5 },
+        { "top", 5 },
+        { "right", 40 },
+        { "bottom", 5 }
+    };
+
+    IDictionary<string, int> titlePadding = new Dictionary<string, int>()
+    {
+        { "left", 90 },
+        { "top", 0 },
+        { "right", 0 },
+        { "bottom", 10 }
+    };    
+
+    IDictionary<string, object> xAxis = new Dictionary<string, object>()
+    {
+        { "dataField", "Day" }, 
+        { 
+            "gridLines",
+            new Dictionary<string, bool>() 
+            {
+                { "visible", true } 
+            }
+        }
+    };
+
+    IDictionary<string, object> valueAxis = new Dictionary<string, object>()
+    {
+        { "visible", true }, 
+        { 
+            "title",
+            new Dictionary<string, string>() 
+            {
+                { "text", "Time in minutes" } 
+            }
+        }
+    };
+
+    IDictionary<string, object>[] seriesGroups = new Dictionary<string, object>[]
+    {      
+        new Dictionary<string, object>() 
+        { 
+            { "type", "stackedline" }, 
+            { "source", Keith }, 
+            { 
+                "series", 
+                new Dictionary<string, string>[]
+                {
+                    new Dictionary<string, string>() { { "dataField", "Minutes" }, { "displayText", "Keith" } }
+                }
+            }
+        },
+        new Dictionary<string, object>() 
+        { 
+            { "type", "stackedline" }, 
+            { "source", Erica }, 
+            { 
+                "series", 
+                new Dictionary<string, string>[]
+                {
+                    new Dictionary<string, string>() { { "dataField", "Minutes" }, { "displayText", "Erica" } }
+                }
+            }
+        },
+        new Dictionary<string, object>() 
+        { 
+            { "type", "stackedline" }, 
+            { "source", George },
+            { 
+                "series", 
+                new Dictionary<string, string>[]
+                {
+                    new Dictionary<string, string>() { { "dataField", "Minutes" }, { "displayText", "George" } }
+                }
+            }
+        }
+    };
+}
+
+<style>
+    #chartContainer > div {
+        width: 800px;
+        height: 500px;
+    }
+</style>

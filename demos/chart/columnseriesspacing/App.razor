@@ -1,0 +1,427 @@
+﻿<div id="chartContainer">
+    <JqxChart @ref="myChart"
+        title="Columns spacing and padding" 
+        description="Example with two series groups and three series in each group"
+        showLegend=true enableAnimations=false padding=padding titlePadding=titlePadding
+        source=sampleData xAxis=xAxis columnSeriesOverlap=true seriesGroups=seriesGroups 
+        colorScheme="scheme04">
+    </JqxChart>
+</div>
+<table style="padding-left: 30px; padding-top: 10px">
+  <tr style="height: 50px">
+    <td style="width: 300px"><b>Series group 1:</b></td>
+    <td><b>Series group 2:</b></td>
+  </tr>
+  <tr>
+    <td>        
+      <JqxCheckBox @ref="btnEnableSeriesGroup1" 
+            onChange="updateSeriesGroupsVisibility"
+            width=120 height=25 isChecked=true>
+        Visible
+      </JqxCheckBox>
+    </td>
+    <td>
+      <JqxCheckBox @ref="btnEnableSeriesGroup2" 
+            onChange="updateSeriesGroupsVisibility"
+            width=120 height=25 isChecked=false>
+        Visible
+      </JqxCheckBox>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <JqxCheckBox @ref="btnStackedSeriesGroup1" 
+            onChange="updateSeriesGroupsStacking"
+            width=120 height=25 isChecked=false>
+        Stacked
+      </JqxCheckBox>
+    </td>
+    <td>
+      <JqxCheckBox @ref=btnStackedSeriesGroup2 
+            onChange="updateSeriesGroupsStacking"
+            width=120 height=25 isChecked=false>
+        Stacked
+      </JqxCheckBox>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Space between columns / padding:
+      <JqxSlider onChange="sliderColumnsGapPercent1"
+            width=250 min=0 max=99 value=25
+            ticksFrequency=5 step=1 mode=mode>
+      </JqxSlider>
+    </td>
+    <td>
+      Space between columns / padding:
+      <JqxSlider onChange="sliderColumnsGapPercent2"
+            width="250" min=0 max=99 value=25
+            ticksFrequency=5 step=1 mode=mode>
+      </JqxSlider>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Space between series:
+      <JqxSlider onChange="sliderSeriesGap1"
+            width=250 min=0 max=100 value=10
+            ticksFrequency=5 step=1 mode=mode>
+      </JqxSlider>
+    </td>
+    <td>
+      Space between series:
+      <JqxSlider onChange="sliderSeriesGap2"
+            width=250 min=0 max=100 value=25
+            ticksFrequency=5 step=1 mode=mode>
+      </JqxSlider>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Minimum column [width]:
+      <JqxSlider onChange="sliderMinWidth1"
+            width=250 min=0 max=50 value=0
+            ticksFrequency=5 step=1 mode=mode>
+      </JqxSlider>
+    </td>
+    <td>
+      Minimum column [width]:
+      <JqxSlider onChange="sliderMinWidth2"
+            width=250 min=0 max=50 value=0
+            ticksFrequency=5 step=1 mode=mode>
+      </JqxSlider>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Maximum column [width]:
+      <JqxSlider onChange="sliderMaxWidth1"
+            width=250 min=1 max=120 value=40
+            ticksFrequency=20 step=1 mode=mode>
+      </JqxSlider>
+    </td>
+    <td>
+      Maximum column [width]:
+      <JqxSlider onChange="sliderMaxWidth2"
+            width=250 min=1 max=120 value=40
+            ticksFrequency=20 step=1 mode=mode>
+      </JqxSlider>
+    </td>
+  </tr>
+</table>
+
+@code {
+    JqxChart myChart;
+    JqxCheckBox btnEnableSeriesGroup1;
+    JqxCheckBox btnEnableSeriesGroup2;
+    JqxCheckBox btnStackedSeriesGroup1;
+    JqxCheckBox btnStackedSeriesGroup2;
+
+    string mode = "fixed";
+
+    IDictionary<string, object>[] sampleData = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>() 
+        {
+            { "Position", 0 }, 
+            { "Serie1", 30 }, { "Serie2", 5 }, { "Serie3", 25 },
+            { "Serie4", 30 }, { "Serie5", 10 }, { "Serie6", 5 },
+        }, 
+        new Dictionary<string, object>() 
+        {
+            { "Position", 1 }, 
+            { "Serie1", 25 }, { "Serie2", 25 }, { "Serie3", 5 },
+            { "Serie4", 20 }, { "Serie5", 20 }, { "Serie6", 10 },
+        }, 
+        new Dictionary<string, object>() 
+        {
+            { "Position", 3 }, 
+            { "Serie1", 30 }, { "Serie2", 5 }, { "Serie3", 25 },
+            { "Serie4", 10 }, { "Serie5", 20 }, { "Serie6", 15 },
+        }, 
+        new Dictionary<string, object>() 
+        {
+            { "Position", 6 }, 
+            { "Serie1", 35 }, { "Serie2", 25 }, { "Serie3", 45 },
+            { "Serie4", 5 }, { "Serie5", 30 }, { "Serie6", 20 },
+        }, 
+        new Dictionary<string, object>() 
+        {
+            { "Position", 7 }, 
+            { "Serie1", 5 }, { "Serie2", 20 }, { "Serie3", 25 },
+            { "Serie4", 20 }, { "Serie5", 40 }, { "Serie6", 15 },
+        }, 
+        new Dictionary<string, object>() 
+        {
+            { "Position", 9 }, 
+            { "Serie1", 30 }, { "Serie2", 10 }, { "Serie3", 30 },
+            { "Serie4", 10 }, { "Serie5", 5 }, { "Serie6", 20 },
+        },
+        new Dictionary<string, object>() 
+        {
+            { "Position", 10 }, 
+            { "Serie1", 60 }, { "Serie2", 45 }, { "Serie3", 10 },
+            { "Serie4", 20 }, { "Serie5", 10 }, { "Serie6", 15 },
+        }
+    };
+
+    IDictionary<string, int> padding = new Dictionary<string, int>()
+    {
+        { "left", 5 },
+        { "top", 5 },
+        { "right", 5 },
+        { "bottom", 5 }
+    };
+
+    IDictionary<string, int> titlePadding = new Dictionary<string, int>()
+    {
+        { "left", 90 },
+        { "top", 0 },
+        { "right", 0 },
+        { "bottom", 10 }
+    };    
+
+    IDictionary<string, object> xAxis = new Dictionary<string, object>()
+    {
+        { "dataField", "Position" },
+        { 
+            "tickMarks", 
+            new Dictionary<string, object>()
+            {
+                { "visible", true },
+                { "interval", 1 },
+                { "color", "#BCBCBC" }
+            }
+        },         
+        { 
+            "gridLines", 
+            new Dictionary<string, object>()
+            {
+                { "visible", true },
+                { "interval", 1 },
+                { "color", "#BCBCBC" }
+            }
+        },               
+        { "flip", false },
+        { "valuesOnTicks", false }
+    };
+
+    List<Dictionary<string, object>> seriesGroups = new List<Dictionary<string, object>>()
+    {      
+        new Dictionary<string, object>() 
+        { 
+            { "type", "column" },
+            { "columnsGapPercent", 25 },
+            { "seriesGapPercent", 10 },
+            { "columnsMaxWidth", 40 },
+            { "columnsMinWidth", 1 },
+            {
+                "series", 
+                new Dictionary<string, object>[]
+                {
+                    new Dictionary<string, object>() 
+                    { 
+                        { "dataField", "Serie1" }, 
+                        { "displayText", "Serie1" }
+                    },
+                    new Dictionary<string, object>() 
+                    { 
+                        { "dataField", "Serie2" }, 
+                        { "displayText", "Serie2" }
+                    },
+                    new Dictionary<string, object>() 
+                    { 
+                        { "dataField", "Serie3" }, 
+                        { "displayText", "Serie3" }
+                    }
+                }
+            }
+        }
+    };
+
+    public void updateSeriesGroupsVisibility(IDictionary<string, object> e)
+    {
+        seriesGroups.Clear();
+
+        if (bool.Parse(btnEnableSeriesGroup1.isChecked.ToString()))
+        {
+            seriesGroups.Add(new Dictionary<string, object>()
+            {
+                { "type", "column" },
+                { "columnsGapPercent", 25 },
+                { "seriesGapPercent", 10 },
+                { "columnsMaxWidth", 40 },
+                { "columnsMinWidth", 1 },
+                {
+                    "series", 
+                    new Dictionary<string, object>[]
+                    {
+                        new Dictionary<string, object>() 
+                        { 
+                            { "dataField", "Serie1" }, 
+                            { "displayText", "Serie1" }
+                        },
+                        new Dictionary<string, object>() 
+                        { 
+                            { "dataField", "Serie2" }, 
+                            { "displayText", "Serie2" }
+                        },
+                        new Dictionary<string, object>() 
+                        { 
+                            { "dataField", "Serie3" }, 
+                            { "displayText", "Serie3" }
+                        }
+                    }
+                }        
+            });
+        }
+        if (bool.Parse(btnEnableSeriesGroup2.isChecked.ToString()))
+        {
+            seriesGroups.Add(new Dictionary<string, object>()
+            {
+                { "type", "column" },
+                { "greyScale", true },
+                { "columnsGapPercent", 25 },
+                { "seriesGapPercent", 10 },
+                { "columnsMaxWidth", 40 },
+                { "columnsMinWidth", 1 },
+                {
+                    "series", 
+                    new Dictionary<string, object>[]
+                    {
+                        new Dictionary<string, object>() 
+                        { 
+                            { "dataField", "Serie1" }, 
+                            { "displayText", "Serie1" }
+                        },
+                        new Dictionary<string, object>() 
+                        { 
+                            { "dataField", "Serie2" }, 
+                            { "displayText", "Serie2" }
+                        },
+                        new Dictionary<string, object>() 
+                        { 
+                            { "dataField", "Serie3" }, 
+                            { "displayText", "Serie3" }
+                        }
+                    }
+                }        
+            });
+        }
+
+        updateSeriesGroupsStacking(null);
+    }
+
+    public void updateSeriesGroupsStacking(IDictionary<string, object> e)
+    {
+        if (bool.Parse(btnEnableSeriesGroup1.isChecked.ToString()))
+        {
+            if (bool.Parse(btnStackedSeriesGroup1.isChecked.ToString()))
+            {
+                seriesGroups[0]["type"] = "stackedcolumn";
+            }
+            else 
+            {
+                seriesGroups[0]["type"] = "column";
+            }
+        }
+
+        if (bool.Parse(btnEnableSeriesGroup2.isChecked.ToString()))
+        {
+            if (bool.Parse(btnStackedSeriesGroup2.isChecked.ToString()))
+            {
+                seriesGroups[seriesGroups.Count - 1]["type"] = "stackedcolumn";
+            }
+            else 
+            {
+                seriesGroups[seriesGroups.Count - 1]["type"] = "column";
+            }
+        }
+
+        updateChartSeriesGroups();
+    }
+
+    public void sliderColumnsGapPercent1(IDictionary<string, object> e)
+    {
+        eventHandler(e, 0, "columnsGapPercent");
+    }
+
+    public void sliderColumnsGapPercent2(IDictionary<string, object> e)
+    {
+        eventHandler(e, 1, "columnsGapPercent");
+    }
+
+    public void sliderSeriesGap1(IDictionary<string, object> e)
+    {
+        eventHandler(e, 0, "seriesGapPercent");
+    }
+
+    public void sliderSeriesGap2(IDictionary<string, object> e)
+    {
+        eventHandler(e, 1, "seriesGapPercent");
+    }
+
+    public void sliderMinWidth1(IDictionary<string, object> e)
+    {
+        eventHandler(e, 0, "columnsMinWidth");
+    }
+
+    public void sliderMinWidth2(IDictionary<string, object> e)
+    {
+        eventHandler(e, 1, "columnsMinWidth");
+    }
+
+    public void sliderMaxWidth1(IDictionary<string, object> e)
+    {
+        eventHandler(e, 0, "columnsMaxWidth");
+    }
+
+    public void sliderMaxWidth2(IDictionary<string, object> e)
+    {
+        eventHandler(e, 1, "columnsMaxWidth");
+    }
+
+    public void eventHandler(IDictionary<string, object> e, int series, string propName)
+    {
+        Console.WriteLine(1);
+        if (seriesGroups.Count != 0)
+        {
+            if (seriesGroups.Count < 2)
+            {
+                var a = seriesGroups[0]["series"] as Dictionary<string, string>[];
+                
+                string serieDataField = a[0]["dataField"];
+                Console.WriteLine(serieDataField);
+                int serie = serieDataField == "Serie1" ? 0 : 1;
+                if (series != serie)
+                {
+                    return;
+                }
+                seriesGroups[0][propName] = e["value"];
+            }
+            else 
+            {
+                Console.WriteLine(2);
+                seriesGroups[series][propName] = e["value"];
+            }            
+        }
+
+        updateChartSeriesGroups();
+    }
+
+    public void updateChartSeriesGroups()
+    {
+        var newSeries = new Dictionary<string, object>()
+        {
+            { "seriesGroups", seriesGroups }
+        };
+        myChart.setOptions(newSeries);
+    }
+}
+
+<style>
+    #chartContainer > div {
+        width: 800px;
+        height: 500px;
+    }
+</style>
