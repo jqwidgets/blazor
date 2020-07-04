@@ -1,5 +1,7 @@
 `use strict`;
 
+const fs = require(`fs`);
+
 const widgets = [
     `JqxBarGauge`, `JqxBulletChart`, `JqxButtonGroup`, `JqxButtons`, `JqxCalendar`, `JqxChart`, `JqxCheckBox`,
     `JqxColorPicker`, `JqxComboBox`, `JqxComplexInput`, `JqxDataTable`, `JqxDateTimeInput`, `JqxDocking`,
@@ -20,27 +22,37 @@ const widgetsWithDynamicMarkup = [
     `jqxformattedinput`
 ];
 
-(function init() {
-    for (let name of widgets) {
-        const inFile = `json/${name}.json`;
+(function() {
+    console.log('\x1b[32m%s\x1b[0m', '--------------------------------------');
+    console.log('\x1b[32m%s\x1b[0m', '   START GENERATING LIBRARY AND API!  ');
+    console.log('\x1b[32m%s\x1b[0m', '--------------------------------------');
 
-        if (name === 'JqxButtons') {
-            name = 'JqxButton';
+    for (let widgetName of widgets) {
+        const inFile = `json/${widgetName}.json`;
+
+        if (widgetName === 'JqxButtons') {
+            widgetName = 'JqxButton';
         }
 
-        const outFile = `../library/jqwidgets-blazor/Components/${name}.razor`;
+        const outFile = `../library/jqwidgets-blazor/Components/${widgetName}.razor`;
 
-        processJSON(inFile, outFile);
+        const { propertiesForAPI, eventsForAPI, methodsForAPI } = generateLibrary(inFile, outFile);
+
+        generateAPI(widgetName, propertiesForAPI, eventsForAPI, methodsForAPI);
     }
+
+    console.log('\x1b[32m%s\x1b[0m', '--------------------------------------');
+    console.log('\x1b[32m%s\x1b[0m', '   DONE GENERATING LIBRARY AND API!   ');
+    console.log('\x1b[32m%s\x1b[0m', '--------------------------------------');
 })();
 
-function processJSON(inFile, outFile) {
-    const fs = require(`fs`);
+function generateLibrary(inFile, outFile) {
     const data = fs.readFileSync(inFile);
 
     if (!data) {
         console.log(`No data available!`);
-        return false;
+
+        return;
     }
 
     let outData = ``;
@@ -50,9 +62,12 @@ function processJSON(inFile, outFile) {
     const widgetWithoutJqx = widget.slice(3);
     const isWidgetWithDynamicMarkup = widgetsWithDynamicMarkup.indexOf(widgetToLowerCase) !== -1;
 
+    const propertiesForAPI = [];
+    const eventsForAPI = [];
+    const methodsForAPI = [];
+
     outData += `@using System.Text.Json;\n`;
     outData += `@inject IJSRuntime JSRuntime;\n\n`;
-
     
     if (isWidgetWithDynamicMarkup) {
         outData += `@((MarkupString)componentMarkup)`;
@@ -77,7 +92,7 @@ function processJSON(inFile, outFile) {
         onDropTargetEnter: { okName: `dropTargetEnter` },
         onDropTargetLeave: { okName: `dropTargetLeave` },
     };
-         
+
     for (const property of obj.properties) {
         const jsonDataType = property.ts_dataType ? property.ts_dataType : property.dataType;
         const dataType = getDataType(widgetWithoutJqx, jsonDataType);
@@ -92,6 +107,14 @@ function processJSON(inFile, outFile) {
         outData += `        get { return getterProp<${dataType}>("${property.name}"); }\n`;
         outData += `        set { setterProp("${property.name}", value); }\n`;
         outData += `    }\n\n`;
+
+        const description = property.description ? getApiDescription(property.description) : '';
+
+        propertiesForAPI.push({
+            name: propertyNameValidated,
+            type: dataType,
+            description
+        })
     }
 
     outData += `    [Parameter]\n`;
@@ -105,6 +128,13 @@ function processJSON(inFile, outFile) {
     
             outData += `    [Parameter]\n`;
             outData += `    public Action<IDictionary<string, object>> ${eventNameWithOn} { get; set; }\n\n`;
+
+            const description = event.description ? getApiDescription(event.description) : '';
+
+            eventsForAPI.push({
+                name: eventNameWithOn,
+                description
+            })
         }
     }
     // End Widget Properties
@@ -194,6 +224,8 @@ function processJSON(inFile, outFile) {
                 methodArguments = methodArguments.slice(0, methodArguments.length - 2);
                 methodArgumentsNames = methodArgumentsNames.slice(0, methodArgumentsNames.length - 2);
 
+                const description = method.description ? getApiDescription(method.description) : '';
+
                 if (methodsWhichAreBothGettersAndSetters.indexOf(method.name) !== -1) {
                     outData += `    public ${dataType} ${method.name}()\n`;
                     outData += `    {\n`;
@@ -204,12 +236,26 @@ function processJSON(inFile, outFile) {
                     outData += `    {\n`;
                     outData += `        setterMethod("${method.name}"${methodArgumentsNames});\n`;
                     outData += `    }\n\n`;
+
+                    methodsForAPI.push({
+                        name: method.name,
+                        type: `<span style="color: #0b559b">[SET]</span> void <span style="color: #0b559b">[GET]</span> ${dataType}`,
+                        arguments: `<span style="color: #0b559b">[SET]</span> (${methodArguments}) <span style="color: #0b559b">[GET]</span> ()`,
+                        description
+                    });
                 } else {
                     if (dataType !== `void`) {
                         outData += `    public ${dataType} ${method.name}(${methodArguments})\n`;
                         outData += `    {\n`;
                         outData += `        return getterMethod<${dataType}>("${method.name}"${methodArgumentsNames});\n`;
                         outData += `    }\n\n`;
+
+                        methodsForAPI.push({
+                            name: method.name,
+                            type: `${dataType}`,
+                            arguments: `(${methodArguments})`,
+                            description
+                        });
                     }
             
                     if (dataType === `void`) {
@@ -217,6 +263,13 @@ function processJSON(inFile, outFile) {
                         outData += `    {\n`;
                         outData += `        setterMethod("${method.name}"${methodArgumentsNames});\n`;
                         outData += `    }\n\n`;
+
+                        methodsForAPI.push({
+                            name: method.name,
+                            type: `void`,
+                            arguments: `(${methodArguments})`,
+                            description
+                        });
                     }
                 }
             }
@@ -343,13 +396,12 @@ function processJSON(inFile, outFile) {
 
     outData += `\n}\n`;
 
-    try {
-        fs.writeFileSync(outFile, outData, `utf8`);
-    } catch (error) {
-        console.error(error);
-    }
+    // create library file
+    fs.writeFileSync(outFile, outData, `utf8`);
 
-    return true;
+    console.log('\x1b[34m%s\x1b[36m\%s\x1b[0m', '[Library] ', widgetWithoutJqx);
+
+    return { propertiesForAPI, eventsForAPI, methodsForAPI };
 };
 
 function getMarkup(widget) {
@@ -481,4 +533,242 @@ function getMethodsWithCustomImplementation(widget, method) {
     }
 
     return outData;
+}
+
+function generateAPI(widgetName, propertiesForAPI, eventsForAPI, methodsForAPI) {
+    let outData = getApiSkeleton(widgetName);
+    const { properties, rowIndexProperties } = getApiProperties(propertiesForAPI, 0);
+    const { events, rowIndexEvents } = getApiEvents(eventsForAPI, rowIndexProperties);
+    const { methods, rowIndexMethods } = getApiMethods(methodsForAPI, rowIndexEvents);
+
+    outData = outData
+        .replace('{{ properties }}', properties)
+        .replace('{{ events }}', events)
+        .replace('{{ methods }}', methods);
+
+    const widgetWithoutJqx = widgetName.slice(3);
+    const outFile = `../release/api/blazor-${widgetWithoutJqx.toLowerCase()}-api.htm`;
+
+    // create api file
+    fs.writeFileSync(outFile, outData, `utf8`);
+
+    console.log('\x1b[35m%s\x1b[36m\%s\x1b[0m', '  [API]   ', widgetWithoutJqx);
+}
+
+function getApiSkeleton(widgetName) {
+    return `<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>Blazor ${widgetName} API Reference</title>
+        <meta name="description" content="API Reference Documentation for the Blazor ${widgetName} User Interface Component" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <link rel="stylesheet" href="../styles/site.css" media="screen" />
+        <link rel= "stylesheet" href="../styles/jqx.apireference.css" media= "screen" />
+
+        <script type="text/javascript" src="../scripts/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="../scripts/jqx.apireference.js"></script>
+        <script type="text/javascript" src="../scripts/format.js"></script>
+        <script type="text/javascript" src="../scripts/toggle.js"></script>
+
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA- 25803467 - 1']);
+            _gaq.push(['_trackPageview']);
+            (function () {
+                var ga = document.createElement('script');
+                ga.type = 'text/javascript';
+                ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+    </head>
+
+    <body>
+        <div id="pageTop" class="top"></div>
+
+        <div id="pageDocumentation">
+            <div id="properties">
+
+                <table class="documentation-table">
+                    <tbody>
+
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+                                <h2 class="documentation-top-header">
+                                    Properties
+                                </h2>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>Name</th>
+                            <th>Type</th>
+                        </tr>
+
+                        {{ properties }}
+
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+                                <h2 class="documentation-top-header">
+                                    Events
+                                </h2>
+                            </td>
+                        </tr>
+
+                        {{ events }}
+
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+                                <h2 class="documentation-top-header">
+                                    Methods
+                                </h2>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>Name</th>
+                            <th>Arguments</th>
+                            <th>Return Type</th>
+                        </tr>
+
+                        {{ methods }}
+
+                    </tbody>
+                </table>
+           
+            </div>
+        </div>
+
+    	<div id="pageBottom" class="bottom"></div>
+    </body>
+
+</html>
+`;
+}
+
+function getApiProperties(propertiesForAPI, rowIndexProperties) {
+    const template =
+`
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan{{ rowIndexProperties }}">{{ name }}</span>
+                            </td>
+                            <td>
+                                <span>{{ type }}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>{{ description }}</p>
+                            </div>
+
+                            </td>
+                        </tr>
+`;
+
+    let properties = '';
+
+    for (const property of propertiesForAPI) {
+        properties += template
+            .replace('{{ rowIndexProperties }}', rowIndexProperties)
+            .replace('{{ name }}', property.name)
+            .replace('{{ type }}', property.type)
+            .replace('{{ description }}', property.description);
+
+            rowIndexProperties++;
+    }
+
+    return { properties, rowIndexProperties };
+}
+
+function getApiEvents(eventsForAPI, rowIndexEvents) {
+    const template =
+`
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan{{ rowIndexEvents }}">{{ name }}</span>
+                            </td>
+                            <td>
+                                <span>Event</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>{{ description }}</p>
+                            </div>
+
+                            </td>
+                        </tr>
+`;
+
+    let events = '';
+
+    for (const event of eventsForAPI) {
+        events += template
+            .replace('{{ rowIndexEvents }}', rowIndexEvents)
+            .replace('{{ name }}', event.name)
+            .replace('{{ description }}', event.description);
+
+            rowIndexEvents++;
+    }
+
+
+    return { events, rowIndexEvents };
+}
+
+function getApiMethods(methodsForAPI, rowIndexMethods) {
+    const template =
+`
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan{{ rowIndexMethods }}">{{ name }}</span>
+                            </td>
+                            <td>
+                                <span>{{ arguments }}</span>
+                            </td>
+                            <td>
+                                <span>{{ type }}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p>{{ description }}</p>
+                            </div>
+
+                            </td>
+                        </tr>
+`;
+    let methods = '';
+
+    for (const method of methodsForAPI) {
+            methods += template
+            .replace('{{ rowIndexMethods }}', rowIndexMethods)
+            .replace('{{ name }}', method.name)
+            .replace('{{ type }}', method.type)
+            .replace('{{ arguments }}', method.arguments)
+            .replace('{{ description }}', method.description);
+
+            rowIndexMethods++;
+    }
+
+    return { methods, rowIndexMethods };
+}
+
+function getApiDescription(description) {
+    if (description.match(/Code examples/)) {
+        return description.substring(0, description.indexOf('Code examples'));
+    }
+
+    return description;
 }
