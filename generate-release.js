@@ -4,10 +4,18 @@ const { exec } = require('child_process');
 
 const fsPromises = fs.promises;
 
-const entryPoint = 'demos';
+(function() {
+    generateRelease();
+})();
 
-(async () => {
+async function generateRelease() {
     try {
+        console.log('\x1b[32m%s\x1b[0m', '--------------------------------------');
+        console.log('\x1b[32m%s\x1b[0m', '       START GENERATING RELEASE!      ');
+        console.log('\x1b[32m%s\x1b[0m', '--------------------------------------');
+
+        const entryPoint = 'demos';
+
         // get the widget folders
         const widgetFolders = await readDir(entryPoint);
 
@@ -48,13 +56,13 @@ const entryPoint = 'demos';
         }
 
         console.log('\x1b[32m%s\x1b[0m', '--------------------------------------');
-        console.log('\x1b[32m%s\x1b[0m', '                DONE!');
+        console.log('\x1b[32m%s\x1b[0m', '       DONE GENERATING RELEASE!       ');
         console.log('\x1b[32m%s\x1b[0m', '--------------------------------------');
     }
     catch (error) {
         console.error(error);
     }
-})();
+}
 
 async function readDir(path) {
     return await fsPromises.readdir(path);

@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>Blazor JqxFileUpload API Reference</title>
+        <meta name="description" content="API Reference Documentation for the Blazor JqxFileUpload User Interface Component" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <link rel="stylesheet" href="../styles/site.css" media="screen" />
+        <link rel= "stylesheet" href="../styles/jqx.apireference.css" media= "screen" />
+
+        <script type="text/javascript" src="../scripts/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="../scripts/jqx.apireference.js"></script>
+        <script type="text/javascript" src="../scripts/format.js"></script>
+        <script type="text/javascript" src="../scripts/toggle.js"></script>
+
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA- 25803467 - 1']);
+            _gaq.push(['_trackPageview']);
+            (function () {
+                var ga = document.createElement('script');
+                ga.type = 'text/javascript';
+                ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+    </head>
+
+    <body>
+        <div id="pageTop" class="top"></div>
+
+        <div id="pageDocumentation">
+            <div id="properties">
+
+                <table class="documentation-table">
+                    <tbody>
+
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+                                <h2 class="documentation-top-header">
+                                    Properties
+                                </h2>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>Name</th>
+                            <th>Type</th>
+                        </tr>
+
+                        
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan0">autoUpload</span>
+                            </td>
+                            <td>
+                                <span>bool</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets or gets whether files will be automatically uploaded when selected. </P>
+
+<H4>Code example </H4>
+
+<P>Set the <CODE>autoUpload</CODE> property. </P>
+<PRE><CODE>$('#jqxFileUpload').jqxFileUpload({ autoUpload: true });</CODE></PRE>
+
+<P>Get the <CODE>autoUpload</CODE> property. </P>
+<PRE><CODE>var autoUpload = $('#jqxFileUpload').jqxFileUpload('autoUpload');</CODE></PRE></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan1">accept</span>
+                            </td>
+                            <td>
+                                <span>string</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets or gets the file types that can be submitted to the server through jqxFileUpload. This property corresponds to the <CODE>accept</CODE> attribute of the hidden file input which is submitted to the URL specified by the <CODE>uploadUrl</CODE> property. </P>
+<B>Possible values:</B>
+<PRE><CODE>any file extension, for example: '.gif', '.jpg', '.png', '.doc', etc.</CODE></PRE>
+<PRE><CODE>'audio/*' - all sound files are accepted.</CODE></PRE>
+<PRE><CODE>'video/*' - all video files are accepted.</CODE></PRE>
+<PRE><CODE>'image/*' - all image files are accepted.</CODE></PRE>
+<PRE><CODE>any valid media type. For a list, please refer to <A href="http://www.iana.org/assignments/media-types/media-types.xhtml" target=_blank>IANA Media Types</A>.</CODE></PRE>
+
+<H4>Code example </H4>
+
+<P>Set the <CODE>accept</CODE> property. </P>
+<PRE><CODE>$('#jqxFileUpload').jqxFileUpload({ accept: 'image/*' });</CODE></PRE>
+
+<P>Get the <CODE>accept</CODE> property. </P>
+<PRE><CODE>var accept = $('#jqxFileUpload').jqxFileUpload('accept');</CODE></PRE></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan2">browseTemplate</span>
+                            </td>
+                            <td>
+                                <span>object</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets or gets the template applied to the 'Browse' button. </P>
+<B>Possible Values:</B>
+<PRE><CODE>'default' - the default button's template. The button's style depends only on the 'theme' property value.</CODE></PRE>
+<PRE><CODE>'primary' - dark blue button for extra visual weight.</CODE></PRE>
+<PRE><CODE>'success' - green button for successful or positive action.</CODE></PRE>
+<PRE><CODE>'warning' - orange button which indicates caution.</CODE></PRE>
+<PRE><CODE>'danger' - red button which indicates a dangerous or negative action.</CODE></PRE>
+<PRE><CODE>'inverse' - dark gray button, not tied to a semantic action or use.</CODE></PRE>
+<PRE><CODE>'info' - blue button, not tied to a semantic action or use.</CODE></PRE>
+<PRE><CODE>'link' - making it look like a link.</CODE></PRE>
+
+<H4>Code example </H4>
+
+<P>Set the <CODE>browseTemplate</CODE> property. </P>
+<PRE><CODE>$('#jqxFileUpload').jqxFileUpload({ browseTemplate: 'success' });</CODE></PRE>
+
+<P>Get the <CODE>autoUpload</CODE> property. </P>
+<PRE><CODE>var browseTemplate = $('#jqxFileUpload').jqxFileUpload('browseTemplate');</CODE></PRE></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan3">cancelTemplate</span>
+                            </td>
+                            <td>
+                                <span>object</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets or gets the template applied to the 'Cancel All' button. </P>
+<B>Possible Values:</B>
+<PRE><CODE>'default' - the default button's template. The button's style depends only on the 'theme' property value.</CODE></PRE>
+<PRE><CODE>'primary' - dark blue button for extra visual weight.</CODE></PRE>
+<PRE><CODE>'success' - green button for successful or positive action.</CODE></PRE>
+<PRE><CODE>'warning' - orange button which indicates caution.</CODE></PRE>
+<PRE><CODE>'danger' - red button which indicates a dangerous or negative action.</CODE></PRE>
+<PRE><CODE>'inverse' - dark gray button, not tied to a semantic action or use.</CODE></PRE>
+<PRE><CODE>'info' - blue button, not tied to a semantic action or use.</CODE></PRE>
+<PRE><CODE>'link' - making it look like a link.</CODE></PRE>
+
+<H4>Code example </H4>
+
+<P>Set the <CODE>cancelTemplate</CODE> property. </P>
+<PRE><CODE>$('#jqxFileUpload').jqxFileUpload({ cancelTemplate: 'inverse' });</CODE></PRE>
+
+<P>Get the <CODE>cancelTemplate</CODE> property. </P>
+<PRE><CODE>var cancelTemplate = $('#jqxFileUpload').jqxFileUpload('cancelTemplate');</CODE></PRE></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan4">disabled</span>
+                            </td>
+                            <td>
+                                <span>bool</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Enables or disables the jqxFileUpload. </P>
+
+<H4></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan5">fileInputName</span>
+                            </td>
+                            <td>
+                                <span>string</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets or gets the <CODE>name</CODE> attribute of the hidden file input which is submitted to the URL specified by the <CODE>uploadUrl</CODE> property. This name is applied to the file input of the file about to be uploaded and after the upload the name attribute is removed so that it can be set to the next hidden file input (if any). As a result, there is only one file input with this name attribute at a time. </P>
+
+<H4>Code example </H4>
+
+<P>Set the <CODE>fileInputName</CODE> property. </P>
+<PRE><CODE>$('#jqxFileUpload').jqxFileUpload({ fileInputName: 'fileToUpload' });</CODE></PRE>
+
+<P>Get the <CODE>fileInputName</CODE> property. </P>
+<PRE><CODE>var fileInputName = $('#jqxFileUpload').jqxFileUpload('fileInputName'); </CODE></PRE></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan6">height</span>
+                            </td>
+                            <td>
+                                <span>object</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets or gets the jqxFileUpload's height. </P>
+
+<H4></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan7">localization</span>
+                            </td>
+                            <td>
+                                <span>object</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets the various text values used in the widget. Useful for localization. </P>
+
+<P>The localization object has the following fields: </P>
+<PRE><CODE>browseButton - sets the text of the 'Browse' button.</CODE></PRE>
+<PRE><CODE>uploadButton - sets the text of the 'Upload All' button.</CODE></PRE>
+<PRE><CODE>cancelButton - sets the text of the 'Cancel All' button.</CODE></PRE>
+<PRE><CODE>uploadFileTooltip - sets the text of the 'Upload File' tooltip.</CODE></PRE>
+<PRE><CODE>cancelFileTooltip - sets the text of the 'Cancel' tooltip.</CODE></PRE>
+
+<H4>Code example </H4>
+
+<P>Set the <CODE>localization</CODE> property. </P>
+<PRE><CODE>$('#jqxFileUpload').jqxFileUpload({ localization: { browseButton: 'Blättern', uploadButton: 'Laden Sie alle', cancelButton: 'alle Abbrechen', uploadFileTooltip: 'Datei hochladen', cancelFileTooltip: 'aufheben' } });</CODE></PRE>
+
+<P>Get the <CODE>localization</CODE> property. </P>
+<PRE><CODE>var localization = $('#jqxFileUpload').jqxFileUpload('localization');</CODE></PRE></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan8">multipleFilesUpload</span>
+                            </td>
+                            <td>
+                                <span>bool</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets or gets whether multiple files selection and upload are allowed. </P>
+
+<H4>Code example </H4>
+
+<P>Set the <CODE>multipleFilesUpload</CODE> property. </P>
+<PRE><CODE>$('#jqxFileUpload').jqxFileUpload({ multipleFilesUpload: false });</CODE></PRE>
+
+<P>Get the <CODE>multipleFilesUpload</CODE> property. </P>
+<PRE><CODE>var multipleFilesUpload = $('#jqxFileUpload').jqxFileUpload('multipleFilesUpload');</CODE></PRE></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan9">renderFiles</span>
+                            </td>
+                            <td>
+                                <span>object</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>A callback function used for rendering the file selection rows. </P>
+
+<H4>Code example </H4>
+
+<P>Set the <CODE>renderFiles</CODE> property. </P>
+<PRE><CODE>$('#jqxFileUpload').jqxFileUpload({ width: 300, uploadUrl: 'upload.php', fileInputName: 'fileToUpload',
+    renderFiles: function (fileName) {
+        var stopIndex = fileName.indexOf('.');
+        var name = fileName.slice(0, stopIndex);
+        var extension = fileName.slice(stopIndex);
+        return name + '&lt;strong&gt;' + extension + '&lt;/strong&gt;';
+    }
+}); </CODE></PRE>
+
+<P>Get the <CODE>renderFiles</CODE> property. </P>
+<PRE><CODE>var renderFiles = $('#jqxFileUpload').jqxFileUpload('renderFiles');</CODE></PRE></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan10">rtl</span>
+                            </td>
+                            <td>
+                                <span>bool</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets or gets a value indicating whether widget's elements are aligned to support locales using right-to-left fonts. </P>
+
+<H4>Code example </H4>
+
+<P>Set the <CODE>rtl</CODE> property. </P>
+<PRE><CODE>$('#jqxFileUpload').jqxFileUpload({ rtl : true });</CODE></PRE>
+
+<P>Get the <CODE>rtl</CODE> property. </P>
+<PRE><CODE>var rtl = $('#jqxFileUpload').jqxFileUpload('rtl');</CODE></PRE></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan11">theme</span>
+                            </td>
+                            <td>
+                                <span>string</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets the widget's theme. </P>
+
+<UL><LI>Include the theme's CSS file after jqx.base.css.<BR>The following code example adds the 'material' theme. <PRE><CODE>
+                                                                                        <PRE><CODE>&lt;link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" /&gt;
+&lt;link rel="stylesheet" href="../../jqwidgets/styles/jqx.material.css" type="text/css" /&gt; </CODE></PRE>
+                                </CODE></PRE>
+<LI>Set the widget's theme property to 'material' when you initialize it. </LI></UL></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan12">uploadUrl</span>
+                            </td>
+                            <td>
+                                <span>string</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets or gets the upload URL. This property corresponds to the upload form's <CODE>action</CODE> attribute. For example, the uploadUrl property can point to a PHP file, which to handle the upload operation server-side. Here is a sample PHP file that allows only images no larger than 500 kB to be uploaded to the server: </P>
+<PRE class=code style="MAX-WIDTH: 700px; WIDTH: 700px; MARGIN: 10px">&lt;?php<DIV>$target_dir = <SPAN style="COLOR: #a24; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 0px; PADDING-RIGHT: 0px">"uploads/"</SPAN>;<DIV>$target_file = $target_dir . basename($_FILES[<SPAN style="COLOR: #a24; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 0px; PADDING-RIGHT: 0px">"fileToUpload"]["name"</SPAN>]);<DIV>$uploadOk = 1;<DIV>$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);<DIV>// Check if image file is a actual image or fake image<DIV>if(isset($_POST[<SPAN style="COLOR: #a24; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 0px; PADDING-RIGHT: 0px">"submit"</SPAN>])) {<DIV>    $check = getimagesize($_FILES[<SPAN style="COLOR: #a24; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 0px; PADDING-RIGHT: 0px">"fileToUpload"]["tmp_name"</SPAN>]);<DIV>    if($check !== false) {<DIV>        echo <SPAN style="COLOR: #a24; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 0px; PADDING-RIGHT: 0px">"File is an image - " . $check["mime"] . "."</SPAN>;<DIV>        $uploadOk = 1;<DIV>    } else {<DIV>        echo <SPAN style="COLOR: #a24; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 0px; PADDING-RIGHT: 0px">"File is not an image."</SPAN>;<DIV>        $uploadOk = 0;<DIV>    }<DIV>}<DIV>// Check if file already exists<DIV>if (file_exists($target_file)) {<DIV>    echo <SPAN style="COLOR: #a24; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 0px; PADDING-RIGHT: 0px">"Sorry, file already exists."</SPAN>;<DIV>    $uploadOk = 0;<DIV>}<DIV>// Check file size<DIV>if ($_FILES[<SPAN style="COLOR: #a24; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 0px; PADDING-RIGHT: 0px">"fileToUpload"]["size"</SPAN>] &gt; 500000) {<DIV>    echo <SPAN style="COLOR: #a24; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 0px; PADDING-RIGHT: 0px">"Sorry, your file is too large."</SPAN>;<DIV>    $uploadOk = 0;<DIV>}<DIV>// Allow certain file formats<DIV>if($imageFileType != <SPAN style="COLOR: #a24; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 0px; PADDING-RIGHT: 0px">"jpg" &amp;&amp; $imageFileType != "png" &amp;&amp; $imageFileType != "jpeg"</SPAN><DIV>&amp;&amp; $imageFileType != <SPAN style="COLOR: #a24; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 0px; PADDING-RIGHT: 0px">"gif"</SPAN> ) {<DIV>    echo <SPAN style="COLOR: #a24; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 0px; PADDING-RIGHT: 0px">"Sorry, only JPG, JPEG, PNG &amp; GIF files are allowed."</SPAN>;<DIV>    $uploadOk = 0;<DIV>}<DIV>// Check if $uploadOk is set to 0 by an error<DIV>if ($uploadOk == 0) {<DIV>    echo <SPAN style="COLOR: #a24; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 0px; PADDING-RIGHT: 0px">"Sorry, your file was not uploaded."</SPAN>;<DIV>// if everything is ok, try to upload file<DIV>} else {<DIV>    if (move_uploaded_file($_FILES[<SPAN style="COLOR: #a24; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 0px; PADDING-RIGHT: 0px">"fileToUpload"]["tmp_name"</SPAN>], $target_file)) {<DIV>        echo <SPAN style="COLOR: #a24; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 0px; PADDING-RIGHT: 0px">"The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded."</SPAN>;<DIV>    } else {<DIV>        echo <SPAN style="COLOR: #a24; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 0px; PADDING-RIGHT: 0px">"Sorry, there was an error uploading your file."</SPAN>;<DIV>    }<DIV>}<DIV>?&gt;<DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV></PRE>
+
+<P><EM style="DISPLAY: none" jQuery1111015916433064073576="14">A few notes about file uploads in PHP:</EM> </P>
+
+<P>Many shared hosting servers allow a very low maximum file upload size. If you plan on accepting larger files, you should consider a dedicated or virtual dedicated server. To adjust the file upload size in PHP, modify the php.ini file's "upload_max_filesize" value. You can also adjust this value using PHP's .ini_set() function. The file upload counts towards the hosting environment's $_POST size, so you may need to increase the php.ini file's post_max_size value. Be sure to do a lot of file validation when allowing users to upload files. How horrible would it be to allow a user to upload a .exe file to your server? They could do horrible things on the server. </P>
+
+<H4>Code example </H4>
+
+<P>Set the <CODE>uploadUrl</CODE> property. </P>
+<PRE><CODE>$('#jqxFileUpload').jqxFileUpload({ uploadUrl: 'upload.php' });</CODE></PRE>
+
+<P>Get the <CODE>uploadUrl</CODE> property. </P>
+<PRE><CODE>var uploadUrl = $('#jqxFileUpload').jqxFileUpload('uploadUrl');</CODE></PRE></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan13">uploadTemplate</span>
+                            </td>
+                            <td>
+                                <span>object</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets or gets the template applied to the 'Upload All' button. </P>
+<B>Possible Values:</B>
+<PRE><CODE>'default' - the default button's template. The button's style depends only on the 'theme' property value.</CODE></PRE>
+<PRE><CODE>'primary' - dark blue button for extra visual weight.</CODE></PRE>
+<PRE><CODE>'success' - green button for successful or positive action.</CODE></PRE>
+<PRE><CODE>'warning' - orange button which indicates caution.</CODE></PRE>
+<PRE><CODE>'danger' - red button which indicates a dangerous or negative action.</CODE></PRE>
+<PRE><CODE>'inverse' - dark gray button, not tied to a semantic action or use.</CODE></PRE>
+<PRE><CODE>'info' - blue button, not tied to a semantic action or use.</CODE></PRE>
+<PRE><CODE>'link' - making it look like a link.</CODE></PRE>
+
+<H4>Code example </H4>
+
+<P>Set the <CODE>uploadTemplate</CODE> property. </P>
+<PRE><CODE>$('#jqxFileUpload').jqxFileUpload({ uploadTemplate: 'primary' });</CODE></PRE>
+
+<P>Get the <CODE>uploadTemplate</CODE> property. </P>
+<PRE><CODE>var uploadTemplate = $('#jqxFileUpload').jqxFileUpload('uploadTemplate');</CODE></PRE></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan14">width</span>
+                            </td>
+                            <td>
+                                <span>object</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets or gets the jqxFileUpload's width. </P>
+
+<H4></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+                                <h2 class="documentation-top-header">
+                                    Events
+                                </h2>
+                            </td>
+                        </tr>
+
+                        
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan15">onRemove</span>
+                            </td>
+                            <td>
+                                <span>Event</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>This event is triggered when a file row has been removed. </P>
+<H4></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan16">onSelect</span>
+                            </td>
+                            <td>
+                                <span>Event</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>This event is triggered when a file has been selected. </P>
+<H4></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan17">onUploadStart</span>
+                            </td>
+                            <td>
+                                <span>Event</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>This event is triggered when a file upload operation has started. </P>
+<H4></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan18">onUploadEnd</span>
+                            </td>
+                            <td>
+                                <span>Event</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>This event is triggered when a file upload operation has ended. </P>
+<H4></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+                                <h2 class="documentation-top-header">
+                                    Methods
+                                </h2>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>Name</th>
+                            <th>Arguments</th>
+                            <th>Return Type</th>
+                        </tr>
+
+                        
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan19">browse</span>
+                            </td>
+                            <td>
+                                <span>()</span>
+                            </td>
+                            <td>
+                                <span>void</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Browses for a file. </P><P>Due to browser restrictions, this method would not work on Internet Explorer 9 or earlier. </P>
+<H4></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan20">cancelFile</span>
+                            </td>
+                            <td>
+                                <span>(double fileIndex)</span>
+                            </td>
+                            <td>
+                                <span>void</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Cancels a selected file. </P>
+<H4></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan21">cancelAll</span>
+                            </td>
+                            <td>
+                                <span>()</span>
+                            </td>
+                            <td>
+                                <span>void</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Cancels all selected files. </P>
+<H4></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan22">destroy</span>
+                            </td>
+                            <td>
+                                <span>()</span>
+                            </td>
+                            <td>
+                                <span>void</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Destroys the jqxFileUpload. </P>
+<H4></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan23">render</span>
+                            </td>
+                            <td>
+                                <span>()</span>
+                            </td>
+                            <td>
+                                <span>void</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Renders the widget. </P>
+<H4></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan24">refresh</span>
+                            </td>
+                            <td>
+                                <span>()</span>
+                            </td>
+                            <td>
+                                <span>void</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Refreshes the widget. </P>
+<H4></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan25">uploadFile</span>
+                            </td>
+                            <td>
+                                <span>(double fileIndex)</span>
+                            </td>
+                            <td>
+                                <span>void</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Uploads a selected file. </P>
+<H4></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan26">uploadAll</span>
+                            </td>
+                            <td>
+                                <span>()</span>
+                            </td>
+                            <td>
+                                <span>void</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Uploads all selected files. </P>
+<H4></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+           
+            </div>
+        </div>
+
+    	<div id="pageBottom" class="bottom"></div>
+    </body>
+
+</html>
