@@ -1,0 +1,47 @@
+
+<div style="width: 400px;" id="container">
+    <JqxToolTip content="<b>Title:</b> <i>The Amazing Spider-man</i><br /><b>Year:</b> 2012" position="position" name="movieTooltip">
+        <img src="../../images/The_Amazng_Spider_Man.jpeg" id="filmPicture1" />
+    </JqxToolTip>
+    <JqxToolTip content="<b>Title:</b> <i>The Avengers</i><br /><b>Year:</b> 2012" position="position" name="movieTooltip">
+        <img src="../../images/The_Avengers.jpg" id="filmPicture2" />
+    </JqxToolTip>
+    <JqxToolTip content="<b>Title:</b> <i>The Dark Knight Rises</i><br /><b>Year:</b> 2012" position="position" name="movieTooltip">
+        <img src="../../images/The_Dark_Knight_Rises.jpg" id="filmPicture3" />
+    </JqxToolTip>
+    <JqxToolTip content="<b>Title:</b> <i>Harry Potter and the Deathly Hallows - Part 1</i><br /><b>Year:</b> 2010" position="position" name="movieTooltip">
+        <img src="../../images/Harry_Potter_7_Part_1.jpg" id="filmPicture4" />
+    </JqxToolTip>
+    <JqxToolTip content="<b>Title:</b> <i>Harry Potter and the Deathly Hallows - Part 2</i><br /><b>Year:</b> 2011" position="position" name="movieTooltip">
+        <img src="../../images/Harry_Potter_7_Part_2.jpg" id="filmPicture5" />
+    </JqxToolTip>
+    <JqxToolTip content="<b>Title:</b> <i>Inception</i><br /><b>Year:</b> 2010" position="position" name="movieTooltip">
+        <img src="../../images/Inception.jpg" id="filmPicture6" />
+    </JqxToolTip>
+    <JqxToolTip content="<b>Title:</b> <i>Star Trek</i><br /><b>Year:</b> 2009" position="position" name="movieTooltip">
+        <img src="../../images/Star_Trek.jpg" id="filmPicture7" />
+    </JqxToolTip>
+    <JqxToolTip content="<b>Title:</b> <i>Star Wars</i> Episode III: <i>Revenge of the Sith</i><br /><b>Year:</b> 2005" position="position" name="movieTooltip">
+        <img src="../../images/Star_Wars_Episode_III.jpg" id="filmPicture8" />
+    </JqxToolTip>
+    <JqxToolTip content="<b>Title:</b> <i>Thor</i><br /><b>Year:</b> 2011" position="position" name="movieTooltip">
+        <img src="../../images/Thor.jpg" id="filmPicture9" />
+    </JqxToolTip>
+</div>
+
+@code {
+    string position = "mouse";
+}
+
+<style>
+    #container div {
+        width: 110px;
+        display: inline-block;
+        float: left;
+        margin: 8px;
+    }
+
+    #container div:nth-of-type(4) {
+        clear: both;
+    }
+</style>
