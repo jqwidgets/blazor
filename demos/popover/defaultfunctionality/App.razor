@@ -1,0 +1,34 @@
+@inject IJSRuntime JSRuntime;
+
+<div style="height: 33px; border: 1px solid lightgray; padding: 10px;" class="jqx-widget-header">
+    <div style="float: right">
+        <div id="button">
+        <JqxButton
+            width=150 height=20 template=template>
+            View Employees
+        </JqxButton>
+        </div>
+        <JqxPopover onComponentReady="onReady"
+            showCloseButton=true selector="#button" title=title
+            arrowOffsetValue=50 offset=offset>
+            <div @ref="employees"></div>
+        </JqxPopover>
+    </div>
+</div>
+
+@code {
+    ElementReference employees;
+
+    string template = "inverse";
+    string title = "Employees";
+
+    Dictionary<string, int> offset = new Dictionary<string, int>()
+    {
+        { "top", 10 }, { "left", -50 }
+    };
+
+    private void onReady()
+    {
+        JSRuntime.InvokeVoidAsync("Example.setContent", employees);
+    }
+}
