@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Vue DockingLayout CSS Styling and Appearance</title>
+	<meta name="description" content="Vue DockingLayout Styling and Appearance Documentation" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <link rel="stylesheet" href="../../styles/site.css" media="screen" />
+    <link rel="stylesheet" href="../../styles/jqx.apireference.css" media="screen" />
+    <script type="text/javascript" src="../../scripts/format.js"></script>
+    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    
+    
+    <script type="text/javascript" src="../../scripts/toggle.js"></script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-25803467-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</head>
+<body>
+    <div id="pageTop" class="top">
+    </div>
+    <div id="pageDocumentation">
+        <h2>Styling and Appearance</h2>
+        <p>
+            jQWidgets uses a pair of css files - jqx.base.css and jqx.[theme name].css. The
+                                                                base stylesheet creates the styles related to the widget's layout like margin, padding,
+                                                                border-width, position. The second css file applies the widget's colors and backgrounds.
+                                                                The jqx.base.css should be included before the second CSS file.
+        </p>
+        Below is the list of CSS classes used by jqxDockingLayout.
+                                                            <ul>
+                                                                <li>jqx-docking-layout - applied to the jqxDockingLayout.</li>
+                                                                <li>jqx-layout - applied to the jqxDockingLayout.</li>
+                                                                <li>jqx-widget - applied to the jqxDockingLayout.</li>
+                                                                <li>jqx-widget-content - applied to the jqxDockingLayout.</li>
+                                                                <li>jqx-rc-all - applied to the jqxDockingLayout.</li>
+                                                                <li>jqx-layout-group-root - applied to the root layout group.</li>
+                                                                <li>jqx-layout-group-default - applied to layout groups.</li>
+                                                                <li>jqx-layout-group-document - applied to document groups.</li>
+                                                                <li>jqx-layout-group-tabbed - applied to tabbed groups.</li>
+                                                                <li>jqx-layout-group-auto-hide - applied to auto hide groups.</li>
+                                                                <li>jqx-layout-group-auto-hide-content-horizontal - applied to the content sections
+                                                                    of horizontally-aligned auto hide groups.</li>
+                                                                <li>jqx-layout-group-auto-hide-content-vertical - applied to the content sections of
+                                                                    vertically-aligned auto hide groups.</li>
+                                                                <li>jqx-docking-layout-group-floating - applied to float groups.</li>
+                                                                <li>jqx-layout-pseudo-window - applied to pseudo-jqxWindows in tabbed and auto hide
+                                                                    groups.</li>
+                                                                <li>jqx-layout-pseudo-window-header - applied to pseudo-jqxWindow headers.</li>
+                                                                <li>jqx-layout-pseudo-window-title - applied to pseudo-jqxWindow titles.</li>
+                                                                <li>jqx-layout-pseudo-window-pin-icon - applied to pseudo-jqxWindow pin icons.</li>
+                                                                <li>jqx-layout-pseudo-window-pinned-icon - applied to pseudo-jqxWindow unpin icons.</li>
+                                                                <li>jqx-layout-pseudo-window-close-icon - applied to pseudo-jqxWindow close icons.</li>
+                                                                <li>jqx-layout-pseudo-window-content - applied to pseudo-jqxWindow content sections.</li>
+                                                                <li>jqx-layout-resize-feedback - applied to the horizontal and vertical resize feedbacks.</li>
+                                                                <li>jqx-layout-resize-feedback-horizontal - applied to the horizontal resize feedback.</li>
+                                                                <li>jqx-layout-resize-feedback-vertical - applied to the vertical resize feedback.</li>
+                                                                <li>jqx-layout-resize-feedback-warning - applied to the resize feedbacks when a minimum
+                                                                    width has been reached.</li>
+                                                                <li>jqx-docking-layout-overlay - applied to the overlay with squares which appears when
+                                                                    a float group is dragged (drag overlay).</li>
+                                                                <li>jqx-docking-layout-overlay-square - applied to the squares in the drag overlay.</li>
+                                                                <li>jqx-docking-layout-square-disabled - applied to squares in the drag overlay to indicate
+                                                                    a drop operation is not allowed.</li>
+                                                                <li>jqx-docking-layout-overlay-inner-square - applied to the inner, dialog-resembling,
+                                                                    squares in the drag overlay.</li>
+                                                                <li>jqx-docking-layout-overlay-inner-square-header - applied to the header of the drag
+                                                                    overlay inner squares and the "mini windows" of edge squares.</li>
+                                                                <li>jqx-docking-layout-overlay-inner-square-content - applied to the content of the
+                                                                    drag overlay inner squares and the "mini windows" of edge squares.</li>
+                                                                <li>jqx-docking-layout-overlay-highlight - applied to the highlighted part of the content
+                                                                    of the drag overlay inner squares.</li>
+                                                                <li>jqx-docking-layout-drop-overlay - applied to the overlay which appears when a float
+                                                                    group is about to be docked.</li>
+                                                                <li>jqx-docking-layout-overlay-square-edge - applied to the squares which appear at
+                                                                    the left, right, top and bottom of the widget when a float group is dragged.</li>
+                                                                <li>jqx-docking-layout-overlay-mini-window-edge-horizontal - applied to the inner, dialog-resembling,
+                                                                    squares in the left and right edge squares.</li>
+                                                                <li>jqx-docking-layout-overlay-mini-window-edge-vertical - applied to the inner, dialog-resembling,
+                                                                    squares in the top and bottom edge squares.</li>
+                                                                <li>jqx-docking-layout-overlay-inner-square-content-horizontal - applied to the content
+                                                                    of the "mini windows" of the left and right edge squares.</li>
+                                                                <li>jqx-docking-layout-overlay-inner-square-content-vertical - applied to the content
+                                                                    of the "mini windows" of the top and bottom edge squares.</li>
+                                                                <li>jqx-docking-layout-overlay-square-edge-arrow - applied to the arrows of the edge
+                                                                    squares.</li>
+                                                            </ul>
+        When you create a custom style with colors and backgrounds for jqxDockingLayout,
+                                                            you need to do the following:
+                                                            <ul>
+                                                                <li>Add the above CSS classes related to jqxDockingLayout</li>
+                                                                <li>After each CSS class, add your theme name.
+                                                                    <br />
+                                                                    For example:
+                                                                    <br />
+                                                                    jqx-docking-layout-energyblue</li>
+                                                                <li>To apply your custom style to jqxDockingLayout, you need to set its 'theme' property
+                                                                    (option) to point to your theme name string:
+                                                                </li>
+                                                            </ul>
+    </div>
+    <div id="pageBottom" class="bottom">
+    </div>
+</body>
+</html>

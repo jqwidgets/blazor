@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Vue Tabs CSS Styling and Appearance</title>
+	<meta name="description" content="Vue Tabs Styling and Appearance Documentation" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <link rel="stylesheet" href="../../styles/site.css" media="screen" />
+    <link rel="stylesheet" href="../../styles/jqx.apireference.css" media="screen" />
+    <script type="text/javascript" src="../../scripts/format.js"></script>
+    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    
+    
+    <script type="text/javascript" src="../../scripts/toggle.js"></script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-25803467-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</head>
+<body>
+    <div id="pageTop" class="top">
+    </div>
+    <div id="pageDocumentation">
+      
+        <h2>Styling and Appearance</h2>
+        <p>
+            jQWidgets uses a pair of css files - jqx.base.css and jqx.[theme name].css. The
+                                                                base stylesheet creates the styles related to the widget's layout like margin, padding,
+                                                                border-width, position. The second css file applies the widget's colors and backgrounds.
+                                                                The jqx.base.css should be included before the second CSS file.
+        </p>
+        Below is the list of CSS classes used by jqxTabs.
+                                                            <ul>
+                                                                <li>
+                                                                    <h3>jqxTabs Style</h3>
+                                                                </li>
+                                                                <li>jqx-widget - applied to jqxTabs.</li>
+                                                                <li>jqx-tabs - applied to jqxTabs.</li>
+                                                                <li>jqx-tabs-close-button - applied to the tab close button.</li>
+                                                                <li>jqx-tabs-close-button-selected - applied to the tab close button when the tab is
+                                                                    selected.</li>
+                                                                <li>jqx-tabs-close-button-hover - applied to the tab close button when the mouse is
+                                                                    over the tab.</li>
+                                                                <li>jqx-tabs-arrow-left - applied to the tab's left scroll arrow.</li>
+                                                                <li>jqx-tabs-arrow-right - applied to the tab's right scroll arrow.</li>
+                                                                <li>jqx-tabs-arrow-background - applied to the tab's scroll arrows.</li>
+                                                                <li>jqx-tabs-title - applied to the tab's title.</li>
+                                                                <li>jqx-tabs-title-bottom - applied to the tab's title when the 'position' is 'bottom'.</li>
+                                                                <li>jqx-tabs-title a:link - applied to the anchor in tab's title.</li>
+                                                                <li>jqx-tabs-title a:hover</li>
+                                                                <li>jqx-tabs-title a:active</li>
+                                                                <li>jqx-tabs-title a:visited</li>
+                                                                <li>jqx-tabs-title-selected-top - applied to the tab's title when the tab is selected
+                                                                    and the jqxTab's position property is set to 'top' </li>
+                                                                <li>jqx-tabs-title-selected-bottom - applied to the tab's title when the tab is selected
+                                                                    and the jqxTab's position property is set to 'bottom' </li>
+                                                                <li>jqx-fill-state-pressed - applied to a selected tab.</li>
+                                                                <li>jqx-tabs-title-hover-top - applied to the tab's title when the tab is hovered and
+                                                                    the jqxTab's position property is set to 'top' </li>
+                                                                <li>jqx-tabs-title-hover-bottom - applied to the tab's title when the tab is hovered
+                                                                    and the jqxTab's position property is set to 'bottom' </li>
+                                                                <li>jqx-fill-state-hover - applied to a hovered tab.</li>
+                                                                <li>jqx-tabs-title-disable - applied to the tab's title when the tab is disabled</li>
+                                                                <li>jqx-tabs-header - applied to the tab's header</li>
+                                                                <li>jqx-widget-header - applied to the tab's header</li>
+                                                                <li>jqx-tabs-header-bottom - applied to the tab's header when the position is bottom</li>
+                                                                <li>jqx-tabs-header-collapsed - applied to the tab's header when the tab is collapsed</li>
+                                                                <li>jqx-tabs-header-collapsed-bottom - applied to the tab's header when the position
+                                                                    is bottom and tab is collapsed </li>
+                                                                <li>jqx-tabs-collapsed - applied to the tabs when the 'collapsed' is true.</li>
+                                                                <li>jqx-tabs-collapsed-bottom - applied to the tabs when the 'collapsed' is true and
+                                                                    'position' is bottom.</li>
+                                                                <li>jqx-tabs-selection-tracker-container - applied to the tab's selection tracker container
+                                                                    element.</li>
+                                                                <li>jqx-tabs-selection-tracker-top - applied to the tab's selection tracker when the
+                                                                    jqxTab's position property is set to 'top'.</li>
+                                                                <li>jqx-tabs-selection-tracker-bottom - applied to the tab's selection tracker when
+                                                                    the jqxTab's position property is set to 'bottom'.</li>
+                                                                <li>jqx-tabs-content - applied to the tab's content element which represents a DIV element.</li>
+                                                                <li>jqx-widget-content - applied to the tab's content element which represents a DIV element.</li>
+                                                                <li>jqx-fill-state-disabled - applied to the jqxTabs when it is disabled.</li>
+                                                            </ul>
+        When you create a custom style with colors and backgrounds for jqxtabs, you need
+                                                            to do the following:
+                                                            <ul>
+                                                                <li>Add the above CSS classes related to jqxtabs</li>
+                                                                <li>After each CSS class, add your theme name.
+                                                                    <br />
+                                                                    For example:
+                                                                    <br />
+                                                                    jqx-tabs-summer </li>
+                                                                <li>To apply your custom style to jqxtabs, you need to set its 'theme' property(option)
+                                                                    to point to your theme name string.
+                                                                </li>
+                                    
+                                                            </ul>
+    </div>
+
+    <div id="pageBottom" class="bottom">
+    </div>
+</body>
+</html>

@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>Blazor JqxDockingLayout API Reference</title>
+        <meta name="description" content="API Reference Documentation for the Blazor JqxDockingLayout User Interface Component" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+        <link rel="stylesheet" media="screen" href="../../styles/site.css" />
+        <link rel="stylesheet" media="screen" href="../../styles/jqx.apireference.css" />
+
+        <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="../../scripts/jqx.apireference.js"></script>
+        <script type="text/javascript" src="../../scripts/format.js"></script>
+        <script type="text/javascript" src="../../scripts/toggle.js"></script>
+
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA- 25803467 - 1']);
+            _gaq.push(['_trackPageview']);
+            (function () {
+                var ga = document.createElement('script');
+                ga.type = 'text/javascript';
+                ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+    </head>
+
+    <body>
+        <div id="pageTop" class="top"></div>
+
+        <div id="pageDocumentation">
+            <div id="properties">
+
+                <table class="documentation-table">
+                    <tbody>
+
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+                                <h2 class="documentation-top-header">
+                                    Properties
+                                </h2>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>Name</th>
+                            <th>Type</th>
+                        </tr>
+
+                        
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan0">contextMenu</span>
+                            </td>
+                            <td>
+                                <span>bool</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets or gets wheter a custom context menu will appear when certain elements of the widget are right-clicked. </P>
+
+<H4>Code example </H4>
+
+<P>Set the <CODE>contextMenu</CODE> property. </P>
+<PRE><CODE>$('#jqxDockingLayout').jqxDockingLayout({ contextMenu : true }); </CODE></PRE>
+
+<P>Get the <CODE>contextMenu</CODE> property. </P>
+<PRE><CODE>var contextMenu = $('#jqxDockingLayout').jqxDockingLayout('contextMenu');
+                        </CODE></PRE></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan1">height</span>
+                            </td>
+                            <td>
+                                <span>object</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets or gets the docking layout's height. </P>
+
+<H4></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan2">layout</span>
+                            </td>
+                            <td>
+                                <span>object</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets or gets the layout. This property determines the position of the docking layout elements and their characteristics. The first member of the layout array should always be an item of type 'layoutGroup'. </P>
+
+<P>Each object in the layout array can have the following properties, with <SPAN style="TEXT-DECORATION: underline">some restrictions based on the type </SPAN>: </P>
+
+<UL><LI><STRONG>type</STRONG>. Possible values: 
+<UL>
+<LI>'layoutGroup' - container for other groups. It has no visual features. <SPAN style="TEXT-DECORATION: underline">The root item is always of this type.</SPAN> 
+<LI>'tabbedGroup' - a group that contains layoutPanels. It is represented by a jqxWindow-like panel with a bottom-aligned jqxRibbon inside. 
+<LI>'documentGroup' - a group that contains documentPanels. It is represented by a top-aligned jqxRibbon. 
+<LI>'autoHideGroup' - a group that contains layoutPanels. It is represented by a jqxRibbon with <CODE>mode: 'popup'</CODE>. Each ribbon item has a jqxWindow-like panel in its content. This group has to be either the first or the last child item of its parent layoutGroup. 
+<LI>'layoutPanel' - a panel that can be inserted in a tabbedGroup or autoHideGroup. When it is in a tabbedGroup it is represented by a ribbon item and in an autoHideGroup - by a jqxWindow-like panel inside a ribbon item. 
+<LI>'documentPanel' - a panel that can be inserted in a documentGroup. It is represented by a ribbon item. 
+<LI>'floatGroup' - a floating group that can contain a tabbedGroup or a layoutPanel. It is represented by a jqxWindow. <SPAN style="TEXT-DECORATION: underline">Initial floatGroups have to be defined after the root layoutGroup in the layout array. </SPAN></LI></UL>
+<LI><STRONG>alignment</STRONG> - sets the alignment of an autoHideGroup. Possible values: 
+<UL>
+<LI>'left' 
+<LI>'right' 
+<LI>'top' 
+<LI>'bottom' </LI></UL>
+<LI><STRONG>allowClose</STRONG> - applicable to tabbedGroups, floatGroups, layoutPanels and documentPanels. If set to <EM style="DISPLAY: none" jQuery111106299495152644018="4">false</EM>, the group/panel cannot be closed. 
+<LI><STRONG>allowPin</STRONG> - applicable only to tabbedGroups. If set to <EM style="DISPLAY: none" jQuery111106299495152644018="5">false</EM>, the group cannot be pinned. 
+<LI><STRONG>allowUnpin</STRONG> - applicable only to autoHideGroups. If set to <EM style="DISPLAY: none" jQuery111106299495152644018="6">false</EM>, the group cannot be unpinned. 
+<LI><STRONG>contentContainer</STRONG> - indicates which HTML element has the content of the panel. The required value is the value of an existing HTML element's data-container attribute. N/A to groups. 
+<LI><STRONG>height</STRONG> - sets the height of a group (N/A to panels). Used only if the parent group's orientation is 'vertical' or for floatGroups. The heights of all such groups have to be set either in pixels or percents (not a mix of both). 
+<LI><STRONG>initContent</STRONG> - a callback function to be called when a panel is opened for the first time. Useful for initializing widgets in panels. N/A to groups. 
+<LI><STRONG>minHeight</STRONG> - sets the minimumn height (in pixels) of a group which is vertically aligned within its parent group. Disregards the value of the <STRONG>minGroupHeight</STRONG> property. 
+<LI><STRONG>minWidth</STRONG> - sets the minimumn width (in pixels) of a group which is horizontally aligned within its parent group. Disregards the value of the <STRONG>minGroupWidth </STRONG>property. 
+<LI><STRONG>orientation</STRONG> - orients child items either horizontally or vertically. Applicable only to layoutGroups. Possible values: 
+<UL>
+<LI>'horizontal' 
+<LI>'vertical' </LI></UL>
+<LI><STRONG>pinnedHeight</STRONG> - sets what the height of a tabbedGroup will be after it is pinned. 
+<LI><STRONG>pinnedWidth</STRONG> - sets what the width of a tabbedGroup will be after it is pinned. 
+<LI><STRONG>position</STRONG> - sets the initial position of a floatGroup. The position property is an object with the following properties:
+<UL>
+<LI>x 
+<LI>y </LI></UL>
+<LI><STRONG>selected</STRONG> - sets whether a panel is initially selected. N/A to groups. 
+<LI><STRONG>title</STRONG> - sets the title of a panel. Represented by the corresponding ribbon item's title. N/A to groups. 
+<LI><STRONG>unpinnedHeight</STRONG> - sets what the height of an autoHideGroup will be after it is unpinned. 
+<LI><STRONG>unpinnedWidth</STRONG> - sets what the width of an autoHideGroup will be after it is unpinned. 
+<LI><STRONG>width</STRONG> - sets the width of a group (N/A to panels). Used only if the parent group's orientation is 'horizontal' or for floatGroups. The widths of all such groups have to be set either in pixels or percents (not a mix of both). 
+<LI><STRONG>items</STRONG> - an array of item objects with the fields described above. N/A to panels. </LI></UL>
+
+<H4></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan3">minGroupHeight</span>
+                            </td>
+                            <td>
+                                <span>object</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets the default minimumn height for groups which are vertically aligned within their parent group. </P>
+
+<H4></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan4">minGroupWidth</span>
+                            </td>
+                            <td>
+                                <span>object</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets the default minimumn width for groups which are horizontally aligned within their parent group. </P>
+
+<H4></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan5">resizable</span>
+                            </td>
+                            <td>
+                                <span>bool</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets or gets wheter panels can be dynamically resized. </P>
+
+<H4>Code example </H4>
+
+<P>Set the <CODE>resizable</CODE> property. </P>
+<PRE><CODE>$('#jqxDockingLayout').jqxDockingLayout({ resizable : false }); </CODE></PRE>
+
+<P>Get the <CODE>resizable</CODE> property. </P>
+<PRE><CODE>var resizable = $('#jqxDockingLayout').jqxDockingLayout('resizable'); </CODE></PRE></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan6">rtl</span>
+                            </td>
+                            <td>
+                                <span>bool</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets or gets a value indicating whether widget's elements are aligned to support locales using right-to-left fonts. </P>
+
+<H4>Code example </H4>
+
+<P>Set the <CODE>rtl</CODE> property. </P>
+<PRE><CODE>$('#jqxDockingLayout').jqxDockingLayout({ rtl : true }); </CODE></PRE>
+
+<P>Get the <CODE>rtl</CODE> property. </P>
+<PRE><CODE>var rtl = $('#jqxDockingLayout').jqxDockingLayout('rtl'); </CODE></PRE></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan7">theme</span>
+                            </td>
+                            <td>
+                                <span>string</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets the widget's theme. </P>
+
+<UL><LI>Include the theme's CSS file after jqx.base.css.<BR>The following code example adds the 'material' theme. <PRE><CODE>
+                                                                                        <PRE><CODE>&lt;link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" /&gt;
+&lt;link rel="stylesheet" href="../../jqwidgets/styles/jqx.material.css" type="text/css" /&gt;</CODE></PRE>
+                                </CODE></PRE>
+<LI>Set the widget's theme property to 'material' when you initialize it. </LI></UL></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan8">width</span>
+                            </td>
+                            <td>
+                                <span>object</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets or gets the docking layout's width. </P>
+
+<H4></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+                                <h2 class="documentation-top-header">
+                                    Events
+                                </h2>
+                            </td>
+                        </tr>
+
+                        
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan9">onDock</span>
+                            </td>
+                            <td>
+                                <span>Event</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>This event is triggered when a floatGroup has been docked. </P></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan10">onFloatGroupClosed</span>
+                            </td>
+                            <td>
+                                <span>Event</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>This event is triggered when a floatGroup has been closed. </P></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan11">onFloat</span>
+                            </td>
+                            <td>
+                                <span>Event</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>This event is triggered when a group or panel has been floated. </P></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan12">onPin</span>
+                            </td>
+                            <td>
+                                <span>Event</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>This event is triggered when a group has been pinned. </P></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan13">onResize</span>
+                            </td>
+                            <td>
+                                <span>Event</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>This event is triggered when a group has been resized (when the group has been resized with the mouse or when an adjacent group has been pinned, unpinned or closed). </P></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan14">onUnpin</span>
+                            </td>
+                            <td>
+                                <span>Event</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>This event is triggered when a group has been unpinned. </P></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+                                <h2 class="documentation-top-header">
+                                    Methods
+                                </h2>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>Name</th>
+                            <th>Arguments</th>
+                            <th>Return Type</th>
+                        </tr>
+
+                        
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan15">addFloatGroup</span>
+                            </td>
+                            <td>
+                                <span>(object width, object height, object position, string panelType, string title, string content, object initContent)</span>
+                            </td>
+                            <td>
+                                <span>void</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Adds a new floatGroup. </P>
+<H4></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan16">destroy</span>
+                            </td>
+                            <td>
+                                <span>()</span>
+                            </td>
+                            <td>
+                                <span>void</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Destroys the widget. </P>
+<H4></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan17">loadLayout</span>
+                            </td>
+                            <td>
+                                <span>(object layout)</span>
+                            </td>
+                            <td>
+                                <span>void</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Loads a previously saved layout. </P>
+<H4></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan18">refresh</span>
+                            </td>
+                            <td>
+                                <span>()</span>
+                            </td>
+                            <td>
+                                <span>void</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Refreshes the widget. </P>
+<H4></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan19">render</span>
+                            </td>
+                            <td>
+                                <span>()</span>
+                            </td>
+                            <td>
+                                <span>void</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Renders the widget. </P>
+<H4></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan20">saveLayout</span>
+                            </td>
+                            <td>
+                                <span>()</span>
+                            </td>
+                            <td>
+                                <span>object</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Saves the current layout of the widget. The object returned by this method can be passed to the method <STRONG>loadLayout</STRONG>. </P>
+<H4></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+           
+            </div>
+        </div>
+
+    	<div id="pageBottom" class="bottom"></div>
+    </body>
+
+</html>

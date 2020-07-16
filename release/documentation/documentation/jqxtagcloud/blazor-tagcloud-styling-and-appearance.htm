@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Vue TagCloud CSS Styling and Appearance</title>
+	<meta name="description" content="Vue Grid Styling and Appearance Documentation" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <link rel="stylesheet" href="../../styles/site.css" media="screen" />
+    <link rel="stylesheet" href="../../styles/jqx.apireference.css" media="screen" />
+    <script type="text/javascript" src="../../scripts/format.js"></script>
+    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    
+    
+    <script type="text/javascript" src="../../scripts/toggle.js"></script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-25803467-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</head>
+<body>
+    <div id="pageTop" class="top">
+    </div>
+    <div id="pageDocumentation">
+        <h2>Styling and Appearance</h2>
+        <p>
+            The jqxTagCloud allows for a number of different options to style the elements of the cloud.
+                                                                 In order to fit various needs we have provided options to:
+        </p>
+        <ul>
+            <li>Set the <strong>min</strong> and <strong>max fontSize</strong> depending on the value(weight) of the element.
+                                                                        
+            </li>
+            <li>Set the tag <strong>text color</strong> for all elements using textColor.</li>
+            <p>Here is an example of tags with mountain Peaks with their fontsize scaled by their height and text  color set to brown.</p>
+         
+        </ul>
+
+        <h3>jqxTagCloud CSS class styles</h3>
+        <p>
+            jQWidgets uses a pair of css files - jqx.base.css and jqx.[theme name].css. The
+                                                                base stylesheet creates the styles related to the widget's layout like margin, padding,
+                                                                border-width, position. The second css file applies the widget's colors and backgrounds.
+                                                                The jqx.base.css should be included before the second CSS file.
+        </p>
+        Below is the list of CSS classes used by jqxTagCloud.
+                                                            <ul>
+                                                                <li>jqx-widget - applied to jqxTagCloud widget. </li>
+                                                                <li>jqx-tag-cloud - applied to jqxTagCloud's ul element. </li>
+                                                                <li>jqx-tag-cloud-item - applied to the jqxTagCloud li element.</li>
+                                                                <li>
+                                                                    <p>You can use these classes to style your own widget.</p>
+                                                                    <p>The sample below demostrates how you can use the above mentioned classes to style it as a list of tags.</p>
+                                                                </li>
+                                                            </ul>
+        <h3>jqxTagCloud Theme support</h3>
+        Should you need to have <strong>seperate themes</strong> for the jqxTagCloud, you can use the following method:
+                                                               
+                                                            
+                                                            <ul>
+                                                                <li>Add the above CSS classes related to jqxTagCloud</li>
+                                                                <li>After each CSS class, add your theme name.
+                                                                    <br />
+                                                                    For example:
+                                                                    <br />
+                                                                    jqx-jqxTagCloud-shinyblack </li>
+                                                                <li>To apply your custom style to jqxTagCloud, you need to set its <strong>theme</strong> property(option)
+                                                                    to point to your theme name string.
+                                                                </li>
+
+                                                                <li>The sample below demonstrates how to set the 'Shiny Black' theme to jqxTagCloud.
+                                                                    
+                                                                 </li>
+                                                            </ul>
+    </div>
+    <div id="pageBottom" class="bottom">
+    </div>
+</body>
+</html>

@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Vue Chart Styling and Appearance</title>
+	<meta name="description" content="Vue Chart Styling and Appearance Documentation" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <link rel="stylesheet" href="../../styles/site.css" media="screen" />
+    <link rel="stylesheet" href="../../styles/jqx.apireference.css" media="screen" />
+    <script type="text/javascript" src="../../scripts/format.js"></script>
+    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    
+    <script type="text/javascript" src="../../scripts/toggle.js"></script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-25803467-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</head>
+<body>
+    <div id="pageTop" class="top">
+    </div>
+    <div id="pageDocumentation">
+        <h2>Chart Styling</h2>
+        jqxChart offers many options to customize the chart appearance and colors. In this
+section we will go through the styling options available in different chart elements.
+        <h4>Series Color Scheme</h4>
+        jqxChart ships with eleven built-in color schemes which are used to automatically
+set colors for different series. You can change the color scheme by setting the
+colorScheme option of the chart. The available value are from 'scheme01' to 'scheme11'.
+        <h4>Color Gradients</h4>
+        jqxChart uses fill gradients built from the base colors in the color schemes. If you wish to use only basic fill colors you can turn off the gradients at series or seriesGroup level by setting the useGradient property. If the property is not set jqxChart will use gradients by default.
+        <pre>
+<code>
+seriesGroups:
+    [
+        {
+            type: 'splinearea',
+            useGradient: false, // disable gradient for the entire group
+            valueAxis:
+            {
+                unitInterval: 10,
+                minValue: 0,
+                maxValue: 100,
+                displayValueAxis: false,
+                description: 'Goal in minutes',
+                axisSize: 'auto',
+                tickMarksColor: '#888888'
+            },
+            series: [
+                    { dataField: 'Goal', displayText: 'Personal Goal', opacity: 0.7 }
+                ]
+        },
+        {
+            type: 'stackedcolumn',
+            columnsGapPercent: 100,
+            seriesGapPercent: 5,
+            useGradient: false, // disable gradient for the entire group
+            valueAxis:
+            {
+                unitInterval: 10,
+                minValue: 0,
+                maxValue: 100,
+                displayValueAxis: true,
+                description: 'Time in minutes',
+                axisSize: 'auto',
+                tickMarksColor: '#888888',
+                gridLinesColor: '#777777'
+            },
+            series: [
+                    // override the useGradient property at series level
+                    { dataField: 'Running', displayText: 'Running', useGradient: true },
+                    { dataField: 'Swimming', displayText: 'Swimming' },
+                    { dataField: 'Cycling', displayText: 'Cycling' }
+                ]
+        }
+    ]
+</code>
+</pre>
+        <br />
+        With jqxChart you can define custom Colors for the series by setting their color property.
+        <pre><code>
+seriesGroups:
+    [
+        {
+            type: 'line',
+            valueAxis:
+            {
+                unitInterval: 500,
+                minValue: 0,
+                maxValue: 3000,
+                displayValueAxis: true,
+                description: 'Daily Closing Price',
+                axisSize: 'auto',
+                tickMarksColor: '#888888'
+            },
+            series: [
+                    { dataField: 'S&P 500', displayText: 'S&P 500', color: '#ff0000' },
+                    { dataField: 'NASDAQ', displayText: 'NASDAQ', color: '#0000ff' }
+                ]
+        }
+    ]
+</code></pre>
+        <h4>Grid lines</h4>
+        You can adjust the spacing and colors of the horizontal and vertical grid lines.
+The vertical gridlines can be adjusted by changing the categoryAxis options. For
+example the following code makes the vertical grid lines visible, makes their color
+blue and sets the spacing between the lines such that a line appears once for every
+tenth element:<br />
+        <pre>
+<code>
+xAxis: 
+{ 
+    gridLinesColor: '#0000FF',
+    showGridLines: true,
+    gridLinesInterval: 10 
+}
+</code>
+    </pre>
+        <br />
+        The horizontal grid lines can be changed by setting the gridLinesColor, showGridLines
+and gridLinesInterval options on valueAxis for each seriesGroup.
+        <pre>
+<code>valueAxis: 
+{ 
+    gridLinesColor: '#0000FF',
+    showGridLines: true,
+    gridLinesInterval: 20
+}
+</code>
+    </pre>
+        <h4>Tick marks</h4>
+        Tick marks and grid lines work in a very similar way and jqxChart offers identical
+properties.<br />
+        To change the tick marks across the horizontal axis use the showTickMarks, tickMarksColor
+and tickMarksInterval options of the Category Axis:
+        <pre>
+<code>
+xAxis: 
+{ 
+    showTickMarks: true,
+    tickMarksColor: '#0000FF',
+    tickMarksInterval: 10 
+}
+</code>
+    </pre>
+        <br />
+        Similar options are available for the value axis of each series group:
+        <pre>
+<code>
+valueAxis:
+{ 
+    showTickMarks: true,
+    tickMarksColor: '#0000FF', 
+    tickMarksInterval: 10
+}
+</code>
+    </pre>
+
+        <h4>Background and border line colors</h4>
+        You can also change the chart's border color and background fill by using the 'borderColor'
+and 'background' properties.
+            Sets the chart's border color by setting the <code>borderLineColor</code> property.
+<br />
+        Sets the chart's background color by setting the <code>backgroundColor</code> property.
+        <br />
+
+
+        <h4>Background image</h4>
+        Instead of using background color you can use an image by setting the <code>backgroundImage</code> property.
+        <br />
+    </div>
+
+    <div id="pageBottom" class="bottom">
+    </div>
+</body>
+</html>

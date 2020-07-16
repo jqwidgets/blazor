@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Vue ListMenu CSS Styling and Appearance</title>
+	<meta name="description" content="Vue ListMenu Styling and Appearance Documentation" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />  
+    
+    <link rel="stylesheet" href="../../styles/site.css" media="screen" />
+    <link rel="stylesheet" href="../../styles/jqx.apireference.css" media="screen" />
+    <script type="text/javascript" src="../../scripts/format.js"></script>
+    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    
+    
+     <script type="text/javascript" src="../../scripts/toggle.js"></script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-25803467-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</head>
+<body >
+  <div id="pageTop" class="top">
+  </div>
+    <div id="pageDocumentation">
+   <h1>Styling and Appearance</h1>
+jQWidgets uses a pair of CSS files - jqx.base.css and jqx.[theme name].css. The base stylesheet creates the styles 
+related to the widget's layout like margin, padding, border-width, position. The second css file applies the widget's colors and backgrounds. 
+The jqx.base.css should be included before the second CSS file.
+<br />
+<br />
+Below is the list of CSS classes used by jqxListMenu:
+<ul>
+    <li>jqx-listmenu - applying to the root jqxListMenu element.</li>
+    <li>jqx-listmenu-header - applying to the jqxListMenu's header.</li>
+    <li>jqx-widget-header - applying to the jqxListMenu's header.</li>
+    <li>jqx-listmenu-item - applying to the jqxListMenu's list items.</li>
+    <li>jqx-fill-state-normal - applying to the jqxListMenu's list items.</li>
+    <li>jqx-fill-state-pressed - applying to a  jqxListMenu when the mouse button is pressed.</li>
+    <li>jqx-listmenu-separator - applying to the jqxListMenu's separators. A list item could be set to be separator using the data-role='separator' attribute.</li>
+    <li>jqx-listmenu-header-label - applying to the header's label.</li>
+    <li>jqx-listmenu-arrow-right - applying to the list item's arrow.</li>
+    <li>jqx-listmenu-arrow-right-pressed - applying to the list item when the user press his left mouse button on it.</li>
+    <li>jqx-listmenu-filter-input - applying to the filter input.</li>
+    <li>jqx-listmenu-filter - applying to the filter bar.</li>
+    <li>jqx-listmenu-item-label - applying to each list item's label.</li>
+    <li>jqx-listmenu-auto-separator - applying to the separators which have been created dynamically.</li>
+    <li>jqx-listmenu-item-readonly - applying to the readonly list items.</li>
+    <li>jqx-fill-state-disabled - applied to the jqxListMenu when it is disabled.</li>
+</ul>
+<br />
+When you create a custom style with colors and backgrounds for jqxListMenu, you need to do the following:
+<ul>
+    <li>Add the above CSS classes related to jqxListMenu</li>
+    <li>After each CSS class, add your theme name. <br />
+        For example: jqx-listmenu-summer</li>
+    <li>To apply your custom style to jqxListMenu, you need to set its 'theme' property(option) to point to your theme name string.</li>
+    <li>The sample below demonstrates how to set the 'Summer' theme to jqxListMenu.</li>
+</ul>
+                                                                                                                        </div>
+
+                                                         </div>
+                                                        <span class='copyright'>Copyright 2015(c) jQWidgets. All rights reserved.| <a title='Contact Us'
+                                                            target='_blank' href="http://jqwidgets.com/contact-us/">Contact Us</a> | <a target='_blank'
+                                                                title='Follow Us' href="http://jqwidgets.com/follow/">Follow Us</a> </span>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+<div id="pageBottom" class="bottom">
+</div>
+</body>
+</html>

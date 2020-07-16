@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Vue DropDownList CSS Styling and Appearance</title>
+	<meta name="description" content="Vue DropDownList Styling and Appearance Documentation" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <link rel="stylesheet" href="../../styles/site.css" media="screen" />
+    <link rel="stylesheet" href="../../styles/jqx.apireference.css" media="screen" />
+    <script type="text/javascript" src="../../scripts/format.js"></script>
+    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    
+    
+    <script type="text/javascript" src="../../scripts/toggle.js"></script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-25803467-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</head>
+<body>
+    <div id="pageTop" class="top">
+    </div>
+    <div id="pageDocumentation">
+        <h2>Styling and Appearance</h2>
+        <p>
+            jQWidgets uses a pair of css files - jqx.base.css and jqx.[theme name].css. The
+                                                                base stylesheet creates the styles related to the widget's layout like margin, padding,
+                                                                border-width, position. The second css file applies the widget's colors and backgrounds.
+                                                                The jqx.base.css should be included before the second CSS file.
+        </p>
+        Below is the list of CSS classes used by jqxDropDownList.
+                                                            <ul>
+                                                                <li>jqx-widget - applied to the dropdownlist.</li>
+                                                                <li>jqx-dropdownlist-content - applied to the dropdownlist's content element which displays
+                                                                    the selected item's text or html.</li>
+                                                                <li>jqx-dropdownlist-content-disabled - applied to the dropdownlist's content element
+                                                                    which displays the selected item's text or html and the widget is disabled.</li>
+                                                                <li>jqx-dropdownlist-state-normal - applied to the dropdownlist in default state.</li>
+                                                                <li>jqx-fill-state-normal - applied to the dropdownlist in default state.</li>
+                                                                <li>jqx-dropdownlist-state-hover - applied to the dropdownlist in hovered state.</li>
+                                                                <li>jqx-fill-state-hover - applied to the dropdownlist in hovered state.</li>
+                                                                <li>jqx-dropdownlist-state-selected - applied to the dropdownlist in selected state.</li>
+                                                                <li>jqx-fill-state-pressed - applied to the dropdownlist in selected state.</li>
+                                                                <li>jqx-dropdownlist-state-disabled - applied to the dropdownlist in disabled state.</li>
+                                                                <li>jqx-fill-state-focus - applied to the dropdownlist when it is focused.</li>
+                                                                <li>jqx-fill-state-disabled - applied to the dropdownlist when it is disabled.</li>
+                                                            </ul>
+        *jqxDropDownList internally use the jqxListBox widget. For additional information about styling jqxListBox, please take a look at the jqxListBox's Styling and Appearance help topic. 
+                                                            <br />
+        <br />
+        When you create a custom style with colors and backgrounds for jqxDropDownList,
+                                                            you need to do the following:
+                                                            <ul>
+                                                                <li>Add the above CSS classes related to jqxDropDownList</li>
+                                                                <li>After each CSS class, add your theme name.
+                                                                    <br />
+                                                                    For example:
+                                                                    <br />
+                                                                    jqx-dropdownlist-summer </li>
+                                                                <li>To apply your custom style to jqxDropDownList, you need to set its 'theme' property(option)
+                                                                    to point to your theme name string.
+                                                                </li>
+                                                            </ul>
+    </div>
+    <div id="pageBottom" class="bottom">
+    </div>
+</body>
+</html>
