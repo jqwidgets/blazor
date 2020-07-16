@@ -1,0 +1,18 @@
+﻿<JqxBarGauge @ref="myBarGauge"
+    width="350" height="350" values="values">
+</JqxBarGauge>
+ 
+@code {
+    JqxBarGauge myBarGauge;
+ 
+    private double[] values = new double[4] { 102, 115, 130, 137 };
+ 
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            double[] newValues = new double[4] { 10, 20, 30, 40 };
+            myBarGauge.val(newValues);
+        }
+    }
+}

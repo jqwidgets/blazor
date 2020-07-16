@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Vue Scheduler CSS Styling and Appearance</title>
+	<meta name="description" content="Vue Scheduler Styling and Appearance Documentation" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <link rel="stylesheet" href="../../styles/site.css" media="screen" />
+    <link rel="stylesheet" href="../../styles/jqx.apireference.css" media="screen" />
+    <script type="text/javascript" src="../../scripts/format.js"></script>
+    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    
+    
+    <script type="text/javascript" src="../../scripts/toggle.js"></script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-25803467-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</head>
+<body>
+    <div id="pageTop" class="top">
+    </div>
+    <div id="pageDocumentation">
+        <h1>Styling and Appearance</h1>
+        jQWidgets uses a pair of CSS files - jqx.base.css and jqx.[theme name].css. The base stylesheet creates the styles 
+related to the widget's layout like margin, padding, border-width, position. The second css file applies the widget's colors and backgrounds. 
+The jqx.base.css should be included before the second CSS file.
+        <br />
+        <br />
+        Below is the list of CSS classes used by jqxScheduler:
+        <ul>
+            <li>jqx-scheduler - applying to the root jqxScheduler element.</li>
+            <li>jqx-widget - applying to the root jqxScheduler element.</li>
+            <li>jqx-widget-content - applying to the root jqxScheduler element.</li>
+            <li>jqx-rc-all - applying to the root jqxScheduler element.</li>
+            <li>jqx-cell - applying to the jqxScheduler cells.</li>
+            <li>jqx-widget-header - applying to the jqxScheduler column header, toolbar, legend.</li>
+            <li>jqx-scheduler-toolbar - applying to the jqxScheduler toolbar.</li>
+            <li>jqx-icon-arrow-left - applying to the jqxScheduler left navigation arrow.</li>
+            <li>jqx-icon-arrow-right - applying to the jqxScheduler right navigation arrow.</li>
+            <li>jqx-scheduler-selected-appointment - applying to a selected appointment.</li>
+            <li>jqx-scheduler-appointment-resize-indicator - applying to the appointment elements. Displays a resize handler.</li>
+            <li>jqx-scheduler-cell-focus - applying to focused cell.</li>
+            <li>jqx-scheduler-feedback-appointment - applying to the appointment and the feedback element of an appointment which is<br />
+                displayed when the appointment is being dragged or resized.</li>
+            <li>jqx-scheduler-feedback-drag-appointment - applying to the feedback element of an appointment which is displayed when the appointment is being dragged or resized.</li>
+            <li>jqx-scheduler-time-column - applying to the time ruler's column.</li>
+            <li>jqx-scheduler-cell-hover - applying to hovered cell.</li>
+            <li>jqx-fill-state-hover - applying to hovered cell.</li>
+            <li>jqx-scheduler-cell-selected - applying to selected cell(s).</li>
+            <li>jqx-fill-state-pressed - applying to selected cell(s).</li>
+            <li>jqx-scheduler-month-weekend-cell - applying to weekend cells.</li>
+            <li>jqx-scheduler-month-cell - applying to cells in the month view.</li>
+            <li>jqx-scheduler-month-outer-cell - applying to cells in the month view which are not from the current month.</li>
+            <li>jqx-scheduler-all-day-cell - applying to the cells in the all day area.</li>
+            <li>jqx-scheduler-time-column-header-cell - applying to the cell above the time ruler's column.</li>
+            <li>jqx-scheduler-work-time-cell - applying to cells in the work time area.</li>
+            <li>jqxjqx-scheduler-not-work-time-cell - applying to cells out of the work time area.</li>
+        </ul>
+        <br />
+        When you create a custom style with colors and backgrounds for jqxScheduler, you need to do the following:
+        <ul>
+            <li>Add the above CSS classes related to jqxScheduler</li>
+            <li>After each CSS class, add your theme name.
+                <br />
+                For example: jqx-Scheduler-summer</li>
+            <li>To apply your custom style to jqxScheduler, you need to set its 'theme' property(option) to point to your theme name string.</li>
+            <li>The sample below demonstrates how to set the 'Summer' theme to jqxScheduler.</li>
+        </ul>
+    </div>
+    <div id="pageBottom" class="bottom">
+    </div>
+</body>
+</html>

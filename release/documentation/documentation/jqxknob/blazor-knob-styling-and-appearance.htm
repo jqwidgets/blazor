@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Vue Knob CSS Styling and Appearance</title>
+	<meta name="description" content="Vue Knob Styling and Appearance Documentation" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <link rel="stylesheet" href="../../styles/site.css" media="screen" />
+    <link rel="stylesheet" href="../../styles/jqx.apireference.css" media="screen" />
+    <script type="text/javascript" src="../../scripts/format.js"></script>
+    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    
+    
+    <script type="text/javascript" src="../../scripts/toggle.js"></script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-25803467-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</head>
+<body>
+    <div id="pageTop" class="top">
+    </div>
+    <div id="pageDocumentation">
+        <h2>Styling and Appearance</h2>
+        <p>
+            jQWidgets uses a pair of css files - jqx.base.css and jqx.[theme name].css. The
+                                                                base stylesheet creates the styles related to the widget's layout like margin, padding,
+                                                                border-width, position. The second css file applies the widget's colors and backgrounds.
+                                                                The jqx.base.css should be included before the second CSS file.
+        </p>
+        Below is the list of CSS classes used by jqxKnob.
+                                                            <ul>
+                                                                <li>jqx-widget - applied to the widget.</li>
+                                                                <li>jqx-knob - applied to the widget.</li>
+                                                                <li>jqx-knob-label - applied to the knob's labels.</li>
+                                                            </ul>
+        <div>
+            <div>
+                <h3>Background</h3>
+                To set fill color and stroke of the Knob, you need to define its <code>style</code> property.
+            Members of the Knob's style object:
+            <ul>
+                <li>fill - fill color(hex string) or object(object.color(hex color), object.gradientType(linear, linearHorizontal or radial), gradientStops(Array like [[0, 1], [50, 0.5], [100, 1]]).
+                </li>
+                <li>stroke - stroke color(hex string).
+                </li>
+                <li>strokeWidth - stroke width(number).</li>
+            </ul>
+                <h3>Dial</h3>
+                To set fill color and stroke of the Dial, you need to define its <code>style</code> property.
+            Members of the Dial UI Element's style object:
+            <ul>
+                <li>fill - fill color(hex string) or object(object.color(hex color), object.gradientType(linear, linearHorizontal or radial), gradientStops(Array like [[0, 1], [50, 0.5], [100, 1]]).
+                </li>
+                <li>stroke - stroke color(hex string).
+                </li>
+                <li>strokeWidth - stroke width(number).</li>
+            </ul>
+                The <code>innerRadius</code> and <code>outerRadius</code> properties specify the inner and outer radius of the element.
+            </div>
+            <div>
+                <h3>Spinner</h3>
+                To set fill color and stroke of the Spinner, you need to define its style property.
+            Members of the Spinner UI Element's style object:
+            <ul>
+                <li>fill - fill color(hex string) or object(object.color(hex color), object.gradientType(linear, linearHorizontal or radial), gradientStops(Array like [[0, 1], [50, 0.5], [100, 1]]).
+                </li>
+                <li>stroke - stroke color(hex string).
+                </li>
+                <li>strokeWidth - stroke width(number).</li>
+            </ul>
+                The <code>innerRadius</code> and <code>outerRadius</code> properties specify the inner and outer radius of the element.
+            </div>
+            <div>
+                <h3>Pointer</h3>
+                To set fill color and stroke of the Pointer, you need to define its <code>style</code> property.
+                Members of the Pointer UI Element's style object:
+                <ul>
+                    <li>fill - fill color(hex string) or object(object.color(hex color), object.gradientType(linear, linearHorizontal or radial), gradientStops(Array like [[0, 1], [50, 0.5], [100, 1]]).
+                    </li>
+                    <li>stroke - stroke color(hex string).
+                    </li>
+                    <li>strokeWidth - stroke width(number).</li>
+                </ul>
+                The <code>type</code> property specifies the pointer's type - "circle", "line", "arrow".
+            </div>
+            <div>
+                <h3>ProgressBar</h3>
+                To set fill color and stroke of the ProgressBar, you need to define its <code>style</code> and <code>background</code> properties.
+                Members of the ProgressBar UI Element's style and background objects:
+                <ul>
+                    <li>fill - fill color(hex string) or object(object.color(hex color), object.gradientType(linear, linearHorizontal or radial), gradientStops(Array like [[0, 1], [50, 0.5], [100, 1]]).
+                    </li>
+                    <li>stroke - stroke color(hex string).
+                    </li>
+                    <li>strokeWidth - stroke width(number).</li>
+                    <li>opacity - defines the fill's opacity. Accepts values from 0 to 1 where 0 is transparent.</li>
+                </ul>
+                The <code>ranges</code> member specify the progress bar's ranges. object.startValue - range start value. range.endValue - range end value. style.fill - fill color(hex string) or object(object.color(hex color), object.gradientType(linear, linearHorizontal or radial), gradientStops(Array like [[0, 1], [50, 0.5], [100, 1]]), object.stroke - border color(hex string), object.strokeWidth - border width, object.opacity - opacity values from 0 to 1.
+            </div>
+            <div>
+                <h3>Marks</h3>
+                To customize the marks appearance, you can use the following members of the <code>marks</code> object.
+            <ul>
+                <li>rotate - sets whether spinner marks rotate with pointer.</li>
+                <li>colorProgress - hex color string.</li>
+                <li>colorRemaining - hex color string.</li>
+                <li>drawAboveProgressBar - draws the marks with z-index higher than the progress bar.</li>
+                <li>minorInterval - minor ticks interval.</li>
+                <li>majorInterval - major ticks interval.</li>
+                <li>majorSize - major tick's size. Specifies radius in case of circular lines, or length in case of lines.</li>
+                <li>offset - specifies the labels offset.</li>
+                <li>size - specifies radius in case of circular lines, or length in case of lines.</li>
+                <li>type - "circle" or "line".</li>
+                <li>thickness - specifies thickness in case of lines.</li>
+                <li>visible - determines the labels visibility.</li>
+            </ul>
+                You can define <code>marks</code> object inside the <code>spinner</code> object, too.
+            </div>
+            <div><h3>Labels</h3>
+                To set the labels color, you need to define the <code>style</code> property and set its <code>fill</code> member to a hex string.
+            </div>
+        </div>
+    </div>
+
+    <div id="pageBottom" class="bottom">
+    </div>
+</body>
+</html>

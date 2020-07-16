@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Vue Notification CSS Styling and Appearance</title>
+	<meta name="description" content="Vue Notification Styling and Appearance Documentation" /> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <link rel="stylesheet" href="../../styles/site.css" media="screen" />
+    <link rel="stylesheet" href="../../styles/jqx.apireference.css" media="screen" />
+    <script type="text/javascript" src="../../scripts/format.js"></script>
+    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    
+    
+    <script type="text/javascript" src="../../scripts/toggle.js"></script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-25803467-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</head>
+<body>
+    <div id="pageTop" class="top">
+    </div>
+    <div id="pageDocumentation">
+   
+        <h2>Styling and Appearance</h2>
+        <p>
+            jQWidgets uses a pair of css files - jqx.base.css and jqx.[theme name].css. The
+                                                                base stylesheet creates the styles related to the widget's layout like margin, padding,
+                                                                border-width, position. The second css file applies the widget's colors and backgrounds.
+                                                                The jqx.base.css should be included before the second CSS file.
+        </p>
+        Below is the list of CSS classes used by jqxNotification.
+                                                            <ul>
+                                                                <li>jqx-widget - applied to the jqxNotification widget.</li>
+                                                                <li>jqx-notification - applied to the jqxNotification.</li>
+                                                                <li>jqx-notification-container - applied to the notifications container.</li>
+                                                                <li>jqx-notification-icon - applied to the notification's icon.</li>
+                                                                <li>jqx-notification-content - applied to the notification's content.</li>
+                                                                <li>jqx-notification-close-button - applied to the notification's close button.</li>
+                                                                <li>jqx-fill-state-normal - applied to the notification if the <strong>template</strong>
+                                                                    property is set to <em>null</em>.</li>
+                                                            </ul>
+        When you create a custom style with colors and backgrounds for jqxNotification,
+                                                            you need to do the following:
+                                                            <ul>
+                                                                <li>Add the above CSS classes related to jqxNotification</li>
+                                                                <li>After each CSS class, add your theme name.
+                                                                    <br />
+                                                                    For example:
+                                                                    <br />
+                                                                    jqx-notification-summer</li>
+                                                                <li>To apply your custom style to jqxNotification, you need to set its 'theme' property(option)
+                                                                    to point to your theme name string. By default, a template is applied to the notification,
+                                                                    which overrides the theme setting. Here is a list of all available notification
+                                                                    templates:
+                                                                    <ul>
+                                                                        <li>info</li>
+                                                                        <li>warning</li>
+                                                                        <li>success</li>
+                                                                        <li>error</li>
+                                                                        <li>mail</li>
+                                                                        <li>time</li>
+                                                                    </ul>
+                                                                    <br />
+                                                                    Templates can be modified by changing the CSS of their classes. Each template uses
+                                                                    the following classes:
+                                                                    <ul>
+                                                                        <li>jqx-notification-[template name] - applied to the whole notification.</li>
+                                                                        <li>jqx-notification-icon-[template name] - applied to the notification's icon.</li>
+                                                                        <li>jqx-notification-close-button-[template name] - applied to the notification's close
+                                                                            button.</li>
+                                                                    </ul>
+                                 
+                                                                </li>
+   
+                                                            </ul>
+    </div>
+    <div id="pageBottom" class="bottom">
+    </div>
+</body>
+</html>

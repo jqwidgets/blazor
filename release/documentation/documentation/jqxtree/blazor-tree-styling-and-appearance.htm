@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Vue Tree CSS Styling and Appearance</title>
+	<meta name="description" content="Vue Tree Styling and Appearance Documentation" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <link rel="stylesheet" href="../../styles/site.css" media="screen" />
+    <link rel="stylesheet" href="../../styles/jqx.apireference.css" media="screen" />
+    <script type="text/javascript" src="../../scripts/format.js"></script>
+    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    
+    
+    <script type="text/javascript" src="../../scripts/toggle.js"></script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-25803467-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</head>
+<body>
+    <div id="pageTop" class="top">
+    </div>
+    <div id="pageDocumentation">
+        
+        <h2>Styling and Appearance</h2>
+        <p>
+            jQWidgets uses a pair of css files - jqx.base.css and jqx.[theme name].css. The
+                                                                base stylesheet creates the styles related to the widget's layout like margin, padding,
+                                                                border-width, position. The second css file applies the widget's colors and backgrounds.
+                                                                The jqx.base.css should be included before the second CSS file.
+        </p>
+        Below is the list of CSS classes used by jqxTree.
+                                                            <ul>
+                                                                <li>
+                                                                    <h3>jqxTree Style</h3>
+                                                                </li>
+                                                                <li>jqx-widget - applied to the jqxTree widget.</li>
+                                                                <li>jqx-tree - applied to the jqxTree widget.</li>
+                                                                <li>jqx-tree-dropdown-root - applied to the jqxTree root UL element.</li>
+                                                                <li>jqx-tree-dropdown - applied to the jqxTree UL elements.</li>
+                                                                <li>jqx-tree-item-li - applied to the jqxTree LI elements.</li>
+                                                                <li>jqx-tree-item-u-last - applied to the last LI elements in an UL element.</li>
+                                                                <li>jqx-tree-item - applied to a tree item.</li>
+                                                                <li>jqx-item - applied to a tree item.</li>
+                                                                <li>jqx-tree-item a:link - applied to the anchor element of a tree item.</li>
+                                                                <li>jqx-tree-item a:visited - applied to the anchor element of a tree item.</li>
+                                                                <li>jqx-tree-item a:hover - applied to the anchor element of a tree item when the mouse
+                                                                    cursor is over the anchor.</li>
+                                                                <li>jqx-tree-item-hover - applied to a tree item when the mouse is over the item.</li>
+                                                                <li>jqx-fill-state-hover - applied to a tree item when the mouse is over the item.</li>
+                                                                <li>jqx-tree-item-selected - applied to a tree item when the item is selected.</li>
+                                                                <li>jqx-fill-state-pressed - applied to a tree item when the item is selected.</li>
+                                                                <li>jqx-tree-item-disabled - applied to a tree item when the item is disabled.</li>
+                                                                <li>jqx-tree-item-arrow-collapse - applied to a tree item when it has sub items and
+                                                                    is collapsed. Displays an arrow icon next to the item.</li>
+                                                                <li>jqx-tree-item-arrow-expand - applied to a tree item when it has sub items and is
+                                                                    expanded. Displays an arrow icon next to the item.</li>
+                                                                <li>jqx-tree-item-arrow-expand-hover - applied to a tree item when it has sub items
+                                                                    and is expanded and the mouse is over the arrow icon.</li>
+                                                                <li>jqx-tree-item-arrow-collapse-hover - applied to a tree item when it has sub items
+                                                                    and is collapsed and the mouse is over the arrow icon.</li>
+                                                                <li>jqx-tree-disabled - applied to the tree when it is disabled</li>
+                                                                <li>jqx-tree-disabled a:link - applied to the anchor elements in a tree when it is disabled.</li>
+                                                                <li>jqx-tree-disabled a:visited - applied to the anchor elements in a tree when it is
+                                                                    disabled and the anchor is visited.</li>
+                                                                <li>jqx-tree-disabled a:hover - applied to the anchor elements in a tree when it is
+                                                                    disabled and mouse is over the anchor. </li>
+                                                                <li>jqx-fill-state-disabled - applied to the Tree widget when it is disabled and to a disabled tree item.</li>
+                                                            </ul>
+        When you create a custom style with colors and backgrounds for jqxTree, you need
+                                                            to do the following:
+                                                            <ul>
+                                                                <li>Add the above CSS classes related to jqxtree</li>
+                                                                <li>After each CSS class, add your theme name.
+                                                                    <br />
+                                                                    For example:
+                                                                    <br />
+                                                                    jqx-tree-summer </li>
+                                                                <li>To apply your custom style to jqxTree, you need to set its 'theme' property(option)
+                                                                    to point to your theme name string.
+                                                                </li>
+                                                  
+                                                            </ul>
+    </div>
+    <div id="pageBottom" class="bottom">
+    </div>
+</body>
+</html>

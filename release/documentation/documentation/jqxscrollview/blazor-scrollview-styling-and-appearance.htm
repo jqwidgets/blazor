@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Vue ScrollView CSS Styling and Appearance</title>
+	<meta name="description" content="Vue ScrollView Styling and Appearance Documentation" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <link rel="stylesheet" href="../../styles/site.css" media="screen" />
+    <link rel="stylesheet" href="../../styles/jqx.apireference.css" media="screen" />
+    <script type="text/javascript" src="../../scripts/format.js"></script>
+    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    
+    
+    <script type="text/javascript" src="../../scripts/toggle.js"></script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-25803467-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</head>
+<body>
+    <div id="pageTop" class="top">
+    </div>
+    <div id="pageDocumentation">
+        <h1>Styling and Appearance</h1>
+        jQWidgets uses a pair of CSS files - jqx.base.css and jqx.[theme name].css. The base stylesheet creates the styles 
+related to the widget's layout like margin, padding, border-width, position. The second css file applies the widget's colors and backgrounds. 
+The jqx.base.css should be included before the second CSS file.
+        <br />
+        <br />
+        Below is the list of CSS classes used by jqxScrollView:
+        <ul>
+            <li>.jqx-scrollview - applying to the jqxScrollView widget.</li>
+            <li>.jqx-scrollview-button - applying to the navigation buttons.</li>
+        </ul>
+        <br />
+        When you create a custom style with colors and backgrounds for jqxScrollView, you need to do the following:
+        <ul>
+            <li>Add the above CSS classes related to jqxScrollView</li>
+            <li>After each CSS class, add your theme name.
+                <br />
+                For example: jqx-scrollview-summer</li>
+            <li>To apply your custom style to jqxScrollView, you need to set its 'theme' property(option) to point to your theme name string.</li>
+            <li>The sample below demonstrates how to set the 'Summer' theme to jqxScrollView.</li>
+        </ul>
+    </div>
+    <div id="pageBottom" class="bottom">
+    </div>
+</body>
+</html>

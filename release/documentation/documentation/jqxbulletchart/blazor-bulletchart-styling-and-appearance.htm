@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Vue BulletChart CSS Styling and Appearance</title>
+	<meta name="description" content="Vue BulletChart Styling Help Topic" />   
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <link rel="stylesheet" href="../../styles/site.css" media="screen" />
+    <link rel="stylesheet" href="../../styles/jqx.apireference.css" media="screen" />
+    <script type="text/javascript" src="../../scripts/format.js"></script>
+    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    
+    
+    <script type="text/javascript" src="../../scripts/toggle.js"></script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-25803467-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</head>
+<body>
+    <div id="pageTop" class="top">
+    </div>
+    <div id="pageDocumentation">
+        <script type="text/javascript">
+        </script>
+        <h2>Styling and Appearance</h2>
+        <p>
+            jQWidgets uses a pair of css files - jqx.base.css and jqx.[theme name].css. The
+                                                                base stylesheet creates the styles related to the widget's layout like margin, padding,
+                                                                border-width, position. The second css file applies the widget's colors and backgrounds.
+                                                                The jqx.base.css should be included before the second CSS file.
+        </p>
+        Below is the list of CSS classes used by jqxBulletChart.
+                                                            <ul>
+                                                                <li>jqx-widget - applied to the jqxBulletChart widget.</li>
+                                                                <li>jqx-bulletchart - applied to the jqxBulletChart.</li>
+                                                                <li>jqx-bulletchart-title - applied to the jqxBulletChart title.</li>
+                                                                <li>jqx-bulletchart-description - applied to the jqxBulletChart description.</li>
+                                                                <li>jqx-bulletchart-range - applied to the jqxBulletChart ranges.</li>
+                                                                <li>jqx-bulletchart-pointer - applied to the jqxBulletChart pointer.</li>
+                                                                <li>jqx-bulletchart-target - applied to the jqxBulletChart target.</li>
+                                                                <li>jqx-bulletchart-ticks - applied to the jqxBulletChart ticks.</li>
+                                                                <li>jqx-bulletchart-zero-tick - applied to the jqxBulletChart zero tick (shown only
+                                                                    when the minimum value is a negative number).</li>
+                                                                <li>jqx-bulletchart-labels - applied to the jqxBulletChart labels.</li>
+                                                                <li>jqx-fill-state-pressed - applied to the pointer and target if their <strong>color</strong>
+                                                                    properties are not set or are set to <em>""</em>.</li>
+                                                                <li>jqx-fill-state-hover - applied to a hovered pointer or target if its <strong>color</strong>
+                                                                    property is not set or is set to <em>""</em>.</li>
+                                                                <li>jqx-fill-state-disabled - applied to the jqxBulletChart when it is disabled.</li>
+                                                            </ul>
+        <p>
+            Classes applied only when the <strong>orientation</strong> property is set to <em>"horizontal"</em>:
+        </p>
+        <ul>
+            <li>jqx-bulletchart-range-horizontal - applied to ranges.</li>
+            <li>jqx-bulletchart-target-horizontal - applied to the target.</li>
+            <li>jqx-bulletchart-ticks-horizontal - applied to ticks.</li>
+        </ul>
+        <p>
+            Classes applied only when the <strong>orientation</strong> property is set to <em>"vertical"</em>:
+        </p>
+        <ul>
+            <li>jqx-bulletchart-range-vertical - applied to ranges.</li>
+            <li>jqx-bulletchart-target-vertical - applied to the target.</li>
+            <li>jqx-bulletchart-ticks-vertical - applied to ticks.</li>
+        </ul>
+        When you create a custom style with colors and backgrounds for jqxBulletChart, you
+                                                            need to do the following:
+                                                            <ul>
+                                                                <li>Add the above CSS classes related to jqxBulletChart</li>
+                                                                <li>After each CSS class, add your theme name.
+                                                                    <br />
+                                                                    For example:
+                                                                    <br />
+                                                                    jqx-bulletchart-summer</li>
+                                                                <li>To apply your custom style to jqxBulletChart, you need to set its 'theme' property(option)
+                                                                    to point to your theme name string. The pointer and target can also be styled by
+                                                                    setting their <strong>color</strong> properties. If the range's or target's color
+                                                                    is not set or it is set to <em>""</em>, the theme setting is applied. Ranges can
+                                                                    be styled only by setting their <strong>color</strong> and <strong>opacity</strong>.
+                                                                </li>
+                                                            </ul>
+    </div>
+    <div id="pageBottom" class="bottom">
+    </div>
+</body>
+</html>

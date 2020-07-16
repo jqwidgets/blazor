@@ -34,7 +34,7 @@ const widgetsWithDynamicMarkup = [
             widgetName = 'JqxButton';
         }
 
-        const outFile = `../library/jqwidgets-blazor/Components/${widgetName}.razor`;
+        const outFile = `../library/jQWidgets.Blazor/Components/${widgetName}.razor`;
 
         const { propertiesForAPI, eventsForAPI, methodsForAPI } = generateLibrary(inFile, outFile);
 
@@ -547,7 +547,7 @@ function generateAPI(widgetName, propertiesForAPI, eventsForAPI, methodsForAPI) 
         .replace('{{ methods }}', methods);
 
     const widgetWithoutJqx = widgetName.slice(3);
-    const outFile = `../release/api/blazor-${widgetWithoutJqx.toLowerCase()}-api.htm`;
+    const outFile = `../release/documentation/documentation/${widgetName.toLowerCase()}/blazor-${widgetWithoutJqx.toLowerCase()}-api.htm`;
 
     // create api file
     fs.writeFileSync(outFile, outData, `utf8`);
@@ -562,16 +562,16 @@ function getApiSkeleton(widgetName) {
     <head>
         <title>Blazor ${widgetName} API Reference</title>
         <meta name="description" content="API Reference Documentation for the Blazor ${widgetName} User Interface Component" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-        <link rel="stylesheet" href="../styles/site.css" media="screen" />
-        <link rel= "stylesheet" href="../styles/jqx.apireference.css" media= "screen" />
+        <link rel="stylesheet" media="screen" href="../../styles/site.css" />
+        <link rel="stylesheet" media="screen" href="../../styles/jqx.apireference.css" />
 
-        <script type="text/javascript" src="../scripts/jquery-1.11.1.min.js"></script>
-        <script type="text/javascript" src="../scripts/jqx.apireference.js"></script>
-        <script type="text/javascript" src="../scripts/format.js"></script>
-        <script type="text/javascript" src="../scripts/toggle.js"></script>
+        <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="../../scripts/jqx.apireference.js"></script>
+        <script type="text/javascript" src="../../scripts/format.js"></script>
+        <script type="text/javascript" src="../../scripts/toggle.js"></script>
 
         <script type="text/javascript">
             var _gaq = _gaq || [];

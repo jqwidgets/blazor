@@ -1,0 +1,210 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Vue Gauge Styling and Appearance</title>
+	<meta name="description" content="Vue Gauge Styling and Appearance Documentation" />  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <link rel="stylesheet" href="../../styles/site.css" media="screen" />
+    <link rel="stylesheet" href="../../styles/jqx.apireference.css" media="screen" />
+    <script type="text/javascript" src="../../scripts/format.js"></script>
+    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    
+    <script type="text/javascript" src="../../scripts/toggle.js"></script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-25803467-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</head>
+<body>
+    <div id="pageTop" class="top">
+    </div>
+    <div id="pageDocumentation">
+        <script type="text/javascript">
+            $(document).ready(function () {
+
+            });
+        </script>
+        <h1>jqxGauge Styling and Appearance</h1>
+
+        To set the jqxGauge's size, you need to use the 'width', 'height' and 'radius' properties. These properties
+accept percentage, number or pixel values. 
+        <img src="gauge.png" />
+        <pre style='margin: 10px;' class='code'>{ width: '20%', height: '30%', radius: '50%'}}</pre>
+
+        The 'colorScheme' property allows you to change the jqxGauge's appearance. The possible values are from "scheme01", "scheme02" to "scheme11".
+        <br />
+        <h3>Ticks and labels</h3>
+
+        To put the jqxGauge's labels at the inner side of the tick marks, you need to set the 'position' property of the labels object.
+
+        <pre style='margin: 10px;' class='code'>{ labels: { position: 'inside' }}</pre>
+        or
+        <br />
+        <pre style='margin: 10px;' class='code'>{ labels: { position: 'outside' }}</pre>
+
+        To change the position of the start and end scales, use the startAngle and endAngle properties. The default values are 30 and 270. 
+
+
+If the labels 'position' property is set to 'none', you can manually position the labels by setting a value to the 'distance' property.
+First set labels position property to 'none':
+
+        <pre style='margin: 10px;' class='code'>{ labels: { position: 'none' }}</pre>
+
+        The code example below sets the labels distance to be 5px from the gauge's bounds use the following code:
+
+        <pre style='margin: 10px;' class='code'>{ labels: { distance: '5px' }}</pre>
+
+        The ticksDistance property specifies the distance of the tick marks from the gauge's bounds.
+
+        <pre style='margin: 10px;' class='code'>{ ticksDistance: '15px' }</pre>
+
+        The labels CSS style is defined in the .jqx-gauge-label class which is part of the jqx.base.css.
+
+        <h3>Ranges and Caption</h3>
+
+        In order to display ranges in the jqxGauge, you need to set the 'ranges' property to an Array of ranges. Each range has startValue, endValue and specific style.
+
+        <pre style='margin: 10px;' class='code'>var ranges = [{ startValue: 0, endValue: 55, style: { fill: <span style=" clear: both; padding: 0px; margin: 0px; color: #a24;">'#C9C9C9', stroke: '#C9C9C9'</span> }, endWidth: 5, startWidth: 1, startDistance: 10, endDistance: 10 },<div/>                    { startValue: 55, endValue: 110, style: { fill: <span style=" clear: both; padding: 0px; margin: 0px; color: #a24;">'#FCF06A', stroke: '#FCF06A'</span> }, endWidth: 10, startWidth: 5, startDistance: 10, endDistance: 10 },<div/>                    { startValue: 110, endValue: 165, style: { fill: <span style=" clear: both; padding: 0px; margin: 0px; color: #a24;">'#FCA76A', stroke: '#FCA76A'</span> }, endWidth: 15, startWidth: 10, startDistance: 10, endDistance: 10 },<div/>                    { startValue: 165, endValue: 220, style: { fill: <span style=" clear: both; padding: 0px; margin: 0px; color: #a24;">'#FC6A6A', stroke: '#FC6A6A'</span> }, endWidth: 20, startWidth: 15, startDistance: 10, endDistance: 10 }];<div/></pre>
+
+        The 'startWidth' and 'endWidth' properties of the ranges specify its size when the range begins and ends.
+
+To hide the ranges, set the showRanges property to false.
+
+        To display a caption in the jqxGauge, you need to set the 'caption' property. 
+
+        <pre style='margin: 10px;' class='code'>{ caption: { value: 'jQWidgets', position: 'bottom', offset: [0, 10], visible: true }}</pre>
+
+        You can set value (text of the caption), position ('top', 'bottom', 'left' or 'right'), offset from the base position (array, the first element is the left offset the second one is the top offset) and the caption's visibility.
+The '.jqx-gauge-caption' CSS class is applied to the jqxGauge's caption.
+
+        <h3>Cap and pointer</h3>
+
+        The cap is the small circle displayed over the base of the pointer.
+
+        <pre style='margin: 10px;' class='code'>{ cap: { size: '5%', style: { fill: '#ff0000', stroke: '#00ff00' } , visible: true }}</pre>
+
+        You can set its size, style and visibility. 
+
+        <pre style='margin: 10px;' class='code'>{ pointer: { pointerType: 'default', style: { fill: '#ff0000', stroke: '#ff0000' }, length: '80%', width: '3%'</span>, visible: true }}}</pre>
+
+
+        <h3>jqxGauge's body, border and animation</h3>
+
+        To change the jqxGauge's border, you need to set its 'border' property. The 'border' property is an object with several members - 'style', 'visible', 'showGradient' and 'size'.
+
+The code example below defines a border with size equal to 11% of the Gauge's size. The stroke color is: "#898989".
+        <pre style='margin: 10px;' class='code'>{ border: { showGradient: true, size: '11%', style: { stroke: '#898989'}, visible: true }}></pre>
+
+        When the border's 'showGradient' property is true, the background will be with gradient. If you want to use solid color for the border set the 'showGradient' to false.
+
+To change the background color or the stroke of your jqxGauge, use its 'style' property.
+
+        <pre style='margin: 10px;' class='code'>{ style: { fill: '#cccccc', stroke: '#cccccc' } }</pre>
+        <br />
+        The duration of the value changing animation is specified by the 'animationDuration' property.
+The 'easing' property specifies the easing of the value changing animation. Possible values are: 'linear', 'easeOutBack', 'easeInQuad', 'easeInOutCirc', 'easeInOutSine'.
+        <h1>Working with jqxLinearGauge</h1>
+        <img src="lineargauge.png" /><br />
+
+        To create a Linear Gauge with size set in percentages, use can use the following:
+
+        <pre style='margin: 10px;' class='code'>{ width: '20%', height: '30%' };</pre>
+
+        To change jqxLinearGauge's color scheme, use the 'colorScheme' property which accepts values from "scheme01", "scheme02" to "scheme11"
+
+        <h3>Ticks and labels</h3>
+
+        To customize the ticks displayed in the Linear Gauge, you can use the 'ticksMajor' and 'ticksMinor' properties.
+
+        <pre style='margin: 10px;' class='code'>var ticksMajor = { size: <span style=" clear: both; padding: 0px; margin: 0px; color: #a24;">'10%', interval: 5, style: { stroke: '#A1A1A1', 'stroke-width'</span>: 1 }, visible: true } <div/></pre>
+
+        In the code above, we set the tick's size, frequency, style and visibility.
+Tick's size can be set in percentage or pixels. If you want to change ticks appearance, you can use the 'style' property and set its 'stroke' and ''stroke-width' members.
+
+For example:
+
+        <pre style='margin: 10px;' class='code'>{ ticksMajor: { style: { stroke: '#000000', 'stroke-width': 2 } } }</pre>
+
+        Ticks position is specified by the 'ticksPosition' property. The possible values are: 'far', 'near', 'both'. 
+
+For example, If you set the 'ticksPosition' to 'far', ticks will be displayed on the right side of the value indicator. 
+
+        <pre style='margin: 10px;' class='code'>{ ticksPosition: 'near' }</pre>
+
+        To manually specify the ticks offset, use the 'ticksOffset' property. It is number and it sets the offset from the center of the gauge.
+        <br />
+        Customization of the labels could be achieved using the labels property.
+Here is it's default value:
+
+        <pre style='margin: 10px;' class='code'>var labels = { position: <span style=" clear: both; padding: 0px; margin: 0px; color: #a24;">'both'</span>, interval: 20, offset: 0, visible: true, formatValue: function (value, position) { return value; }};</pre>
+
+        The position property accepts the following values: 'far', 'near', 'both'. If it's 'near' labels will be visible in the left side of the scale. If it's value is 'far' labels will be visible in the right side of the scale. If the position property is with
+value 'both' labels will be visible in both sides of the scale. Similar to this property is ticksPosition used for the ticks.
+Let's consider the formatValue property. The formatValue is a callback function used for formating the value of a single label.
+This function accepts two arguments - value and position. Value is the current label value. Position could be 'both', 'far' or 'near' depending on the value of the position property and the current iteration in the labels rendering.
+
+        <h3>Use jqxLinearGauge ranges</h3>
+
+        A single range is a colored area with specific size.
+To set jqxLinearGauge's ranges you can use the 'ranges' property. 
+
+Here is a sample value for the ranges property:
+
+        <pre style='margin: 10px;' class='code'>var ranges = [{ startValue: 20, endValue: 45, style: { fill: '#FFA200', stroke: '#FFA200' } }, { startValue: 45, endValue: 70, style: { fill: '#FF4800', stroke: '#FF4800' } }];</pre>
+
+        The style of a single range can be change by changing the value of it's style property.
+You can set jqxLinearGauge's ranges by the following code:
+
+        <pre style='margin: 10px;' class='code'>{ ranges: [{ startValue: 20, endValue: 45, style: { fill: '#FFA200', stroke: '#FFA200'} }, { startValue: 45, endValue: 70, style: { fill: '#FF4800', stroke: '#FF4800' } }]  });</pre>
+
+        The startValue and endValue are indicating the end and the start of the range.
+
+        <h3>Pointer</h3>
+
+        The default value of the pointer of jqxLinearGauge is:
+
+        <pre style='margin: 10px;' class='code'>var pointer = { pointerType: <span style=" clear: both; padding: 0px; margin: 0px; color: #a24;">'default', style: { fill: 'theme-specific-color', stroke: 'theme-specific-color' }, size: '7%'</span>, visible: true, offset: 0 };</pre>
+
+        The pointer of the gauge have two different shapes. The first one is a column and the second one is an arrow.
+They could be switched using the pointerType property. For column pointer set the pointerType to 'default' for arrow set it to 'arrow'.
+The code bellow will set the pointer type to arrow:
+
+        <pre style='margin: 10px;' class='code'>{ pointer: { pointerType: 'arrow' }</pre>
+
+        The size of the pointer is setting through the size property which could be in percentage or in pixels.
+Pointer's style (fill and stroke color for example) could be set via the style property. It's default value is based on the colorScheme.
+
+        <h3>Background and Animation</h3>
+
+        The 'background' property specifies the Linear Gauge's background fill, stroke and shape.
+It's default value is:
+        <pre style='margin: 10px;' class='code'>{ showGradient: true, borderRadius: 15, style: { stroke: <span style=" clear: both; padding: 0px; margin: 0px; color: #a24;">'#cccccc', fill: 'default-gradient'}, visible: true, backgroundType: 'roundedRectangle'}</pre>
+        Let's take a look at the different properties.
+Background's fill and stroke could be set using the style property. It's default style is gradient colored in '#cccccc'. The gradient could be disabled using the showGradient property. By setting it to false a solid color will be used.
+There are two built-in shapes for the background - rectangle and roundedRectangle. These different backgrounds could be switched using the backgroundType property.
+Let's see it's value for 'rectangle':
+
+        <pre style='margin: 10px;' class='code'>{ style: { stroke: '#cccccc', fill: '#cccccc' }, backgroundType: 'rectangle' });</pre>
+
+        The upper code will change the background style to rectangle with stroke and background color '#cccccc'.
+If you set the backgroundType property to 'roundedRectangle' you could set it's border radius using the borderRadius property.
+You can hide jqxLinearGauge's background setting the visible property to false:
+
+        <pre style='margin: 10px;' class='code'>{ visible: false };</pre>
+
+        The duration of the value changing animation is specified by the 'animationDuration' property.
+The 'easing' property specifies the easing of the value changing animation. Possible values are: 'linear', 'easeOutBack', 'easeInQuad', 'easeInOutCirc', 'easeInOutSine'.                                                        
+    </div>
+    <div id="pageBottom" class="bottom">
+    </div>
+</body>
+</html>

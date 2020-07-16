@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Vue BarGauge Styling</title>
+	<meta name="description" content="Vue BarGauge Styling and Appearance Documentation" />  	
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <link rel="stylesheet" href="../../styles/site.css" media="screen" />
+    <link rel="stylesheet" href="../../styles/jqx.apireference.css" media="screen" />
+    <script type="text/javascript" src="../../scripts/format.js"></script>
+    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    
+    
+    <script type="text/javascript" src="../../scripts/toggle.js"></script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-25803467-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function ()
+        {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</head>
+<body>
+    <div id="pageTop" class="top">
+    </div>
+    <div id="pageDocumentation">
+                                                            <h2>
+                                                                Styling and Appearance
+                                                            </h2>
+                                                            <p>
+                                                                To set the jqxBarGauge's size, you need to use the 'width' and 'height' properties. These properties accept number values and percentage values.
+                                                                jqxBarGauge offers many options to customize the BarGauge appearance. In this section we will go through the styling options available in different BarGauge elements.
+                                                                jQWidgets uses a CSS file - jqx.base.css. The base stylesheet creates the styles related to the widget's layout.
+                                                            </p>
+
+                                                            <h4>Series Color Scheme</h4>
+                                                            <p>
+                                                                jqxBarGauge ships with eleven built-in color schemes which are used to automatically
+                                                                set colors for different series. You can change the color scheme by setting the
+                                                                colorScheme option of the BarGauge.
+                                                                <ul>
+                                                                    <li>The available values are from 'scheme01' to 'scheme27'.</li>
+                                                                    <li>Another option is combination of "colorScheme" with "customColorScheme" property
+                                                                        <ul>
+                                                                            <li>name - sets the name of color scheme that corresponding with set value of "colorScheme" property.</li>
+                                                                            <li>colors - sets the array of colors.</li>
+                                                                        </ul>
+                                                                    </li>
+                                                                </ul>
+                                                            </p>
+
+                                                            <h4>Below is the list of CSS classes used by jqxBarGauge.</h4>
+                                                            <ul>
+                                                             
+                                                                <li>jqx-bar-gauge-tooltip - applied to jqxBarGauge's tooltip. To control container of the tooltip.</li>
+                                                            </ul>                                                            
+
+                                                            <h4>Title and subtitle</h4>
+                                                            <p>To change position of the title, you need to set 'verticalAlignment' property and/or 'horizontalAlignment' property of the title.</p>
+                                                            <p>
+                                                            If need to make fine correction of the position of the title, can set 'margin' property of the title. 
+                                                            It can also be set and 'font' (for both - title and subtitle) with standard members - 'color', 'family', 'opacity', 'size' and 'weight'.
+                                                                <ul>
+                                                                    <li>color - sets the color of the text.</li>
+                                                                    <li>family - sets the font family of the text.</li>
+                                                                    <li>opacity - sets the font opacity of the text.</li>
+                                                                    <li>size - sets the size of the text.</li>
+                                                                    <li>weight - sets the font weight of the text.</li>
+                                                                </ul>
+                                                            </p>
+        
+                                                            <h4>Relative inner radius</h4>
+                                                            <p>To change inner radius of the BarGauge, you need to set 'relativeInnerRadius' property. It describe the ratio between the two radiuses. From zero to one.</p>
+                                                         
+                                                            <h4>Geometry</h4>
+                                                            <p>
+                                                                To determine the geometry of the BarGauge, you need to set 'geometry' property. With those options 'startAngle' and 'endAngle'.
+                                                                These properties accept number values that describe angles in degrees.
+                                                            </p>
+                                                         
+                                                            <h4>Segments</h4>
+                                                            <p>To make fine settings to represent values with different sizes. To determine the segments of the BarGauge, you need to set 'min' property and/or 'max' property.</p>
+                                                            <p>To represent value with mixed values positive and negative of the BarGauge, you need to set 'min' property with some negative value.</p>
+
+                                                            <p>To change base value of the BarGauge, you need to set 'baseValue' property.</p>
+                                                            <p>To change space between the segments in the BarGauge, you need to set 'barSpacing' property.</p>
+
+                                                            <h4>Animation</h4>
+                                                            <p>
+                                                                To set the animations of the BarGauge, you need to set 'animationDuration' property. 
+                                                                Determine time of the animation. In milliseconds (1000 ms = 1 sec). 
+                                                                If you don;t wat the widget to be animated - set 'animationDuration' to 0.
+                                                            </p>
+                                                        </div>
+
+
+    <div id="pageBottom" class="bottom">
+    </div>
+</body>
+</html>

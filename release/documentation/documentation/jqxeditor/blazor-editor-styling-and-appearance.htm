@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Vue Editor CSS Styling and Appearance</title>
+	<meta name="description" content="Vue Editor Styling and Appearance Documentation" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <link rel="stylesheet" href="../../styles/site.css" media="screen" />
+    <link rel="stylesheet" href="../../styles/jqx.apireference.css" media="screen" />
+    <script type="text/javascript" src="../../scripts/format.js"></script>
+    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    
+    
+    <script type="text/javascript" src="../../scripts/toggle.js"></script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-25803467-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</head>
+<body>
+    <div id="pageTop" class="top">
+    </div>
+    <div id="pageDocumentation">
+        <h2>Styling and Appearance</h2>
+        <p>
+            jQWidgets uses a pair of css files - jqx.base.css and jqx.[theme name].css. The
+                                                                base stylesheet creates the styles related to the widget's layout like margin, padding,
+                                                                border-width, position. The second css file applies the widget's colors and backgrounds.
+                                                                The jqx.base.css should be included before the second CSS file.
+        </p>
+        Below is the list of CSS classes used by jqxEditor.
+                                                            <ul>
+                                                                <li>jqx-editor - applied to the editor.</li>
+                                                                <li>jqx-editor-inline - applied to the editor when it is in inline mode.</li>
+                                                                <li>jqx-editor-inline-focus - applied to the editor when it is focused and in inline mode.</li>
+                                                                <li>jqx-widget - applied to the editor.</li>
+                                                                <li>jqx-widget-content - applied to the editor's content area.</li>
+                                                                <li>jqx-editor-content - applied to the editor's content area.</li>
+                                                                <li>jqx-rc-all - applied to the editor. Adds rounded corners to the widget.</li>
+                                                                <li>jqx-widget-header - applied to the editor and its toolbar.</li>
+                                                                <li>jqx-fill-state-disabled - applied to the editor when it is disabled.</li>
+                                                                <li>jqx-editor-window  - applied to the editor's dialog windows.</li>
+                                                                <li>jqx-editor-toolbar  - applied to the editor's toolbar.</li>
+                                                                <li>jqx-editor-toolbar-inline - applied to the editor's toolbar when the editor is in inline mode.</li>
+                                                                <li>jqx-editor-toolbar-icon - applied to the tool icons.</li>
+                                                                <li>jqx-editor-toolbar-item - applied to the tools.</li>
+                                                                <li>jqx-editor-toolbar-group - applied to the tool groups.</li>
+                                                                <li>jqx-editor-toolbar-button - applied to the tool buttons.</li>
+                                                                <li>jqx-editor-color-bar - applied to the color bar of a color picker tool.</li>
+                                                                <li>jqx-editor-color-picker - applied to the color picker tool.</li>
+                                                                <li>jqx-editor-color-picker-selected-cell - applied to the selected cell of a color picker.</li>
+
+                                                            </ul>
+        When you create a custom style with colors and backgrounds for jqxEditor, you
+                                                            need to do the following:
+                                                            <ul>
+                                                                <li>Add the above CSS classes related to jqxEditor</li>
+                                                                <li>After each CSS class, add your theme name.
+                                                                    <br />
+                                                                    For example:
+                                                                    <br />
+                                                                    jqx-editor-arctic </li>
+                                                                <li>To apply your custom style to jqxEditor, you need to set its 'theme' property(option)
+                                                                    to point to your theme name string.
+                                                                </li>
+
+                                                            </ul>
+    </div>
+    <div id="pageBottom" class="bottom">
+    </div>
+</body>
+</html>

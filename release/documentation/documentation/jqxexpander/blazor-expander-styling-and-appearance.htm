@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Vue Expander CSS Styling and Appearance</title>
+	<meta name="description" content="Vue Expander Styling and Appearance Documentation" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <link rel="stylesheet" href="../../styles/site.css" media="screen" />
+    <link rel="stylesheet" href="../../styles/jqx.apireference.css" media="screen" />
+    <script type="text/javascript" src="../../scripts/format.js"></script>
+    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    
+    
+    <script type="text/javascript" src="../../scripts/toggle.js"></script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-25803467-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</head>
+<body>
+    <div id="pageTop" class="top">
+    </div>
+    <div id="pageDocumentation">
+       
+        <h2>Styling and Appearance</h2>
+        <p>
+            jQWidgets uses a pair of css files - jqx.base.css and jqx.[theme name].css. The
+                                                                base stylesheet creates the styles related to the widget's layout like margin, padding,
+                                                                border-width, position. The second css file applies the widget's colors and backgrounds.
+                                                                The jqx.base.css should be included before the second CSS file.
+        </p>
+        Below is the list of CSS classes used by jqxExpander.
+                                                            <ul>
+                                                                <li>jqx-widget - applied to the jqxExpander widget.</li>
+                                                                <li>jqx-expander - applied to the jqxExpander.</li>
+                                                                <li>jqx-expander-header - applied to the expander's header.</li>
+                                                                <li>jqx-widget-header - applied to the header elements.</li>
+                                                                <li>jqx-fill-state-normal - applied to the header element.</li>
+                                                                <li>jqx-expander-content - applied to the content element.</li>
+                                                                <li>jqx-widget-content - applied to the content element.</li>
+                                                                <li>jqx-expander-arrow - applied to the header's expand/collapse button.</li>
+                                                                <li>jqx-expander-arrow-top - applied to the expander's expand/collapse button and displays
+                                                                    arrow icon.</li>
+                                                                <li>jqx-expander-arrow-bottom - applied to the expander's expand/collapse button and
+                                                                    displays arrow icon.</li>
+                                                                <li>jqx-expander-header-hover - applied to a hovered header element.</li>
+                                                                <li>jqx-fill-state-hover - applied to a hovered header element.</li>
+                                                                <li>jqx-fill-state-pressed - applied to an expanded header element.</li>
+                                                                <li>jqx-fill-state-focus - applied to focused Content or Header element.</li>
+                                                                <li>jqx-fill-state-disabled - applied to the jqxExpander when it is disabled.</li>
+                                                            </ul>
+        When you create a custom style with colors and backgrounds for jqxExpander, you
+                                                            need to do the following:
+                                                            <ul>
+                                                                <li>Add the above CSS classes related to jqxExpander</li>
+                                                                <li>After each CSS class, add your theme name.
+                                                                    <br />
+                                                                    For example:
+                                                                    <br />
+                                                                    jqx-expander-summer </li>
+                                                                <li>To apply your custom style to jqxExpander, you need to set its 'theme' property(option)
+                                                                    to point to your theme name string.
+                                                  
+                                                                </li>
+          
+                                                            </ul>
+    </div>
+
+    <div id="pageBottom" class="bottom">
+    </div>
+</body>
+</html>
