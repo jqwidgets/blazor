@@ -1,0 +1,47 @@
+@inject IJSRuntime JSRuntime;
+
+<div style="float: left;">
+    <JqxSplitter 
+        onResize="resize" onExpanded="expanded" onCollapsed="collapsed"
+        width=850 height=480 panels=panels>
+        <div class="splitter-panel" style="background-color:#F5FFF2;"><span style="margin: 5px;">Panel 1</span></div>
+        <div class="splitter-panel" style="background-color:#F5FFF2;"><span style="margin: 5px;">Panel 2</span></div>
+    </JqxSplitter>
+
+     <br />
+    <div style="font-family: Verdana; font-size: 13px;">
+      Events:
+    </div>
+    <div @ref="events"></div>
+</div>
+
+@code {
+    ElementReference events;
+
+    IDictionary<string, object>[] panels = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>() { { "size", 200 } }
+    };
+
+    private void resize(IDictionary<string, object> e)
+    {
+        JSRuntime.InvokeVoidAsync("Example.displayEvent", events, "Resize", e);
+    }
+
+    private void expanded(IDictionary<string, object> e)
+    {
+        JSRuntime.InvokeVoidAsync("Example.displayEvent", events, "Expanded", e);
+    }
+
+    private void collapsed(IDictionary<string, object> e)
+    {
+        JSRuntime.InvokeVoidAsync("Example.displayEvent", events, "Collapsed", e);
+    }
+}
+
+<style>
+    .jqx-button {
+        display: inline-block;        
+        margin-top: 5px;
+    }
+</style>

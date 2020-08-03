@@ -1,0 +1,38 @@
+<div style='margin: 10px 0px;'>Default</div>
+<JqxSlider
+    tooltip=true mode=mode>
+</JqxSlider>
+
+<div style='margin: 10px 0px;'>Primary</div>
+<JqxSlider 
+    tooltip=true mode=mode template=primaryTemplate>
+</JqxSlider>
+
+<div style='margin: 10px 0px;'>Success</div>
+<JqxSlider 
+    tooltip=true mode=mode template=successTemplate>
+</JqxSlider>
+
+<div style='margin: 10px 0px;'>Info</div>
+<JqxSlider 
+    tooltip=true mode=mode template=infoTemplate>
+</JqxSlider>
+
+<div style='margin: 10px 0px;'>Warning</div>
+<JqxSlider 
+    tooltip=true mode=mode template=warningTemplate>
+</JqxSlider>
+
+<div style='margin: 10px 0px;'>Danger</div>
+<JqxSlider 
+    tooltip=true mode=mode template=dangerTemplate>
+</JqxSlider>
+
+@code {
+    string mode = "fixed";
+    string primaryTemplate = "primary";
+    string successTemplate = "success";
+    string infoTemplate = "info";
+    string warningTemplate = "warning";
+    string dangerTemplate = "danger";
+}

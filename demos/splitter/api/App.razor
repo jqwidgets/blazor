@@ -1,0 +1,119 @@
+<div id="container" style="width: 850px; float: left;">
+    <JqxButton onClick="orientationButtonClick" 
+            width=200>Orientation</JqxButton>
+    <JqxButton onClick="expandFirstButtonClick"
+            width=200>Expand first</JqxButton>
+    <JqxButton onClick="expandLastButtonClick"
+            width=200>Expand last</JqxButton>
+    <JqxButton onClick="collapseFirstButtonClick"
+            width=200>Collapse first</JqxButton>
+    <JqxButton onClick="collapseLastButtonClick"
+            width=200>Collapse last</JqxButton>
+    <JqxButton onClick="enableButtonClick"
+            width=200>Enable</JqxButton>
+    <JqxButton onClick="disableButtonClick"
+            width=200>Disable</JqxButton>
+    <br /><br />
+    <JqxSplitter @ref="mySplitter"
+        width=850 height=600 panels=panels>
+        <div style="background-color:#F5FFF2;"></div>
+        <div style="background-color:#EBF1FF;"></div>
+    </JqxSplitter>
+</div>
+
+@code {
+    JqxSplitter mySplitter;
+
+    IDictionary<string, object>[] panels = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>() { { "size", 250 } },
+        new Dictionary<string, object>() { { "size", 250 } }
+    };
+
+    private void orientationButtonClick(IDictionary<string, object> e)
+    {
+        string orientation = mySplitter.orientation.ToString();
+        if (orientation == "vertical")
+        {
+            mySplitter.setOptions(new Dictionary<string, string>()
+            {
+                { "orientation", "horizontal" }
+            });
+        }
+        else {
+            mySplitter.setOptions(new Dictionary<string, string>()
+            {
+                { "orientation", "vertical" }
+            });
+        }
+    }
+
+    private void expandFirstButtonClick(IDictionary<string, object> e)
+    {
+        panels[0]["collapsible"] = true;
+        panels[1]["collapsible"] = false;
+
+        mySplitter.setOptions(new Dictionary<string, object>()
+        {
+            { "panels", panels }
+        });
+
+        mySplitter.expand();
+    }
+
+    private void expandLastButtonClick(IDictionary<string, object> e)
+    {
+        panels[0]["collapsible"] = false;
+        panels[1]["collapsible"] = true;
+
+        mySplitter.setOptions(new Dictionary<string, object>()
+        {
+            { "panels", panels }
+        });
+
+        mySplitter.expand();
+    }
+
+    private void collapseFirstButtonClick(IDictionary<string, object> e)
+    {
+        panels[0]["collapsible"] = true;
+        panels[1]["collapsible"] = false;
+
+        mySplitter.setOptions(new Dictionary<string, object>()
+        {
+            { "panels", panels }
+        });
+
+        mySplitter.collapse();
+    }
+
+    private void collapseLastButtonClick(IDictionary<string, object> e)
+    {
+        panels[0]["collapsible"] = false;
+        panels[1]["collapsible"] = true;
+
+        mySplitter.setOptions(new Dictionary<string, object>()
+        {
+            { "panels", panels }
+        });
+
+        mySplitter.collapse();
+    }
+
+    private void enableButtonClick(IDictionary<string, object> e)
+    {
+        mySplitter.enable();
+    }
+
+    private void disableButtonClick(IDictionary<string, object> e)
+    {
+        mySplitter.disable();
+    }
+}
+
+<style>
+    .jqx-button {
+        display: inline-block;        
+        margin-top: 5px;
+    }
+</style>

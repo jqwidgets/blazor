@@ -1,0 +1,54 @@
+<JqxSplitter
+    width=width height=height panels=panels>
+  <div>
+    <JqxSplitter
+        width=width height=height panels=panels2>
+      <div>
+          Nested 2.1
+        </div>
+        <div>
+          Nested 2.2
+        </div>
+    </JqxSplitter>
+  </div>
+  <div>
+    <JqxSplitter
+         width=width height=height orientation=orientation panels=panels3>
+     <div>
+          Nested 1.1
+        </div>
+        <div>
+          Nested 1.2
+        </div>
+    </JqxSplitter>
+  </div>
+</JqxSplitter>
+
+@code {
+    string orientation = "horizontal";
+    string width = "100%";
+    string height = "100%";
+
+    IDictionary<string, object>[] panels = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>() { { "size", "50%" }, { "min", "10%" }, { "collapsible", false } },
+        new Dictionary<string, object>() { { "size", "50%" }, { "min", "5%" } }
+    };
+    
+    IDictionary<string, object>[] panels2 = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>() { { "size", 200 } }
+    };
+
+    IDictionary<string, object>[] panels3 = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>() { { "size", "60%" } }
+    };
+}
+
+<style>
+    html, body {
+        width: 100%;
+        height: 100%;
+    }
+</style>
