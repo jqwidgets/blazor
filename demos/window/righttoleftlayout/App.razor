@@ -4,6 +4,7 @@
     <div style="display: inline-block;">
         <JqxButton onClick="handleShow" width="100">Show</JqxButton>
     </div>
+
     <JqxWindow @ref="window"
         position="position"
         resizable="false"
@@ -13,11 +14,14 @@
         <div>
             About 30 St Mary Axe
         </div>
+
         <div>
             <div style="direction: rtl;">
                 <img src="../../images/building_big.jpg" alt="" class="big-image" />
+
                 <div>
                     <h3 style="text-align: right; direction: rtl;">30 St Mary Axe</h3>
+
                     <p class="important-text">
                         the Swiss Re Building (colloquially referred to as the Gherkin), is a skyscraper
                         in London's main financial district, the City of London, completed in December 2003
@@ -26,6 +30,7 @@
                         severely damaged on 10 April 1992 by the explosion of a bomb placed by the Provisional
                         IRA.
                     </p>
+
                     <div class="more-text">
                         The building is on the former site of the Baltic Exchange building, the headquarters
                         of a global marketplace for ship sales and shipping information. On 10 April 1992
@@ -51,12 +56,12 @@
     {
         if (firstRender)
         {
-            var result = await JSRuntime.InvokeAsync<string>("Example.getCoordinates", "#jqxWidget");
+            string result = await JSRuntime.InvokeAsync<string>("Example.getCoordinates", "#jqxWidget");
             string[] tokens = result.Split(";");
             int[] convertedItems = Array.ConvertAll<string, int>(tokens, int.Parse);
             int top = convertedItems[0];
             int left = convertedItems[1];
-            var newPosition = new Dictionary<string, object>()
+            IDictionary newPosition = new Dictionary<string, object>()
             {
                 { "x", (left + 50) },
                 { "y", (top + 50) }

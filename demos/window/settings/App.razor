@@ -4,18 +4,23 @@
     <div style="display: inline-block;">
         <JqxButton onClick="handleOpen" width="80">Open</JqxButton>
     </div>
+
     <div style="display: inline-block; margin-left: 3px;">
         <JqxButton onClick="handleClose" width="80">Close</JqxButton>
     </div>
+
     <div style="display: inline-block; margin-left: 3px;">
         <JqxButton onClick="handlePin" width="80">Pin</JqxButton>
     </div>
+
     <div style="display: inline-block; margin-left: 3px;">
         <JqxButton onClick="handleUnpin" width="80">Unpin</JqxButton>
     </div>
+
     <div style="display: inline-block; margin-left: 3px;">
         <JqxButton onClick="handleCollapse" width="80">Collapse</JqxButton>
     </div>
+
     <div style="display: inline-block; margin-left: 3px;">
         <JqxButton onClick="handleExpand" width="80">Expand</JqxButton>
     </div>
@@ -26,25 +31,31 @@
             <div id="customWindowHeader">
                 <span id="captureContainer" style="float: left">Find </span>
             </div>
-            <div id="customWindowContent" style="overflow: hidden">
+            
+            <div id="customWindowContent" style="overflow: hidden;">
                 <div style="margin: 10px">
                     Fi<u>n</u>d what:
-                    <input id="searchTextInput" @oninput="OnSetValue" type="text" style="width: 175px; height: 20px; border: 1px solid #aaa" />
-                    <div style="float: right">
+                    <input id="searchTextInput" @oninput="OnSetValue" type="text" style="width: 175px; height: 20px; border: 1px solid #aaa;" />
+
+                    <div style="float: right;">
                         <div style="margin-bottom: 5px;">
                             <JqxButton @ref="findButton" width="80" disabled="true">Find Next</JqxButton>
                         </div>
+
                         <div id="cancelButton">
                             <JqxButton width="80" disabled="false">Cancel</JqxButton>
                         </div>
                     </div>
+
                     <br />
+
                     <br />
+
                     <JqxCheckBox onChange="handleMatchCase" width="150">
                         Match case
                     </JqxCheckBox>
+                </div>
             </div>
-        </div>
         </JqxWindow>
     </div>
 </div>
@@ -62,12 +73,12 @@
     {
         if (firstRender)
         {
-            var result = await JSRuntime.InvokeAsync<string>("Example.getCoordinates", "#jqxWidget");
+            string result = await JSRuntime.InvokeAsync<string>("Example.getCoordinates", "#jqxWidget");
             string[] tokens = result.Split(";");
             int[] convertedItems = Array.ConvertAll<string, int>(tokens, int.Parse);
             int top = convertedItems[0];
             int left = convertedItems[1];
-            var newPosition = new Dictionary<string, object>()
+            IDictionary<string, object> newPosition = new Dictionary<string, object>()
             {
                 { "x", (left + 50) },
                 { "y", (top + 50) }

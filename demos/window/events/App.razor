@@ -4,8 +4,10 @@
     <div style="display: inline-block;">
         <JqxButton onClick="handleShow" width="80">Show</JqxButton>
     </div>
+
     <div style="width: 100%; height: 650px; border: 0px solid #ccc; margin-top: 10px;" id="mainDemoContainer">
         <div>Events Log:</div>
+        
         <div id="events" style="width: 300px; height: 200px; margin: 0; padding: 0;">
             <JqxPanel @ref="events" height="250" width="450"></JqxPanel>
         </div>
@@ -34,15 +36,17 @@
                     Please click "OK", "Cancel" or the close button to close the modal window. The dialog
                     result will be displayed in the events log.
                 </div>
+
                 <div>
-                <div style="float: right; margin-top: 25px;">
-                    <div id="okButton" style="display: inline-block; margin-right: 10px;">
-                        <JqxButton width="65" disabled="false">OK</JqxButton>
+                    <div style="float: right; margin-top: 25px;">
+                        <div id="okButton" style="display: inline-block; margin-right: 10px;">
+                            <JqxButton width="65" disabled="false">OK</JqxButton>
+                        </div>
+
+                        <div id="cancelButton" style="display: inline-block;">
+                            <JqxButton width="65" disabled="false">Cancel</JqxButton>
+                        </div>
                     </div>
-                    <div id="cancelButton" style="display: inline-block;">
-                        <JqxButton width="65" disabled="false">Cancel</JqxButton>
-                    </div>
-                </div>
                 </div>
             </div>
         </JqxWindow>
@@ -63,12 +67,12 @@
     {
         if (firstRender)
         {
-            var result = await JSRuntime.InvokeAsync<string>("Example.getCoordinates", "#jqxWidget");
+            string result = await JSRuntime.InvokeAsync<string>("Example.getCoordinates", "#jqxWidget");
             string[] tokens = result.Split(";");
             int[] convertedItems = Array.ConvertAll<string, int>(tokens, int.Parse);
             int top = convertedItems[0];
             int left = convertedItems[1];
-            var newPosition = new Dictionary<string, object>()
+            IDictionary<string, object> newPosition = new Dictionary<string, object>()
             {
                 { "x", (left + 50) },
                 { "y", (top + 50) }
@@ -88,6 +92,7 @@
         var x = e["x"].ToString();
         var y = e["y"].ToString();
         string result = $"Moved, X: {x}, Y: {y}";
+        
         displayEvent(result);
     }
     
@@ -98,6 +103,7 @@
         var clearDialogResult = dialogResult.ToString().Replace("{", "");
         clearDialogResult = clearDialogResult.Replace("}", "");
         var arrayDialogResults = clearDialogResult.Split(",");
+
         foreach (var item in arrayDialogResults)
         {
             if (item.IndexOf("true") != -1)
