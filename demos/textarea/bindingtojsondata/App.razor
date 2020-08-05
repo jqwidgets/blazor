@@ -1,11 +1,17 @@
 @inject IJSRuntime JSRuntime;
 @inject HttpClient Http;
 
-<br/><br/>
+<br/>
+
+<br/>
+
 <JqxTextArea @ref="myTextArea" onSelect="handleSelect" source="initialData" placeHolder="Contact Name:" displayMember="ContactName" valueMember="CompanyName" width="200" height="40"></JqxTextArea>
+
 <br />
+
 <label style="font-family: Verdana; font-size: 10px;">
     ex: Ana</label>
+
 <div @ref="selectionlog" style="font-family: Verdana; font-size: 13px;"></div>
 
 @code {
@@ -27,13 +33,14 @@
     {
         List<Dictionary<string, object>> newData = new List<Dictionary<string, object>>();
         source = await Http.GetJsonAsync<object[]>("../sampledata/customers.txt");
+
         foreach(var item in source) {
-            var clearedItem = item.ToString().Trim(new Char[] { '{', '}', '\n' });
-            var arrayFields = clearedItem.Split(",");
-            var CompanyNameField = arrayFields[1].Trim();
-            var CompanyName = CompanyNameField.Split(":")[1].Trim().Trim('"');
-            var ContactNameField = arrayFields[2].Trim();
-            var ContactName = ContactNameField.Split(":")[1].Trim().Trim('"');
+            string clearedItem = item.ToString().Trim(new Char[] { '{', '}', '\n' });
+            string arrayFields = clearedItem.Split(",");
+            string CompanyNameField = arrayFields[1].Trim();
+            string CompanyName = CompanyNameField.Split(":")[1].Trim().Trim('"');
+            string ContactNameField = arrayFields[2].Trim();
+            string ContactName = ContactNameField.Split(":")[1].Trim().Trim('"');
             newData.Add(
                 new Dictionary<string, object>()
                 {
@@ -48,11 +55,11 @@
 
     private void handleSelect(IDictionary<string, object> e)
     {
-        var item = e["item"].ToString().Trim(new Char[] { '{', '}' });
-        var labelPair = item.Split(",")[0];
-        var label = labelPair.Split(":")[1].Trim('"');
-        var valuePair = item.Split(",")[1];
-        var value = valuePair.Split(":")[1].Trim('"');
+        string item = e["item"].ToString().Trim(new Char[] { '{', '}' });
+        string labelPair = item.Split(",")[0];
+        string label = labelPair.Split(":")[1].Trim('"');
+        string valuePair = item.Split(",")[1];
+        string value = valuePair.Split(":")[1].Trim('"');
         Dictionary<string, object> itemData = new Dictionary<string, object>()
         {
             { "item", new Dictionary<string, object>() { { "label", label }, { "value", value } } }
