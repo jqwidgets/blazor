@@ -78,6 +78,7 @@
         string[] companyNames = new string[] { "Dolor Foundation", "Vivamus Non Lorem LLP", "Vel Ltd", "Turpis Incorporated", "Egestas Nunc PC", "At Pretium Aliquet Associates", "Feugiat Inc.", "Lacus Industries", "Senectus Et Foundation", "Sed LLC", "Maecenas Mi Felis LLC", "Pede Blandit Ltd", "Pellentesque Habitant Morbi Institute", "Mollis Vitae Industries", "Malesuada Vel Convallis LLP", "Risus Duis Corp.", "Convallis LLP", "Lobortis Augue LLC", "Auctor LLP", "Neque Inc.", "Lorem Eu Corporation" };
 
         Random random = new Random();
+
         for (int i = 0; i < number; i++)
         {           
             Dictionary<string, object> row = new Dictionary<string, object>();
@@ -92,6 +93,7 @@
             int subRowsCount = random.Next(1, 8);
             double t = 0;
             int q = 0;
+            
             for (int j = 0; j < subRowsCount; j++)
             {
                 Dictionary<string, object> subRow = new Dictionary<string, object>();
