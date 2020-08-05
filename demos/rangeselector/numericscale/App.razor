@@ -1,0 +1,18 @@
+<JqxRangeSelector 
+    width=700 height=100 min=min max=max range=range
+    majorTicksInterval=majorTicksInterval 
+    minorTicksInterval=minorTicksInterval
+    labelsFormat="c0" markersFormat="c0">
+</JqxRangeSelector>
+
+@code {
+    int min = 1000;
+    int max = 10000;
+    Dictionary<string, int> range = new Dictionary<string, int>()
+    {
+        { "from", 3000 }, { "to", 5000 }
+    };
+
+    int minorTicksInterval = 100;
+    int majorTicksInterval = 1500;
+}

@@ -1,0 +1,35 @@
+<JqxSplitter 
+    width=850 height=850 orientation=orientation panels=panels>
+  <div>
+    North
+  </div>
+  <div>
+    <JqxSplitter 
+        width=width height=height panels=panels2>
+      <div>
+        West
+      </div>
+      <div>
+        East
+      </div>
+    </JqxSplitter>
+  </div>
+</JqxSplitter>
+
+@code {
+    string orientation = "horizontal";
+    string width = "100%";
+    string height = "100%";
+
+    IDictionary<string, object>[] panels = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>() { { "size", "20%" } },
+        new Dictionary<string, object>() { { "size", "80%" } }
+    };
+    
+    IDictionary<string, object>[] panels2 = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>() { { "size", "30%" } },
+        new Dictionary<string, object>() { { "size", "60%" } }
+    };
+}

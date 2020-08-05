@@ -1,0 +1,173 @@
+<JqxNotification @ref="myNotification"
+    template=template icon=icon blink=false autoOpen=false autoClose=true
+    closeOnClick=true opacity=0.9 position=position width=width>
+    <div><span>
+        Welcome to our website.
+    </span></div>
+</JqxNotification>
+
+<div style="float: left; margin-left: 25%;">
+    <JqxButton onClick="openNotificationClick" width=160>Open notification</JqxButton><br />
+    <JqxButton onClick="closeLastNotificationClick" width=160>Close last notification</JqxButton><br />
+    <JqxButton onClick="closeNotificationsClick" width=160>Close all notifications</JqxButton>
+</div>
+<div style="float: left; margin-left: 15px;">
+    <JqxExpander 
+        width=200 height=385 toggleMode=toggleMode showArrow=false>
+        <div>
+            jqxNotification settings
+        </div>
+        <div style="padding: 5px;">
+            <div>Position:</div>
+            <ul style="list-style: none; padding: 0px; margin-top: 10px; margin-left: 20px; font-family: Verdana;
+                font-size: 12px;">
+                <li>
+                    <JqxRadioButton isChecked=false groupName="position" onChecked="topLeftChecked">
+                        Top-Left
+                    </JqxRadioButton>
+                </li>
+                <li>
+                    <JqxRadioButton isChecked=true groupName="position" onChecked="topRightChecked">
+                        Top-Right
+                    </JqxRadioButton>
+                </li>
+                <li>
+                    <JqxRadioButton isChecked=false groupName="position" onChecked="bottomLeftChecked">
+                        Bottom-Left
+                    </JqxRadioButton>
+                </li>
+                <li>
+                    <JqxRadioButton isChecked=false groupName="position" onChecked="bottomRightChecked">
+                        Bottom-Right
+                    </JqxRadioButton>
+                </li>
+            </ul>
+            <br />
+            <div>
+                Template:
+            </div>
+            <JqxDropDownList
+                onChange="onChange"
+                source=source width=dropDownWidth height=25
+                autoDropDownHeight=true selectedIndex=0>
+            </JqxDropDownList>
+            <br />
+            <JqxCheckBox isChecked=true onChange="closeOnClickCheckboxChange">
+                Close on click
+            </JqxCheckBox>
+            <JqxCheckBox isChecked=true onChange="autoCloseCheckBoxChange">
+                Auto close
+            </JqxCheckBox>
+            <JqxCheckBox isChecked=false onChange="blinkCheckboxChange">
+                Blink
+            </JqxCheckBox>
+        </div>
+    </JqxExpander>
+</div>
+
+@code {
+    JqxNotification myNotification;
+
+    string width = "auto"; 
+    string template = "info";
+    string position = "top-right";
+
+    IDictionary<string, object> icon = new Dictionary<string, object>()
+    {
+        { "width", 25 }, { "height", 25 }, { "url", "./images/smiley.png"}, { "padding", 5 }
+    };
+
+    string toggleMode = "none";
+    string dropDownWidth = "100%";
+    string[] source = new string[] { "info", "warning", "success", "error", "mail", "time", "null" };
+
+    private void openNotificationClick(IDictionary<string, object> e) 
+    {
+        myNotification.open();
+    }
+    private void closeLastNotificationClick(IDictionary<string, object> e) 
+    {
+        myNotification.closeLast();
+    }
+    private void closeNotificationsClick(IDictionary<string, object> e) 
+    {
+        myNotification.closeAll();
+    }
+    private void topLeftChecked(IDictionary<string, object> e) 
+    {
+        myNotification.setOptions(new Dictionary<string, string>()
+        {
+            { "position", "top-left" }
+        });
+    }
+    private void topRightChecked(IDictionary<string, object> e) 
+    {
+        myNotification.setOptions(new Dictionary<string, string>()
+        {
+            { "position", "top-right" }
+        });
+    }
+    private void bottomLeftChecked(IDictionary<string, object> e) 
+    {
+        myNotification.setOptions(new Dictionary<string, string>()
+        {
+            { "position", "bottom-left" }
+        });
+    }
+    private void bottomRightChecked(IDictionary<string, object> e) 
+    {
+        myNotification.setOptions(new Dictionary<string, string>()
+        {
+            { "position", "bottom-right" }
+        });
+    }
+    private void onChange(IDictionary<string, object> e) 
+    {
+        string choice = source[int.Parse(e["index"].ToString())];
+        string newTemplate;
+        if (choice != "null")
+        {
+            newTemplate = choice;
+        }
+        else
+        {
+            newTemplate = null;
+        }
+
+        Console.WriteLine(newTemplate);
+        myNotification.setOptions(new Dictionary<string, string>()
+        {
+            { "template", newTemplate }
+        });
+    }
+
+    private void closeOnClickCheckboxChange(IDictionary<string, object> e) 
+    {
+        bool isChecked = bool.Parse(e["checked"].ToString());
+
+        myNotification.setOptions(new Dictionary<string, bool>()
+        {
+            { "closeOnClick", isChecked }
+        });
+    }
+
+    private void autoCloseCheckBoxChange(IDictionary<string, object> e) 
+    {
+        bool isChecked = bool.Parse(e["checked"].ToString());
+
+        myNotification.setOptions(new Dictionary<string, bool>()
+        {
+            { "autoClose", isChecked }
+        });
+    }
+
+    private void blinkCheckboxChange(IDictionary<string, object> e) 
+    {
+        bool isChecked = bool.Parse(e["checked"].ToString());
+
+        myNotification.setOptions(new Dictionary<string, bool>()
+        {
+            { "blink", isChecked }
+        });
+    }
+}

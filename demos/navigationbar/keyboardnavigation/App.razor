@@ -1,0 +1,95 @@
+<JqxNavigationBar @ref="myNavigationBar" onComponentReady="onReady"
+    width=250 expandMode=expandMode expandedIndexes=expandedIndexes>
+    <div>
+      <div style='margin-top: 2px;'>
+        <div style='float: left;'>
+          <img alt='Mail' src='./images/mailIcon.png' />
+        </div>
+        <div style='margin-left: 4px; float: left;'>
+          Mail
+        </div>
+      </div>
+    </div>
+    <div>
+      <ul>
+        <li><a href='javascript:void(0)'>Contacts</a></li>
+        <li><a href='javascript:void(0)'>Mails</a></li>
+        <li><a href='javascript:void(0)'>Notes</a></li>
+      </ul>
+    </div>
+    <div>
+      <div style='margin-top: 2px;'>
+        <div style='float: left;'>
+          <img alt='Mail' src='./images/contactsIcon.png' />
+        </div>
+        <div style='margin-left: 4px; float: left;'>
+          Contacts
+        </div>
+      </div>
+    </div>
+    <div>
+      <ul>
+        <li><a href='javascript:void(0)'>Business Cards</a></li>
+        <li><a href='javascript:void(0)'>Address Cards</a></li>
+        <li><a href='javascript:void(0)'>Detailed Address Cards</a></li>
+        <li><a href='javascript:void(0)'>Phone List</a></li>
+      </ul>
+    </div>
+    <div>
+      <div style='margin-top: 2px;'>
+        <div style='float: left;'>
+          <img alt='Mail' src='./images/tasksIcon.png' />
+        </div>
+        <div style='margin-left: 4px; float: left;'>
+          Tasks
+        </div>
+      </div>
+    </div>
+    <div>
+      <ul>
+        <li><a href='javascript:void(0)'>Simple List</a></li>
+        <li><a href='javascript:void(0)'>Detailed List</a></li>
+        <li><a href='javascript:void(0)'>Active Tasks</a></li>
+        <li><a href='javascript:void(0)'>Phone List</a></li>
+      </ul>
+    </div>
+    <div>
+      <div style='margin-top: 2px;'>
+        <div style='float: left;'>
+          <img alt='Mail' src='./images/notesIcon.png' />
+        </div>
+        <div style='margin-left: 4px; float: left;'>
+          Notes
+        </div>
+      </div>
+    </div>
+    <div>
+      <ul>
+        <li><a href='javascript:void(0)'>Icons</a></li>
+        <li><a href='javascript:void(0)'>Notes List</a></li>
+        <li><a href='javascript:void(0)'>Last Seven Days</a></li>
+      </ul>
+    </div>
+</JqxNavigationBar>
+
+<div style="font-family: Verdana; font-size: 12px; width: 400px; margin-left: 20px; float: left;">
+    <ul>
+      <li><b>Tab</b> - Like other widgets, the jqxNavigationBar widget receives focus by tabbing into it. Once focus is received, users will be able to use the keyboard to change the jqxNavigationBar's selection. A second tab will take the user to the next focusable element in the tab order.</li>
+      <li><b>Shift+Tab</b> - reverses the direction of the tab order. Once in the widget, a Shift+Tab will take the user to the previous focusable element in the tab order.</li>
+      <li><b>Up or Left</b> arrow keys - select previous item.</li>
+      <li><b>Down or Right</b> arrow keys - select next item.</li>
+      <li><b>Home/End</b> keys - navigate to the first or last item.</li>
+      <li><b>Enter</b> key - Expand the focused item's state when the jqxNavigationBar's "expandMode" property is "single" or "singleFitHeight". Toggle the focused item's state when the expand mode is "toggle" or "multiple"</li>
+    </ul>
+</div>
+
+@code {
+    JqxNavigationBar myNavigationBar;
+    string expandMode = "multiple";
+    double[] expandedIndexes = new double[] { 0 };
+
+    private void onReady()
+    {
+        myNavigationBar.focus();
+    }
+}
