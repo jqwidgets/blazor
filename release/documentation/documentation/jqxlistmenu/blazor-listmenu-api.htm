@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>Blazor JqxListMenu API Reference</title>
+        <meta name="description" content="API Reference Documentation for the Blazor JqxListMenu User Interface Component" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+        <link rel="stylesheet" media="screen" href="../../styles/site.css" />
+        <link rel="stylesheet" media="screen" href="../../styles/jqx.apireference.css" />
+
+        <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="../../scripts/jqx.apireference.js"></script>
+        <script type="text/javascript" src="../../scripts/format.js"></script>
+        <script type="text/javascript" src="../../scripts/toggle.js"></script>
+
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA- 25803467 - 1']);
+            _gaq.push(['_trackPageview']);
+            (function () {
+                var ga = document.createElement('script');
+                ga.type = 'text/javascript';
+                ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+    </head>
+
+    <body>
+        <div id="pageTop" class="top"></div>
+
+        <div id="pageDocumentation">
+            <div id="properties">
+
+                <table class="documentation-table">
+                    <tbody>
+
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+                                <h2 class="documentation-top-header">
+                                    Properties
+                                </h2>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>Name</th>
+                            <th>Type</th>
+                        </tr>
+
+                        
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan0">alwaysShowNavigationArrows</span>
+                            </td>
+                            <td>
+                                <span>bool</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets or gets the jqxListMenu's alwaysShowNavigationArrows property. The alwaysShowNavigationArrows specifies whether navigation arrows are displayed for all items. </P></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan1">animationType</span>
+                            </td>
+                            <td>
+                                <span>object</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets or gets the animation's type. </P>
+<B>Possible Values:</B>
+<PRE><CODE>'slide'</CODE></PRE>
+<PRE><CODE>'fade'</CODE></PRE></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan2">animationDuration</span>
+                            </td>
+                            <td>
+                                <span>object</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets or gets the animation duration in milliseconds. </P></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan3">autoSeparators</span>
+                            </td>
+                            <td>
+                                <span>bool</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets or gets whether auto separators will be generated. Separator is generated for a sequence of list items with equal start character. The property is possible to be set through the attribute data-auto-separators="true". Code Example: 
+<PRE>                            <CODE>
+                            <PRE class=code style="MARGIN: 10px"><SPAN style="COLOR: #11a; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 0px; PADDING-RIGHT: 0px">&lt;ul data-role=<SPAN style="COLOR: #a24; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 0px; PADDING-RIGHT: 0px">"listmenu" data-auto-separators="true"</SPAN>&gt;</SPAN><DIV>            <SPAN style="COLOR: #11a; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 0px; PADDING-RIGHT: 0px">&lt;li&gt;</SPAN>Item 1<SPAN style="COLOR: #11a; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 0px; PADDING-RIGHT: 0px">&lt;/li&gt;</SPAN><DIV>            <SPAN style="COLOR: #11a; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 0px; PADDING-RIGHT: 0px">&lt;li&gt;</SPAN>Item 2<SPAN style="COLOR: #11a; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 0px; PADDING-RIGHT: 0px">&lt;/li&gt;</SPAN><DIV><SPAN style="COLOR: #11a; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 0px; PADDING-RIGHT: 0px">&lt;/ul&gt;</SPAN><DIV></DIV></DIV></DIV></DIV></PRE>
+                                </CODE>
+                            </PRE>
+
+<P></P></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan4">backLabel</span>
+                            </td>
+                            <td>
+                                <span>object</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets or gets the BackButton's label. </P></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan5">disabled</span>
+                            </td>
+                            <td>
+                                <span>bool</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets or gets the jqxListMenu's disabled property. </P></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan6">enableScrolling</span>
+                            </td>
+                            <td>
+                                <span>bool</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>When the jqxListMenu is created with the enableScrolling property set to true, vertical scrollbar automatically appears, if the items overflow the visible area. In order to use this feature, the following files should be included: jqxpanel.js and jqxscrollbar.js. </P></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan7">filterCallback</span>
+                            </td>
+                            <td>
+                                <span>object</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Used for filtering the jqxListMenu using the filter input. </P></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan8">height</span>
+                            </td>
+                            <td>
+                                <span>object</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets or gets the jqxListMenu's height. </P></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan9">headerAnimationDuration</span>
+                            </td>
+                            <td>
+                                <span>object</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets or gets the animation duration of the header. Header of a listmenu could be set whether the data-role attribute of a list item is set to 'header'. Example: 
+<PRE>                            <CODE>
+<PRE class=code style="MARGIN: 10px">    <SPAN style="COLOR: #11a; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 0px; PADDING-RIGHT: 0px">&lt;ul data-role=<SPAN style="COLOR: #a24; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 0px; PADDING-RIGHT: 0px">"listmenu"</SPAN>&gt;</SPAN><DIV>        <SPAN style="COLOR: #11a; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 0px; PADDING-RIGHT: 0px">&lt;li data-role=<SPAN style="COLOR: #a24; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 0px; PADDING-RIGHT: 0px">"header"</SPAN>&gt;</SPAN>Header<SPAN style="COLOR: #11a; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 0px; PADDING-RIGHT: 0px">&lt;/li&gt;</SPAN><DIV>        <SPAN style="COLOR: #11a; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 0px; PADDING-RIGHT: 0px">&lt;li&gt;</SPAN>Item<SPAN style="COLOR: #11a; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 0px; PADDING-RIGHT: 0px">&lt;/li&gt;</SPAN><DIV>    <SPAN style="COLOR: #11a; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; CLEAR: both; MARGIN: 0px; PADDING-RIGHT: 0px">&lt;/ul&gt;</SPAN><DIV></DIV></DIV></DIV></DIV></PRE>
+                                    </CODE>
+                                </PRE>
+
+<P></P></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan10">placeHolder</span>
+                            </td>
+                            <td>
+                                <span>object</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets or gets the filter input field's place holder. </P></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan11">readOnly</span>
+                            </td>
+                            <td>
+                                <span>bool</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets or gets whether the list will be read-only. In readOnly mode, items are not clickable. </P></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan12">rtl</span>
+                            </td>
+                            <td>
+                                <span>bool</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets or gets a value indicating whether widget's elements are aligned to support locales using right-to-left fonts.</P></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan13">roundedCorners</span>
+                            </td>
+                            <td>
+                                <span>bool</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets or gets the jqxListMenu's roundedCorners property. </P></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan14">showNavigationArrows</span>
+                            </td>
+                            <td>
+                                <span>bool</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets or gets the jqxListMenu's showNavigationArrows property. The showNavigationArrows specifies whether navigation arrows are displayed only for list items with nested Lists </P></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan15">showFilter</span>
+                            </td>
+                            <td>
+                                <span>bool</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets or gets whether the filter input field is visible. </P></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan16">showHeader</span>
+                            </td>
+                            <td>
+                                <span>bool</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets or gets whether the header will be visible. </P></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan17">showBackButton</span>
+                            </td>
+                            <td>
+                                <span>bool</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Indicates whether the back button will be visible. </P></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan18">theme</span>
+                            </td>
+                            <td>
+                                <span>string</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets the widget's theme. </P>
+
+<UL><LI>Include the theme's CSS file after jqx.base.css.<BR>The following code example adds the 'material' theme. <PRE><CODE>
+<PRE><CODE>&lt;link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" /&gt;
+&lt;link rel="stylesheet" href="../../jqwidgets/styles/jqx.material.css" type="text/css" /&gt;
+</CODE></PRE>
+</CODE></PRE>
+<LI>Set the widget's theme property to 'material' when you initialize it. </LI></UL></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan19">width</span>
+                            </td>
+                            <td>
+                                <span>object</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets or gets the jqxListMenu's width. </P></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+                                <h2 class="documentation-top-header">
+                                    Events
+                                </h2>
+                            </td>
+                        </tr>
+
+                        
+
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+                                <h2 class="documentation-top-header">
+                                    Methods
+                                </h2>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>Name</th>
+                            <th>Arguments</th>
+                            <th>Return Type</th>
+                        </tr>
+
+                        
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan20">back</span>
+                            </td>
+                            <td>
+                                <span>()</span>
+                            </td>
+                            <td>
+                                <span>void</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Navigates to the previous page. </P></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan21">changePage</span>
+                            </td>
+                            <td>
+                                <span>(object Item)</span>
+                            </td>
+                            <td>
+                                <span>void</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets the displayed page. The page could be set using a selector or object. The page must be a child of the current list and it's data-role must be set to "listmenu". </P></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan22">destroy</span>
+                            </td>
+                            <td>
+                                <span>()</span>
+                            </td>
+                            <td>
+                                <span>void</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Destroys the widget. </P>
+<H4></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+           
+            </div>
+        </div>
+
+    	<div id="pageBottom" class="bottom"></div>
+    </body>
+
+</html>

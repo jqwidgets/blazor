@@ -36,3 +36,11 @@ node library-and-api
 cd processors
 node site-demos
 ```
+
+## Getting Started Demos Processor
+
+### Builds the demos needed for the getting started documentation.
+
+```bash
+cd processors
+node getting-started-demos

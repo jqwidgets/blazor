@@ -1,0 +1,29 @@
+<JqxTagCloud
+    width=600 source=source displayMember="countryName" valueMember="technologyRating">
+</JqxTagCloud>
+
+@code {
+    static IDictionary<string, object>[] data = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>() { { "countryName", "Australia" }, { "technologyRating", 35 } },
+        new Dictionary<string, object>() { { "countryName", "United States" }, { "technologyRating", 60 } },
+        new Dictionary<string, object>() { { "countryName", "Germany" }, { "technologyRating", 55 } },
+        new Dictionary<string, object>() { { "countryName", "Brasil" }, { "technologyRating", 20 } },
+        new Dictionary<string, object>() { { "countryName", "United Kingdom" }, { "technologyRating", 50 } },
+        new Dictionary<string, object>() { { "countryName", "Japan" }, { "technologyRating", 80 } }
+    };
+
+    IDictionary<string, object> source = new Dictionary<string, object>()
+    {
+        { 
+            "dataFields",
+            new Dictionary<string, string>[]
+            {
+                new Dictionary<string, string>() { { "name", "countryName" } },
+                new Dictionary<string, string>() { { "name", "technologyRating" } }
+            }
+        },
+        { "datatype", "array" },
+        { "localdata", data }
+    };
+}

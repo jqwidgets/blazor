@@ -1,0 +1,47 @@
+<JqxScrollView @ref="myScrollView"
+    width=600 height=450 buttonsOffset=buttonsOffset>
+    <div><div class="photo" style="height: 500px; background-image: url(./images/imageNature1.jpg)"></div></div>
+    <div><div class="photo" style="height: 500px; background-image: url(./images/imageNature2.jpg)"></div></div>
+    <div><div class="photo" style="height: 500px; background-image: url(./images/imageNature3.jpg)"></div></div>
+    <div><div class="photo" style="height: 500px; background-image: url(./images/imageNature4.jpg)"></div></div>
+    <div><div class="photo" style="height: 500px; background-image: url(./images/imageNature5.jpg)"></div></div>
+</JqxScrollView>
+
+<div style="margin-top: 2em"></div>
+<JqxButton onClick="onStartClicked"
+    width=120 height=20>
+  Start SlideShow
+</JqxButton>
+
+<JqxButton onClick="onStopClicked"
+    width=120 height=20>
+  Stop SlideShow
+</JqxButton>
+
+@code {
+    JqxScrollView myScrollView;
+
+    double[] buttonsOffset = new double[2] { 0, 0 };
+
+    private void onStartClicked(IDictionary<string, object> e)
+    {
+        myScrollView.setOptions(new Dictionary<string, bool>()
+        {
+            { "slideShow", true }
+        });
+    }
+
+    private void onStopClicked(IDictionary<string, object> e)
+    {
+        myScrollView.setOptions(new Dictionary<string, bool>()
+        {
+            { "slideShow", false }
+        });
+    }
+}
+
+<style>
+    .jqx-button {
+        display: inline-block;
+    }
+</style>

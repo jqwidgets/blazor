@@ -1,0 +1,27 @@
+﻿<JqxButton width=width>Default</JqxButton>
+<JqxButton template=primaryTemplate width=width>Primary</JqxButton>
+<JqxButton template=infoTemplate width=width>Info</JqxButton>
+<JqxButton template=successTemplate width=width>Success</JqxButton>
+<JqxButton template=warningTemplate width=width>Warning</JqxButton>
+<JqxButton template=dangerTemplate width=width>Danger</JqxButton>
+<JqxButton template=inverseTemplate width=width>Inverse</JqxButton>
+<JqxButton template=linkTemplate width=width>Link</JqxButton>
+
+@code {
+    int width = 80;
+
+    string primaryTemplate = "primary";
+    string infoTemplate = "info";
+    string successTemplate = "success";
+    string warningTemplate = "warning";
+    string dangerTemplate = "danger";
+    string inverseTemplate = "inverse";
+    string linkTemplate = "link";
+}
+
+<style>
+    .jqx-button {
+        float: left;
+        margin-right: 4px;
+    }
+</style>
