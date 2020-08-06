@@ -1,0 +1,95 @@
+<div style="position: relative; height: 380px">
+    <JqxGauge @ref=myGauge onComponentReady="onReady"
+        animationDuration=1500 ranges=ranges cap=cap border=border 
+        ticksMinor=ticksMinor ticksMajor=ticksMajor labels=labels 
+        pointer=pointer>
+    </JqxGauge>
+
+    <JqxSlider @ref=mySlider onChange="mySliderOnChange"
+        width=180 value=120 min=0 max=220
+        ticksFrequency=20 mode=mode showButtons=false>
+    </JqxSlider>
+</div>
+
+@code {
+
+    JqxGauge myGauge;
+    JqxSlider mySlider;
+    
+    string mode = "fixed";
+
+    IDictionary<string, object>[] ranges = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>()
+        {
+            { "startValue", 0 }, 
+            { "endValue", 130 },
+            { "style", new Dictionary<string, string>(){ { "fill", "#4cb848" }, { "stroke", "#4cb848" } } },
+            { "startDistance", 0 },
+            { "endDistance", 0 }
+        },
+        new Dictionary<string, object>()
+        {
+            { "startValue", 130 }, 
+            { "endValue", 180 },
+            { "style", new Dictionary<string, string>(){ { "fill", "#fad00b" }, { "stroke", "#fad00b" } } },
+            { "startDistance", 0 },
+            { "endDistance", 0 }
+        },
+        new Dictionary<string, object>()
+        {
+            { "startValue", 180 }, 
+            { "endValue", 220 },
+            { "style", new Dictionary<string, string>(){ { "fill", "#e53d37" }, { "stroke", "#e53d37" } } },
+            { "startDistance", 0 },
+            { "endDistance", 0 }
+        }
+    };
+
+    IDictionary<string, object> cap = new Dictionary<string, object>() 
+    { 
+        { "size", "5%" },
+        { "style", new Dictionary<string, string>(){ { "fill", "#2e79bb" }, { "stroke", "#2e79bb" } } }
+    };
+
+    IDictionary<string, object> border = new Dictionary<string, object>() 
+    { 
+        { "style", new Dictionary<string, object>(){ { "fill", "#8e9495" }, { "stroke", "#7b8384" }, { "stroke-width", 1 } } }
+    };
+
+    IDictionary<string, object> ticksMinor = new Dictionary<string, object>()
+    {
+        { "interval", 5 }, { "size", "5%" }   
+    };
+
+    IDictionary<string, object> ticksMajor = new Dictionary<string, object>()
+    {
+        { "interval", 20 }, { "size", "10%" }
+    };
+
+    IDictionary<string, object> labels = new Dictionary<string, object>() { { "position", "outside" }, { "interval", 20 } };
+
+    IDictionary<string, object> pointer = new Dictionary<string, object>() { { "style", new Dictionary<string, string>(){ { "fill", "#2e79bb" } } }, { "width", 5 } };
+
+    private void onReady()
+    {
+        myGauge.val(120);
+    }
+    
+    private void mySliderOnChange(IDictionary<string, object> e) 
+    {
+        double value = double.Parse(mySlider.value.ToString());
+        myGauge.setOptions(new Dictionary<string, double>()
+        {
+            { "value", value }
+        });
+    }
+}
+
+<style>
+    .jqx-slider {
+        position: absolute; 
+        top: 250px;
+        left: 93px;
+    }
+</style>

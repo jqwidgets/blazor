@@ -1,0 +1,82 @@
+<div class="main-container">
+    <div id="draggable-parent">
+        <JqxDragDrop 
+            onDragStart="onDragStart" onDragEnd="onDragEnd"
+            onDropTargetEnter="onDropTargetEnter" onDropTargetLeave="onDropTargetLeave"
+            restricter=restricter dropTarget=dropTarget>
+            <div class="label">I can be dragged only inside my parent</div>
+        </JqxDragDrop>
+        <div class="drop-target">
+            <div class="label">I am a drop target</div>
+        </div>
+    </div>
+    <JqxPanel @ref="myPanel" width=260 height=330></JqxPanel>
+</div>
+
+@code {
+    JqxPanel myPanel;
+
+    string dropTarget = ".drop-target";
+
+    IDictionary<string, int> restricter = new Dictionary<string, int>()
+    {
+        { "left", -20 }, { "top", 27 }, { "width", 217 }, { "height", 263 } 
+    };
+
+    private void onDragStart(IDictionary<string, object> e)
+    {
+        myPanel.prepend("<div>Event: dragStart</div>");
+    }
+
+    private void onDragEnd(IDictionary<string, object> e)
+    {
+        myPanel.prepend("<div>Event: dragEnd</div>");
+    }
+
+    private void onDropTargetEnter(IDictionary<string, object> e)
+    {
+        myPanel.prepend("<div>Event: dropTargetEnter</div>");
+    }
+
+    private void onDropTargetLeave(IDictionary<string, object> e)
+    {
+        myPanel.prepend("<div>Event: dropTargetLeave</div>");
+    }
+}
+
+<style>
+    .jqx-draggable {
+        border: 1px solid #bbb;
+        background-color: #C9ECFF;
+        width: 100px;
+        height: 100px;
+        left: 30px;
+        top: 50px;
+        padding: 5px;
+        z-index: 2;
+    }
+
+    #draggable-parent {
+      background-color: #eeffee;
+      width: 350px;
+      height: 350px;
+      text-align: center;
+      border: 1px solid #eee;
+      float: left;
+    }
+
+    .main-container {
+      width: 650px;
+      z-index: 0;
+    }
+
+    .drop-target {
+      background-color: #FBFFB5;
+      width: 150px;
+      height: 150px;
+      border: 1px solid #ddd;
+      margin-left: 190px;
+      margin-top: 70px;
+      z-index: 1;
+    }
+</style>

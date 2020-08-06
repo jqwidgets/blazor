@@ -58,7 +58,6 @@
     vertical-align: top;
     float: left;
     width: 100%;
-    table-layout:fixed;
 }
 
     .documentation-table th {
@@ -72,7 +71,37 @@
         vertical-align: top;
         text-align: left;
     }
+.search {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  width:250px;
+  overflow: hidden; }
 
+  .search input {
+    font-family: "Ek Mukta", sans-serif;
+     line-height: 40px; }
+  .search input[type="text"] {
+    height: 40px;
+    width: 92%;
+    padding: 0 4%;
+    border: none;
+    background: #F2F2F2;
+    transition: 0.2s all ease-out; }
+    .search input[type="text"]::-webkit-input-placeholder {
+      color: #919299;
+      transition: 0.2s all ease-out; }
+    .search input[type="text"]:-moz-placeholder {
+      color: #919299;
+      transition: 0.2s all ease-out; }
+    .search input[type="text"]::-moz-placeholder {
+      color: #919299;
+      transition: 0.2s all ease-out; }
+    .search input[type="text"]:-ms-input-placeholder {
+      color: #919299;
+      transition: 0.2s all ease-out; }
+    .search input[type="text"]:focus {
+      background-color: #FFF; }
 #properties {
-  
+    overflow-x:auto;
 }

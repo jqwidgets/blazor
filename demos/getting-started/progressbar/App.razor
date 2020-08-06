@@ -1,0 +1,55 @@
+<div style="font-size: 13px; font-family: Verdana; float: left;">
+
+  <div style="margin-top: 10px;">Horizontal</div>
+  <JqxProgressBar @ref="myHorizontalProgressBar"
+    width=250 height=30 value=50>
+  </JqxProgressBar>
+
+  <div style="margin-top: 10px;">Vertical</div>
+  <JqxProgressBar @ref="myVerticalProgressBar"
+    width=30 height=250 value=50 orientation=orientation>
+  </JqxProgressBar>
+  <br />
+
+  <div>Enter a value between 0 and 100</div>
+  <JqxNumberInput @ref="valueInput" inputMode=inputMode decimalDigits=0></JqxNumberInput>
+
+  <JqxButton width=50 onClick="onClick">Update</JqxButton>
+
+  <JqxCheckBox onChange="onCheckBox">
+    Show Progress Text
+  </JqxCheckBox>
+</div>
+
+@code {
+    JqxProgressBar myHorizontalProgressBar;
+    JqxProgressBar myVerticalProgressBar;
+    JqxNumberInput valueInput;
+
+    string orientation = "vertical";
+
+    string inputMode = "simple";
+    bool isUpdated;
+
+    private void onClick(IDictionary<string, object> e)
+    {
+        double value = valueInput.val();
+
+        myHorizontalProgressBar.val(value);
+        myVerticalProgressBar.val(value);        
+    }
+
+    private void onCheckBox(IDictionary<string, object> e)
+    {
+        bool isChecked = bool.Parse(e["checked"].ToString());
+
+        myHorizontalProgressBar.setOptions(new Dictionary<string,object>()
+        {
+            { "showText", isChecked }
+        });
+        myVerticalProgressBar.setOptions(new Dictionary<string,object>()
+        {
+            { "showText", isChecked }
+        });
+    }
+}

@@ -1,0 +1,13 @@
+<JqxBarGauge 
+    width=600 height=600 colorScheme="scheme02" max=max values="values" tooltip="tooltip">
+</JqxBarGauge>
+
+@code {
+    int max = 150;
+
+    double[] values = new double[4] { 102, 115, 130, 137 };
+
+    IDictionary<string, object> tooltip = new Dictionary<string, object>() {
+        { "visible", true }
+    };
+}

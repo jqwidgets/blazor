@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>Blazor JqxTreeMap API Reference</title>
+        <meta name="description" content="API Reference Documentation for the Blazor JqxTreeMap User Interface Component" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+        <link rel="stylesheet" media="screen" href="../../styles/site.css" />
+        <link rel="stylesheet" media="screen" href="../../styles/jqx.apireference.css" />
+
+        <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="../../scripts/jqx.apireference.js"></script>
+        <script type="text/javascript" src="../../scripts/format.js"></script>
+        <script type="text/javascript" src="../../scripts/toggle.js"></script>
+
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA- 25803467 - 1']);
+            _gaq.push(['_trackPageview']);
+            (function () {
+                var ga = document.createElement('script');
+                ga.type = 'text/javascript';
+                ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+    </head>
+
+    <body>
+        <div id="pageTop" class="top"></div>
+
+        <div id="pageDocumentation">
+            <div id="properties">
+
+                <table class="documentation-table">
+                    <tbody>
+
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+                                <h2 class="documentation-top-header">
+                                    Properties
+                                </h2>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>Name</th>
+                            <th>Type</th>
+                        </tr>
+
+                        
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan0">baseColor</span>
+                            </td>
+                            <td>
+                                <span>string</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets or gets the default color used when the <CODE>colorMode</CODE> property is set to <CODE>"autoColors"</CODE>. </P></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan1">colorRanges</span>
+                            </td>
+                            <td>
+                                <span>object</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets or gets the color ranges used when the <CODE>colorMode</CODE> property is set to <CODE>"rangeColors"</CODE> </P>
+
+<H4></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan2">colorRange</span>
+                            </td>
+                            <td>
+                                <span>double</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets or gets the range in which the base colors can vary. The value is expected to be from 0 to 255. </P></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan3">colorMode</span>
+                            </td>
+                            <td>
+                                <span>object</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets or gets the sectors rendering behavior. </P>
+
+<UL><LI>parent - a child sector inherits the color from its parent sector. Depending on the child value and the colorRange property the color varies. 
+<LI>autoColors - automatic color generation based on the baseColor/colorRange and the value. 
+<LI>rangeColors - the user can sets array of color ranges. Each color range has the properties min, max and color. </LI></UL></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan4">displayMember</span>
+                            </td>
+                            <td>
+                                <span>string</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets or gets the <CODE>displayMember</CODE> property. The <CODE>displayMember</CODE> determines the name of an object property to display. The name is contained in the collection specified by the <CODE>source</CODE> property and the name is stored in the <CODE>label</CODE> field of each sector. The property is taken into account when the jqxTreeMap's <CODE>source</CODE> property points to jqxDataAdapter instance. </P></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan5">height</span>
+                            </td>
+                            <td>
+                                <span>object</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets or gets the jqxTreeMap's height. </P>
+
+<H4></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan6">hoverEnabled</span>
+                            </td>
+                            <td>
+                                <span>bool</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets or gets whether a sector will be outlined when the mouse cursor is over it. </P>
+
+<H4></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan7">headerHeight</span>
+                            </td>
+                            <td>
+                                <span>double</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets or gets the height of the parent sector's header. </P>
+
+<H4></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan8">legendLabel</span>
+                            </td>
+                            <td>
+                                <span>string</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets or gets the Legend's label. </P>
+
+<H4></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan9">legendPosition</span>
+                            </td>
+                            <td>
+                                <span>object</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets or gets the Legend's position. The <CODE>x</CODE> determines the X offset of the Legend from the left side of the jqxTreeMap. The <CODE>y</CODE> determines the Y offset of the Legend from the bottom side of jqxTreeMap. </P></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan10">legendScaleCallback</span>
+                            </td>
+                            <td>
+                                <span>object</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets or gets a callback function which formats the values displayed in the jqxTreeMap's Legend. </P>
+
+<H4></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan11">renderCallbacks</span>
+                            </td>
+                            <td>
+                                <span>object</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets or gets callback function(s) which enable you to customize the rendering of any sector in the jqxTreeMap. To define a callback function for all sectors, use the "*" : function(sectorHtmlElement, sectorData) syntax. To define a callback function for a specific element, use its <CODE>label</CODE> value instead of "*".</P></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan12">selectionEnabled</span>
+                            </td>
+                            <td>
+                                <span>bool</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets or gets whether a sector will be outlined when it is clicked.. </P>
+
+<H4></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan13">showLegend</span>
+                            </td>
+                            <td>
+                                <span>bool</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Determines whether the jqxTreeMap's Legend is displayed. Legend is possible to be displayed when the <CODE>colorMode</CODE> property is set to <CODE>"autoColors"</CODE> or <CODE>"rangeColors"</CODE>. </P>
+
+<H4></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan14">source</span>
+                            </td>
+                            <td>
+                                <span>object</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Specifies the jqxTreeMap's data source. Use this property to populate the jqxTreeMap. </P>
+
+<H4></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan15">theme</span>
+                            </td>
+                            <td>
+                                <span>string</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets the widget's theme. </P>
+
+<UL><LI>Include the theme's CSS file after jqx.base.css.<BR>The following code example adds the 'material' theme. <PRE><CODE>
+<PRE><CODE>&lt;link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" /&gt;
+&lt;link rel="stylesheet" href="../../jqwidgets/styles/jqx.material.css" type="text/css" /&gt;
+</CODE></PRE>
+</CODE></PRE>
+<LI>Set the widget's theme property to 'material' when you initialize it. </LI></UL></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan16">valueMember</span>
+                            </td>
+                            <td>
+                                <span>string</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets or gets the <CODE>valueMember</CODE> property. The <CODE>valueMember</CODE> determines the name of an object property to set as a <CODE>value</CODE> of the treemap sectors. The name is contained in the collection specified by the <CODE>source</CODE> property. The property is taken into account when the jqxTreeMap's <CODE>source</CODE> property points to jqxDataAdapter instance. </P></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan17">width</span>
+                            </td>
+                            <td>
+                                <span>object</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Sets or gets the jqxTreeMap's width. </P>
+
+<H4></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+                                <h2 class="documentation-top-header">
+                                    Events
+                                </h2>
+                            </td>
+                        </tr>
+
+                        
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan18">onBindingComplete</span>
+                            </td>
+                            <td>
+                                <span>Event</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>This event is triggered when the jqxTreeMap's <CODE>source</CODE> property is set to point to jqxDataAdapter instance and the jqxDataAdapter's binding is finished. </P>
+<H4></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+                                <h2 class="documentation-top-header">
+                                    Methods
+                                </h2>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>Name</th>
+                            <th>Arguments</th>
+                            <th>Return Type</th>
+                        </tr>
+
+                        
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan19">destroy</span>
+                            </td>
+                            <td>
+                                <span>()</span>
+                            </td>
+                            <td>
+                                <span>void</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Destroy the jqxTreeMap widget. The destroy method removes the jqxTreeMap widget from the web page.</P></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="documentation-option-type-click">
+                                <span id="propertiesSpan20">render</span>
+                            </td>
+                            <td>
+                                <span>()</span>
+                            </td>
+                            <td>
+                                <span>void</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="width: 100%">
+
+                            <div class="documentation-option-description property-content" style="display: none;">
+                                <p><P>Renders the jqxTreeMap widget. </P></p>
+                            </div>
+
+                            </td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+           
+            </div>
+        </div>
+
+    	<div id="pageBottom" class="bottom"></div>
+    </body>
+
+</html>

@@ -1,0 +1,16 @@
+<div id="container" style="font-family: Verdana; font-size: 12px; float: left">
+  <b>Default Layout</b>
+  <JqxSlider height=50 width=300></JqxSlider>
+
+  <JqxSlider height=300 width=50 orientation=vertical></JqxSlider>
+</div>
+<div style="float: right; font-family: Verdana; font-size: 12px;" id="rightContainer">
+  <b>Reversed Layout</b>
+  <JqxSlider height=50 width=300 layout=layout></JqxSlider>
+
+  <JqxSlider height=300 width=50 orientation=vertical layout=layout></JqxSlider>
+</div>
+
+@code {
+    string layout = "reverse";
+}

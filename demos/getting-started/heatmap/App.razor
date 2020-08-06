@@ -1,0 +1,32 @@
+<JqxHeatMap 
+    xAxis=xAxis yAxis=yAxis source=data 
+    title="Car sales revenue per employee(in 1000 &euro;)">
+</JqxHeatMap>
+
+@code {
+    IDictionary<string, object> xAxis = new Dictionary<string, object>()
+    {
+        { "labels", new string[] { "John", "Marry", "Alba", "Steven", "Josh", "Alica", "Robert", "Kim", "Ann", "Paul", "Regina", "Dorothy" } }
+    };
+
+    IDictionary<string, object> yAxis = new Dictionary<string, object>()
+    {
+        { "labels", new string[] { "Mon", "Tue", "Wed", "Thu", "Fri" } }
+    };
+
+    int[][] data = new int[][]
+    {
+        new int[] { 89, 39, 94, 55, 3 },
+        new int[] { 53, 38, 26, 68, 33 },
+        new int[] { 22, 0, 66, 90, 78 },
+        new int[] { 97, 68, 68, 3, 99 },
+        new int[] { 47, 47, 88, 6, 1 },
+        new int[] { 73, 23, 3, 79, 100 },
+        new int[] { 21, 86, 13, 33, 0 },
+        new int[] { 53, 81, 95, 79, 66 },
+        new int[] { 74, 68, 88, 51, 43 },
+        new int[] { 10, 12, 78, 14, 21 },
+        new int[] { 55, 58, 12, 82, 99 },
+        new int[] { 88, 23, 86, 59, 53 }
+    };
+}
