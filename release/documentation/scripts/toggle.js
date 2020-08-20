@@ -3418,7 +3418,8 @@ function SlideLogos() {
 $(document).ready(function () {
     var testForIndex = function () {
         if (window.location.href.indexOf("/documentation") != -1) {
-            return true;
+            // return true;
+            return false;
         }
         return false;
     }

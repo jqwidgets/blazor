@@ -64,7 +64,6 @@
 
     public void onChanged1(IDictionary<string, object> e)
     {
-        Console.WriteLine(123);
         var isChecked = bool.Parse(e["checked"].ToString()) ? "Checked" : "Unchecked";
         
         JSRuntime.InvokeVoidAsync("Example.updateInnerHtml", log, "New Mail: " + isChecked);
