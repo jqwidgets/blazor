@@ -1,0 +1,169 @@
+﻿@inject IJSRuntime JSRuntime;
+
+<JqxDataTable @ref="myDataTable"
+    onRowSelect="selectionInfo" onRowUnselect="selectionInfo"
+    width=850 source=source columns=columns altRows=true>
+</JqxDataTable>
+
+<div style="margin-top: 10px; margin-left: 10px">
+    <div><strong>Settings</strong></div>
+    Select Row:
+    @* <JqxInput @ref="myInput"
+        width=60 height=30 value=0>
+    </JqxInput> *@
+    <br />
+    <br />
+    <JqxButton onClick="rowSelectBtnOnClick"
+        width=105 height=20>
+        Select
+    </JqxButton>
+    <JqxButton onClick="clearSelectionBtnOnClick"
+        width=135 height=20>
+        Clear Selection
+    </JqxButton>
+    <div style="clear: both"></div>
+    <div style="margin-top:10px" @ref="selectedRowsDiv"></div>
+    <br />
+    <div>Selection Mode:</div>
+    <JqxDropDownList onChange="dropDownOnChange"
+        height=30 source=selectionModes
+        selectedIndex=1 autoDropDownHeight=true>
+    </JqxDropDownList>
+</div>
+
+@code {
+    JqxDataTable myDataTable;
+    JqxInput myInput;
+    ElementReference selectedRowsDiv;
+
+    string[] selectionModes = new string[] { "Single Row", "Multiple Rows" };
+
+    IDictionary<string, object> source = new Dictionary<string, object>()
+    {
+        { "localData", generateData(15) },
+        { "dataType", "array" },        
+        { 
+            "dataFields",
+            new Dictionary<string, string>[]
+            {
+                new Dictionary<string, string>() { { "name", "firstname" }, { "type", "string" } },
+                new Dictionary<string, string>() { { "name", "lastname" }, { "type", "string" } },
+                new Dictionary<string, string>() { { "name", "productname" }, { "type", "string" } },
+                new Dictionary<string, string>() { { "name", "quantity" }, { "type", "number" } },
+                new Dictionary<string, string>() { { "name", "price" }, { "type", "number" } }
+            }
+        }        
+    };
+
+    IDictionary<string, object>[] columns = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>() 
+        {
+            { "text", "First Name" }, { "datafield", "firstname" }, { "width", 200 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Last Name" }, { "datafield", "lastname" }, { "width", 200 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Product" }, { "datafield", "productname" }, { "width", 180 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Unit Price" }, { "datafield", "price" }, { "width", 90 }, 
+            { "align", "right" }, { "cellsAlign", "right" },  { "cellsFormat", "c2" }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Quantity" }, { "datafield", "quantity" }, { "align", "right" }, { "cellsAlign", "right" }            
+        },
+        
+        new Dictionary<string, object>() 
+        {
+            { "text", "Total" }, { "datafield", "total" }, { "cellsAlign", "right" }, 
+            { "align", "right" }, { "cellsFormat", "c2" }
+        }
+    };
+
+    public void dropDownOnChange(IDictionary<string, object> e)
+    {
+        switch(e["index"].ToString())
+        {
+            case "0": 
+            {
+                myDataTable.setOptions(new Dictionary<string, string>()
+                {
+                    { "selectionMode", "singleRow" }
+                });
+            }
+                break;
+            case "1":
+            {
+                myDataTable.setOptions(new Dictionary<string, string>()
+                {
+                    { "selectionMode", "multipleRows" }
+                });
+            }
+                break;
+        }
+    }
+
+    public void rowSelectBtnOnClick(IDictionary<string, object> e)
+    {
+        int index = 10; // int.Parse(myInput.value.ToString());
+        myDataTable.selectRow(index);
+    }
+
+    public void clearSelectionBtnOnClick(IDictionary<string, object> e)
+    {
+        myDataTable.clearSelection();
+    }
+
+    public void selectionInfo(IDictionary<string, object> e)
+    {
+        var selectionInfo = myDataTable.getSelection();
+        if (selectionInfo.Length > 0)
+        {
+            var rows = myDataTable.getRows();
+            JSRuntime.InvokeVoidAsync("Example.updateSelectionInfo", selectedRowsDiv, selectionInfo, rows);            
+        }
+    }
+
+    public static IList<IDictionary<string, object>> generateData(int number)
+    {
+        IList<IDictionary<string, object>> data = new List<IDictionary<string, object>>();
+
+        string[] firstNames = new string[] { "Andrew", "Nancy", "Shelley", "Regina", "Yoshi", "Antoni", "Mayumi", "Ian", "Peter", "Lars", "Petra", "Martin", "Sven", "Elio", "Beate", "Cheryl", "Michael", "Guylene" };
+        string[] lastNames = new string[] { "Fuller", "Davolio", "Burke", "Murphy", "Nagase", "Saavedra", "Ohno", "Devling", "Wilson", "Peterson", "Winkler", "Bein", "Petersen", "Rossi", "Vileid", "Saylor", "Bjorn", "Nodier" };
+        string[] productNames = new string[] { "Black Tea", "Green Tea", "Caffe Espresso", "Doubleshot Espresso", "Caffe Latte", "White Chocolate Mocha", "Cramel Latte", "Caffe Americano", "Cappuccino", "Espresso Truffle", "Espresso con Panna", "Peppermint Mocha Twist" };
+        double[] priceValues = new double[] { 2.25, 1.5, 3.0, 3.3, 4.5, 3.6, 3.8, 2.5, 5.0, 1.75, 3.25, 4.0 };
+
+        Random random = new Random();
+        for (int i = 0; i < number; i++)
+        {
+           
+            Dictionary<string, object> row = new Dictionary<string, object>();
+            int productIndex = random.Next(0, productNames.Count());    
+            double price = priceValues[productIndex];
+            int quantity = random.Next(1, 100);
+
+            row.Add("firstname", firstNames[random.Next(0, firstNames.Length)]);
+            row.Add("lastname", lastNames[random.Next(0, lastNames.Length)]);
+            row.Add("productname", productNames[random.Next(0, productNames.Length)]);
+            row.Add("price", price);
+            row.Add("quantity", quantity);
+            row.Add("total", price * quantity);
+
+            data.Add(row);
+        }
+
+        return data;
+    }
+}
+
+<style>
+    .jqx-button {
+        float: left;
+    }
+</style>
