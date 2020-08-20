@@ -1,7 +1,9 @@
+.gitignore
 bin
 obj
 dev-project/bin
 dev-project/obj
+dev-project/wwwroot/images
 dev-project/wwwroot/index.js
 dev-project/App.razor
 dev-project/wwwroot
