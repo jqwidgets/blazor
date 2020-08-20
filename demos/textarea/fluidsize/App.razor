@@ -1,0 +1,51 @@
+@inject HttpClient Http;
+
+<br/>
+
+<br/>
+
+<JqxTextArea @ref="myTextArea" source="initialData" placeHolder="Contact Name:" displayMember="ContactName" valueMember="CompanyName" width="width" height="80"></JqxTextArea>
+
+<br />
+
+<label style="font-family: Verdana; font-size: 10px;">
+    ex: Ana</label>
+
+@code {
+    JqxTextArea myTextArea;
+    
+    private string width = "30%";
+    private object[] source;
+    private List<Dictionary<string, object>> initialData = new List<Dictionary<string, object>>
+    {
+        new Dictionary<string, object>
+        {
+            { "CompanyName", "" },
+            { "ContactName", "" }
+        }
+    };
+
+    protected override async Task OnInitializedAsync()
+    {
+        List<Dictionary<string, object>> newData = new List<Dictionary<string, object>>();
+        source = await Http.GetJsonAsync<object[]>("../sampledata/customers.txt");
+
+        foreach(var item in source) {
+            string clearedItem = item.ToString().Trim(new Char[] { '{', '}', '\n' });
+            string arrayFields = clearedItem.Split(",");
+            string CompanyNameField = arrayFields[1].Trim();
+            string CompanyName = CompanyNameField.Split(":")[1].Trim().Trim('"');
+            string ContactNameField = arrayFields[2].Trim();
+            string ContactName = ContactNameField.Split(":")[1].Trim().Trim('"');
+            newData.Add(
+                new Dictionary<string, object>()
+                {
+                    { "CompanyName", CompanyName },
+                    { "ContactName", ContactName }
+                }
+            );
+        }
+
+        myTextArea.setOptions(new Dictionary<string, object>() { { "source", newData } });
+    }
+}
