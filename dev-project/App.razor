@@ -1,45 +1,46 @@
-﻿<JqxDropDownList width="200" height="30" source="source" selectedIndex="1"></JqxDropDownList>
-<br />
-<JqxDropDownList template="primary" width="200" height="30" source="source" selectedIndex="1"></JqxDropDownList>
-<br />
-<JqxDropDownList template="success" width="200" height="30" source="source" selectedIndex="1"></JqxDropDownList>
-<br />
-<JqxDropDownList template="info" width="200" height="30" source="source" selectedIndex="1"></JqxDropDownList>
-<br />
-<JqxDropDownList template="warning" width="200" height="30" source="source" selectedIndex="1"></JqxDropDownList>
-<br />
-<JqxDropDownList template="danger" width="200" height="30" source="source" selectedIndex="1"></JqxDropDownList>
+@inject IJSRuntime JSRuntime;
 
-@code {
-    string[] source = new string[]
+<JqxBarGauge @ref="myBarGauge" onDrawEnd="onDrawEnd"
+    width=600 height=600 values=values barSpacing=14 
+    labels=labels animationDuration=300 startAngle=180 endAngle=-180 
+    colorScheme="scheme02" relativeInnerRadius=relativeInnerRadius>
+</JqxBarGauge>
+
+@code {    
+    JqxBarGauge myBarGauge;
+
+    double relativeInnerRadius = 0.2;
+
+    double[] values = new double[] { 20, 0, 0, 0 };
+    double[] arrayA = new double[] { 20, 60, 0, 0};
+    double[] arrayB = new double[] { 20, 60, 80, 0};
+    double[] arrayC = new double[] { 20, 60, 80, 100};
+    int loop = 0;
+
+    IDictionary<string, int> labels = new Dictionary<string, int>()
     {
-        "Affogato",
-        "Americano",
-        "Bicerin",
-        "Breve",
-        "Café Bombón",
-        "Café au lait",
-        "Caffé Corretto",
-        "Café Crema",
-        "Caffé Latte",
-        "Caffé macchiato",
-        "Café mélange",
-        "Coffee milk",
-        "Cafe mocha",
-        "Cappuccino",
-        "Carajillo",
-        "Cortado",
-        "Cuban espresso",
-        "Espresso",
-        "Eiskaffee",
-        "The Flat White",
-        "Frappuccino",
-        "Galao",
-        "Greek frappé coffee",
-        "Iced Coffee",
-        "Indian filter coffee",
-        "Instant coffee",
-        "Irish coffee",
-        "Liqueur coffee"
+        { "precision", 0 }, 
+        { "indent", 15 },
+        { "connectorWidth", 1 }
     };
+
+    private void onDrawEnd(IDictionary<string, object> e) 
+    {
+        switch(loop)
+        {
+            case 0:
+                myBarGauge.setOptions(new Dictionary<string, object>() { { "values", arrayA } });
+                break;
+            case 1:
+                myBarGauge.setOptions(new Dictionary<string, object>() { { "values", arrayB } });
+                break;
+            case 2:
+                myBarGauge.setOptions(new Dictionary<string, object>() { { "values", arrayC } });
+                break;
+            default:
+                JSRuntime.InvokeVoidAsync("Example.consoleLog", "Render time is finished.");
+                break;
+        }
+        loop++;
+    }
 }
