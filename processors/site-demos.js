@@ -46,7 +46,7 @@ async function generateSiteDemos() {
                     continue;
                 }
 
-				const buildTestDemo = true;//widgetFolder === 'bargauge' && demoFolder === 'addandremovevalues';
+				const buildTestDemo = widgetFolder === 'grid' && demoFolder === 'bindingtoarray';
 
 				if (buildTestDemo) {	
 					// creates the demo folder in release/demos/[demo]

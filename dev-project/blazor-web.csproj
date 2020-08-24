@@ -4,9 +4,9 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <RazorLangVersion>3.0</RazorLangVersion>
   </PropertyGroup>
-
+ 
   <ItemGroup>
-    <PackageReference Include="jQWidgets.Blazor" Version="1.0.0" />
+    <ProjectReference Include="..\library\jQWidgets.Blazor\jQWidgets.Blazor.csproj" />
     <PackageReference Include="Microsoft.AspNetCore.Blazor" Version="3.2.0-preview1.20073.1" />
     <PackageReference Include="Microsoft.AspNetCore.Blazor.Build" Version="3.2.0-preview1.20073.1" PrivateAssets="all" />
     <PackageReference Include="Microsoft.AspNetCore.Blazor.DevServer" Version="3.2.0-preview1.20073.1" PrivateAssets="all" />
