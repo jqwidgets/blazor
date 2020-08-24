@@ -12,7 +12,7 @@
     int selectedIndex = 0;
     string cookieName = "jqxDropDownList_jqxWidget";
 
-    private override async Task OnInitializedAsync()
+    protected override async Task OnInitializedAsync()
     {
         source = await Http.GetJsonAsync<object[]>("../sampledata/customers.txt");
         selectedIndex = int.Parse(await JSRuntime.InvokeAsync<string>("Example.getCookie", cookieName));

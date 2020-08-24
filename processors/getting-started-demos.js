@@ -48,5 +48,5 @@ async function readDir(path) {
 }
 
 function joinPaths(...paths) {
-    return path.join(...paths);
+    return path.join(...paths).replace(/\\/g, '/');
 }
