@@ -46,30 +46,28 @@ async function generateSiteDemos() {
                     continue;
                 }
 
-				const buildTestDemo = widgetFolder === 'grid' && demoFolder === 'bindingtoarray';
+                // // uncomment to test a single demo
+                // if (!(widgetFolder === 'grid' && demoFolder === 'bindingtoarray')) {
+                //     continue;
+                // }
 
-				if (buildTestDemo) {	
-					// creates the demo folder in release/demos/[demo]
-					await createFolder(widgetFolder, demoFolder);
+                // creates the demo folder in release/demos/[demo]
+                await createFolder(widgetFolder, demoFolder);
 
-					// get the demo files
-					const demoFiles = await readDir(demoFolderPath);
-					
-					try {
-						await removeFilesInDevProject();
-						await copyDemoFilesToDevProject(demoFolderPath, demoFiles);
-						await buildDevProject();
-						await copyBuildFilesToRelease(widgetFolder, demoFolder);
-						await createCommonDemoFiles(widgetFolder, demoFolder);
+                // get the demo files
+                const demoFiles = await readDir(demoFolderPath);
+                
+                try {
+                    await removeFilesInDevProject();
+                    await copyDemoFilesToDevProject(demoFolderPath, demoFiles);
+                    await buildDevProject();
+                    await copyBuildFilesToRelease(widgetFolder, demoFolder);
+                    await createCommonDemoFiles(widgetFolder, demoFolder);
 
-						console.log('\x1b[36m%s\x1b[0m', widgetFolder + ' / ' + demoFolder);
-					} catch {
-						errorDemos.push(widgetFolder + ' / ' + demoFolder);
-					}
-				}
-				else {
-					continue;
-				}
+                    console.log('\x1b[36m%s\x1b[0m', widgetFolder + ' / ' + demoFolder);
+                } catch {
+                    errorDemos.push(widgetFolder + ' / ' + demoFolder);
+                }
             }
         }
 

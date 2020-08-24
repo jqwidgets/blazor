@@ -1,83 +1,32 @@
-﻿<JqxGrid 
-    width=850 source=source columns=columns columnsresize=true>
-</JqxGrid>
+ <JqxBarGauge @ref="myBarGauge"
+    width=350 height=350 relativeInnerRadius=relativeInnerRadius
+    values="values" onDrawEnd="onDrawEnd">
+</JqxBarGauge>
 
 @code {
+    JqxBarGauge myBarGauge;
 
-    IDictionary<string, object> source = new Dictionary<string, object>()
-    {
-        { 
-            "dataFields",
-            new Dictionary<string, string>[]
-            {
-                new Dictionary<string, string>() { { "name", "firstname" }, { "type", "string" } },
-                new Dictionary<string, string>() { { "name", "lastname" }, { "type", "string" } },
-                new Dictionary<string, string>() { { "name", "productname" }, { "type", "string" } },
-                new Dictionary<string, string>() { { "name", "quantity" }, { "type", "number" } },
-                new Dictionary<string, string>() { { "name", "price" }, { "type", "number" } },
-                new Dictionary<string, string>() { { "name", "total" }, { "type", "number" } }
-            }
-        },
-        { "datatype", "array" },
-        { "localdata", generateData(200) }
-    };
+    double relativeInnerRadius = 0.6;
+    double[] values = new double[1] {25};
 
-    IDictionary<string, object>[] columns = new Dictionary<string, object>[]
-    {
-        new Dictionary<string, object>() 
-        {
-            { "text", "Name" }, { "datafield", "firstname" }, { "width", 120 }
-        },
-        new Dictionary<string, object>() 
-        {
-            { "text", "Last Name" }, { "datafield", "lastname" }, { "width", 120 }
-        },
-        new Dictionary<string, object>() 
-        {
-            { "text", "Product" }, { "datafield", "productname" }, { "width", 180 }
-        },
-        new Dictionary<string, object>() 
-        {
-            { "text", "Quantity" }, { "datafield", "quantity" }, { "width", 80 }, { "cellalign", "right" }
-        },
-        new Dictionary<string, object>() 
-        {
-            { "text", "Unit Price" }, { "datafield", "price" }, { "width", 90 }, { "cellalign", "right" }, { "cellsformat", "c2" }
-        },
-        new Dictionary<string, object>() 
-        {
-            { "text", "Total" }, { "datafield", "total" }, { "cellsalign", "right" }, { "cellsformat", "c2" }
-        }
-    };
+    private void onDrawEnd(IDictionary<string, object> e)    
+    {        
+        values[0] = getRandomInt(1, 99);
+        
+        var task = Task.Run(() => myBarGauge.val(values));
+        task.Wait(TimeSpan.FromSeconds(1));
+    }
 
-    public static IList<IDictionary<string, object>> generateData(int number)
-    {
-        IList<IDictionary<string, object>> data = new List<IDictionary<string, object>>();
-
-        string[] firstNames = new string[] { "Andrew", "Nancy", "Shelley", "Regina", "Yoshi", "Antoni", "Mayumi", "Ian", "Peter", "Lars", "Petra", "Martin", "Sven", "Elio", "Beate", "Cheryl", "Michael", "Guylene" };
-        string[] lastNames = new string[] { "Fuller", "Davolio", "Burke", "Murphy", "Nagase", "Saavedra", "Ohno", "Devling", "Wilson", "Peterson", "Winkler", "Bein", "Petersen", "Rossi", "Vileid", "Saylor", "Bjorn", "Nodier" };
-        string[] productNames = new string[] { "Black Tea", "Green Tea", "Caffe Espresso", "Doubleshot Espresso", "Caffe Latte", "White Chocolate Mocha", "Cramel Latte", "Caffe Americano", "Cappuccino", "Espresso Truffle", "Espresso con Panna", "Peppermint Mocha Twist" };
-        double[] priceValues = new double[] { 2.25, 1.5, 3.0, 3.3, 4.5, 3.6, 3.8, 2.5, 5.0, 1.75, 3.25, 4.0 };
-
-        Random random = new Random();
-        for (int i = 0; i < number; i++)
-        {
-           
-            Dictionary<string, object> row = new Dictionary<string, object>();
-            int productIndex = random.Next(0, productNames.Count());    
-            double price = priceValues[productIndex];
-            int quantity = random.Next(1, 100);
-
-            row.Add("firstname", firstNames[random.Next(0, firstNames.Length)]);
-            row.Add("lastname", lastNames[random.Next(0, lastNames.Length)]);
-            row.Add("productname", productNames[random.Next(0, productNames.Length)]);
-            row.Add("price", price);
-            row.Add("quantity", quantity);
-            row.Add("total", price * quantity);
-
-            data.Add(row);
-        }
-
-        return data;
+    private int getRandomInt(int min, int max)  
+    {  
+        Random random = new Random();  
+        return random.Next(min, max);  
     }
 }
+
+<style>
+    body, html {
+        width: 100%;
+        height: 100%;
+    }
+</style>

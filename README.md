@@ -50,3 +50,25 @@ node site-demos
 ```bash
 cd processors
 node getting-started-demos
+```
+
+## Nuget Library Update
+
+```bash
+cd library/jQWidgets.Blazor
+Open `jQWidgets.Blazor.csproj` and update `Version` tag
+dotnet pack
+```
+
+#### The build file is located in 
+
+```bash
+library/jQWidgets.Blazor/bin/Debug/jQWidgets.Blazor.[VERSION].nupkg
+```
+
+
+#### Either update it manually via nuget official site or via CLI
+
+```bash
+dotnet nuget push [buildFilePath] -k [APIKey] -s https://api.nuget.org/v3/index.json
+```
