@@ -14,6 +14,8 @@ async function generateSiteDemos() {
         console.log('\x1b[32m%s\x1b[0m', '     START GENERATING SITE DEMOS!     ');
         console.log('\x1b[32m%s\x1b[0m', '--------------------------------------');
 
+        const errorDemos = [];
+
         const entryPoint = '../demos';
 
         // get the widget folders
@@ -50,19 +52,33 @@ async function generateSiteDemos() {
                 // get the demo files
                 const demoFiles = await readDir(demoFolderPath);
                 
-                await removeFilesInDevProject();
-                await copyDemoFilesToDevProject(demoFolderPath, demoFiles);
-                await buildDevProject();
-                await copyBuildFilesToRelease(widgetFolder, demoFolder);
-                await createCommonDemoFiles(widgetFolder, demoFolder);
+                try {
+                    await removeFilesInDevProject();
+                    await copyDemoFilesToDevProject(demoFolderPath, demoFiles);
+                    await buildDevProject();
+                    await copyBuildFilesToRelease(widgetFolder, demoFolder);
+                    await createCommonDemoFiles(widgetFolder, demoFolder);
 
-                console.log('\x1b[36m%s\x1b[0m', widgetFolder + ' / ' + demoFolder);
+                    console.log('\x1b[36m%s\x1b[0m', widgetFolder + ' / ' + demoFolder);
+                } catch {
+                    errorDemos.push(widgetFolder + ' / ' + demoFolder);
+                }
             }
         }
 
         console.log('\x1b[32m%s\x1b[0m', '--------------------------------------');
         console.log('\x1b[32m%s\x1b[0m', '     DONE GENERATING SITE DEMOS!      ');
         console.log('\x1b[32m%s\x1b[0m', '--------------------------------------');
+
+        if (errorDemos.length !== 0) {
+            console.log('\x1b[31m%s\x1b[0m', '--------------------------------------');
+            console.log('\x1b[31m%s\x1b[0m', '           ERROR IN DEMOS:            ');
+            console.log('\x1b[31m%s\x1b[0m', '--------------------------------------');
+
+            for (const demo of errorDemos) {
+                console.log('\x1b[31m%s\x1b[0m', demo);
+            }
+        }
     }
     catch (error) {
         console.error(error);
@@ -145,14 +161,12 @@ async function buildDevProject() {
         const process = exec('dotnet publish -c release', { cwd });
 
         process.on('close', () => {
-            console.log(123);
             resolve();
         });
     })
 }
 
 async function copyBuildFilesToRelease(...paths) {
-    console.log(222);
     const indexJsFromPath = joinPaths('..', 'dev-project', 'wwwroot', 'index.js');
     const indexDllFromPath = joinPaths('..', 'dev-project', 'bin', 'release', 'netstandard2.1', 'publish', 'blazor-web', 'dist', '_framework', '_bin', 'blazor-web.dll');
     

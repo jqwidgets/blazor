@@ -1,26 +1,45 @@
-﻿@inject HttpClient Http;
-@inject IJSRuntime JSRuntime;
-
-<JqxDropDownList
-    onSelect="selectEvent"
-    width="200" height="30" source="source" selectedIndex="selectedIndex"
-    displayMember="ContactName" valueMember="CompanyName">
-</JqxDropDownList>
+﻿<JqxDropDownList width="200" height="30" source="source" selectedIndex="1"></JqxDropDownList>
+<br />
+<JqxDropDownList template="primary" width="200" height="30" source="source" selectedIndex="1"></JqxDropDownList>
+<br />
+<JqxDropDownList template="success" width="200" height="30" source="source" selectedIndex="1"></JqxDropDownList>
+<br />
+<JqxDropDownList template="info" width="200" height="30" source="source" selectedIndex="1"></JqxDropDownList>
+<br />
+<JqxDropDownList template="warning" width="200" height="30" source="source" selectedIndex="1"></JqxDropDownList>
+<br />
+<JqxDropDownList template="danger" width="200" height="30" source="source" selectedIndex="1"></JqxDropDownList>
 
 @code {
-    object[] source;
-    int selectedIndex = 0;
-    string cookieName = "jqxDropDownList_jqxWidget";
-
-    protected override async Task OnInitializedAsync()
+    string[] source = new string[]
     {
-        source = await Http.GetJsonAsync<object[]>("../sampledata/customers.txt");
-        selectedIndex = int.Parse(await JSRuntime.InvokeAsync<string>("Example.getCookie", cookieName));
-    }
-
-    private void selectEvent(IDictionary<string, object> e)
-    {
-        var item = e["item"];
-        JSRuntime.InvokeAsync<string>("Example.setCookie", e["index"], cookieName);
-    }
+        "Affogato",
+        "Americano",
+        "Bicerin",
+        "Breve",
+        "Café Bombón",
+        "Café au lait",
+        "Caffé Corretto",
+        "Café Crema",
+        "Caffé Latte",
+        "Caffé macchiato",
+        "Café mélange",
+        "Coffee milk",
+        "Cafe mocha",
+        "Cappuccino",
+        "Carajillo",
+        "Cortado",
+        "Cuban espresso",
+        "Espresso",
+        "Eiskaffee",
+        "The Flat White",
+        "Frappuccino",
+        "Galao",
+        "Greek frappé coffee",
+        "Iced Coffee",
+        "Indian filter coffee",
+        "Instant coffee",
+        "Irish coffee",
+        "Liqueur coffee"
+    };
 }
