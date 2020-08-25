@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Vue Window CSS Styling and Appearance</title>
+	<meta name="description" content="Vue Window Styling and Appearance Documentation" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <link rel="stylesheet" href="../../styles/site.css" media="screen" />
+    <link rel="stylesheet" href="../../styles/jqx.apireference.css" media="screen" />
+    <script type="text/javascript" src="../../scripts/format.js"></script>
+    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    
+    
+    <script type="text/javascript" src="../../scripts/toggle.js"></script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-25803467-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+</head>
+<body>
+    <div id="pageTop" class="top">
+    </div>
+    <div id="pageDocumentation">
+        <h2>Styling and Appearance</h2>
+        <p>
+            jQWidgets uses a pair of CSS files - jqx.base.css and jqx.[theme name].css. The base stylesheet creates the styles 
+                                                                related to the widget's layout like margin, padding, border-width, position. The second css 
+                                                                file applies the widget's colors and backgrounds. The jqx.base.css should be included before the second CSS file.
+        </p>
+        Below is the list of CSS classes used by jqxWindow.
+                                                            <ul>
+                                                                <li>jqx-widget – applied to the jqxWindow.</li>
+                                                                <li>jqx-window – applied to the jqxWindow.</li>
+                                                                <li>jqx-window-disabled – applied to the jqxWindow when it’s disabled.</li>
+                                                                <li>jqx-window-header – applied to the window’s header.</li>
+                                                                <li>jqx-widget-header – applied to the window’s header.</li>
+                                                                <li>jqx-window-content – applied to the window’s content.</li>
+                                                                <li>jqx-widget-content – applied to the window’s content.</li>
+                                                                <li>jqx-window-close-button – applied to the window’s close button.</li>
+                                                                <li>jqx-window-collapse-button – applied to the window’s collapse button.</li>
+                                                                <li>jqx-window-modal – setting styles of the modal window’s background.</li>
+
+                                                            </ul>
+        When you create a custom style with colors and backgrounds for jqxWindow, you need to do the following:
+                                                            <ul>
+                                                                <li>Add the above CSS classes related to jqxWindow</li>
+                                                                <li>After each CSS class, add your theme name.
+                                                                    <br />
+                                                                    For example:
+                                                                    <br />
+                                                                    jqx-window-summer </li>
+                                                                <li>To apply your custom style to jqxWindow, you need to set its 'theme' property(option)
+                                                                    to point to your theme name string.
+                                                                </li>
+                                                            </ul>
+    </div>
+    <div id="pageBottom" class="bottom">
+    </div>
+</body>
+</html>

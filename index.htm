@@ -1,0 +1,666 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Blazor Components Demos</title>
+    <meta name="keywords" content="Blazor, Blazor Grid, Blazor Chart, Blazor UI, Blazor Components, Blazor Schneduler, Blazor Buttons" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="jqwidgets/styles/jqx.base.css" media="screen" />
+    <link rel="stylesheet" href="jqwidgets/styles/jqx.arctic.css" media="screen" />
+    <link rel="stylesheet" href="jqwidgets/styles/jqx.metrodark.css" media="screen" />
+    <style type="text/css">
+        .mobileDemo {
+            width: 100%;
+            margin: 0px;
+            padding: 0px;
+            font-size: 16px;
+            zoom: 1;
+            text-align: left;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            min-width: 0;
+            overflow-x: hidden;
+        }
+    </style>
+ 
+    <link rel="stylesheet" href="styles/site.css" media="screen" />
+    <meta name="description" content="Blazor UI Components Demos page. This page contains demo links and description about Blazor UI Components." />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <!-- main stylesheet -->
+    <link id="mainCSS" rel="stylesheet" href="resources/design/css/main.css" />
+
+    <!-- html5 support for old browsers -->
+    <!--[if lt IE 9]>
+        <script src="js/vendor/html5shiv.js"></script>
+    <![endif]-->
+    <!-- fav_icons for different browsers -->
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="resources/design/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="resources/design/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="resources/design/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="resources/design/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="resources/design/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="resources/design/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="resources/design/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="resources/design/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="resources/design/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="resources/design/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="resources/design/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="resources/design/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="resources/design/favicon-128.png" sizes="128x128" />
+    <meta name="application-name" content="&nbsp;" />
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
+
+    <!-- background images stylesheets -->
+    <!--[if lt IE 9]><link rel="stylesheet" href="css/img_ie.css" /><![endif]-->
+    <!--[if gt IE 8]><link rel="stylesheet" href="css/img.css" /><![endif]-->
+    <!--[if !IE]><link rel="stylesheet" href="resources/design/css/img.css" /><![endif]-->
+
+    <script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="scripts/demofunctions.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxcore.js"></script>
+
+    <!-- swipe plugin for slider -->
+    <script src="resources/design/js/vendor/swipe.js"></script>
+
+    <!-- svg to png for old browsers -->
+    <script src="resources/design/js/vendor/svgeezy.min.js"></script>
+    <script type="text/javascript">svgeezy.init(false, 'png');</script>
+
+    <!-- main functions -->
+    <script src="resources/design/js/main.js"></script>
+
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-25803467-1']);
+        _gaq.push(['_trackPageview']);
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <script type="text/javascript" src="jqwidgets/jqxresponse.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxlistmenu.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+
+        });
+    </script>
+</head>
+<body>
+
+    <!-- HEADER START -->
+    <div role="banner" class="header">
+        <div class="wrap cf">
+            <a class="header-logo" href="/">
+                <img src="resources/design/i/logo-jqwidgets.svg" width="273" height="69" alt="jqwidgets" />
+            </a>
+
+            <a href="#" id="menu_link" class="menu_link">
+                <span class="t"></span>
+                <span class="m"></span>
+                <span class="b"></span>
+            </a>
+
+
+            <!-- MENU START -->
+            <div class="header-menu">
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="../jquery-widgets-documentation">Documentation</a>
+                        </li>
+                        <li>
+                            <a href="../license">License and Pricing</a>
+                        </li>
+                        <li>
+                            <a href="../services">Services</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="javascript:void(0);">Community</a>
+                            <ul>
+                                <li>
+                                    <a href="../community">Forums</a>
+                                </li>
+                                <li>
+                                    <a href="../blog">Blogs</a>
+                                </li>
+                                <li>
+                                    <a href="../follow">Follow Us</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.jqwidgets.com/clientlogin/">Client Login</a>
+
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="javascript:void(0);">About</a>
+                            <ul>
+                                <li>
+                                    <a href="../about">About Us</a>
+                                </li>
+                                <li>
+                                    <a href="../contact-us">Contact Us</a>
+                                </li>
+                                <li>
+                                    <a href="../faq">FAQ</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="demo" href="../jquery-widgets-demo">Demo</a>
+                        </li>
+                        <li>
+                            <a class="download" href="../download">Download</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <!-- MENU END -->
+
+        </div>
+    </div>
+    <!-- HEADER END -->
+    <!-- MAIN CONTENT START -->
+    <div class="main" role="main">
+
+        <!-- BIG TITLE START -->
+        <div class="big_title">
+            <h1>Blazor UI Components</h1>
+
+            <!-- TITLE NAV START -->
+            <nav class="title_nav">
+                <div class="nav_wrap">
+                    <div class="wrap">
+                        <ul>
+                            <li>
+                                <a href="../jquery-widgets-demo/">Javascript/jQuery</a>
+                            </li>
+                            <li>
+                                <a href="../angular">Angular</a>
+                            </li>
+                            <li>
+                                <a href="../react">React</a>
+                            </li>
+                            <li class="current">
+                                <a href="javascript:void(0);">Blazor</a>
+                            </li>
+                            <li>
+                                <a href="../customelements/">Custom Elements</a>
+                            </li>
+                            <li>
+                                <a href="../asp.net-core-mvc-tag-helpers/">ASP .NET MVC</a>
+                            </li>
+                            <li>
+                                <a href="../jquery-widgets-demo/showcasedemos">Showcase Demos</a>
+                            </li>
+                            <li>
+                                <a href="../jquery-widgets-demo/mobiledemos/">Responsive Design</a>
+                            </li>
+                            <li>
+                                <a href="http://jqwidgets.com/themebuilder/">Theme Builder</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- TITLE NAV END -->
+
+        </div>
+        <!-- BIG TITLE END -->
+        <!-- WIDGETS START -->
+        <div class="widgets">
+            <div id="toggleButtonWrapper">
+                <div class="" id="toggleButton"></div>
+                <span id="toggleButtonLabel">Hide Demo List</span>
+            </div>
+            <div class="wrap">
+                <h3 class='widgets-title'>Blazor UI Components</h3>
+                <ul class="cf">
+                    <li>
+                        <div class="jqx-grid-icon" title="jqxGrid"></div>
+                        <div>
+                            <a title="jqxGrid - Blazor Grid Component" href="blazor-grid/index.htm">jqxGrid</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="jqx-tabs-icon" title="jqxTabs"></div>
+                        <div>
+                            <a title="jqxTabs - Blazor Tabs Component" href="blazor-tabs/index.htm">jqxTabs</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="jqx-textarea-icon" title="jqxTextArea"></div>
+                        <div><a title="jqxTextArea - Blazor TextArea Component" href="blazor-textarea/index.htm">jqxTextArea</a></div>
+                    </li>
+                    <li>
+                        <div class="jqx-window-icon" title="jqxWindow"></div>
+                        <div>
+                            <a title="jqxWindow - Blazor Window/Dialog Component" href="blazor-window/index.htm">jqxWindow</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="jqx-knob-icon" title="jqxKnob"></div>
+                        <div><a title="jqxKnob - Blazor Knob Chart Component" href="blazor-knob/index.htm">jqxKnob</a></div>
+                    </li>
+                    <li>
+                        <div class="jqx-responsivepanel-icon" title="jqxResponsivePanel"></div>
+                        <div><a title="jqxResponsivePanel - Blazor Responsive Panel Component" href="blazor-responsivepanel/index.htm">jqxResponsivePanel</a></div>
+                    </li>
+
+                    <!-- row 2 -->
+                    <li>
+                        <div class="jqx-chart-icon" title="jqxChart"></div>
+                        <div>
+                            <a title="jqxChart - Blazor Chart Component" href="blazor-chart/index.htm">jqxChart</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="jqx-menu-icon" title="jqxMenu"></div>
+                        <div>
+                            <a title="jqxMenu - Blazor Menu Component" href="blazor-menu/index.htm">jqxMenu</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="jqx-inputfield-icon" title="jqxInput"></div>
+                        <div>
+                            <a title="jqxInput - Blazor Input Component" href="blazor-input/index.htm">jqxInput</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="jqx-docking-icon" title="jqxDocking"></div>
+                        <div>
+                            <a title="jqxDocking - Blazor Docking Windows Component" href="blazor-docking/index.htm">jqxDocking</a>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="jqx-gauge-icon" title="jqxGauge"></div>
+                        <div>
+                            <a title="jqxGauge - Blazor Gauge and Linear Gauge Components" href="blazor-gauge/index.htm">jqxGauge</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="jqx-navbar-icon" title="jqxNavBar"></div>
+                        <div><a title="jqxNavBar - Blazor NavBar Component" href="blazor-navbar/index.htm">jqxNavBar</a></div>
+                    </li>
+
+                    <!-- row 3 -->
+                    <li>
+                        <div class="jqx-pivotgrid-icon" title="jqxPivotGrid"></div>
+                        <div><a title="jqxPivotGrid - Blazor PivotGrid Component" href="blazor-pivotgrid/index.htm">jqxPivotGrid</a></div>
+                    </li>
+                    <li>
+                        <div class="jqx-tree-icon" title="jqxTree"></div>
+                        <div>
+                            <a title="jqxTree - Blazor Tree Component" href="blazor-tree/index.htm">jqxTree</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="jqx-passwordinput-icon" title="jqxPasswordInput"></div>
+                        <div><a title="jqxPasswordInput - Blazor Password Input Component" href="blazor-passwordinput/index.htm">jqxPasswordInput</a></div>
+                    </li>
+                    <li>
+                        <div class="jqx-notification-icon" title="jqxNotification"></div>
+                        <div>
+                            <a title="jqxNotification - Blazor Notification Component" href="blazor-notification/index.htm">jqxNotification</a>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="jqx-bar-gauge-icon" title="jqxBarGauge"></div>
+                        <div>
+                            <a title="jqxBarGauge - Blazor Bar Gauge Component" href="blazor-bargauge/index.htm">jqxBarGauge</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="jqx-sortable-icon" title="jqxSortable"></div>
+                        <div>
+                            <a title="jqxSortable - Blazor Sortable Plugin" href="blazor-sortable/index.htm">jqxSortable</a>
+                        </div>
+                    </li>
+                    <!-- row 4 -->
+                    <li>
+                        <div class="jqx-scheduler-icon" title="jqxScheduler"></div>
+                        <div><a title="jqxScheduler - Blazor Scheduler Component" href="blazor-scheduler/index.htm">jqxScheduler</a></div>
+                    </li>
+                    <li>
+                        <div class="jqx-navigationbar-icon" title="jqxNavigationBar"></div>
+                        <div>
+                            <a title="jqxNavigationBar - Blazor NavigationBar/Accordion Component" href="blazor-navigationbar/index.htm">jqxNavigationBar</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="jqx-maskedinput-icon" title="jqxMaskedInput"></div>
+                        <div><a title="jqxMaskedInput - Blazor Masked Input Component" href="blazor-maskedinput/index.htm">jqxMaskedInput</a></div>
+                    </li>
+
+                    <li>
+                        <div class="jqx-popover-icon" title="jqxPopover"></div>
+                        <div><a tabindex="jqxPopover - Blazor Popover Component" href="blazor-popover/index.htm">jqxPopOver</a></div>
+                    </li>
+                    <li>
+                        <div class="jqx-expander-icon" title="jqxExpander"></div>
+                        <div>
+                            <a title="jqxExpander - Blazor Expander Component" href="blazor-expander/index.htm">jqxExpander</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="jqx-loader-icon" title="jqxLoader"></div>
+                        <div><a title="jqxLoader - Blazor Loader Component" href="blazor-loader/index.htm">jqxLoader</a></div>
+                    </li>
+
+                    <!-- row 5 -->
+                    <li>
+                        <div class="jqx-treegrid-icon" title="jqxTreeGrid"></div>
+                        <div>
+                            <a title="jqxTreeGrid - Blazor Tree Grid Component" href="blazor-treegrid/index.htm">jqxTreeGrid</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="jqx-listmenu-icon" title="jqxListMenu"></div>
+                        <div>
+                            <a title="jqxListMenu - Blazor List Menu Component" href="blazor-listmenu/index.htm">jqxListMenu</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="jqx-complexinput-icon" title="jqxComplexInput"></div>
+                        <div>
+                            <a title="jqxComplexInput - Blazor Complex Input Component" href="blazor-complexinput/index.htm">jqxComplexInput</a>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="jqx-tooltip-icon" title="jqxTooltip"></div>
+                        <div>
+                            <a title="jqxToolTip - Blazor Tooltip Component" href="blazor-tooltip/index.htm">jqxTooltip</a>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="jqx-rating-icon" title="jqxRating"></div>
+                        <div><a title="jqxRating - Blazor Rating Component" href="blazor-rating/index.htm">jqxRating</a></div>
+                    </li>
+                    <li>
+                        <div class="jqx-draw-icon" title="jqxDraw"></div>
+                        <div>
+                            <a title="jqxDraw - Blazor Draw(HTML5, SVG, VML) Plugin" href="blazor-draw/index.htm">jqxDraw</a>
+                        </div>
+                    </li>
+                    <!-- row 6 -->
+                    <li>
+                        <div class="jqx-datatable-icon" title="jqxDataTable"></div>
+                        <div>
+                            <a title="jqxDataTable - Blazor Data Table Component" href="blazor-datatable/index.htm">jqxDataTable</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="jqx-toolbar-icon" title="jqxToolBar"></div>
+                        <div><a title="jqxToolBar - Blazor ToolBar Component" href="blazor-toolbar/index.htm">jqxToolBar</a></div>
+                    </li>
+                    <li>
+                        <div class="jqx-formattedinput-icon" title="jqxFormattedInput"></div>
+                        <div><a title="jqxFormattedInput - Blazor Formatted Input Component" href="blazor-formattedinput/index.htm">jqxFormattedInput</a></div>
+                    </li>
+
+
+                    <li>
+                        <div class="jqx-colorpicker-icon" title="jqxColorPicker"></div>
+                        <div><a title="jqxColorPicker - Blazor Color Picker Component" href="blazor-colorpicker/index.htm">jqxColorPicker</a></div>
+                    </li>
+                    <li>
+                        <div class="jqx-rangeselector-icon" title="jqxRangeSelector"></div>
+                        <div><a title="jqxRangeSelector - Blazor Range Selector Component" href="blazor-rangeselector/index.htm">jqxRangeSelector</a></div>
+                    </li>
+
+                    <li>
+                        <div class="jqx-dragdrop-icon" title="jqxDragDrop"></div>
+                        <div><a title="jqxDragDrop - Blazor Drag Drop Component" href="blazor-dragdrop/index.htm">jqxDragDrop</a></div>
+                    </li>
+                    <!-- row 7 -->
+                    <li>
+                        <div class="jqx-treemap-icon" title="jqxTreeMap"></div>
+                        <div><a title="jqxTreeMap - Blazor Tree Map Component" href="blazor-treemap/index.htm">jqxTreeMap</a></div>
+                    </li>
+
+                    <li>
+                        <div class="jqx-combobox-icon" title="jqxComboBox"></div>
+                        <div><a title="jqxComboBox - Blazor ComboBox Component" href="blazor-combobox/index.htm">jqxComboBox</a></div>
+                    </li>
+                    <li>
+                        <div class="jqx-numberinput-icon" title="jqxNumberInput"></div>
+                        <div><a title="jqxNumberInput - Blazor Number Input Component" href="blazor-numberinput/index.htm">jqxNumberInput</a></div>
+                    </li>
+                    <li>
+                        <div class="jqx-scrollview-icon" title="jqxScrollView"></div>
+                        <div><a title="jqxScrollView - Blazor ScrollView/Banner Component" href="blazor-scrollview/index.htm">jqxScrollView</a></div>
+                    </li>
+                    <li>
+                        <div class="jqx-slider-icon" title="jqxSlider"></div>
+                        <div><a title="jqxSlider - Blazor Slider Component" href="blazor-slider/index.htm">jqxSlider</a></div>
+                    </li>
+                    <li>
+                        <div class="jqx-panel-icon" title="jqxPanel"></div>
+                        <div>
+                            <a title="jqxPanel - Blazor Panel Component" href="blazor-panel/index.htm">jqxPanel</a>
+                        </div>
+                    </li>
+
+                    <!-- row 8 -->
+                    <li>
+                        <div class="jqx-editor-icon" title="jqxEditor"></div>
+                        <div>
+                            <a title="jqxEditor - Blazor HTML Editor Component" href="blazor-editor/index.htm">jqxEditor</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="jqx-dropdownlist-icon" title="jqxDropDownList"></div>
+                        <div><a title="jqxDropDownList - Blazor DropDown List Component" href="blazor-dropdownlist/index.htm">jqxDropDownList</a></div>
+                    </li>
+                    <li>
+                        <div class="jqx-datetimeinput-icon" title="jqxDateTimeInput"></div>
+                        <div>
+                            <a title="jqxDateTimeInput - Blazor Date and Time Input Component" href="blazor-datetimeinput/index.htm">jqxDateTimeInput</a>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="jqx-progressbar-icon" title="jqxProgressBar"></div>
+                        <div><a title="jqxProgressBar - Blazor ProgressBar Component" href="blazor-progressbar/index.htm">jqxProgressBar</a></div>
+                    </li>
+                    <li>
+                        <div class="jqx-scrollbar-icon" title="jqxScrollBar"></div>
+                        <div><a title="jqxScrollBar - Blazor ScrollBar Component" href="blazor-scrollbar/index.htm">jqxScrollBar</a></div>
+                    </li>
+                    <li>
+                        <div class="jqx-validator-icon" title="jqxValidator"></div>
+                        <div><a title="jqxValidator - Blazor Validator Component" href="blazor-validator/index.htm">jqxValidator</a></div>
+                    </li>
+                    <!-- row 9 -->
+                    <li>
+                        <div class="jqx-ribbon-icon" title="jqxRibbon"></div>
+                        <div><a title="jqxRibbon - Blazor Ribbon Bar Component" href="blazor-ribbon/index.htm">jqxRibbon</a></div>
+                    </li>
+                    <li>
+                        <div class="jqx-listbox-icon" title="jqxListBox"></div>
+                        <div>
+                            <a title="jqxListBox - Blazor ListBox Component" href="blazor-listbox/index.htm">jqxListBox</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="jqx-calendar-icon" title="jqxCalendar"></div>
+                        <div>
+                            <a title="jqxCalendar - Blazor Calendar Component" href="blazor-calendar/index.htm">jqxCalendar</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="jqx-fileupload-icon" title="jqxFileUpload"></div>
+                        <div>
+                            <a title="jqxFileUpload - Blazor File Upload Component" href="blazor-fileupload/index.htm">jqxFileUpload</a>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="jqx-splitter-icon" title="jqxSplitter"></div>
+                        <div>
+                            <a title="jqxSplitter - Blazor Splitter Component" href="blazor-splitter/index.htm">jqxSplitter</a>
+                        </div>
+                    </li>
+                    <!-- row 10 -->
+                    <li>
+                        <div class="jqx-layout-icon" title="jqxLayout"></div>
+                        <div><a title="jqxLayout - Blazor Layout Component" href="blazor-layout/index.htm">jqxLayout</a></div>
+                    </li>
+                    <li>
+                        <div class="jqx-buttons-icon" title="jqxButtons"></div>
+                        <div>
+                            <a title="jqxButtons - Blazor Buttons Component" href="blazor-buttons/index.htm">jqxButtons</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="jqx-kanban-icon" title="jqxKanban"></div>
+                        <div>
+                            <a title="jqxKanban - Blazor Kanban Component" href="blazor-kanban/index.htm">jqxKanban</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="jqx-bulletchart-icon" title="jqxBulletChart"></div>
+                        <div><a title="jqxBulletChart - Blazor Bullet Chart Component" href="blazor-bulletchart/index.htm">jqxBulletChart</a></div>
+                    </li>
+                    <!-- row 11 -->
+                    <li>
+                        <div class="jqx-docklayout-icon" title="jqxDockingLayout"></div>
+                        <div><a title="jqxDockingLayout - Blazor Docking Layout Component" href="blazor-dockinglayout/index.htm">jqxDockingLayout</a></div>
+                    </li>
+                    <li>
+                        <div class="jqx-expander-icon" title="jqxForm"></div>
+                        <div><a title="jqxForm - Blazor Form Widget" href="blazor-form/index.htm">jqxForm</a></div>
+                    </li>
+                    <li>
+                        <div class="jqx-tagcloud-icon" title="jqxTagCloud"></div>
+                        <div><a title="jqxTagCloud - Blazor TagCloud Widget" href="blazor-tagcloud/index.htm">jqxTagCloud</a></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- WIDGETS END -->
+        <!-- TEXT WITH PICTURE ON RIGHT START -->
+        <div class="pic_wrap pic_wrap_gray pic_right pic_7">
+            <div class="wrap cf">
+                <div class="pic_cont">
+                    <h3 class="pic_title">Introduction</h3>
+                    <p>
+                        Build modern Web Apps with jqwidgets and Blazor.
+
+                        jqwidgets Blazor UI components will help you to build perfect looking web applications. Use the most advanced UI framework for Blazor and save your time for the business logic. Choose from more than 60 UI components including Grid, Chart, Scheduler, Editor, TreeGrid and more.
+                    </p>
+                </div>
+                <img src="resources/design/i/content/7.png" width="570" height="353" alt="" />
+            </div>
+        </div>
+        <!-- TEXT WITH PICTURE ON RIGHT END -->
+        <!-- TEXT BLOCKS START -->
+        <div class="text_blocks text_block_icons cf">
+            <div class="wrap">
+                <!-- LEFT COLUMN -->
+                <div class="text_column">
+                    <div class="text_block">
+                        <img class="icon" src="resources/design/i/ico_highlights.png" width="78" height="56" alt="" />
+                        <h3 class="text_title">Highlights</h3>
+                        <p>Blazor is a development platform for building mobile and desktop web applications. It provides a way to build apps for any deployment target by reusing existing code. Using HTML as the template language, Blazor offers developers the possiblity to create their own components. We created multiple components by using Blazor and the jqwidgets framework. The single file components for all Blazor UI components are located in the jqwidgets-blazor folder of the download package.</p>
+                    </div>
+                </div>
+
+                <!-- RIGHT COLUMN -->
+                <div class="text_column">
+                    <div class="text_block">
+                        <img class="icon" src="resources/design/i/ico_easy.png" width="100" height="71" alt="" />
+                        <h3 class="text_title">Getting Started</h3>
+                        <p>Getting Started documentation about using our components is available on: <a href="../blazor-components-documentation/">jqwidgets Components for Blazor</a></p>Browse our demos to see what you can do and how to use our product.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- TEXT BLOCKS END -->
+
+
+    </div>
+    <!-- MAIN CONTENT END -->
+    <!-- FOOTER START -->
+    <div class="footer" role="contentinfo">
+        <div class="wrap cf">
+            <a class="footer-logo" href="/">
+                <img src="resources/design/i/logo-jqwidgets-white.svg" width="234" height="48" alt="jqwidgets" />
+            </a>
+
+            <ul class="nav socials">
+                <li>
+                    <a href="https://www.facebook.com/jqwidgets-282600545090250/" target="_blank">
+                        <span class="fb"></span>Facebook
+                    </a>
+                </li>
+                <li>
+                    <a href="https://twitter.com/jqwidgets" target="_blank">
+                        <span class="tw"></span>Youtube
+                    </a>
+                </li>
+                <li>
+                    <a href="https://plus.google.com/112258917836957242269" target="_blank">
+                        <span class="gp"></span>Google +
+                    </a>
+                </li>
+            </ul>
+
+            <nav class="nav" role="navigation">
+                <ul>
+                    <li>
+                        <a href="../blazor-widgets-demo">Demo</a>
+                    </li>
+                    <li>
+                        <a href="../download">Download</a>
+                    </li>
+                    <li>
+                        <a href="../blazor-widgets-documentation">Documentation</a>
+                    </li>
+                    <li>
+                        <a href="../license">License and Pricing</a>
+                    </li>
+                    <li>
+                        <a href="../services">Services</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <a href="../community">Forums</a>
+                    </li>
+                    <li>
+                        <a href="../about">About</a>
+                    </li>
+                    <li>
+                        <a href="../terms-of-us">Terms of Use</a>
+                    </li>
+                    <li>
+                        <a href="../privacy">Privacy Policy</a>
+                    </li>
+                    <li>
+                        <a href="../contact-us">Contact Us</a>
+                    </li>
+                </ul>
+            </nav>
+            <p>jqwidgets &copy; 2011-2018. All Rights Reserved.</p>
+        </div>
+    </div>
+    <!-- FOOTER END -->
+</body>
+</html>

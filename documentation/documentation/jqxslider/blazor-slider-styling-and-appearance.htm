@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Vue Slider CSS Styling and Appearance</title>
+	<meta name="description" content="Vue Slider Styling and Appearance Documentation" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <link rel="stylesheet" href="../../styles/site.css" media="screen" />
+    <link rel="stylesheet" href="../../styles/jqx.apireference.css" media="screen" />
+    <script type="text/javascript" src="../../scripts/format.js"></script>
+    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    
+    
+    <script type="text/javascript" src="../../scripts/toggle.js"></script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-25803467-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</head>
+<body>
+    <div id="pageTop" class="top">
+    </div>
+    <div id="pageDocumentation">
+        <h2>Styling and Appearance</h2>
+        <p>
+            jQWidgets uses a pair of CSS files - jqx.base.css and jqx.[theme name].css. The base stylesheet creates the 
+                                                                    styles related to the widget's layout like margin, padding, border-width, position. The second css file applies 
+                                                                    the widget's colors and backgrounds. The jqx.base.css should be included before the second CSS file.
+        </p>
+        Below is the list of CSS classes used by jqxSlider.
+                                                            <ul>
+                                                                <li>jqx-widget – applied to jqxSlider widget.</li>
+                                                                <li>jqx-slider – applied to jqxSlider widget.</li>
+                                                                <li>jqx-slider-tick – applied to the slider ticks which.</li>
+                                                                <li>jqx-slider-tick-horizontal - applied to the ticks when the slider is in horizontal mode.</li>
+                                                                <li>jqx-slider-tick-vertical - applied to the ticks when the slider is in vertical mode.</li>
+                                                                <li>jqx-slider-tickscontainer – applied to the ticks container.</li>
+                                                                <li>jqx-slider-slider – applied to the slider's thumb.</li>
+                                                                <li>jqx-slider-slider-vertical - applied to the thumb when the slider is in vertical mode.</li>
+                                                                <li>jqx-slider-slider-horizontal - applied to the thumb when the slider is in horizontal mode.</li>
+                                                                <li>jqx-slider-track – applied to the slide track.</li>
+                                                                <li>jqx-slider-track-horizontal - applied to the track when the slider is in horizontal mode.</li>
+                                                                <li>jqx-slider-track-vertical - applied to the track when the slider is in vertical mode.</li>
+                                                                <li>jqx-slider-rangebar – applied to the slider to indicate the selected value. In range slider mode is applied to the space between the slider thumbs to indicate the selected values.</li>
+                                                                <li>jqx-fill-state-pressed – applied to the slider to indicate the selected value. In range slider mode is applied to the space between the slider thumbs to indicate the selected values.</li>
+                                                                <li>jqx-fill-state-hover - applied to a slider element under the mouse cursor.</li>
+                                                                <li>jqx-fill-state-focus - applied to the slider's elements when the widget is on focus.</li>
+                                                                <li>jqx-fill-state-disabled - applied to the slider when it is disabled.</li>
+                                                            </ul>
+        When you create a custom style with colors and backgrounds for jqxSlider, you need to do the following:
+                                                            <ul>
+                                                                <li>Add the above CSS classes related to jqxSlider</li>
+                                                                <li>After each CSS class, add your theme name.
+                                                                    <br />
+                                                                    For example:
+                                                                    <br />
+                                                                    jqx-slider-summer </li>
+                                                                <li>To apply your custom style to jqxSlider, you need to set its 'theme' property(option)
+                                                                    to point to your theme name string.
+                                                                </li>
+                                                            </ul>
+    </div>
+    <div id="pageBottom" class="bottom">
+    </div>
+</body>
+</html>

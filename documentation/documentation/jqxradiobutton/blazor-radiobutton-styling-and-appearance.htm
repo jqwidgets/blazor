@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Vue RadioButton CSS Styling and Appearance</title>
+	<meta name="description" content="Vue RadioButton Styling and Appearance Documentation" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <link rel="stylesheet" href="../../styles/site.css" media="screen" />
+    <link rel="stylesheet" href="../../styles/jqx.apireference.css" media="screen" />
+    <script type="text/javascript" src="../../scripts/format.js"></script>
+    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    
+    
+    <script type="text/javascript" src="../../scripts/toggle.js"></script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-25803467-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</head>
+<body>
+    <div id="pageTop" class="top">
+    </div>
+    <div id="pageDocumentation">
+        <h2>Styling and Appearance</h2>
+        <p>
+            jQWidgets uses a pair of css files - jqx.base.css and jqx.[theme name].css. The
+                                                                base stylesheet creates the styles related to the widget's layout like margin, padding,
+                                                                border-width, position. The second css file applies the widget's colors and backgrounds.
+                                                                The jqx.base.css should be included before the second CSS file.
+        </p>
+        Below is the list of CSS classes used by jqxButtons.
+                                                            <ul>
+                                                                <li>
+                                                                    <h3>jqxRadioButton Style</h3>
+                                                                </li>
+                                                                <li>jqx-widget - applied to the jqxRadioButton widget. </li>
+                                                                <li>jqx-radiobutton - applied to jqxRadioButton's outer div element. </li>
+                                                                <li>jqx-radiobutton-default - applied to the check box when its state is default.</li>
+                                                                <li>jqx-fill-state-normal - applied to the check box when its state is default.</li>
+                                                                <li>jqx-radiobutton-hover - applied to the check box when the mouse cursor is over it</li>
+                                                                <li>jqx-fill-state-hover - applied to the check box when the mouse cursor is over it</li>
+                                                                <li>jqx-radiobutton-disabled -applied to the check box when the widget is disabled</li>
+                                                                <li>jqx-radiobutton-disabled-box - applied to the check's box when the jqxRadioButton
+                                                                    is disabled.</li>
+                                                                <li>jqx-radiobutton-check-checked - applied to the check's box when the jqxRadioButton
+                                                                    is checked. Displays a check icon</li>
+                                                                <li>jqx-radiobutton-check-disabled - applied to the check's box when the jqxRadioButton
+                                                                    is disabled. Displays a disabled check icon</li>
+                                                                <li>jqx-radiobutton-check-indeterminate - applied to the check's box when the jqxRadioButton
+                                                                    is in indeterminate state. Displays a rectangle inside the check's box.</li>
+                                                                <li>jqx-radiobutton-check-indeterminate-disabled - applied to the check's box when the
+                                                                    jqxradiobutton is in indeterminate state and the jqxRadioButton is disabled. Displays
+                                                                    a gray(disabled) rectangle inside the check's box.</li>
+                                                                <li>jqx-fill-state-disabled - applied to the jqxRadioButton when it is disabled.</li>
+                                                                <li>jqx-fill-state-focus - applied to the jqxRadioButton when it is focused.</li>
+                                                            </ul>
+        When you create a custom style with colors and backgrounds for jqxRadioButton, you
+                                                            need to do the following:
+                                                            <ul>
+                                                                <li>Add the above CSS classes related to jqxRadioButton</li>
+                                                                <li>After each CSS class, add your theme name.
+                                                                    <br />
+                                                                    For example:
+                                                                    <br />
+                                                                    jqx-radiobutton-summer </li>
+                                                                <li>To apply your custom style to jqxRadioButton, you need to set its 'theme' property(option)
+                                                                    to point to your theme name string.
+                                                      
+                                                                </li>
+
+                                                            </ul>
+    </div>
+    <div id="pageBottom" class="bottom">
+    </div>
+</body>
+</html>

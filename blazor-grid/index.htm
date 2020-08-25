@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Blazor Grid - Sorting, Filtering, Editing, Grouping, Paging</title>
+    <meta name="description" content="Blazor Grid Component Demos. This page illustrates the functionality of jQWidgets Blazor Grid and the source code for each feature." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="../resources/design/css/main.css" />
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" media="screen" />
+    <link rel="stylesheet" href="../styles/site.css" media="screen" />
+
+    <!-- html5 support for old browsers -->
+    <!--[if lt IE 9]>
+		<script src="js/vendor/html5shiv.js"></script>
+    <![endif]-->
+
+
+    <!-- fav_icons for different browsers -->
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="../resources/design/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../resources/design/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../resources/design/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../resources/design/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="../resources/design/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="../resources/design/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="../resources/design/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../resources/design/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="../resources/design/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="../resources/design/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="../resources/design/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="../resources/design/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="../resources/design/favicon-128.png" sizes="128x128" />
+    <meta name="application-name" content="&nbsp;" />
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
+    <!-- background images stylesheets -->
+    <!--[if lt IE 9]>
+            <link rel="stylesheet" href="css/img_ie.css" />
+        <![endif]-->
+    <!--[if gt IE 8]>
+            <link rel="stylesheet" href="css/img.css" />
+        <![endif]-->
+    <!--[if !IE]><!-->
+    <link rel="stylesheet" href="../resources/design/css/img.css" />
+    <!--<![endif]-->
+    <script type="text/javascript" src="../scripts/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="../scripts/format.js"></script>
+    <script type="text/javascript" src="../scripts/demobundle.js"></script>
+    <script type="text/javascript" src="../scripts/demofunctions.js"></script>
+
+    <!-- swipe plugin for slider -->
+    <script src="../resources/design/js/vendor/swipe.js"></script>
+
+    <!-- svg to png for old browsers -->
+    <script src="../resources/design/js/vendor/svgeezy.min.js"></script>
+    <script type="text/javascript">svgeezy.init(false, 'png');</script>
+
+    <!-- main functions -->
+    <script src="../resources/design/js/main.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+        
+        });
+    </script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-25803467-1']);
+        _gaq.push(['_trackPageview']);
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</head>
+<body>
+    <div id="pageTop">
+    </div>
+    <!-- DOCUMENTATION START -->
+    <div class="documentation cf" id="doc">
+
+
+        <div class="wrap">
+            <div class="doc_mask"></div>
+            <!-- LEFT COLUMN -->
+            <nav class="doc_menu doc_menu_normal">
+                <div class="jqx-grid-icon jqx-widget-title-icon"></div>
+                <p class="doc_menu_title">
+                    <span>jqxGrid</span>
+                </p>
+                <ul>
+                    <li>
+                        <div class='search'>
+                            <div class='wrap'>
+                                <input id='searchField' type='text' value='' autocomplete='off' placeholder='Search...'>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="./blazor-grid-defaultfunctionality.htm">Default Functionality</a>
+                    </li>
+                    <li>
+                        <a href="./blazor-grid-spreadsheet.htm">Spreadsheet</a>
+                    </li>
+                    <li>
+                        <a href="./blazor-grid-createremoveupdate.htm">Create, Remove, Update</a>
+                    </li>
+                    <li>
+                        <a href="./blazor-grid-dataexport.htm">Data Export</a>
+                    </li>
+                    <li>
+                        <a href="./blazor-grid-dataprinting.htm">Data Printing</a>
+                    </li>
+                    <li>
+                        <a href="./blazor-grid-statemaintenance.htm">State Maintenance</a>
+                    </li>
+                    <li>
+                        <a href="./blazor-grid-localization.htm">Localization</a>
+                    </li>
+                    <li>
+                        <a href="./blazor-grid-dropdowngrid.htm">DropDown Grid</a>
+                    </li>
+                    <li class="sub_menu">
+                        <a href='#Sorting'><span>Sorting</span></a>
+                        <ul>
+                            <li>
+                                <a href="./blazor-grid-sorting.htm">Sorting</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-customsorting.htm">Custom Sorting</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sub_menu">
+                        <a href='#Filtering'><span>Filtering</span></a>
+                        <ul>
+                            <li>
+                                <a href="./blazor-grid-filtering.htm">Filtering</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-filtermenutypes.htm">Filter Menu Types</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-customfiltermenu.htm">Custom Filter Menu</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-filterrow.htm">Filter Row</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-excellikefilter.htm">Excel-like Filter</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-filterrowcustomlistitems.htm">Filter Row & Custom List Items</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-filterconditions.htm">Filter Conditions</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-daterangefilter.htm">Date & Range Filter</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-initialfilter.htm">Initial Filter</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-customlistitemswithkeyvalue.htm">Custom List Items with Key/Value</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sub_menu">
+                        <a href='#Grouping'><span>Grouping</span></a>
+                        <ul>
+                            <li>
+                                <a href="./blazor-grid-grouping.htm">Grouping</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-groupingwithpager.htm">Grouping with Pager</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-togglesubrows.htm">Toggle Sub Rows</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-groupingaggregates.htm">Aggregates</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sub_menu">
+                        <a href='#Paging'><span>Paging</span></a>
+                        <ul>
+                            <li>
+                                <a href="./blazor-grid-paging.htm">Paging</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-initialpageandpagesize.htm">Initial Page and PageSize</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-pagermodes.htm">Pager Modes</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sub_menu">
+                        <a href='#Editing'><span>Editing</span></a>
+                        <ul>
+                            <li>
+                                <a href="./blazor-grid-editing.htm">Editing</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-popupediting.htm">Popup Editing</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-editmodes.htm">Edit Modes</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-customizededitors.htm">Customized Editors</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-disableeditingofrows.htm">Disable Editing of Rows</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-customdropdownlistcolumn.htm">Custom DropDownList Column</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-customcomboboxcolumn.htm">Custom ComboBox Column</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-cascadingcomboboxes.htm">Cascading ComboBoxes</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-fullrowedit.htm">Full Row Edit</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-roweditwitheverpresentrow.htm">Row Edit with Ever Present Row</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-customcolumneditor.htm">Custom Column Editor</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-customroweditor.htm">Custom Row Editor</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sub_menu">
+                        <a href='#Data Binding'><span>Data Binding</span></a>
+                        <ul>
+                            <li>
+                                <a href="./blazor-grid-bindingtoarray.htm">Binding to Array</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-bindingtojsarray.htm">Binding to JS Array</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-bindingtoobservablearray.htm">Binding to Observable Array</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-bindingtoxml.htm">Binding to XML</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-bindingtojson.htm">Binding to JSON</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-bindingtojsonusingphp.htm">Binding to JSON using PHP</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-bindingtojsonstring.htm">Binding to JSON String</a>
+                            </li>
+                            <!--<li>
+                                <a href="./blazor-grid-bindingtoremotedata.htm">Binding to Remote Data</a>
+                            </li>-->
+                            <li>
+                                <a href="./blazor-grid-bindingtocsv.htm">Binding to CSV</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-bindingtotsv.htm">Binding to TSV</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-largedataset.htm">Large Data Set</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-manycolumns.htm">Many Columns</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-refreshdata.htm">Refresh Data</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-virtualpaging.htm">Virtual Paging</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-virtualscrolling.htm">Virtual Scrolling</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-loadfromtable.htm">Load from Table</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sub_menu">
+                        <a href='#Aggregates'><span>Aggregates</span></a>
+                        <ul>
+                            <li>
+                                <a href="./blazor-grid-aggregates.htm">Aggregates</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-customaggregates.htm">Custom Aggregates</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-aggregatesrenderer.htm">Aggregates Renderer</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-aggregatesgrouping.htm">Grouping Aggregates</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sub_menu">
+                        <a href='#Columns'><span>Columns</span></a>
+                        <ul>
+                            <li>
+                                <a href="./blazor-grid-textalignment.htm">Text Alignment</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-showhidecolumns.htm">Show/Hide Columns</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-autosizecolumns.htm">Auto-Size Columns</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-percentagewidthforcolumns.htm">Percentage Width for Columns</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-checkboxcolumn.htm">CheckBox Column</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-rownumbercolumn.htm">Row Number Column</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-columntemplate.htm">Column Template</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-widgetcolumn.htm">Widget Column</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-columnshierarchy.htm">Columns Hierarchy</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-cellsstyling.htm">Cells Styling</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-imagecolumn.htm">Image Column</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-columnsresize.htm">Columns Resize</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-columnsreorder.htm">Columns Reorder</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-pinnedfrozencolumns.htm">Pinned/Frozen Columns</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-columntooltips.htm">Column Tooltips</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-computedcolumn.htm">Computed Column</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-dynamiccolumns.htm">Dynamic Columns</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-foreignkeycolumn.htm">Foreign Key Column</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-keysvaluescolumn.htm">Keys/Values Column</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sub_menu">
+                        <a href='#Selection'><span>Selection</span></a>
+                        <ul>
+                            <li>
+                                <a href="./blazor-grid-rowselection.htm">Row Selection</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-cellsselection.htm">Cells Selection</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-checkboxselection.htm">CheckBox Selection</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sub_menu">
+                        <a href='#Drag Drop'><span>Drag Drop</span></a>
+                        <ul>
+                            <li>
+                                <a href="./blazor-grid-dragdrop.htm">Drag & Drop</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sub_menu">
+                        <a href='#Ever Present Row'><span>Ever Present Row</span></a>
+                        <ul>
+                            <li>
+                                <a href="./blazor-grid-addnewrow.htm">Add New Row</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-addnewbottomrow.htm">Add New Bottom Row</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-updatingactionsatruntime.htm">Updating Actions at Runtime</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-everpresentrowwithcustomwidgets.htm">Ever Present Row with Custom Widgets</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-everpresentrowwithcolumns.htm">Ever Present Row with Columns</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-positioning.htm">Positioning</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-validation.htm">Validation</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-addremoveupdate.htm">Add, Remove, Update</a>
+                            </li>
+                            <li>
+                                <a href="./blazor-grid-localizedaddnewrow.htm">Localized Add New Row</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="./blazor-grid-rowdetails.htm">Row Details</a>
+                    </li>
+                    <li>
+                        <a href="./blazor-grid-nestedgrids.htm">Nested Grids</a>
+                    </li>
+                    <li>
+                        <a href="./blazor-grid-masterdetails.htm">Master Details</a>
+                    </li>
+                    <li>
+                        <a href="./blazor-grid-deferedscrolling.htm">Deferred Scrolling</a>
+                    </li>
+                    <li>
+                        <a href="./blazor-grid-deferedscrollingonalargedataset.htm">Deferred Scrolling on a Large Data Set</a>
+                    </li>
+                    <li>
+                        <a href="./blazor-grid-statusbar.htm">StatusBar</a>
+                    </li>
+                    <li>
+                        <a href="./blazor-grid-toolbar.htm">ToolBar</a>
+                    </li>
+                    <li>
+                        <a href="./blazor-grid-contextmenu.htm">Context Menu</a>
+                    </li>
+                    <li>
+                        <a href="./blazor-grid-autorowheight.htm">Auto Row Height</a>
+                    </li>
+                    <li>
+                        <a href="./blazor-grid-customkeyboardnavigation.htm">Custom Keyboard Navigation</a>
+                    </li>
+                    <li>
+                        <a href="./blazor-grid-fluidsize.htm">Fluid Size</a>
+                    </li>
+                    <li>
+                        <a href="./blazor-grid-gridinjqxtabs.htm">Grid in jqxTabs</a>
+                    </li>
+                    <li>
+                        <a href="./blazor-grid-keyboardnavigation.htm">Keyboard Navigation</a>
+                    </li>
+                    <li>
+                        <a href="./blazor-grid-righttoleftlayout.htm">Right to Left Layout</a>
+                    </li>
+                </ul>
+</nav>
+            <!-- RIGHT COLUMN -->
+            <div class="doc_content">
+                <div style="position: relative; left: -20px; visibility: hidden; float: right;" class="themeSelector" id="themeSelector">
+                    <div style="float: left; margin-top: 4px;">
+                        Theme:
+                    </div>
+                    <div id="themeComboBox" style="margin-bottom: 3px; margin-top: 4px; margin-left: 10px; float: left;"></div>
+                </div>
+        <div id="tabs" class="demoTabs" style='width: 850px; padding: 0px; margin: 0px; display: none;'>
+                    <ul style='margin-left: 30px;'>
+                        <li id='tab1'>Demo</li>
+                        <li id='tab2'>App.htm</li>
+                        <li id='tab3'>App.Component.ts</li>
+                        <li id='tab4'>App.Component.htm</li>
+                        <li id='tab5'>App.Module.ts</li>
+                    </ul>
+                    <div style="overflow: hidden;" id="tabs-1">
+                        <table border="0" cellspacing="0" cellpadding="0" style="table-layout: fixed;">
+                            <tr>
+                                <td>
+                                    <div id='divDescription'>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div id='innerdemoContainer'>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="overflow-x: auto; overflow-y: hidden;" id="tabs-2">
+                    </div>
+                    <div style="overflow: auto;" id="tabs-3">
+                    </div>
+                    <div style="overflow: auto;" id="tabs-4">
+                    </div>
+                    <div style="overflow: auto;" id="tabs-5">
+                    </div>
+               </div>
+                <div id="introduction">
+                    <h1>Blazor Grid component for Enterprise Apps</h1>
+                    jQWidgets Grid for Blazor is a professional datagrid component built with Blazor and the jQWidgets framework. It offers hundreds of features like
+                    sorting, filtering, grouping, master-detail views, paging and more. It also ships with many advanced capabilities like
+                    drag and drop, columns resize, printing, data export, aggregates, RTL support and more. The Blazor data grid is a perfect solution for enterprise applications built with the Blazor UI framework.
+                    <img height="354" src="blazor-grid-component.png" alt="Blazor Grid" />
+                    <br>
+                    <br>
+                    <br>
+                    The jQWidgets Blazor Grid component offers top performance and responsive, fluid design. It offers easy to use and well documented APIs. The jQWidgets framework ships with over ready to use 1000 Blazor examples. Like all widgets in the jQWidgets
+                    framework the Blazor Grid component works across a range of devices and offers responsive, device-optimized look and behavior on PCs, tablets and mobile phones.
+                    jQWidgets Grid for Blazor is trusted by thousands of companies and big user community. We offer excellent techinical support and customization services. The jQWidgets framework releases frquent updates with continuous improvements.
+                    <br>
+                    <br>
+                    <h2>Data Binding</h2>
+                    The grid component has built-in data binding capabilities and supports client and server-side paging. It can be bound to Local Data, JSON, XML, CSV, TSV, Remote Data (JSONP)
+                    and Virtual Data.  In orderbind the Grid to a data source you need to set its source property to point to an instance of jqxDataAdapter.
+                    <h2>Sorting and filtering</h2>
+                    Blazor applications using the data grid component can benefit from advanced filtering (including custom filters), and sorting capabilities.
+                    The grid sorting is customizable and can be enabled or disabled. The data in the grid can be sorted from the UI by clicking on a column or using a context menu button, as well as programmatically via the APIs of the Blazor grid. The default behavior of the sorting function is to apply ascending or descending sort depending values in each column. The grid's API also allow developers to extend and customize the sorting with custom sort and compare functions.
+                    The filtering in the Blazor grid component is extremely flexible. The grid offers standard filters with context menus and selection of filtering operators and conditions. The developer may also choose to use a filter row which will appear at the top of the grid's rows. Users may enter data in each column and the filtration will be done by matching the corresponding records in the grid. The filter menus are fully customizable.
+                    The Blazor grid also provides Excel-style filters with checkbox selection of the items in each grid column.
+                    <h2>Columns and cells formatting</h2>
+                    The Grid offers many options for columns and cells formatting. You can align the text in the cells left, right or center and have different bacckround colors. The
+                    columns can be shown or hidden and can be auto-sized. You can also have checkboxes, images and other widgets in the columns. In addition jQWidgets Grid for Blazor
+                    enables complex features like column tooltips, foreign key, computed and pinned columns. You can also do reordering and resizing of the columns.
+                    <br>
+                    <br>
+                    <img height="354" src="blazor-grid-cells-colors.png" alt="Blazor Grid Cells Formatting" />
+                    <h2>Advanced Features</h2>
+                    For the Blazor applications requiring complex features, jqxGrid offers drag and drop (including dragging multiple rows), row details, custom keyboard navigation,
+                    deferred scrolling on large data sets, nested grids, master-details grids, toolbars on the grid, status bar, right to left support and more.
+                    <h2>Export and printing</h2>
+                    The Grid component offers export to Excel, PDF, XML, HTML, CSV, TSV and JSON. It also offers data printing.
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="pageBottom">
+    </div>
+</body>
+</html>

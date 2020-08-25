@@ -1,0 +1,267 @@
+.header-menu li.dropdown > a {
+  background-image: url(../i/arrow-menu.svg); }
+
+.swiper-button-prev {
+  background-image: url(/wp-content/design/i/arrow-left.png); }
+
+.swiper-button-next {
+  background-image: url(../i/arrow-right.svg); }
+
+.pic_wrap .more, .pic_wrap .nav-next a, .text_block .more, .text_block .nav-next a, .doc_content .more, .doc_content .nav-next a {
+  background-image: url(../i/more-arrow.svg); }
+.pic_wrap .nav-previous a, .text_block .nav-previous a, .doc_content .nav-previous a {
+  background-image: url(../i/more-arrow-left.svg); }
+.pic_wrap ul li, .text_block ul li, .doc_content ul li {
+  background-image: url(../i/dot.svg); }
+
+.text_block.ico.ico_person {
+  background-image: url(../i/ico_person.svg); }
+.text_block.ico.ico_msg {
+  background-image: url(../i/ico_msg.svg); }
+
+.features_list .pc .img {
+  background-image: url(../i/ico_pc.svg); }
+.features_list .links .img {
+  background-image: url(../i/ico_links.svg); }
+.features_list .rocket .img {
+  background-image: url(../i/ico_rocket.svg); }
+
+.swiper-container .quote > span {
+  background-image: url(../i/quote_left.svg); }
+  .swiper-container .quote > span > span {
+    background-image: url(../i/quote_right.svg); }
+
+.search input[type="submit"] {
+  background-image: url(../i/search.svg); }
+
+.doc_menu li a, .doc_menu li.sub_menu li a {
+  background-image: url(../i/ico_doc.svg); }
+.doc_menu li.sub_menu a {
+  background-image: url(../i/ico_folder.svg); }
+.doc_menu li.cat-item a {
+  background-image: url(../i/ico_folder.svg); }
+.doc_menu.doc_menu_normal li.sub_menu > a span {
+  background-image: url(../i/arrow-down-s.svg); }
+
+.functions_wrap li.cup {
+  background-image: url(../i/ico_cup_g.svg); }
+.functions_wrap li.pc {
+  background-image: url(../i/ico_pc_g.svg); }
+.functions_wrap li.pcs {
+  background-image: url(../i/ico_pcs_g.svg); }
+.functions_wrap li.tools {
+  background-image: url(../i/ico_tools_g.svg); }
+.functions_wrap li.stack {
+  background-image: url(../i/ico_stack.svg); }
+
+.input_number a {
+  background-image: url(../i/arrow-down.svg); }
+
+.input_number a.down {
+  background-image: url(../i/arrow-down.svg); }
+  
+.input_number a.up {
+  background-image: url(../i/arrow-up.svg); }
+
+.ico-jqxGrid {
+  background-image: url(../i/ico-jqxGrid.svg) !important; }
+
+.ico-jqxTabs {
+  background-image: url(../i/ico-jqxTabs.svg) !important; }
+
+.ico-jqxListBox {
+  background-image: url(../i/ico-jqxListBox.svg) !important; }
+
+.ico-jqxComplexInput {
+  background-image: url(../i/ico-jqxComplexInput.svg) !important; }
+
+.ico-jqxWindow {
+  background-image: url(../i/ico-jqxWindow.svg) !important; }
+
+.ico-jqxSplitter {
+  background-image: url(../i/ico-jqxSplitter.svg) !important; }
+
+.ico-jqxChart {
+  background-image: url(../i/ico-jqxChart.svg) !important; }
+
+.ico-jqxMenu {
+  background-image: url(../i/ico-jqxMenu.svg) !important; }
+
+.ico-jqxButtons {
+  background-image: url(../i/ico-jqxButtons.svg) !important; }
+
+.ico-jqxDateTimeInput {
+  background-image: url(../i/ico-jqxDateTimeInput.svg) !important; }
+
+.ico-jqxDocking {
+  background-image: url(../i/ico-jqxDocking.svg) !important; }
+
+.ico-jqxPanel {
+  background-image: url(../i/ico-jqxPanel.svg) !important; }
+
+.ico-jqxGauge {
+  background-image: url(../i/ico-jqxGauge.svg) !important; }
+
+.ico-jqxNavigationBar {
+  background-image: url(../i/ico-jqxNavigationBar.svg) !important; }
+
+.ico-jqxEditor {
+  background-image: url(../i/ico-jqxEditor.svg) !important; }
+
+.ico-jqxCalendar {
+  background-image: url(../i/ico-jqxCalendar.svg) !important; }
+
+.ico-jqxTooltip {
+  background-image: url(../i/ico-jqxTooltip.svg) !important; }
+
+.ico-jqxExpander {
+  background-image: url(../i/ico-jqxExpander.svg) !important; }
+
+.ico-jqxDataTable {
+  background-image: url(../i/ico-jqxDataTable.svg) !important; }
+
+.ico-jqxTree {
+  background-image: url(../i/ico-jqxTree.svg) !important; }
+
+.ico-jqxInput {
+  background-image: url(../i/ico-jqxInput.svg) !important; }
+
+.ico-jqxFileUpload {
+  background-image: url(../i/ico-jqxFileUpload.svg) !important; }
+
+.ico-jqxNotification {
+  background-image: url(../i/ico-jqxNotification.svg) !important; }
+
+.ico-jqxDraw {
+  background-image: url(../i/ico-jqxDraw.svg) !important; }
+
+.ico-jqxTreeGrid {
+  background-image: url(../i/ico-jqxTreeGrid.svg) !important; }
+
+.ico-jqxListMenu {
+  background-image: url(../i/ico-jqxListMenu.svg) !important; }
+
+.ico-jqxMaskedInput {
+  background-image: url(../i/ico-jqxMaskedInput.svg) !important; }
+
+.ico-jqxRating {
+  background-image: url(../i/ico-jqxRating.svg) !important; }
+
+.ico-jqxNavBar {
+  background-image: url(../i/ico-jqxNavBar.svg) !important; }
+
+.ico-jqxDragDrop {
+  background-image: url(../i/ico-jqxDragDrop.svg) !important; }
+
+.ico-jqxTreeMap {
+  background-image: url(../i/ico-jqxTreeMap.svg) !important; }
+
+.ico-jqxToolBar {
+  background-image: url(../i/ico-jqxToolBar.svg) !important; }
+
+.ico-jqxPasswordInput {
+  background-image: url(../i/ico-jqxPasswordInput.svg) !important; }
+
+.ico-jqxColorPicker {
+  background-image: url(../i/ico-jqxColorPicker.svg) !important; }
+
+.ico-jqxRangeSelector {
+  background-image: url(../i/ico-jqxRangeSelector.svg) !important; }
+
+.ico-jqxDataAdapter {
+  background-image: url(../i/ico-jqxDataAdapter.svg) !important; }
+
+.ico-jqxBulletChart {
+  background-image: url(../i/ico-jqxBulletChart.svg) !important; }
+
+.ico-jqxComboBox {
+  background-image: url(../i/ico-jqxComboBox.svg) !important; }
+
+.ico-jqxNumberInput {
+  background-image: url(../i/ico-jqxNumberInput.svg) !important; }
+
+.ico-jqxScrollView {
+  background-image: url(../i/ico-jqxScrollView.svg) !important; }
+
+.ico-jqxSlider {
+  background-image: url(../i/ico-jqxSlider.svg) !important; }
+
+.ico-jqxResponse {
+  background-image: url(../i/ico-jqxResponse.svg) !important; }
+
+.ico-jqxRibbon {
+  background-image: url(../i/ico-jqxRibbon.svg) !important; }
+
+.ico-jqxDropDownList {
+  background-image: url(../i/ico-jqxDropDownList.svg) !important; }
+
+.ico-jqxFormattedInput {
+  background-image: url(../i/ico-jqxFormattedInput.svg) !important; }
+
+.ico-jqxProgressBar {
+  background-image: url(../i/ico-jqxProgressBar.svg) !important; }
+
+.ico-jqxScrollBar {
+  background-image: url(../i/ico-jqxScrollBar.svg) !important; }
+
+.ico-jqxValidator {
+  background-image: url(../i/ico-jqxValidator.svg) !important; }
+
+.ico-AngularJS {
+  background-image: url(../i/ico-AngularJS.svg) !important; }
+
+.ico-KnockoutJS {
+  background-image: url(../i/ico-KnockoutJS.svg) !important; }
+
+.ico-Bootstrap {
+  background-image: url(../i/ico-Bootstrap.svg) !important; }
+
+.ico-RequireJS {
+  background-image: url(../i/ico-RequireJS.svg) !important; }
+
+.ico-jQuery-Mobile {
+  background-image: url(../i/ico-jQuery-Mobile.svg) !important; }
+
+.ico-ASP-NET-MVC {
+  background-image: url(../i/ico-ASP-NET-MVC.svg) !important; }
+
+.ico-PHP {
+  background-image: url(../i/ico-PHP.svg) !important; }
+
+.ico-Java {
+  background-image: url(../i/ico-Java.svg) !important; }
+
+.ico-jqxScheduler {
+  background-image: url(../i/ico-jqxScheduler.svg) !important; }
+
+.ico-jqxTextArea {
+  background-image: url(../i/ico-jqxTextArea.svg) !important; }
+
+.ico-jqxLayout {
+  background-image: url(../i/ico-jqxLayout.svg) !important; }
+
+.ico-jqxDockLayout {
+  background-image: url(../i/ico-jqxDockLayout.svg) !important; }
+
+.ico-jqxLoader {
+  background-image: url(../i/ico-jqxLoader.svg) !important; }
+
+.ico-jqxResponsivePanel {
+  background-image: url(../i/ico-jqxResponsivePanel.svg) !important; }
+
+.ico-jqxPopOver {
+  background-image: url(../i/ico-jqxPopOver.svg) !important; }
+
+.ico-jqxPivotGrid {
+  background-image: url(../i/ico-jqxPivotGrid.svg) !important; }
+
+.footer .nav.socials li a span.fb {
+  background-image: url(../i/ico_fb.svg); }
+.footer .nav.socials li a span.gp {
+  background-image: url(../i/ico_gp.svg); }
+.footer .nav.socials li a span.tw {
+  background-image: url(../i/ico_tw.svg); }
+
+@media all and (max-width: 1100px) {
+  .doc_menu .doc_menu_title {
+    background-image: url(../i/arrow-menu.svg); } }

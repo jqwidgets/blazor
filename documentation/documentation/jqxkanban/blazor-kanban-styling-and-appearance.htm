@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Vue Kanban - CSS Styling and Appearance</title>
+	<meta name="description" content="Vue Kanban Styling and Appearance Documentation" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <link rel="stylesheet" href="../../styles/site.css" media="screen" />
+    <link rel="stylesheet" href="../../styles/jqx.apireference.css" media="screen" />
+    <script type="text/javascript" src="../../scripts/format.js"></script>
+    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    
+    <script type="text/javascript" src="../../scripts/toggle.js"></script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-25803467-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+</head>
+<body>
+    <div id="pageTop" class="top">
+    </div>
+    <div id="pageDocumentation">
+        <h2>Styling and Appearance</h2>
+        <p>
+            jQWidgets uses a pair of css files - jqx.base.css and jqx.[theme name].css. The
+                                                                base stylesheet creates the styles related to the widget's layout like margin, padding,
+                                                                border-width, position. The second css file applies the widget's colors and backgrounds.
+                                                                The jqx.base.css should be included before the second CSS file.
+        </p>
+        Below is the list of CSS classes used by jqxKanban.
+                                                            <ul>
+                                                                <li>jqx-widget - applied to jqxKanban.</li>
+                                                                <li>jqx-kanban - applied to jqxKanban.</li>
+                                                                <li>jqx-kanban-column - applied to jqxKanban columns.</li>
+                                                                <li>jqx-kanban-column-header - applied to the column headers.</li>
+                                                                <li>jqx-widget-header - applied to the column headers.</li>
+                                                                <li>jqx-kanban-column-header-custom-button - applied to the custom button element in the column.</li>
+                                                                <li>jqx-kanban-column-container - applied to the column container elements.</li>
+                                                                <li>jqx-kanban-column-header-button - applied to the button element in the column.</li>
+                                                                <li>jqx-kanban-column-header-collapsed - applied to collapsed column headers.</li>
+                                                                <li>jqx-kanban-column-header-title - applied to column header's title element.</li>
+                                                                <li>jqx-kanban-column-header-status - applied to column header's status element.</li>
+                                                                <li>jqx-kanban-item - applied to jqxKanban items.</li>
+                                                                <li>jqx-widget-content - applied to jqxKanban items.</li>
+                                                                <li>jqx-kanban-item-keyword - applied to jqxKanban item's tags.</li>
+                                                                <li>jqx-fill-state-normal - applied to jqxKanban item's tags.</li>
+                                                                <li>jqx-kanban-item-color-status - applied to jqxKanban item's status element.</li>
+                                                                <li>jqx-kanban-item-color-status-rtl - applied to jqxKanban item's status element in rtl mode.</li>
+                                                                <li>jqx-kanban-item-avatar - applied to jqxKanban's avatar.</li>
+                                                                <li>jqx-kanban-item-avatar-rtl - applied to jqxKanban's avatar in rtl mode.</li>
+                                                                <li>jqx-kanban-item-footer - applied to jqxKanban item's footer.</li>
+                                                                <li>jqx-kanban-item-text - applied to jqxKanban item's text element.</li>
+                                                                <li>jqx-fill-state-disabled - applied to the jqxKanban when it is disabled.</li>
+                                                            </ul>
+        When you create a custom style with colors and backgrounds for jqxKanban, you need
+                                                            to do the following:
+                                                            <ul>
+                                                                <li>Add the above CSS classes related to jqxKanban</li>
+                                                                <li>After each CSS class, add your theme name.
+                                                                    <br />
+                                                                    For example:
+                                                                    <br />
+                                                                    jqx-kanban-summer </li>
+                                                                <li>To apply your custom style to jqxKanban, you need to set its 'theme' property(option)
+                                                                    to point to your theme name string.
+                                                                    <div id='jquerysample1'>
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
+    </div>
+
+    <div id="pageBottom" class="bottom">
+    </div>
+</body>
+</html>

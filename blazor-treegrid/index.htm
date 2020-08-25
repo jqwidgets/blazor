@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Blazor TreeGrid Component</title>
+    <meta name="description" content="Blazor TreeGrid Component Demos" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+
+   
+    
+    
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="../resources/design/css/main.css" />
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css" media="screen" />
+    <link rel="stylesheet" href="../styles/site.css" media="screen" />
+
+    <!-- html5 support for old browsers -->
+    <!--[if lt IE 9]>
+		<script src="js/vendor/html5shiv.js"></script>
+    <![endif]-->
+
+
+    <!-- fav_icons for different browsers -->
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="../resources/design/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../resources/design/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../resources/design/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../resources/design/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="../resources/design/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="../resources/design/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="../resources/design/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../resources/design/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="../resources/design/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="../resources/design/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="../resources/design/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="../resources/design/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="../resources/design/favicon-128.png" sizes="128x128" />
+    <meta name="application-name" content="&nbsp;" />
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
+    <!-- background images stylesheets -->
+    <!--[if lt IE 9]>
+            <link rel="stylesheet" href="css/img_ie.css" />
+        <![endif]-->
+    <!--[if gt IE 8]>
+            <link rel="stylesheet" href="css/img.css" />
+        <![endif]-->
+    <!--[if !IE]><!-->
+    <link rel="stylesheet" href="../resources/design/css/img.css" />
+    <!--<![endif]-->
+    <script type="text/javascript" src="../scripts/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="../scripts/format.js"></script>
+    <script type="text/javascript" src="../scripts/demobundle.js"></script>
+
+    <script type="text/javascript" src="../scripts/demofunctions.js"></script>
+
+    <!-- swipe plugin for slider -->
+    <script src="../resources/design/js/vendor/swipe.js"></script>
+
+    <!-- svg to png for old browsers -->
+    <script src="../resources/design/js/vendor/svgeezy.min.js"></script>
+    <script type="text/javascript">svgeezy.init(false, 'png');</script>
+
+    <!-- main functions -->
+    <script src="../resources/design/js/main.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+        
+        });
+    </script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-25803467-1']);
+        _gaq.push(['_trackPageview']);
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</head>
+<body>
+    <div id="pageTop">
+    </div>
+    <!-- DOCUMENTATION START -->
+    <div class="documentation cf" id="doc">
+
+
+        <div class="wrap">
+            <div class="doc_mask"></div>
+            <!-- LEFT COLUMN -->
+            <nav class="doc_menu doc_menu_normal">
+                <div class="jqx-treegrid-icon jqx-widget-title-icon"></div>
+                <p class="doc_menu_title">
+                    <span>jqxTreeGrid</span>
+                </p>
+                <ul>
+                    <li>
+                        <div class="search">
+                            <div class="wrap">
+                                <input id="searchField" type="text" value="" autocomplete="off" placeholder="Search...">
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <!--<a href='blazor-treegrid-defaultfunctionality.htm.htm'>Default Functionality</a>-->
+                        <a href="blazor-treegrid-defaultfunctionality.htm">Default Functionality</a>
+                    </li>
+                    <li class="sub_menu">
+                        <a href='#line_series'><span>Data Binding</span></a>
+                        <ul>
+
+                            <li>
+                                <a href='./blazor-treegrid-localdata.htm'>Local Data</a>
+                            </li>
+                            <li>
+                                <a href='./blazor-treegrid-xmldata.htm'>XML Data</a>
+                            </li>
+                            <li>
+                                <a href='./blazor-treegrid-nestedxmldata.htm'>Nested XML Data</a>
+                            </li>
+                            <li>
+                                <a href='./blazor-treegrid-jsondata.htm'>JSON Data</a>
+                            </li>
+                            <li>
+                                <a href='./blazor-treegrid-nestedjsondata.htm'>Nested JSON Data</a>
+                            </li>
+                            <li>
+                                <a href='./blazor-treegrid-csvdata.htm'>CSV Data</a>
+                            </li>
+                            <li>
+                                <a href='./blazor-treegrid-tabdata.htm'>Tab Data</a>
+                            </li>
+                            <li>
+                                <a href='./blazor-treegrid-virtualmode.htm'>Virtual Mode</a>
+                            </li>
+                            <!--<li>
+                                <a href='./blazor-treegrid-virtualmodewithajax.htm'>Virtual Mode with Ajax</a>
+                            </li>-->
+                        </ul>
+                    </li>
+                    <li class="sub_menu">
+                        <a href='./#line_series'><span>Columns</span></a>
+                        <ul>
+
+                            <li>
+                                <a href='./blazor-treegrid-columnshierarchy.htm'>Columns Hierarchy</a>
+                            </li>
+                            <li>
+                                <a href='./blazor-treegrid-columnformatting.htm'>Column Formatting</a>
+                            </li>
+                            <li>
+                                <a href='./blazor-treegrid-columnalignment.htm'>Column Alignment</a>
+                            </li>
+                            <li>
+                                <a href='./blazor-treegrid-columnresize.htm'>Column Resize</a>
+                            </li>
+                            <li>
+                                <a href='./blazor-treegrid-columnreorder.htm'>Column Reorder</a>
+                            </li>
+                            <li>
+                                <a href='./blazor-treegrid-showorhidecolumn.htm'>Show or Hide Column</a>
+                            </li>
+                            <li>
+                                <a href='./blazor-treegrid-pinnedfrozencolumn.htm'>Pinned(Frozen) Column</a>
+                            </li>
+                            <li>
+                                <a href='./blazor-treegrid-columncheckboxes.htm'>Column Checkboxes</a>
+                            </li>
+                            <li>
+                                <a href='./blazor-treegrid-columnhierarchicalcheckboxes.htm'>
+                                    Column Hierarchical<br />
+                                    Checkboxes
+                                </a>
+                            </li>
+                            <li>
+                                <a href='./blazor-treegrid-columnicons.htm'>Column Icons</a>
+                            </li>
+                            <li>
+                                <a href='./blazor-treegrid-columnsmallicons.htm'>Column Small Icons</a>
+                            </li>
+                            <li>
+                                <a href='./blazor-treegrid-headertemplate.htm'>Header Template</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sub_menu">
+                        <a href='./#line_series'><span>Editing</span></a>
+                        <ul>
+
+                            <li>
+                                <a href='./blazor-treegrid-inlinerow.htm'>Inline Row</a>
+                            </li>
+                            <li>
+                                <a href='./blazor-treegrid-dialog.htm'>Dialog</a>
+                            </li>
+                            <li>
+                                <a href='./blazor-treegrid-commandcolumn.htm'>Command Column</a>
+                            </li>
+                            <li>
+                                <a href='./blazor-treegrid-lockrow.htm'>Lock Row</a>
+                            </li>
+                            <li>
+                                <a href='./blazor-treegrid-celledit.htm'>Cell Edit</a>
+                            </li>
+                            <li>
+                                <a href='./blazor-treegrid-customeditors.htm'>Custom Editors</a>
+                            </li>
+                            <li>
+                                <a href='./blazor-treegrid-propertyeditor.htm'>Property Editor</a>
+                            </li>
+                            <li>
+                                <a href='./blazor-treegrid-validation.htm'>Validation</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sub_menu">
+                        <a href='./#line_series'><span>Sorting</span></a>
+                        <ul>
+
+                            <li>
+                                <a href='./blazor-treegrid-sorting.htm'>Sorting</a>
+                            </li>
+                            <li>
+                                <a href='./blazor-treegrid-sortingapi.htm'>Sorting API</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sub_menu">
+                        <a href='./#line_series'><span>Filtering</span></a>
+                        <ul>
+
+                            <li>
+                                <a href='./blazor-treegrid-filtering.htm'>Filtering</a>
+                            </li>
+                            <li>
+                                <a href='./blazor-treegrid-searchfield.htm'>Search Field</a>
+                            </li>
+                            <li>
+                                <a href='./blazor-treegrid-advancedfiltering.htm'>Advanced Filtering</a>
+                            </li>
+                            <li>
+                                <a href='./blazor-treegrid-filteringapi.htm'>Filtering API</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sub_menu">
+                        <a href='./#line_series'><span>Paging</span></a>
+                        <ul>
+
+                            <li>
+                                <a href='./blazor-treegrid-paging.htm'>Paging</a>
+                            </li>
+                            <li>
+                                <a href='./blazor-treegrid-pagingbyrootrecords.htm'>
+                                    Paging by Root<br />
+                                    Records
+                                </a>
+                            </li>
+                            <li>
+                                <a href='./blazor-treegrid-pagingapi.htm'>Paging API</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sub_menu">
+                        <a href='./#line_series'><span>Aggregates</span></a>
+                        <ul>
+
+                            <li>
+                                <a href='./blazor-treegrid-aggregates.htm'>Aggregates</a>
+                            </li>
+                            <li>
+                                <a href='./blazor-treegrid-aggregatestemplate.htm'>Aggregates Template</a>
+                            </li>
+                            <li>
+                                <a href='./blazor-treegrid-manualaggregates.htm'>Manual Aggregates</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href='./blazor-treegrid-rowdetails.htm'>Row Details</a> </li>
+                    <li><a href='./blazor-treegrid-localization.htm'>Localization</a> </li>
+                    <li><a href='./blazor-treegrid-dataexport.htm'>Data Export</a> </li>
+                    <li><a href='./blazor-treegrid-dataprinting.htm'>Data Printing</a> </li>
+                    <li><a href='./blazor-treegrid-datagrouping.htm'>Data Grouping</a> </li>
+                    <li><a href='./blazor-treegrid-fluidsize.htm'>Fluid Size</a> </li>
+                    <li><a href='./blazor-treegrid-conditionalformatting.htm'>Conditional Formatting</a> </li>
+                    <li><a href='./blazor-treegrid-conditionalrendering.htm'>Conditional Rendering</a></li>
+                    <li><a href='./blazor-treegrid-contextmenu.htm'>Context Menu</a></li>
+                    <li><a href='./blazor-treegrid-keyboardnavigation.htm'>Keyboard Navigation</a> </li>
+                    <li><a href='./blazor-treegrid-righttoleftlayout.htm'>Right to Left Layout</a>  </li>
+
+                </ul>
+</nav>
+            <!-- RIGHT COLUMN -->
+            <div class="doc_content">
+                <div style="position: relative; left: -20px; visibility: hidden; float: right;" class="themeSelector" id="themeSelector">
+                    <div style="float: left; margin-top: 4px;">
+                        Theme:
+                    </div>
+                    <div id="themeComboBox" style="margin-bottom: 3px; margin-top: 4px; margin-left: 10px; float: left;"></div>
+                </div>
+                   <div id="tabs" class="demoTabs" style='width: 850px; padding: 0px; margin: 0px; display: none;'>
+                    <ul style='margin-left: 30px;'>
+                        <li id='tab1'>Demo</li>
+                        <li id='tab2'>App.htm</li>
+                        <li id='tab3'>App.Component.ts</li>
+                        <li id='tab4'>App.Component.htm</li>
+                        <li id='tab5'>App.Module.ts</li>
+                    </ul>
+                    <div style="overflow: hidden;" id="tabs-1">
+                        <table border="0" cellspacing="0" cellpadding="0" style="table-layout: fixed;">
+                            <tr>
+                                <td>
+                                    <div id='divDescription'>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div id='innerdemoContainer'>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="overflow-x: auto; overflow-y: hidden;" id="tabs-2">
+                    </div>
+                    <div style="overflow: auto;" id="tabs-3">
+                    </div>
+                    <div style="overflow: auto;" id="tabs-4">
+                    </div>
+                    <div style="overflow: auto;" id="tabs-5">
+                    </div>
+               </div>
+
+                <div id="introduction">
+                 <h1>Blazor TreeGrid UI Component</h1>
+                    <p>The TreeGrid for Blazor is a component used to present hierarchical data in a tree like grid structure. It supports multi column display of hierarchical data, data paging, sorting and filtering, data editing, columns resizing, fixed columns, conditional formatting, aggregates and rows selection. The TreeGrid can be bound to Local Data, XML, JSON, CSV, TSV and JSONP. It can operate with large data sets in paging mode.</p>
+                    <img style="box-shadow: 0 0 1em rgba(0,0,0,0.4);" alt="blazor tree grid" src="../images/blazor-treegrid.png" />
+   </div>
+            </div>
+        </div>
+    </div>
+    <div id="pageBottom">
+    </div>
+</body>
+</html>

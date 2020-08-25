@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Vue Loader CSS Styling and Appearance</title>
+	<meta name="description" content="Vue Loader Styling and Appearance Documentation" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <link rel="stylesheet" href="../../styles/site.css" media="screen" />
+    <link rel="stylesheet" href="../../styles/jqx.apireference.css" media="screen" />
+    <script type="text/javascript" src="../../scripts/format.js"></script>
+    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    
+    
+    <script type="text/javascript" src="../../scripts/toggle.js"></script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-25803467-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</head>
+<body>
+    <div id="pageTop" class="top">
+    </div>
+    <div id="pageDocumentation">
+  
+        <h2>Styling and Appearance</h2>
+        <p>
+            jQWidgets uses a pair of css files - jqx.base.css and jqx.[theme name].css. The base stylesheet creates the styles
+            related to the widget's layout like margin, padding, border-width, position. The second css file applies the widget's
+            colors and backgrounds. The jqx.base.css should be included before the second CSS file.
+        </p>
+        Below is the list of CSS classes used by jqxLoader.
+                                                            <ul>
+                                                                <li>jqx-widget - applied to the Loader widget.</li>
+                                                                <li>jqx-loader - applied to the jqxLoader.</li>
+                                                                <li>jqx-loader-ie-transparency - apply transperant background to the jqxLoader IE browser.</li>
+                                                                <li>jqx-loader-modal - applied modal background styles to jqxLoader.</li>
+                                                                <li>jqx-loader-icon - applied styles to icon in jqxLoader.</li>
+                                                                <li>jqx-loader-text - applied styles to text in jqxLoader.</li>
+                                                                <li>jqx-loader-text-left - applied styles to position text in left side of the image in jqxLoader.</li>
+                                                                <li>jqx-loader-text-right - applied styles to position text in right side of the image in jqxLoader.</li>
+                                                                <li>jqx-loader-text-top - applied styles to position text in top side of the image in jqxLoader.</li>
+                                                                <li>jqx-loader-text-bottom - applied styles to position text in bottom side of the image in jqxLoader.</li>
+                                                                <li>jqx-loader-rtl - apply right-to-left direction to jqxLoader's text.</li>
+                                                            </ul>
+
+        When you create a custom style with colors and backgrounds for jqxLoader, you need to do the following:
+        Add the above CSS classes related to jqxLoader
+        To apply your custom style to open and close buttons and jqxLoader, you need to set its 'theme' property(option) to point to your theme name string.
+        The sample below demonstrates how to set the 'metro' theme to open and close buttons and jqxLoader.
+
+    </div>
+
+    <div id="pageBottom" class="bottom">
+    </div>
+</body>
+</html>

@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Vue Menu - CSS Styling and Appearance</title>
+	<meta name="description" content="Vue Menu Styling and Appearance Documentation" />  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <link rel="stylesheet" href="../../styles/site.css" media="screen" />
+    <link rel="stylesheet" href="../../styles/jqx.apireference.css" media="screen" />
+    <script type="text/javascript" src="../../scripts/format.js"></script>
+    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    
+    
+    <script type="text/javascript" src="../../scripts/toggle.js"></script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-25803467-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+</head>
+<body>
+    <div id="pageTop" class="top">
+    </div>
+    <div id="pageDocumentation">
+        <h2>Styling and Appearance</h2>
+        <p>
+            jQWidgets uses a pair of css files - jqx.base.css and jqx.[theme name].css. The
+                                                                base stylesheet creates the styles related to the widget's layout like margin, padding,
+                                                                border-width, position. The second css file applies the widget's colors and backgrounds.
+                                                                The jqx.base.css should be included before the second CSS file.
+        </p>
+        Below is the list of CSS classes used by jqxMenu.
+                                                            <ul>
+                                                                <li>jqx-widget - applied to jqxMenu.</li>
+                                                                <li>jqx-menu - applied to jqxMenu.</li>
+                                                                <li>jqx-menu-dropdown-column - applied to jqxMenu UL elements.</li>
+                                                                <li>jqx-menu-horizontal - applied to the menu when it is horizontal. Sets the menu's
+                                                                    background.</li>
+                                                                <li>jqx-widget-header - applied to the menu's horizontal or vertical area.</li>
+                                                                <li>jqx-widget-content - applied to the content area of the sub menus.</li>
+                                                                <li>jqx-menu-vertical - applied to the menu when it is vertical. Sets the menu's background.</li>
+                                                                <li>jqx-menu-dropdown - applied to the sub menu. Sets the sub menu's background.</li>
+                                                                <li>jqx-menu-dropdown ul - applied to the sub menu's ul elements.</li>
+                                                                <li>jqx-menu ul - applied to the menu's ul elements.</li>
+                                                                <li>jqx-menu-item-top - applied to the top level menu items.</li>
+                                                                <li>jqx-menu-item - applied to the sub menu items.</li>
+                                                                <li>jqx-menu-item-separator - applied to the menu separator items.</li>
+                                                                <li>jqx-menu-item-hover - applied to a sub menu item when the mouse is over the item.</li>
+                                                                <li>jqx-menu-item-top-hover - applied to a top-level menu item when the mouse is over
+                                                                    it.</li>
+                                                                <li>jqx-fill-state-hover - applied to a menu item when the mouse is over.</li>
+                                                                <li>jqx-menu-item-selected - applied to a sub menu item when its sub menu is opened.</li>
+                                                                <li>jqx-fill-state-pressed - applied to a menu item when it is opened.</li>
+                                                                <li>jqx-menu-item-disabled - applied to a disabled sub menu item.</li>
+                                                                <li>jqx-menu-item-top-selected - applied to a top-level menu item when its sub menu
+                                                                    is opened.</li>
+                                                                <li>jqx-menu-item-arrow-right - applied to a sub menu item when it has sub menu items.
+                                                                    Displays right arrow icon.</li>
+                                                                <li>jqx-menu-item-arrow-down - applied to a sub menu item when it has sub menu items.
+                                                                    Displays down arrow icon.</li>
+                                                                <li>jqx-menu-item-arrow-up - applied to a sub menu item when it has sub menu items.
+                                                                    Displays up arrow icon.</li>
+                                                                <li>jqx-menu-item-arrow-left - applied to a sub menu item when it has sub menu items.
+                                                                    Displays left arrow icon.</li>
+                                                                <li>jqx-menu-item-arrow-right-selected - applied to a sub menu item when it has sub
+                                                                    menu items and its sub menu is opened. Displays right arrow icon.</li>
+                                                                <li>jqx-menu-item-arrow-down-selected - applied to a sub menu item when it has sub menu
+                                                                    items and its sub menu is opened. Displays down arrow icon.</li>
+                                                                <li>jqx-menu-item-arrow-up-selected - applied to a sub menu item when it has sub menu
+                                                                    items and its sub menu is opened. Displays up arrow icon.</li>
+                                                                <li>jqx-menu-item-arrow-left-selected - applied to a sub menu item when it has sub menu
+                                                                    items and its sub menu is opened. Displays left arrow icon.</li>
+                                                                <li>jqx-menu-item-arrow-top-right - applied to a top-level menu item when it has sub
+                                                                    menu items. Displays right arrow icon.</li>
+                                                                <li>jqx-menu-item-arrow-top-left - applied to a top-level menu item when it has sub
+                                                                    menu items. Displays left arrow icon.</li>
+                                                                <li>jqx-menu-item a:link, a:visited - applied to the anchor elements of a sub menu item.</li>
+                                                                <li>jqx-menu-item a:hover - applied to the anchor elements of a sub menu item.</li>
+                                                                <li>jqx-menu-item-top a:link - applied to the anchor elements of a top-level menu item.</li>
+                                                                <li>jqx-menu-item-top a:visited - applied to the anchor elements of a top-level menu
+                                                                    item.</li>
+                                                                <li>jqx-menu-item-top a:hover - applied to the anchor elements of a top-level menu item.</li>
+                                                                <li>jqx-menu-disabled - applied to the menu widget when it is disabled.</li>
+                                                                <li>jqx-menu-disabled a:link - applied to the anchor elements of all disabled menu items.</li>
+                                                                <li>jqx-menu-disabled a:visited</li>
+                                                                <li>jqx-menu-disabled a:hover</li>
+                                                                <li>jqx-fill-state-disabled - applied to the jqxMenu when it is disabled.</li>
+                                                            </ul>
+        When you create a custom style with colors and backgrounds for jqxMenu, you need
+                                                            to do the following:
+                                                            <ul>
+                                                                <li>Add the above CSS classes related to jqxMenu</li>
+                                                                <li>After each CSS class, add your theme name.
+                                                                    <br />
+                                                                    For example:
+                                                                    <br />
+                                                                    jqx-menu-summer </li>
+                                                                <li>To apply your custom style to jqxMenu, you need to set its 'theme' property(option)
+                                                                    to point to your theme name string.
+                                                                </li>
+                                                            </ul>
+    </div>
+
+    <div id="pageBottom" class="bottom">
+    </div>
+</body>
+</html>

@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Vue Grid CSS Styling and Appearance</title>
+	<meta name="description" content="Vue Grid Styling and Appearance Documentation" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="../../styles/site.css" media="screen" />
+
+    <script type="text/javascript" src="../../scripts/format.js"></script>
+    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../../scripts/toggle.js"></script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-25803467-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</head>
+<body>
+    <div id="pageTop" class="top">
+    </div>
+    <div id="pageDocumentation">
+        <h2>Styling and Appearance</h2>
+        <p>
+            jQWidgets uses a pair of css files - jqx.base.css and jqx.[theme name].css. The
+                                                                base stylesheet creates the styles related to the widget's layout like margin, padding,
+                                                                border-width, position. The second css file applies the widget's colors and backgrounds.
+                                                                The jqx.base.css should be included before the second CSS file.
+        </p>
+        Below is the list of CSS classes used by jqxGrid.
+                                                            <ul>
+                                                                <li>
+                                                                    <h3>jqxGrid Style</h3>
+                                                                </li>
+                                                                <li>jqx-widget - applied to the Grid widget.</li>
+                                                                <li>jqx-grid - applied to Grid container DIV element.</li>
+                                                                <li>jqx-grid-pager - applied to the Grid Pager.</li>
+                                                                <li>jqx-grid-header- applied to Grid Columns container element.</li>
+                                                                <li>jqx-grid-column-header - applied to a Grid column.</li>
+                                                                <li>jqx-widget-header - applied to a Grid column, Toolbar, Statusbar and Groups Header.</li>
+                                                                <li>jqx-widget-content - applied to the Grid's content area.</li>
+                                                                <li>jqx-grid-content - applied to the Grid's content area.</li>
+                                                                <li>jqx-grid-toolbar - applied to the toolbar.</li>
+                                                                <li>jqx-grid-statusbar - applied to the statusbar.</li>
+                                                                <li>jqx-grid-column-menubutton - applied to a column's menu button.</li>
+                                                                <li>jqx-grid-column-sortascbutton - applied to a column's sort button when the sort order is ascending.</li>
+                                                                <li>jqx-grid-column-sortdescbutton - applied to a column's sort button when the sort order is descending.</li>
+                                                                <li>jqx-grid-column-filterbutton - applied to a column's filter button.</li>
+                                                                <li>jqx-grid-sortasc-icon - applied to the sort ascending menu item in the Grid's Context Menu.</li>
+                                                                <li>jqx-grid-sortdesc-icon - applied to the sort descending menu item in the Grid's Context Menu.</li>
+                                                                <li>jqx-grid-sortremove-icon - applied to the sort remove menu item in the Grid's Context Menu.</li>
+                                                                <li>jqx-grid-groupby-icon - applied to the 'group by' menu item in the Grid's Context Menu.</li>
+                                                                <li>jqx-grid-groups-header - applied to the Grouping Panel area.</li>
+                                                                <li>jqx-grid-group-column - applied to the grouping columns in the Grouping Panel.</li>
+                                                                <li>jqx-grid-cell - applied to the grid cells.</li>
+                                                                <li>jqx-grid-cell-sort - applied to the grid cells in the sort column.</li>
+                                                                <li>jqx-grid-cell-filter - applied to the grid cells in the filter column.</li>
+                                                                <li>jqx-grid-group-cell - applied to the cells in a grouping row.</li>
+                                                                <li>jqx-grid-details-cell - applied to the cells in a details row.</li>
+                                                                <li>jqx-grid-cell-alt - alternating cells style. This is applied to the cells in the alternating rows.</li>
+                                                                <li>jqx-grid-cell-pinned - applied to the cells in a pinned column.</li>
+                                                                <li>jqx-grid-cell-selected - applied to a selected cell..</li>
+                                                                <li>jqx-fill-state-pressed - applied to a selected cell.</li>
+                                                                <li>jqx-grid-cell-hover - applied to a hovered.</li>
+                                                                <li>jqx-fill-state-hover - applied to a hovered cell.</li>
+                                                                <li>jqx-grid-group-collapse - applied to the collapse button of a grouping row.</li>
+                                                                <li>jqx-grid-group-collapse-rtl - applied to the collapse button of a grouping row when "rtl" is enabled.</li>
+                                                                <li>jqx-grid-group-expand - applied to the expand button of a grouping row.</li>
+                                                                <li>jqx-grid-group-expand-rtl - applied to the expand button of a grouping row when "rtl" is enabled.</li>
+                                                                <li>jqx-grid-column-resizeline - applied to the column's resize line.</li>
+                                                                <li>jqx-grid-column-resizestartline - applied to the column's resize start line.</li>
+                                                                <li>jqx-fill-state-disabled - applied to the widget when it is disabled.</li>
+                                                                <li>jqx-grid-group-drag-line - applied to the drop line indicators displayed in the grouping header.</li>
+                                                                <li>jqx-grid-group-column-line - applied to the lines between the group columns.</li>
+                                                            </ul>
+        When you create a custom style with colors and backgrounds for jqxGrid, you need to do the following:
+                                                            <ul>
+                                                                <li>Add the above CSS classes related to jqxButtons</li>
+                                                                <li>After each CSS class, add your theme name.
+                                                                    <br />
+                                                                    For example:
+                                                                    <br />
+                                                                    jqx-grid-energyblue </li>
+                                                                <li>To apply your custom style to the Grid, you need to set its 'theme' property(option)
+                                                                    to point to your theme name string.
+                                                                </li>
+                                                            </ul>
+    </div>
+
+    <div id="pageBottom" class="bottom">
+    </div>
+</body>
+</html>

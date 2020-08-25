@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Vue Calendar CSS Styling and Appearance</title>
+	<meta name="description" content="Vue Calendar Styling and Appearance Documentation" />   	    	
+    <meta name="keywords" content="Vue Calendar, Calendar, Month Calendar, Mobile Calendar, Touch Calendar, JavaScript Calendar, Date Picker, jQWidgets Calendar, HTML5 Calendar, HTML Calendar, JavaScript Mobile Calendar, Android Calendar, IPhone Calendar, Blackberry Calendar, Windows Phone Calendar" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <link rel="stylesheet" href="../../styles/site.css" media="screen" />
+    <link rel="stylesheet" href="../../styles/jqx.apireference.css" media="screen" />
+    <script type="text/javascript" src="../../scripts/format.js"></script>
+    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    
+    
+    <script type="text/javascript" src="../../scripts/toggle.js"></script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-25803467-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</head>
+<body>
+    <div id="pageTop" class="top">
+    </div>
+    <div id="pageDocumentation">
+        <h2>Styling and Appearance</h2>
+        <p>
+            jQWidgets uses a pair of css files - jqx.base.css and jqx.[theme name].css. The
+                                                                base stylesheet creates the styles related to the widget's layout like margin, padding,
+                                                                border-width, position. The second css file applies the widget's colors and backgrounds.
+                                                                The jqx.base.css should be included before the second CSS file.
+        </p>
+        Below is the list of CSS classes used by jqxCalendar.
+                                                            <ul>
+                                                                <li>jqx-widget - applied to the jqxCalendar widget.</li>
+                                                                <li>jqx-calendar - applied to jqxCalendar widget.</li>
+                                                                <li>jqx-calendar-row-header - applied to the calendar's row header. This header displays
+                                                                    the week numbers.</li>
+                                                                <li>jqx-calendar-column-header - applied to the calendar's column. This header displays
+                                                                    the day names.</li>
+                                                                <li>jqx-calendar-top-left-header - applied to the calendar's top-left header. This header
+                                                                    is displayed before the day names and above the week numbers.</li>
+                                                                <li>jqx-calendar-title-navigation - applied to the calendar's navigation buttons.</li>
+                                                                <li>jqx-calendar-title-header - applied to the calendar's navigation title.</li>
+                                                                <li>jqx-calendar-title-header-disabled - applied to the calendar's navigation title
+                                                                    when the calendar is disabled.</li>
+                                                                <li>jqx-calendar-cell - applied to a calendar cell.</li>
+                                                                <li>jqx-calendar-cell-hidden - applied to a calendar cell when the cell is hidden. A
+                                                                    cell can be hidden when the showOtherMonthDays property is false and the calendar
+                                                                    hides the cells with dates from the other months.</li>
+                                                                <li>jqx-calendar-cell-weekend - applied to a calendar cell when the cell's date is a
+                                                                    weekend date.</li>
+                                                                <li>jqx-calendar-cell-specialDate - applied to a calendar cell when the cell's date
+                                                                    is a special date(holiday, vacation, birthay).</li>
+                                                                <li>jqx-calendar-cell-today - applied to a calendar cell when the cell's date is the
+                                                                    today date.</li>
+                                                                <li>jqx-calendar-cell-hover - applied to a calendar cell when the cell is hovered.</li>
+                                                                <li>jqx-fill-state-hover - applied to a calendar cell when the cell is hovered.</li>
+                                                                <li>jqx-calendar-cell-selected - applied to a calendar cell when the cell is selected.</li>
+                                                                <li>jqx-fill-state-pressed - applied to a calendar cell when the cell is selected.</li>
+                                                                <li>jqx-calendar-cell-othermonth - applied to a calendar cell when the cell's date represents
+                                                                    a date from the previous or next month.</li>
+                                                                <li>jqx-calendar-cell-disabled - applied to a calendar cell when the calendar is disabled</li>
+                                                                <li>jqx-calendar-row-cell - applied to a calendar cell when the cell is from the row
+                                                                    header that displays the week numbers.</li>
+                                                                <li>jqx-calendar-row-cell-disabled - applied to a calendar cell when the cell is from
+                                                                    the row header that displays the week numbers and the calendar is disabled.</li>
+                                                                <li>jqx-calendar-column-cell - applied to a calendar cell when the cell is from the
+                                                                    column header that displays the day names.</li>
+                                                                <li>jqx-calendar-column-cell-disabled - applied to a calendar cell when the cell is
+                                                                    from the column header that displays the day names and the calendar is disabled.</li>
+                                                                <li>jqx-calendar-view - applied to the calendar's cell area element.</li>
+                                                                <li>jqx-fill-state-disabled - applied to the calendar when it is disabled.</li>
+                                                            </ul>
+        When you create a custom style with colors and backgrounds for jqxCalendar, you
+                                                            need to do the following:
+                                                            <ul>
+                                                                <li>Add the above CSS classes related to jqxCalendar</li>
+                                                                <li>After each CSS class, add your theme name.
+                                                                    <br />
+                                                                    For example:
+                                                                    <br />
+                                                                    jqx-calendar-themename </li>
+                                                                <li>To apply your custom style to jqxCalendar, you need to set its 'theme' property(option)
+                                                                    to point to your theme name string.
+                                                                </li>
+                                                                <li>The sample below demonstrates how to set the 'Summer' theme to jqxCalendar.
+                                                                </li>
+                                                            </ul>
+    </div>
+    <div id="pageBottom" class="bottom">
+    </div>
+</body>
+</html>
