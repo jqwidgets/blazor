@@ -43,27 +43,27 @@ document.addEventListener('DOMContentLoaded', function () {
     //    }
     // };
 
-    let selectedClassItems = document.getElementsByClassName('documentation-option-type-click');
-    let selectedClassItemsCount = selectedClassItems.length;
+    // let selectedClassItems = document.getElementsByClassName('documentation-option-type-click');
+    // let selectedClassItemsCount = selectedClassItems.length;
 
-    for (let i = 0; i < selectedClassItemsCount; i++) {
-       selectedClassItems[i].onclick = toggleItem;
-    }
+    // for (let i = 0; i < selectedClassItemsCount; i++) {
+    //    selectedClassItems[i].onclick = toggleItem;
+    // }
 
-    function toggleItem(event) {
-       let togglerParentId = event.target.id;
-       let itemNumber = togglerParentId.substring(14);
-       let item = document.getElementsByClassName('property-content')[itemNumber];
+    // function toggleItem(event) {
+    //    let togglerParentId = event.target.id;
+    //    let itemNumber = togglerParentId.substring(14);
+    //    let item = document.getElementsByClassName('property-content')[itemNumber];
 
-       if (item) {
-           if (item.style.display !== 'block') {
-               item.style.display = 'block';
-           }
-           else {
-               item.style.display = 'none';
-           }
-       }
-    }
+    //    if (item) {
+    //        if (item.style.display !== 'block') {
+    //            item.style.display = 'block';
+    //        }
+    //        else {
+    //            item.style.display = 'none';
+    //        }
+    //    }
+    // }
 
     var fc_cmt = "#080";
     var fc_html = "#11a";

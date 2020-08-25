@@ -1,4 +1,8 @@
-﻿.pln {
+﻿body {
+    color: hotpink;
+}
+
+.pln {
 color:#000;
 }
 #pageDocumentation {
@@ -1738,6 +1742,11 @@ a {
       background-position: right -29px; }
     .doc_menu.doc_menu_normal li.sub_menu a {
       background: none; }
+
+    /* Additional styles when the code block is included in the headings tags */
+    h2 strong, h2 code, h3 strong, h3 code, h2 em, h3 em {
+        font-size: inherit !important;
+    }
 
 .doc_content {
   width: 65%;
