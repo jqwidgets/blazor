@@ -1,0 +1,123 @@
+﻿<div id="chartContainer">
+    <JqxChart
+        title="Fitness & exercise weekly scorecard" description="Time spent in vigorous exercise"
+        showLegend=true enableAnimations=true padding=padding titlePadding=titlePadding
+        source=sampleData xAxis=xAxis seriesGroups=seriesGroups colorScheme="scheme01">
+    </JqxChart>
+</div>
+
+@code {
+    IDictionary<string, object>[] sampleData = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>() 
+        { 
+            { "Day", "Monday" },
+            { "Keith", 30 },
+            { "Erica", 15 },
+            { "George", 25 }
+        }, 
+        new Dictionary<string, object>() 
+        { 
+            { "Day", "Tuesday" },
+            { "Keith", 25 },
+            { "Erica", 25 },
+            { "George", 30 }
+        },
+        new Dictionary<string, object>() 
+        { 
+            { "Day", "Wednesday" },
+            { "Keith", 30 },
+            { "Erica", 20 },
+            { "George", 25 }
+        },
+        new Dictionary<string, object>() 
+        { 
+            { "Day", "Thursday" },
+            { "Keith", 35 },
+            { "Erica", 25 },
+            { "George", 45 }
+        },
+        new Dictionary<string, object>() 
+        { 
+            { "Day", "Friday" },
+            { "Keith", 20 },
+            { "Erica", 20 },
+            { "George", 25 }
+        },
+        new Dictionary<string, object>() 
+        { 
+            { "Day", "Saturday" },
+            { "Keith", 30 },
+            { "Erica", 20 },
+            { "George", 30 }
+        },
+        new Dictionary<string, object>() 
+        { 
+            { "Day", "Sunday" },
+            { "Keith", 60 },
+            { "Erica", 45 },
+            { "George", 90 }
+        }
+    };
+
+    IDictionary<string, int> padding = new Dictionary<string, int>()
+    {
+        { "left", 5 },
+        { "top", 5 },
+        { "right", 5 },
+        { "bottom", 5 }
+    };
+
+    IDictionary<string, int> titlePadding = new Dictionary<string, int>()
+    {
+        { "left", 90 },
+        { "top", 0 },
+        { "right", 0 },
+        { "bottom", 10 }
+    };    
+
+    IDictionary<string, object> xAxis = new Dictionary<string, object>()
+    {
+        { "dataField", "Day" }, 
+        { "showGridLines", true }         
+    };
+
+    IDictionary<string, object>[] seriesGroups = new Dictionary<string, object>[]
+    {      
+        new Dictionary<string, object>() 
+        { 
+            { "type", "column" }, 
+            { "columnsGapPercent", 50 }, 
+            { "seriesGapPercent", 0 }, 
+            { 
+                "valueAxis",
+                new Dictionary<string, object>()
+                {
+                    { "unitInterval", 10 },
+                    { "minValue", 0 },
+                    { "maxValue", 100 },
+                    { "displayValueAxis", true },
+                    { "description", "Time in minutes" },
+                    { "axisSize", "auto" },
+                    { "tickMarksColor", "#888888" }
+                }
+            },
+            { 
+                "series", 
+                new Dictionary<string, string>[]
+                {
+                    new Dictionary<string, string>() { { "dataField", "Keith" }, { "displayText", "Keith" } },
+                    new Dictionary<string, string>() { { "dataField", "Erica" }, { "displayText", "Erica" } },
+                    new Dictionary<string, string>() { { "dataField", "George" }, { "displayText", "George" } }
+                }
+            }
+        }
+    };
+}
+
+<style>
+    #chartContainer > div {
+        width: 800px;
+        height: 500px;
+    }
+</style>

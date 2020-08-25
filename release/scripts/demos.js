@@ -347,6 +347,9 @@ function getDemoTheme() {
     if (window.location.href.toString().indexOf("angularjs2") >= 0) {
         url = "../../jqwidgets/styles/jqx." + theme + '.css';
     }
+    if (window.location.href.toString().indexOf("blazor") >= 0) {
+        url = "../jqwidgets/styles/jqx." + theme + '.css';
+    }
     if (document.createStyleSheet != undefined) {
         var hasStyle = false;
         $.each(document.styleSheets, function (index, value) {
