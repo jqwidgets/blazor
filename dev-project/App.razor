@@ -1,32 +1,86 @@
- <JqxBarGauge @ref="myBarGauge"
-    width=350 height=350 relativeInnerRadius=relativeInnerRadius
-    values="values" onDrawEnd="onDrawEnd">
-</JqxBarGauge>
+<JqxDataTable
+    width=650 source=source columns=columns
+    columnsResize=true pageable=true pagerButtonsCount=10>
+</JqxDataTable>
 
 @code {
-    JqxBarGauge myBarGauge;
 
-    double relativeInnerRadius = 0.6;
-    double[] values = new double[1] {25};
+    IDictionary<string, object> source = new Dictionary<string, object>()
+    {
+        { "datatype", "xml" },
+        { 
+            "dataFields",
+            new Dictionary<string, string>[]
+            {
+                new Dictionary<string, string>() 
+                { 
+                    { "name", "CompanyName" },
+                    { "map", "m\\:properties>d\\:CompanyName" },
+                    { "type", "string" } 
+                },
+                new Dictionary<string, string>() 
+                { 
+                    { "name", "ContactName" },
+                    { "map", "m\\:properties>d\\:ContactName" },
+                    { "type", "string" } 
+                },
+                new Dictionary<string, string>() 
+                { 
+                    { "name", "ContactTitle" },
+                    { "map", "m\\:properties>d\\:ContactTitle" },
+                    { "type", "string" } 
+                },
+                new Dictionary<string, string>() 
+                { 
+                    { "name", "City" },
+                    { "map", "m\\:properties>d\\:City" },
+                    { "type", "string" } 
+                },
+                new Dictionary<string, string>() 
+                { 
+                    { "name", "PostalCode" },
+                    { "map", "m\\:properties>d\\:PostalCode" },
+                    { "type", "string" } 
+                },
+                new Dictionary<string, string>() 
+                { 
+                    { "name", "Country" },
+                    { "map", "m\\:properties>d\\:Country" },
+                    { "type", "string" } 
+                }
+            }
+        },
+        { "root", "entry" },
+        { "record", "content" },
+        { "id", "m\\:properties>d\\:CustomerID" },
+        { "url", "./sampledata/customers.xml" }
+    };
 
-    private void onDrawEnd(IDictionary<string, object> e)    
-    {        
-        values[0] = getRandomInt(1, 99);
-        
-        var task = Task.Run(() => myBarGauge.val(values));
-        task.Wait(TimeSpan.FromSeconds(1));
-    }
-
-    private int getRandomInt(int min, int max)  
-    {  
-        Random random = new Random();  
-        return random.Next(min, max);  
-    }
+    IDictionary<string, object>[] columns = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>() 
+        {
+            { "text", "Company Name" }, { "datafield", "CompanyName" }, { "width", 250 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Contact Name" }, { "datafield", "ContactName" }, { "width", 250 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Contact Title" }, { "datafield", "ContactTitle" }, { "width", 250 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "City" }, { "datafield", "City" }, { "width", 120 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Postal Code" }, { "datafield", "PostalCode" }, { "width", 90 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Country" }, { "datafield", "Country" }, { "width", 100 }
+        }
+    };
 }
-
-<style>
-    body, html {
-        width: 100%;
-        height: 100%;
-    }
-</style>
