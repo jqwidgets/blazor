@@ -1,0 +1,24 @@
+<JqxSlider onChange="change"
+    width=300 mode=mode rtl=true>
+</JqxSlider>
+<br />
+<JqxPanel @ref="events" height=400 width=300>
+</JqxPanel>
+
+@code {
+    JqxPanel events;
+
+    string mode = "fixed";
+
+    private void change(IDictionary<string, object> e)
+    {
+        events.clearcontent();
+        events.prepend("<div class='item' style='margin-top: 5px;'>change: " + e["value"] + "</div>");
+    }
+}
+
+<style>
+    .jqx-panel {
+        border: none;
+    }
+</style>

@@ -1,0 +1,29 @@
+﻿<JqxToggleButton @ref="myToggleButton" 
+  width=200 toggled=true onClick="buttonClick">
+  Toggled On
+</JqxToggleButton>
+
+<JqxToggleButton width=200 disabled=true>Disabled</JqxToggleButton>
+
+@code {
+    JqxToggleButton myToggleButton;
+
+    public void buttonClick(IDictionary<string, object> e)
+    {
+        bool toggled = myToggleButton.toggled;
+        if (toggled)
+        {
+            myToggleButton.val("Toggled On");
+        }
+        else
+        {
+            myToggleButton.val("Toggle Off");
+        }  
+    }
+}
+
+<style>
+    .jqx-button {
+        margin-bottom: 20px;
+    }
+</style>

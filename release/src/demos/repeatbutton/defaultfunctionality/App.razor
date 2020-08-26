@@ -1,0 +1,31 @@
+﻿<JqxRepeatButton width=200 delay=10 onClick="repeatOnClick">Click Me!</JqxRepeatButton>
+
+<JqxProgressBar @ref="myProgressBar" width=250 height=25 max=30></JqxProgressBar>
+
+@code {
+    JqxProgressBar myProgressBar;
+
+    public void repeatOnClick(IDictionary<string, object> e)
+    {
+        double currentValue = Double.Parse(myProgressBar.value.ToString());
+        currentValue++;
+        
+        var options = new Dictionary<string, double>()
+        {
+            { "animationDuration", 0 },
+            { "value", currentValue }
+        };
+
+        myProgressBar.setOptions(options);
+    }
+}
+
+<style>
+    .jqx-button {
+        margin-left: 25px;
+    }
+
+    .jqx-progressbar {
+        margin-top: 10px;
+    }
+</style>

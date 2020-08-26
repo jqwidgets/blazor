@@ -1,0 +1,30 @@
+﻿<JqxCalendar @ref="myCalendar" 
+    width=220 height=220 enableTooltips=false>
+</JqxCalendar>
+
+<br /><br />
+<div>Choose the first day of the week</div>
+<br /><br />
+
+<JqxDropDownList onSelect="dropDownListOnSelect"
+    width=220 height=25 selectedIndex=6 source=days autoDropDownHeight=true>
+</JqxDropDownList>
+
+@code {
+    JqxCalendar myCalendar;
+    string[] days = new string[]
+    {
+        "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
+    };
+
+    private void dropDownListOnSelect(IDictionary<string, object> e) 
+    {
+        int index = int.Parse(e["index"].ToString());
+        if (index == 6) {
+            index = -1;
+        }
+
+        var options = new Dictionary<string, int>() {{ "firstDayOfWeek", index + 1 }};
+        myCalendar.setOptions(options);
+    }
+}

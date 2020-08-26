@@ -1,0 +1,68 @@
+<JqxSplitter
+    width=850 height=600 orientation=orientation panels=panels>
+  <div>
+    <JqxTabs
+        width=width height=height>
+      <ul>
+        <li style="margin-left: 30px;">Tab 1</li>
+        <li>Tab 2</li>
+      </ul>
+      <div>
+        Content 1
+      </div>
+      <div>
+        Content 2
+      </div>
+    </JqxTabs>
+  </div>
+  <div>
+    <JqxSplitter
+        width=width height=300 panels=panels>
+      <div>
+        <JqxTabs width=width height=height>
+          <ul>
+            <li style="margin-left: 30px;">Tab 1</li>
+            <li>Tab 2</li>
+          </ul>
+          <div>
+            Content 1
+          </div>
+          <div>
+            Content 2
+          </div>
+        </JqxTabs>
+      </div>
+      <div>
+        <JqxTabs width=width height=height>
+          <ul>
+            <li style="margin-left: 30px;">Tab 1</li>
+            <li>Tab 2</li>
+          </ul>
+          <div>
+            Content 1
+          </div>
+          <div>
+            Content 2
+          </div>
+        </JqxTabs>
+      </div>
+    </JqxSplitter>
+  </div>
+</JqxSplitter>
+
+@code {
+    string orientation = "horizontal";
+    string width = "100%";
+    string height = "100%";
+
+    IDictionary<string, object>[] panels = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>() { { "size", "50%" }, { "collapsible", false } },
+        new Dictionary<string, object>() { { "size", "50%" } }
+    };
+    
+    IDictionary<string, object>[] panels2 = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>() { { "size", "50%" } }
+    };
+}

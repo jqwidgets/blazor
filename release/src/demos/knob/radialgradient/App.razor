@@ -1,0 +1,95 @@
+<JqxKnob @ref="myKnob" onChange="onKnobChange"
+    width=370 height=370 value=10 min=0 max=100 rotation=rotation
+    startAngle=90 endAngle=450 snapToStep=true progressBar=progressBar 
+    pointer=pointer pointerGrabAction=pointerGrabAction>
+</JqxKnob>
+
+<JqxNumberInput @ref="myNumberInput" onChange="onInputChange" 
+    width=150 height=75 value=0 min=0 max=100 inputMode=inputMode 
+    decimalDigits=1 textAlign=textAlign symbol="%" symbolPosition=symbolPosition>
+</JqxNumberInput>
+
+@code {
+    JqxKnob myKnob;
+    JqxNumberInput myNumberInput;
+
+    string inputMode = "simple";
+    string textAlign = "center";
+    string symbolPosition = "right";
+
+    string rotation = "clockwise";
+    string pointerGrabAction = "progressBar";
+
+    IDictionary<string, object> progressBar = new Dictionary<string, object>()
+    {
+        { 
+            "style", 
+            new Dictionary<string, object>() 
+            {
+                { 
+                    "fill", 
+                    new Dictionary<string, object>() 
+                    {
+                        { "color", "#00a4e1" },
+                        { "gradientType", "radial" },
+                        {
+                            "gradientStops",
+                            new double[][] { new double[] { 0, 0.5 }, new double[] { 100, 1 } }
+                        }
+                    } 
+                }                
+            }    
+        },  
+        { "size", "50%" }, { "offset", "50%" },
+        { 
+            "background", 
+            new Dictionary<string, object>() 
+            {                
+                { 
+                    "fill", 
+                    new Dictionary<string, object>() 
+                    {
+                        { "color", "#FFFFFF" },
+                        { "gradientType", "linear" },
+                        {
+                            "gradientStops",
+                            new double[][] { new double[] { 0, 0.5 }, new double[] { 100, 1 } }
+                        }
+                    } 
+                }                
+            }    
+        }
+    };
+
+    IDictionary<string, object> pointer = new Dictionary<string, object>() 
+    {
+        { "type", "line" },
+        { "style", new Dictionary<string, object>() { { "fill", "#00a4e1" } } },
+        { "size", "50%" }, { "offset", "50%" }, { "thickness", 0 }
+    };   
+
+    private void onKnobChange(IDictionary<string, object> e) 
+    {
+        myNumberInput.val(e["value"]);
+    }
+
+    private void onInputChange(IDictionary<string, object> e) 
+    {
+        myKnob.val(e["value"]);
+    }
+}
+
+<style>
+    input {
+        width: 150px !important;
+        height: 70px !important;
+        font-size: 46px !important;
+        position: absolute;
+        left: 120px;
+        top: 145px;
+    }
+
+    .jqx-numberinput {
+        border: none;
+    }
+</style>

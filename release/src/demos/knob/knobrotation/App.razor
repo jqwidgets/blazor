@@ -1,0 +1,102 @@
+<JqxKnob
+    value=60 min=0 max=100 step=2 rotation=rotation
+    startAngle=120 endAngle=480 snapToStep=true marks=marks
+    labels=labels progressBar=progressBar pointer=pointer
+    spinner=spinner dial=dial dragStartAngle=120 dragEndAngle=420>
+</JqxKnob>
+
+@code {    
+    string rotation = "counterclockwise";
+    string pointerGrabAction = "progressBar";
+
+    IDictionary<string, object> marks = new Dictionary<string, object>()
+    {
+        { "colorRemaining", "#fff" }, { "colorProgress", "#fff" },           
+        { "type", "line" }, { "offset", "75%" }, { "thickness", 2 }, { "size", "15%" },
+        { "majorSize", "15%" }, { "drawAboveProgressBar", true }, { "majorInterval", 10 }, { "minorInterval", 2 }    
+    };
+
+    IDictionary<string, object> labels = new Dictionary<string, object>()
+    {
+        { "offset", "50%" }, { "rotate", true }, { "step", 10 }
+    };
+
+    IDictionary<string, object> progressBar = new Dictionary<string, object>()
+    {
+        { "size", "15%" }, { "offset", "75%" },
+        { "style", new Dictionary<string, object>() { { "stroke", "#a2da39" }, { "strokeWidth", 1 }, { "fill", "#a2da39" } } },
+        { "background", new Dictionary<string, object>() { { "stroke", "#d1d2d4" }, { "strokeWidth", 1 }, { "fill", "#d1d2d4" } } }               
+    };
+
+    IDictionary<string, object> pointer = new Dictionary<string, object>() 
+    {
+        { "type", "arrow" },
+        { "style", new Dictionary<string, object>() { { "fill", "#a2da39" } } },
+        { "size", "55%" }, { "offset", "0%" }, { "thickness", 5 }
+    };   
+
+    IDictionary<string, object> dial = new Dictionary<string, object>() 
+    {
+        { "innerRadius", "0%" }, { "outerRadius", "65%" },
+        { 
+            "style", 
+            new Dictionary<string, object>() 
+            {
+                { "stroke", "#ff0000" }, { "strokeWidth", 1 },
+                { 
+                    "fill", 
+                    new Dictionary<string, object>() 
+                    {
+                        { "color", "#66707e" },
+                        { "gradientType", "linear" },
+                        {
+                            "gradientStops",
+                            new double[][] { new double[] { 0, 1 }, new double[] { 50, 0.4 }, new double[] { 100, 1 } }
+                        }
+                    }
+                }                
+            }    
+        }
+    };
+
+    IDictionary<string, object> spinner = new Dictionary<string, object>() 
+    {
+        { "size", "70%" }, { "innerRadius", "60%" }, { "outerRadius", "65%" },
+        {
+            "marks",
+            new Dictionary<string, object>()
+            {
+                { "colorRemaining", "#d5d3d4" }, { "colorProgress", "#d5d3d4" },
+                { "type", "line" }, { "offset", "60%" }, { "thickness", 1 }, { "size", "5%" },
+                { "majorSize", "5%" }, { "majorInterval", 10 }, { "minorInterval", 2 }    
+            }
+        },
+        { 
+            "style", 
+            new Dictionary<string, object>() 
+            {
+                { "stroke", "#d5d3d4" }, { "strokeWidth", 1 },
+                { 
+                    "fill", 
+                    new Dictionary<string, object>() 
+                    {
+                        { "color", "#dfe3e9" },
+                        { "gradientType", "linear" },
+                        {
+                            "gradientStops",
+                            new double[][] { new double[] { 0, 0.5 }, new double[] { 50, 0.5 }, new double[] { 100, 0.5 } }
+                        }
+                    }
+                }                
+            }    
+        }
+    }; 
+}
+
+<style>
+    .jqx-knob-label {
+        fill: #a2da39;
+        font-size: 14px;
+        font-weight: bold;
+    }
+</style>

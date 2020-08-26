@@ -1,0 +1,58 @@
+﻿@inject IJSRuntime JSRuntime;
+
+<JqxComboBox 
+    @ref="myComboBox" onComponentReady="onReady" onCheckChange="onCheckChange"
+    width="200" height="30" source="source" checkboxes="true">
+</JqxComboBox>
+
+<div style="float: left; margin-left: 20px; font-size: 13px; font-family: Verdana;">
+    <div @ref="selectionLog"></div>
+    <div style='max-width: 300px; margin-top: 20px;' @ref="checkedItemsLog"></div>
+</div>
+
+@code { 
+    JqxComboBox myComboBox;
+    ElementReference selectionLog;
+    ElementReference checkedItemsLog;
+
+    string[] source = new string[20]
+    {
+        "Maria Anders",
+        "Ana Trujillo",
+        "Antonio Moreno",
+        "Thomas Hardy",
+        "Christina Berglund",
+        "Hanna Moos",
+        "Frdrique Citeaux",
+        "Martn Sommer",
+        "Laurence Lebihan",
+        "Elizabeth Lincoln",
+        "Victoria Ashworth",
+        "Patricio Simpson",
+        "Francisco Chang",
+        "Yang Wang",
+        "Pedro Afonso",
+        "Elizabeth Brown",
+        "Sven Ottlieb",
+        "Janine Labrune",
+        "Ann Devon",
+        "Roland Mendel",
+    };
+
+    private void onCheckChange(IDictionary<string, object> e)
+    {
+        var items = myComboBox.getCheckedItems();
+        JSRuntime.InvokeAsync<string>("Example.updateInnerHtml", selectionLog, checkedItemsLog, e["item"], items);
+    }
+ 
+    private void onReady()
+    {
+        myComboBox.checkIndex(0);
+    }
+}
+
+<style>
+    .jqx-combobox {
+        float: left;
+    }
+</style>

@@ -6,11 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link rel="stylesheet" href="styles/site.css" media="screen" />
 
-    <script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script>
+	<link rel="stylesheet" href="jqwidgets/styles/jqx.base.css" media="screen" />
+    <link rel="stylesheet" href="styles/site.css" media="screen" />
+    <link rel="stylesheet" href="styles/jqx.apireference.css" media="screen" />
     <script type="text/javascript" src="scripts/format.js"></script>
+    <script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="scripts/toggle.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxwindow.js"></script>
 
     <script type="text/javascript">
         var _gaq = _gaq || [];
@@ -69,8 +74,8 @@
     <div role="banner" class="header">
         <div class="wrap cf">
             <a class="header-logo" href="/">
-                <img src="resources/design/i/logo-jqwidgets.svg" width="273" height="69" alt="jQWidgets" />
-            </a>
+              <img src="https://www.jqwidgets.com/angular/resources/design/i/logo-jqwidgets.svg" width="273" height="69" alt="jqwidgets" />
+		  </a>
 
             <a href="#" id="menu_link" class="menu_link">
                 <span class="t"></span>
@@ -147,35 +152,26 @@
                 <div class="nav_wrap">
                     <div class="wrap">
                         <ul>
-                            <li>
-                                <a href="https://www.jqwidgets.com/jquery-widgets-demo">Javascript/jQuery</a>
+                         							<li>
+                                <a title="jQuery" href="https://www.jqwidgets.com/jquery-widgets-documentation">Javascript/jQuery</a>
                             </li>
                             <li>
-                                <a href="https://www.jqwidgets.com/angular">Angular</a>
+                                <a title="Angular" href="https://www.jqwidgets.com/angular-components-documentation">Angular</a>
+                            </li>
+						    <li>
+								<a title="Vue JS" href="https://www.jqwidgets.com/vue-components-documentation">Vue</a>
+							</li>
+                            <li>
+                                <a title="React JS" href="https://www.jqwidgets.com/react-components-documentation">React</a>
+                            </li>
+							<li>
+								<a target="_blank" rel="nofollow" href="https://www.htmlelements.com/docs/">Web Components</a>
+					    	</li>
+							 <li class="current">
+                                <a title="React JS" href="https://blazor.jqwidgets.com/documentation">Blazor</a>
                             </li>
                             <li>
-                                <a href="https://www.jqwidgets.com/vue">Vue</a>
-                            </li>
-                            <li>
-                                <a href="https://www.jqwidgets.com/react">React</a>
-                            </li>
-                            <li>
-                                <a href="https://jqwidgets.github.io/blazor">Blazor</a>
-                            </li>
-                            <li>
-                                <a href="https://www.htmlelements.com/demos">Web Components</a>
-                            </li>
-                            <li>
-                                <a href="https://www.jqwidgets.com/asp.net-core-mvc-tag-helpers">ASP .NET MVC</a>
-                            </li>
-                            <li>
-                                <a href="https://www.jqwidgets.com/jquery-widgets-demo/showcasedemos">Showcase</a>
-                            </li>
-                            <li>
-                                <a href="https://www.jqwidgets.com/jquery-widgets-demo/mobiledemos">Responsive Design</a>
-                            </li>
-                            <li>
-                                <a href="https://www.jqwidgets.com/themebuilder/">Theme Builder</a>
+                                <a title="ASP .NET MVC" href="https://www.jqwidgets.com/asp.net-core-mvc-tag-helpers-documentation/">ASP .NET MVC</a>
                             </li>
                         </ul>
                     </div>
@@ -1389,12 +1385,7 @@
                 </li>
                 <li>
                     <a href="https://twitter.com/jqwidgets" target="_blank">
-                        <span class="tw"></span>Youtube
-                    </a>
-                </li>
-                <li>
-                    <a href="https://plus.google.com/112258917836957242269" target="_blank">
-                        <span class="gp"></span>Google +
+                        <span class="tw"></span>Twitter
                     </a>
                 </li>
             </ul>

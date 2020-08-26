@@ -1,0 +1,168 @@
+<div style="width: 600px">
+    <div style="float: left">
+        <JqxGauge @ref=myGauge onComponentReady="onReady"
+            value=0 colorScheme="scheme04" animationDuration=1500
+            ranges=ranges ticksMinor=ticksMinor ticksMajor=ticksMajor
+            labels=labels caption=caption cap=cap>
+        </JqxGauge>
+    </div>
+
+    <JqxExpander
+        width=200 showArrow=false toggleMode=toggleMode>
+        <div>Options</div>
+        <div>
+            <ul style="list-style: none; padding: 0px; margin: 10px">
+                <li style="padding: 3px; font-family: Verdana; font-size: 12px">
+                    <JqxCheckBox onChange="showLabelsCheckboxOnChange"
+                        width=150 isChecked=true>
+                        Show Labels
+                    </JqxCheckBox>
+
+                    <ul style="list-style: none; padding: 0; margin-top: 10px; margin-left: 20px; font-family: Verdana; font-size: 12px">
+                        <li>
+                          <JqxRadioButton onChange="insideRadioOnChange"
+                              width=150 isChecked=true>
+                              Inside the Gauge
+                          </JqxRadioButton>
+                        </li>
+                        <li>
+                            <JqxRadioButton onChange="outsideRadioOnChange"
+                                width=150 isChecked=false>
+                                Outside the Gauge
+                            </JqxRadioButton>
+                        </li>
+                    </ul>
+                </li>
+                <li style="padding: 3px; font-family: Verdana; font-size: 12px">
+                    <JqxCheckBox onChange="showRangesCheckboxOnChange"
+                        width=150 isChecked=true>
+                        Show Ranges
+                    </JqxCheckBox>
+                </li>
+                <li style="padding: 3px; font-family: Verdana; font-size: 12px">
+                    <JqxCheckBox onChange="showBorderCheckboxOnChange"
+                        width=150 isChecked=true>
+                        Show Border
+                    </JqxCheckBox>
+                </li>
+            </ul>
+        </div>
+    </JqxExpander>
+</div>
+
+@code {
+
+    JqxGauge myGauge;
+    
+    string toggleMode = "none";
+    IDictionary<string, object>[] ranges = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>()
+        {
+            { "startValue", 0 }, 
+            { "endValue", 90 },
+            { "style", new Dictionary<string, string>(){ { "fill", "#e2e2e2" }, { "stroke", "#e2e2e2" } } },
+            { "startDistance", "5%" },
+            { "endDistance", "5%" },
+            { "endWidth", 13 },
+            { "startWidth", 13 }
+        },
+        new Dictionary<string, object>()
+        {
+            { "startValue", 90 }, 
+            { "endValue", 140 },
+            { "style", new Dictionary<string, string>(){ { "fill", "#f6de54" }, { "stroke", "#f6de54" } } },
+            { "startDistance", "5%" },
+            { "endDistance", "5%" },
+            { "endWidth", 13 },
+            { "startWidth", 13 }
+        },
+        new Dictionary<string, object>()
+        {
+            { "startValue", 140 }, 
+            { "endValue", 180 },
+            { "style", new Dictionary<string, string>(){ { "fill", "#db5016" }, { "stroke", "#db5016" } } },
+            { "startDistance", "5%" },
+            { "endDistance", "5%" },
+            { "endWidth", 13 },
+            { "startWidth", 13 }
+        },
+        new Dictionary<string, object>()
+        {
+            { "startValue", 180 }, 
+            { "endValue", 220 },
+            { "style", new Dictionary<string, string>(){ { "fill", "#d02841" }, { "stroke", "#d02841" } } },
+            { "startDistance", "5%" },
+            { "endDistance", "5%" },
+            { "endWidth", 13 },
+            { "startWidth", 13 }
+        }
+    };
+
+    IDictionary<string, object> ticksMinor = new Dictionary<string, object>()
+    {
+        { "interval", 5 }, { "size", "5%" }   
+    };
+
+    IDictionary<string, object> ticksMajor = new Dictionary<string, object>()
+    {
+        { "interval", 10 }, { "size", "10%" }
+    };
+
+    IDictionary<string, object> labels = new Dictionary<string, object>() { { "visible", true }, { "position", "inside"} };
+
+    IDictionary<string, object> caption = new Dictionary<string, object>() { { "offset", new int[] { 0, -25 } }, { "value", "jQWidgets" }, { "position", "bottom" } };
+
+    IDictionary<string, double> cap = new Dictionary<string, double>() { { "radius", 0.04 } };
+
+    private void onReady()
+    {
+        myGauge.val(220);
+    }
+    
+    private void showLabelsCheckboxOnChange(IDictionary<string, object> e) 
+    {
+        myGauge.setOptions(new Dictionary<string, object>()
+        {
+            { "labels", new Dictionary<string, bool>(){ { "visible", bool.Parse(e["checked"].ToString()) } } }
+        });
+    }    
+
+    private void showRangesCheckboxOnChange(IDictionary<string, object> e) 
+    {
+        myGauge.setOptions(new Dictionary<string, bool>()
+        {
+            { "showRanges", bool.Parse(e["checked"].ToString()) }
+        });
+    }
+
+    private void showBorderCheckboxOnChange(IDictionary<string, object> e) 
+    {
+        myGauge.setOptions(new Dictionary<string, object>()
+        {
+            { "border", new Dictionary<string, bool>(){ { "visible", bool.Parse(e["checked"].ToString()) } } }
+        });
+    } 
+
+    private void insideRadioOnChange(IDictionary<string, object> e) 
+    {
+        myGauge.setOptions(new Dictionary<string, object>()
+        {
+            { "labels", new Dictionary<string, string>(){ { "position", "inside" } } }
+        });
+    }
+
+    private void outsideRadioOnChange(IDictionary<string, object> e) 
+    {
+        myGauge.setOptions(new Dictionary<string, object>()
+        {
+            { "labels", new Dictionary<string, string>(){ { "position", "outside" } } }
+        });
+    }       
+}
+
+<style>
+    .jqx-expander {
+        float: right;
+    }
+</style>

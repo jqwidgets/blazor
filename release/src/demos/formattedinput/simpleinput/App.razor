@@ -1,0 +1,31 @@
+﻿@inject IJSRuntime JSRuntime;
+
+<JqxFormattedInput @ref="myFormattedInput" width=250 height=25 radix=radix></JqxFormattedInput>
+
+<JqxButton width=buttonWidth onClick="getOctal">Get octal value</JqxButton>
+<JqxButton width=buttonWidth onClick="getDecimal">Get decimal value</JqxButton>
+<JqxButton width=buttonWidth onClick="getHexadecimal">Get hexadecimal value</JqxButton>
+
+@code {
+    JqxFormattedInput myFormattedInput;
+    string radix = "binary";
+    int buttonWidth = 175;
+
+    private void getOctal(IDictionary<string, object> e)
+    {
+        var octalValue = myFormattedInput.val("octal");
+        JSRuntime.InvokeVoidAsync("Example.alert", "Octal value: " + octalValue);
+    }
+
+    private void getDecimal(IDictionary<string, object> e)
+    {
+        var decimalValue = myFormattedInput.val("decimal");
+        JSRuntime.InvokeVoidAsync("Example.alert", "Decimal value: " + decimalValue);
+    }
+
+    private void getHexadecimal(IDictionary<string, object> e)
+    {
+        var hexadecimalValue = myFormattedInput.val("hexadecimal");
+        JSRuntime.InvokeVoidAsync("Example.alert", "Hexadecimal value: " + hexadecimalValue);
+    }
+}

@@ -1,0 +1,60 @@
+﻿<div style="float: left; font-size: 12px; font-family: Verdana;">
+    <h3>Animation Type</h3>
+    <JqxRadioButton isChecked="false" onChecked="onNoneChecked">None</JqxRadioButton>
+    <JqxRadioButton isChecked="false" onChecked="onSlideChecked">Slide</JqxRadioButton>
+    <JqxRadioButton isChecked="true" onChecked="onFadeChecked">Fade</JqxRadioButton>
+</div>
+
+<JqxDateTimeInput @ref="dateTimeInput" 
+    width="150" height="25" animationType="animationType" 
+    dropDownHorizontalAlignment="dropDownHorizontalAlignment">
+</JqxDateTimeInput>
+
+@code {
+    JqxDateTimeInput dateTimeInput;
+
+    string animationType = "fade";
+    string dropDownHorizontalAlignment = "right";
+
+    private void onNoneChecked(IDictionary<string, object> e)
+    {
+        IDictionary<string, object> options = new Dictionary<string, object>()
+        {
+            { "animationType", "none" }
+        };
+
+        dateTimeInput.setOptions(options);
+    }
+    
+    private void onSlideChecked(IDictionary<string, object> e)
+    {
+        IDictionary<string, object> options = new Dictionary<string, object>()
+        {
+            { "animationType", "slide" }
+        };
+
+        dateTimeInput.setOptions(options);
+    }
+
+    private void onFadeChecked(IDictionary<string, object> e)
+    {
+        IDictionary<string, object> options = new Dictionary<string, object>()
+        {
+            { "animationType", "fade" }
+        };
+
+        dateTimeInput.setOptions(options);
+    }
+}
+
+<style>
+    .jqx-datetimeinput {
+        float: left; 
+        margin-top: 20px; 
+        margin-left: 100px;
+    }
+    
+    .jqx-radiobutton {
+        margin-top: 10px;
+    }
+</style>

@@ -1,0 +1,34 @@
+<JqxValidator @ref="myValidator" rules=rules>
+    <form id="testForm" action="./">
+        <table class="register-table">
+            <tr>
+                <td>Username:</td>
+                <td>
+                    <input type="text" id="userInput" class="text-input" />
+                </td>
+            </tr>
+            <tr>
+                <td>E-mail:</td>
+                <td>
+                    <input type="text" id="emailInput" class="text-input" />
+                </td>
+            </tr>
+        </table>
+    </form>
+    <JqxButton width=100 height=20 onClick="onClick">Submit</JqxButton>
+</JqxValidator>
+
+@code {
+    JqxValidator myValidator;
+
+    IDictionary<string, object>[] rules = new IDictionary<string, object>[]
+    {
+        new Dictionary<string, object>() { { "input", "#userInput" }, { "message", "Username is required!" }, { "action", "blur" }, { "rule", "required" } },
+        new Dictionary<string, object>() { { "input", "#emailInput" }, { "message", "Invalid e-mail!" }, { "action", "blur" }, { "rule", "email" } }
+    };
+
+    private void onClick(IDictionary<string, object> e)
+    {
+        myValidator.validate(null);
+    }
+}

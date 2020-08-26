@@ -1,0 +1,136 @@
+﻿@inject IJSRuntime JSRuntime;
+
+<div id="jqxWidget">
+    <div style="display: inline-block;">
+        <JqxButton onClick="handleShow" width="80">Show</JqxButton>
+    </div>
+
+    <div style="width: 100%; height: 650px; border: 0px solid #ccc; margin-top: 10px;" id="mainDemoContainer">
+        <div>Events Log:</div>
+        
+        <div id="events" style="width: 300px; height: 200px; margin: 0; padding: 0;">
+            <JqxPanel @ref="events" height="250" width="450"></JqxPanel>
+        </div>
+
+        <JqxWindow @ref="eventWindow"
+            onMoved="handleMoved"
+            onClose="handleClose"
+            onOpen="handleOpen"
+            position="position"
+            maxHeight="180"
+            maxWidth="280"
+            minHeight="30"
+            minWidth="250"
+            height="165"
+            width="270"
+            resizable="false"
+            isModal="true"
+            modalOpacity="0.3"
+            okButton="okButton"
+            cancelButton="cancelButton">
+            <div>
+                <img width="14" height="14" src="../../images/help.png" alt="" />
+                Modal Window</div>
+            <div>
+                <div>
+                    Please click "OK", "Cancel" or the close button to close the modal window. The dialog
+                    result will be displayed in the events log.
+                </div>
+
+                <div>
+                    <div style="float: right; margin-top: 25px;">
+                        <div id="okButton" style="display: inline-block; margin-right: 10px;">
+                            <JqxButton width="65" disabled="false">OK</JqxButton>
+                        </div>
+
+                        <div id="cancelButton" style="display: inline-block;">
+                            <JqxButton width="65" disabled="false">Cancel</JqxButton>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </JqxWindow>
+    </div>
+</div>
+
+@code {
+    JqxWindow eventWindow;
+
+    JqxPanel events;
+
+    string cancelButton = "#cancelButton";
+    string okButton = "#okButton";
+
+    Dictionary<string, object> position = new Dictionary<string, object>() { { "x", 20 }, { "y", 70 } };
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            string result = await JSRuntime.InvokeAsync<string>("Example.getCoordinates", "#jqxWidget");
+            string[] tokens = result.Split(";");
+            int[] convertedItems = Array.ConvertAll<string, int>(tokens, int.Parse);
+            int top = convertedItems[0];
+            int left = convertedItems[1];
+            IDictionary<string, object> newPosition = new Dictionary<string, object>()
+            {
+                { "x", (left + 50) },
+                { "y", (top + 50) }
+            };
+
+            eventWindow.setOptions(new Dictionary<string, object>() { { "position", newPosition } });
+        }
+    }
+
+    private void handleShow(IDictionary<string, object> e)
+    {
+        eventWindow.open();
+    }
+    
+    private void handleMoved(IDictionary<string, object> e)
+    {
+        var x = e["x"].ToString();
+        var y = e["y"].ToString();
+        string result = $"Moved, X: {x}, Y: {y}";
+        
+        displayEvent(result);
+    }
+    
+    private void handleClose(IDictionary<string, object> e)
+    {
+        string result = "Close, Dialog result: ";
+        var dialogResult = e["dialogResult"];
+        var clearDialogResult = dialogResult.ToString().Replace("{", "");
+        clearDialogResult = clearDialogResult.Replace("}", "");
+        var arrayDialogResults = clearDialogResult.Split(",");
+
+        foreach (var item in arrayDialogResults)
+        {
+            if (item.IndexOf("true") != -1)
+            {
+                var splitItem = item.Split(":");
+                var value = splitItem[0];
+                result += value.Replace("\"", "");
+            }
+        }
+
+        displayEvent(result);
+    }
+    
+    private void handleOpen(IDictionary<string, object> e)
+    {
+        displayEvent("Open");
+    }
+
+    private void displayEvent(string message)
+    {
+        var eventData = "Event: " + message;
+        events.prepend("<div style='margin-top: 5px;'>" + eventData + "</div>");
+    }
+}
+
+<style>
+    #events div {
+        border-width: 0;
+    }
+</style>

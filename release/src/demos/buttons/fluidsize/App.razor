@@ -1,0 +1,52 @@
+﻿<b>Checkbox</b>
+<JqxCheckBox width=checkBoxWidth>eLearning</JqxCheckBox>
+<JqxCheckBox  width=checkBoxWidth>Mobile</JqxCheckBox>
+
+<b>Radio Button</b>
+<JqxRadioButton width=radioButtonWidth>On</JqxRadioButton>
+<JqxRadioButton width=radioButtonWidth>Off</JqxRadioButton>
+
+<b>DropDown Button</b>
+<JqxDropDownButton @ref="myDropDownButton" width=dropDownButtonWidth height=25 onComponentReady="onDropDownButtonReady">
+  <div>
+    <ul>
+      <li>Education</li>
+      <li>Financial services</li>
+      <li>Government</li>
+      <li>Manufacturing</li>
+      <li>
+        Solutions
+        <ul>
+          <li>eLearning</li>
+          <li>Mobile</li>
+          <li>RIA</li>
+          <li>Training</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</JqxDropDownButton>
+
+<b>Switch Button</b>
+<JqxSwitchButton width=switchButtonWidth></JqxSwitchButton>
+
+@code {
+    JqxDropDownButton myDropDownButton;
+
+    string checkBoxWidth = "30%";
+    string radioButtonWidth = "30%";
+    string dropDownButtonWidth = "50%";
+    string switchButtonWidth = "20%";
+
+    private void onDropDownButtonReady()
+    {
+        string dropDownContent = "<div style='position: relative; margin-left: 3px; margin-top: 5px;'>DropDownButton</div>";
+        myDropDownButton.setContent(dropDownContent);
+    }
+}
+
+<style>
+    .jqx-checkbox, .jqx-radiobutton, .jqx-dropdownlist-state-normal, .jqx-switchbutton {
+        margin-top: 5px;
+    }
+</style>

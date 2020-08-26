@@ -1,0 +1,165 @@
+﻿<div id="chartContainer">
+  <JqxChart 
+      title="Fitness & exercise weekly scorecard" 
+      description="Time spent in vigorous exercise by activity"
+      showLegend=true enableAnimations=true padding=padding titlePadding=titlePadding 
+      source=sampleData xAxis=xAxis borderLineColor="#888888" valueAxis=valueAxis 
+      seriesGroups=seriesGroups colorScheme="scheme05">    
+  </JqxChart>
+</div>
+
+@code {
+    IDictionary<string, object>[] sampleData = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>() 
+        {
+            { "Day", "Monday" }, { "Running", 30 }, { "Swimming", 0 }, { "Cycling", 25 }, { "Goal", 40 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "Day", "Tuesday" }, { "Running", 25 }, { "Swimming", 25 }, { "Cycling", 0 }, { "Goal", 50 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "Day", "Wednesday" }, { "Running", 30 }, { "Swimming", 0 }, { "Cycling", 25 }, { "Goal", 60 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "Day", "Thursday" }, { "Running", 20 }, { "Swimming", 20 }, { "Cycling", 25 }, { "Goal", 40 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "Day", "Friday" }, { "Running", 0 }, { "Swimming", 20 }, { "Cycling", 25 }, { "Goal", 50 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "Day", "Saturday" }, { "Running", 30 }, { "Swimming", 0 }, { "Cycling", 30 }, { "Goal", 60 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "Day", "Sunday" }, { "Running", 20 }, { "Swimming", 40 }, { "Cycling", 0 }, { "Goal", 90 }
+        }    
+    };
+    
+    IDictionary<string, int> padding = new Dictionary<string, int>()
+    {
+        { "left", 5 },
+        { "top", 5 },
+        { "right", 5 },
+        { "bottom", 5 }
+    };
+
+    IDictionary<string, int> titlePadding = new Dictionary<string, int>()
+    {
+        { "left", 90 },
+        { "top", 0 },
+        { "right", 0 },
+        { "bottom", 10 }
+    };    
+
+    IDictionary<string, object> xAxis = new Dictionary<string, object>()
+    {
+        { "dataField", "Day" },
+        { "unitInterval", 1 },               
+        { 
+            "tickMarks", 
+            new Dictionary<string, object>()
+            {
+                { "visible", true },
+                { "interval", 1 },
+                { "color", "#888888" }
+            }
+        },
+        { 
+            "gridLines", 
+            new Dictionary<string, object>()
+            {
+                { "visible", false },
+                { "interval", 1 },
+                { "color", "#888888" }
+            }
+        },
+        { "axisSize", "auto" }
+    };
+
+    IDictionary<string, object> valueAxis = new Dictionary<string, object>()
+    {
+        { "visible", true },
+        { "unitInterval", 10 },
+        { "minValue", 0 },
+        { "maxValue", 100 },
+        { 
+            "title", 
+            new Dictionary<string, string>()
+            {
+                { "text", "Time in minutes" }
+            }
+        },
+        { 
+            "tickMarks", 
+            new Dictionary<string, string>()
+            {
+                { "color", "#888888" }
+            }
+        },
+        { 
+            "gridLines", 
+            new Dictionary<string, string>()
+            {
+                { "color", "#888888" }
+            }
+        },
+        { "axisSize", "auto" }
+    };
+
+    IDictionary<string, object>[] seriesGroups = new Dictionary<string, object>[]
+    {      
+        new Dictionary<string, object>() 
+        { 
+            { "type", "splinearea" }, 
+            { 
+                "series", 
+                new Dictionary<string, object>[]
+                {
+                    new Dictionary<string, object>()
+                    {
+                        { "dataField", "Goal" },
+                        { "displayText", "Personal Goal" },
+                        { "opacity", 0.7 }
+                    }
+                }
+            }
+        },
+        new Dictionary<string, object>() 
+        { 
+            { "type", "stackedcolumn" },
+            { "columnsGapPercent", 50 },
+            { "seriesGapPercent", 5 },
+            { 
+                "series", 
+                new Dictionary<string, string>[]
+                {
+                    new Dictionary<string, string>()
+                    {
+                        { "dataField", "Running" }, { "displayText", "Running" }
+                    },
+                    new Dictionary<string, string>()
+                    {
+                        { "dataField", "Swimming" }, { "displayText", "Swimming" }
+                    },
+                    new Dictionary<string, string>()
+                    {
+                        { "dataField", "Cycling" }, { "displayText", "Cycling" }
+                    }
+                }
+            }
+        }
+    };
+}
+
+<style>
+    #chartContainer > div {
+        width: 800px;
+        height: 450px;
+    }
+</style>

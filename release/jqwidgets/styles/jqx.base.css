@@ -7757,3 +7757,8 @@ jqx-knob {
         opacity: 1;
     }
 }
+.example-description {
+	font-size: 14px;
+	font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	padding: 10px;
+}

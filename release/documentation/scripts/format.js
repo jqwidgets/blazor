@@ -23,8 +23,7 @@ function formatCode(precode) {
     for (var b = 0; b < textlines.length; b++) {
         var code = textlines[b];
         code = code.replace(/\f|\n/g, "");
-        if (code.indexOf("if (") == -1 && code.indexOf("for (") == -1)
-        {
+        if (code.indexOf("if") == -1 && code.indexOf("for (") == -1) {
             code = code.replace(/&/g, '&amp;');
             code = code.replace(/</g, '&lt;');
             code = code.replace(/>/g, '&gt;');
@@ -47,7 +46,7 @@ function formatCode(precode) {
         linecount++;
     }
  
-    return "<pre style='border:none !important; padding: 0px !important; overflow: auto; margin-top: 5px; margin-bottom: 5px;' class='code'>" + newcode + "</pre>";
+    return "<pre style='overflow: auto; margin-top: 5px; margin-bottom: 5px;' class='code'>" + newcode + "</pre>";
 }
 
 var colourKeywordsCustom = function (keywords, codeline) {

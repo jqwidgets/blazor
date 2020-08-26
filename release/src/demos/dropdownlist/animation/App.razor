@@ -1,0 +1,55 @@
+﻿@inject HttpClient Http;
+@inject IJSRuntime JSRuntime;
+
+<div style="float: left; font-size: 13px; font-family: Verdana;">
+    <h3>Animation Type</h3>
+    <div>
+        <JqxRadioButton onChecked="handleNone" isChecked="false">None</JqxRadioButton>
+    </div>
+
+    <div style="margin-top: 10px;">
+        <JqxRadioButton onChecked="handleSlide" isChecked="false">Slide</JqxRadioButton>
+    </div>
+
+    <div style="margin-top: 10px;">
+        <JqxRadioButton onChecked="handleFade" isChecked="true">Fade</JqxRadioButton>
+    </div>
+</div>
+
+<div style="float: left; margin-top: 20px; margin-left: 100px;">
+    <JqxDropDownList
+        @ref="myDropDownList"
+        animationType="animation"
+        width="150" height="30" source="source" selectedIndex="0"
+        dropDownVerticalAlignment="align" dropDownWidth="200"
+        displayMember="ContactName" valueMember="CompanyName">
+    </JqxDropDownList>
+</div>
+
+@code {
+    JqxDropDownList myDropDownList;
+
+    string align = "right";
+    string animation = "fade";
+    object[] source;
+
+    protected override async Task OnInitializedAsync()
+    {
+        source = await Http.GetJsonAsync<object[]>("../sampledata/customers.txt");
+    }
+
+    private void handleNone(IDictionary<string, object> e)
+    {
+        this.myDropDownList.animationType = "none";
+    }
+
+    private void handleFade(IDictionary<string, object> e)
+    {
+        this.myDropDownList.animationType = "fade";
+    }
+
+    private void handleSlide(IDictionary<string, object> e)
+    {
+        this.myDropDownList.animationType = "slide";
+    }
+}

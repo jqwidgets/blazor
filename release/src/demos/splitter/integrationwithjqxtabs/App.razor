@@ -1,0 +1,47 @@
+<JqxSplitter
+    width=850 height=850 orientation=orientation panels=panels>
+  <div>
+    Top Panel
+  </div>
+  <div>
+    <JqxSplitter 
+        width=width height=height panels=panels2>
+      <div>
+        Left Panel
+      </div>
+      <div>
+        <JqxTabs
+            width=width height=height>
+          <ul>
+            <li style="margin-left: 30px;">Tab 1</li>
+            <li>Tab 2</li>
+          </ul>
+          <div>
+            Content 1
+          </div>
+          <div>
+            Content 2
+          </div>
+        </JqxTabs>
+      </div>
+    </JqxSplitter>
+  </div>
+</JqxSplitter>
+
+@code {
+    string orientation = "horizontal";
+    string width = "100%";
+    string height = "100%";
+
+    IDictionary<string, object>[] panels = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>() { { "size", "20%" } },
+        new Dictionary<string, object>() { { "size", "80%" } }
+    };
+    
+    IDictionary<string, object>[] panels2 = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>() { { "size", 200 } },
+        new Dictionary<string, object>() { { "size", 200 } }
+    };
+}

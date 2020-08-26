@@ -1,0 +1,17 @@
+<JqxSplitter
+    width=850 height=480 panels=panels>
+  <div class="splitter-panel">
+    Panel 1
+  </div>
+  <div class="splitter-panel">
+    Panel 2
+  </div>
+</JqxSplitter>
+
+@code {
+    string orientation = "horizontal";
+    IDictionary<string, object>[] panels = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>() { { "size", 400 }, { "collapsible", false } }
+    };
+}

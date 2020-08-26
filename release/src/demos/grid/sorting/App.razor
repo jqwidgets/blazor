@@ -1,0 +1,137 @@
+@inject IJSRuntime JSRuntime;
+
+<div style="font-size: 13px; font-family: Verdana; float: left">
+    <JqxGrid @ref="myGrid" onSort="myGridOnSort"
+        width=850 height=450 source=source columns=columns
+        sortable=true altrows=true filterable=true
+        selectionmode=selectionMode>
+    </JqxGrid>
+
+    <div style="margin-top: 30px">
+        <div style="float: left; margin-right: 10px">
+            <JqxButton onClick="removeSortBtnOnClick" height=20>Remove Sort</JqxButton>
+            <div style="margin-top: 10px"></div>
+            <JqxCheckBox onChange="sortBackGroundBtn" height=25 isChecked=true>Sort Background</JqxCheckBox>
+        </div>
+        <div style="margin-left: 100px; float: left">
+            Event Log:
+            <div @ref="eventLog"></div>
+        </div>
+    </div>
+</div>
+
+@code {
+    JqxGrid myGrid;
+    ElementReference eventLog;
+
+    string selectionMode = "multiplecellsadvanced";
+
+    IDictionary<string, object> source = new Dictionary<string, object>()
+    {
+        { "datatype", "xml" },
+        { 
+            "dataFields",
+            new Dictionary<string, string>[]
+            {
+                new Dictionary<string, string>() 
+                { 
+                    { "name", "ShippedDate" },
+                    { "map", "m\\:properties>d\\:ShippedDate" },
+                    { "type", "date" } 
+                },
+                new Dictionary<string, string>() 
+                { 
+                    { "name", "Freight" },
+                    { "map", "m\\:properties>d\\:Freight" },
+                    { "type", "float" } 
+                },
+                new Dictionary<string, string>() 
+                { 
+                    { "name", "ShipName" },
+                    { "map", "m\\:properties>d\\:ShipName" },
+                    { "type", "string" } 
+                },
+                new Dictionary<string, string>() 
+                { 
+                    { "name", "ShipAddress" },
+                    { "map", "m\\:properties>d\\:ShipAddress" },
+                    { "type", "string" } 
+                },
+                new Dictionary<string, string>() 
+                { 
+                    { "name", "ShipCity" },
+                    { "map", "m\\:properties>d\\:ShipCity" },
+                    { "type", "string" } 
+                },
+                new Dictionary<string, string>() 
+                { 
+                    { "name", "ShipCountry" },
+                    { "map", "m\\:properties>d\\:ShipCountry" },
+                    { "type", "string" } 
+                }
+            }
+        },
+        { "root", "entry" },
+        { "record", "content" },
+        { 
+            "id",
+            new Dictionary<string, string>() 
+            { 
+                { "name", "OrderID" },
+                { "map", "m\\:properties>d\\:OrderID" }
+            }
+        },
+        { "url", "./sampledata/orders.xml" },
+        { "sortcolumn", "ShipName" },
+        { "sortdirection", "asc" }
+    };
+
+    IDictionary<string, object>[] columns = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>() 
+        {
+            { "text", "Ship Name" }, { "datafield", "ShipName" }, { "width", 250 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Shipped Date" }, { "datafield", "ShippedDate" }, { "cellsformat", "yyyy-MM-dd" }, { "width", 200 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Freight" }, { "datafield", "Freight" }, { "cellsformat", "f2" }, { "cellsalign", "right" }, { "width", 80 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Ship Address" }, { "datafield", "ShipAddress" }, { "width", 350 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Ship City" }, { "datafield", "ShipCity" }, { "width", 100 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Ship Country" }, { "datafield", "ShipCountry" }, { "width", 100 }
+        }
+    };
+
+    public void myGridOnSort(IDictionary<string, object> e)
+    {
+        var sortinfo = myGrid.getsortinformation();
+        JSRuntime.InvokeVoidAsync("Example.updateSortInfo", eventLog, sortinfo);
+    }
+
+    public void removeSortBtnOnClick(IDictionary<string, object> e)
+    {
+        myGrid.removesort();
+    }
+
+    public void sortBackGroundBtn(IDictionary<string, object> e)
+    {
+        bool isChecked = bool.Parse(e["checked"].ToString());
+
+        myGrid.setOptions(new Dictionary<string, bool>()
+        {
+            { "showsortcolumnbackground", isChecked }
+        });
+    }
+}

@@ -1,0 +1,62 @@
+﻿@inject IJSRuntime JSRuntime;
+
+<JqxListBox @ref="myListBox" onComponentReady="onReady" onCheckChange="checkChange" checkboxes="true" source="source" width="300" height="350"></JqxListBox>
+
+<div @ref="Events" style="font-size: 13px; font-family: Verdana; margin-top: 20px;"></div>
+
+<div @ref="CheckedItems" style="font-size: 13px; font-family: Verdana; margin-top: 10px;"></div>
+
+@code {
+    JqxListBox myListBox;
+
+    ElementReference Events;
+
+    ElementReference CheckedItems;
+
+    string[] source = new string[]
+    {
+        "Affogato",
+        "Americano",
+        "Bicerin",
+        "Breve",
+        "Café Bombón",
+        "Café au lait",
+        "Caffé Corretto",
+        "Café Crema",
+        "Caffé Latte",
+        "Caffé macchiato",
+        "Café mélange",
+        "Coffee milk",
+        "Cafe mocha",
+        "Cappuccino",
+        "Carajillo",
+        "Cortado",
+        "Cuban espresso",
+        "Espresso",
+        "Eiskaffee",
+        "The Flat White",
+        "Frappuccino",
+        "Galao",
+        "Greek frappé coffee",
+        "Iced Coffee",
+        "Indian filter coffee",
+        "Instant coffee",
+        "Irish coffee",
+        "Liqueur coffee"
+    };
+
+    private void checkChange(IDictionary<string, object> e)
+    {
+        var item = e["item"];
+        var items = myListBox.getCheckedItems();
+        JSRuntime.InvokeAsync<string>("Example.handleCheckChange", Events, CheckedItems, item, items);
+    }
+
+    private void onReady()
+    {
+        myListBox.checkIndex(0);
+        myListBox.checkIndex(1);
+        myListBox.checkIndex(2);
+        myListBox.checkIndex(5);
+    }
+}

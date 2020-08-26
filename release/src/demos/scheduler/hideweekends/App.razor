@@ -1,0 +1,79 @@
+<JqxScheduler @ref="myScheduler" onComponentReady="onReady"
+    width=800 height=600 source=source view=view
+    appointmentDataFields=appointmentDataFields views=views>    
+</JqxScheduler>
+
+@code {
+    JqxScheduler myScheduler;
+
+    string view = "weekView";
+
+    IDictionary<string, string> appointmentDataFields = new Dictionary<string, string>()
+    {
+        { "from", "start" },
+        { "to", "end" },
+        { "id", "id" },
+        { "description", "about" },
+        { "location", "address" },
+        { "subject", "name" },
+        { "style", "style" },
+        { "status", "status" }
+    };
+
+    object[] views = new object[]
+    {
+        new Dictionary<string, object>() 
+        { 
+            { "type", "dayView" },
+            { "showWeekends", false },
+            { 
+                "timeRuler", 
+                new Dictionary<string, object>() { { "hidden", false } } 
+            }
+        },
+        new Dictionary<string, object>() 
+        { 
+            { "type", "weekView" },
+            { "showWeekends", false },
+            { 
+                "timeRuler", 
+                new Dictionary<string, object>() { { "hidden", false } } 
+            }
+        },
+        new Dictionary<string, object>() 
+        { 
+            { "type", "weekView" },
+            { "showWeekends", false },
+            {  
+                "timeRuler", 
+                new Dictionary<string, object>() { { "hidden", false } }
+            }
+        }
+    };
+
+    Dictionary<string, object> source = new Dictionary<string, object>
+    {
+        { "dataType", "json" },
+        { "dataFields", new Dictionary<string, string>[]
+            {
+                new Dictionary<string, string>() { { "name", "id" }, { "type", "string" } },
+                new Dictionary<string, string>() { { "name", "status" }, { "type", "string" } },
+                new Dictionary<string, string>() { { "name", "about" }, { "type", "string" } },
+                new Dictionary<string, string>() { { "name", "address" }, { "type", "string" } },
+                new Dictionary<string, string>() { { "name", "company" }, { "type", "string" } },
+                new Dictionary<string, string>() { { "name", "name" }, { "type", "string" } },
+                new Dictionary<string, string>() { { "name", "style" }, { "type", "string" } },
+                new Dictionary<string, string>() { { "name", "calendar" }, { "type", "string" } },
+                new Dictionary<string, string>() { { "name", "start" }, { "type", "date" }, { "format", "yyyy-MM-dd HH:mm"} },
+                new Dictionary<string, string>() { { "name", "end" }, { "type", "date" }, { "format", "yyyy-MM-dd HH:mm"} }
+            }
+        },
+        { "id", "id" },
+        { "url", "./sampledata/appointments.txt" }
+    };
+
+    private void onReady()
+    {
+        myScheduler.ensureAppointmentVisible("55f99b75e5102735f12ae957");
+    }
+}

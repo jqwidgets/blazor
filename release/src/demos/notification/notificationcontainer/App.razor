@@ -1,0 +1,39 @@
+@inject IJSRuntime JSRuntime;
+
+<JqxNotification @ref="myNotification"
+    width=width template=infoTemplate autoClose=true
+    appendContainer="#container" opacity=0.9>
+  <div>
+      <div></div>
+  </div>
+</JqxNotification>
+
+<JqxButton width=120 onClick="onClick">Open notification</JqxButton>
+
+<div id="container" style="width: 300px; height: 400px; margin-top: 15px; background-color: #F2F2F2;
+        border: 1px dashed #AAAAAA; overflow: auto;">
+</div>
+
+@code {
+    JqxNotification myNotification;
+
+    string width = "100%";
+    string infoTemplate = "info";
+
+    string[] quotes = new string[]
+    {
+        "I'm gonna make him an offer he can't refuse.", 
+        "Toto, I've got a feeling we're not in Kansas anymore.",
+        "You talkin' to me?", "Bond. James Bond.", "I'll be back.", "Round up the usual suspects.",
+        "I'm the king of the world!", "A martini. Shaken, not stirred.",
+        "May the Force be with you.", "Well, nobody's perfect."
+    };
+
+    Random random = new Random();
+
+    private void onClick(IDictionary<string, object> e)
+    {
+        JSRuntime.InvokeVoidAsync("Example.setContent", quotes[random.Next(0, quotes.Length)]);
+        myNotification.open();
+    }
+}

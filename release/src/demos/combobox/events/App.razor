@@ -1,0 +1,68 @@
+﻿@inject IJSRuntime JSRuntime;
+
+<JqxComboBox
+    onSelect="onSelect" onUnselect="onUnselect"
+    width="200" height="25" source="source">
+</JqxComboBox>
+
+<div style='font-size: 12px; font-family: Verdana; margin-left: 20px; margin-top: 10px; float: left;'>
+    <div>
+        <span>Events:</span>
+        <div @ref="selectionLog"></div>      
+    </div>
+</div>
+
+@code { 
+    ElementReference selectionLog;
+
+    string[] source = new string[28]
+    {
+        "Affogato",
+        "Americano",
+        "Bicerin",
+        "Breve",
+        "Café Bombón",
+        "Café au lait",
+        "Caffé Corretto",
+        "Café Crema",
+        "Caffé Latte",
+        "Caffé macchiato",
+        "Café mélange",
+        "Coffee milk",
+        "Cafe mocha",
+        "Cappuccino",
+        "Carajillo",
+        "Cortado",
+        "Cuban espresso",
+        "Espresso",
+        "Eiskaffee",
+        "The Flat White",
+        "Frappuccino",
+        "Galao",
+        "Greek frappé coffee",
+        "Iced Coffee",
+        "Indian filter coffee",
+        "Instant coffee",
+        "Irish coffee",
+        "Liqueur coffee"
+    };
+
+    private void onSelect(IDictionary<string, object> e)
+    {
+        var item = e["item"];
+        JSRuntime.InvokeAsync<string>("Example.updateInnerHtmlSelected", selectionLog, item);
+    }
+
+    private void onUnselect(IDictionary<string, object> e)
+    {
+        var item = e["item"];
+        JSRuntime.InvokeAsync<string>("Example.updateInnerHtmlUnselected", selectionLog, item);      
+    }
+} 
+
+<style>
+    .jqx-combobox {
+        float: left;
+        margin-top: 10px;
+    }
+</style>
