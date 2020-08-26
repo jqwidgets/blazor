@@ -1,0 +1,132 @@
+﻿<JqxTreeGrid @ref="myTreeGrid" onComponentReady="Ready" width="width" source="source" pageable="true" columnsResize="true" columns="columns"></JqxTreeGrid>
+
+@code {
+    JqxTreeGrid myTreeGrid;
+    
+    object width = 700;
+
+    Dictionary<string, object> source = new Dictionary<string, object>
+    {
+        { "dataType", "csv" },
+        {
+            "datafields",
+            new Dictionary<string, object>[] 
+            {
+                new Dictionary<string, object>()
+                {
+                    { "name", "EmployeeKey" },
+                    { "type", "number" }
+                },
+                new Dictionary<string, object>()
+                {
+                    { "name", "ParentEmployeeKey" },
+                    { "type", "number" }
+                },
+                new Dictionary<string, object>()
+                {
+                    { "name", "FirstName" },
+                    { "type", "string" }
+                },
+                new Dictionary<string, object>()
+                {
+                    { "name", "LastName" },
+                    { "type", "string" }
+                },
+                new Dictionary<string, object>()
+                {
+                    { "name", "Title" },
+                    { "type", "string" }
+                },
+                new Dictionary<string, object>()
+                {
+                    { "name", "HireDate" },
+                    { "type", "date" }
+                },
+                new Dictionary<string, object>()
+                {
+                    { "name", "BirthDate" },
+                    { "type", "date" }
+                },
+                new Dictionary<string, object>()
+                {
+                    { "name", "Phone" },
+                    { "type", "string" }
+                },
+                new Dictionary<string, object>()
+                {
+                    { "name", "Gender" },
+                    { "type", "string" }
+                },
+                new Dictionary<string, object>()
+                {
+                    { "name", "DepartmentName" },
+                    { "type", "string" }
+                }
+            }
+        },
+        {
+            "hierarchy",
+            new Dictionary<string, object>
+            {
+                { "keyDataField", new Dictionary<string, object> { { "name", "EmployeeKey" } } },
+                { "parentDataField", new Dictionary<string, object> { { "name", "ParentEmployeeKey" } } }
+            }
+        },
+        { "id", "EmployeeKey" },
+        { "url", "./sampledata/employeesadv.csv" },
+    };
+
+    Dictionary<string, object>[] columns = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>()
+        {
+            { "text", "FirstName" },
+            { "dataField", "FirstName" },
+            { "minWidth", 100 },
+            { "width", 200 }
+        },
+        new Dictionary<string, object>()
+        {
+            { "text", "LastName" },
+            { "dataField", "LastName" },
+            { "width", 200 }
+        },
+        new Dictionary<string, object>()
+        {
+            { "text", "Department Name" },
+            { "dataField", "DepartmentName" },
+            { "width", 150 }
+        },
+        new Dictionary<string, object>()
+        {
+            { "text", "Title" },
+            { "dataField", "Title" },
+            { "width", 300 }
+        },
+        new Dictionary<string, object>()
+        {
+            { "text", "Birth Date" },
+            { "dataField", "BirthDate" },
+            { "cellsFormat", "d" },
+            { "width", 120 }
+        },
+        new Dictionary<string, object>()
+        {
+            { "text", "Hire Date" },
+            { "dataField", "HireDate" },
+            { "cellsFormat", "d" },
+            { "width", 120 }
+        },
+        new Dictionary<string, object>()
+        {
+            { "text", "Phone" },
+            { "dataField", "Phone" },
+            { "width", 120 }
+        }
+    };
+
+    private void Ready()
+    {
+        myTreeGrid.expandRow(32);
+    }
+}

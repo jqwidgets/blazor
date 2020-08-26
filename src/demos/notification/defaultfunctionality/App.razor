@@ -1,0 +1,43 @@
+@inject IJSRuntime JSRuntime;
+
+<!--Notifications-->
+<JqxNotification @ref="msgNotification"
+    width=250 position=position opacity=0.9 autoOpen=false autoClose=true 
+    animationOpenDelay=800 autoCloseDelay=3000 template=infoTemplate>
+  <div>
+    Welcome to our website.
+  </div>
+</JqxNotification>
+<JqxNotification @ref="timeNotification"
+    width=250 position=position opacity=0.9 autoOpen=false autoClose=true
+    animationOpenDelay=800 autoCloseDelay=3000 template=timeTemplate>
+  <div>Current time: <span id="currentTime" style="font-weight: bold;"></span>.</div>
+</JqxNotification>
+<!--Layout-->
+<JqxButton width=230 height=20 onClick="onClickOpenMessageNotification">
+  Open a message notification
+</JqxButton>
+<br /><br />
+<JqxButton width=230 height=20 onClick="onClickOpenTimeNotification">
+  Open a current time notification
+</JqxButton>
+
+@code {
+    JqxNotification msgNotification;
+    JqxNotification timeNotification;
+
+    string position = "top-right";
+    string infoTemplate = "info";
+    string timeTemplate = "time";
+
+    private void onClickOpenMessageNotification(IDictionary<string, object> e)
+    {
+        msgNotification.open();
+    }
+
+    private void onClickOpenTimeNotification(IDictionary<string, object> e)
+    {
+        JSRuntime.InvokeVoidAsync("Example.setTimeString");
+        timeNotification.open();
+    }
+}

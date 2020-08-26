@@ -1,0 +1,84 @@
+﻿<JqxCalendar @ref="myCalendar" 
+    width=220 height=220 enableTooltips=false>
+</JqxCalendar>
+
+<div style="float: left">
+    <div style="float: left; font-family: Verdana; font-size: 13px">
+        Choose Culture
+    </div>
+    <br />
+    <br />
+    <JqxDropDownList onSelect="dropDownListOnSelect"
+        width=220 height=25 selectedIndex=3 source="availableCultures">
+    </JqxDropDownList>
+</div>
+
+@code {
+    JqxCalendar myCalendar;
+
+    string[] availableCultures = new string[]
+    {
+        "Czech (Czech Republic)", "German (Germany)", "English (Canada)",
+        "English (United States)", "French (France)", "Italian (Italy)",
+        "Japanese (Japan)", "Hebrew (Israel)", "Russian (Russia)",
+        "Croatian (Croatia)", "Sanskrit (India)"
+    };
+
+    private void dropDownListOnSelect(IDictionary<string, object> e) 
+    {
+        int index = int.Parse(e["index"].ToString());
+        IDictionary<string, object> options;
+
+        switch (index) {
+            case 0:
+                options = new Dictionary<string, object>() {{ "culture", "cs-CZ"}};
+                break;
+            case 1:
+                options = new Dictionary<string, object>() {{ "culture", "de-DE"}};
+                break;
+            case 2:
+                options = new Dictionary<string, object>() {{ "culture", "en-CA"}};
+                break;
+            case 3:
+                options = new Dictionary<string, object>() {{ "culture", "en-US"}};
+                break;
+            case 4:
+                options = new Dictionary<string, object>() {{ "culture", "fr-FR"}};
+                break;
+            case 5:
+                options = new Dictionary<string, object>() {{ "culture", "it-IT"}};
+                break;
+            case 6:
+                options = new Dictionary<string, object>() {{ "culture", "ja-JP"}};
+                break;
+            case 7:
+                options = new Dictionary<string, object>() {{ "culture", "he-IL"}};
+                break;
+            case 8:
+                options = new Dictionary<string, object>() {{ "culture", "ru-RU"}};
+                break;
+            case 9:
+                options = new Dictionary<string, object>() {{ "culture", "hr"}};
+                break;
+            case 10:
+                options = new Dictionary<string, object>() {{ "culture", "sa-IN"}};
+                break;
+            default: 
+                options = new Dictionary<string, object>() {{ "culture", "en-US"}};
+                break;
+        }
+
+        myCalendar.setOptions(options);
+    }
+}
+
+<style>
+    .jqx-calendar {
+        float: left; 
+        margin-right: 20px;
+    }
+
+    .jqx-dropdownlist {
+        float: left;
+    }
+</style>

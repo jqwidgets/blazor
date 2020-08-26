@@ -1,0 +1,74 @@
+﻿<JqxDateTimeInput @ref="dateTimeInput" width="250" height="25"></JqxDateTimeInput>
+<br />
+
+<div>
+    <div style="font-family: 'Verdana', 'sans-serif'; font-size: 13px;">Choose Culture</div>
+    <br />
+    <JqxDropDownList width="200" height="25" source="source" selectedIndex="3" onSelect="onSelect"></JqxDropDownList>
+</div>
+
+@code {
+    JqxDateTimeInput dateTimeInput;
+
+    string[] source = new string[]
+    {
+        "Czech (Czech Republic)", 
+        "German (Germany)", 
+        "English (Canada)", 
+        "English (United States)",
+        "French (France)",
+        "Italian (Italy)", 
+        "Japanese (Japan)",  
+        "Hebrew (Israel)", 
+        "Russian (Russia)", 
+        "Croatian (Croatia)", 
+        "Sanskrit (India)"
+    };
+
+    private void onSelect(IDictionary<string, object> e)
+    {
+        IDictionary<string, object> newCulture;
+
+        switch(int.Parse(e["index"].ToString())) 
+        {
+            case 0:
+                newCulture = new Dictionary<string, object>() { { "culture", "cs-CZ"} };                
+                break;
+            case 1:
+                newCulture = new Dictionary<string, object>() { { "culture", "de-DE"} };  
+                break;
+            case 2:
+                newCulture = new Dictionary<string, object>() { { "culture", "en-CA"} };  
+                break;
+            case 3:
+                newCulture = new Dictionary<string, object>() { { "culture", "en-US"} };  
+                break;
+            case 4:
+                newCulture = new Dictionary<string, object>() { { "culture", "fr-FR"} };  
+                break;
+            case 5:
+                newCulture = new Dictionary<string, object>() { { "culture", "it-IT"} };  
+                break;
+            case 6:
+                newCulture = new Dictionary<string, object>() { { "culture", "ja-JP"} };  
+                break;
+            case 7:
+                newCulture = new Dictionary<string, object>() { { "culture", "he-IL"} };  
+                break;
+            case 8:
+                newCulture = new Dictionary<string, object>() { { "culture", "cs-CZ"} };  
+                break;
+            case 9:
+                newCulture = new Dictionary<string, object>() { { "culture", "hr"} };  
+                break;
+            case 10:
+                newCulture = new Dictionary<string, object>() { { "culture", "sa-IN"} };  
+                break;
+            default: 
+                newCulture = new Dictionary<string, object>() { { "culture", "en-US"} }; 
+                break; 
+        }
+
+        dateTimeInput.setOptions(newCulture); 
+    } 
+}

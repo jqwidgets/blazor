@@ -1,0 +1,33 @@
+<JqxKnob
+    value=60 min=0 max=100 startAngle=120 endAngle=420 
+    rotation=rotation marks=marks labels=labels 
+    progressBar=progressBar pointer=pointer>
+</JqxKnob>
+
+@code {
+
+    string rotation = "clockwise";
+
+    IDictionary<string, object> marks = new Dictionary<string, object>()
+    {
+        { "colorRemaining", "#333" }, { "colorProgress", "#2db2e4" }, { "type", "circle" },
+        { "offset", "75%" }, { "thickness", 2 }, { "size", "2%" },
+        { "majorSize", "2%" }, { "majorInterval", 10 }, { "minorInterval", 2 }
+    };
+
+    IDictionary<string, object> labels = new Dictionary<string, object>()
+    {
+        { "offset", "88%" }, { "step", 5 }, { "visible", true }
+    };
+
+    IDictionary<string, object> progressBar = new Dictionary<string, object>()
+    {
+        { "size", "70%" }, { "offset", "0%" }
+    };
+
+    IDictionary<string, object> pointer = new Dictionary<string, object>()
+    {
+        { "style", new Dictionary<string, object>() { { "fill", "#00a4e1" }, { "stoke", "#00a4e1"} } },   
+        { "type", "line" }, { "size", "70%" }, { "offset", "0%" }, { "thickness", 4 }        
+    };
+}

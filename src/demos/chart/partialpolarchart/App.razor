@@ -1,0 +1,229 @@
+﻿<div id="chartContainer">
+    <JqxChart @ref="myChart"
+        title="Sales volume and revenue by city" description="(revenue in thousands)"
+        showLegend=true enableAnimations=false padding=padding titlePadding=titlePadding
+        source=dataset xAxis=xAxis valueAxis=valueAxis seriesGroups=seriesGroups colorScheme="scheme01">
+    </JqxChart>
+</div>
+<table style="width: 850px">
+    <tbody>
+        <tr>
+            <td style="padding-left: 50px">
+                <p style="font-family: Verdana; font-size: 12px">Move the slider to change start angle:</p>
+                <JqxSlider onChange="sliderStartAngle"
+                    width=240 min=0 max=360 step=1
+                    ticksFrequency=20 mode=mode>
+                </JqxSlider>
+            </td>
+            <td>
+              <p style="font-family: Verdana; font-size: 12px">Move the slider to change end angle:</p>
+                <JqxSlider onChange="sliderEndAngle"
+                    width=240 min=0 max=360 step=1
+                    ticksFrequency=20 mode=mode value="90">
+                </JqxSlider>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding-left: 50px">
+              <p style="font-family: Verdana; font-size: 12px">Move the slider to rotate:</p>
+                <JqxSlider onChange="sliderRotate"
+                    width=240 min=80 max=360 step=1
+                    ticksFrequency=20 mode=mode>
+                </JqxSlider>
+            </td>
+            <td>
+              <p style="font-family: Verdana; font-size: 12px">Move the slider to change the radius:</p>
+                <JqxSlider onChange="sliderRadius"
+                    width=240 min=80 max=140 step=1
+                    ticksFrequency=20 mode=mode value="120">
+                </JqxSlider>
+            </td>
+          </tr>
+          <tr style="height: 15px"></tr>
+          <tr>
+            <td style="padding-left: 50px">
+                <JqxCheckBox onChange="checkBoxTicksBetween"
+                    width=220 height="25">
+                    Tick marks between values
+                </JqxCheckBox>
+            </td>
+            <td>
+                <JqxCheckBox onChange="checkBoxAutoRotate"
+                    width=220 height="25" isChecked="true">
+                    Auto rotate axis text
+                </JqxCheckBox>
+              </td>
+        </tr>
+    </tbody>
+</table>
+
+@code {
+    JqxChart myChart;
+    
+    string mode = "fixed";
+
+    IDictionary<string, object>[] dataset = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>() { { "City", "London" }, { "SalesCountJan", 210 }, { "SalesRevenueJan", 123 } },
+        new Dictionary<string, object>() { { "City", "Madrid" }, { "SalesCountJan", 190 }, { "SalesRevenueJan", 114 } },
+        new Dictionary<string, object>() { { "City", "Munich" }, { "SalesCountJan", 201 }, { "SalesRevenueJan", 112 } },
+        new Dictionary<string, object>() { { "City", "Amsterdam" }, { "SalesCountJan", 110 }, { "SalesRevenueJan", 98 } },
+        new Dictionary<string, object>() { { "City", "Paris" }, { "SalesCountJan", 105 }, { "SalesRevenueJan", 93 } },
+        new Dictionary<string, object>() { { "City", "Prague" }, { "SalesCountJan", 54 }, { "SalesRevenueJan", 100 } }
+    };
+
+    IDictionary<string, int> padding = new Dictionary<string, int>()
+    {
+        { "left", 5 },
+        { "top", 5 },
+        { "right", 5 },
+        { "bottom", 5 }
+    };
+
+    IDictionary<string, int> titlePadding = new Dictionary<string, int>()
+    {
+        { "left", 0 },
+        { "top", 0 },
+        { "right", 0 },
+        { "bottom", 5 }
+    };    
+
+    static IDictionary<string, object> xAxisLabels = new Dictionary<string, object>() { { "autoRotate", true } };
+    IDictionary<string, object> xAxis = new Dictionary<string, object>()
+    {
+        { "dataField", "City" },
+        { "valuesOnTicks", true },
+        { "labels", xAxisLabels }        
+    };
+
+    static IDictionary<string, object> valueAxisLabels = new Dictionary<string, object>() 
+    { 
+        { 
+            "formatSettings", 
+            new Dictionary<string, object>()
+            {
+                { "decimalPlaces", 0 }
+            }
+        },
+        { "autoRotate", true }
+    };
+    IDictionary<string, object> valueAxis = new Dictionary<string, object>()
+    {
+        { "labels", valueAxisLabels }        
+    };
+
+    List<Dictionary<string, object>> seriesGroups = new List<Dictionary<string, object>>()
+    {      
+        new Dictionary<string, object>() 
+        { 
+            { "polar", true },
+            { "startAngle", 0 },
+            { "endAngle", 270 },
+            { "radius", 120 },
+            { "type", "line" },
+            {
+                "series", 
+                new Dictionary<string, object>[]
+                {
+                    new Dictionary<string, object>() 
+                    { 
+                        { "dataField", "SalesCountJan" }, 
+                        { "displayText", "Sales count" },
+                        { "opacity", 0.7 },
+                        { "radius", 2 },
+                        { "lineWidth", 2 },
+                        { "symbolType", "circle" }
+                    },
+                    new Dictionary<string, object>() 
+                    { 
+                        { "dataField", "SalesRevenueJan" }, 
+                        { "displayText", "Revenue" },
+                        { "opacity", 0.7 },
+                        { "radius", 2 },
+                        { "lineWidth", 2 },
+                        { "symbolType", "square" }
+                    }
+                }
+            }
+        }
+    };
+
+    public void sliderStartAngle(IDictionary<string, object> e)
+    {
+        int value = int.Parse(e["value"].ToString());
+        seriesGroups[0]["startAngle"] = value;
+        
+        updateChartSeriesGroups();
+    }
+
+    public void sliderEndAngle(IDictionary<string, object> e)
+    {
+        int value = 360 - int.Parse(e["value"].ToString());
+        seriesGroups[0]["endAngle"] = value;
+        
+        updateChartSeriesGroups();
+    }
+
+    public void sliderRotate(IDictionary<string, object> e)
+    {
+        int value = int.Parse(e["value"].ToString());
+        int endAngle = int.Parse(seriesGroups[0]["endAngle"].ToString());
+        int startAngle = int.Parse(seriesGroups[0]["startAngle"].ToString());
+        int diff = endAngle - startAngle;
+
+        seriesGroups[0]["startAngle"] = value;
+        seriesGroups[0]["endAngle"] = value + diff;
+
+        updateChartSeriesGroups();
+    }
+
+    public void sliderRadius(IDictionary<string, object> e)
+    {
+        int value = int.Parse(e["value"].ToString());
+        seriesGroups[0]["radius"] = value;
+        
+        updateChartSeriesGroups();
+    }
+
+    public void checkBoxTicksBetween(IDictionary<string, object> e)
+    {
+        bool isChecked = bool.Parse(e["checked"].ToString());
+        xAxis["valuesOnTicks"] = !isChecked;
+
+        var newXAxis = new Dictionary<string, object>()
+        {
+            { "xAxis", xAxis }
+        };
+        myChart.setOptions(newXAxis);
+    }
+   
+    public void checkBoxAutoRotate(IDictionary<string, object> e)
+    {
+        bool isChecked = bool.Parse(e["checked"].ToString());
+        xAxisLabels["autoRotate"] = isChecked;
+        valueAxisLabels["autoRotate"] = isChecked;
+
+        var newOptions = new Dictionary<string, object>()
+        {
+            { "xAxis", xAxis },
+            { "valueAxis", valueAxis }
+        };
+        myChart.setOptions(newOptions);
+    }
+
+    public void updateChartSeriesGroups()
+    {
+        var newSeries = new Dictionary<string, object>()
+        {
+            { "seriesGroups", seriesGroups }
+        };
+        myChart.setOptions(newSeries);
+    }
+}
+
+<style>
+    #chartContainer > div {
+        width: 800px;
+        height: 500px;
+    }
+</style>

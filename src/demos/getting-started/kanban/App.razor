@@ -1,0 +1,36 @@
+<JqxKanban
+    width=600 height=400 source=source columns=columns>
+</JqxKanban>
+
+@code {
+    IDictionary<string, object> source = new Dictionary<string, object>()
+    {
+        { 
+            "localData", 
+            new Dictionary<string, string>[] 
+            {
+                new Dictionary<string, string>() { { "state", "new" }, { "label", "Combine Orders" }, { "tags", "orders, combine" }, { "hex", "#5dc3f0" } },
+                new Dictionary<string, string>() { { "state", "new" }, { "label", "Change Billing Address" }, { "tags", "billing" }, { "hex", "#f19b60" } },
+                new Dictionary<string, string>() { { "state", "new" }, { "label", "One item added to the cart" }, { "tags", "cart" }, { "hex", "#5dc3f0" } },
+                new Dictionary<string, string>() { { "state", "new" }, { "label", "Edit Item Price" }, { "tags", "price, edit" }, { "hex", "5dc3f0" } },
+                new Dictionary<string, string>() { { "state", "new" }, { "label", "Login 404 issue" }, { "tags", "issue, login" }, { "hex", "#6bbd49" } }
+            }
+        },
+        { "dataType", "array" },
+        { 
+            "dataFields", 
+            new Dictionary<string, string>[] 
+            {
+                new Dictionary<string, string>() { { "name", "status" }, { "map", "state" }, { "type", "string" } },
+                new Dictionary<string, string>() { { "name", "text" }, { "map", "label" }, { "type", "string" } },
+                new Dictionary<string, string>() { { "name", "tags" }, { "type", "string" } },
+                new Dictionary<string, string>() { { "name", "color" }, { "map", "hex" }, { "type", "string" } }
+            }
+        }
+    };
+
+    IDictionary<string, object>[] columns = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>() { { "text", "Backlog" }, { "dataField", "new" }, { "maxItems", 10 } } 
+    };
+}

@@ -1,0 +1,76 @@
+﻿@inject IJSRuntime JSRuntime;
+
+<div style='margin-top: 20px'>
+    <JqxButton width=120 height=40 onClick="buttonClicked">Button</JqxButton>
+</div>
+<div style='margin-top: 20px'>
+    <JqxButton width=120 height=40 onClick="submitButtonClicked">Submit</JqxButton>
+</div>
+<div style='margin-top: 20px'>
+    <JqxButton width=120 height=40 imgSrc="./images/facebook.png" onClick="imageButtonClicked"></JqxButton>
+</div>
+<div style='margin-top: 20px'>
+    <JqxButton @ref="myTextImageButton"
+        width=120 height=40 textImageRelation=textImageRelation textPosition=textPosition
+        imgSrc="./images/twitter.png" onClick="textImageButtonClicked">
+        Button
+    </JqxButton>
+</div>
+<div style='margin-top: 20px'>
+    <JqxButton @ref="myHTMLButton" width=120 height=40 onClick="htmlButtonClicked">
+        <span style='font-weight: bold;'>HTML Button</span>
+    </JqxButton>
+</div>
+<div style='margin-top: 20px'>
+    <JqxButton width=120 height=40 disabled=true>Disabled</JqxButton>
+</div>
+
+<div style='margin-top:1em'>Events:</div>
+<div @ref="events"></div>
+
+@code {
+    JqxButton myTextImageButton;
+    JqxButton myHTMLButton;
+    ElementReference events;
+    string textImageRelation = "imageBeforeText";
+    string textPosition = "left";
+
+    public void buttonClicked(IDictionary<string, object> e)
+    {
+        JSRuntime.InvokeVoidAsync("Example.updateInnerHtml", events, "<span>Button Clicked</span>");
+    }
+
+    public void submitButtonClicked(IDictionary<string, object> e)
+    {
+        JSRuntime.InvokeVoidAsync("Example.updateInnerHtml", events, "<span>Submit Button Clicked</span>");
+    }
+
+    public void imageButtonClicked(IDictionary<string, object> e)
+    {
+        JSRuntime.InvokeVoidAsync("Example.updateInnerHtml", events, "<span>Image Button Clicked</span>");
+    }
+
+    public void textImageButtonClicked(IDictionary<string, object> e)
+    {
+        var options = new Dictionary<string, string> ()
+        {
+            { "textImageRelation", "textBeforeImage" },
+            { "imgPosition", "left" },
+            { "textPosition", "center" }
+        };
+
+        myTextImageButton.setOptions(options);
+        JSRuntime.InvokeVoidAsync("Example.updateInnerHtml", events, "<span>Text/Image Button Clicked</span>");
+    }
+
+    public void htmlButtonClicked(IDictionary<string, object> e)
+    {
+        var options = new Dictionary<string, string> ()
+        {
+            { "value", "<span style='font-style: italic; position: relative; right: 8px'>Thanks for clicking me!</span>" }
+        };
+  
+        myHTMLButton.setOptions(options);
+        JSRuntime.InvokeVoidAsync("Example.updateInnerHtml", events, "<span>HTML Button Clicked</span>");
+    }
+}

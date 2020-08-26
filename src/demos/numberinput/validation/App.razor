@@ -1,0 +1,25 @@
+﻿<div style="font-size: 13px; font-family: Verdana; float: left;">
+    <div>The input is restricted from 0 to 1000</div>
+
+    <div style='margin-top: 10px;'>Number</div>
+    <JqxNumberInput width="width" height="height" min="min" max="max"></JqxNumberInput>
+
+    <div style='margin-top: 10px;'>Currency</div>
+    <JqxNumberInput width="width" height="height" min="min" max="max" symbol="$"></JqxNumberInput>
+
+    <div style='margin-top: 10px;'>Custom Validation Message</div>
+    <JqxNumberInput width="width" height="height"min="min" max="max" value="0"></JqxNumberInput>
+</div>
+
+@code { 
+    int width = 250;
+    int height = 25;
+    int min = 0;
+    int max = 1000;
+} 
+
+<style>
+    .jqx-numberinput {
+       margin-top: 3px; 
+    }
+</style> 

@@ -1,0 +1,16 @@
+<br/>
+
+<br/>
+
+<JqxTextArea @ref="myTextArea" rtl="true" width="300" height="100"></JqxTextArea>
+
+@code {
+    JqxTextArea myTextArea;
+    
+    string text = "jQWidgets is a comprehensive and innovative widget library built on top of the jQuery JavaScript Library. It empowers developers to deliver professional, cross-browser compatible web applications, while significantly minimizing their development time. jQWidgets contains more than 60 UI widgets and is one of the fastest growing JavaScript UI frameworks on the Web.";
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Delay(200);
+        myTextArea.val(text);
+    }
+}

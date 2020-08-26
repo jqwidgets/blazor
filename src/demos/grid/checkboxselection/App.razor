@@ -1,0 +1,87 @@
+﻿<JqxGrid
+    width=850 height=450 source=source columns=columns filterable=true 
+    sortable=true altrows=true selectionmode="selectionMode">
+</JqxGrid>
+
+@code {
+    string selectionMode = "checkbox";
+
+    IDictionary<string, object> source = new Dictionary<string, object>()
+    {
+        { 
+            "dataFields",
+            new Dictionary<string, string>[]
+            {
+                new Dictionary<string, string>() { { "name", "firstname" }, { "type", "string" } },
+                new Dictionary<string, string>() { { "name", "lastname" }, { "type", "string" } },
+                new Dictionary<string, string>() { { "name", "productname" }, { "type", "string" } },
+                new Dictionary<string, string>() { { "name", "date" }, { "type", "date" } },
+                new Dictionary<string, string>() { { "name", "quantity" }, { "type", "number" } },
+                new Dictionary<string, string>() { { "name", "price" }, { "type", "number" } }
+            }
+        },
+        { "datatype", "array" },
+        { "localdata", generateData(100) }
+    };
+
+    IDictionary<string, object>[] columns = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>() 
+        {
+            { "text", "First Name" }, { "datafield", "firstname" }, { "width", 160 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Last Name" }, { "datafield", "lastname" }, { "width", 160 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Product" }, { "datafield", "productname" }, { "width", 170 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Order Date" }, { "datafield", "date" }, { "width", 160 }, { "cellsformat", "dd-MMMM-yyyy" }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Quantity" }, { "datafield", "quantity" }, { "width", 80 }, { "cellsalign", "right" }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Unit Price" }, { "datafield", "price" }, { "cellsalign", "right" }, { "cellsformat", "c2" }
+        }
+    };
+
+    public static IList<IDictionary<string, object>> generateData(int number)
+    {
+        IList<IDictionary<string, object>> data = new List<IDictionary<string, object>>();
+
+        string[] firstNames = new string[] { "Andrew", "Nancy", "Shelley", "Regina", "Yoshi", "Antoni", "Mayumi", "Ian", "Peter", "Lars", "Petra", "Martin", "Sven", "Elio", "Beate", "Cheryl", "Michael", "Guylene" };
+        string[] lastNames = new string[] { "Fuller", "Davolio", "Burke", "Murphy", "Nagase", "Saavedra", "Ohno", "Devling", "Wilson", "Peterson", "Winkler", "Bein", "Petersen", "Rossi", "Vileid", "Saylor", "Bjorn", "Nodier" };
+        string[] productNames = new string[] { "Black Tea", "Green Tea", "Caffe Espresso", "Doubleshot Espresso", "Caffe Latte", "White Chocolate Mocha", "Cramel Latte", "Caffe Americano", "Cappuccino", "Espresso Truffle", "Espresso con Panna", "Peppermint Mocha Twist" };
+        double[] priceValues = new double[] { 2.25, 1.5, 3.0, 3.3, 4.5, 3.6, 3.8, 2.5, 5.0, 1.75, 3.25, 4.0 };
+
+        Random random = new Random();
+        for (int i = 0; i < number; i++)
+        {
+           
+            Dictionary<string, object> row = new Dictionary<string, object>();
+            int productIndex = random.Next(0, productNames.Count());    
+            double price = priceValues[productIndex];
+            int quantity = random.Next(1, 100);
+
+            row.Add("firstname", firstNames[random.Next(0, firstNames.Length)]);
+            row.Add("lastname", lastNames[random.Next(0, lastNames.Length)]);
+            row.Add("productname", productNames[random.Next(0, productNames.Length)]);
+            row.Add("available", random.Next(2) % 2 == 0 ? true : false );
+            row.Add("data", new DateTime().AddDays(random.Next(500)));
+            row.Add("price", price);
+            row.Add("quantity", quantity);
+            row.Add("total", price * quantity);
+
+            data.Add(row);
+        }
+
+        return data;
+    }
+}

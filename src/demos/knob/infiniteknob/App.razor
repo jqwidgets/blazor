@@ -1,0 +1,165 @@
+<JqxKnob @ref="myKnob" onChange="myKnobChange"
+    value=60 min=0 max=100 startAngle=150 endAngle=510 
+    snapToStep=true rotation=rotation marks=marks labels=labels 
+    progressBar=progressBar pointer=pointer spinner=spinner dial=dial>
+</JqxKnob>
+
+@code {
+    JqxKnob myKnob;
+
+    string rotation = "clockwise";
+
+    IDictionary<string, object> marks = new Dictionary<string, object>()
+    {
+        { "colorRemaining", "#333" }, { "colorProgress", "#333" }, { "type", "line" },
+        { "offset", "71%" }, { "thickness", 1 }, { "size", "6%" },
+        { "majorSize", "9%" }, { "majorInterval", 10 }, { "minorInterval", 2 }    
+    };
+
+    IDictionary<string, object> labels = new Dictionary<string, object>()
+    {
+        { "offset", "88%" }, { "step", 10 }
+    };
+
+    IDictionary<string, object> progressBar = new Dictionary<string, object>()
+    {
+        { 
+            "style", 
+            new Dictionary<string, object>() 
+            { 
+                { 
+                    "fill", 
+                    new Dictionary<string, object>() 
+                    {
+                        { "color", "#00a644" },
+                        { "gradientType", "linear" },
+                        {
+                            "gradientStops",
+                            new double[][] { new double[] { 0, 1 }, new double[] { 50, 0.9 }, new double[] { 100, 1 } }
+                        }
+                    } 
+                },
+                { "stroke", "#00a644" }
+            }    
+        },
+        { 
+            "background", 
+            new Dictionary<string, object>() 
+            { 
+                { 
+                    "fill", 
+                    new Dictionary<string, object>() 
+                    {
+                        { "color", "#ff8b1e" },
+                        { "gradientType", "linear" },
+                        {
+                            "gradientStops",
+                            new double[][] { new double[] { 0, 1 }, new double[] { 50, 0.9 }, new double[] { 100, 1 } }
+                        }
+                    } 
+                },
+                { "stroke", "#ff8b1e" }
+            }    
+        },
+        { "size", "9%" }, { "offset", "60%" }
+    };
+
+    IDictionary<string, object> pointer = new Dictionary<string, object>()
+    {
+        { "style", new Dictionary<string, object>() { { "fill", "#ef6100" }, { "stoke", "#ef6100"} } },   
+        { "type", "circle" }, { "size", "5%" }, { "offset", "38%" }, { "thickness", 20 }        
+    };
+
+    IDictionary<string, object> spinner = new Dictionary<string, object>()
+    {
+        { 
+            "style", 
+            new Dictionary<string, object>() 
+            { 
+                { 
+                    "fill", 
+                    new Dictionary<string, object>() 
+                    {
+                        { "color", "#00a4e1" },
+                        { "gradientType", "linear" },
+                        {
+                            "gradientStops",
+                            new double[][] { new double[] { 0, 1 }, new double[] { 50, 0.9 }, new double[] { 100, 1 } }
+                        }
+                    } 
+                },
+                { "stroke", "#00a4e1" }
+            }    
+        },
+        { "innerRadius", "45%" }, { "outerRadius", "60%" },
+        { 
+            "marks", 
+            new Dictionary<string, object>() 
+            {
+                { "colorRemaining", "#fff" }, { "colorProgress", "#fff" },
+                { "type", "line" }, { "offset", "46%" }, { "thickness", 2 }, { "size", "14%" },
+                { "majorSize", "14%" }, { "majorInterval", 10 }, { "minorInterval", 10 } 
+            } 
+        }
+    };
+
+    IDictionary<string, object> dial = new Dictionary<string, object>()
+    {
+        { 
+            "style", 
+            new Dictionary<string, object>() 
+            { 
+                { 
+                    "fill", 
+                    new Dictionary<string, object>() 
+                    {
+                        { "color", "#dfe3e9" },
+                        { "gradientType", "linearHorizontal" },
+                        {
+                            "gradientStops",
+                            new double[][] { new double[] { 0, 0.9 }, new double[] { 50, 1 }, new double[] { 100, 1 } }
+                        }
+                    } 
+                },
+                { "stroke", "#dfe3e9" }
+            }    
+        },
+        { "innerRadius", "0%" }, { "outerRadius", "45%" }
+    };
+
+    int lastValue;
+    int newValue = 0;
+    int min = 0;
+    int max = 100;
+    
+    private void myKnobChange(IDictionary<string, object> e) 
+    {
+        lastValue = newValue;
+        newValue = int.Parse(e["value"].ToString());
+
+        if (newValue >= min && newValue <= min + 10 && lastValue <= max && lastValue >= max - 10)
+        {
+            min = max;
+            max += 100;
+
+            Console.WriteLine(min);
+            Console.WriteLine(max);
+            myKnob.setOptions(new Dictionary<string, int>()
+            {
+                { "value", max }, { "min", min }, { "max", max }
+            });
+        }
+        else if (newValue >= max - 10 && newValue <= max && lastValue >= min && lastValue <= min + 10)
+        {
+            max = min;
+            min -= 100;
+
+        Console.WriteLine(min);
+            Console.WriteLine(max);
+            myKnob.setOptions(new Dictionary<string, int>()
+            {
+                { "value", min }, { "min", min }, { "max", max }
+            });
+        }
+    }
+}

@@ -1,0 +1,209 @@
+<JqxTreeGrid @ref="myTreeGrid" onComponentReady="Ready" localization="getLocalization()" width="width" sortable="true" pageable="true" pagerMode="pagerMode" pagerHeight="35" source="datasource" columns="columns"></JqxTreeGrid>
+
+@code {
+    JqxTreeGrid myTreeGrid;
+
+    object width = "850";
+    string pagerMode = "advanced";
+            
+    Dictionary<string, object> datasource = new Dictionary<string, object>()
+    {
+        { "dataType", "array" },
+        {
+            "hierarchy",
+            new Dictionary<string, object>
+            {
+                { "keyDataField", new Dictionary<string, object> { { "name", "id" } } },
+                { "parentDataField", new Dictionary<string, object> { { "name", "parentid" } } }
+            }
+        },
+        {
+            "dataFields",
+            new Dictionary<string, object>[]
+            {
+                new Dictionary<string, object>() { { "name", "name" }, { "type", "string" } },
+                new Dictionary<string, object>() { { "name", "quantity" }, { "type", "number" } },
+                new Dictionary<string, object>() { { "name", "id" }, { "type", "string" } },
+                new Dictionary<string, object>() { { "name", "parentid" }, { "type", "number" } },
+                new Dictionary<string, object>() { { "name", "price" }, { "type", "number" } },
+                new Dictionary<string, object>() { { "name", "date" }, { "type", "string" } },
+                new Dictionary<string, object>() { { "name", "customer" }, { "type", "string" } }
+            }
+        },
+        { "id", "id" },
+        { "localdata", generateOrdersData(10) }
+    };
+
+    Dictionary<string, object>[] columns = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>()
+        {
+            { "text", "Bestellung Name" },
+            { "dataField", "name" },
+            { "align", "center" },
+            { "width", 250 }
+        },
+        new Dictionary<string, object>()
+        {
+            { "text", "Auftraggeber" },
+            { "dataField", "customer" },
+            { "align", "center" },
+            { "width", 250 }
+        },
+        new Dictionary<string, object>()
+        {
+            { "text", "Preis" },
+            { "dataField", "price" },
+            { "cellsFormat", "c2" },
+            { "align", "center" },
+            { "cellsAlign", "right" },
+            { "width", 180 }
+        },
+        new Dictionary<string, object>()
+        {
+            { "text", "Bestellung Datum" },
+            { "dataField", "date" },
+            { "align", "center" }
+        }
+    };
+
+    private Dictionary<string, object> getLocalization()
+    {
+        Dictionary<string, object> localizationobj = new Dictionary<string, object>()
+        {
+            { "pagerGoToPageString", "Gehe zu:" },
+            { "pagerShowRowsString", "Zeige Zeile:" },
+            { "pagerRangeString", " von " },
+            { "pagerNextButtonString", "voriger" },
+            { "pagerFirstButtonString", "erste" },
+            { "pagerLastButtonString", "letzte" },
+            { "pagerPreviousButtonString", "nächster" },
+            { "sortAscendingString", "Sortiere aufsteigend" },
+            { "sortDescendingString", "Sortiere absteigend" },
+            { "sortRemoveString", "Entferne Sortierung" },
+            { "emptydatastring", "keine Daten angezeigt" },
+            { "firstDay", 1 },
+            { "percentSymbol", "%" },
+            { "currencySymbol", "€" },
+            { "currencySymbolPosition", "after" },
+            { "decimalSeparator", "." },
+            { "thousandsSeparator", "," },
+            {
+                "days",
+                new Dictionary<string, object>()
+                {
+                    // full day names
+                    { "names", new string[] { "Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag" } },
+                    // abbreviated day names
+                    { "namesAbbr", new string[] { "Sonn", "Mon", "Dien", "Mitt", "Donn", "Fre", "Sams" } },
+                    // shortest day names
+                    { "namesShort", new string[] { "So", "Mo", "Di", "Mi", "Do", "Fr", "Sa" } }
+                }
+            },
+            {
+                "months",
+                new Dictionary<string, object>()
+                {
+                    // full month names (13 months for lunar calendards -- 13th month should be "" if not lunar)
+                    { "names", new string[] { "Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember", "" } },
+                    // abbreviated month names
+                    { "namesAbbr", new string[] { "Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dez", "" } }
+                }
+            },
+            {
+                "patterns",
+                new Dictionary<string, object>()
+                {
+                    { "d", "dd.MM.yyyy" },
+                    { "D", "dddd, d. MMMM yyyy" },
+                    { "t", "HH:mm" },
+                    { "T", "HH:mm:ss" },
+                    { "f", "dddd, d. MMMM yyyy HH:mm" },
+                    { "F", "dddd, d. MMMM yyyy HH:mm:ss" },
+                    { "M", "dd MMMM" },
+                    { "Y", "MMMM yyyy" }
+                }
+            }
+        };
+
+        return localizationobj;
+    }
+
+    public static IList<IDictionary<string, object>> generateOrdersData(int number)
+    {
+        IList<IDictionary<string, object>> data = new List<IDictionary<string, object>>();
+
+        string[] firstNames = new string[] { "Andrew", "Nancy", "Shelley", "Regina", "Yoshi", "Antoni", "Mayumi", "Ian", "Peter", "Lars", "Petra", "Martin", "Sven", "Elio", "Beate", "Cheryl", "Michael", "Guylene" };
+        string[] lastNames = new string[] { "Fuller", "Davolio", "Burke", "Murphy", "Nagase", "Saavedra", "Ohno", "Devling", "Wilson", "Peterson", "Winkler", "Bein", "Petersen", "Rossi", "Vileid", "Saylor", "Bjorn", "Nodier" };
+        string[] productNames = new string[] { "Black Tea", "Green Tea", "Caffe Espresso", "Doubleshot Espresso", "Caffe Latte", "White Chocolate Mocha", "Cramel Latte", "Caffe Americano", "Cappuccino", "Espresso Truffle", "Espresso con Panna", "Peppermint Mocha Twist" };
+        double[] priceValues = new double[] { 2.25, 1.5, 3.0, 3.3, 4.5, 3.6, 3.8, 2.5, 5.0, 1.75, 3.25, 4.0 };
+        string[] companyNames = new string[] { "Dolor Foundation", "Vivamus Non Lorem LLP", "Vel Ltd", "Turpis Incorporated", "Egestas Nunc PC", "At Pretium Aliquet Associates", "Feugiat Inc.", "Lacus Industries", "Senectus Et Foundation", "Sed LLC", "Maecenas Mi Felis LLC", "Pede Blandit Ltd", "Pellentesque Habitant Morbi Institute", "Mollis Vitae Industries", "Malesuada Vel Convallis LLP", "Risus Duis Corp.", "Convallis LLP", "Lobortis Augue LLC", "Auctor LLP", "Neque Inc.", "Lorem Eu Corporation" };
+
+        Random random = new Random();
+
+        for (int i = 0; i < number; i++)
+        {           
+            Dictionary<string, object> row = new Dictionary<string, object>();
+            int productIndex = random.Next(0, productNames.Count());
+            int quantity = random.Next(1, 100);
+            row.Add("id", i);
+            row.Add("parentid", null);
+            row.Add("name", "Order " + i);
+            row.Add("customer", companyNames[random.Next(0, companyNames.Length)]);
+            DateTime date = RandomDate();
+            row.Add("date", date.ToString("dd-MMMM-yyyy"));
+            int subRowsCount = random.Next(1, 8);
+            double t = 0;
+            int q = 0;
+            
+            for (int j = 0; j < subRowsCount; j++)
+            {
+                Dictionary<string, object> subRow = new Dictionary<string, object>();
+                string firstName = firstNames[random.Next(0, firstNames.Length)];
+                string lastName = lastNames[random.Next(0, lastNames.Length)];
+                int innerProductIndex = random.Next(0, productNames.Count());
+                double price = priceValues[innerProductIndex];
+                int innerQuantity = 1;
+                subRow.Add("name", productNames[innerProductIndex]);
+                subRow.Add("id", "" + i + "." + (1 + j));
+                subRow.Add("parentid", i);                
+                subRow.Add("price", price);
+                subRow.Add("quantity", innerQuantity);
+                Random newRandom = new Random();                
+                int hours = newRandom.Next(1, 23);
+                string hoursString = hours < 10 ? "0" + hours.ToString() : hours.ToString();
+                int minutes = newRandom.Next(1, 59);
+                string minutesString = minutes < 10 ? "0" + minutes.ToString() : minutes.ToString();
+                subRow.Add("date", date.ToString("dd-MMMM-yyyy") + " " + hoursString + ":" + minutes);
+                subRow.Add("customer", firstName + " " + lastName);
+                t += innerQuantity * price;
+                q += innerQuantity;
+                data.Add(subRow);
+            }
+            
+            row.Add("price", t);
+            row.Add("quantity", q);
+            data.Add(row);
+        }
+
+        return data;
+    }
+    
+    public static DateTime RandomDate()
+    {
+        Random random = new Random();
+        int month = random.Next(1, 12);
+        int day = random.Next(1, 28);
+        int hour = random.Next(1, 24);
+        int minute = random.Next(1, 59);
+        int second = random.Next(1, 59);
+        DateTime date = new DateTime(2016, month, day, hour, minute, second);
+
+        return date;
+    }
+
+    private void Ready()
+    {
+        myTreeGrid.expandRow(2);
+    }
+}

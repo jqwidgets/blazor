@@ -1,0 +1,926 @@
+﻿<JqxComboBox 
+    @ref="myComboBox" onComponentReady="onReady" rtl="true" width="200" 
+    height="30" source="source" displayMember="label" valueMember="value">    
+</JqxComboBox>
+
+
+@code {
+    JqxComboBox myComboBox;
+
+    private void onReady()
+    {
+        myComboBox.selectIndex(5);
+    }
+
+    List<Dictionary<string, string>> source = new List<Dictionary<string, string>>()
+    {
+        new Dictionary<string, string>() {
+            { "value", "AF" },
+            { "label", "Afghanistan" }
+        },
+        new Dictionary<string, string>() {
+            { "value", "AL" },
+            { "label", "Albania" }
+        },
+        new Dictionary<string, string>() {
+            { "value", "DZ" },
+            { "label", "Algeria" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "AS" },
+            { "label", "American Samoa" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "AD" },
+            { "label", "Andorra" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "AO" },
+            { "label", "Angola" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "AI" },
+            { "label", "Anguilla" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "AQ" },
+            { "label", "Antarctica" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "AG" },
+            { "label", "Antigua and Barbuda" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "AR" },
+            { "label", "Argentina" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "AM" },
+            { "label", "Armenia" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "AW" },
+            { "label", "Aruba" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "AU" },
+            { "label", "Australia" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "AT" },
+            { "label", "Austria" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "AZ" },
+            { "label", "Azerbaijan" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "BS" },
+            { "label", "Bahamas" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "BH" },
+            { "label", "Bahrain" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "BD" },
+            { "label", "Bangladesh" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "BB" },
+            { "label", "Barbados" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "BY" },
+            { "label", "Belarus" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "BE" },
+            { "label", "Belgium" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "BZ" },
+            { "label", "Belize" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "BJ" },
+            { "label", "Benin" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "BM" },
+            { "label", "Bermuda" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "BT" },
+            { "label", "Bhutan" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "BO" },
+            { "label", "Bolivia" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "BA" },
+            { "label", "Bosnia and Herzegovina" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "BW" },
+            { "label", "Botswana" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "BV" },
+            { "label", "Bouvet Island" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "BR" },
+            { "label", "Brazil" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "BN" },
+            { "label", "Brunei" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "BG" },
+            { "label", "Bulgaria" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "BF" },
+            { "label", "Burkina Faso" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "BI" },
+            { "label", "Burundi" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "KH" },
+            { "label", "Cambodia" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "CM" },
+            { "label", "Cameroon" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "CA" },
+            { "label", "Canada" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "CV" },
+            { "label", "Cape Verde" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "KY" },
+            { "label", "Cayman Islands" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "CF" },
+            { "label", "Central African Republic" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "TD" },
+            { "label", "Chad" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "CL" },
+            { "label", "Chile" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "CN" },
+            { "label", "China" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "CX" },
+            { "label", "Christmas Island" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "CC" },
+            { "label", "Cocos (Keeling) Islands" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "CO" },
+            { "label", "Columbia" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "KM" },
+            { "label", "Comoros" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "CG" },
+            { "label", "Congo" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "CK" },
+            { "label", "Cook Islands" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "CR" },
+            { "label", "Costa Rica" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "CI" },
+            { "label", "Cote D'Ivorie" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "HR" },
+            { "label", "Croatia (Hrvatska)" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "CU" },
+            { "label", "Cuba" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "CY" },
+            { "label", "Cyprus" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "CZ" },
+            { "label", "Czech Republic" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "DK" },
+            { "label", "Denmark" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "DJ" },
+            { "label", "Djibouti" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "DM" },
+            { "label", "Dominica" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "DO" },
+            { "label", "Dominican Republic" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "TP" },
+            { "label", "East Timor" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "EC" },
+            { "label", "Ecuador" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "EG" },
+            { "label", "Egypt" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "SV" },
+            { "label", "El Salvador" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "GQ" },
+            { "label", "Equatorial Guinea" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "ER" },
+            { "label", "Eritrea" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "EE" },
+            { "label", "Estonia" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "ET" },
+            { "label", "Ethiopia" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "FO" },
+            { "label", "Faroe Islands" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "FJ" },
+            { "label", "Fiji" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "FI" },
+            { "label", "Finland" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "FR" },
+            { "label", "France" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "GF" },
+            { "label", "French Guinea" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "PF" },
+            { "label", "French Polynesia" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "GA" },
+            { "label", "Gabon" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "GM" },
+            { "label", "Gambia" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "GE" },
+            { "label", "Georgia" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "DE" },
+            { "label", "Germany" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "GH" },
+            { "label", "Ghana" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "GI" },
+            { "label", "Gibraltar" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "GR" },
+            { "label", "Greece" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "GL" },
+            { "label", "Greenland" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "GD" },
+            { "label", "Grenada" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "GP" },
+            { "label", "Guadeloupe" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "GU" },
+            { "label", "Guam" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "GT" },
+            { "label", "Guatemala" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "GN" },
+            { "label", "Guinea" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "GW" },
+            { "label", "Guinea-Bissau" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "GY" },
+            { "label", "Guyana" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "HT" },
+            { "label", "Haiti" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "HN" },
+            { "label", "Honduras" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "HK" },
+            { "label", "Hong Kong" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "HU" },
+            { "label", "Hungary" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "IS" },
+            { "label", "Iceland" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "IN" },
+            { "label", "India" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "ID" },
+            { "label", "Indonesia" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "IR" },
+            { "label", "Iran" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "IQ" },
+            { "label", "Iraq" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "IE" },
+            { "label", "Ireland" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "IL" },
+            { "label", "Israel" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "IT" },
+            { "label", "Italy" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "JM" },
+            { "label", "Jamaica" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "JP" },
+            { "label", "Japan" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "JO" },
+            { "label", "Jordan" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "KZ" },
+            { "label", "Kazakhstan" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "KE" },
+            { "label", "Kenya" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "KI" },
+            { "label", "Kiribati" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "KW" },
+            { "label", "Kuwait" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "KG" },
+            { "label", "Kyrgyzstan" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "LA" },
+            { "label", "Laos" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "LV" },
+            { "label", "Latvia" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "LB" },
+            { "label", "Lebanon" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "LS" },
+            { "label", "Lesotho" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "LR" },
+            { "label", "Liberia" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "LY" },
+            { "label", "Libya" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "LI" },
+            { "label", "Liechtenstein" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "LT" },
+            { "label", "Lithuania" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "LU" },
+            { "label", "Luxembourg" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "MO" },
+            { "label", "Macau" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "MK" },
+            { "label", "Macedonia" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "MG" },
+            { "label", "Madagascar" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "MW" },
+            { "label", "Malawi" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "MY" },
+            { "label", "Malaysia" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "MV" },
+            { "label", "Maldives" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "ML" },
+            { "label", "Mali" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "MT" },
+            { "label", "Malta" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "MH" },
+            { "label", "Marshall Islands" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "MQ" },
+            { "label", "Martinique" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "MR" },
+            { "label", "Mauritania" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "MU" },
+            { "label", "Mauritius" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "YT" },
+            { "label", "Mayotte" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "MX" },
+            { "label", "Mexico" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "FM" },
+            { "label", "Micronesia" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "MD" },
+            { "label", "Moldova" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "MC" },
+            { "label", "Monaco" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "MN" },
+            { "label", "Mongolia" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "MS" },
+            { "label", "Montserrat" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "MA" },
+            { "label", "Morocco" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "MZ" },
+            { "label", "Mozambique" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "MM" },
+            { "label", "Myanmar (Burma)" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "NA" },
+            { "label", "Namibia" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "NR" },
+            { "label", "Nauru" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "NP" },
+            { "label", "Nepal" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "NL" },
+            { "label", "Netherlands" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "AN" },
+            { "label", "Netherlands Antilles" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "NC" },
+            { "label", "New Caledonia" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "NZ" },
+            { "label", "New Zealand" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "NI" },
+            { "label", "Nicaragua" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "NE" },
+            { "label", "Niger" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "NG" },
+            { "label", "Nigeria" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "NU" },
+            { "label", "Niue" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "NF" },
+            { "label", "Norfolk Island" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "KP" },
+            { "label", "North Korea" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "NO" },
+            { "label", "Norway" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "OM" },
+            { "label", "Oman" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "PK" },
+            { "label", "Pakistan" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "PW" },
+            { "label", "Palau" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "PA" },
+            { "label", "Panama" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "PG" },
+            { "label", "Papua New Guinea" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "PY" },
+            { "label", "Paraguay" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "PE" },
+            { "label", "Peru" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "PH" },
+            { "label", "Philippines" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "PN" },
+            { "label", "Pitcairn" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "PL" },
+            { "label", "Poland" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "PT" },
+            { "label", "Portugal" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "PR" },
+            { "label", "Puerto Rico" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "QA" },
+            { "label", "Qatar" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "RE" },
+            { "label", "Reunion" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "RO" },
+            { "label", "Romania" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "RU" },
+            { "label", "Russia" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "RW" },
+            { "label", "Rwanda" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "SH" },
+            { "label", "Saint Helena" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "KN" },
+            { "label", "Saint Kitts and Nevis" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "LC" },
+            { "label", "Saint Lucia" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "SM" },
+            { "label", "San Marino" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "SA" },
+            { "label", "Saudi Arabia" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "SN" },
+            { "label", "Senegal" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "SC" },
+            { "label", "Seychelles" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "SL" },
+            { "label", "Sierra Leone" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "SG" },
+            { "label", "Singapore" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "SK" },
+            { "label", "Slovak Republic" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "SI" },
+            { "label", "Slovenia" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "SB" },
+            { "label", "Solomon Islands" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "SO" },
+            { "label", "Somalia" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "ZA" },
+            { "label", "South Africa" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "GS" },
+            { "label", "South Georgia" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "KR" },
+            { "label", "South Korea" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "ES" },
+            { "label", "Spain" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "LK" },
+            { "label", "Sri Lanka" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "SD" },
+            { "label", "Sudan" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "SR" },
+            { "label", "Suriname" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "SZ" },
+            { "label", "Swaziland" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "SE" },
+            { "label", "Sweden" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "CH" },
+            { "label", "Switzerland" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "SY" },
+            { "label", "Syria" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "TW" },
+            { "label", "Taiwan" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "TJ" },
+            { "label", "Tajikistan" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "TZ" },
+            { "label", "Tanzania" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "TH" },
+            { "label", "Thailand" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "TG" },
+            { "label", "Togo" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "TK" },
+            { "label", "Tokelau" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "TO" },
+            { "label", "Tonga" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "TT" },
+            { "label", "Trinidad and Tobago" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "TN" },
+            { "label", "Tunisia" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "TR" },
+            { "label", "Turkey" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "TM" },
+            { "label", "Turkmenistan" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "TC" },
+            { "label", "Turks and Caicos Islands" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "TV" },
+            { "label", "Tuvalu" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "UG" },
+            { "label", "Uganda" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "UA" },
+            { "label", "Ukraine" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "AE" },
+            { "label", "United Arab Emirates" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "UK" },
+            { "label", "United Kingdom" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "US" },
+            { "label", "United States" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "UY" },
+            { "label", "Uruguay" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "UZ" },
+            { "label", "Uzbekistan" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "VU" },
+            { "label", "Vanuatu" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "VA" },
+            { "label", "Vatican City (Holy See)" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "VE" },
+            { "label", "Venezuela" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "VN" },
+            { "label", "Vietnam" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "VG" },
+            { "label", "Virgin Islands (British)" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "VI" },
+            { "label", "Virgin Islands (US)" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "WF" },
+            { "label", "Wallis and Futuna Islands" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "EH" },
+            { "label", "Western Sahara" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "WS" },
+            { "label", "Western Samoa" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "YE" },
+            { "label", "Yemen" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "YU" },
+            { "label", "Yugoslavia" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "ZM" },
+            { "label", "Zambia" }
+            },
+        new Dictionary<string, string>() {
+            { "value", "ZW" },
+            { "label", "Zimbabwe" }
+            },
+        };
+}

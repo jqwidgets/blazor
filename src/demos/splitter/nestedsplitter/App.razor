@@ -1,0 +1,59 @@
+<JqxSplitter
+    width=850 height=850 orientation=orientationHorizontal panels=panels1>
+  <div>
+    <JqxSplitter
+        width=width height=height orientation=orientationVertical panels=panels2>
+      <div>
+        <JqxSplitter
+            width=width height=height orientation=orientationHorizontal panels=panels3>
+          <div>
+            <span>Panel 1</span>
+          </div>
+          <div>
+            <span>Panel 2</span>
+          </div>
+        </JqxSplitter>
+      </div>
+      <div>
+        <span>Panel 3</span>
+      </div>
+    </JqxSplitter>
+  </div>
+  <div>
+    <JqxSplitter
+        width=width height=height orientation=orientationHorizontal panels=panels4>
+      <div>
+        <span>Panel 4</span>
+      </div>
+      <div>
+        <span>Panel 5</span>
+      </div>
+    </JqxSplitter>
+  </div>
+</JqxSplitter>
+
+@code {
+    string width = "100%";
+    string height = "100%";
+    string orientationHorizontal = "horizontal";
+    string orientationVertical = "vertical";
+    IDictionary<string, string>[] panels1 = new Dictionary<string, string>[]
+    {
+        new Dictionary<string, string>() { { "size", "50%" } },
+        new Dictionary<string, string>() { { "size", "50%" } }
+    };
+    IDictionary<string, object>[] panels2 = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>() { { "size", 300 } },
+        new Dictionary<string, object>() { { "collapsible", false } }
+    };
+    IDictionary<string, object>[] panels3 = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>() { { "size", 150 } }
+    };
+    IDictionary<string, object>[] panels4 = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>() { { "size", 150 } },
+        new Dictionary<string, object>() { { "collapsible", false } }
+    };
+}

@@ -1,0 +1,151 @@
+﻿<JqxGrid @ref="myGrid"
+    width=850 source=source columns=columns sortable=true
+    altrows=true selectionmode=selectionMode>
+</JqxGrid>
+
+<div style="margin-top: 20px">
+    <div style="float: left">
+      <JqxButton onClick="excelBtnOnClick">Export to Excel</JqxButton>
+      <br /><br />
+      <JqxButton onClick="xmlBtnOnClick">Export to XML</JqxButton>
+    </div>
+    <div style="float: left; margin-left: 10px">
+      <JqxButton onClick="csvBtnOnClick">Export to CSV</JqxButton>
+      <br /><br />
+      <JqxButton onClick="tsvBtnOnClick">Export to TSV</JqxButton>
+    </div>
+    <div style="float: left; margin-left: 10px">
+      <JqxButton onClick="htmlBtnOnClick">Export to HTML</JqxButton>
+      <br /><br />
+      <JqxButton onClick="jsonBtnOnClick">Export to JSON</JqxButton>
+    </div>
+    <div style="float: left; margin-left: 10px">
+      <JqxButton onClick="pdfBtnOnClick">Export to PDF</JqxButton>
+    </div>
+</div>
+
+@code {
+    JqxGrid myGrid;
+    string selectionMode = "multiplecellsadvanced";
+
+    IDictionary<string, object> source = new Dictionary<string, object>()
+    {
+        { 
+            "dataFields",
+            new Dictionary<string, string>[]
+            {
+                new Dictionary<string, string>() { { "name", "firstname" }, { "type", "string" } },
+                new Dictionary<string, string>() { { "name", "lastname" }, { "type", "string" } },
+                new Dictionary<string, string>() { { "name", "productname" }, { "type", "string" } },
+                new Dictionary<string, string>() { { "name", "available" }, { "type", "bool" } },
+                new Dictionary<string, string>() { { "name", "date" }, { "type", "date" } },
+                new Dictionary<string, string>() { { "name", "quantity" }, { "type", "number" } },
+                new Dictionary<string, string>() { { "name", "price" }, { "type", "number" } }
+            }
+        },
+        { "datatype", "array" },
+        { "localdata", generateData(100) }
+    };
+
+    IDictionary<string, object>[] columns = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>() 
+        {
+            { "text", "First Name" }, { "datafield", "firstname" }, { "width", 130 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Last Name" }, { "datafield", "lastname" }, { "width", 130 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Product" }, { "datafield", "productname" }, { "width", 200 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Available" }, { "datafield", "available" }, { "columntype", "checkbox" }, { "width", 67 }, 
+            { "cellsalign", "center" }, { "align", "center" }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Ship Date" }, { "datafield", "date" }, { "width", 120 }, 
+            { "align", "right" }, { "cellsalign", "right" }, { "cellsformat", "d" }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Quantity" }, { "datafield", "quantity" }, { "width", 70 }, { "align", "right" }, { "cellsalign", "right" }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Price" }, { "datafield", "price" }, { "cellsalign", "right" }, { "align", "right" }, { "cellsformat", "c2" }
+        }
+    };
+
+    public void excelBtnOnClick(IDictionary<string, object> e)
+    {
+        myGrid.exportdata("xls", "jqxGrid", true, null, true, null, null);
+    }
+
+    public void xmlBtnOnClick(IDictionary<string, object> e)
+    {
+        myGrid.exportdata("xml", "jqxGrid", true, null, true, null, null);
+    }
+
+    public void csvBtnOnClick(IDictionary<string, object> e)
+    {
+        myGrid.exportdata("csv", "jqxGrid", true, null, true, null, null);
+    }
+
+    public void tsvBtnOnClick(IDictionary<string, object> e)
+    {
+        myGrid.exportdata("tsv", "jqxGrid", true, null, true, null, null);
+    }
+
+    public void htmlBtnOnClick(IDictionary<string, object> e)
+    {
+        myGrid.exportdata("html", "jqxGrid", true, null, true, null, null);
+    }
+
+    public void jsonBtnOnClick(IDictionary<string, object> e)
+    {
+        myGrid.exportdata("json", "jqxGrid", true, null, true, null, null);
+    }
+
+    public void pdfBtnOnClick(IDictionary<string, object> e)
+    {
+        myGrid.exportdata("pdf", "jqxGrid", true, null, true, null, null);
+    }
+
+    public static IList<IDictionary<string, object>> generateData(int number)
+    {
+        IList<IDictionary<string, object>> data = new List<IDictionary<string, object>>();
+
+        string[] firstNames = new string[] { "Andrew", "Nancy", "Shelley", "Regina", "Yoshi", "Antoni", "Mayumi", "Ian", "Peter", "Lars", "Petra", "Martin", "Sven", "Elio", "Beate", "Cheryl", "Michael", "Guylene" };
+        string[] lastNames = new string[] { "Fuller", "Davolio", "Burke", "Murphy", "Nagase", "Saavedra", "Ohno", "Devling", "Wilson", "Peterson", "Winkler", "Bein", "Petersen", "Rossi", "Vileid", "Saylor", "Bjorn", "Nodier" };
+        string[] productNames = new string[] { "Black Tea", "Green Tea", "Caffe Espresso", "Doubleshot Espresso", "Caffe Latte", "White Chocolate Mocha", "Cramel Latte", "Caffe Americano", "Cappuccino", "Espresso Truffle", "Espresso con Panna", "Peppermint Mocha Twist" };
+        double[] priceValues = new double[] { 2.25, 1.5, 3.0, 3.3, 4.5, 3.6, 3.8, 2.5, 5.0, 1.75, 3.25, 4.0 };
+
+        Random random = new Random();
+        for (int i = 0; i < number; i++)
+        {
+           
+            Dictionary<string, object> row = new Dictionary<string, object>();
+            int productIndex = random.Next(0, productNames.Count());    
+            double price = priceValues[productIndex];
+            int quantity = random.Next(1, 100);
+
+            row.Add("firstname", firstNames[random.Next(0, firstNames.Length)]);
+            row.Add("lastname", lastNames[random.Next(0, lastNames.Length)]);
+            row.Add("productname", productNames[random.Next(0, productNames.Length)]);
+            row.Add("available", random.Next(2) % 2 == 0 ? true : false );
+            row.Add("data", new DateTime().AddDays(random.Next(500)));
+            row.Add("price", price);
+            row.Add("quantity", quantity);
+            row.Add("total", price * quantity);
+
+            data.Add(row);
+        }
+
+        return data;
+    }
+}

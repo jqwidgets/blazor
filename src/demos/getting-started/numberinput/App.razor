@@ -1,0 +1,29 @@
+﻿<div style="font-size: 13px; font-family: Verdana; float: left;">
+    <div style='margin-top: 10px;'>Number</div>
+    <JqxNumberInput width="width" height="height" spinButtons="spinButtons"></JqxNumberInput>
+
+     <div style='margin-top: 10px;'>Percentage</div>
+    <JqxNumberInput 
+        width="width" height="height" spinButtons="spinButtons" 
+        symbol="%" symbolPosition="symbolPosition">
+    </JqxNumberInput>
+
+    <div style='margin-top: 10px;'>Currency</div>
+    <JqxNumberInput width="width" height="height" spinButtons="spinButtons" symbol="$"></JqxNumberInput>
+
+    <div style='margin-top: 10px;'>Disabled</div>
+    <JqxNumberInput width="width" height="height" spinButtons="spinButtons" disabled=true></JqxNumberInput>
+</div>
+
+@code { 
+    int width = 200;
+    int height = 25;
+    bool spinButtons = true;
+    string symbolPosition = "right";
+} 
+
+<style>
+    .jqx-numberinput {
+       margin-top: 3px; 
+    }
+</style> 

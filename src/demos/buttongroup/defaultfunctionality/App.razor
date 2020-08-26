@@ -1,0 +1,57 @@
+﻿@inject IJSRuntime JSRuntime;
+
+<JqxButtonGroup @ref="buttonGroup" mode="mode" onButtonclick="groupOnBtnClick">
+    <button style="padding: 4px 16px" value="Left"></button>
+    <button style="padding: 4px 16px" value="Center"></button>
+    <button style="padding: 4px 16px" value="Right"></button>
+</JqxButtonGroup>
+
+<div style="margin-top: 10px">
+  <h4>Modes</h4>
+  <JqxRadioButton isChecked=true onChecked="defaultChecked">Default</JqxRadioButton>
+  <JqxRadioButton onChecked="radioButtonsChecked">RadioButtons</JqxRadioButton>
+  <JqxRadioButton onChecked="checkBoxesChecked">CheckBoxes</JqxRadioButton>
+</div>
+
+<div @ref="log" style="margin-top: 10px;"></div>
+
+@code {
+    JqxButtonGroup buttonGroup;
+    ElementReference log;
+    string mode = "default";
+
+    private void groupOnBtnClick(IDictionary<string, object> e)
+    {
+        var button = e["index"];
+        JSRuntime.InvokeVoidAsync("Example.updateInnerHtml", log, button);
+    }
+    private void defaultChecked(IDictionary<string, object> e)
+    {
+        var options = new Dictionary<string, object>()
+        {
+          { "mode", "default" }
+        };
+
+        buttonGroup.setOptions(options);
+    }
+
+    private void radioButtonsChecked(IDictionary<string, object> e)
+    {
+        var options = new Dictionary<string, object>()
+        {
+          { "mode", "radio" }
+        };
+
+        buttonGroup.setOptions(options);
+    }
+
+    private void checkBoxesChecked(IDictionary<string, object> e)
+    {
+        var options = new Dictionary<string, object>()
+        {
+          { "mode", "checkbox" }
+        };
+
+        buttonGroup.setOptions(options);
+    }
+}

@@ -1,0 +1,42 @@
+<div style='font-family: Verdana Arial; font-size: 12px; width: 400px;'>
+    <div style='float: left; width: 400px;'>
+        <h3 style='margin-left: 15px;'>Categories</h3>
+        <JqxCheckBox width="width" height="height" enableContainerClick="false">Entertainment</JqxCheckBox>
+        <JqxCheckBox width="width" height="height" isChecked="true">Computers</JqxCheckBox>
+        <JqxCheckBox width="width" height="height">Sports</JqxCheckBox>
+    </div>
+    <div style='float: left; width: 400px; margin-top: 10px;'>
+        <JqxCheckBox width="width" height="height">Health</JqxCheckBox>
+        <JqxCheckBox width="width" height="height">Finance</JqxCheckBox>
+        <JqxCheckBox width="width" height="height">Travel</JqxCheckBox>
+    </div>
+    <div style='float: left; width: 400px; margin-top: 10px;'>
+        <JqxCheckBox width="width" height="height">Music</JqxCheckBox>
+        <JqxCheckBox width="width" height="height">Technology</JqxCheckBox> 
+        <JqxCheckBox width="width" height="height">Publishing</JqxCheckBox>
+    </div>
+    <br />
+    <div style='float: left; width: 400px; margin-top: 10px;'>
+        <h3 style='margin-left: 15px;'>States</h3>
+        <JqxCheckBox width="width" height="height" isChecked="true"><span>Checked</span></JqxCheckBox>
+        <JqxCheckBox width="width" height="height"><span>Unchecked</span></JqxCheckBox>
+    </div>
+    <div style='float: left; width: 400px; margin-top: 10px;'>
+        <JqxCheckBox width="width" height="height" hasThreeStates="true" isChecked="null">
+            <span>Indeterminate</span>
+        </JqxCheckBox>
+        <JqxCheckBox width="width" height="height" isChecked="true" disabled="true">Disabled</JqxCheckBox>
+    </div>   
+</div>
+
+@code {    
+    int width = 120;
+    int height = 25;
+} 
+
+<style>
+    .jqx-checkbox {
+        margin-left: 10px;
+        float: left;
+    }
+</style>

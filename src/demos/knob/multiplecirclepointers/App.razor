@@ -1,0 +1,72 @@
+<JqxKnob 
+    value=value min=0 max=100 startAngle=150 endAngle=510 
+    rotation=rotation snapToStep=true marks=marks labels=labels 
+    progressBar=progressBar pointer=pointer spinner=spinner>
+</JqxKnob>
+
+<br /><br />
+<div @ref="myLog"></div>
+
+@code {
+    ElementReference myLog;
+
+    string rotation = "clockwise";
+
+    int[] value = new int[] { 60, 80 };
+
+    IDictionary<string, object> marks = new Dictionary<string, object>()
+    {
+        { "colorRemaining", "#333" }, { "colorProgress", "#66707e" },
+        { "style", "line" }, { "offset", "71%" }, { "thickness", 1 }, { "size", "6%" },
+        { "majorSize", "9%" }, { "majorInterval", 10 }, { "minorInterval", 2 }    
+    };
+
+    IDictionary<string, object> labels = new Dictionary<string, object>()
+    {
+        { "offset", "88%" }, { "step", 10 }
+    };
+
+    IDictionary<string, object> progressBar = new Dictionary<string, object>()
+    {
+        { 
+            "style", 
+            new Dictionary<string, object>[] {
+                new Dictionary<string, object>() { { "fill", "#66707e" }, { "stoke", "#66707e" }, { "strokeWidth", 0 } },
+                new Dictionary<string, object>() { { "fill", "#66707e" }, { "stoke", "#66707e" }, { "strokeWidth", 0 } }
+            }
+        },   
+        { "size", "9%" }, { "offset", "58%" }, 
+        { "background", new Dictionary<string, object>() { { "fill", "#a2da39" }, { "stoke", "#a2da39"}, { "strokeWidth", 0 } } }
+    };
+
+    IDictionary<string, object>[] pointer = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>()
+        {
+            { "type", "circle" }, 
+            { "style", new Dictionary<string, object>() { { "fill", "#a2da39" }, { "stoke", "#a2da39" } } },
+            { "size", "5%" }, { "offset", "38%" }, { "thickness", 20 }
+        },
+        new Dictionary<string, object>()
+        {
+            { "type", "circle" }, 
+            { "style", new Dictionary<string, object>() { { "fill", "#a2da39" }, { "stoke", "#a2da39" } } },
+            { "size", "5%" }, { "offset", "38%" }, { "thickness", 20 }
+        }        
+    };
+
+    IDictionary<string, object> spinner = new Dictionary<string, object>()
+    {
+        { "style", new Dictionary<string, object>() { { "fill", "#66707e" }, { "stoke", "#66707e"} } },
+        { "innerRadius", "0%" }, { "outerRadius", "58%" },       
+        { 
+            "marks", 
+            new Dictionary<string, object>() 
+            {
+                { "colorRemaining", "#a2da39" }, { "colorProgress", "#a2da39" },
+                { "type", "circle" }, { "offset", "55%" }, { "thickness", 3 },  { "size", "1%" },
+                { "majorSize", "1%" }, { "majorInterval", 10 }, { "minorInterval", 10 } 
+            } 
+        }
+    };
+}

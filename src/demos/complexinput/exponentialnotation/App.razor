@@ -1,0 +1,123 @@
+﻿@inject IJSRuntime JSRuntime;
+
+<JqxComplexInput @ref="myComplexInput"
+    width=250 height=25 decimalNotation=decimalNotation
+    value="330000 - 200i" spinButtons=true>
+</JqxComplexInput>
+
+<JqxExpander width=400 height=375 toggleMode=toggleMode showArrow=false>
+    <div>jqxComplexInput Notation Settings</div>
+    <div style="padding-left: 15px;">
+        <h4>Choose notation:</h4>
+        <JqxDropDownList onChange="onDropDownChange"
+            width=200 height=25 source=notationsSource 
+            selectedIndex=1 autoDropDownHeight=true>
+        </JqxDropDownList>
+        
+        <div style="margin-top: 20px;">
+            <h4>Real part</h4>
+            <JqxButton width=buttonWidth onClick="getRealDecimal">Get decimal value</JqxButton>
+            <JqxButton width=buttonWidth onClick="getRealExponential">Get exponential notation</JqxButton>
+            <br />
+            <JqxButton width=buttonWidth onClick="getRealScientific">Get scientific notation</JqxButton>
+            <JqxButton width=buttonWidth onClick="getRealEngineering">Get engineering notation</JqxButton>
+        </div>
+
+        <div style="margin-top: 20px;">
+            <h4>Imaginary part</h4>
+            <JqxButton width=buttonWidth onClick="getImaginaryDecimal">Get decimal value</JqxButton>
+            <JqxButton width=buttonWidth onClick="getImaginaryExponential">Get exponential notation</JqxButton>
+            <br />
+            <JqxButton width=buttonWidth onClick="getImaginaryScientific">Get scientific notation</JqxButton>
+            <JqxButton width=buttonWidth onClick="getImaginaryEngineering">Get engineering notation</JqxButton>
+        </div>
+    </div>
+</JqxExpander>
+
+@code {
+    JqxComplexInput myComplexInput;
+    string decimalNotation = "exponential";
+    string toggleMode = "none";
+    string[] notationsSource = new string[4] { "decimal", "exponential", "scientific", "engineering" };
+    int buttonWidth = 175;
+
+    private void onDropDownChange(IDictionary<string, object> e) 
+    {
+        var index = e["index"];
+
+        var label = notationsSource[int.Parse(index.ToString())];
+        if (label == "decimal")
+        {
+            label = "default";
+        }
+        var options = new Dictionary<string, string>() 
+        {
+            { "decimalNotation", label }
+        };
+
+        myComplexInput.setOptions(options);
+    }
+
+    private void getRealDecimal(IDictionary<string, object> e) 
+    {
+        var decimalValue = myComplexInput.getReal(0);
+        JSRuntime.InvokeVoidAsync("Example.alert", "Decimal value: " + decimalValue);
+    }
+
+    private void getRealExponential(IDictionary<string, object> e) 
+    {
+        var exponentialValue = myComplexInput.getDecimalNotation("real", "exponential");
+        JSRuntime.InvokeVoidAsync("Example.alert", "Exponential notation: " + exponentialValue);
+    }
+
+    private void getRealScientific(IDictionary<string, object> e) 
+    {
+        var scientificValue = myComplexInput.getDecimalNotation("real", "scientific");
+        JSRuntime.InvokeVoidAsync("Example.alert", "Scientific notation: " + scientificValue);
+    }
+
+    private void getRealEngineering(IDictionary<string, object> e) 
+    {
+        var engineeringValue = myComplexInput.getDecimalNotation("real", "engineering");
+        JSRuntime.InvokeVoidAsync("Example.alert", "Engineering notation: " + engineeringValue);
+    }
+
+    private void getImaginaryDecimal(IDictionary<string, object> e) 
+    {
+        var decimalValue = myComplexInput.getImaginary(0);
+        JSRuntime.InvokeVoidAsync("Example.alert", "Decimal value: " + decimalValue);
+    }
+
+    private void getImaginaryExponential(IDictionary<string, object> e) 
+    {
+        var exponentialValue = myComplexInput.getDecimalNotation("imaginary", "exponential");
+        JSRuntime.InvokeVoidAsync("Example.alert", "Exponential notation: " + exponentialValue);
+    }
+
+    private void getImaginaryScientific(IDictionary<string, object> e) 
+    {
+        var scientificValue = myComplexInput.getDecimalNotation("imaginary", "scientific");
+        JSRuntime.InvokeVoidAsync("Example.alert", "Scientific notation: " + scientificValue);
+    }
+
+    private void getImaginaryEngineering(IDictionary<string, object> e) 
+    {
+        var engineeringValue = myComplexInput.getDecimalNotation("imaginary", "engineering");
+        JSRuntime.InvokeVoidAsync("Example.alert", "Engineering notation: " + engineeringValue);
+    }
+}
+
+<style>
+    .jqx-complex-input-parent {
+        float: left;
+    }
+
+    .jqx-expander {
+        float: left;
+        margin-left: 50px;
+    }
+
+    .jqx-dropdownlist {
+        margin-top: 20px;
+    }
+</style>

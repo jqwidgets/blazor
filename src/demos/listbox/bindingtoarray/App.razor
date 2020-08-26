@@ -1,0 +1,158 @@
+﻿@inject IJSRuntime JSRuntime;
+
+<JqxListBox onSelect="SelectEvent" source="source" width="300" height="300"></JqxListBox>
+
+<div @ref="selectionlog" style="font-size: 13px; font-family: Verdana;"></div>
+
+@code {
+    ElementReference selectionlog;
+    
+    IDictionary<string, object>[] source = new Dictionary<string, object>[] {
+        new Dictionary<string, object>() {
+            { "label", "Peppermint Hot Chocolate" },
+            { "value", "Chocolate Beverage" },
+            { "group", "Hot Chocolate" }
+        },
+        new Dictionary<string, object>() {
+            { "label", "Salted Caramel Hot Chocolate" },
+            { "value", "Chocolate Beverage" },
+            { "group", "Hot Chocolate" }
+        },
+        new Dictionary<string, object>() {
+            { "label", "White Hot Chocolate" },
+            { "value", "Chocolate Beverage" },
+            { "group", "Hot Chocolate" }
+        },
+        new Dictionary<string, object>() {
+            { "label", "Caffe Americano" },
+            { "value", "Espresso Beverage" },
+            { "group", "Espresso" }
+        },
+        new Dictionary<string, object>() {
+            { "label", "Caffe Latte" },
+            { "value", "Espresso Beverage" },
+            { "group", "Espresso" }
+        },
+        new Dictionary<string, object>() {
+            { "label", "Caffe Mocha" },
+            { "value", "Espresso Beverage" },
+            { "group", "Espresso" }
+        },
+        new Dictionary<string, object>() {
+            { "label", "Cappuccino" },
+            { "value", "Espresso Beverage" },
+            { "group", "Espresso" }
+        },
+        new Dictionary<string, object>() {
+            { "label", "Caramel Brulee Latte" },
+            { "value", "Espresso Beverage" },
+            { "group", "Espresso" }
+        },
+        new Dictionary<string, object>() {
+            { "label", "Caramel Macchiato" },
+            { "value", "Espresso Beverage" },
+            { "group", "Espresso" }
+        },
+        new Dictionary<string, object>() {
+            { "label", "Peppermint Hot Chocolate" },
+            { "value", "Espresso Beverage" },
+            { "group", "Espresso" }
+        },
+        new Dictionary<string, object>() {
+            { "label", "Cinnamon Dolce Latte" },
+            { "value", "Espresso Beverage" },
+            { "group", "Espresso" }
+        },
+        new Dictionary<string, object>() {
+            { "label", "Eggnog Latte" },
+            { "value", "Espresso Beverage" },
+            { "group", "Espresso" }
+        },
+        new Dictionary<string, object>() {
+            { "label", "Espresso" },
+            { "value", "Espresso Beverage" },
+            { "group", "Espresso" }
+        },
+        new Dictionary<string, object>() {
+            { "label", "Espresso Con Panna" },
+            { "value", "Espresso Beverage" },
+            { "group", "Espresso" }
+        },
+        new Dictionary<string, object>() {
+            { "label", "Espresso Macchiato" },
+            { "value", "Espresso Beverage" },
+            { "group", "Espresso" }
+        },
+        new Dictionary<string, object>() {
+            { "label", "Flavored Latte" },
+            { "value", "Espresso Beverage" },
+            { "group", "Espresso" }
+        },
+        new Dictionary<string, object>() {
+            { "label", "Gingerbread Latte" },
+            { "value", "Espresso Beverage" },
+            { "group", "Espresso" }
+        },
+        new Dictionary<string, object>() {
+            { "label", "White Chocolate Mocha" },
+            { "value", "Espresso Beverage" },
+            { "group", "Espresso" }
+        },
+        new Dictionary<string, object>() {
+            { "label", "Skinny Peppermint Mocha" },
+            { "value", "Espresso Beverage" },
+            { "group", "Espresso" }
+        },
+        new Dictionary<string, object>() {
+            { "label", "Skinny Flavored Latte" },
+            { "value", "Espresso Beverage" },
+            { "group", "Espresso" }
+        },
+        new Dictionary<string, object>() {
+            { "label", "Pumpkin Spice Latte" },
+            { "value", "Espresso Beverage" },
+            { "group", "Espresso" }
+        },
+        new Dictionary<string, object>() {
+            { "label", "Caffe Vanilla Frappuccino" },
+            { "value", "Frappuccino Blended Beverage" },
+            { "group", "Frappuccino" }
+        },
+        new Dictionary<string, object>() {
+            { "label", "Caffe Vanilla Frappuccino Light" },
+            { "value", "Frappuccino Blended Beverage" },
+            { "group", "Frappuccino" }
+        },
+        new Dictionary<string, object>() {
+            { "label", "Caramel Brulee Frappuccino" },
+            { "value", "Frappuccino Blended Beverage" },
+            { "group", "Frappuccino" }
+        },
+        new Dictionary<string, object>() {
+            { "label", "Caramel Brulee Frappuccino Light" },
+            { "value", "Frappuccino Blended Beverage" },
+            { "group", "Frappuccino" }
+        },
+        new Dictionary<string, object>() {
+            { "label", "Eggnog Frappuccino" },
+            { "value", "Frappuccino Blended Beverage" },
+            { "group", "Frappuccino" }
+        },
+        new Dictionary<string, object>() {
+            { "label", "Mocha Frappuccino" },
+            { "value", "Frappuccino Blended Beverage" },
+            { "group", "Frappuccino" }
+        },
+        new Dictionary<string, object>() {
+            { "label", "Tazo Green Tea Creme Frappuccino" },
+            { "value", "Frappuccino Blended Beverage" },
+            { "group", "Frappuccino" }
+        }
+    };
+
+    private void SelectEvent(IDictionary<string, object> e)
+    {
+        var item = e["item"];
+        JSRuntime.InvokeAsync<string>("Example.handleSelect", selectionlog, item);
+    }
+}

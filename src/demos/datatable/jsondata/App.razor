@@ -1,0 +1,49 @@
+<JqxDataTable
+    width=850 source=source columns=columns
+    columnsResize=true pageable=true pagerButtonsCount=10>
+</JqxDataTable>
+
+@code {
+
+    IDictionary<string, object> source = new Dictionary<string, object>()
+    {
+        { "datatype", "json" },
+        { 
+            "dataFields",
+            new Dictionary<string, string>[]
+            {
+                new Dictionary<string, string>() { { "name", "name" }, { "type", "string" } },
+                new Dictionary<string, string>() { { "name", "type" }, { "type", "string" } },
+                new Dictionary<string, string>() { { "name", "calories" }, { "type", "int" } },
+                new Dictionary<string, string>() { { "name", "totalfat" }, { "type", "string" } },
+                new Dictionary<string, string>() { { "name", "protein" }, { "type", "string" } }
+            }
+        },
+        { "id", "id" },
+        { "url", "./sampledata/beverages.txt" }
+    };
+
+    IDictionary<string, object>[] columns = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>() 
+        {
+            { "text", "Name" }, { "datafield", "name" }, { "width", 300 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Beverage Type" }, { "datafield", "type" }, { "width", 300 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Calories" }, { "datafield", "calories" }, { "width", 180 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Total Fat" }, { "datafield", "totalfat" }, { "width", 120 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Protein" }, { "datafield", "protein" }
+        }
+    };
+}

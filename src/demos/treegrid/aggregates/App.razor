@@ -1,0 +1,72 @@
+<JqxTreeGrid @ref="myTreeGrid" onComponentReady="Ready" width="width" height="400" pageable="true" pageSize="25" showAggregates="true" showSubAggregates="true" aggregatesHeight="70" sortable="true" source="source" columns="columns"></JqxTreeGrid>
+
+@code {
+    JqxTreeGrid myTreeGrid;
+    
+    object width = 800;
+
+    Dictionary<string, object> source = new Dictionary<string, object>
+    {
+        { "dataType", "tab" },
+        {
+            "datafields",
+            new Dictionary<string, object>[] 
+            {
+                new Dictionary<string, object>()
+                {
+                    { "name", "Id" },
+                    { "type", "number" }
+                },
+                new Dictionary<string, object>()
+                {
+                    { "name", "Name" },
+                    { "type", "string" }
+                },
+                new Dictionary<string, object>()
+                {
+                    { "name", "ParentID" },
+                    { "type", "number" }
+                },
+                new Dictionary<string, object>()
+                {
+                    { "name", "Population" },
+                    { "type", "number" }
+                }
+            }
+        },
+        {
+            "hierarchy",
+            new Dictionary<string, object>
+            {
+                { "keyDataField", new Dictionary<string, object> { { "name", "Id" } } },
+                { "parentDataField", new Dictionary<string, object> { { "name", "ParentID" } } }
+            }
+        },
+        { "id", "Id" },
+        { "url", "./sampledata/locations.tsv" },
+    };
+
+    Dictionary<string, object>[] columns = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>()
+        {
+            { "text", "Location Name" },
+            { "dataField", "Name" },
+            { "align", "center" },
+            { "width", "50%" }
+        },
+        new Dictionary<string, object>()
+        {
+            { "text", "Population" },
+            { "dataField", "Population" },
+            { "align", "center" },
+            { "width", "50%" },
+            { "aggregates", new string[] { "min", "max", "count" } }
+        }
+    };
+
+    private void Ready()
+    {
+        myTreeGrid.expandRow(34);
+    }
+}

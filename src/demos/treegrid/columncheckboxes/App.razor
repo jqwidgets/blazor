@@ -1,0 +1,172 @@
+﻿<JqxTreeGrid @ref="myTreeGrid" onComponentReady="Ready" altRows="true" width="width" checkboxes="true" source="datasource" columns="columns"></JqxTreeGrid>
+
+@code {
+    JqxTreeGrid myTreeGrid;
+    
+    object width = "850";
+    
+    Dictionary<string, object> datasource = new Dictionary<string, object>()
+    {
+        {
+            "hierarchy",
+            new Dictionary<string, object>()
+            {
+                {
+                    "root", "children"
+                }
+            }
+        },
+        {
+            "dataFields",
+            new Dictionary<string, object>[]
+            {
+                new Dictionary<string, object>() { { "name", "name" }, { "type", "string" } },
+                new Dictionary<string, object>() { { "name", "budget" }, { "type", "number" } },
+                new Dictionary<string, object>() { { "name", "id" }, { "type", "number" } },              
+                new Dictionary<string, object>() { { "name", "children" }, { "type", "array" } },                
+                new Dictionary<string, object>() { { "name", "location" }, { "type", "string" } }
+            }
+        },
+        { "id", "id" },
+        {
+            "localdata",
+            new Dictionary<string, object>[]
+            {
+                new Dictionary<string, object>()
+                {
+                    { "id", 1 },
+                    { "name", "Corporate Headquarters" },
+                    { "budget", 1230000 },
+                    { "location", "Las Vegas" },
+                    {
+                        "children",
+                        new Dictionary<string, object>[]
+                        {
+                            new Dictionary<string, object>()
+                            {
+                                { "id", 2 },
+                                { "name", "Finance Division" },
+                                { "budget", 423000 },
+                                { "location", "San Antonio" },
+                                {
+                                    "children",
+                                    new Dictionary<string, object>[]
+                                    {
+                                        new Dictionary<string, object>()
+                                        {
+                                            { "id", 3 },
+                                            { "name", "Accounting Department" },
+                                            { "budget", 113000 },
+                                            { "location", "San Antonio" }
+                                        },
+                                        new Dictionary<string, object>()
+                                        {
+                                            { "id", 4 },
+                                            { "name", "Investment Department" },
+                                            { "budget", 310000 },
+                                            { "location", "San Antonio" },
+                                            {
+                                                "children",
+                                                new Dictionary<string, object>[]
+                                                {
+                                                    new Dictionary<string, object>()
+                                                    {
+                                                        { "id", 5 },
+                                                        { "name", "Banking Office" },
+                                                        { "budget", 240000 },
+                                                        { "location", "San Antonio" }
+                                                    },
+                                                    new Dictionary<string, object>()
+                                                    {
+                                                        { "id", 6 },
+                                                        { "name", "Banking Office" },
+                                                        { "budget", 70000 },
+                                                        { "location", "San Antonio" }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            new Dictionary<string, object>()
+                            {
+                                { "id", 7 },
+                                { "name", "Operations Division" },
+                                { "budget", 600000 },
+                                { "location", "Miami" },
+                                {
+                                    "children",
+                                    new Dictionary<string, object>[]
+                                    {
+                                        new Dictionary<string, object>()
+                                        {
+                                            { "id", 8 },
+                                            { "name", "Manufacturing Department" },
+                                            { "budget", 300000 },
+                                            { "location", "Miami" }
+                                        },
+                                        new Dictionary<string, object>()
+                                        {
+                                            { "id", 9 },
+                                            { "name", "Public Relations Department" },
+                                            { "budget", 200000 },
+                                            { "location", "Miami" }
+                                        },
+                                        new Dictionary<string, object>()
+                                        {
+                                            { "id", 10 },
+                                            { "name", "Sales Department" },
+                                            { "budget", 100000 },
+                                            { "location", "Miami" }
+                                        }
+                                    }
+                                }
+                            },
+                            new Dictionary<string, object>()
+                            {
+                                { "id", 11 },
+                                { "name", "Research Division" },
+                                { "budget", 200000 },
+                                { "location", "Boston" }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    };
+
+    Dictionary<string, object>[] columns = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>()
+        {
+            { "text", "Name" },
+            { "dataField", "name" },
+            { "align", "center" },
+            { "width", 350 }
+        },
+        new Dictionary<string, object>()
+        {
+            { "text", "Budget" },
+            { "dataField", "budget" },
+            { "cellsAlign", "center" },
+            { "align", "center" },
+            { "cellsFormat", "c2" },
+            { "width", 300 }
+        },
+        new Dictionary<string, object>()
+        {
+            { "text", "Location" },
+            { "dataField", "location" },
+            { "cellsAlign", "center" },
+            { "align", "center" }
+        }
+    };
+
+    private void Ready()
+    {
+        myTreeGrid.expandRow(1);
+        myTreeGrid.expandRow(2);
+    }
+}

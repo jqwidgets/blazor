@@ -1,0 +1,76 @@
+﻿<JqxTree source="data" width="300"></JqxTree>
+
+@code {
+    // JqxTree myTree;
+
+    @* private Dictionary<string, object>[] records; *@
+    @* private List<Dictionary<string, object>> records; *@
+
+    List<Dictionary<string, object>> data = new List<Dictionary<string, object>>
+    {
+        new Dictionary<string, object>()
+        {
+            { "id", 1 },
+            { "label", "Chocolate Beverage" },
+            { "parentid", -1 },
+            { "value", "$2.3" },
+            {
+                "items",
+                new Dictionary<string, object>[]
+                {
+                    new Dictionary<string, object>() { { "id", 2 }, { "label", "Hot Chocolate" }, { "parentid", 1 }, { "value", "$2.3" } },
+                    new Dictionary<string, object>() { { "id", 3 }, { "label", "Peppermint Hot Chocolate" }, { "parentid", 1 }, { "value", "$2.3" } },
+                    new Dictionary<string, object>() { { "id", 4 }, { "label", "Salted Caramel Hot Chocolate" }, { "parentid", 1 }, { "value", "$2.3" } },
+                    new Dictionary<string, object>() { { "id", 5 }, { "label", "White Hot Chocolate" }, { "parentid", 1 }, { "value", "$2.3" } }
+                }
+            }
+        },  
+        new Dictionary<string, object>()
+        {
+            { "id", 6 },
+            { "label", "Espresso Beverage" },
+            { "parentid", -1 },
+            { "value", "$2.3" },
+            {
+                "items",
+                new Dictionary<string, object>[]
+                {
+                    new Dictionary<string, object>() { { "id", 7 }, { "label", "Caffe Americano" }, { "parentid", 6 }, { "value", "$2.3" } },
+                    new Dictionary<string, object>() { { "id", 8 }, { "label", "Caffe Latte" }, { "parentid", 6 }, { "value", "$2.3" } },
+                    new Dictionary<string, object>() { { "id", 9 }, { "label", "Caffe Mocha" }, { "parentid", 6 }, { "value", "$2.3" } },
+                    new Dictionary<string, object>() { { "id", 10 }, { "label", "Cappuccino" }, { "parentid", 6 }, { "value", "$2.3" } },
+                    new Dictionary<string, object>() { { "id", 11 }, { "label", "Pumpkin Spice Latte" }, { "parentid", 6 }, { "value", "$2.3" } }
+                }
+            }
+        },  
+        new Dictionary<string, object>()
+        {
+            { "id", 12 },
+            { "label", "Frappuccino" },
+            { "parentid", -1 },
+            { "value", "$2.3" },
+            {
+                "items",
+                new Dictionary<string, object>[]
+                {
+                    new Dictionary<string, object>() {
+                        { "id", 13 },
+                        { "label", "Caffe Vanilla Frappuccino" },
+                        { "parentid", 12 },
+                        { "value", "$2.3" },
+                        {
+                            "items",
+                            new Dictionary<string, object>[]
+                            {
+                                new Dictionary<string, object>() { { "id", 15 }, { "label", "450 calories" }, { "parentid", 13 }, { "value", "$2.3" } },
+                                new Dictionary<string, object>() { { "id", 16 }, { "label", "16g fat" }, { "parentid", 13 }, { "value", "$2.3" } },
+                                new Dictionary<string, object>() { { "id", 17 }, { "label", "13g protein" }, { "parentid", 13 }, { "value", "$2.3" } }
+                            }
+                        }
+                    },
+                    new Dictionary<string, object>() { { "id", 14 }, { "label", "Caffe Vanilla Frappuccino Light" }, { "parentid", 12 }, { "value", "$2.3" } }
+                }
+            }
+        }   
+    };
+}

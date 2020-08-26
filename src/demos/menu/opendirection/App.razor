@@ -1,0 +1,56 @@
+<div style="margin-top: 100px; width: 310px;">
+  <JqxMenu @ref="myMenu" onComponentReady="onMenuReady"
+    width=310 height=30 mode=mode showTopLevelArrows=true>
+     <ul>
+          <li style="width: 80px;">
+            <a>About Us</a>
+            <ul>
+              <li><a>History</a></li>
+              <li><a>Our Vision</a></li>
+              <li>
+                <a>The Team</a>
+                <ul>
+                  <li><a>Brigita</a></li>
+                  <li><a>John</a></li>
+                  <li><a>Michael</a></li>
+                  <li><a>Peter</a></li>
+                  <li><a>Sarah</a></li>
+                </ul>
+              </li>
+              <li><a>Clients</a></li>
+              <li><a>Testimonials</a></li>
+              <li><a>Press</a></li>
+              <li><a>FAQs</a></li>
+            </ul>
+          </li>
+          <li id='Services'>
+            <a>Services</a>
+            <ul>
+              <li><a>Delivery</a></li>
+              <li><a>Shop Online</a></li>
+              <li><a>Support</a></li>
+            </ul>
+          </li>
+          <li id='ContactUs'>
+            <a>Contact Us</a>
+            <ul>
+              <li><a>Enquiry Form</a></li>
+              <li><a>Map &amp; Driving Directions</a></li>
+              <li><a>Your Feedback</a></li>
+            </ul>
+          </li>
+        </ul>
+  </JqxMenu>
+</div>
+
+@code {
+    JqxMenu myMenu;
+
+    string mode = "horizontal";
+
+    private void onMenuReady()
+    {
+        myMenu.setItemOpenDirection("Services", "left", "up");
+        myMenu.setItemOpenDirection("ContactUs", "left", "down");
+    }
+}

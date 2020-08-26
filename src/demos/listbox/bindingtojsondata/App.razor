@@ -1,0 +1,28 @@
+﻿@inject HttpClient Http;
+@inject IJSRuntime JSRuntime;
+
+<JqxListBox
+    onSelect="SelectEvent" source="source" width="250" height="300"
+    displayMember="displayMember" valueMember="valueMember">
+</JqxListBox>
+
+<div @ref="selectionlog" style="font-size: 13px; font-family: Verdana;"></div>
+
+@code {
+    ElementReference selectionlog;
+    
+    object[] source;
+    string displayMember = "ContactName";
+    string valueMember = "CompanyName";
+
+    protected override async Task OnInitializedAsync()
+    {
+        source = await Http.GetJsonAsync<object[]>("../sampledata/customers.txt");
+    }
+
+    private void SelectEvent(IDictionary<string, object> e)
+    {
+        var item = e["item"];
+        JSRuntime.InvokeAsync<string>("Example.handleSelect", selectionlog, item);
+    }
+}

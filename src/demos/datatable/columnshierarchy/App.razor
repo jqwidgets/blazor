@@ -1,0 +1,95 @@
+<JqxDataTable
+    width=850 height=400 source=source columns=columns
+    altRows=true pageable=true columnsResize=true columnGroups=columnGroups>
+</JqxDataTable>
+
+@code {
+
+   IDictionary<string, object> source = new Dictionary<string, object>()
+    {
+        { "datatype", "xml" },
+        { 
+            "dataFields",
+            new Dictionary<string, string>[]
+            {
+                new Dictionary<string, string>() { { "name", "SupplierName" }, { "type", "string" } },
+                new Dictionary<string, string>() { { "name", "Quantity" }, { "type", "number" } },
+                new Dictionary<string, string>() { { "name", "OrderDate" }, { "type", "date" } },
+                new Dictionary<string, string>() { { "name", "OrderAddress" }, { "type", "string" } },
+                new Dictionary<string, string>() { { "name", "Freight" }, { "type", "number" } },
+                new Dictionary<string, string>() { { "name", "Price" }, { "type", "number" } },
+                new Dictionary<string, string>() { { "name", "City" }, { "type", "string" } },
+                new Dictionary<string, string>() { { "name", "ProductName" }, { "type", "string" } },
+                new Dictionary<string, string>() { { "name", "Address" }, { "type", "string" } }
+            }
+        },
+        { "url", "./sampledata/orderdetailsextended.xml" },
+        { "root", "DATA" },
+        { "record", "ROW" }
+    };
+
+    IDictionary<string, object>[] columns = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>() 
+        {
+            { "text", "Supplier Name" }, { "cellsAlign", "center" }, { "align", "center" },
+            { "datafield", "SupplierName" }, { "width", 200 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Name" }, { "columngroup", "ProductDetails" }, { "cellsAlign", "center" }, { "align", "center" },
+            { "datafield", "ProductName" }, { "width", 200 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Quantity" }, { "columngroup", "ProductDetails" }, { "cellsAlign", "center" }, { "align", "center" },
+            { "datafield", "Quantity" }, { "cellsformat", "d" }, { "width", 80 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Freight" }, { "columngroup", "OrderDetails" }, { "cellsAlign", "center" }, { "align", "center" },
+            { "datafield", "Freight" }, { "cellsformat", "d" }, { "width", 100 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Order Date" }, { "columngroup", "OrderDetails" }, { "cellsAlign", "center" }, { "align", "center" },
+            { "datafield", "OrderDate" }, { "cellsformat", "d" }, { "width", 100 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Order Address" }, { "columngroup", "OrderDetails" }, { "cellsAlign", "center" }, { "align", "center" },
+            { "datafield", "OrderAddress" }, { "width", 100 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Price" }, { "columngroup", "ProductDetails" }, { "cellsAlign", "center" }, { "align", "center" },
+            { "datafield", "Price" }, { "cellsformat", "c2" }, { "width", 70 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Address" }, { "columngroup", "Location" }, { "cellsAlign", "center" }, { "align", "center" },
+            { "datafield", "Address" }, { "width", 120 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "City" }, { "columngroup", "Location" }, { "cellsAlign", "center" }, { "align", "center" },
+            { "datafield", "City" }, { "width", 80 }
+        }
+    };
+
+    IDictionary<string, object>[] columnGroups = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>() 
+        {
+            { "text", "Supplier Name" }, { "align", "center" }, { "name", "SupplierName" }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Order Details" }, { "parentGroup", "ProductDetails" }, { "align", "center" }, { "name", "OrderDetails" }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Location" }, { "align", "center" }, { "name", "Location" }
+        }
+    };
+}

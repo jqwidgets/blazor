@@ -1,0 +1,111 @@
+﻿<JqxGrid @ref="myGrid"
+    width=850 height=300 source=source columns=columns>
+</JqxGrid>
+
+<div style="margin-top: 10px">
+  <JqxButton width=100 onClick="refreshBtnOnClick">Refresh Data</JqxButton>
+  <JqxButton width=100 onClick="clearBtnOnClick">Clear</JqxButton>
+</div>
+
+@code {
+    JqxGrid myGrid;
+
+    IDictionary<string, object> source = new Dictionary<string, object>()
+    {
+        { 
+            "dataFields",
+            new Dictionary<string, string>[]
+            {
+                new Dictionary<string, string>() { { "name", "id" }, { "type", "number" } },
+                new Dictionary<string, string>() { { "name", "firstname" }, { "type", "string" } },
+                new Dictionary<string, string>() { { "name", "lastname" }, { "type", "string" } },
+                new Dictionary<string, string>() { { "name", "productname" }, { "type", "string" } },
+                new Dictionary<string, string>() { { "name", "quantity" }, { "type", "number" } },
+                new Dictionary<string, string>() { { "name", "price" }, { "type", "number" } },
+                new Dictionary<string, string>() { { "name", "total" }, { "type", "number" } }
+            }
+        },
+        { "datatype", "array" },
+        { "localdata", generateData(500) }
+    };
+
+    IDictionary<string, object>[] columns = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>() 
+        {
+            { "text", "First Name" }, { "datafield", "firstname" }, { "width", 130 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Last Name" }, { "datafield", "lastname" }, { "width", 130 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Product" }, { "datafield", "productname" }, { "width", 180 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Quantity" }, { "datafield", "quantity" }, { "width", 80 }, { "cellalign", "right" }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Unit Price" }, { "datafield", "price" }, { "width", 80 }, { "cellalign", "right" }, { "cellsformat", "c2" }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Total" }, { "datafield", "total" }, { "cellsalign", "right" }, { "minwidth", 100 }, { "cellsformat", "c2" }
+        }
+    };
+
+    private void refreshBtnOnClick(IDictionary<string, object> e) 
+    {
+        source["localdata"] = generateData(500);
+
+        myGrid.setOptions(new Dictionary<string, object>(){
+            { "source", source }
+        });    
+    }
+
+    private void clearBtnOnClick(IDictionary<string, object> e) 
+    {
+        myGrid.clear();
+    }
+
+    public static IList<IDictionary<string, object>> generateData(int number)
+    {
+        IList<IDictionary<string, object>> data = new List<IDictionary<string, object>>();
+
+        string[] firstNames = new string[] { "Andrew", "Nancy", "Shelley", "Regina", "Yoshi", "Antoni", "Mayumi", "Ian", "Peter", "Lars", "Petra", "Martin", "Sven", "Elio", "Beate", "Cheryl", "Michael", "Guylene" };
+        string[] lastNames = new string[] { "Fuller", "Davolio", "Burke", "Murphy", "Nagase", "Saavedra", "Ohno", "Devling", "Wilson", "Peterson", "Winkler", "Bein", "Petersen", "Rossi", "Vileid", "Saylor", "Bjorn", "Nodier" };
+        string[] productNames = new string[] { "Black Tea", "Green Tea", "Caffe Espresso", "Doubleshot Espresso", "Caffe Latte", "White Chocolate Mocha", "Cramel Latte", "Caffe Americano", "Cappuccino", "Espresso Truffle", "Espresso con Panna", "Peppermint Mocha Twist" };
+        double[] priceValues = new double[] { 2.25, 1.5, 3.0, 3.3, 4.5, 3.6, 3.8, 2.5, 5.0, 1.75, 3.25, 4.0 };
+
+        Random random = new Random();
+        for (int i = 0; i < number; i++)
+        {           
+            Dictionary<string, object> row = new Dictionary<string, object>();
+            int productIndex = random.Next(0, productNames.Count());    
+            double price = priceValues[productIndex];
+            int quantity = random.Next(1, 100);
+
+            row.Add("id", i);
+            row.Add("firstname", firstNames[random.Next(0, firstNames.Length)]);
+            row.Add("lastname", lastNames[random.Next(0, lastNames.Length)]);
+            row.Add("productname", productNames[random.Next(0, productNames.Length)]);
+            row.Add("price", price);
+            row.Add("quantity", quantity);
+            row.Add("total", price * quantity);
+
+            data.Add(row);
+        }
+
+        return data;
+    }
+}
+
+<style>
+    .jqx-button {
+        display: inline-block;
+        margin-right: 5px;
+    }
+</style>
