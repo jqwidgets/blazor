@@ -1,86 +1,139 @@
-<JqxDataTable
-    width=650 source=source columns=columns
-    columnsResize=true pageable=true pagerButtonsCount=10>
-</JqxDataTable>
+﻿@inject IJSRuntime JSRuntime;
+
+<div style="width: 100%; height: 650px;" id="jqxWidget">
+    <div style="display: inline-block;">
+        <JqxButton onClick="handleOpen" width="80">Open</JqxButton>
+    </div>
+
+    <div style="display: inline-block; margin-left: 3px;">
+        <JqxButton onClick="handleClose" width="80">Close</JqxButton>
+    </div>
+
+    <div style="display: inline-block; margin-left: 3px;">
+        <JqxButton onClick="handlePin" width="80">Pin</JqxButton>
+    </div>
+
+    <div style="display: inline-block; margin-left: 3px;">
+        <JqxButton onClick="handleUnpin" width="80">Unpin</JqxButton>
+    </div>
+
+    <div style="display: inline-block; margin-left: 3px;">
+        <JqxButton onClick="handleCollapse" width="80">Collapse</JqxButton>
+    </div>
+
+    <div style="display: inline-block; margin-left: 3px;">
+        <JqxButton onClick="handleExpand" width="80">Expand</JqxButton>
+    </div>
+
+    <div
+        id="mainDemoContainer">
+        <JqxWindow @ref="customWindow" position="position" width="400" height="120" resizable="false" cancelButton="cancelButton">
+            <div id="customWindowHeader">
+                <span id="captureContainer" style="float: left">Find </span>
+            </div>
+            
+            <div id="customWindowContent" style="overflow: hidden;">
+                <div style="margin: 10px">
+                    Fi<u>n</u>d what:
+                    <input id="searchTextInput" @oninput="OnSetValue" type="text" style="width: 175px; height: 20px; border: 1px solid #aaa;" />
+
+                    <div style="float: right;">
+                        <div style="margin-bottom: 5px;">
+                            <JqxButton @ref="findButton" width="80" disabled="true">Find Next</JqxButton>
+                        </div>
+
+                        <div id="cancelButton">
+                            <JqxButton width="80" disabled="false">Cancel</JqxButton>
+                        </div>
+                    </div>
+
+                    <br />
+
+                    <br />
+
+                    <JqxCheckBox onChange="handleMatchCase" width="150">
+                        Match case
+                    </JqxCheckBox>
+                </div>
+            </div>
+        </JqxWindow>
+    </div>
+</div>
 
 @code {
+    JqxWindow customWindow;
 
-    IDictionary<string, object> source = new Dictionary<string, object>()
+    JqxButton findButton;
+
+    string cancelButton = "#cancelButton";
+
+    Dictionary<string, object> position = new Dictionary<string, object>() { { "x", 20 }, { "y", 70 } };
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        { "datatype", "xml" },
-        { 
-            "dataFields",
-            new Dictionary<string, string>[]
+        if (firstRender)
+        {
+            string result = await JSRuntime.InvokeAsync<string>("Example.getCoordinates", "#jqxWidget");
+            string[] tokens = result.Split(";");
+            int[] convertedItems = Array.ConvertAll<string, int>(tokens, int.Parse);
+            int top = convertedItems[0];
+            int left = convertedItems[1];
+            IDictionary<string, object> newPosition = new Dictionary<string, object>()
             {
-                new Dictionary<string, string>() 
-                { 
-                    { "name", "CompanyName" },
-                    { "map", "m\\:properties>d\\:CompanyName" },
-                    { "type", "string" } 
-                },
-                new Dictionary<string, string>() 
-                { 
-                    { "name", "ContactName" },
-                    { "map", "m\\:properties>d\\:ContactName" },
-                    { "type", "string" } 
-                },
-                new Dictionary<string, string>() 
-                { 
-                    { "name", "ContactTitle" },
-                    { "map", "m\\:properties>d\\:ContactTitle" },
-                    { "type", "string" } 
-                },
-                new Dictionary<string, string>() 
-                { 
-                    { "name", "City" },
-                    { "map", "m\\:properties>d\\:City" },
-                    { "type", "string" } 
-                },
-                new Dictionary<string, string>() 
-                { 
-                    { "name", "PostalCode" },
-                    { "map", "m\\:properties>d\\:PostalCode" },
-                    { "type", "string" } 
-                },
-                new Dictionary<string, string>() 
-                { 
-                    { "name", "Country" },
-                    { "map", "m\\:properties>d\\:Country" },
-                    { "type", "string" } 
-                }
-            }
-        },
-        { "root", "entry" },
-        { "record", "content" },
-        { "id", "m\\:properties>d\\:CustomerID" },
-        { "url", "./sampledata/customers.xml" }
-    };
+                { "x", (left + 50) },
+                { "y", (top + 50) }
+            };
 
-    IDictionary<string, object>[] columns = new Dictionary<string, object>[]
-    {
-        new Dictionary<string, object>() 
-        {
-            { "text", "Company Name" }, { "datafield", "CompanyName" }, { "width", 250 }
-        },
-        new Dictionary<string, object>() 
-        {
-            { "text", "Contact Name" }, { "datafield", "ContactName" }, { "width", 250 }
-        },
-        new Dictionary<string, object>() 
-        {
-            { "text", "Contact Title" }, { "datafield", "ContactTitle" }, { "width", 250 }
-        },
-        new Dictionary<string, object>() 
-        {
-            { "text", "City" }, { "datafield", "City" }, { "width", 120 }
-        },
-        new Dictionary<string, object>() 
-        {
-            { "text", "Postal Code" }, { "datafield", "PostalCode" }, { "width", 90 }
-        },
-        new Dictionary<string, object>() 
-        {
-            { "text", "Country" }, { "datafield", "Country" }, { "width", 100 }
+            customWindow.setOptions(new Dictionary<string, object>() { { "position", newPosition } });
         }
-    };
+    }
+
+    private void handleOpen(IDictionary<string, object> e)
+    {
+        customWindow.open();
+    }
+
+    private void handleClose(IDictionary<string, object> e)
+    {
+        customWindow.close();
+    }
+
+    private void handlePin(IDictionary<string, object> e)
+    {
+        customWindow.setOptions(new Dictionary<string, object>() { { "draggable", false } });
+    }
+
+    private void handleUnpin(IDictionary<string, object> e)
+    {
+        customWindow.setOptions(new Dictionary<string, object>() { { "draggable", true } });
+    }
+
+    private void handleCollapse(IDictionary<string, object> e)
+    {
+        customWindow.collapse();
+    }
+
+    private void handleExpand(IDictionary<string, object> e)
+    {
+        customWindow.expand();
+    }
+    
+    private void handleMatchCase(IDictionary<string, object> e)
+    {
+        // Do Something
+    }
+
+    private async void OnSetValue(EventArgs EventArgs)
+    {
+        var result = await JSRuntime.InvokeAsync<string>("Example.getValue", "#searchTextInput");
+        
+        if (result.ToString() != "")
+        {
+            findButton.setOptions(new Dictionary<string, object>() { { "disabled", false } });
+        }
+        else
+        {
+            findButton.setOptions(new Dictionary<string, object>() { { "disabled", true } });
+        }
+    }
 }

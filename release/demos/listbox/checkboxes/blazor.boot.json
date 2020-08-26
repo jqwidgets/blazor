@@ -24,7 +24,7 @@
         "../framework/_framework/_bin/WebAssembly.Net.Http.dll",
         "../framework/_framework/_bin/jQWidgets.Blazor.dll",
         "../framework/_framework/_bin/mscorlib.dll",
-        "../demos/listbox\checkboxes/index.dll"
+        "../demos/listbox/checkboxes/index.dll"
     ],
     "entryAssembly": "index",
     "linkerEnabled": true
