@@ -73,11 +73,24 @@
 </JqxSplitter>
 
 @code {
+    ElementReference content;
+
     string width = "100%";
     string height = "100%";
-
-    IDictionary<string, object>[] panels = new Dictionary<string, object>[]
+    
+    Dictionary<string, object>[] panels = new Dictionary<string, object>[]
     {
-        new Dictionary<string, object>() { { "size", 250 } }
+        new Dictionary<string, object>()
+        {
+            { "size", 250 }
+        }
     };
+
+    void HandleMouseUp(MouseEventArgs args)
+    {
+        double startX = args.ClientX;
+        double startY = args.ClientY;
+
+        JSRuntime.InvokeAsync<string>("Example.changeContent", startX, startY, content);
+    }
 }

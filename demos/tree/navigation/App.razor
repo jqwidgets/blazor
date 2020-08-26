@@ -1,9 +1,9 @@
-﻿@inject IJSRuntime JSRuntime;
+@inject IJSRuntime JSRuntime;
 
 <div>
     <JqxSplitter width="650" height="400" panels="panels">
         <div @onmouseup="HandleMouseUp">
-            <JqxTree height="400" width="300">
+            <JqxTree height="height" width="width">
                 <ul>
                     <li id="Mail" item-expanded="true">
                         <img style="float: left; margin-right: 5px;" src="../../images/mailIcon.png" /><span
@@ -71,6 +71,7 @@
                 </ul>
             </JqxTree>
         </div>
+        
         <div>
             <div id="content"></div>
         </div>
@@ -79,6 +80,9 @@
 </div>
 
 @code {
+    string width = "100%";
+    string height = "100%";
+    
     Dictionary<string, object>[] panels = new Dictionary<string, object>[]
     {
         new Dictionary<string, object>()
