@@ -1,4 +1,4 @@
-
+﻿
 /**
  * Swiper 3.0.8
  * Most modern mobile touch slider and framework with hardware accelerated transitions
@@ -1761,10 +1761,10 @@
                 //Latest Chrome and webkits Fix
                 if (window.WebKitCSSMatrix)
                     curTransform = transformMatrix.m41;
-                //Crazy IE10 Matrix
+                    //Crazy IE10 Matrix
                 else if (matrix.length === 16)
                     curTransform = parseFloat(matrix[12]);
-                //Normal Browsers
+                    //Normal Browsers
                 else
                     curTransform = parseFloat(matrix[4]);
             }
@@ -1772,10 +1772,10 @@
                 //Latest Chrome and webkits Fix
                 if (window.WebKitCSSMatrix)
                     curTransform = transformMatrix.m42;
-                //Crazy IE10 Matrix
+                    //Crazy IE10 Matrix
                 else if (matrix.length === 16)
                     curTransform = parseFloat(matrix[13]);
-                //Normal Browsers
+                    //Normal Browsers
                 else
                     curTransform = parseFloat(matrix[5]);
             }
@@ -1873,7 +1873,7 @@
                 newIndex = newIndex + s.loopedSlides;
                 s.slideTo(newIndex, 0, false, true);
             }
-            //Fix For Positive Oversliding
+                //Fix For Positive Oversliding
             else if ((s.params.slidesPerView === 'auto' && s.activeIndex >= s.loopedSlides * 2) || (s.activeIndex > s.slides.length - s.params.slidesPerView * 2)) {
                 newIndex = -s.slides.length + s.activeIndex + s.loopedSlides;
                 newIndex = newIndex + s.loopedSlides;
@@ -1987,8 +1987,8 @@
                             tx = 0;
                         }
                         var slideOpacity = s.params.fade.crossFade ?
-                            Math.max(1 - Math.abs(slide[0].progress), 0) :
-                            1 + Math.min(Math.max(slide[0].progress, -1), 0);
+                                Math.max(1 - Math.abs(slide[0].progress), 0) :
+                                1 + Math.min(Math.max(slide[0].progress, -1), 0);
                         slide
                             .css({
                                 opacity: slideOpacity
@@ -2245,7 +2245,7 @@
                 }
                 else {
                     if (s.params.slidesPerView > 1) {
-                        for (i = s.activeIndex; i < s.activeIndex + s.params.slidesPerView; i++) {
+                        for (i = s.activeIndex; i < s.activeIndex + s.params.slidesPerView ; i++) {
                             if (s.slides[i]) s.lazy.loadImageInSlide(i);
                         }
                     }
@@ -2260,7 +2260,7 @@
                             if (s.slides[i]) s.lazy.loadImageInSlide(i);
                         }
                         // Prev Slides
-                        for (i = s.activeIndex - s.params.slidesPerView; i < s.activeIndex; i++) {
+                        for (i = s.activeIndex - s.params.slidesPerView; i < s.activeIndex ; i++) {
                             if (s.slides[i]) s.lazy.loadImageInSlide(i);
                         }
                     }
@@ -2570,7 +2570,7 @@
             var delta = 0;
             //Opera & IE
             if (e.detail) delta = -e.detail;
-            //WebKits
+                //WebKits
             else if (we === 'mousewheel') {
                 if (s.params.mousewheelForceToAxis) {
                     if (isH()) {
@@ -2586,9 +2586,9 @@
                     delta = e.wheelDelta;
                 }
             }
-            //Old FireFox
+                //Old FireFox
             else if (we === 'DOMMouseScroll') delta = -e.detail;
-            //New FireFox
+                //New FireFox
             else if (we === 'wheel') {
                 if (s.params.mousewheelForceToAxis) {
                     if (isH()) {
@@ -2947,10 +2947,10 @@
             if (s.slides && s.slides.length) {
                 s.slides
                     .removeClass([
-                        s.params.slideVisibleClass,
-                        s.params.slideActiveClass,
-                        s.params.slideNextClass,
-                        s.params.slidePrevClass
+                      s.params.slideVisibleClass,
+                      s.params.slideActiveClass,
+                      s.params.slideNextClass,
+                      s.params.slidePrevClass
                     ].join(' '))
                     .removeAttr('style')
                     .removeAttr('data-swiper-column')
@@ -3216,7 +3216,7 @@ function onDocReady() {
     //align columns
     if ($('.doc_menu').length > 0) {
         if ($('.doc_menu').outerHeight() > $('.doc_content').height()) {
-            //    $('.doc_content').height($('.doc_menu').outerHeight() - 88);
+        //    $('.doc_content').height($('.doc_menu').outerHeight() - 88);
         }
     }
 
@@ -3417,87 +3417,89 @@ function SlideLogos() {
 
 $(document).ready(function () {
     var testForIndex = function () {
-        if (window.location.href.indexOf("/documentation") != -1) {
+        if (document.querySelector('#pageDocumentation')) {
             return true;
         }
         return false;
     }
-    var timer;
-    var filterMenuItems = function (fromSearch) {
-        if (timer != undefined) clearTimeout(timer);
-        var filterNow = function () {
-            var searchString = $("#searchField").val();
+	var timer;
+          var filterMenuItems = function (fromSearch) {
+                if (timer != undefined) clearTimeout(timer);
+                var filterNow = function () {
+                    var searchString = $("#searchField").val();
 
-            var items = $(".sub_menu > a");
-            $.each(items, function () {
-                var item = $(this);
-                var itemText = $.trim(item.text());
+                    var items = $(".sub_menu > a");
+                    $.each(items, function () {
+                        var item = $(this);
+                        var itemText = $.trim(item.text());
 
-                var match = itemText.toUpperCase().indexOf(searchString.toUpperCase()) != -1;
+                        var match = itemText.toUpperCase().indexOf(searchString.toUpperCase()) != -1;
 
-                if (!match) {
-                    item.parent().hide();
+                        if (!match) {
+                            item.parent().hide();
+                        }
+                        else {
+                            item.parent().show();
+                        }
+                    });
+                    var items = $(".doc_menu a:lt(5)");
+                    $.each(items, function () {
+                        var item = $(this);
+                        var itemText = $.trim(item.text());
+
+                        var match = itemText.toUpperCase().indexOf(searchString.toUpperCase()) != -1;
+
+                        if (!match) {
+                            item.parent().hide();
+                        }
+                        else {
+                            item.parent().show();
+                        }
+                    });
+                }
+                if (fromSearch) {
+                    timer = setTimeout(function () {
+                        filterNow();
+                    }, 500);
                 }
                 else {
-                    item.parent().show();
+                    filterNow();
                 }
-            });
-            var items = $(".doc_menu a:lt(5)");
-            $.each(items, function () {
-                var item = $(this);
-                var itemText = $.trim(item.text());
-
-                var match = itemText.toUpperCase().indexOf(searchString.toUpperCase()) != -1;
-
-                if (!match) {
-                    item.parent().hide();
-                }
-                else {
-                    item.parent().show();
-                }
-            });
-        }
-        if (fromSearch) {
-            timer = setTimeout(function () {
-                filterNow();
-            }, 500);
-        }
-        else {
-            filterNow();
-        }
-    }
+            }
     if (testForIndex()) {
         var documentation = $("#pageDocumentation");
         documentation.css('visibility', 'inherit');
         documentation.hide();
     }
-    else {
-        $("#searchField").keydown(function (event) {
-            filterMenuItems(true);
-            document.cookie = $("#searchField").val();
+    else 
+	{
+	    $("#searchField").keydown(function (event) {
+                filterMenuItems(true);
+                document.cookie = $("#searchField").val();
+				
+            });
+   $(".doc_menu a").click(function () {
+                if (this.href.indexOf('documentation') >= 0) {
+                    window.open(this.href + "?search=" + $("#searchField").val(), "_self");
+                    return false;
+                }
+            });
 
-        });
-        $(".doc_menu a").click(function () {
-            if (this.href.indexOf('documentation') >= 0) {
-                window.open(this.href + "?search=" + $("#searchField").val(), "_self");
-                return false;
+            var loc = window.location.toString();
+            if (loc.indexOf("?search=") >= 0) {
+                $("#searchField").val(loc.substring(loc.indexOf("?search=") + 8));
+                filterMenuItems(false);
             }
-        });
-
-        var loc = window.location.toString();
-        if (loc.indexOf("?search=") >= 0) {
-            $("#searchField").val(loc.substring(loc.indexOf("?search=") + 8));
-            filterMenuItems(false);
-        }
-        onDocReady();
-    }
-    if (jqxBrowser().msie && jqxBrowser().version < 9) {
-        var images = $("img");
-        $.each(images, function (index, value) {
-            var src = this.src;
-            this.src = src.toString().substring(0, src.toString().length - 3) + "png";
-        });
-    }
+		onDocReady();
+	}
+	if (jqxBrowser().msie && jqxBrowser().version < 9) {
+		var images = $("img");
+		$.each(images,function(index, value)
+		{
+			var src = this.src;
+			this.src = src.toString().substring(0, src.toString().length-3) + "png";
+		});
+	}
     var resize = function () {
         if ($(window).width() < 767) {
             $(".doc_mask").css('visibility', 'hidden');
@@ -3514,40 +3516,41 @@ $(document).ready(function () {
             var w = $(".doc_menu").offset().left;
             $(".doc_mask").css('left', $(".doc_content").offset().left + $(".doc_content").outerWidth());
             $(".doc_mask").width($(window).width() - $(".doc_content").offset().left - $(".doc_content").outerWidth());
-            if (jqxBrowser().msie && jqxBrowser().version < 9) {
-                return;
-            }
-            $(".doc_content").css('min-height', 'auto');
-            $(".doc_content").css('min-height', 50 + $(".documentation").height());
+		  if (jqxBrowser().msie && jqxBrowser().version < 9) {
+          return;
+		  }
+		  $(".doc_content").css('min-height', 'auto');
+		  $(".doc_content").css('min-height', 50+$(".documentation").height());
         }
     }
     if (testForIndex()) {
         $("#pageTop").load("../../top.htm", function () {
             documentation.appendTo(".doc_content");
             documentation.show();
-            if (jqxBrowser().msie && jqxBrowser().version < 9) {
-                var url = "../../resources/design/css/img.css";
-                var link = $('<link rel="stylesheet" href="' + url + '" media="screen" />');
-                $(document).find('head').append(link);
-
-                var url = "../../resources/design/css/img_ie.css";
-                var link = $('<link rel="stylesheet" href="' + url + '" media="screen" />');
-                $(document).find('head').append(link);
-                if (jqxBrowser().msie && jqxBrowser().version < 9) {
-                    var images = $("img");
-                    $.each(images, function (index, value) {
-                        var src = this.src;
-                        this.src = src.toString().substring(0, src.toString().length - 3) + "png";
-                    });
-                }
-            }
-            if (formatCode) {
+		if (jqxBrowser().msie && jqxBrowser().version < 9) {
+		var url = "../../resources/design/css/img.css";
+		  var link = $('<link rel="stylesheet" href="' + url + '" media="screen" />');
+                    $(document).find('head').append(link);
+                  
+		var url = "../../resources/design/css/img_ie.css";
+		  var link = $('<link rel="stylesheet" href="' + url + '" media="screen" />');
+                    $(document).find('head').append(link);
+			if (jqxBrowser().msie && jqxBrowser().version < 9) {
+		var images = $("img");
+		$.each(images,function(index, value)
+		{
+			var src = this.src;
+			this.src = src.toString().substring(0, src.toString().length-3) + "png";
+		});
+	}
+			}          
+		  if (formatCode) {
                 $('.format').each(function () {
                     this.innerHTML = formatCode(this.innerHTML);
                 });
             }
 
-
+  
 
             $(".doc_menu a").click(function () {
                 if (this.href.indexOf('documentation') >= 0) {
@@ -3679,18 +3682,20 @@ $(document).ready(function () {
                 });
             }
         }
-        );
+    );
 
-        $("#pageBottom").load("../../bottom.htm", function () {
-            if (jqxBrowser().msie && jqxBrowser().version < 9) {
-                var images = $("img");
-                $.each(images, function (index, value) {
-                    var src = this.src;
-                    this.src = src.toString().substring(0, src.toString().length - 3) + "png";
-                });
-            }
-        }
-        );
+        $("#pageBottom").load("../../bottom.htm", function()
+		{
+				if (jqxBrowser().msie && jqxBrowser().version < 9) {
+		var images = $("img");
+		$.each(images,function(index, value)
+		{
+			var src = this.src;
+			this.src = src.toString().substring(0, src.toString().length-3) + "png";
+		});
+	}
+		}
+		);
     }
 
 
