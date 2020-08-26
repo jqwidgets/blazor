@@ -24,7 +24,7 @@
         "../framework/_framework/_bin/WebAssembly.Net.Http.dll",
         "../framework/_framework/_bin/jQWidgets.Blazor.dll",
         "../framework/_framework/_bin/mscorlib.dll",
-        "../demos/navbar\defaultfunctionality/index.dll"
+        "../demos/navbar/defaultfunctionality/index.dll"
     ],
     "entryAssembly": "index",
     "linkerEnabled": true

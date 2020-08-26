@@ -1,7 +1,7 @@
 
 $(document).ready(function () {
     (function ($) { $.jqx.response = function () { this.defineInstance() }; $.jqx.response.prototype = { defineInstance: function () { this._handlers = new Array(); this.refresh(); var that = this; this.addHandler($(document), "scroll.jqxresponse", function () { that.scroll = that.getScroll() }) }, refresh: function () { this.os = this.getOS(); this.browser = this.getBrowser(); this.device = this.getDevice(); this.viewPort = this.getViewPort(); this.document = this.getDocument(); this.scroll = this.getScroll(); this.media = window.matchMedia || window.msMatchMedia || function () { return {} } }, refreshSize: function () { this.viewPort = this.getViewPort(); this.document = this.getDocument() }, addHandler: function (source, event, func, data) { switch (event) { case "mousemove": if (window.addEventListener && !data) { source[0].addEventListener("mousemove", func, false); return false } break } if (source.on) { source.on(event, func) } else { source.bind(event, func) } }, removeHandler: function (source, event, func) { if (event == undefined) { if (source.off) { source.off() } else { source.unbind() } return } if (func == undefined) { if (source.off) { source.off(event) } else { source.unbind(event) } } else { if (source.off) { source.off(event, func) } else { source.unbind(event, func) } } }, destroy: function () { this.removeHandler($(window), "resize.jqxresponse"); this.removeHandler($(document), "scroll.jqxresponse"); for (var i = 0; i < this._handlers.length; i++) { var element = this._handlers[i]; this.removeHandler($(element), "mousedown.response" + element[0].id); this.removeHandler($(element), "touchstart.response" + element[0].id); this.removeHandler($(element), "mousemove.response" + element[0].id); this.removeHandler($(element), "touchmove.response" + element[0].id); this.removeHandler($(element), "mouseup.response" + element[0].id); this.removeHandler($(element), "touchend.response" + element[0].id) } }, resize: function (resizeFuncs) { var that = this; this.removeHandler($(window), "resize.jqxresponse"); this.addHandler($(window), "resize.jqxresponse", function (event) { if (resizeFuncs) { if ($.isArray(resizeFuncs)) { for (var i = 0; i < resizeFuncs.length; i++) { resizeFuncs[i]() } } else { resizeFuncs() } } that.refreshSize() }); if (resizeFuncs == null) { this.removeHandler($(window), "resize.jqxresponse") } }, pointerDown: function (element, func) { if (element && func) { var touchDevice = $.jqx.mobile.isTouchDevice(); var that = this; var canCallFunc = true; if (touchDevice) { var touchstart = $.jqx.mobile.getTouchEventName("touchstart") + ".response" + element[0].id; if (func != null) { this.addHandler($(element), touchstart, function (event) { var position = $.jqx.position(event); var result = func(event, position, "touch"); canCallFunc = false; setTimeout(function () { canCallFunc = true }, 500); return result }) } else { this.removeHandler($(element), touchstart) } } if (func != null) { this.addHandler($(element), "mousedown.response" + element[0].id, function (event) { var position = $.jqx.position(event); if (canCallFunc) { return func(event, position, "mouse") } }) } else { this.removeHandler($(element), "mousedown.response" + element[0].id) } this._handlers.push(element) } }, pointerUp: function (element, func) { if (element) { var touchDevice = $.jqx.mobile.isTouchDevice(); var that = this; var canCallFunc = true; if (touchDevice) { var touchend = $.jqx.mobile.getTouchEventName("touchend") + ".response" + element[0].id; if (func != null) { this.addHandler($(element), touchend, function (event) { var position = $.jqx.position(event); var result = func(event, position, "touch"); canCallFunc = false; setTimeout(function () { canCallFunc = true }, 500); return result }) } else { this.removeHandler($(element), touchend) } } if (func != null) { this.addHandler($(element), "mouseup.response" + element[0].id, function (event) { var position = $.jqx.position(event); if (canCallFunc) { return func(event, position, "mouse") } }) } else { this.removeHandler($(element), "mouseup.response" + element[0].id) } this._handlers.push(element) } }, pointerMove: function (element, func) { if (element) { var touchDevice = $.jqx.mobile.isTouchDevice(); if (touchDevice) { var touchmove = $.jqx.mobile.getTouchEventName("touchmove") + ".response" + element[0].id; if (func != null) { this.addHandler($(element), touchmove, function (event) { var touches = $.jqx.mobile.getTouches(event); if (touches.length == 1) { var position = $.jqx.position(event); return func(event, position, "touch") } }) } else { this.removeHandler($(element), touchmove) } } else { if (func != null) { this.addHandler($(element), "mousemove.response" + element[0].id, function (event) { var position = $.jqx.position(event); return func(event, position, "mouse") }) } else { this.removeHandler($(element), "mousemove.response" + element[0].id) } } this._handlers.push(element) } }, isHidden: function (element) { return $.jqx.isHidden($(element)) }, inViewPort: function (element) { var viewPort = this.viewPort; if (element.getBoundingClientRect) { var r = element.getBoundingClientRect ? element.getBoundingClientRect() : {}; return r && (r.bottom >= 0 && r.top <= viewPort.height && r.right >= 0 && r.left <= viewPort.width) } return false }, getScroll: function () { var obj = { left: window.pageXOffset || document.scrollLeft, top: window.pageYOffset || document.scrollTop }; if (obj.left == undefined) { obj.left = 0 } if (obj.top == undefined) { obj.top = 0 } return obj }, getDocument: function () { return { width: $(document).width(), height: $(document).height() } }, getViewPort: function () { return { width: $(window).width(), height: $(window).height() } }, getTouch: function () { var eventName = "ontouchstart"; var supported = (eventName in window); if (supported) { return true } else { var eventName = "MSPointerDown"; var supported = (eventName in window); if (supported) { return true } } if ($.jqx.mobile.isWindowsPhone()) { return true } return false }, getDevice: function () { var osName = this.os.name; var match = window.location.search.match(/deviceType=(Tablet|Phone)/), nativeDeviceType = window.deviceType; var deviceType = ""; if (match && match[1]) { deviceType = match[1] } else { if (nativeDeviceType === "iPhone") { deviceType = "Phone" } else { if (nativeDeviceType === "iPad") { deviceType = "Tablet" } else { if (osName != "Android" && osName != "iOS" && /Windows|Linux|MacOS|Mac OS|Mac OS X/.test(osName)) { deviceType = "Desktop" } else { if (osName == "iOS" && navigator.userAgent.toLowerCase().indexOf("ipad") >= 0) { deviceType = "Tablet" } else { if (osName == "RIMTablet") { deviceType = "Tablet" } else { if (osName == "Android") { if (this.os.version && this.os.version.substring(0, 1).indexOf("3") >= 0) { deviceType = "Tablet" } else { if (this.os.version && this.os.version.substring(0, 1).indexOf("4") >= 0 && navigator.userAgent.search(/mobile/i) == -1) { deviceType = "Tablet" } else { deviceType = "Phone" } } if (navigator.userAgent.toLowerCase().indexOf("kindle fire") >= 0) { deviceType = "Tablet" } } else { deviceType = "Phone" } } } } } } } if (/Windows/.test(osName)) { if (navigator.userAgent.indexOf("Windows Phone") >= 0 || navigator.userAgent.indexOf("WPDesktop") >= 0 || navigator.userAgent.indexOf("IEMobile") >= 0 || navigator.userAgent.indexOf("ZuneWP7") >= 0) { deviceType = "Phone" } else { if (navigator.userAgent.indexOf("Touch") >= 0) { deviceType = "Tablet"; if (!this.getTouch()) { deviceType = "Desktop" } } } } return { type: deviceType, touch: this.getTouch(), width: window.screen.width, height: window.screen.height, availWidth: window.screen.availWidth, availHeight: window.screen.availHeight } }, canvas: function () { var canvasSupport = false; var canvas = document.createElement("canvas"); if (canvas && canvas.getContext && canvas.getContext("2d")) { canvasSupport = true } return canvasSupport }, vml: function () { if (this._vmlSupport == undefined) { var a = document.body.appendChild(document.createElement("div")); a.innerHTML = '<v:shape id="vml_flag1" adj="1" />'; var b = a.firstChild; b.style.behavior = "url(#default#VML)"; this._vmlSupport = b ? typeof b.adj == "object" : true; a.parentNode.removeChild(a) } return this._vmlSupport }, svg: function () { return document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Image", "1.1") }, getBrowser: function () { var ua = navigator.userAgent.toLowerCase(); var name = ""; var match = null; var that = this; browserNames = { msie: { name: "Internet Explorer", eval: /(msie) ([\w.]+)/.exec(ua) }, webkit: { name: "Webkit", eval: /(webkit)[ \/]([\w.]+)/.exec(ua) }, chrome: { name: "Chrome", eval: /(chrome)[ \/]([\w.]+)/.exec(ua) }, safari: { name: "Safari", eval: /(safari)[ \/]([\w.]+)/.exec(ua) }, edge: { name: "Edge", eval: /(edge) ([\w.]+)/.exec(ua) }, opera: { name: "Opera", eval: /(opera)(?:.*version|)[ \/]([\w.]+)/.exec(ua) }, operamobile: { name: "Opera Mobile", eval: /(opera mobi)(?:.*version|)[ \/]([\w.]+)/.exec(ua) || /(opera tablet)(?:.*version|)[ \/]([\w.]+)/.exec(ua) }, dolphin: { name: "Dolphin", eval: /(dolphin)[ \/]([\w.]+)/.exec(ua) }, webosbrowser: { name: "webOSBrowser", eval: /(wosbrowser)(?:.*version|)[ \/]([\w.]+)/.exec(ua) }, chromemobile: { name: "Chrome Mobile", eval: /(crmo)[ \/]([\w.]+)/.exec(ua) }, silk: { name: "Silk", eval: /(silk)[ \/]([\w.]+)/.exec(ua) }, firefox: { name: "Firefox", eval: /(firefox)[ \/]([\w.]+)/.exec(ua) }, msie11: { name: "Internet Explorer 11", eval: ua.indexOf("rv:11.0") >= 0 && ua.indexOf(".net4.0c") >= 0 }, winphone: { name: "Internet Explorer Mobile", eval: ua.indexOf("windows phone 8.1") >= 0 }, other: { name: "Other", eval: ua.indexOf("compatible") < 0 && /(mozilla)(?:.*? rv:([\w.]+)|)/.exec(ua) } }; $.each(browserNames, function (index, value) { if (this.eval) { if (this.name == "Other") { if (!match) { match = this.eval; name = this.name } } else { if (this.name == "Internet Explorer 11") { if (!match) { match = ["", "msie", 11]; name = "Internet Explorer" } } else { if (this.name == "Internet Explorer Mobile") { if (!match) { match = ["", "msie", 11]; name = "Internet Explorer" } } else { if (name == "Chrome" && this.name == "Safari") { return true } match = this.eval; name = this.name } } } } }); if (match) { var browser = { name: name, accessName: match[1] || "", version: match[2] || "0", canvas: this.canvas(), svg: this.svg(), vml: this.vml() }; browser[match[1]] = match[1] } else { browser = { name: "Other", browser: "other", version: "" } } return browser }, getOS: function () { var match = null; var version = ""; var userAgent = navigator.userAgent; var os = "Other"; var osTypes = { ios: { name: "iOS", regex: new RegExp("(?:i(?:Pad|Phone|Pod)(?:.*)CPU(?: iPhone)? OS )([^\\s;]+)") }, android: { name: "Android", regex: new RegExp("(?:(Android |HTC_|Silk/))([^\\s;]+)") }, webos: { name: "webOS", regex: new RegExp("(?:(?:webOS|hpwOS)/)([^\\s;]+)") }, blackberry: { name: "BlackBerry", regex: new RegExp("(?:BlackBerry(?:.*)Version/)([^\\s;]+)") }, rimTablet: { name: "RIMTablet", regex: new RegExp("(?:RIM Tablet OS )([^\\s;]+)") }, chrome: { name: "Chrome OS", regex: new RegExp("CrOS") }, mac: { name: "MacOS", regex: new RegExp("mac") }, win: { name: "Windows", regex: new RegExp("win") }, linux: { name: "Linux", regex: new RegExp("linux") }, bada: { name: "Bada", regex: new RegExp("(?:Bada/)([^\\s;]+)") }, other: { name: "Other" } }; var osys = ""; var clientStrings = [{ s: "Windows 3.11", r: /Win16/ }, { s: "Windows 95", r: /(Windows 95|Win95|Windows_95)/ }, { s: "Windows ME", r: /(Win 9x 4.90|Windows ME)/ }, { s: "Windows 98", r: /(Windows 98|Win98)/ }, { s: "Windows CE", r: /Windows CE/ }, { s: "Windows 2000", r: /(Windows NT 5.0|Windows 2000)/ }, { s: "Windows XP", r: /(Windows NT 5.1|Windows XP)/ }, { s: "Windows Server 2003", r: /Windows NT 5.2/ }, { s: "Windows Vista", r: /Windows NT 6.0/ }, { s: "Windows 7", r: /(Windows 7|Windows NT 6.1)/ }, { s: "Windows 8.1", r: /(Windows 8.1|Windows NT 6.3)/ }, { s: "Windows 8", r: /(Windows 8|Windows NT 6.2)/ }, { s: "Windows 10", r: /(Windows 10|Windows NT 10)/ }, { s: "Windows NT 4.0", r: /(Windows NT 4.0|WinNT4.0|WinNT|Windows NT)/ }, { s: "Windows ME", r: /Windows ME/ }, { s: "Android", r: /Android/ }, { s: "Open BSD", r: /OpenBSD/ }, { s: "Sun OS", r: /SunOS/ }, { s: "Linux", r: /(Linux|X11)/ }, { s: "BB10", r: /BB10/ }, { s: "MeeGo", r: /MeeGo/ }, { s: "iOS", r: /(iPhone|iPad|iPod)/ }, { s: "Mac OS X", r: /Mac OS X/ }, { s: "Mac OS", r: /(MacPPC|MacIntel|Mac_PowerPC|Macintosh)/ }, { s: "QNX", r: /QNX/ }, { s: "UNIX", r: /UNIX/ }, { s: "BeOS", r: /BeOS/ }, { s: "OS/2", r: /OS\/2/ }, { s: "Search Bot", r: /(nuhk|Googlebot|Yammybot|Openbot|Slurp|MSNBot|Ask Jeeves\/Teoma|ia_archiver)/ }]; for (var id in clientStrings) { var cs = clientStrings[id]; if (cs.r.test(userAgent)) { osys = cs.s; break } } var osVersion = ""; if (/Windows/.test(osys)) { osVersion = /Windows (.*)/.exec(osys)[1]; osys = "Windows" } if (/BB10/.test(osys)) { osVersion = "10"; osys = "BlackBerry" } switch (os) { case "Mac OS X": osVersion = /Mac OS X (10[\.\_\d]+)/.exec(userAgent)[1]; break; case "Android": osVersion = /Android ([\.\_\d]+)/.exec(userAgent)[1]; break; case "iOS": osVersion = /OS (\d+)_(\d+)_?(\d+)?/.exec(nVer); osVersion = osVersion[1] + "." + osVersion[2] + "." + (osVersion[3] | 0); break } if (osVersion != "") { version = osVersion } $.each(osTypes, function (index, value) { match = userAgent.match(this.regex) || userAgent.toLowerCase().match(this.regex); if (match) { if (!this.name.match(/Windows|Linux|MacOS/)) { if (match[1] && (match[1] == "HTC_" || match[1] == "Silk/")) { version = "2.3" } else { version = match[match.length - 1] } } os = { name: this.name, version: version, platform: navigator.platform }; return false } }); if (os && os.name == "Other") { os.name = osys } if (os && os.name != "" && osys != "") { os.name = osys } if (os && os.version == "" && osVersion != "") { os.version = osVersion } return os } } })(jqxBaseFramework);
-    var opened = false;
+    var opened = true;
     $("#toggleButtonLabel").click(function () {
         $("#toggleButton").trigger('click');
     });
@@ -24,30 +24,24 @@ $(document).ready(function () {
     });
     if (window.location.href.indexOf('mobiledemos') == -1) {
         initDemo(false);
-        //   var response = new $.jqx.response();
-        //if (response.device.type != "Desktop") {
-        //		var items = $(".title_nav").find('li');
-
-        //	window.open('http://www.jqwidgets.com/angular/mobiledemos/', '_self');
-        //	}
     }
     else {
         initDemo(true);
     }
-    if ($.jqx.browser.msie && $.jqx.browser.version < 11) {
-        var headerTabs = $(".title_nav .wrap li");
-        headerTabs[1].style.display = "none";
-        headerTabs[2].style.display = "none";
-        headerTabs[3].style.display = "none";
-    }
+	if ($.jqx.browser.msie && $.jqx.browser.version < 12){
+		var headerTabs = $(".title_nav .wrap li");
+		headerTabs[1].style.display = "none";
+		headerTabs[2].style.display = "none";	
+		headerTabs[3].style.display = "none";	
+	}
     if ($.jqx.browser.msie && $.jqx.browser.version < 9) {
         $(document.body).css('min-width', 1400);
         $(document.body).css('overflow-x', 'auto');
         $('html').css('overflow-x', 'auto');
 
-        var url = "../https://www.jqwidgets.com/angular/resources/design/css/img.css";
+        var url = "../../resources/design/css/img.css";
         $('head').append('<link rel="stylesheet" href="' + url + '" media="screen" />');
-        var url = "../https://www.jqwidgets.com/angular/resources/design/css/img_ie.css";
+        var url = "../../resources/design/css/img_ie.css";
         $('head').append('<link rel="stylesheet" href="' + url + '" media="screen" />');
     }
 });
@@ -56,15 +50,10 @@ function initthemes(initialurl) {
     if ($('#themeComboBox').length == 0) return;
     if (!$('#themeComboBox').jqxDropDownList) return;
 
-    $('#themeComboBox').prev().css('margin-top', '6px');
-
-    var loadedThemes = [0, -1, -1, -1, -1. - 1. - 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1];
+    var loadedThemes = [0, -1. -1. -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1];
     var themes = [
         { label: 'Light', group: 'Themes', value: 'light' },
         { label: 'Dark', group: 'Themes', value: 'dark' },
-        { label: 'Material', group: 'Themes', value: 'material' },
-        { label: 'Material Green', group: 'Themes', value: 'material-green' },
-        { label: 'Material Purple', group: 'Themes', value: 'material-purple' },
         { label: 'Arctic', group: 'Themes', value: 'arctic' },
         { label: 'Web', group: 'Themes', value: 'web' },
         { label: 'Bootstrap', group: 'Themes', value: 'bootstrap' },
@@ -98,13 +87,83 @@ function initthemes(initialurl) {
     var me = this;
     this.$head = $('head');
     if (window.location.href.indexOf('mobiledemos') != -1) {
-        $('#themeComboBox').jqxDropDownList({ source: mobilethemes, theme: 'light', selectedIndex: 2, autoDropDownHeight: true, dropDownHeight: 200, width: '140px', height: '30px' });
+        $('#themeComboBox').jqxDropDownList({ source: mobilethemes, theme: 'light', selectedIndex: 0, autoDropDownHeight: true, dropDownHeight: 200, width: '140px', height: '25px' });
     }
     else {
-        $('#themeComboBox').jqxDropDownList({ source: themes, theme: 'light', selectedIndex: 0, dropDownHeight: 200, width: '140px', height: '30px' });
+        $('#themeComboBox').jqxDropDownList({ source: themes, theme: 'light', selectedIndex: 0, dropDownHeight: 200, width: '140px', height: '25px' });
     }
     var loadedTheme = false;
+    if (window.localStorage)
+    {
+        if (window.localStorage["Theme"])
+        {
+            loadedTheme = true;
+            var selectedIndex = parseInt(window.localStorage["Theme"].substring(1));
+            $('#themeComboBox').jqxDropDownList('selectIndex', selectedIndex);
+            var loaded = loadedThemes[selectedIndex] != -1;
+            loadedThemes[selectedIndex] = selectedIndex;
+            var mobilethemes = [
+                { label: 'iOS', group: 'Themes', value: 'mobile' },
+                { label: 'Android', group: 'Themes', value: 'android' },
+                { label: 'Windows Phone', group: 'Themes', value: 'win8' },
+                { label: 'Blackberry', group: 'Themes', value: 'blackberry' }
+            ];
 
+            var themes = [
+              { label: 'Light', group: 'Themes', value: 'light' },
+              { label: 'Dark', group: 'Themes', value: 'dark' },
+              { label: 'Arctic', group: 'Themes', value: 'arctic' },
+              { label: 'Web', group: 'Themes', value: 'web' },
+              { label: 'Bootstrap', group: 'Themes', value: 'bootstrap' },
+              { label: 'Metro', group: 'Themes', value: 'metro' },
+              { label: 'Metro Dark', group: 'Themes', value: 'metrodark' },
+              { label: 'Office', group: 'Themes', value: 'office' },
+              { label: 'Orange', group: 'Themes', value: 'orange' },
+              { label: 'Fresh', group: 'Themes', value: 'fresh' },
+              { label: 'Energy Blue', group: 'Themes', value: 'energyblue' },
+              { label: 'Dark Blue', group: 'Themes', value: 'darkblue' },
+              { label: 'Black', group: 'Themes', value: 'black' },
+              { label: 'Shiny Black', group: 'Themes', value: 'shinyblack' },
+              { label: 'Classic', group: 'Themes', value: 'classic' },
+              { label: 'Summer', group: 'Themes', value: 'summer' },
+              { label: 'High Contrast', group: 'Themes', value: 'highcontrast' },
+              { label: 'Lightness', group: 'UI Compatible', value: 'ui-lightness' },
+              { label: 'Darkness', group: 'UI Compatible', value: 'ui-darkness' },
+              { label: 'Smoothness', group: 'UI Compatible', value: 'ui-smoothness' },
+              { label: 'Start', group: 'UI Compatible', value: 'ui-start' },
+              { label: 'Redmond', group: 'UI Compatible', value: 'ui-redmond' },
+              { label: 'Sunny', group: 'UI Compatible', value: 'ui-sunny' },
+              { label: 'Overcast', group: 'UI Compatible', value: 'ui-overcast' },
+              { label: 'Le Frog', group: 'UI Compatible', value: 'ui-le-frog' }
+            ];
+            var selectedTheme = "";
+            if (window.location.href.indexOf('mobiledemos') != -1)
+            {
+				if (mobilethemes[selectedIndex]) {
+					selectedTheme = mobilethemes[selectedIndex].value;
+				}
+				else {
+					selectedTheme = mobilethemes[0].value;
+				}
+            }
+            else
+            {
+                selectedTheme = themes[selectedIndex].value;
+            }
+            var url = initialurl;
+            url += selectedTheme + '.css';
+
+            if (!loaded)
+            {
+                if (document.createStyleSheet != undefined)
+                {
+                    document.createStyleSheet(url);
+                }
+                else me.$head.append('<link rel="stylesheet" href="' + url + '" media="screen" />');
+            }
+            $.data(document.body, 'theme', selectedTheme);
+        }
+    }
     var hasParam = window.location.toString().indexOf('?');
     if (hasParam != -1) {
         var themestart = window.location.toString().indexOf('(');
@@ -112,7 +171,7 @@ function initthemes(initialurl) {
         var theme = window.location.toString().substring(themestart + 1, themeend);
         $.data(document.body, 'theme', theme);
         selectedTheme = theme;
-        var themeIndex = 2;
+        var themeIndex = 0;
         if (window.location.href.indexOf('mobiledemos') != -1) {
             $.each(mobilethemes, function (index) {
                 if (this.value == theme) {
@@ -130,11 +189,11 @@ function initthemes(initialurl) {
             });
         }
         $('#themeComboBox').jqxDropDownList({ selectedIndex: themeIndex });
-        loadedThemes[2] = -1;
-        loadedThemes[themeIndex] = 2;
+        loadedThemes[0] = -1;
+        loadedThemes[themeIndex] = 0;
     }
     else if (!loadedTheme) {
-        $.data(document.body, 'theme', 'material');
+        $.data(document.body, 'theme', 'light');
     }
 
     $('#themeComboBox').on('select', function (event) {
@@ -155,9 +214,6 @@ function initthemes(initialurl) {
             var themes = [
               { label: 'Light', group: 'Themes', value: 'light' },
               { label: 'Dark', group: 'Themes', value: 'dark' },
-			  { label: 'Material', group: 'Themes', value: 'material' },
-			  { label: 'Material Green', group: 'Themes', value: 'material-green' },
-			  { label: 'Material Purple', group: 'Themes', value: 'material-purple' },
               { label: 'Arctic', group: 'Themes', value: 'arctic' },
               { label: 'Web', group: 'Themes', value: 'web' },
               { label: 'Bootstrap', group: 'Themes', value: 'bootstrap' },
@@ -198,7 +254,10 @@ function initthemes(initialurl) {
                 else me.$head.append('<link rel="stylesheet" href="' + url + '" media="screen" />');
             }
             $.data(document.body, 'theme', selectedTheme);
-
+            if (window.localStorage)
+            {
+                window.localStorage["Theme"] = "T" + selectedIndex;
+            }
 
             var startedExample = $.data(document.body, 'example');
             if (startedExample != null) {
@@ -260,7 +319,7 @@ function initDemo(ismobile, isIndex) {
                 return;
             }
 
-
+      
             if ($(window).width() < 950) {
                 $(".doc_content").css('min-height', 'auto');
             }
@@ -272,7 +331,7 @@ function initDemo(ismobile, isIndex) {
     }
 
     if (ismobile) {
-        var isIndex = window.location.href.indexOf('jqx') == -1 && window.location.href.indexOf('php') == -1  && window.location.href.indexOf('blazor') == -1  && window.location.href.indexOf('typescript') == -1 && window.location.href.indexOf('angular') == -1 && window.location.href.indexOf('angularjs') == -1 && window.location.href.indexOf('jquerymobile') == -1 && window.location.href.indexOf('mvc') == -1 && window.location.href.indexOf('jsp') == -1 && window.location.href.indexOf('requirejs') == -1 && window.location.href.indexOf('twitter') == -1;
+        var isIndex = window.location.href.indexOf('jqx') == -1 && window.location.href.indexOf('php') == -1 && window.location.href.indexOf('typescript') == -1 && window.location.href.indexOf('angular2') == -1 && window.location.href.indexOf('angularjs') == -1 && window.location.href.indexOf('jquerymobile') == -1 && window.location.href.indexOf('mvc') == -1 && window.location.href.indexOf('jsp') == -1 && window.location.href.indexOf('requirejs') == -1 && window.location.href.indexOf('twitter') == -1;
         this.mobile = true;
         var path = "../../";
         if (isIndex === true) {
@@ -288,7 +347,7 @@ function initDemo(ismobile, isIndex) {
                     $("#pageBottom").append(data);
                 }
             });
-            var initialurl = path + "jqwidgets/styles/jqx.";
+            var initialurl = "http://www.jqwidgets.com/jquery-widgets-demo/jqwidgets/styles/jqx.";
             initthemes(initialurl);
 
             $.ajax({
@@ -326,7 +385,7 @@ function initDemo(ismobile, isIndex) {
                             opened = true;
                         }
                     });
-
+                
                     $(".doc_menu").find('a').mousedown(function (event) {
                         var href = event.target.href;
                         if (href && href.indexOf("#") == -1) {
@@ -341,12 +400,12 @@ function initDemo(ismobile, isIndex) {
                     });
                     $(".doc_menu").find('a').each(function () {
                         if (this.id == "demoLink") {
-                            //       if ($(window).width() > 920) {
-                            $(".doc_menu").find('a').removeClass('anchorSelected');
-                            $(this).addClass('anchorSelected');
-                            $(this).trigger('mousedown');
-                        }
-                        //    }
+                     //       if ($(window).width() > 920) {
+                                $(".doc_menu").find('a').removeClass('anchorSelected');
+                                $(this).addClass('anchorSelected');
+                                $(this).trigger('mousedown');
+                            }
+                    //    }
                     });
 
                     $(".doc_menu").find('a').mouseup(function (event) {
@@ -375,7 +434,7 @@ function initDemo(ismobile, isIndex) {
         document.body.style.visibility = "visible";
     }
     else {
-        var isIndex = window.location.href.indexOf('jqx') == -1 && window.location.href.indexOf('typescript') == -1&& window.location.href.indexOf('blazor') == -1 && window.location.href.indexOf('angular-') == -1 && window.location.href.indexOf('angularjs') == -1 && window.location.href.indexOf('php') == -1 && window.location.href.indexOf('jquerymobile') == -1 && window.location.href.indexOf('mvc') == -1 && window.location.href.indexOf('jsp') == -1 && window.location.href.indexOf('requirejs') == -1 && window.location.href.indexOf('twitter') == -1;
+        var isIndex = window.location.href.indexOf('jqx') == -1 && window.location.href.indexOf('typescript') == -1 && window.location.href.indexOf('angular2') == -1 && window.location.href.indexOf('angularjs') == -1 && window.location.href.indexOf('php') == -1 && window.location.href.indexOf('jquerymobile') == -1 && window.location.href.indexOf('mvc') == -1 && window.location.href.indexOf('jsp') == -1 && window.location.href.indexOf('requirejs') == -1 && window.location.href.indexOf('twitter') == -1;
         if (!isIndex) {
 
         }
@@ -385,13 +444,8 @@ function initDemo(ismobile, isIndex) {
         var bottom = isIndex ? dir + "bottom.htm" : "../../bottom.htm";
         var top = isIndex ? dir + "top.htm" : "../../top.htm";
 
-        if (loc.indexOf('angular-') >= 0 || loc.indexOf('react-') >= 0 || loc.indexOf('blazor-') >= 0) {
-            top = isIndex ? dir + "top.htm" : "../top.htm";
-            bottom = isIndex ? dir + "bottom.htm" : "../bottom.htm";
-        }
-
         if (!isIndex) {
-            var initialurl = "../jqwidgets/styles/jqx.";
+            var initialurl = "http://www.jqwidgets.com/jquery-widgets-demo/jqwidgets/styles/jqx.";
             initthemes(initialurl);
             $.ajax({
                 async: false,
@@ -517,10 +571,10 @@ function initDemo(ismobile, isIndex) {
                         }
                     }
 
-
+                
                     if ($("#searchField").length > 0) {
                         $("#searchField").keydown(function (event) {
-                            filterMenuItems(true);
+                            filterMenuItems(true);                     
                         });
                         $("#searchField").on('change', function (event) {
                             filterMenuItems(true);
@@ -551,7 +605,8 @@ function initDemo(ismobile, isIndex) {
                         }
                     });
 
-                    $(".doc_menu").find('a').mousedown(function (event) {
+                    $(".doc_menu").find('a').mousedown(function (event)
+                    {
                         var href = event.target.href;
                         if (href && href.indexOf("#") == -1) {
                             resize();
@@ -589,18 +644,21 @@ function initDemo(ismobile, isIndex) {
                         event.preventDefault();
                     });
                     $(".doc_menu").find('a').each(function () {
-                        if (this.id == "demoLink") {
-                            if ($.jqx.response) {
+                        if (this.id == "demoLink")
+                        {
+                            if ($.jqx.response)
+                            {
                                 var response = new $.jqx.response();
-                                if (response.device.type != "Desktop") {
+                                if (response.device.type != "Desktop")
+                                {
                                     return;
                                 }
                             }
-                            //          if ($(window).width() > 920) {
-                            $(".doc_menu").find('a').removeClass('anchorSelected');
-                            $(this).addClass('anchorSelected');
-                            $(this).trigger('mousedown');
-                            //   }
+                  //          if ($(window).width() > 920) {
+                                $(".doc_menu").find('a').removeClass('anchorSelected');
+                                $(this).addClass('anchorSelected');
+                                $(this).trigger('mousedown');
+                         //   }
                         }
                     });
 
@@ -731,15 +789,9 @@ function startDemo(target) {
 
     if (!this.jqxtabsinitialized) {
         $('#tabs').show();
-        $("#tab2").html("App.htm");
-      	$("#tab3").html("App.razor");
-		$("#tab4").html("Index.js");
-		$("#tab5").html("API Reference");
-		
-		$('#tabs').jqxTabs({ width: 940, theme: 'jqxtabs', scrollable: false, keyboardNavigation: false, selectionTracker: false });
+        $('#tabs').jqxTabs({ width: 940, theme: 'jqxtabs', scrollable: false, keyboardNavigation: false, selectionTracker: false });
         this.jqxtabsinitialized = true;
-		
-		$('#tabs ').on('tabclick', function (event) {
+        $('#tabs ').on('tabclick', function (event) {
             var tab = event.args.item;
             if (tab == 0) {
                 $('.demoLink').show();
@@ -768,7 +820,8 @@ function startDemo(target) {
             else if (tab == 2) {
                 setTimeout(function () {
                     var winHref = window.location.href.toString();
-                    if ((winHref.indexOf("typescript") >= 0 || winHref.indexOf("angular") >= 0|| winHref.indexOf("blazor") >= 0)) {
+                    if ((winHref.indexOf("typescript") >= 0 || winHref.indexOf("angular2") >= 0))
+                    {
                         $(".doc_content").css('min-height', 'auto');
                         var childrenHeight = 100 + $("#tabs-3").children().height();
                         var maxHeight = Math.max(200 + $(".doc_menu").height(), childrenHeight);
@@ -780,11 +833,11 @@ function startDemo(target) {
             else if (tab == 3) {
                 setTimeout(function () {
                     var winHref = window.location.href.toString();
-                    if ((winHref.indexOf("angular") >= 0 || winHref.indexOf("blazor") >= 0)) {
+                    if ((winHref.indexOf("angular2") >= 0)) {
                         $(".doc_content").css('min-height', 'auto');
                         var childrenHeight = 100 + $("#tabs-4").children().height();
                         var maxHeight = Math.max(200 + $(".doc_menu").height(), childrenHeight);
-                        $("#tabs-4").height(maxHeight - 10);
+                        $("#tabs-4").height(maxHeight-10);
                         $(".doc_content").css('min-height', maxHeight);
                     }
                     else {
@@ -818,10 +871,13 @@ function startDemo(target) {
             $('#tabs #demourl').css('left', '-65px');
             demoUrlLeft = -65;
         }
-        if ($(window).width() <= 920) {
-            if ($.jqx.response) {
+        if ($(window).width() <= 920)
+        {
+            if ($.jqx.response)
+            {
                 var response = new $.jqx.response();
-                if (response.device.type == "Desktop") {
+                if (response.device.type == "Desktop")
+                {
                     $(document.body).css('min-width', 950);
                     $(document.body).css('overflow-x', 'auto');
                     $('html').css('overflow-x', 'auto');
@@ -860,8 +916,6 @@ function startDemo(target) {
     $('#tabs-1').css({ height: 10 + 'px' });
     $('#tabs-2').css({ height: 10 + 'px' });
     $('#tabs-3').css({ height: 10 + 'px' });
-    $('#tabs-4').css({ height: 10 + 'px' });
-    $('#tabs-5').css({ height: 10 + 'px' });
     height = $('.doc_content').height();
     height = Math.max(height, $(".doc_menu").height());
     if (height < 1200) height = 1200;
@@ -871,14 +925,10 @@ function startDemo(target) {
     $('#tabs-1').css({ height: height + 'px', width: width + 'px' });
     $('#tabs-2').css({ height: height + 'px', width: width + 'px' });
     $('#tabs-3').css({ height: height + 'px', width: width + 'px' });
-    $('#tabs-4').css({ height: height + 'px', width: width + 'px' });
-    $('#tabs-5').css({ height: height + 'px', width: width + 'px' });
-    if ($('#tabs-6').length > 0 && $('#tabs-6').html().indexOf('TAB6Content') >= 0) {
-        $('#tab6').css('visibility', 'hidden');
-    }
+
     var demoHeight = parseInt(height);
     var demoWidth = parseInt($("#demoContainer").width()) / 2;
-    var loader = $("<table style='border-color: transparnet; border: none; border-collapse: collapse;'><tr><td align='center'><img src='../images/loadingimage.gif' /></td></tr><tr><td align='center' style='padding: 10px; padding-left: 20px;'>Loading Example...</td></tr></table>");
+    var loader = $("<table style='border-color: transparnet; border: none; border-collapse: collapse;'><tr><td align='center'><img src='../../images/loadingimage.gif' /></td></tr><tr><td align='center' style='padding: 10px; padding-left: 20px;'>Loading Example...</td></tr></table>");
     //   loader.css('margin-top', (demoHeight / 2 - 18) + 'px');
     loader.css('margin-left', (demoWidth - 110) + 'px');
     loader.css('margin-top', '150px');
@@ -892,7 +942,7 @@ function startDemo(target) {
 
     if (url.toString().indexOf('angular') >= 0 || url.toString().indexOf('requirejs') >= 0 || url.toString().indexOf('jquerymobile') >= 0 || url.toString().indexOf('demos/php') >= 0 || url.toString().indexOf('twitter') >= 0 || url.toString().indexOf('jsp') >= 0
         || url.toString().indexOf('knockout') >= 0) {
-        if (url.toString().indexOf('angular') == -1) {
+        if (url.toString().indexOf('angular2') == -1) {
             $('#tab3').hide();
         }
     }
@@ -916,7 +966,7 @@ function startDemo(target) {
     if (url.indexOf('typescript') != -1) {
         isnonpopupdemo = true;
     }
-    if (url.indexOf('angular') != -1) {
+    if (url.indexOf('angular2') != -1) {
         isnonpopupdemo = true;
     }
 
@@ -938,13 +988,13 @@ function startDemo(target) {
     var _url = url;
     if (url.toString().indexOf('typescript') >= 0) {
         var w = url.split('/');
-        var wIndex = w.indexOf('typescript');
-        w = w[wIndex].toLowerCase();
-        var widgetName = url.split('/')[wIndex + 1].toLowerCase();
-        var name = url.split('/')[wIndex + 2].toLowerCase();
+		var wIndex = w.indexOf('typescript');
+		w = w[wIndex].toLowerCase();
+        var widgetName = url.split('/')[wIndex+1].toLowerCase();
+		var name = url.split('/')[wIndex+2].toLowerCase();
         w = name.substring(0, name.indexOf(".htm")) + ".ts";
         $.ajax({
-            // async: false,
+            async: false,
             url: widgetName + "/" + w,
             success: function (data) {
                 var originalData = data;
@@ -972,10 +1022,10 @@ function startDemo(target) {
                 if (!that.mobile) {
                     $('#divDescription').html('<div style="width: 800px; margin: 10px;">' + description + '</div>');
                 }
-                var anchor = $("<div id='demourl' style='float:right;top: -25px; left: " + demoUrlLeft + "px; position: relative; z-index:9999;'><a class='demoLink' rel='canonical' target='_blank' href='" + _url + "'>View in new window</a></div>");
+                var anchor = $("<div id='demourl' style='float:right;top: -25px; left: " + demoUrlLeft + "px; position: relative; z-index:9999;'><a class='demoLink'  target='_blank' href='" + _url + "'>View in new window</a></div>");
                 if (that.mobile) {
                     var linkText = "View in full screen";
-                    var anchor = $("<div id='demourl' style='float:right;top: -25px; left: " + demoUrlLeft + "px; position: relative; z-index:9999;'><a class='demoLink' rel='canonical' target='_blank' href='" + _url + "&=fullscreen'>" + linkText + "</a></div>");
+                    var anchor = $("<div id='demourl' style='float:right;top: -25px; left: " + demoUrlLeft + "px; position: relative; z-index:9999;'><a class='demoLink' target='_blank' href='" + _url + "&=fullscreen'>" + linkText + "</a></div>");
                 }
                 $('#tabs #demourl').remove();
                 $('#tabs #resources').remove();
@@ -1019,47 +1069,14 @@ function startDemo(target) {
             }, "html"
         );
     }
-  else if (url.toString().indexOf('blazor-') >= 0) {
+    else if (url.toString().indexOf('angular2') >= 0) {
         var w = url.toString().split('/');
-        var wIndex = w.indexOf('blazor');
-		if (wIndex<0) {
-			wIndex = w.indexOf('blazor.jqwidgets.com');
-		}
-		
-        var widgetName = w[wIndex + 1].split('-')[1];
-        var demoName = w[wIndex + 2].replace(/-/ig, '').replace('.htm', '');
-        var folderName = '../src/demos';
-
-        demoName = demoName.substring(0, demoName.indexOf('?')).replace('blazor', '').replace(widgetName, '');
-
-        if (widgetName == "buttons") {
-            if (demoName.indexOf('checkbox') >= 0) {
-                widgetName = "checkbox";
-            }
-            if (demoName.indexOf('radiobutton') >= 0) {
-                widgetName = "radiobutton";
-            }
-            if (demoName.indexOf('dropdownbutton') >= 0) {
-                widgetName = "dropdownbutton";
-            }
-            if (demoName.indexOf('togglebutton') >= 0) {
-                widgetName = "togglebutton";
-            }
-            if (demoName.indexOf('repeatbutton') >= 0) {
-                widgetName = "repeatbutton";
-            }
-            if (demoName.indexOf('switchbutton') >= 0) {
-                widgetName = "switchbutton";
-            }
-            if (demoName.indexOf('buttongroup') >= 0) {
-                widgetName = "buttongroup";
-            }
-            demoName = demoName.replace(widgetName, '');
-        }
-
+        var wIndex = w.indexOf('angular2');
+        var widgetName = w[wIndex+1].split('-')[1];
+        var demoName = w[wIndex+1].split('-')[2].substring(0, w[wIndex+1].split('-')[2].indexOf(".htm"));
         $.ajax({
             async: false,
-            url: folderName + "/" + widgetName + "/" + demoName + "/App.razor",
+            url: "app" + "/" + widgetName + "/" + demoName + "/app.component.ts",
             success: function (data) {
                 var originalData = data;
 
@@ -1073,166 +1090,7 @@ function startDemo(target) {
         });
         $.ajax({
             async: false,
-            url: folderName + "/" + widgetName + "/" + demoName + "/index.js",
-            success: function (data) {
-                var originalData = data;
-
-                var result = formatCode(originalData);
-                $('#tabs-4').html(result);
-                $('#tabs-4').find('pre').css('border', 'none !important');
-        		$('#tab4').show();
-		    },
-            error: function (error) {
-                var er = error;
-				$('#tab4').hide();
-				console.clear();
-			}
-        });
-      
-        var makeCall = true;
-
-        if (makeCall) {
-            $.ajax({
-                async: false,
-                url: "../documentation/documentation" + "/jqx" + widgetName + "/" + "blazor-" + widgetName + "-api.htm",
-                success: function (data) {
-                    var originalData = data;
-                    $('#tab5').show();
-					originalData = originalData.substring(originalData.indexOf('<div id="pageDocumentation">'));
-					originalData = originalData.substring(0, originalData.indexOf('<div id="pageBottom" class="bottom"></div>'));
-					
-                    $('#tabs-5').html(originalData);
-					
-					   $(".documentation-option-type-click").click(function (event) {
-							$(event.target).parents('tr').next().find(".property-content").toggle();
-						});
-	
-                },
-                error: function (error) {
-                    var er = error;
-                }
-            });
-        }
-
-        var demoTitle = url;
-        $.get(url,
-            function (data) {
-                var originalData = data;
-                var descriptionLength = "<title id='Description'>".toString().length;
-                var startIndex = data.indexOf('<title') + descriptionLength;
-                var endIndex = data.indexOf('</title>');
-                var description = data.substring(startIndex, endIndex);
-                if (_url.toString().indexOf('angular') >= 0) {
-                    description = "";
-                }
-
-                if (!that.mobile) {
-                    $('#divDescription').html('<div style="width: 800px; margin: 10px;">' + description + '</div>');
-                }
-                var stackblitz = "https://stackblitz.com/github/jqwidgets/angular/tree/master/" + widgetName + "/" + demoName + "/"; //"chart/lineseriewithconditionalcolors
-                var anchor = $("<div id='demourl' style='float:right;top: -25px; left: " + demoUrlLeft + "px; position: relative; z-index:9999;'><a class='demoLink' rel='canonical' target='_blank' href='" + _url + "'>View in new window</a></div>");
-                if (that.mobile) {
-                    var linkText = "View in full screen";
-                    var anchor = $("<div id='demourl' style='float:right;top: -25px; left: " + demoUrlLeft + "px; position: relative; z-index:9999;'><a class='demoLink' rel='canonical' target='_blank' href='" + _url + "&=fullscreen'>" + linkText + "</a></div>");
-                }
-                $('#tabs #demourl').remove();
-                $('#tabs #resources').remove();
-                $('#tabs .jqx-tabs-header').append(anchor);
-
-                //    var resources = $("<div id='resources' style='color: #444; line-height: 23px; top: 90px; text-align: left; left: 760px; margin-right: 10px; position: absolute; font-size: 13px; '><div><strong>Resources</strong></div><div><div><a class='demoLink'  target='_blank' href='http://www.jqwidgets.com/download/'>Download</a></div><a class='demoLink'  target='_blank' href='http://www.jqwidgets.com/jquery-widgets-documentation'>Documentation</a></div><div><a class='demoLink'  target='_blank' href='http://www.jqwidgets.com/community/'>Forum</a></div><div><a class='demoLink'  target='_blank' href='http://www.jqwidgets.com/jquery-widgets-documentation/documentation/releasehistory/releasehistory.htm'>Release History</a></div><div><a class='demoLink'  target='_blank' href='http://www.jqwidgets.com/jquery-widgets-documentation/documentation/roadmap/roadmap.htm'>Roadmap</a></div><div><a class='demoLink'  target='_blank' href='http://www.jqwidgets.com/license'>License</a></div>");
-                //    $('#tabs .jqx-tabs-header').append(resources);
-                //    $("#downloadButton").addClass('downloadButton');
-
-                if (!isnonpopupdemo) {
-                    data = data.replace(/<script.*>.*<\/script>/ig, ""); // Remove script tags
-                    data = data.replace(/<\/?link.*>/ig, ""); //Remove link tags
-                    data = data.replace(/<\/?html.*>/ig, ""); //Remove html tag
-                    data = data.replace(/<\/?body.*>/ig, ""); //Remove body tag
-                    data = data.replace(/<\/?head.*>/ig, ""); //Remove head tag
-                    data = data.replace(/<\/?!doctype.*>/ig, ""); //Remove doctype
-                    data = data.replace(/<title.*>.*<\/title>/ig, ""); // Remove title tags
-                    data = data.replace(/..\/..\/jqwidgets\/globalization\//g, "jqwidgets/globalization/"); // fix localization path
-                    $("#innerdemoContainer").removeClass();
-
-                    var url = "../../jqwidgets/styles/jqx." + theme + '.css';
-                    if (document.createStyleSheet != undefined) {
-                        document.createStyleSheet(url);
-                    }
-                    else $(document).find('head').append('<link rel="stylesheet" href="' + url + '" media="screen" />');
-
-                    $("#innerdemoContainer").attr('theme', theme.toString());
-                    $("#innerdemoContainer").html('');
-                    $("#innerdemoContainer").html('<div id="jqxInnerdemoContainer" style="position: relative; top: 10px; left: 10px; width: 900px; height: 90%;">' + data + '</div>');
-                    var jqxInnerdemoContainer = $("#innerdemoContainer").find('#jqxInnerdemoContainer');
-                    var jqxWidget = $("#innerdemoContainer").find('#jqxWidget');
-                    jqxInnerdemoContainer.css('visibility', 'visible');
-                }
-
-                //populate tabs.
-
-                var result = formatCode(originalData);
-                $('#tabs-2').html(result);
-                $('#tabs-2').find('pre').css('border', 'none !important');
-
-            }, "html");
-    }	
-    else if (url.toString().indexOf('angular-') >= 0) {
-        var w = url.toString().split('/');
-        var wIndex = w.indexOf('angular');
-        if (wIndex < 0) {
-            wIndex = w.indexOf('angular-webpack');
-        }
-        if (wIndex < 0) {
-            wIndex = w.indexOf('angular8');
-        }
-        var widgetName = w[wIndex + 1].split('-')[1];
-        var demoName = w[wIndex + 2].replace(/-/ig, '').replace('.htm', '');
-        var folderName = '../src';
-
-        demoName = demoName.substring(0, demoName.indexOf('?')).replace('angular', '').replace(widgetName, '');
-
-        if (widgetName == "buttons") {
-            if (demoName.indexOf('checkbox') >= 0) {
-                widgetName = "checkbox";
-            }
-            if (demoName.indexOf('radiobutton') >= 0) {
-                widgetName = "radiobutton";
-            }
-            if (demoName.indexOf('dropdownbutton') >= 0) {
-                widgetName = "dropdownbutton";
-            }
-            if (demoName.indexOf('togglebutton') >= 0) {
-                widgetName = "togglebutton";
-            }
-            if (demoName.indexOf('repeatbutton') >= 0) {
-                widgetName = "repeatbutton";
-            }
-            if (demoName.indexOf('switchbutton') >= 0) {
-                widgetName = "switchbutton";
-            }
-            if (demoName.indexOf('buttongroup') >= 0) {
-                widgetName = "buttongroup";
-            }
-            demoName = demoName.replace(widgetName, '');
-        }
-
-        $.ajax({
-            async: false,
-            url: folderName + "/" + widgetName + "/" + demoName + "/app.component.ts",
-            success: function (data) {
-                var originalData = data;
-
-                var result = formatCode(originalData);
-                $('#tabs-3').html(result);
-                $('#tabs-3').find('pre').css('border', 'none !important');
-            },
-            error: function (error) {
-                var er = error;
-            }
-        });
-        $.ajax({
-            async: false,
-            url: folderName + "/" + widgetName + "/" + demoName + "/app.module.ts",
+            url: "app" + "/" + widgetName + "/" + demoName + "/app.module.ts",
             success: function (data) {
                 var originalData = data;
 
@@ -1245,88 +1103,130 @@ function startDemo(target) {
             }
         });
         $('#tab4').hide();
+        switch(widgetName)
+        {
+            case "rangeselector":
+            case "checkbox":
+            case "radiobutton":
+            case "layout":
+            case "layout":
+            case "datatable":
+            case "docking":
+            case "datatable":
+            case "dockpanel":
+            case "datatable":
+            case "dragdrop":
+            case "colorpicker":
+            case "layout":
+            case "dockinglayout":
+            case "expander":
+            case "editor":
+            case "dropdownbutton":
+            case "listmenu":
+            case "menu":
+            case "navbar":
+            case "navigationbar":
+            case "notification":
+            case "numberinput":
+            case "panel":
+            case "passwordinput":
+            case "popover":
+            case "progressbar":
+            case "rangeselector":
+            case "responsivePanel":
+            case "ribbon":
+            case "scrollview":
+            case "splitter":
+            case "switchbutton":
+            case "tabs":
+            case "window":
+            case "validator":
+            case "tooltip":
+                var makeCall = true;
 
-        var makeCall = true;
-
-        if (makeCall) {
-            $.ajax({
-                async: false,
-                url: folderName + "/" + widgetName + "/" + demoName + "/app.component.html",
-                success: function (data) {
-                    var originalData = data;
-                    $('#tab4').show();
-
-                    var result = formatCode(originalData);
-                    $('#tabs-4').html(result);
-                    $('#tabs-4').find('pre').css('border', 'none !important');
-                },
-                error: function (error) {
-                    var er = error;
+                if (widgetName === "datatable" && demoName !== "defaultfunctionality")
+                {
+                    makeCall = false;
                 }
-            });
-        }
+                if (makeCall) {
+                    $.ajax({
+                        async: false,
+                        url: "app" + "/" + widgetName + "/" + demoName + "/app.component.htm",
+                        success: function (data) {
+                            var originalData = data;
+                            $('#tab4').show();
 
+                            var result = formatCode(originalData);
+                            $('#tabs-4').html(result);
+                            $('#tabs-4').find('pre').css('border', 'none !important');
+                        },
+                        error: function (error) {
+                            var er = error;
+                        }
+                    });
+                }
+                break;
+        }
         var demoTitle = url;
         $.get(url,
             function (data) {
-                var originalData = data;
-                var descriptionLength = "<title id='Description'>".toString().length;
-                var startIndex = data.indexOf('<title') + descriptionLength;
-                var endIndex = data.indexOf('</title>');
-                var description = data.substring(startIndex, endIndex);
-                if (_url.toString().indexOf('angular') >= 0) {
-                    description = "";
-                }
+                            var originalData = data;
+                            var descriptionLength = "<title id='Description'>".toString().length;
+                            var startIndex = data.indexOf('<title') + descriptionLength;
+                            var endIndex = data.indexOf('</title>');
+                            var description = data.substring(startIndex, endIndex);
+                            if (_url.toString().indexOf('angular2') >= 0) {
+                                description = "";
+                            }
 
-                if (!that.mobile) {
-                    $('#divDescription').html('<div style="width: 800px; margin: 10px;">' + description + '</div>');
-                }
-                var stackblitz = "https://stackblitz.com/github/jqwidgets/angular/tree/master/" + widgetName + "/" + demoName + "/"; //"chart/lineseriewithconditionalcolors
-                var anchor = $("<div id='demourl' style='float:right;top: -25px; left: " + demoUrlLeft + "px; position: relative; z-index:9999;'><a class='demoLink' rel='canonical' target='_blank' href='" + _url + "'>View in new window</a> | <a title='Edit in Stackblitz' class='demoLink' rel='canonical' target='_blank' href='" + stackblitz + "'>Edit</a> </div>");
-                if (that.mobile) {
-                    var linkText = "View in full screen";
-                    var anchor = $("<div id='demourl' style='float:right;top: -25px; left: " + demoUrlLeft + "px; position: relative; z-index:9999;'><a class='demoLink' rel='canonical' target='_blank' href='" + _url + "&=fullscreen'>" + linkText + "</a></div>");
-                }
-                $('#tabs #demourl').remove();
-                $('#tabs #resources').remove();
-                $('#tabs .jqx-tabs-header').append(anchor);
+                            if (!that.mobile) {
+                                $('#divDescription').html('<div style="width: 800px; margin: 10px;">' + description + '</div>');
+                            }
+                            var anchor = $("<div id='demourl' style='float:right;top: -25px; left: " + demoUrlLeft + "px; position: relative; z-index:9999;'><a class='demoLink'  target='_blank' href='" + _url + "'>View in new window</a></div>");
+                            if (that.mobile) {
+                                var linkText = "View in full screen";
+                                var anchor = $("<div id='demourl' style='float:right;top: -25px; left: " + demoUrlLeft + "px; position: relative; z-index:9999;'><a class='demoLink' target='_blank' href='" + _url + "&=fullscreen'>" + linkText + "</a></div>");
+                            }
+                            $('#tabs #demourl').remove();
+                            $('#tabs #resources').remove();
+                            $('#tabs .jqx-tabs-header').append(anchor);
 
-                //    var resources = $("<div id='resources' style='color: #444; line-height: 23px; top: 90px; text-align: left; left: 760px; margin-right: 10px; position: absolute; font-size: 13px; '><div><strong>Resources</strong></div><div><div><a class='demoLink'  target='_blank' href='http://www.jqwidgets.com/download/'>Download</a></div><a class='demoLink'  target='_blank' href='http://www.jqwidgets.com/jquery-widgets-documentation'>Documentation</a></div><div><a class='demoLink'  target='_blank' href='http://www.jqwidgets.com/community/'>Forum</a></div><div><a class='demoLink'  target='_blank' href='http://www.jqwidgets.com/jquery-widgets-documentation/documentation/releasehistory/releasehistory.htm'>Release History</a></div><div><a class='demoLink'  target='_blank' href='http://www.jqwidgets.com/jquery-widgets-documentation/documentation/roadmap/roadmap.htm'>Roadmap</a></div><div><a class='demoLink'  target='_blank' href='http://www.jqwidgets.com/license'>License</a></div>");
-                //    $('#tabs .jqx-tabs-header').append(resources);
-                //    $("#downloadButton").addClass('downloadButton');
+                            //    var resources = $("<div id='resources' style='color: #444; line-height: 23px; top: 90px; text-align: left; left: 760px; margin-right: 10px; position: absolute; font-size: 13px; '><div><strong>Resources</strong></div><div><div><a class='demoLink'  target='_blank' href='http://www.jqwidgets.com/download/'>Download</a></div><a class='demoLink'  target='_blank' href='http://www.jqwidgets.com/jquery-widgets-documentation'>Documentation</a></div><div><a class='demoLink'  target='_blank' href='http://www.jqwidgets.com/community/'>Forum</a></div><div><a class='demoLink'  target='_blank' href='http://www.jqwidgets.com/jquery-widgets-documentation/documentation/releasehistory/releasehistory.htm'>Release History</a></div><div><a class='demoLink'  target='_blank' href='http://www.jqwidgets.com/jquery-widgets-documentation/documentation/roadmap/roadmap.htm'>Roadmap</a></div><div><a class='demoLink'  target='_blank' href='http://www.jqwidgets.com/license'>License</a></div>");
+                            //    $('#tabs .jqx-tabs-header').append(resources);
+                            //    $("#downloadButton").addClass('downloadButton');
 
-                if (!isnonpopupdemo) {
-                    data = data.replace(/<script.*>.*<\/script>/ig, ""); // Remove script tags
-                    data = data.replace(/<\/?link.*>/ig, ""); //Remove link tags
-                    data = data.replace(/<\/?html.*>/ig, ""); //Remove html tag
-                    data = data.replace(/<\/?body.*>/ig, ""); //Remove body tag
-                    data = data.replace(/<\/?head.*>/ig, ""); //Remove head tag
-                    data = data.replace(/<\/?!doctype.*>/ig, ""); //Remove doctype
-                    data = data.replace(/<title.*>.*<\/title>/ig, ""); // Remove title tags
-                    data = data.replace(/..\/..\/jqwidgets\/globalization\//g, "jqwidgets/globalization/"); // fix localization path
-                    $("#innerdemoContainer").removeClass();
+                            if (!isnonpopupdemo) {
+                                data = data.replace(/<script.*>.*<\/script>/ig, ""); // Remove script tags
+                                data = data.replace(/<\/?link.*>/ig, ""); //Remove link tags
+                                data = data.replace(/<\/?html.*>/ig, ""); //Remove html tag
+                                data = data.replace(/<\/?body.*>/ig, ""); //Remove body tag
+                                data = data.replace(/<\/?head.*>/ig, ""); //Remove head tag
+                                data = data.replace(/<\/?!doctype.*>/ig, ""); //Remove doctype
+                                data = data.replace(/<title.*>.*<\/title>/ig, ""); // Remove title tags
+                                data = data.replace(/..\/..\/jqwidgets\/globalization\//g, "jqwidgets/globalization/"); // fix localization path
+                                $("#innerdemoContainer").removeClass();
 
-                    var url = "../../jqwidgets/styles/jqx." + theme + '.css';
-                    if (document.createStyleSheet != undefined) {
-                        document.createStyleSheet(url);
-                    }
-                    else $(document).find('head').append('<link rel="stylesheet" href="' + url + '" media="screen" />');
+                                var url = "../../jqwidgets/styles/jqx." + theme + '.css';
+                                if (document.createStyleSheet != undefined) {
+                                    document.createStyleSheet(url);
+                                }
+                                else $(document).find('head').append('<link rel="stylesheet" href="' + url + '" media="screen" />');
 
-                    $("#innerdemoContainer").attr('theme', theme.toString());
-                    $("#innerdemoContainer").html('');
-                    $("#innerdemoContainer").html('<div id="jqxInnerdemoContainer" style="position: relative; top: 10px; left: 10px; width: 900px; height: 90%;">' + data + '</div>');
-                    var jqxInnerdemoContainer = $("#innerdemoContainer").find('#jqxInnerdemoContainer');
-                    var jqxWidget = $("#innerdemoContainer").find('#jqxWidget');
-                    jqxInnerdemoContainer.css('visibility', 'visible');
-                }
+                                $("#innerdemoContainer").attr('theme', theme.toString());
+                                $("#innerdemoContainer").html('');
+                                $("#innerdemoContainer").html('<div id="jqxInnerdemoContainer" style="position: relative; top: 10px; left: 10px; width: 900px; height: 90%;">' + data + '</div>');
+                                var jqxInnerdemoContainer = $("#innerdemoContainer").find('#jqxInnerdemoContainer');
+                                var jqxWidget = $("#innerdemoContainer").find('#jqxWidget');
+                                jqxInnerdemoContainer.css('visibility', 'visible');
+                            }
 
-                //populate tabs.
+                            //populate tabs.
 
-                var result = formatCode(originalData);
-                $('#tabs-2').html(result);
-                $('#tabs-2').find('pre').css('border', 'none !important');
+                            var result = formatCode(originalData);
+                            $('#tabs-2').html(result);
+                            $('#tabs-2').find('pre').css('border', 'none !important');
 
-            }, "html");
+                        }, "html");
     }
     else
         if (url.toString().indexOf('mvcexamples') >= 0) {
@@ -1334,7 +1234,7 @@ function startDemo(target) {
             $('#tab4').hide();
             $('#tabs-5').hide();
             $('#tab5').hide();
-            var anchor = $("<div id='demourl' style='float:right;top: -25px; left: " + demoUrlLeft + "px; position: relative; z-index:9999;'><a class='demoLink' rel='canonical' target='_blank' href='" + _url + "'>View in new window</a></div>");
+            var anchor = $("<div id='demourl' style='float:right;top: -25px; left: " + demoUrlLeft + "px; position: relative; z-index:9999;'><a class='demoLink'  target='_blank' href='" + _url + "'>View in new window</a></div>");
             $('#tabs #demourl').remove();
             $('#tabs #resources').remove();
             $('#tabs .jqx-tabs-header').append(anchor);
@@ -1466,7 +1366,7 @@ function startDemo(target) {
                 $('#tab4').hide();
                 $('#tabs-5').hide();
                 $('#tab5').hide();
-                var anchor = $("<div id='demourl' style='float:right;top: -25px; left: " + demoUrlLeft + "px; position: relative; z-index:9999;'><a class='demoLink' rel='canonical' target='_blank' href='" + _url + "'>View in new window</a></div>");
+                var anchor = $("<div id='demourl' style='float:right;top: -25px; left: " + demoUrlLeft + "px; position: relative; z-index:9999;'><a class='demoLink'  target='_blank' href='" + _url + "'>View in new window</a></div>");
                 $('#tabs #demourl').remove();
                 $('#tabs #resources').remove();
                 $('#tabs .jqx-tabs-header').append(anchor);
@@ -1520,12 +1420,12 @@ function startDemo(target) {
                                     var endIndex = data.indexOf('</title>');
                                     var description = data.substring(startIndex, endIndex);
                                     if (!that.mobile) {
-                                        $('#divDescription').html('<div style="width: 800px; margin: 10px; margin-top: 30px;">' + description + '</div>');
+                                        $('#divDescription').html('<div style="width: 800px; margin: 10px;">' + description + '</div>');
                                     }
-                                    var anchor = $("<div id='demourl' style='float:right;top: -25px; left: " + demoUrlLeft + "px; position: relative; z-index:9999;'><a rel='canonical' class='demoLink'  target='_blank' href='" + _url + "'>View in new window</a></div>");
+                                    var anchor = $("<div id='demourl' style='float:right;top: -25px; left: " + demoUrlLeft + "px; position: relative; z-index:9999;'><a class='demoLink'  target='_blank' href='" + _url + "'>View in new window</a></div>");
                                     if (that.mobile) {
                                         var linkText = "View in full screen";
-                                        var anchor = $("<div id='demourl' style='float:right;top: -25px; left: " + demoUrlLeft + "px; position: relative; z-index:9999;'><a rel='canonical' class='demoLink' target='_blank' href='" + _url + "&=fullscreen'>" + linkText + "</a></div>");
+                                        var anchor = $("<div id='demourl' style='float:right;top: -25px; left: " + demoUrlLeft + "px; position: relative; z-index:9999;'><a class='demoLink' target='_blank' href='" + _url + "&=fullscreen'>" + linkText + "</a></div>");
                                     }
                                     $('#tabs #demourl').remove();
                                     $('#tabs #resources').remove();
@@ -1544,17 +1444,18 @@ function startDemo(target) {
                                     var startIndex = data.indexOf('<title') + descriptionLength;
                                     var endIndex = data.indexOf('</title>');
                                     var description = data.substring(startIndex, endIndex);
-                                    if (_url.indexOf('jqxchart') >= 0) {
-                                        description = "";
-                                    }
-
+									if (_url.indexOf('jqxchart') >=0 )
+									{
+									description = "";
+									}
+									
                                     if (!that.mobile) {
                                         $('#divDescription').html('<div style="width: 800px; margin: 10px;">' + description + '</div>');
                                     }
-                                    var anchor = $("<div id='demourl' style='float:right;top: -25px; left: " + demoUrlLeft + "px; position: relative; z-index:9999;'><a rel='canonical' class='demoLink'  rel='canonical' target='_blank' href='" + _url + "'>View in new window</a></div>");
+                                    var anchor = $("<div id='demourl' style='float:right;top: -25px; left: " + demoUrlLeft + "px; position: relative; z-index:9999;'><a class='demoLink'  target='_blank' href='" + _url + "'>View in new window</a></div>");
                                     if (that.mobile) {
                                         var linkText = "View in full screen";
-                                        var anchor = $("<div id='demourl' style='float:right;top: -25px; left: " + demoUrlLeft + "px; position: relative; z-index:9999;'><a rel='canonical' class='demoLink' rel='canonical' target='_blank' href='" + _url + "&=fullscreen'>" + linkText + "</a></div>");
+                                        var anchor = $("<div id='demourl' style='float:right;top: -25px; left: " + demoUrlLeft + "px; position: relative; z-index:9999;'><a class='demoLink' target='_blank' href='" + _url + "&=fullscreen'>" + linkText + "</a></div>");
                                     }
                                     $('#tabs #demourl').remove();
                                     $('#tabs #resources').remove();
@@ -1621,7 +1522,7 @@ function startDemo(target) {
                                     }
 
                                     try {
-                                        if (widgetName != "php" && widgetName != "twitter" && widgetName != "angularjs" && widgetName != "angularjs-demos" && widgetName != "angular" && widgetName != "jquerymobile" && widgetName != "aspnetmvc" && widgetName != "requirejs") {
+                                        if (widgetName != "php" && widgetName != "twitter" && widgetName != "angularjs" && widgetName != "angularjs-demos" && widgetName != "angular2" && widgetName != "jquerymobile" && widgetName != "aspnetmvc" && widgetName != "requirejs") {
                                             var apiURL = '../../documentation/' + widgetName + '/' + widgetName + '-api.htm';
                                             var frame = '<iframe frameborder="0" src="' + apiURL + '" id="widgetAPI" style="height: ' + parseInt(demoHeight) + 'px; border-collapse: collapse; border:none !important; overflow-y: hidden; width: 900px !important;"></iframe>';
                                             $('#tabs-3').html(frame);
@@ -1669,11 +1570,11 @@ function startDemo(target) {
                 $("#innerdemoContainer").append(iframe);
             }
 
-            //          if (window.history) {
-            //prevents browser from storing history with each change:
-            //                history.pushState({}, "", url);
+  //          if (window.history) {
+                //prevents browser from storing history with each change:
+//                history.pushState({}, "", url);
 
-            //        }
+    //        }
         }
 
         if ($(".content").css('display') == 'none') {
@@ -1689,7 +1590,7 @@ function startDemo(target) {
 
         adjust();
         iframe.height(1040);
-        if (url.toString().indexOf('demos/jqxloader') >= 0 && url.toString().indexOf('mobiledemos/jqxloader') == -1) {
+        if (url.toString().indexOf('demos/jqxloader') >= 0 &&url.toString().indexOf('mobiledemos/jqxloader') == -1 ) {
             iframe.height(450);
         }
     }
