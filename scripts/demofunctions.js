@@ -1022,7 +1022,10 @@ function startDemo(target) {
   else if (url.toString().indexOf('blazor-') >= 0) {
         var w = url.toString().split('/');
         var wIndex = w.indexOf('blazor');
-    
+		if (wIndex<0) {
+			wIndex = w.indexOf('blazor.jqwidgets.com');
+		}
+		
         var widgetName = w[wIndex + 1].split('-')[1];
         var demoName = w[wIndex + 2].replace(/-/ig, '').replace('.htm', '');
         var folderName = '../src/demos';
