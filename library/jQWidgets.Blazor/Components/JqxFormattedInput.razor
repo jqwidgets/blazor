@@ -336,13 +336,22 @@
     private void getMarkup()
     {
         object rtl;
-        initialOptions.TryGetValue("rtl", out rtl);
+        if (!initialOptions.TryGetValue("rtl", out rtl))
+        {
+            rtl = false;
+        }
 
         object dropDown;
-        initialOptions.TryGetValue("dropDown", out dropDown);
+        if (!initialOptions.TryGetValue("dropDown", out dropDown))
+        {
+            dropDown = false;
+        }
 
         object spinButtons;
-        initialOptions.TryGetValue("spinButtons", out spinButtons);
+        if (!initialOptions.TryGetValue("spinButtons", out spinButtons))
+        {
+            spinButtons = false;
+        }
 
         if ((bool)rtl && (bool)dropDown && (bool)spinButtons)
         {

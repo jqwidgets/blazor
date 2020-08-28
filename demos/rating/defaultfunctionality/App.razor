@@ -1,20 +1,20 @@
 @inject IJSRuntime JSRuntime;
 
-<div style="font-size: 13px; font-family: Verdana;">
-  <JqxRating onChange="onChange"
-    width=350 height=35>
-  </JqxRating>
-  <div style='margin-top: 10px;'>
-    <div style='float: left;'>Rating: </div>
-    <div @ref="rate" style='float: left;'></div>
-  </div>
+<JqxRating @ref="myRating"
+  onChange="onChange" width=350 height=35>
+</JqxRating>
+
+<div style='margin-top: 10px;'>
+  <span>Rating: </span>
+  <span @ref="ratingValueEl"></span>
 </div>
 
 @code {
-    ElementReference rate;
+    JqxRating myRating;
+    ElementReference ratingValueEl;
 
     private void onChange(IDictionary<string, object> e)
     {
-        JSRuntime.InvokeVoidAsync("Example.updateInnerHtml", rate, e["value"]);
+        JSRuntime.InvokeVoidAsync("Example.updateInnerHtml", ratingValueEl, myRating.value);
     }
 }

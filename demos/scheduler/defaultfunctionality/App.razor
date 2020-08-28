@@ -1,13 +1,12 @@
 <JqxScheduler @ref="myScheduler"
-     width=800 height=600 source=source showLegend=true view=view date=date
+    width=800 height=600 source=source showLegend=true view=view
     appointmentDataFields=appointmentDataFields resources=resources views=views>    
 </JqxScheduler>
 
 @code {
     JqxScheduler myScheduler;
-    DateTime date = new DateTime(2020, 6, 29);
 
-    string view = "weekView";
+    string view = "monthView";
 
     IDictionary<string, string> appointmentDataFields = new Dictionary<string, string>()
     {
@@ -43,8 +42,8 @@
             { "location", "" },
             { "subject", "Quarterly Project Review Meeting" },
             { "calendar", "Room 1" },
-            { "start", "2020-6-29 16:00" },
-            { "end", "2020-6-29 19:00" }
+            { "start", "2020-8-05 16:00" },
+            { "end", "2020-8-05 19:00" }
         },
         new Dictionary<string, object>()
         {
@@ -53,8 +52,8 @@
             { "location", "" },
             { "subject", "IT Group Mtg." },
             { "calendar", "Room 2" },
-            { "start", new DateTime(2020, 6, 30, 9, 0, 0).ToString("yyyy-M-dd H:mm")},
-            { "end", new DateTime(2020, 6, 30, 10, 0, 0).ToString("yyyy-M-dd H:mm") }
+            { "start", "2020-8-06 16:00" },
+            { "end", "2020-8-06 19:00" }
         },
         new Dictionary<string, object>()
         {
@@ -63,39 +62,9 @@
             { "location", "" },
             { "subject", "Course Social Media" },
             { "calendar", "Room 3" },
-            { "start", new DateTime(2020, 7, 1, 11, 0, 0).ToString("yyyy-M-dd H:mm") },
-            { "end", new DateTime(2020, 7, 1, 13, 0, 0).ToString("yyyy-M-dd H:mm") }
-        },
-        @* new Dictionary<string, object>()
-        {
-            { "id", "id4" },
-            { "description", "" },
-            { "location", "" },
-            { "subject", "New Projects Planning" },
-            { "calendar", "Room 1" },
-            { "start", new DateTime(2020, 10, 23, 16, 0, 0) },
-            { "end", new DateTime(2020, 10, 23, 18, 0, 0) }
-        },
-        new Dictionary<string, object>()
-        {
-            { "id", "id5" },
-            { "description", "" },
-            { "location", "" },
-            { "subject", "Interview with James" },
-            { "calendar", "Room 1" },
-            { "start", new DateTime(2020, 10, 25, 15, 0, 0) },
-            { "end", new DateTime(2020, 10, 25, 17, 0, 0) }
-        },
-        new Dictionary<string, object>()
-        {
-            { "id", "id6" },
-            { "description", "" },
-            { "location", "" },
-            { "subject", "Interview with Nancy" },
-            { "calendar", "Room 4" },
-            { "start", new DateTime(2020, 10, 26, 14, 0, 0) },
-            { "end", new DateTime(2020, 10, 26, 16, 0, 0) }
-        } *@
+            { "start", "2020-8-08 16:00" },
+            { "end", "2020-8-08 19:00" }
+        }
     };
 
     static Dictionary<string, object> source = new Dictionary<string, object>

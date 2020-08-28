@@ -408,20 +408,26 @@ function getMarkup(widget) {
     let markup;
 
     switch (widget) {
-        case `jqxbutton` || `jqxtogglebutton`:
+        case `jqxButton`:
+        case `jqxToggleButton`:
             markup = `<button id="@componentID">@ChildContent</button>`;
             break;
-        case `jqxcomplexinput`:
+        case `jqxComplexInput`:
             markup = `<div id="@componentID"><input><div>@ChildContent</div></div>`;
             break;
-        case `jqxdatetimeinput` || `jqxmaskedinput` || `jqxnumberinput`:
+        case `jqxDateTimeInput`:
+        case `jqxMaskedInput`:
+        case `jqxNumberInput`:
             markup = `<input id="@componentID">`;
             break;
-        case `jqxinput`:
+        case `jqxInput`:
             markup = `<input id="@componentID">`;
             break;
-        case `jqxpasswordinput`:
+        case `jqxPasswordInput`:
             markup = `<input id="@componentID" type="password">`;
+            break;
+        case `jqxPivotGrid`:
+            markup = `<div style="width: 100%; height: 100%;" id="@componentID">@ChildContent</div>`;
             break;
         default:
             markup = `<div id="@componentID">@ChildContent</div>`;
@@ -437,11 +443,20 @@ function getDynamicMarkup(widget) {
         outData += `    private void getMarkup()\n`;
         outData += `    {\n`;
         outData += `        object rtl;\n`;
-        outData += `        initialOptions.TryGetValue("rtl", out rtl);\n\n`;
+        outData += `        if (!initialOptions.TryGetValue("rtl", out rtl))\n`;
+        outData += `        {\n`;
+        outData += `            rtl = false;\n`;
+        outData += `        }\n\n`;
         outData += `        object dropDown;\n`;
-        outData += `        initialOptions.TryGetValue("dropDown", out dropDown);\n\n`;
+        outData += `        if (!initialOptions.TryGetValue("dropDown", out dropDown))\n`;
+        outData += `        {\n`;
+        outData += `            dropDown = false;\n`;
+        outData += `        }\n\n`;
         outData += `        object spinButtons;\n`;
-        outData += `        initialOptions.TryGetValue("spinButtons", out spinButtons);\n\n`;
+        outData += `        if (!initialOptions.TryGetValue("spinButtons", out spinButtons))\n`;
+        outData += `        {\n`;
+        outData += `            spinButtons = false;\n`;
+        outData += `        }\n\n`;
         outData += `        if ((bool)rtl && (bool)dropDown && (bool)spinButtons)\n`;
         outData += `        {\n`;
         outData += `            componentMarkup = "<div id='" + componentID + "'><div></div><div></div><input></div>";\n`;

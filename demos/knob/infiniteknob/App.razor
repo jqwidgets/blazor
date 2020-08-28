@@ -142,8 +142,6 @@
             min = max;
             max += 100;
 
-            Console.WriteLine(min);
-            Console.WriteLine(max);
             myKnob.setOptions(new Dictionary<string, int>()
             {
                 { "value", max }, { "min", min }, { "max", max }
@@ -154,8 +152,6 @@
             max = min;
             min -= 100;
 
-        Console.WriteLine(min);
-            Console.WriteLine(max);
             myKnob.setOptions(new Dictionary<string, int>()
             {
                 { "value", min }, { "min", min }, { "max", max }
