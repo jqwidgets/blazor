@@ -14,7 +14,7 @@
 
 @inject HttpClient Http;
 
-<JqxComboBox></JqxComboBox>
+<JqxBarGauge></JqxBarGauge>
 
 <div></div>
 
@@ -24,9 +24,15 @@
     
     protected override async Task OnInitializedAsync()
     {
-        var asd = int.Parse("22");
-
         source = await Http.GetJsonAsync<object[]>("../sampledata/customers.txt");
+
+        var intParse = int.Parse("22");
+        var doubleParse = double.Parse("22");
+
+        var date = new DateTime().AddDays(22);
+
+        var task = Task.Run(() => { });
+        task.Wait(TimeSpan.FromSeconds(1));
     }
 
 }
