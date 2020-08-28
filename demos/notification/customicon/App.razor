@@ -1,44 +1,21 @@
-<JqxNotification @ref="myNotification"
-    icon=icon template=template opacity=0.9
-    position=position width=width>
-  <div>
-    Thank you for your feedback!
-  </div>
+<JqxNotification @ref="myNotification" width=width position=position template=template>
+    <div>
+        <img src="../images/smiley.png">
+        <span>Hello There!</span>
+    </div>
 </JqxNotification>
 
-<table style="margin-left: 15px; margin-top: 15px;">
-  <tr>
-    <td class="label" style="vertical-align: top;">Comment:</td>
-    <td>
-      <JqxTextArea @ref="comment" width=155 height=150></JqxTextArea>
-    </td>
-  </tr>
-  <tr>
-    <td colspan="2"></td>
-  </tr>
-  <tr>
-    <td colspan="2" style="text-align: center;">
-      <JqxButton width=120 onClick="onClick">Submit comment</JqxButton>
-    </td>
-  </tr>
-</table>
+<JqxButton width=120 onClick="onClick">Show Notification</JqxButton>
 
 @code {
     JqxNotification myNotification;
-    JqxTextArea comment;
 
-    string width = "auto"; 
+    string width = ""; 
+    string position = "";
     string template = "null";
-    string position = "top-left";
-
-    IDictionary<string, object> icon = new Dictionary<string, object>()
-    {
-        { "width", 25 }, { "height", 25 }, { "url", "../images/smiley.png"}, { "padding", 5 }
-    };
 
     private void onClick(IDictionary<string, object> e)
     {
-        comment.val("");
         myNotification.open();
     }
 }

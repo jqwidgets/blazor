@@ -29,10 +29,12 @@
         var intParse = int.Parse("22");
         var doubleParse = double.Parse("22");
 
-        var date = new DateTime().AddDays(22);
+        var date = new DateTime(2222, 2, 2, 2, 2, 2).AddDays(22);
+        date.ToString("dd-MMMM-yyyy");
+        var date2 = DateTime.Today;
 
         var task = Task.Run(() => { });
-        task.Wait(TimeSpan.FromSeconds(1));
+        task.Wait(TimeSpan.FromSeconds(2));
     }
 
 }

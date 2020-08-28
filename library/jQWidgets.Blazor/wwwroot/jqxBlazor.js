@@ -72,7 +72,17 @@ function checkForIsoStrings(options) {
 function checkForDataAdapterNeed(options) {
     if (options.source && options.source.dataFields) {
         options.source = new jqx.dataAdapter(options.source);
+
+        return options;
     }
 
-    return options;
+    // Pivot Grid
+    if (options.source && options.source.dataSource) {
+        options.source = new jqx.pivot(
+            new jqx.dataAdapter(options.source.dataSource),
+            options.source.options
+        );
+
+        return options;
+    }
 }

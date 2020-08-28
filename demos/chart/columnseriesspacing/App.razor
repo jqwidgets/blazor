@@ -383,25 +383,24 @@
 
     public void eventHandler(IDictionary<string, object> e, int series, string propName)
     {
-        Console.WriteLine(1);
         if (seriesGroups.Count != 0)
         {
             if (seriesGroups.Count < 2)
             {
-                var a = seriesGroups[0]["series"] as Dictionary<string, string>[];
+                var a = seriesGroups[0]["series"] as Dictionary<string, object>[];
                 
-                string serieDataField = a[0]["dataField"];
-                Console.WriteLine(serieDataField);
+                string serieDataField = a[0]["dataField"].ToString();
                 int serie = serieDataField == "Serie1" ? 0 : 1;
+
                 if (series != serie)
                 {
                     return;
                 }
+
                 seriesGroups[0][propName] = e["value"];
             }
             else 
             {
-                Console.WriteLine(2);
                 seriesGroups[series][propName] = e["value"];
             }            
         }

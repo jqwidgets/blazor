@@ -1,19 +1,9 @@
-﻿@inject IJSRuntime JSRuntime;
-
-<JqxTreeGrid @ref="myTreeGrid" onCellBeginEdit="cellBeginEdit" onCellEndEdit="cellEndEdit" width="width" editable="true" editSettings="editSettings" sortable="true" source="datasource" columns="columns"></JqxTreeGrid>
-
-<div style="font-size: 13px; font-family: Verdana; width: 800px; margin-top: 20px;">
-    <h4>Event Log</h4>
-    
-    <div @ref="logElement" style="max-height: 300px; overflow: auto;"></div>
-</div>
+﻿<JqxTreeGrid
+    width="850" editable="true" editSettings="editSettings" 
+    sortable="true" source="datasource" columns="columns">
+</JqxTreeGrid>
 
 @code {
-    JqxTreeGrid myTreeGrid;
-
-    ElementReference logElement;
-
-    object width = "850";
 
     Dictionary<string, object> editSettings = new Dictionary<string, object>()
     {
@@ -213,21 +203,4 @@
         }
     };
 
-    private void cellBeginEdit(IDictionary<string, object> e)
-    {
-        string value = e["value"].ToString();
-        string columnDataField = e["dataField"].ToString();
-        string rowKey = e["key"].ToString();        
-        string message = "cellBeginEdit - Row ID: " + rowKey + ", Column: " + columnDataField + ", Value: " + value + "<br/>";
-        JSRuntime.InvokeAsync<string>("Example.showMessage", logElement, message);
-    }
-
-    private void cellEndEdit(IDictionary<string, object> e)
-    {
-        string value = e["value"].ToString();
-        string columnDataField = e["dataField"].ToString();
-        string rowKey = e["key"].ToString();        
-        string message = "<br/>cellEndEdit - Row ID: " + rowKey + ", Column: " + columnDataField + ", Value: " + value + "<br/>";
-        JSRuntime.InvokeAsync<string>("Example.showMessage", logElement, message);
-    }
 }

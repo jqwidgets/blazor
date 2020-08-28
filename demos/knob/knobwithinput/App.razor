@@ -1,11 +1,13 @@
-<JqxKnob @ref="myKnob" onChange="onKnobChange"
-    width=400 height=400 value=30 min=0 max=100 rotation=rotation
-    startAngle=270 endAngle=630 progressBar=progressBar pointer=pointer dial=dial>
-</JqxKnob>
+<div class="container">
+    <JqxKnob @ref="myKnob" onChange="onKnobChange"
+        width=400 height=400 value=30 min=0 max=100 rotation=rotation
+        startAngle=270 endAngle=630 progressBar=progressBar pointer=pointer dial=dial>
+    </JqxKnob>
 
-<JqxNumberInput @ref="myNumberInput" onChange="onInputChange"
-    inputMode=inputMode decimalDigits=0 value=30>
-</JqxNumberInput>
+    <JqxNumberInput @ref="myNumberInput" onChange="onInputChange"
+        width=110 height=60 inputMode=inputMode decimalDigits=0 value=30>
+    </JqxNumberInput>
+</div>
 
 @code {
     JqxKnob myKnob;
@@ -47,25 +49,22 @@
 }
 
 <style>
-    input {
-        width: 110px !important;
-        height: 70px !important;
-        font-size: 48px !important;
-        position: absolute;
-        vertical-align: middle;
-        border: 0px !important;
-        font-weight: bold;
-        font-variant: normal;
-        font-stretch: normal;                
-        color: #00a644;                
-        background: none;
-        margin-top: -35px;
-        margin-left:-55px;
-        left: 185px;
-        top: 200px;
+    .container {
+        width: fit-content;
+        position: relative;
     }
 
     .jqx-numberinput {
         border: none;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .jqx-numberinput input {
+        text-align: center !important;
+        font-size: 48px !important;
+        font-weight: bold;
     }
 </style>

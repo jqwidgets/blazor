@@ -138,7 +138,7 @@
             row.Add("lastname", lastNames[random.Next(0, lastNames.Length)]);
             row.Add("productname", productNames[random.Next(0, productNames.Length)]);
             row.Add("available", random.Next(2) % 2 == 0 ? true : false );
-            row.Add("data", new DateTime().AddDays(random.Next(500)));
+            row.Add("date", new DateTime().AddDays(random.Next(500)));
             row.Add("price", price);
             row.Add("quantity", quantity);
             row.Add("total", price * quantity);
