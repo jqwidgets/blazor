@@ -47,7 +47,7 @@ async function generateSiteDemos() {
                 }
 
                 // // uncomment to test a single demo
-                // if (!(widgetFolder === 'grid' && demoFolder === 'bindingtoarray')) {
+                // if (!(widgetFolder === 'grid' && demoFolder === 'bindingtojson')) {
                 //     continue;
                 // }
 
