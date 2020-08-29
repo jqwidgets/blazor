@@ -47,9 +47,9 @@ async function generateSiteDemos() {
                 }
 
                 // // uncomment to test a single demo
-                if (!(widgetFolder === 'pivotgrid' && demoFolder === 'cellvaluesalignment')) {
-                    continue;
-                }
+                // if (!(widgetFolder === 'kanban' && demoFolder === 'defaultfunctionality')) {
+                //     continue;
+                // }
 
                 // creates the demo folder in release/demos/[demo]
                 await createFolder(widgetFolder, demoFolder);

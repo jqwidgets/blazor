@@ -1,7 +1,7 @@
 @using System.Text.Json;
 @inject IJSRuntime JSRuntime;
 
-<div style="width: 100%; height: 100%;" id="@componentID">@ChildContent</div>
+<div style="width: 100%; height: 100%;" id="@id">@ChildContent</div>
 
 @code {
 
@@ -61,6 +61,9 @@
 
     [Parameter]
     public object options { get; set; }
+
+    [Parameter]
+    public string id { get; set; }
 
     [Parameter]
     public Action<IDictionary<string, object>> onPivotitemexpanding { get; set; }
@@ -136,8 +139,6 @@
 
     private bool shouldSetters;
 
-    private string componentID;
-
     private IDictionary<string, object> initialOptions = new Dictionary<string, object>();
 
     public object getInstance()
@@ -174,7 +175,7 @@
     public void setOptions(object options)
     {
         shouldSetters = false;
-        ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.setOptions", componentID, options);
+        ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.setOptions", id, options);
     }
 
     public override async Task SetParametersAsync(ParameterView parameters)
@@ -202,14 +203,17 @@
 
     protected override void OnInitialized()
     {
-        componentID = ((IJSInProcessRuntime)JSRuntime).Invoke<string>("jqxBlazor.generateID");
+        if (id == null)
+        {
+            id = ((IJSInProcessRuntime)JSRuntime).Invoke<string>("jqxBlazor.generateID");
+        }
     }
 
     protected override void OnAfterRender(bool firstRender)
     {
         if (firstRender)
         {
-            ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxPivotGrid", initialOptions);
+            ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", id, "jqxPivotGrid", initialOptions);
 
             Task.Delay(200).ContinueWith((action) =>
             {
@@ -221,49 +225,49 @@
 
     private void attachEvents()
     {
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "pivotitemexpanding", "emitPivotGridEvent", DotNetObjectReference.Create(new EventsHandler(onPivotitemexpanding)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "pivotitemexpanded", "emitPivotGridEvent", DotNetObjectReference.Create(new EventsHandler(onPivotitemexpanded)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "pivotitemcollapsing", "emitPivotGridEvent", DotNetObjectReference.Create(new EventsHandler(onPivotitemcollapsing)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "pivotitemcollapsed", "emitPivotGridEvent", DotNetObjectReference.Create(new EventsHandler(onPivotitemcollapsed)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "sortchanging", "emitPivotGridEvent", DotNetObjectReference.Create(new EventsHandler(onSortchanging)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "sortchanged", "emitPivotGridEvent", DotNetObjectReference.Create(new EventsHandler(onSortchanged)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "sortremoving", "emitPivotGridEvent", DotNetObjectReference.Create(new EventsHandler(onSortremoving)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "sortremoved", "emitPivotGridEvent", DotNetObjectReference.Create(new EventsHandler(onSortremoved)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "pivotitemselectionchanged", "emitPivotGridEvent", DotNetObjectReference.Create(new EventsHandler(onPivotitemselectionchanged)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "pivotcellmousedown", "emitPivotGridEvent", DotNetObjectReference.Create(new EventsHandler(onPivotcellmousedown)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "pivotcellmouseup", "emitPivotGridEvent", DotNetObjectReference.Create(new EventsHandler(onPivotcellmouseup)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "pivotcellclick", "emitPivotGridEvent", DotNetObjectReference.Create(new EventsHandler(onPivotcellclick)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "pivotcelldblclick", "emitPivotGridEvent", DotNetObjectReference.Create(new EventsHandler(onPivotcelldblclick)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "pivotitemmousedown", "emitPivotGridEvent", DotNetObjectReference.Create(new EventsHandler(onPivotitemmousedown)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "pivotitemmouseup", "emitPivotGridEvent", DotNetObjectReference.Create(new EventsHandler(onPivotitemmouseup)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "pivotitemclick", "emitPivotGridEvent", DotNetObjectReference.Create(new EventsHandler(onPivotitemclick)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "pivotitemdblclick", "emitPivotGridEvent", DotNetObjectReference.Create(new EventsHandler(onPivotitemdblclick)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "pivotitemexpanding", "emitPivotGridEvent", DotNetObjectReference.Create(new EventsHandler(onPivotitemexpanding)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "pivotitemexpanded", "emitPivotGridEvent", DotNetObjectReference.Create(new EventsHandler(onPivotitemexpanded)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "pivotitemcollapsing", "emitPivotGridEvent", DotNetObjectReference.Create(new EventsHandler(onPivotitemcollapsing)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "pivotitemcollapsed", "emitPivotGridEvent", DotNetObjectReference.Create(new EventsHandler(onPivotitemcollapsed)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "sortchanging", "emitPivotGridEvent", DotNetObjectReference.Create(new EventsHandler(onSortchanging)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "sortchanged", "emitPivotGridEvent", DotNetObjectReference.Create(new EventsHandler(onSortchanged)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "sortremoving", "emitPivotGridEvent", DotNetObjectReference.Create(new EventsHandler(onSortremoving)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "sortremoved", "emitPivotGridEvent", DotNetObjectReference.Create(new EventsHandler(onSortremoved)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "pivotitemselectionchanged", "emitPivotGridEvent", DotNetObjectReference.Create(new EventsHandler(onPivotitemselectionchanged)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "pivotcellmousedown", "emitPivotGridEvent", DotNetObjectReference.Create(new EventsHandler(onPivotcellmousedown)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "pivotcellmouseup", "emitPivotGridEvent", DotNetObjectReference.Create(new EventsHandler(onPivotcellmouseup)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "pivotcellclick", "emitPivotGridEvent", DotNetObjectReference.Create(new EventsHandler(onPivotcellclick)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "pivotcelldblclick", "emitPivotGridEvent", DotNetObjectReference.Create(new EventsHandler(onPivotcelldblclick)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "pivotitemmousedown", "emitPivotGridEvent", DotNetObjectReference.Create(new EventsHandler(onPivotitemmousedown)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "pivotitemmouseup", "emitPivotGridEvent", DotNetObjectReference.Create(new EventsHandler(onPivotitemmouseup)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "pivotitemclick", "emitPivotGridEvent", DotNetObjectReference.Create(new EventsHandler(onPivotitemclick)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "pivotitemdblclick", "emitPivotGridEvent", DotNetObjectReference.Create(new EventsHandler(onPivotitemdblclick)));
     }
 
     private T getterProp<T>(string name)
     {
         shouldSetters = false;
-        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageProps", componentID, name);
+        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageProps", id, name);
     }
 
     private void setterProp(string name, object value)
     {
         if (shouldSetters)
         {
-            ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.manageProps", componentID, name, value);
+            ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.manageProps", id, name, value);
         }
     }
 
     private T getterMethod<T>(string name, params object[] args)
     {
         shouldSetters = false;
-        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", componentID, name, args);
+        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", id, name, args);
     }
 
     private void setterMethod(string name, params object[] args)
     {
         shouldSetters = false;
-        ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.manageMethods", componentID, name, args);
+        ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.manageMethods", id, name, args);
     }
 
     public class EventsHandler

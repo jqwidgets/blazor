@@ -1,7 +1,7 @@
 @using System.Text.Json;
 @inject IJSRuntime JSRuntime;
 
-<div id="@componentID">@ChildContent</div>
+<div id="@id">@ChildContent</div>
 
 @code {
 
@@ -327,6 +327,9 @@
     public object options { get; set; }
 
     [Parameter]
+    public string id { get; set; }
+
+    [Parameter]
     public Action<IDictionary<string, object>> onAppointmentChange { get; set; }
 
     [Parameter]
@@ -405,8 +408,6 @@
     };
 
     private bool shouldSetters;
-
-    private string componentID;
 
     private IDictionary<string, object> initialOptions = new Dictionary<string, object>();
 
@@ -559,7 +560,7 @@
     public void setOptions(object options)
     {
         shouldSetters = false;
-        ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.setOptions", componentID, options);
+        ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.setOptions", id, options);
     }
 
     public override async Task SetParametersAsync(ParameterView parameters)
@@ -587,14 +588,17 @@
 
     protected override void OnInitialized()
     {
-        componentID = ((IJSInProcessRuntime)JSRuntime).Invoke<string>("jqxBlazor.generateID");
+        if (id == null)
+        {
+            id = ((IJSInProcessRuntime)JSRuntime).Invoke<string>("jqxBlazor.generateID");
+        }
     }
 
     protected override void OnAfterRender(bool firstRender)
     {
         if (firstRender)
         {
-            ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxScheduler", initialOptions);
+            ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", id, "jqxScheduler", initialOptions);
 
             Task.Delay(200).ContinueWith((action) =>
             {
@@ -606,51 +610,51 @@
 
     private void attachEvents()
     {
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "appointmentChange", "emitSchedulerEvent", DotNetObjectReference.Create(new EventsHandler(onAppointmentChange)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "appointmentClick", "emitSchedulerEvent", DotNetObjectReference.Create(new EventsHandler(onAppointmentClick)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "appointmentDoubleClick", "emitSchedulerEvent", DotNetObjectReference.Create(new EventsHandler(onAppointmentDoubleClick)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "appointmentDelete", "emitSchedulerEvent", DotNetObjectReference.Create(new EventsHandler(onAppointmentDelete)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "appointmentAdd", "emitSchedulerEvent", DotNetObjectReference.Create(new EventsHandler(onAppointmentAdd)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "bindingComplete", "emitSchedulerEvent", DotNetObjectReference.Create(new EventsHandler(onBindingComplete)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "cellClick", "emitSchedulerEvent", DotNetObjectReference.Create(new EventsHandler(onCellClick)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "cellDoubleClick", "emitSchedulerEvent", DotNetObjectReference.Create(new EventsHandler(onCellDoubleClick)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "contextMenuOpen", "emitSchedulerEvent", DotNetObjectReference.Create(new EventsHandler(onContextMenuOpen)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "contextMenuClose", "emitSchedulerEvent", DotNetObjectReference.Create(new EventsHandler(onContextMenuClose)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "contextMenuItemClick", "emitSchedulerEvent", DotNetObjectReference.Create(new EventsHandler(onContextMenuItemClick)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "contextMenuCreate", "emitSchedulerEvent", DotNetObjectReference.Create(new EventsHandler(onContextMenuCreate)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "dateChange", "emitSchedulerEvent", DotNetObjectReference.Create(new EventsHandler(onDateChange)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "editRecurrenceDialogOpen", "emitSchedulerEvent", DotNetObjectReference.Create(new EventsHandler(onEditRecurrenceDialogOpen)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "editRecurrenceDialogClose", "emitSchedulerEvent", DotNetObjectReference.Create(new EventsHandler(onEditRecurrenceDialogClose)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "editDialogCreate", "emitSchedulerEvent", DotNetObjectReference.Create(new EventsHandler(onEditDialogCreate)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "editDialogOpen", "emitSchedulerEvent", DotNetObjectReference.Create(new EventsHandler(onEditDialogOpen)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "editDialogClose", "emitSchedulerEvent", DotNetObjectReference.Create(new EventsHandler(onEditDialogClose)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "viewChange", "emitSchedulerEvent", DotNetObjectReference.Create(new EventsHandler(onViewChange)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "appointmentChange", "emitSchedulerEvent", DotNetObjectReference.Create(new EventsHandler(onAppointmentChange)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "appointmentClick", "emitSchedulerEvent", DotNetObjectReference.Create(new EventsHandler(onAppointmentClick)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "appointmentDoubleClick", "emitSchedulerEvent", DotNetObjectReference.Create(new EventsHandler(onAppointmentDoubleClick)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "appointmentDelete", "emitSchedulerEvent", DotNetObjectReference.Create(new EventsHandler(onAppointmentDelete)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "appointmentAdd", "emitSchedulerEvent", DotNetObjectReference.Create(new EventsHandler(onAppointmentAdd)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "bindingComplete", "emitSchedulerEvent", DotNetObjectReference.Create(new EventsHandler(onBindingComplete)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "cellClick", "emitSchedulerEvent", DotNetObjectReference.Create(new EventsHandler(onCellClick)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "cellDoubleClick", "emitSchedulerEvent", DotNetObjectReference.Create(new EventsHandler(onCellDoubleClick)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "contextMenuOpen", "emitSchedulerEvent", DotNetObjectReference.Create(new EventsHandler(onContextMenuOpen)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "contextMenuClose", "emitSchedulerEvent", DotNetObjectReference.Create(new EventsHandler(onContextMenuClose)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "contextMenuItemClick", "emitSchedulerEvent", DotNetObjectReference.Create(new EventsHandler(onContextMenuItemClick)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "contextMenuCreate", "emitSchedulerEvent", DotNetObjectReference.Create(new EventsHandler(onContextMenuCreate)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "dateChange", "emitSchedulerEvent", DotNetObjectReference.Create(new EventsHandler(onDateChange)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "editRecurrenceDialogOpen", "emitSchedulerEvent", DotNetObjectReference.Create(new EventsHandler(onEditRecurrenceDialogOpen)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "editRecurrenceDialogClose", "emitSchedulerEvent", DotNetObjectReference.Create(new EventsHandler(onEditRecurrenceDialogClose)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "editDialogCreate", "emitSchedulerEvent", DotNetObjectReference.Create(new EventsHandler(onEditDialogCreate)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "editDialogOpen", "emitSchedulerEvent", DotNetObjectReference.Create(new EventsHandler(onEditDialogOpen)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "editDialogClose", "emitSchedulerEvent", DotNetObjectReference.Create(new EventsHandler(onEditDialogClose)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "viewChange", "emitSchedulerEvent", DotNetObjectReference.Create(new EventsHandler(onViewChange)));
     }
 
     private T getterProp<T>(string name)
     {
         shouldSetters = false;
-        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageProps", componentID, name);
+        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageProps", id, name);
     }
 
     private void setterProp(string name, object value)
     {
         if (shouldSetters)
         {
-            ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.manageProps", componentID, name, value);
+            ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.manageProps", id, name, value);
         }
     }
 
     private T getterMethod<T>(string name, params object[] args)
     {
         shouldSetters = false;
-        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", componentID, name, args);
+        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", id, name, args);
     }
 
     private void setterMethod(string name, params object[] args)
     {
         shouldSetters = false;
-        ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.manageMethods", componentID, name, args);
+        ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.manageMethods", id, name, args);
     }
 
     public class EventsHandler

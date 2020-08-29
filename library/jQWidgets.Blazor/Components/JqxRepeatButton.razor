@@ -1,7 +1,7 @@
 @using System.Text.Json;
 @inject IJSRuntime JSRuntime;
 
-<div id="@componentID">@ChildContent</div>
+<div id="@id">@ChildContent</div>
 
 @code {
 
@@ -105,6 +105,9 @@
     public object options { get; set; }
 
     [Parameter]
+    public string id { get; set; }
+
+    [Parameter]
     public Action<IDictionary<string, object>> onClick { get; set; }
 
     [Parameter]
@@ -129,8 +132,6 @@
     };
 
     private bool shouldSetters;
-
-    private string componentID;
 
     private IDictionary<string, object> initialOptions = new Dictionary<string, object>();
 
@@ -168,7 +169,7 @@
     public void setOptions(object options)
     {
         shouldSetters = false;
-        ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.setOptions", componentID, options);
+        ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.setOptions", id, options);
     }
 
     public override async Task SetParametersAsync(ParameterView parameters)
@@ -196,14 +197,17 @@
 
     protected override void OnInitialized()
     {
-        componentID = ((IJSInProcessRuntime)JSRuntime).Invoke<string>("jqxBlazor.generateID");
+        if (id == null)
+        {
+            id = ((IJSInProcessRuntime)JSRuntime).Invoke<string>("jqxBlazor.generateID");
+        }
     }
 
     protected override void OnAfterRender(bool firstRender)
     {
         if (firstRender)
         {
-            ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxRepeatButton", initialOptions);
+            ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", id, "jqxRepeatButton", initialOptions);
 
             Task.Delay(200).ContinueWith((action) =>
             {
@@ -215,33 +219,33 @@
 
     private void attachEvents()
     {
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "click", "emitRepeatButtonEvent", DotNetObjectReference.Create(new EventsHandler(onClick)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "click", "emitRepeatButtonEvent", DotNetObjectReference.Create(new EventsHandler(onClick)));
     }
 
     private T getterProp<T>(string name)
     {
         shouldSetters = false;
-        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageProps", componentID, name);
+        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageProps", id, name);
     }
 
     private void setterProp(string name, object value)
     {
         if (shouldSetters)
         {
-            ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.manageProps", componentID, name, value);
+            ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.manageProps", id, name, value);
         }
     }
 
     private T getterMethod<T>(string name, params object[] args)
     {
         shouldSetters = false;
-        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", componentID, name, args);
+        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", id, name, args);
     }
 
     private void setterMethod(string name, params object[] args)
     {
         shouldSetters = false;
-        ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.manageMethods", componentID, name, args);
+        ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.manageMethods", id, name, args);
     }
 
     public class EventsHandler

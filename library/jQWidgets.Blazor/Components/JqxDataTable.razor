@@ -1,7 +1,7 @@
 @using System.Text.Json;
 @inject IJSRuntime JSRuntime;
 
-<div id="@componentID">@ChildContent</div>
+<div id="@id">@ChildContent</div>
 
 @code {
 
@@ -321,6 +321,9 @@
     public object options { get; set; }
 
     [Parameter]
+    public string id { get; set; }
+
+    [Parameter]
     public Action<IDictionary<string, object>> onBindingComplete { get; set; }
 
     [Parameter]
@@ -396,8 +399,6 @@
     };
 
     private bool shouldSetters;
-
-    private string componentID;
 
     private IDictionary<string, object> initialOptions = new Dictionary<string, object>();
 
@@ -630,7 +631,7 @@
     public void setOptions(object options)
     {
         shouldSetters = false;
-        ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.setOptions", componentID, options);
+        ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.setOptions", id, options);
     }
 
     public override async Task SetParametersAsync(ParameterView parameters)
@@ -658,14 +659,17 @@
 
     protected override void OnInitialized()
     {
-        componentID = ((IJSInProcessRuntime)JSRuntime).Invoke<string>("jqxBlazor.generateID");
+        if (id == null)
+        {
+            id = ((IJSInProcessRuntime)JSRuntime).Invoke<string>("jqxBlazor.generateID");
+        }
     }
 
     protected override void OnAfterRender(bool firstRender)
     {
         if (firstRender)
         {
-            ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxDataTable", initialOptions);
+            ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", id, "jqxDataTable", initialOptions);
 
             Task.Delay(200).ContinueWith((action) =>
             {
@@ -677,50 +681,50 @@
 
     private void attachEvents()
     {
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "bindingComplete", "emitDataTableEvent", DotNetObjectReference.Create(new EventsHandler(onBindingComplete)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "cellBeginEdit", "emitDataTableEvent", DotNetObjectReference.Create(new EventsHandler(onCellBeginEdit)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "cellEndEdit", "emitDataTableEvent", DotNetObjectReference.Create(new EventsHandler(onCellEndEdit)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "cellValueChanged", "emitDataTableEvent", DotNetObjectReference.Create(new EventsHandler(onCellValueChanged)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "columnResized", "emitDataTableEvent", DotNetObjectReference.Create(new EventsHandler(onColumnResized)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "columnReordered", "emitDataTableEvent", DotNetObjectReference.Create(new EventsHandler(onColumnReordered)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "sort", "emitDataTableEvent", DotNetObjectReference.Create(new EventsHandler(onSort)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "filter", "emitDataTableEvent", DotNetObjectReference.Create(new EventsHandler(onFilter)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "pageChanged", "emitDataTableEvent", DotNetObjectReference.Create(new EventsHandler(onPageChanged)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "pageSizeChanged", "emitDataTableEvent", DotNetObjectReference.Create(new EventsHandler(onPageSizeChanged)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "rowClick", "emitDataTableEvent", DotNetObjectReference.Create(new EventsHandler(onRowClick)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "rowDoubleClick", "emitDataTableEvent", DotNetObjectReference.Create(new EventsHandler(onRowDoubleClick)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "rowSelect", "emitDataTableEvent", DotNetObjectReference.Create(new EventsHandler(onRowSelect)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "rowUnselect", "emitDataTableEvent", DotNetObjectReference.Create(new EventsHandler(onRowUnselect)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "rowBeginEdit", "emitDataTableEvent", DotNetObjectReference.Create(new EventsHandler(onRowBeginEdit)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "rowEndEdit", "emitDataTableEvent", DotNetObjectReference.Create(new EventsHandler(onRowEndEdit)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "rowExpand", "emitDataTableEvent", DotNetObjectReference.Create(new EventsHandler(onRowExpand)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "rowCollapse", "emitDataTableEvent", DotNetObjectReference.Create(new EventsHandler(onRowCollapse)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "bindingComplete", "emitDataTableEvent", DotNetObjectReference.Create(new EventsHandler(onBindingComplete)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "cellBeginEdit", "emitDataTableEvent", DotNetObjectReference.Create(new EventsHandler(onCellBeginEdit)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "cellEndEdit", "emitDataTableEvent", DotNetObjectReference.Create(new EventsHandler(onCellEndEdit)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "cellValueChanged", "emitDataTableEvent", DotNetObjectReference.Create(new EventsHandler(onCellValueChanged)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "columnResized", "emitDataTableEvent", DotNetObjectReference.Create(new EventsHandler(onColumnResized)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "columnReordered", "emitDataTableEvent", DotNetObjectReference.Create(new EventsHandler(onColumnReordered)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "sort", "emitDataTableEvent", DotNetObjectReference.Create(new EventsHandler(onSort)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "filter", "emitDataTableEvent", DotNetObjectReference.Create(new EventsHandler(onFilter)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "pageChanged", "emitDataTableEvent", DotNetObjectReference.Create(new EventsHandler(onPageChanged)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "pageSizeChanged", "emitDataTableEvent", DotNetObjectReference.Create(new EventsHandler(onPageSizeChanged)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "rowClick", "emitDataTableEvent", DotNetObjectReference.Create(new EventsHandler(onRowClick)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "rowDoubleClick", "emitDataTableEvent", DotNetObjectReference.Create(new EventsHandler(onRowDoubleClick)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "rowSelect", "emitDataTableEvent", DotNetObjectReference.Create(new EventsHandler(onRowSelect)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "rowUnselect", "emitDataTableEvent", DotNetObjectReference.Create(new EventsHandler(onRowUnselect)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "rowBeginEdit", "emitDataTableEvent", DotNetObjectReference.Create(new EventsHandler(onRowBeginEdit)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "rowEndEdit", "emitDataTableEvent", DotNetObjectReference.Create(new EventsHandler(onRowEndEdit)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "rowExpand", "emitDataTableEvent", DotNetObjectReference.Create(new EventsHandler(onRowExpand)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "rowCollapse", "emitDataTableEvent", DotNetObjectReference.Create(new EventsHandler(onRowCollapse)));
     }
 
     private T getterProp<T>(string name)
     {
         shouldSetters = false;
-        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageProps", componentID, name);
+        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageProps", id, name);
     }
 
     private void setterProp(string name, object value)
     {
         if (shouldSetters)
         {
-            ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.manageProps", componentID, name, value);
+            ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.manageProps", id, name, value);
         }
     }
 
     private T getterMethod<T>(string name, params object[] args)
     {
         shouldSetters = false;
-        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", componentID, name, args);
+        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", id, name, args);
     }
 
     private void setterMethod(string name, params object[] args)
     {
         shouldSetters = false;
-        ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.manageMethods", componentID, name, args);
+        ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.manageMethods", id, name, args);
     }
 
     public class EventsHandler
