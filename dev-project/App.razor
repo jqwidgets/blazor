@@ -1,102 +1,40 @@
-<div style="width: 800px; height: 400px;">
-    <JqxPivotGrid
-        source=pivotDataSource treeStyleRows=true autoResize=false multipleSelectionEnabled=true>
-    </JqxPivotGrid>
-</div>
+﻿@* 
+    Blazor has good tree shaking so when it builds for production
+    only includes the needed modules for the demo. As in the release the modules
+    are reused, we need this modules to be all the needed for all demos.
+
+    If some demo when build misses a module, copy/paste this file
+    in App.razor, build the project and copy/paste the generated modules
+    in the release folder.
+
+    BUILD: dotnet publish -c release
+    FROM:  dev-project/bin/release/netstandard2.1/publish/blazor-web/dist/_framework/_bin/
+    TO:    release/common/_framework/_bin/
+*@
+
+@inject HttpClient Http;
+
+<JqxBarGauge></JqxBarGauge>
+
+<div></div>
 
 @code {
 
-    IDictionary<string, object> pivotDataSource = new Dictionary<string, object>()
+    private object[] source;
+    
+    protected override async Task OnInitializedAsync()
     {
-        { "dataSource", dataSource },
-        {  "options",
-            new Dictionary<string, object>()
-                {
-                    { "pivotValuesOnRows", false },
-                    {   "rows",
-                        new Dictionary<string, object>[]
-                        {
-                            new Dictionary<string, object>() { { "dataField", "country" }, { "width", 190 } }
-                        }
-                    },
-                    { 
-                        "values",
-                        new Dictionary<string, object>[]
-                        {
-                            new Dictionary<string, object>() 
-                            { 
-                                { "dataField", "value" },
-                                { "width", 200 },
-                                { "function", "min" },
-                                { "text", "cells left alignment" },
-                                {
-                                    "formatSettings",
-                                    new Dictionary<string, string>() { { "align", "left" }, { "prefix", "" }, { "decimalPlaces", "2" } }
-                                }
-                            },
-                            new Dictionary<string, object>()
-                            { 
-                                { "dataField", "value" },
-                                { "width", 200 },
-                                { "function", "max" },
-                                { "text", "cells center alignment" },
-                                {
-                                    "formatSettings",
-                                    new Dictionary<string, string>() { { "align", "center" }, { "prefix", "" }, { "decimalPlaces", "2" } }
-                                } 
-                            },
-                            new Dictionary<string, object>()
-                            { 
-                                { "dataField", "value" },
-                                { "width", 200 },
-                                { "function", "average" },
-                                { "text", "cells right alignment" },
-                                {
-                                    "formatSettings",
-                                    new Dictionary<string, string>() { { "align", "right" }, { "prefix", "" }, { "decimalPlaces", "2" } }
-                                }
-                            }
-                        }
-                    }
-                }
-        
-        }
-    };
+        source = await Http.GetJsonAsync<object[]>("../sampledata/customers.txt");
 
-    static IDictionary<string, object> dataSource = new Dictionary<string, object>()
-    {
-        { "localdata", generateLocalData() },
-        { "datatype", "array" },
-        { 
-            "dataFields",
-            new Dictionary<string, object>[]
-            {
-                new Dictionary<string, object>() { { "name", "country" }, { "type", "string" } },
-                new Dictionary<string, object>() { { "name", "value" }, { "type", "string" } }
-            }
-        }
-    };
+        var intParse = int.Parse("22");
+        var doubleParse = double.Parse("22");
 
-    static List<IDictionary<string, string>> generateLocalData()
-    {
-        string[] countries = new string[] { "Germany", "France", "United States", "Italy", "Spain", "Finland", "Canada", "Japan", "Brazil", "United Kingdom", "China", "India", "South Korea", "Romania", "Greece" };
-        string[] values =  new string[] { "2.25", "1.5", "3.0", "3.3", "4.5", "3.6", "3.8", "2.5", "5.0", "1.75", "3.25", "4.0", "3.0", "1.0" };
+        var date = new DateTime(2222, 2, 2, 2, 2, 2).AddDays(22);
+        date.ToString("dd-MMMM-yyyy");
+        var date2 = DateTime.Today;
 
-        List<IDictionary<string, string>> data = new List<IDictionary<string, string>>();
-
-        for (int i = 0; i < countries.Length - 1; i++)
-        {
-            IDictionary<string, string> row = new Dictionary<string, string>
-            {
-                { "country",  countries[i] },
-                { "value",  values[i] }
-            };
-  
-            data.Add(row);
-        }
-
-        return data;
+        var task = Task.Run(() => { });
+        task.Wait(TimeSpan.FromSeconds(2));
     }
 
 }
- 

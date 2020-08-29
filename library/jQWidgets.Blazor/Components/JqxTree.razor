@@ -1,7 +1,7 @@
 @using System.Text.Json;
 @inject IJSRuntime JSRuntime;
 
-<div id="@componentID">@ChildContent</div>
+<div id="@id">@ChildContent</div>
 
 @code {
 
@@ -129,6 +129,9 @@
     public object options { get; set; }
 
     [Parameter]
+    public string id { get; set; }
+
+    [Parameter]
     public Action<IDictionary<string, object>> onAdded { get; set; }
 
     [Parameter]
@@ -177,8 +180,6 @@
     };
 
     private bool shouldSetters;
-
-    private string componentID;
 
     private IDictionary<string, object> initialOptions = new Dictionary<string, object>();
 
@@ -356,7 +357,7 @@
     public void setOptions(object options)
     {
         shouldSetters = false;
-        ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.setOptions", componentID, options);
+        ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.setOptions", id, options);
     }
 
     public override async Task SetParametersAsync(ParameterView parameters)
@@ -384,14 +385,17 @@
 
     protected override void OnInitialized()
     {
-        componentID = ((IJSInProcessRuntime)JSRuntime).Invoke<string>("jqxBlazor.generateID");
+        if (id == null)
+        {
+            id = ((IJSInProcessRuntime)JSRuntime).Invoke<string>("jqxBlazor.generateID");
+        }
     }
 
     protected override void OnAfterRender(bool firstRender)
     {
         if (firstRender)
         {
-            ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxTree", initialOptions);
+            ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", id, "jqxTree", initialOptions);
 
             Task.Delay(200).ContinueWith((action) =>
             {
@@ -403,41 +407,41 @@
 
     private void attachEvents()
     {
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "added", "emitTreeEvent", DotNetObjectReference.Create(new EventsHandler(onAdded)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "checkChange", "emitTreeEvent", DotNetObjectReference.Create(new EventsHandler(onCheckChange)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "collapse", "emitTreeEvent", DotNetObjectReference.Create(new EventsHandler(onCollapse)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "dragStart", "emitTreeEvent", DotNetObjectReference.Create(new EventsHandler(onDragStart)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "dragEnd", "emitTreeEvent", DotNetObjectReference.Create(new EventsHandler(onDragEnd)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "expand", "emitTreeEvent", DotNetObjectReference.Create(new EventsHandler(onExpand)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "itemClick", "emitTreeEvent", DotNetObjectReference.Create(new EventsHandler(onItemClick)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "removed", "emitTreeEvent", DotNetObjectReference.Create(new EventsHandler(onRemoved)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "select", "emitTreeEvent", DotNetObjectReference.Create(new EventsHandler(onSelect)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "added", "emitTreeEvent", DotNetObjectReference.Create(new EventsHandler(onAdded)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "checkChange", "emitTreeEvent", DotNetObjectReference.Create(new EventsHandler(onCheckChange)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "collapse", "emitTreeEvent", DotNetObjectReference.Create(new EventsHandler(onCollapse)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "dragStart", "emitTreeEvent", DotNetObjectReference.Create(new EventsHandler(onDragStart)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "dragEnd", "emitTreeEvent", DotNetObjectReference.Create(new EventsHandler(onDragEnd)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "expand", "emitTreeEvent", DotNetObjectReference.Create(new EventsHandler(onExpand)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "itemClick", "emitTreeEvent", DotNetObjectReference.Create(new EventsHandler(onItemClick)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "removed", "emitTreeEvent", DotNetObjectReference.Create(new EventsHandler(onRemoved)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "select", "emitTreeEvent", DotNetObjectReference.Create(new EventsHandler(onSelect)));
     }
 
     private T getterProp<T>(string name)
     {
         shouldSetters = false;
-        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageProps", componentID, name);
+        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageProps", id, name);
     }
 
     private void setterProp(string name, object value)
     {
         if (shouldSetters)
         {
-            ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.manageProps", componentID, name, value);
+            ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.manageProps", id, name, value);
         }
     }
 
     private T getterMethod<T>(string name, params object[] args)
     {
         shouldSetters = false;
-        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", componentID, name, args);
+        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", id, name, args);
     }
 
     private void setterMethod(string name, params object[] args)
     {
         shouldSetters = false;
-        ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.manageMethods", componentID, name, args);
+        ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.manageMethods", id, name, args);
     }
 
     public class EventsHandler

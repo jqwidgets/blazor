@@ -1,7 +1,7 @@
 @using System.Text.Json;
 @inject IJSRuntime JSRuntime;
 
-<div id="@componentID">@ChildContent</div>
+<div id="@id">@ChildContent</div>
 
 @code {
 
@@ -693,6 +693,9 @@
     public object options { get; set; }
 
     [Parameter]
+    public string id { get; set; }
+
+    [Parameter]
     public Action<IDictionary<string, object>> onBindingcomplete { get; set; }
 
     [Parameter]
@@ -786,8 +789,6 @@
     };
 
     private bool shouldSetters;
-
-    private string componentID;
 
     private IDictionary<string, object> initialOptions = new Dictionary<string, object>();
 
@@ -1315,7 +1316,7 @@
     public void setOptions(object options)
     {
         shouldSetters = false;
-        ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.setOptions", componentID, options);
+        ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.setOptions", id, options);
     }
 
     public override async Task SetParametersAsync(ParameterView parameters)
@@ -1343,14 +1344,17 @@
 
     protected override void OnInitialized()
     {
-        componentID = ((IJSInProcessRuntime)JSRuntime).Invoke<string>("jqxBlazor.generateID");
+        if (id == null)
+        {
+            id = ((IJSInProcessRuntime)JSRuntime).Invoke<string>("jqxBlazor.generateID");
+        }
     }
 
     protected override void OnAfterRender(bool firstRender)
     {
         if (firstRender)
         {
-            ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "jqxGrid", initialOptions);
+            ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", id, "jqxGrid", initialOptions);
 
             Task.Delay(200).ContinueWith((action) =>
             {
@@ -1362,56 +1366,56 @@
 
     private void attachEvents()
     {
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "bindingcomplete", "emitGridEvent", DotNetObjectReference.Create(new EventsHandler(onBindingcomplete)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "columnresized", "emitGridEvent", DotNetObjectReference.Create(new EventsHandler(onColumnresized)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "columnreordered", "emitGridEvent", DotNetObjectReference.Create(new EventsHandler(onColumnreordered)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "columnclick", "emitGridEvent", DotNetObjectReference.Create(new EventsHandler(onColumnclick)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "cellclick", "emitGridEvent", DotNetObjectReference.Create(new EventsHandler(onCellclick)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "celldoubleclick", "emitGridEvent", DotNetObjectReference.Create(new EventsHandler(onCelldoubleclick)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "cellselect", "emitGridEvent", DotNetObjectReference.Create(new EventsHandler(onCellselect)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "cellunselect", "emitGridEvent", DotNetObjectReference.Create(new EventsHandler(onCellunselect)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "cellvaluechanged", "emitGridEvent", DotNetObjectReference.Create(new EventsHandler(onCellvaluechanged)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "cellbeginedit", "emitGridEvent", DotNetObjectReference.Create(new EventsHandler(onCellbeginedit)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "cellendedit", "emitGridEvent", DotNetObjectReference.Create(new EventsHandler(onCellendedit)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "filter", "emitGridEvent", DotNetObjectReference.Create(new EventsHandler(onFilter)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "groupschanged", "emitGridEvent", DotNetObjectReference.Create(new EventsHandler(onGroupschanged)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "groupexpand", "emitGridEvent", DotNetObjectReference.Create(new EventsHandler(onGroupexpand)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "groupcollapse", "emitGridEvent", DotNetObjectReference.Create(new EventsHandler(onGroupcollapse)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "pagechanged", "emitGridEvent", DotNetObjectReference.Create(new EventsHandler(onPagechanged)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "pagesizechanged", "emitGridEvent", DotNetObjectReference.Create(new EventsHandler(onPagesizechanged)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "rowclick", "emitGridEvent", DotNetObjectReference.Create(new EventsHandler(onRowclick)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "rowdoubleclick", "emitGridEvent", DotNetObjectReference.Create(new EventsHandler(onRowdoubleclick)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "rowselect", "emitGridEvent", DotNetObjectReference.Create(new EventsHandler(onRowselect)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "rowunselect", "emitGridEvent", DotNetObjectReference.Create(new EventsHandler(onRowunselect)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "rowexpand", "emitGridEvent", DotNetObjectReference.Create(new EventsHandler(onRowexpand)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "rowcollapse", "emitGridEvent", DotNetObjectReference.Create(new EventsHandler(onRowcollapse)));
-        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "sort", "emitGridEvent", DotNetObjectReference.Create(new EventsHandler(onSort)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "bindingcomplete", "emitGridEvent", DotNetObjectReference.Create(new EventsHandler(onBindingcomplete)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "columnresized", "emitGridEvent", DotNetObjectReference.Create(new EventsHandler(onColumnresized)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "columnreordered", "emitGridEvent", DotNetObjectReference.Create(new EventsHandler(onColumnreordered)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "columnclick", "emitGridEvent", DotNetObjectReference.Create(new EventsHandler(onColumnclick)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "cellclick", "emitGridEvent", DotNetObjectReference.Create(new EventsHandler(onCellclick)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "celldoubleclick", "emitGridEvent", DotNetObjectReference.Create(new EventsHandler(onCelldoubleclick)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "cellselect", "emitGridEvent", DotNetObjectReference.Create(new EventsHandler(onCellselect)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "cellunselect", "emitGridEvent", DotNetObjectReference.Create(new EventsHandler(onCellunselect)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "cellvaluechanged", "emitGridEvent", DotNetObjectReference.Create(new EventsHandler(onCellvaluechanged)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "cellbeginedit", "emitGridEvent", DotNetObjectReference.Create(new EventsHandler(onCellbeginedit)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "cellendedit", "emitGridEvent", DotNetObjectReference.Create(new EventsHandler(onCellendedit)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "filter", "emitGridEvent", DotNetObjectReference.Create(new EventsHandler(onFilter)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "groupschanged", "emitGridEvent", DotNetObjectReference.Create(new EventsHandler(onGroupschanged)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "groupexpand", "emitGridEvent", DotNetObjectReference.Create(new EventsHandler(onGroupexpand)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "groupcollapse", "emitGridEvent", DotNetObjectReference.Create(new EventsHandler(onGroupcollapse)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "pagechanged", "emitGridEvent", DotNetObjectReference.Create(new EventsHandler(onPagechanged)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "pagesizechanged", "emitGridEvent", DotNetObjectReference.Create(new EventsHandler(onPagesizechanged)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "rowclick", "emitGridEvent", DotNetObjectReference.Create(new EventsHandler(onRowclick)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "rowdoubleclick", "emitGridEvent", DotNetObjectReference.Create(new EventsHandler(onRowdoubleclick)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "rowselect", "emitGridEvent", DotNetObjectReference.Create(new EventsHandler(onRowselect)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "rowunselect", "emitGridEvent", DotNetObjectReference.Create(new EventsHandler(onRowunselect)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "rowexpand", "emitGridEvent", DotNetObjectReference.Create(new EventsHandler(onRowexpand)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "rowcollapse", "emitGridEvent", DotNetObjectReference.Create(new EventsHandler(onRowcollapse)));
+        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "sort", "emitGridEvent", DotNetObjectReference.Create(new EventsHandler(onSort)));
     }
 
     private T getterProp<T>(string name)
     {
         shouldSetters = false;
-        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageProps", componentID, name);
+        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageProps", id, name);
     }
 
     private void setterProp(string name, object value)
     {
         if (shouldSetters)
         {
-            ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.manageProps", componentID, name, value);
+            ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.manageProps", id, name, value);
         }
     }
 
     private T getterMethod<T>(string name, params object[] args)
     {
         shouldSetters = false;
-        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", componentID, name, args);
+        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", id, name, args);
     }
 
     private void setterMethod(string name, params object[] args)
     {
         shouldSetters = false;
-        ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.manageMethods", componentID, name, args);
+        ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.manageMethods", id, name, args);
     }
 
     public class EventsHandler

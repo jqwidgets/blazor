@@ -120,6 +120,9 @@ function generateLibrary(inFile, outFile) {
     outData += `    [Parameter]\n`;
     outData += `    public object options { get; set; }\n\n`;
 
+    outData += `    [Parameter]\n`;
+    outData += `    public string id { get; set; }\n\n`;
+
     if (obj.events) {
         for (const event of obj.events) {
             let eventNameWithOn = `on` + event.name.charAt(0).toUpperCase() + event.name.slice(1);
@@ -168,8 +171,6 @@ function generateLibrary(inFile, outFile) {
     outData += `    };\n\n`;
 
     outData += `    private bool shouldSetters;\n\n`;
-
-    outData += `    private string componentID;\n\n`;
 
     if (isWidgetWithDynamicMarkup) {
         outData += `    private string componentMarkup;\n\n`;
@@ -285,7 +286,7 @@ function generateLibrary(inFile, outFile) {
     outData += `    public void setOptions(object options)\n`;
     outData += `    {\n`;
     outData += `        shouldSetters = false;\n`;
-    outData += `        ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.setOptions", componentID, options);\n`;
+    outData += `        ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.setOptions", id, options);\n`;
     outData += `    }\n\n`;
     // End Widget Methods
 
@@ -315,14 +316,17 @@ function generateLibrary(inFile, outFile) {
 
     outData += `    protected override void OnInitialized()\n`;
     outData += `    {\n`;
-    outData += `        componentID = ((IJSInProcessRuntime)JSRuntime).Invoke<string>("jqxBlazor.generateID");\n`;
+    outData += `        if (id == null)\n`;
+    outData += `        {\n`;
+    outData += `            id = ((IJSInProcessRuntime)JSRuntime).Invoke<string>("jqxBlazor.generateID");\n`;
+    outData += `        }\n`;
     outData += `    }\n\n`;
 
     outData += `    protected override void OnAfterRender(bool firstRender)\n`;
     outData += `    {\n`;
     outData += `        if (firstRender)\n`;
     outData += `        {\n`;
-    outData += `            ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", componentID, "${widget}", initialOptions);\n\n`;
+    outData += `            ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.createComponent", id, "${widget}", initialOptions);\n\n`;
     outData += `            Task.Delay(200).ContinueWith((action) =>\n`;
     outData += `            {\n`;
     outData += `                attachEvents();\n`;
@@ -337,7 +341,7 @@ function generateLibrary(inFile, outFile) {
         for (const event of obj.events) {
             let eventNameWithOn = `on` + event.name.charAt(0).toUpperCase() + event.name.slice(1);
 
-            outData += `        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", componentID, "${event.name}", "emit${widgetWithoutJqx}Event", DotNetObjectReference.Create(new EventsHandler(${eventNameWithOn})));\n`; 
+            outData += `        ((IJSInProcessRuntime)JSRuntime).Invoke<object>("jqxBlazor.manageEvents", id, "${event.name}", "emit${widgetWithoutJqx}Event", DotNetObjectReference.Create(new EventsHandler(${eventNameWithOn})));\n`; 
         }
     }
     outData += `    }\n\n`;
@@ -345,27 +349,27 @@ function generateLibrary(inFile, outFile) {
     outData += `    private T getterProp<T>(string name)\n`;
     outData += `    {\n`;
     outData += `        shouldSetters = false;\n`;
-    outData += `        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageProps", componentID, name);\n`;
+    outData += `        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageProps", id, name);\n`;
     outData += `    }\n\n`;
 
     outData += `    private void setterProp(string name, object value)\n`;
     outData += `    {\n`;
     outData += `        if (shouldSetters)\n`;
     outData += `        {\n`;
-    outData += `            ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.manageProps", componentID, name, value);\n`;
+    outData += `            ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.manageProps", id, name, value);\n`;
     outData += `        }\n`;
     outData += `    }\n\n`;
 
     outData += `    private T getterMethod<T>(string name, params object[] args)\n`;
     outData += `    {\n`;
     outData += `        shouldSetters = false;\n`;
-    outData += `        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", componentID, name, args);\n`;
+    outData += `        return ((IJSInProcessRuntime)JSRuntime).Invoke<T>("jqxBlazor.manageMethods", id, name, args);\n`;
     outData += `    }\n\n`;
 
     outData += `    private void setterMethod(string name, params object[] args)\n`;
     outData += `    {\n`;
     outData += `        shouldSetters = false;\n`;
-    outData += `        ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.manageMethods", componentID, name, args);\n`;
+    outData += `        ((IJSInProcessRuntime)JSRuntime).InvokeVoid("jqxBlazor.manageMethods", id, name, args);\n`;
     outData += `    }\n\n`;
 
     if (obj.events) {
@@ -410,27 +414,27 @@ function getMarkup(widget) {
     switch (widget) {
         case `jqxButton`:
         case `jqxToggleButton`:
-            markup = `<button id="@componentID">@ChildContent</button>`;
+            markup = `<button id="@id">@ChildContent</button>`;
             break;
         case `jqxComplexInput`:
-            markup = `<div id="@componentID"><input><div>@ChildContent</div></div>`;
+            markup = `<div id="@id"><input><div>@ChildContent</div></div>`;
             break;
         case `jqxDateTimeInput`:
         case `jqxMaskedInput`:
         case `jqxNumberInput`:
-            markup = `<input id="@componentID">`;
+            markup = `<input id="@id">`;
             break;
         case `jqxInput`:
-            markup = `<input id="@componentID">`;
+            markup = `<input id="@id">`;
             break;
         case `jqxPasswordInput`:
-            markup = `<input id="@componentID" type="password">`;
+            markup = `<input id="@id" type="password">`;
             break;
         case `jqxPivotGrid`:
-            markup = `<div style="width: 100%; height: 100%;" id="@componentID">@ChildContent</div>`;
+            markup = `<div style="width: 100%; height: 100%;" id="@id">@ChildContent</div>`;
             break;
         default:
-            markup = `<div id="@componentID">@ChildContent</div>`;
+            markup = `<div id="@id">@ChildContent</div>`;
     }
 
     return markup;
@@ -459,25 +463,25 @@ function getDynamicMarkup(widget) {
         outData += `        }\n\n`;
         outData += `        if ((bool)rtl && (bool)dropDown && (bool)spinButtons)\n`;
         outData += `        {\n`;
-        outData += `            componentMarkup = "<div id='" + componentID + "'><div></div><div></div><input></div>";\n`;
+        outData += `            componentMarkup = "<div id='" + id + "'><div></div><div></div><input></div>";\n`;
         outData += `            return;\n`;
         outData += `        }\n\n`;
         outData += `        if (!(bool)rtl && (bool)dropDown && (bool)spinButtons)\n`;
         outData += `        {\n`;
-        outData += `            componentMarkup = "<div id='" + componentID + "'><input><div></div><div></div></div>";\n`;
+        outData += `            componentMarkup = "<div id='" + id + "'><input><div></div><div></div></div>";\n`;
         outData += `            return;\n`;
         outData += `        }\n\n`;
         outData += `        if (((bool)rtl && (bool)dropDown) || ((bool)rtl && (bool)spinButtons))\n`;
         outData += `        {\n`;
-        outData += `            componentMarkup = "<div id='" + componentID + "'><div></div><input></div>";\n`;
+        outData += `            componentMarkup = "<div id='" + id + "'><div></div><input></div>";\n`;
         outData += `            return;\n`;
         outData += `        }\n\n`;
         outData += `        if ((!(bool)rtl && (bool)dropDown) || (!(bool)rtl && (bool)spinButtons))\n`;
         outData += `        {\n`;
-        outData += `            componentMarkup = "<div id='" + componentID + "'><input><div></div></div>";\n`;
+        outData += `            componentMarkup = "<div id='" + id + "'><input><div></div></div>";\n`;
         outData += `            return;\n`;
         outData += `        }\n\n`;
-        outData += `        componentMarkup = "<div id='" + componentID + "'><input></div>";\n`;
+        outData += `        componentMarkup = "<div id='" + id + "'><input></div>";\n`;
         outData += `    }\n`;
     }
 
