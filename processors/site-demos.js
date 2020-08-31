@@ -47,7 +47,7 @@ async function generateSiteDemos() {
                 }
 
                 // // uncomment to test a single demo
-                // if (!(widgetFolder === 'colorpicker' && demoFolder === 'settings')) {
+                // if (!(widgetFolder === 'form' && demoFolder === 'defaultfunctionality')) {
                 //     continue;
                 // }
 
