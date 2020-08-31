@@ -18,7 +18,11 @@ window.jqxBlazor = {
 
         options = checkForDataAdapterNeed(options);
 
-        instances[id] = new window[name]('#' + id, options);
+        if (name === 'jqxForm') {
+            instances[id] = $('#' + id)[name](options);
+        } else {
+            instances[id] = new window[name]('#' + id, options);
+        }
     },
     setOptions: function(id, options) {
         instances[id].setOptions(options);
