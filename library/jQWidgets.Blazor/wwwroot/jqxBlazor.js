@@ -17,6 +17,9 @@ window.jqxBlazor = {
         options = checkForIsoStrings(options);
 
         options = checkForDataAdapterNeed(options);
+        console.log(options);
+        console.log(id);
+        console.log(name);
 
         instances[id] = new window[name]('#' + id, options);
     },
@@ -76,12 +79,10 @@ function checkForIsoStrings(options) {
 function checkForDataAdapterNeed(options) {
     if (options.source && options.source.dataFields) {
         options.source = new jqx.dataAdapter(options.source);
+    }
 
-        if (options.resources && options.resources.dataFields) {
-            options.resources = new jqx.dataAdapter(options.resources);
-        }
-
-        return options;
+    if (options.resources && options.resources.dataFields) {
+        options.resources = new jqx.dataAdapter(options.resources);
     }
 
     if (options.source && options.source.dataSource) {
@@ -89,7 +90,7 @@ function checkForDataAdapterNeed(options) {
             new jqx.dataAdapter(options.source.dataSource),
             options.source.options
         );
-
-        return options;
     }
+
+    return options;
 }
