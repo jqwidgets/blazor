@@ -8,17 +8,17 @@
 <div style="margin-top: 10px; margin-left: 10px">
     <div><strong>Settings</strong></div>
     Select Row:
-    @* <JqxInput @ref="myInput"
+    <JqxInput @ref="myInput"
         width=60 height=30 value=0>
-    </JqxInput> *@
+    </JqxInput>
     <br />
     <br />
     <JqxButton onClick="rowSelectBtnOnClick"
-        width=105 height=20>
+        width=105 height=30>
         Select
     </JqxButton>
     <JqxButton onClick="clearSelectionBtnOnClick"
-        width=135 height=20>
+        width=135 height=30>
         Clear Selection
     </JqxButton>
     <div style="clear: both"></div>
@@ -111,7 +111,7 @@
 
     public void rowSelectBtnOnClick(IDictionary<string, object> e)
     {
-        int index = 10; // int.Parse(myInput.value.ToString());
+        int index = int.Parse(myInput.value.ToString());
         myDataTable.selectRow(index);
     }
 

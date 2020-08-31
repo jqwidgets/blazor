@@ -1,0 +1,141 @@
+﻿<div style="width: 300px;">
+    <JqxForm value=value template=template></JqxForm>
+</div>
+
+@code {
+    static IDictionary<string, string>[] columns = new Dictionary<string, string>[]
+    {
+        new Dictionary<string, string>
+        {
+            { "type", "button" },
+            { "text", "Sign Up" },
+            { "width", "90px" },
+            { "columnWidth", "50%" },
+            { "align", "right" }
+        },
+        new Dictionary<string, string>
+        {
+            { "type", "button" },
+            { "text", "Cancel" },
+            { "width", "90px" },
+            { "columnWidth", "50%" }
+        }
+    };
+
+    IDictionary<string, string> value = new Dictionary<string, string>
+    {
+        { "firstName", "John" },
+        { "lastName", "Scott" },
+        { "address", "1st Ave SW" },
+        { "city", "San Antonio" },
+        { "state", "Texas" },
+        { "zip", "78209" }
+    };
+
+    IDictionary<string, object>[] template = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>
+        {
+            { "bind", "firstName" },
+            { "type", "text" },
+            { "label", "First name" },
+            { "required", true },
+            { "labelWidth", "85px" },
+            { "width", "250px" },
+            { "info", "Enter first name" },
+            { "infoPosition", "right" }
+        },
+        new Dictionary<string, object>
+        {
+            { "bind", "lastName" },
+            { "type", "text" },
+            { "label", "Last  name" },
+            { "required", true },
+            { "labelWidth", "85px" },
+            { "width", "250px" },
+            { "info", "Enter last name" },
+            { "infoPosition", "right" }
+        },
+        new Dictionary<string, object>
+        {
+            { "bind", "company" },
+            { "type", "text" },
+            { "label", "Company" },
+            { "required", false },
+            { "labelWidth", "85px" },
+            { "width", "250px" }
+        },
+        new Dictionary<string, object>
+        {
+            { "bind", "address" },
+            { "type", "text" },
+            { "label", "Address" },
+            { "required", true },
+            { "labelWidth", "85px" },
+            { "width", "250px" }
+        },
+        new Dictionary<string, object>
+        {
+            { "bind", "city" },
+            { "type", "text" },
+            { "label", "City" },
+            { "required", true },
+            { "labelWidth", "85px" },
+            { "width", "250px" }
+        },
+        new Dictionary<string, object>
+        {
+            { "bind", "state" },
+            { "type", "option" },
+            { "label", "State" },
+            { "required", true },
+            { "labelWidth", "85px" },
+            { "width", "250px" },
+            { "component", "jqxDropDownList" },
+            { 
+                "options",
+                new Dictionary<string, object>[]
+                {
+                    new Dictionary<string, object>
+                    {
+                        { "value", "California" }
+                    },
+                    new Dictionary<string, object>
+                    {
+                        { "value", "New York" }
+                    },
+                    new Dictionary<string, object>
+                    {
+                        { "value", "Oregon" }
+                    },
+                    new Dictionary<string, object>
+                    {
+                        { "value", "Illinois" }
+                    },
+                    new Dictionary<string, object>
+                    {
+                        { "value", "Texas" }
+                    }
+                }
+            }
+        },
+        new Dictionary<string, object>
+        {
+            { "bind", "zip" },
+            { "type", "text" },
+            { "label", "Zip code" },
+            { "required", true },
+            { "labelWidth", "85px" },
+            { "width", "250px" }
+        },
+        new Dictionary<string, object>
+        {
+            { "rowHeight", "10px" },
+            { "type", "blank" }
+        },
+        new Dictionary<string, object>
+        {
+            { "columns", columns }
+        }
+    };
+}

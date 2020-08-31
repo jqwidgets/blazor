@@ -17,7 +17,7 @@
 
         <div>
             <div style="direction: rtl;">
-                <img src="../../images/building_big.jpg" alt="" class="big-image" />
+                <img src="../images/building_big.jpg" alt="" class="big-image" />
 
                 <div>
                     <h3 style="text-align: right; direction: rtl;">30 St Mary Axe</h3>
@@ -50,7 +50,7 @@
 @code {
     JqxWindow window;
 
-    Dictionary<string, object> position = new Dictionary<string, object>() { { "x", 20 }, { "y", 70 } };
+    IDictionary<string, object> position = new Dictionary<string, object> { { "x", 20 }, { "y", 70 } };
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -59,15 +59,16 @@
             string result = await JSRuntime.InvokeAsync<string>("Example.getCoordinates", "#jqxWidget");
             string[] tokens = result.Split(";");
             int[] convertedItems = Array.ConvertAll<string, int>(tokens, int.Parse);
-            int top = convertedItems[0];
-            int left = convertedItems[1];
-            IDictionary newPosition = new Dictionary<string, object>()
+            int top = convertedItems[0] + 50;
+            int left = convertedItems[1] + 50;
+
+            IDictionary<string, int> newPosition = new Dictionary<string, int>
             {
-                { "x", (left + 50) },
-                { "y", (top + 50) }
+                { "x", left },
+                { "y", top }
             };
 
-            window.setOptions(new Dictionary<string, object>() { { "position", newPosition } });
+            window.setOptions(new Dictionary<string, object> { { "position", newPosition } });
         }
     }
 

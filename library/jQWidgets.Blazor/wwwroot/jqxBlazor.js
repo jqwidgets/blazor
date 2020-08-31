@@ -17,9 +17,6 @@ window.jqxBlazor = {
         options = checkForIsoStrings(options);
 
         options = checkForDataAdapterNeed(options);
-        console.log(options);
-        console.log(id);
-        console.log(name);
 
         instances[id] = new window[name]('#' + id, options);
     },

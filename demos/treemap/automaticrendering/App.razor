@@ -1,0 +1,29 @@
+﻿<JqxTreeMap 
+    width=800 height="400"
+    legendLabel="Olympic medal count - London 2012" source=source
+    colorRange=100 colorMode=colorMode baseColor="#52CBFF">
+</JqxTreeMap>
+
+@code {
+    string colorMode = "autoColors";
+     
+    IDictionary<string, object>[] source = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object> { { "label", "USA" }, { "value", 104 } },
+        new Dictionary<string, object> { { "label", "'People\'s Republic of China" }, { "value", 88 } },
+        new Dictionary<string, object> { { "label", "Great Britain" }, { "value", 65 } },
+        new Dictionary<string, object> { { "label", "Russian Federation" }, { "value", 82 } },
+        new Dictionary<string, object> { { "label", "Germany" }, { "value", 44 } },
+        new Dictionary<string, object> { { "label", "Republic of Korea" }, { "value", 28 } },
+        new Dictionary<string, object> { { "label", "France" }, { "value", 34 } },
+        new Dictionary<string, object> { { "label", "Italy" }, { "value", 28 } },
+        new Dictionary<string, object> { { "label", "Hungary" }, { "value", 17 } },
+        new Dictionary<string, object> { { "label", "Australia" }, { "value", 35 } },
+        new Dictionary<string, object> { { "label", "Japan" }, { "value", 38 } },
+        new Dictionary<string, object> { { "label", "Kazakhstan" }, { "value", 13 } },
+        new Dictionary<string, object> { { "label", "Netherlands" }, { "value", 20 } },
+        new Dictionary<string, object> { { "label", "Ukraine" }, { "value", 20 } },
+        new Dictionary<string, object> { { "label", "New Zealand" }, { "value", 13 } },
+        new Dictionary<string, object> { { "label", "Cuba" }, { "value", 14 } }
+    };
+}

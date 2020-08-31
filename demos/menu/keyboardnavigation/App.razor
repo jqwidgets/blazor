@@ -1,6 +1,4 @@
-@inject IJSRuntime JSRuntime;
-
-<JqxMenu @ref="myMenu" onItemclick="itemClick" onComponentReady="onMenuReady"
+<JqxMenu @ref="myMenu" onComponentReady="onMenuReady"
     width=600 height=30 showTopLevelArrows=true keyboardNavigation=true>
     <ul>
       <li><a href="#Home">Home</a></li>
@@ -77,9 +75,6 @@
 </JqxMenu>
 
 <div style="font-family: Verdana; font-size: 12px; width: 370px; margin-left: 20px; float: left;">
-  <br /><br />
-  <div @ref="log"></div>
-  <br /><br />
   <ul>
     <li><b>Tab</b> - Once the focus is received, users will be able to use the keyboard to change the focused menu item.</li>
     <li><b>Shift+Tab</b> - reverses the direction of the tab order. Once in the widget, a Shift+Tab will take the user to the previous menu item.</li>
@@ -93,16 +88,10 @@
 </div>
 
 @code {
-    JqxMenu myMenu;
-    ElementReference log;  
+    JqxMenu myMenu; 
 
     private void onMenuReady()
     {
         myMenu.focus();
-    }
-    
-    private void itemClick(IDictionary<string, object> e)
-    {
-        JSRuntime.InvokeAsync<string>("Example.updateLog", log, "Clicked: " + e["innerText"]);
     }
 }

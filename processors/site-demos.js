@@ -47,9 +47,9 @@ async function generateSiteDemos() {
                 }
 
                 // // uncomment to test a single demo
-                if (!(widgetFolder === 'dockinglayout' && demoFolder === 'defaultfunctionality')) {
-                    continue;
-                }
+                // if (!(widgetFolder === 'colorpicker' && demoFolder === 'settings')) {
+                //     continue;
+                // }
 
                 // creates the demo folder in release/demos/[demo]
                 await createFolder(widgetFolder, demoFolder);
