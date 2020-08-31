@@ -1,0 +1,88 @@
+﻿<JqxExpander width=350 showArrow=false toggleMode=expanderToggleMode>
+    <div>
+        <h3 style="padding: 0; margin: 0;">
+            Register
+        </h3>
+    </div>
+
+    <div style="padding: 5px;">
+        <JqxValidator @ref="myValidator" rules=validatorRules>
+            <form id="form" onSubmit="return false;" action="">
+                <table class="register-table">
+                    <tbody>
+                        <tr>
+                            <td>Username:</td>
+                            <td><JqxInput id="userInput" width=195 height=22></JqxInput></td>
+                        </tr>
+                        <tr>
+                            <td>Password:</td>
+                            <td><JqxPasswordInput id="passwordInput" width=195 height=22></JqxPasswordInput></td>
+                        </tr>
+                        <tr>
+                            <td>Real name:</td>
+                            <td><JqxInput id="realNameInput" width=195 height=22></JqxInput></td>
+                        </tr>
+                        <tr>
+                            <td>E-mail:</td>
+                            <td><JqxInput id="emailInput" width=195 height=22 placeHolder="someone@mail.com"></JqxInput></td>
+                        </tr>
+                        <tr>
+                            <td>SSN:</td>
+                            <td><JqxMaskedInput id="ssnInput" width=195 height=22 mask="###-##-####"></JqxMaskedInput></td>
+                        </tr>
+                        <tr>
+                            <td>Phone:</td>
+                            <td><JqxMaskedInput id="phoneInput" width=195 height=22 mask="(###)###-####"></JqxMaskedInput></td>
+                        </tr>
+                        <tr>
+                            <td>Zip code:</td>
+                            <td><JqxMaskedInput id="zipInput" width=195 height=22 mask="###-##-####"></JqxMaskedInput></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <div style="display: flex; justify-content: center; margin: 20px 0px;">
+                                    <JqxCheckBox id="acceptCheckBox" width=130>I Accept Terms</JqxCheckBox>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="text-align: center;">
+                                <JqxButton onClick="sendBtnClicked" width=60 height=25>
+                                    Send
+                                </JqxButton>
+                            </td>
+                        </tr>   
+                    </tbody>
+                </table>
+            </form>
+        </JqxValidator>
+    </div>
+</JqxExpander>
+
+@code {
+    JqxValidator myValidator;
+
+    string expanderToggleMode = "none";
+     
+    IDictionary<string, object>[] validatorRules = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object> { { "input", "#userInput" }, { "message", "Username is required!" }, { "action", "keyup, blur" }, { "rule", "required" } },
+        new Dictionary<string, object> { { "input", "#userInput" }, { "message", "Your username must be between 3 and 12 characters!" }, { "action", "keyup, blur" }, { "rule", "length=3,12" } },
+        new Dictionary<string, object> { { "input", "#realNameInput" }, { "message", "Real Name is required!" }, { "action", "keyup, blur" }, { "rule", "required" } },
+        new Dictionary<string, object> { { "input", "#realNameInput" }, { "message", "Your real name must contain only letters!" }, { "action", "keyup" }, { "rule", "notNumber" } },
+        new Dictionary<string, object> { { "input", "#realNameInput" }, { "message", "Your real name must be between 3 and 12 characters!" }, { "action", "keyup" }, { "rule", "length=2,12" } },
+        new Dictionary<string, object> { { "input", "#passwordInput" }, { "message", "Password is required!" }, { "action", "keyup, blur" }, { "rule", "required" } },
+        new Dictionary<string, object> { { "input", "#passwordInput" }, { "message", "Your password must be between 4 and 12 characters!" }, { "action", "keyup, blur" }, { "rule", "length=4,12" } },
+        new Dictionary<string, object> { { "input", "#emailInput" }, { "message", "E-mail is required!" }, { "action", "keyup, blur" }, { "rule", "required" } },
+        new Dictionary<string, object> { { "input", "#emailInput" }, { "message", "Invalid e-mail!" }, { "action", "keyup" }, { "rule", "email" } },
+        new Dictionary<string, object> { { "input", "#ssnInput" }, { "message", "Invalid SSN!" }, { "action", "valuechanged, blur" }, { "rule", "ssn" } },
+        new Dictionary<string, object> { { "input", "#phoneInput" }, { "message", "Invalid phone number!" }, { "action", "valuechanged, blur" }, { "rule", "phone" } },
+        new Dictionary<string, object> { { "input", "#zipInput" }, { "message", "Invalid zip code!" }, { "action", "valuechanged, blur" }, { "rule", "zipCode" } },
+        new Dictionary<string, object> { { "input", "#acceptCheckBox" }, { "message", "You have to accept the terms" }, { "action", "change" }, { "rule", "required" } }
+    };
+
+    void sendBtnClicked(IDictionary<string, object> e)
+    {
+        myValidator.validate("#form");
+    }
+}

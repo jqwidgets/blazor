@@ -1,15 +1,18 @@
 ﻿@inject IJSRuntime JSRuntime;
 
-<JqxFormattedInput @ref="myFormattedInput" width=250 height=25 radix=radix></JqxFormattedInput>
+<JqxFormattedInput @ref="myFormattedInput"
+    width=250 height=25 radix=radix
+    value=100001 spinButtons=true>
+</JqxFormattedInput>
 
-<JqxButton width=buttonWidth onClick="getOctal">Get octal value</JqxButton>
-<JqxButton width=buttonWidth onClick="getDecimal">Get decimal value</JqxButton>
-<JqxButton width=buttonWidth onClick="getHexadecimal">Get hexadecimal value</JqxButton>
+<JqxButton width=175 onClick="getOctal">Get octal value</JqxButton>
+<JqxButton width=175 onClick="getDecimal">Get decimal value</JqxButton>
+<JqxButton width=175 onClick="getHexadecimal">Get hexadecimal value</JqxButton>
 
 @code {
     JqxFormattedInput myFormattedInput;
+
     string radix = "binary";
-    int buttonWidth = 175;
 
     private void getOctal(IDictionary<string, object> e)
     {

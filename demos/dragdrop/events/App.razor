@@ -1,0 +1,113 @@
+﻿<div class="container">
+    <div class="draggable-parent">
+
+        <JqxDragDrop
+            onDragStart=onDragStart onDragEnd=onDragEnd
+            onDropTargetEnter=onDropTargetEnter onDropTargetLeave=onDropTargetLeave
+            restricter=restricter dropTarget=dropTarget>
+    
+            <div class="label">
+                I can be dragged only inside my parent
+            </div>
+        </JqxDragDrop>
+
+        <div class="drop-target">
+            <div class="label">
+                I am a drop target
+            </div>
+        </div>
+
+    </div>
+
+    <JqxPanel @ref="myPanel" width=260 height=330></JqxPanel>
+</div>
+
+@code {
+    JqxPanel myPanel;
+
+    string dropTarget = ".drop-target";
+
+    IDictionary<string, int> restricter = new Dictionary<string, int>
+    {
+        { "left", 10 },
+        { "top", 45 },
+        { "width", 200 },
+        { "height", 200 }
+    };
+
+    void onDragStart(IDictionary<string, object> e)
+    {
+        addEvent("DragStart");
+    }
+
+    void onDragEnd(IDictionary<string, object> e)
+    {
+        addEvent("DragEnd");
+    }
+
+    void onDropTargetEnter(IDictionary<string, object> e)
+    {
+        addEvent("DropTargetEnter");
+    }
+
+    void onDropTargetLeave(IDictionary<string, object> e)
+    {
+        addEvent("DropTargetLeave");
+    }
+
+    void addEvent(string type)
+    {
+        myPanel.prepend("<div>" + type + "</div>");
+    }
+}
+
+<style>
+    .container {
+        width: 650px;
+        height: 260px;
+        display: flex;
+    }
+
+    .draggable-parent {
+        width: 294px;
+        position: relative;
+        text-align: center;
+        background-color: #EEFFEE;
+        border: 1px solid #eee;
+        margin-right: 30px;
+    }
+
+    .draggable-parent .label {
+        font-size: 11px;
+    }
+
+    .drop-target {
+        width: 120px;
+        height: 120px;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background-color: #FBFFB5;
+        border: 1px solid #ddd;
+    }
+
+    .jqx-draggable {
+        z-index: 1;
+    }
+
+    .jqx-draggable > div {
+        width: 100px;
+        height: 100px;
+        border: 1px solid #BBBBBB;
+        background-color: #C9ECFF;
+    }
+
+    .jqx-panel {
+        height: 258px !important;
+    }
+
+    .jqx-panel > div {
+        font-size: 13px;
+        padding: 10px;
+    }
+</style>
