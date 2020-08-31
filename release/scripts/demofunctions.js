@@ -919,7 +919,9 @@ function startDemo(target) {
     if (url.indexOf('angular') != -1) {
         isnonpopupdemo = true;
     }
-
+  if (url.indexOf('blazor') != -1) {
+        isnonpopupdemo = true;
+    }
     if (this.isTouchDevice && url.indexOf('chart') == -1) isnonpopupdemo = false;
     if (that.mobile) {
         isnonpopupdemo = true;
@@ -1022,6 +1024,9 @@ function startDemo(target) {
   else if (url.toString().indexOf('blazor-') >= 0) {
         var w = url.toString().split('/');
         var wIndex = w.indexOf('blazor');
+		if (wIndex<0) {
+			wIndex = w.indexOf('release');
+		}
 		if (wIndex<0) {
 			wIndex = w.indexOf('blazor.jqwidgets.com');
 		}
