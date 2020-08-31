@@ -47,9 +47,9 @@ async function generateSiteDemos() {
                 }
 
                 // // uncomment to test a single demo
-                // if (!(widgetFolder === 'kanban' && demoFolder === 'defaultfunctionality')) {
-                //     continue;
-                // }
+                if (!(widgetFolder === 'dockinglayout' && demoFolder === 'defaultfunctionality')) {
+                    continue;
+                }
 
                 // creates the demo folder in release/demos/[demo]
                 await createFolder(widgetFolder, demoFolder);
