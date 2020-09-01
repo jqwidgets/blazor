@@ -4,21 +4,26 @@ Prerequisites
 .NET Core SDK - This includes everything you need to build and run Blazor WebAssembly apps.
 
 Setup
+
 I. Install templates:
 
 dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.0.0-preview9.19465.2
 II. Create a blazor application:
 
 dotnet new blazorwasm -o jqwidgets-blazor-app
+
 III. Navigate to the application:
 
 cd jqwidgets-blazor-app
+
 IV. Add the jQWidgets.Blazor package:
 
 dotnet add package jQWidgets.Blazor
+
 V. Open _Imports.razor and add the following at the bottom:
 
 @using jQWidgets.Blazor.Components
+
 VI. Open wwwroot/index.html and add the needed styles and scripts. For example if you are going to use JqxBarGauge, the file should look like this:
 ```
 <!DOCTYPE html>
