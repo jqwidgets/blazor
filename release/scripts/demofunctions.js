@@ -134,7 +134,7 @@ function initthemes(initialurl) {
         loadedThemes[themeIndex] = 2;
     }
     else if (!loadedTheme) {
-        $.data(document.body, 'theme', 'material');
+        $.data(document.body, 'theme', 'light');
     }
 
     $('#themeComboBox').on('select', function (event) {
