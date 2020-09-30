@@ -1327,30 +1327,27 @@
 
                     <h2>Setup</h2>
 
-                    <p style="margin-bottom: 0.5em;"><span style="font-size: 15px;"><strong>I.</strong></span> Install templates:</p>
-                    <pre class="preCode"><code><strong>dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.0.0-preview9.19465.2</strong></code></pre>
-
-                    <p style="margin-bottom: 0.5em;"><span style="font-size: 15px;"><strong>II.</strong></span> Create a blazor application:</p>
+                    <p style="margin-bottom: 0.5em;"><span style="font-size: 15px;"><strong>I.</strong></span> Create a blazor application:</p>
                     <pre class="preCode"><code><strong>dotnet new blazorwasm -o jqwidgets-blazor-app</strong></code></pre>
 
-                    <p style="margin-bottom: 0.5em;"><span style="font-size: 15px;"><strong>III.</strong></span> Navigate to the application:</p>
+                    <p style="margin-bottom: 0.5em;"><span style="font-size: 15px;"><strong>II.</strong></span> Navigate to the application:</p>
                     <pre class="preCode"><code><strong>cd jqwidgets-blazor-app</strong></code></pre>
 
-                    <p style="margin-bottom: 0.5em;"><span style="font-size: 15px;"><strong>IV.</strong></span> Add the jQWidgets.Blazor package:</p>
+                    <p style="margin-bottom: 0.5em;"><span style="font-size: 15px;"><strong>III.</strong></span> Add the jQWidgets.Blazor package:</p>
                     <pre class="preCode"><code><strong>dotnet add package jQWidgets.Blazor</strong></code></pre>
 
-                    <p style="margin-bottom: 1em;"><span style="font-size: 15px;"><strong>V.</strong></span> Open <strong>_Imports.razor</strong> and add the following at the bottom:</p>
+                    <p style="margin-bottom: 1em;"><span style="font-size: 15px;"><strong>IV.</strong></span> Open <strong>_Imports.razor</strong> and add the following at the bottom:</p>
                     <pre class="preCode"><code><strong>@using jQWidgets.Blazor.Components</strong></code></pre>
 
-                    <p style="margin-bottom: 1em;"><span style="font-size: 15px;"><strong>VI.</strong></span> Open <strong>wwwroot/index.html</strong> and add the needed styles and scripts. For example if you are going to use <strong>JqxBarGauge</strong>, the file should look like this:</p>
+                    <p style="margin-bottom: 1em;"><span style="font-size: 15px;"><strong>V.</strong></span> Open <strong>wwwroot/index.html</strong> and add the needed styles and scripts. For example if you are going to use <strong>JqxBarGauge</strong>, the file should look like this:</p>
                     <div id="index" class="code"></div>
                     <br />
                     
-                    <p style="margin-bottom: 1em;"><span style="font-size: 15px;"><strong>VII.</strong></span> Open <strong>Pages/Index.razor</strong> and replace the code as follows:</p>
+                    <p style="margin-bottom: 1em;"><span style="font-size: 15px;"><strong>VI.</strong></span> Open <strong>Pages/Index.razor</strong> and replace the code as follows:</p>
                     <div id="sample-demo" class="code"></div>
                     <br />
 
-                    <p style="margin-bottom: 1em;"><span style="font-size: 15px;"><strong>VIII.</strong></span> Start the app and check the result:</p>
+                    <p style="margin-bottom: 1em;"><span style="font-size: 15px;"><strong>VII.</strong></span> Start the app and check the result:</p>
                     <pre class="preCode"><code><strong>dotnet watch run</strong></code></pre>
 
                     <!-- Events Methods & Properties -->
