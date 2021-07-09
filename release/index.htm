@@ -68,6 +68,7 @@
     <script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="scripts/demofunctions.js"></script>
     <script type="text/javascript" src="jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxNotification.js"></script>
 
     <!-- swipe plugin for slider -->
     <script src="https://www.jqwidgets.com/angular/resources/design/js/vendor/swipe.js"></script>
@@ -89,6 +90,17 @@
             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
         })();
     </script>
+	 <style>
+	.jqx-notification.jqx-widget .jqx-notification-icon-info {
+		background-image: url(jqwidgets/styles/images/info.png);
+		background-position: initial;
+	}
+	.jqx-notification.jqx-widget {
+		background: #408DAF !important;
+		font-size: 14px;
+		border-color: #408DAF !important;
+	}
+  </style>
     <script type="text/javascript" src="jqwidgets/jqxresponse.js"></script>
     <script type="text/javascript" src="jqwidgets/jqxbuttons.js"></script>
     <script type="text/javascript" src="jqwidgets/jqxscrollbar.js"></script>
@@ -97,9 +109,11 @@
     <script type="text/javascript">
         $(document).ready(function () {
 
-
+	   $("#notification").jqxNotification({ blink: false, width: 400, position: "bottom-left", autoOpen: true, closeOnClick: false, autoClose: false, showCloseButton: true });
+    
         });
     </script>
+	
 </head>
 <body>
 
@@ -663,7 +677,12 @@
                     </li>
                 </ul>
             </nav>
-            <p>jQWidgets &copy; 2011-2020. All Rights Reserved.</p>
+            <p>jQWidgets &copy; 2011-2021. All Rights Reserved.</p>
+        </div>
+    </div>
+	<div id="notification">
+        <div>
+            New Blazor UI Components: <a style="color: white; text-decoration: underline;" title="Smart.Blazor" href="https://www.htmlelements.com/blazor/">Smart.Blazor</a>. 
         </div>
     </div>
     <!-- FOOTER END -->

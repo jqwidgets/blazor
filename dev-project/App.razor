@@ -1,279 +1,47 @@
-﻿<div style="width:800px; height: 600px;">
-    <JqxSplitter panels=splitterPanels1>
-        <div>
-            <JqxKanban 
-                id="myKanban1"
-                width=size height=size source=source1
-                columns=columns1 connectWith="#myKanban2, #myKanban3"
-                resources=resourcesSource>
-            </JqxKanban>
-        </div>
-
-        <div>
-            <JqxSplitter orientation=orientation panels=splitterPanels2>
-                <div>
-                    <JqxKanban 
-                        id="myKanban2"
-                        width=size height=size source=source2
-                        columns=columns2 connectWith="#myKanban1, #myKanban3"
-                        resources=resourcesSource>
-                    </JqxKanban>
-                </div>
-
-                <div>
-                    <JqxKanban
-                        id="myKanban3"
-                        width=size height=size source=source3
-                        columns=columns3 connectWith="#myKanban1, #myKanban2"
-                        resources=resourcesSource>
-                    </JqxKanban>
-                </div>
-            </JqxSplitter>
-        </div>
-    </JqxSplitter>
-</div>
+<JqxGrid
+    width=850 source=source columns=columns columnsresize=true >
+</JqxGrid>
 
 @code {
-    string size = "100%";
-    string orientation = "horizontal";
 
-    static IDictionary<string, object>[] splitterPanels1 = new Dictionary<string, object>[]
+    IDictionary<string, object> source = new Dictionary<string, object>()
     {
-        new Dictionary<string, object>
-        {
-            { "size", 250 }, { "min", 100 }
-        },
-        new Dictionary<string, object>
-        {
-            { "min", 250 }
-        }
-    };
-
-    static IDictionary<string, object>[] splitterPanels2 = new Dictionary<string, object>[]
-    {
-        new Dictionary<string, object>
-        {
-            { "size", 350 }, { "min", 200 }, { "collapsible", false }
-        },
-        new Dictionary<string, object>
-        {
-            { "min", 200 }
-        }
-    };
-
-    static IDictionary<string, string>[] fields = new Dictionary<string, string>[]
-    {
-        new Dictionary<string, string>
-        {
-            { "name", "status" }, { "map", "state" }, { "type", "string" }
-        },
-        new Dictionary<string, string>
-        {
-            { "name", "text" }, { "map", "label" }, { "type", "string" }
-        },
-        new Dictionary<string, string>
-        {
-            { "name", "tags" }, { "type", "string" }
-        },
-        new Dictionary<string, string>
-        {
-            { "name", "color" }, { "map", "hex" }, { "type", "string" }
-        },
-        new Dictionary<string, string>
-        {
-            { "name", "resourceId" }, { "type", "number" }
-        }
-    };
-
-    static IDictionary<string, object> source1 = new Dictionary<string, object>()
-    {
-        { "dataType", "array" },
-        { "dataFields", fields },
-        { 
-            "localData",
-            new Dictionary<string, object>[]
-            {
-                new Dictionary<string, object>
-                {
-                    { "state", "new" }, { "label", "Combine Orders" }, { "tags", "orders, combine" }, { "hex", "#5dc3f0" }, { "resourceId", 3 }
-                },
-                new Dictionary<string, object>
-                {
-                    { "state", "new" }, { "label", "Change Billing Address" }, { "tags", "billing" }, { "hex", "#f19b60" }, { "resourceId", 1 }
-                },
-                new Dictionary<string, object>
-                {
-                    { "state", "new" }, { "label", "One item added to the cart" }, { "tags", "cart" }, { "hex", "#5dc3f0" }, { "resourceId", 3 }
-                },
-                new Dictionary<string, object>
-                {
-                    { "state", "new" }, { "label", "Edit Item Price" }, { "tags", "price, edit" }, { "hex", "#5dc3f0" }, { "resourceId", 4 }
-                },
-                new Dictionary<string, object>
-                {
-                    { "state", "new" }, { "label", "Login 404 issue" }, { "tags", "issue, login" }, { "hex", "#6bbd49" }
-                }
-            }
-        }
-    };
-
-    static IDictionary<string, object>[] columns1 = new Dictionary<string, object>[]
-    {
-        new Dictionary<string, object>
-        {
-            { "text", "Backlog" }, { "dataField", "new" }, { "maxItems", 10 }
-        }
-    };
-
-    static IDictionary<string, object> source2 = new Dictionary<string, object>()
-    {
-        { "dataType", "array" },
-        { "dataFields", fields },
-        { 
-            "localData",
-            new Dictionary<string, object>[]
-            {
-                new Dictionary<string, object>
-                {
-                    { "state", "ready" }, { "label", "Logout issue" }, { "tags", "logout, issue" }, { "hex", "#5dc3f0" }, { "resourceId", 7 }
-                },
-                new Dictionary<string, object>
-                {
-                    { "state", "ready" }, { "label", "Remember password issue" }, { "tags", "password, issue" }, { "hex", "#6bbd49" }, { "resourceId", 8 }
-                },
-                new Dictionary<string, object>
-                {
-                    { "state", "ready" }, { "label", "Cart calculation issue" }, { "tags", "cart, calculation" }, { "hex", "#f19b60" }, { "resourceId", 9 }
-                },
-                new Dictionary<string, object>
-                {
-                    { "state", "ready" }, { "label", "Remove topic issue" }, { "tags", "topic, issue" }, { "hex", "#6bbd49" }
-                }
-            }
-        }
-    };
-
-    static IDictionary<string, object>[] columns2 = new Dictionary<string, object>[]
-    {
-        new Dictionary<string, object>
-        {
-            { "text", "Ready" }, { "dataField", "ready" }, { "maxItems", 10 }
-        }
-    };
-
-    static IDictionary<string, object> source3 = new Dictionary<string, object>()
-    {
-        { "dataType", "array" },
-        { "dataFields", fields },
-        { 
-            "localData",
-            new Dictionary<string, object>[]
-            {
-                new Dictionary<string, object>
-                {
-                    { "state", "done" }, { "label", "Delete orders" }, { "tags", "orders, combine" }, { "hex", "#f19b60" }, { "resourceId", 4 }
-                },
-                new Dictionary<string, object>
-                {
-                    { "state", "work" }, { "label", "Add New Address" }, { "tags", "address" }, { "hex", "#6bbd49" }, { "resourceId", 5 }
-                },
-                new Dictionary<string, object>
-                {
-                    { "state", "new" }, { "label", "Rename items" }, { "tags", "rename" }, { "hex", "#5dc3f0" }, { "resourceId", 6 }
-                },
-                new Dictionary<string, object>
-                {
-                    { "state", "work" }, { "label", "Update cart" }, { "tags", "cart, update" }, { "hex", "#6bbd49" }
-                }
-            }
-        }
-    };
-
-    static IDictionary<string, object>[] columns3 = new Dictionary<string, object>[]
-    {
-        new Dictionary<string, object>
-        {
-            { "text", "Backlog" }, { "dataField", "new" }, { "maxItems", 10 }
-        }
-    };
-
-    static IDictionary<string, object> resourcesSource = new Dictionary<string, object>()
-    {
-        { "dataType", "array" },
+        { "datatype", "tab" },
         { 
             "dataFields",
             new Dictionary<string, string>[]
             {
-                new Dictionary<string, string>
-                {
-                    { "name", "id" }, { "type", "number" }
-                },
-                new Dictionary<string, string>
-                {
-                    { "name", "name" }, { "type", "string" }
-                },
-                new Dictionary<string, string>
-                {
-                    { "name", "image" }, { "type", "string" }
-                },
-                new Dictionary<string, string>
-                {
-                    { "name", "common" }, { "type", "boolean" }
-                }
+                new Dictionary<string, string>() { { "name", "Year" }, { "type", "int" } },
+                new Dictionary<string, string>() { { "name", "HPI" }, { "type", "float" } },
+                new Dictionary<string, string>() { { "name", "BuildCost" }, { "type", "float" } },
+                new Dictionary<string, string>() { { "name", "Population" }, { "type", "float" } },
+                new Dictionary<string, string>() { { "name", "Rate" }, { "type", "float" } }
             }
-         },
-        { 
-            "localData",
-            new Dictionary<string, object>[]
-            {
-                new Dictionary<string, object>
-                {
-                    { "id", 0 }, { "name", "No name" }, { "image", "../jqwidgets/styles/images/common.png" }, { "common", true }
-                },
-                new Dictionary<string, object>
-                {
-                    { "id", 1 }, { "name", "Andrew Fuller" }, { "image", "../images/andrew.png" }
-                },
-                new Dictionary<string, object>
-                {
-                    { "id", 2 }, { "name", "Janet Leverling" }, { "image", "../images/janet.png" }
-                },
-                new Dictionary<string, object>
-                {
-                    { "id", 3 }, { "name", "Steven Buchanan" }, { "image", "../images/steven.png" }
-                },
-                new Dictionary<string, object>
-                {
-                    { "id", 4 }, { "name", "Nancy Davolio" }, { "image", "../images/nancy.png" }
-                },
-                new Dictionary<string, object>
-                {
-                    { "id", 5 }, { "name", "Michael Buchanan" }, { "image", "../images/michael.png" }
-                },
-                new Dictionary<string, object>
-                {
-                    { "id", 6 }, { "name", "Margaret Buchanan" }, { "image", "../images/margaret.png" }
-                },
-                new Dictionary<string, object>
-                {
-                    { "id", 7 }, { "name", "Robert Buchanan" }, { "image", "../images/robert.png" }
-                },
-                new Dictionary<string, object>
-                {
-                    { "id", 8 }, { "name", "Laura Buchanan" }, { "image", "../images/laura.png" }
-                },
-                new Dictionary<string, object>
-                {
-                    { "id", 9 }, { "name", "Anna Short" }, { "image", "../images/anne.png" }
-                }
-            }
+        },
+        { "url", "../sampledata/homeprices.txt" }
+    };
+
+    IDictionary<string, object>[] columns = new Dictionary<string, object>[]
+    {
+        new Dictionary<string, object>() 
+        {
+            { "text", "Year" }, { "datafield", "Year" }, { "width", 200 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "HPI" }, { "datafield", "HPI" }, { "cellsformat", "f2" }, { "width", 200 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Build Cost" }, { "datafield", "BuildCost" }, { "cellsformat", "f2" }, { "width", 180 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Population" }, { "datafield", "Population" }, { "cellsformat", "f2" }, { "width", 100 }
+        },
+        new Dictionary<string, object>() 
+        {
+            { "text", "Rate" }, { "datafield", "Rate" }, { "cellsformat", "f5" }, { "minwidth", 100 }
         }
     };
 }
-
-<style>
-    .jqx-splitter {
-        width: 100% !important;
-        height: 100% !important;
-    }
-</style>

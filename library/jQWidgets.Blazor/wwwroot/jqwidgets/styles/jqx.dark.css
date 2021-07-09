@@ -1271,6 +1271,12 @@
     border: none;
 }
 
+.jqx-datatable-dark .jqx-grid-column-sortdescbutton-dark,
+.jqx-datatable-dark .jqx-grid-column-sortascbutton-dark {
+	display: flex;
+	align-items: center;
+}
+
 .jqx-grid-column-sortascbutton-dark,
 .jqx-expander-arrow-bottom-dark,
 .jqx-window-collapse-button-dark,
@@ -1690,9 +1696,7 @@ textarea:focus ~ .jqx-input-bar:before,
 .jqx-complex-input-group-dark .jqx-fill-state-normal-dark {
     border-color: var(--jqx-border);
 }
-input[type="password"] {
-    letter-spacing: 0.3em;
-}
+
 
 .jqx-input-widget-dark.jqx-rtl > input {
     direction: rtl
@@ -2024,7 +2028,7 @@ input[type="text"].jqx-input-dark:-ms-input-placeholder, input[type="text"].jqx-
 .jqx-icon-time-dark,
 .jqx-icon-time-hover-dark,
 .jqx-icon-time-pressed-dark {
-    background-image: none;
+    background-image: none !important;
     font-family: 'jqx-icons';
     display: flex;
     font-family: 'jqx-icons';
@@ -2050,7 +2054,7 @@ input[type="text"].jqx-input-dark:-ms-input-placeholder, input[type="text"].jqx-
 .jqx-icon-calendar-dark,
 .jqx-icon-calendar-hover-dark,
 .jqx-icon-calendar-pressed-dark {
-	background-image: none;
+	background-image: none !important;
     font-family: 'jqx-icons';
     left: 0;
     top: 0 !important;
