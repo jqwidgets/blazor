@@ -2,6 +2,8 @@
 
 Blazor lets you build interactive web UIs using C# instead of JavaScript. Blazor apps are composed of reusable web UI components implemented using C#, HTML, and CSS. Blazor can run your client-side C# code directly in the browser, using WebAssembly. Because it's real .NET running on WebAssembly, you can re-use code and libraries from server-side parts of your application.
 
+Please refer to: https://www.htmlelements.com/blazor/
+
 # Prerequisites
 .NET Core SDK - This includes everything you need to build and run Blazor WebAssembly apps.
 
